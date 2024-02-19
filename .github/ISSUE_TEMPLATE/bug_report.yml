@@ -16,7 +16,7 @@ body:
     attributes:
       label: Command-line input
       description: >-
-        Please provide the command line input you are using to run AsBuiltReport. Please ensure that you obscure any sensitive information.
+        Please provide the command line input you are using to run Diagrammer. Please ensure that you obscure any sensitive information.
     validations:
       required: true
   - type: textarea
