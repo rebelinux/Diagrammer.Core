@@ -1,4 +1,4 @@
-# :arrows_clockwise: Diagrammer Core As Built Report Changelog
+# :arrows_clockwise: Diagrammer.Core Changelog
 
 ## [0.1.0] - YYYY-MM-DD
 
