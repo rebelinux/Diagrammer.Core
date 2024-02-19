@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/rebelinux/Diagrammer.Core" alt="Diagrammer"></a>
-            <img src='https://github.com/rebelinux/Diagrammer.Core/dev/icons/Diagrammer.png' width="8%" height="8%" /></a>
+            <img src='https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/dev/Icons/Diagrammer.png' width="8%" height="8%" /></a>
 </p>
 <p align="center">
     <a href="https://www.powershellgallery.com/packages/Diagrammer.Core/" alt="PowerShell Gallery Version">
