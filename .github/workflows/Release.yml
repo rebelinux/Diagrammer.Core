@@ -13,10 +13,6 @@ jobs:
         shell: pwsh
         run: |
           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-      - name: Install Digrammer.Core module
-        shell: pwsh
-        run: |
-          Install-Module -Name Digrammer.Core -Repository PSGallery -Force
       - name: Test Module Manifest
         shell: pwsh
         run: |
