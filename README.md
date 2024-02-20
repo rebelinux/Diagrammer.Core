@@ -45,7 +45,7 @@ This module is compatible with the following PowerShell versions;
 
 ## :wrench: System Requirements
 
-PowerShell 5.1, and the following PowerShell modules are required for generating a Diagrammer.Microsoft.AD diagram.
+PowerShell 5.1, and the following PowerShell modules are required for generating a Diagrammer.Core diagram.
 
 - [PSGraph Module](https://github.com/KevinMarquette/PSGraph)
 
