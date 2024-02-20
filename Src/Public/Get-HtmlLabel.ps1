@@ -6,10 +6,10 @@ Function Get-HTMLLabel {
         Takes a string and converts it to a HTML table used for the report main logo an title
     .Example
         $MainGraphLabel = Switch ($DiagramType) {
-            'Forest' { $translate.forestgraphlabel }
-            'Domain' { $translate.domaingraphlabel }
-            'Sites' { $translate.sitesgraphlabel }
-            'SitesTopology' { $translate.sitesgraphlabel }
+            'Forest' { 'Active Directory Forest Diagram' }
+            'Domain' { 'Active Directory Domain Diagram' }
+            'Sites' { 'Active Directory Site Invetory Diagram' }
+            'SitesTopology' { 'Active Directory Site Topology Diagram' }
         }
         $CustomLogo = "Logo Path"
         $URLIcon = False
@@ -38,15 +38,17 @@ Function Get-HTMLLabel {
         [string] $IconType,
         [Switch] $SubgraphLabel,
         [string] $IconWidth = 40,
-        [string] $IconHeight = 40
+        [string] $IconHeight = 40,
+        [Hashtable] $ImagesObj,
+        [bool] $URLIcon
     )
 
     if ($IconType -eq 'NoIcon') {
         $ICON = 'NoIcon'
     } elseif ($URLIcon) {
         $ICON = 'NoIcon'
-    } elseif ($images[$IconType]) {
-        $ICON = $images[$IconType]
+    } elseif ($ImagesObj[$IconType]) {
+        $ICON = $ImagesObj[$IconType]
     } else { $ICON = "no_icon.png" }
 
     if (-Not $SubgraphLabel) {
@@ -60,7 +62,7 @@ Function Get-HTMLLabel {
 
             }
         } else {
-            return "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>$($translate.MicrosoftLogo)</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center'>$Label</TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
+            return "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center'>$Label</TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
         }
     }
     if ($SubgraphLabel) {

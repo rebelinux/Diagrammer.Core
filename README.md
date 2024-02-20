@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/rebelinux/Diagrammer.Core" alt="Diagrammer"></a>
-            <img src='https://github.com/rebelinux/Diagrammer.Core/icons/Diagrammer.png' width="8%" height="8%" /></a>
+            <img src='https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/dev/Icons/Diagrammer.png' width="8%" height="8%" /></a>
 </p>
 <p align="center">
     <a href="https://www.powershellgallery.com/packages/Diagrammer.Core/" alt="PowerShell Gallery Version">
@@ -45,21 +45,9 @@ This module is compatible with the following PowerShell versions;
 
 ## :wrench: System Requirements
 
-The following PowerShell module will be automatically installed by following the [module installation](https://github.com/rebelinux/Diagrammer.Core#package-module-installation) procedure.
+PowerShell 5.1, and the following PowerShell modules are required for generating a Diagrammer.Core diagram.
 
-This PowerShell module may also be manually installed via the PowerShell Gallery or GitHub.
-
-| Module Name | Minimum Required Version |                         PS Gallery                         |                           GitHub                            |
-| ----------- | :----------------------: | :--------------------------------------------------------: | :---------------------------------------------------------: |
-| PScribo     |          0.10.0          | [Link](https://www.powershellgallery.com/packages/PScribo) | [Link](https://github.com/iainbrighton/PScribo/tree/master) |
-
-To find a list of available report modules, run the following PowerShell command;
-
-```powershell
-Find-Module -Name rebelinux.* -Repository PSGallery
-```
-
-The pre-requisites for each report type will be documented within its own `README.md` located in the relevant report repository.
+- [PSGraph Module](https://github.com/KevinMarquette/PSGraph)
 
 ## :package: Module Installation
 
@@ -116,64 +104,5 @@ If you are unable to use the PowerShell Gallery, you can still install the `Diag
 5. Close and reopen the PowerShell terminal window.
 
 _Note: You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
-
-## :pencil2: Commands
-
-### **New-rebelinux**
-
-The `New-rebelinux` cmdlet is used to generate as built reports. The type of as built report to generate is specified by using the `Report` parameter. The report parameter relies on additional report modules being installed alongside the `Diagrammer.Core` module. The `Target` parameter specifies one or more systems on which to connect and run the report. User credentials to the system are specified using the `Credential`, or the `Username` and `Password` parameters. One or more document formats, such as `HTML`, `Word` or `Text` can be specified using the `Format` parameter. Additional parameters are outlined below.
-
-```powershell
-.PARAMETER Report
-    Specifies the type of report that will be generated.
-.PARAMETER Target
-    Specifies the IP/FQDN of the system to connect.
-    Multiple targets may be specified, separated by a comma.
-.PARAMETER Credential
-    Specifies the stored credential of the target system.
-.PARAMETER Username
-    Specifies the username for the target system.
-.PARAMETER Password
-    Specifies the password for the target system.
-.PARAMETER Token
-    Specifies an API token to authenticate to the target system.
-.PARAMETER MFA
-    Use multifactor authentication to authenticate to the target system.
-.PARAMETER Format
-    Specifies the output format of the report.
-    The supported output formats are WORD, HTML & TEXT.
-    Multiple output formats may be specified, separated by a comma.
-.PARAMETER Orientation
-    Sets the page orientation of the report to Portrait or Landscape.
-    By default, page orientation will be set to Portrait.
-.PARAMETER StyleFilePath
-    Specifies the file path to a custom style .ps1 script for the report to use.
-.PARAMETER OutputFolderPath
-    Specifies the folder path to save the report.
-.PARAMETER Filename
-    Specifies a filename for the report.
-.PARAMETER Timestamp
-    Specifies whether to append a timestamp string to the report filename.
-    By default, the timestamp string is not added to the report filename.
-.PARAMETER EnableHealthCheck
-    Performs a health check of the target environment and highlights known issues within the report.
-    Not all reports may provide this functionality.
-.PARAMETER SendEmail
-    Sends report to specified recipients as email attachments.
-.PARAMETER AsBuiltConfigFilePath
-    Enter the full path to the As Built Report configuration JSON file.
-    If this parameter is not specified, the user will be prompted for this configuration information on first
-    run, with the option to save the configuration to a file.
-.PARAMETER ReportConfigFilePath
-    Enter the full path to a report JSON configuration file.
-    If this parameter is not specified, a default report configuration JSON is copied to the specified user folder.
-    If this parameter is specified and the path to a JSON file is invalid, the script will terminate
-```
-
-For a full list of common parameters and examples you can view the `New-rebelinux` cmdlet help with the following command;
-
-```powershell
-Get-Help New-rebelinux -Full
-```
 
 ## :x: Known Issues

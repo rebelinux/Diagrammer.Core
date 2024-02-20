@@ -12,7 +12,7 @@
 RootModule = 'Diagrammer.Core.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,7 +69,7 @@ PowerShellVersion = '5.1'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*'
+FunctionsToExport = 'Convert-TableToHTML', 'Get-HtmlLabel', 'Get-HtmlNodeTable', 'Get-HtmlTable', 'Get-NodeIP', 'Get-NodeIcon', 'Out-Diagram', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 # CmdletsToExport = '*'
@@ -95,19 +95,19 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = 'Diagrammer', 'Graphviz', 'Documentation', 'PSEdition_Desktop', 'PSEdition_Core', 'Windows'
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/rebelinux/Diagrammer.Core'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/master/icons/Diagrammer.png'
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'https://github.com/rebelinux/Diagrammer.Core/blob/master/CHANGELOG.md'
 
     } # End of PSData hashtable
 

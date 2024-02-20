@@ -60,7 +60,9 @@ Function Get-HTMLTable {
         [int] $FontSize = 14,
         [string] $Logo,
         [Switch]$MultiColunms,
-        [int]$ColumnSize = 2
+        [int]$ColumnSize = 2,
+        [Hashtable] $ImagesObj,
+        [bool] $URLIcon
     )
 
     if ($MultiColunms) {
@@ -90,8 +92,8 @@ Function Get-HTMLTable {
         }
 
     } else {
-        if ($images[$Logo]) {
-            $ICON = $images[$Logo]
+        if ($ImagesObj[$Logo]) {
+            $ICON = $ImagesObj[$Logo]
         } else { $ICON = $false }
 
         $TR = ''

@@ -46,8 +46,9 @@ Function Get-HTMLNodeTable {
         [string] $iconType,
         [int] $columnSize = 2,
         [string] $Port = "EdgeDot",
-        [Switch]$MultiIcon
-        # [string[]] $Data, For future uses
+        [Switch]$MultiIcon,
+        [Hashtable] $ImagesObj,
+        [bool] $URLIcon
     )
 
     if ($inputObject.Count -le 1) {
@@ -56,8 +57,8 @@ Function Get-HTMLNodeTable {
         $Group = Split-Array -inArray $inputObject -size $columnSize
     }
 
-    if ($images[$iconType]) {
-        $Icon = $images[$iconType]
+    if ($ImagesObj[$iconType]) {
+        $Icon = $ImagesObj[$iconType]
     } else { $Icon = $false }
 
     $Number = 0

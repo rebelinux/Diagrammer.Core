@@ -44,7 +44,9 @@ Function Get-NodeIcon {
         [hashtable[]]$Rows,
         [string]$IconType,
         [String]$Name,
-        [String]$Align
+        [String]$Align,
+        [Hashtable] $ImagesObj,
+        [bool] $URLIcon
     )
 
 
@@ -52,8 +54,8 @@ Function Get-NodeIcon {
         $ICON = 'NoIcon'
     } elseif ($URLIcon) {
         $ICON = 'NoIcon'
-    } elseif ($images[$IconType]) {
-        $ICON = $images[$IconType]
+    } elseif ($ImagesObj[$IconType]) {
+        $ICON = $ImagesObj[$IconType]
     } else { $ICON = "no_icon.png" }
 
     $TR = @()
