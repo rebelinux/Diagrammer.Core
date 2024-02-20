@@ -1,6 +1,6 @@
 # :arrows_clockwise: Diagrammer.Core Changelog
 
-## [0.1.0] - 2024-02-20
+## [0.1.1] - 2024-02-20
 
 ### Added
 
