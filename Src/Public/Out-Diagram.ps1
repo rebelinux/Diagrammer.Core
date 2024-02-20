@@ -33,12 +33,34 @@ function Out-Diagram {
             Mandatory = $false,
             HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180)'
         )]
-        [int]$Rotate
+        [int]$Rotate,
+        [Parameter(
+            Position = 3,
+            Mandatory = $true,
+            HelpMessage = 'Set the output format of the generated Graphviz diagram'
+        )]
+        [Array]$Format,
+        [Parameter(
+            Position = 3,
+            Mandatory = $false,
+            HelpMessage = 'Set the output filename of the generated Graphviz diagram'
+        )]
+        [String]$Filename,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the path to the diagram output file'
+        )]
+        [string] $OutputFolderPath
     )
     process {
         if ($ErrorDebug) {
             $GraphObj
         } else {
+
+            # Setup all paths required for script to run
+            $script:RootPath = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
+            $script:GraphvizPath = Join-Path $RootPath 'Graphviz\bin\dot.exe'
+
             # If Filename parameter is not specified, set filename to the Output.$OutputFormat
             foreach ($OutputFormat in $Format) {
                 if ($Filename) {
@@ -64,6 +86,8 @@ function Out-Diagram {
                                 }
                                 if ($Document) {
                                     Write-ColorOutput -Color green "Diagram '$FileName' has been saved to '$OutputFolderPath'."
+                                } else {
+                                    Write-ColorOutput -Color red  "Unable to save Diagram '$File' to '$OutputFolderPath'."
                                 }
 
                             }
@@ -123,6 +147,8 @@ function Out-Diagram {
                                 }
                                 if ($Document) {
                                     Write-ColorOutput -Color green  "Diagram '$File' has been saved to '$OutputFolderPath'."
+                                } else {
+                                    Write-ColorOutput -Color red  "Unable to save Diagram '$File' to '$OutputFolderPath'."
                                 }
                             }
                         } else {
