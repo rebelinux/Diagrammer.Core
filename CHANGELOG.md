@@ -1,5 +1,11 @@
 # :arrows_clockwise: Diagrammer.Core Changelog
 
+## [0.1.2] - 2024-02-20
+
+### Fixed
+
+- Fix PowerShellGallery IconURI
+
 ## [0.1.1] - 2024-02-20
 
 ### Added
