@@ -69,7 +69,7 @@ PowerShellVersion = '5.1'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Convert-TableToHTML', 'Get-HtmlLabel', 'Get-HtmlNodeTable', 'Get-HtmlTable', 'Get-NodeIP', 'Get-NodeIcon', 'Out-Diagram', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput'
+FunctionsToExport = 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-NodeIcon', 'Out-Diagram', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 # CmdletsToExport = '*'

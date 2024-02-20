@@ -1,4 +1,4 @@
-function Convert-TableToHTML {
+function Convert-DiaTableToHTML {
     <#
     .SYNOPSIS
     Creates a html table object

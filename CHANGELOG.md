@@ -5,6 +5,7 @@
 ### Fixed
 
 - Fix PowerShellGallery IconURI
+- Module rename due to conflict with ImportExcel
 
 ## [0.1.1] - 2024-02-20
 

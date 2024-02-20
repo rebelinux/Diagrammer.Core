@@ -1,4 +1,4 @@
-Function Get-HTMLNodeTable {
+Function Get-DiaHTMLNodeTable {
     <#
     .SYNOPSIS
         Function to convert a array to a HTML Table. Graphviz Nodes split by Columns (Includes Icons)
@@ -6,7 +6,7 @@ Function Get-HTMLNodeTable {
         Takes an array and converts it to a HTML table used for GraphViz Node label
     .Example
         $DCs = @("Server-DC-01v", "Server-DC-02v")
-        Get-HTMLNodeTable -Rows $DCs -Align "Center" -IconType "DomainController" -ColumnSize 2
+        Get-DiaHTMLNodeTable -Rows $DCs -Align "Center" -IconType "DomainController" -ColumnSize 2
             ________________________________
             |               |               |
             |      Icon     |     Icon      |
