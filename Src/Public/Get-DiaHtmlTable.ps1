@@ -1,4 +1,4 @@
-Function Get-HTMLTable {
+Function Get-DiaHTMLTable {
     <#
     .SYNOPSIS
         Function to convert a string array to a HTML Table with Graphviz Nodes split by Columns (No Icons)
@@ -6,7 +6,7 @@ Function Get-HTMLTable {
         Takes an array and converts it to a HTML table used for GraphViz Node label
     .Example
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-HTMLTable -Rows $DCs -Align "Center" -ColumnSize 2 -MultiColunms
+        Get-DiaHTMLTable -Rows $DCs -Align "Center" -ColumnSize 2 -MultiColunms
             _________________________________
             |               |               |
             |192.168.5.0/24 |192.168.7.0/24 |

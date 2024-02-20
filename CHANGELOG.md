@@ -1,5 +1,12 @@
 # :arrows_clockwise: Diagrammer.Core Changelog
 
+## [0.1.2] - 2024-02-20
+
+### Fixed
+
+- Fix PowerShellGallery IconURI
+- Module rename due to conflict with ImportExcel
+
 ## [0.1.1] - 2024-02-20
 
 ### Added

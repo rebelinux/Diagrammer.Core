@@ -1,4 +1,4 @@
-Function Get-NodeIcon {
+Function Get-DiaNodeIcon {
     <#
     .SYNOPSIS
         Function to convert a Graphviz node label to a HTML Table with Icon
@@ -10,7 +10,7 @@ Function Get-NodeIcon {
             Memory = "4GB"
             CPU = "2"
         }
-        Get-NodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows
+        Get-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows
                     _________________
                     |               |
                     |      Icon     |

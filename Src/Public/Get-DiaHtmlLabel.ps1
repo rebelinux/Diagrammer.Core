@@ -1,4 +1,4 @@
-Function Get-HTMLLabel {
+Function Get-DiaHTMLLabel {
     <#
     .SYNOPSIS
         Used to set the Report Main Logo
@@ -13,7 +13,7 @@ Function Get-HTMLLabel {
         }
         $CustomLogo = "Logo Path"
         $URLIcon = False
-        Get-HTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -URLIcon $URLIcon
+        Get-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -URLIcon $URLIcon
                     __________________
                     |                |
                     |   Main Logo    |
