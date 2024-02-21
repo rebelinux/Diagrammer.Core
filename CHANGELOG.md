@@ -1,5 +1,11 @@
 # :arrows_clockwise: Diagrammer.Core Changelog
 
+## [0.1.3] - 2024-02-20
+
+### Fixed
+
+- Fix missing Graphviz dll files
+
 ## [0.1.2] - 2024-02-20
 
 ### Fixed
