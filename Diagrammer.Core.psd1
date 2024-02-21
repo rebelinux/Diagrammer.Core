@@ -104,7 +104,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/rebelinux/Diagrammer.Core'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/main/icons/Diagrammer.png'
+        IconUri = 'https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/main/Icons/Diagrammer.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = 'https://github.com/rebelinux/Diagrammer.Core/blob/master/CHANGELOG.md'
