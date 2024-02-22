@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(@{ModuleName = 'PSGraph'; ModuleVersion = '2.1.38.27'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
