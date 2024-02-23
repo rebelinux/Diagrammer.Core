@@ -12,7 +12,7 @@
 RootModule = 'Diagrammer.Core.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.4'
+ModuleVersion = '0.1.5'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,7 +69,7 @@ RequiredModules = @(@{ModuleName = 'PSGraph'; ModuleVersion = '2.1.38.27'; })
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-NodeIcon', 'Out-Diagram', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput'
+FunctionsToExport = 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-DiaNodeIcon', 'Out-Diagram', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 # CmdletsToExport = '*'
@@ -114,7 +114,7 @@ PrivateData = @{
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
-# HelpInfoURI = ''
+HelpInfoURI = 'https://github.com/rebelinux/Diagrammer.Core#readme'
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 # DefaultCommandPrefix = ''
