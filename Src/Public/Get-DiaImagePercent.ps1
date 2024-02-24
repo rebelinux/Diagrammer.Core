@@ -5,25 +5,29 @@ function Get-DiaImagePercent {
     .DESCRIPTION
         This allow the diagram image to fit the report page margins
     .NOTES
-        Version:        0.1.5
+        Version:        0.1.6
         Author:         Jonathan Colon
     .EXAMPLE
     .LINK
     #>
     [CmdletBinding()]
-    [OutputType([System.Int32])]
+    [OutputType([Hashtable])]
     Param
     (
         [Parameter (
             Position = 0,
             Mandatory)]
         [string]
-        $Graph
+        $GraphObj
     )
-    $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($Graph))))
-    If ($Image_FromStream.Width -gt 1500) {
-        return 10
-    } else {
-        return 30
+    $ImagePrty = @{}
+    $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
+
+    $ImagePrty = @{
+        'Width' = $Image_FromStream.Width
+        'Height' = $Image_FromStream.Height
     }
+
+    return $ImagePrty
+
 } # end
