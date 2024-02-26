@@ -27,7 +27,7 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.1.6
+        Version:        0.1.7
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
