@@ -39,7 +39,7 @@ Function Get-DiaHTMLLabel {
         [Switch] $SubgraphLabel,
         [string] $IconWidth = 40,
         [string] $IconHeight = 40,
-        [Hashtable] $ImagesObj,
+        [Hashtable] $ImagesObj = @{},
         [bool] $URLIcon
     )
 

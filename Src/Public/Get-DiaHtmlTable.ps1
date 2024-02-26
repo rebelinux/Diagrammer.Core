@@ -16,7 +16,7 @@ Function Get-DiaHTMLTable {
             _________________________________
 
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-HTMLTable -Rows $DCs -Align "Center"
+        Get-DiaHTMLTable -Rows $DCs -Align "Center"
             _________________
             |               |
             |192.168.5.0/24 |
@@ -29,7 +29,7 @@ Function Get-DiaHTMLTable {
             _________________
 
     .NOTES
-        Version:        0.1.1
+        Version:        0.1.6
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -46,7 +46,8 @@ Function Get-DiaHTMLTable {
     .PARAMETER IconType
         Icon used to draw the node type
     .PARAMETER ColumnSize
-        This number is used to specified how to split the object inside the HTML table
+        This number is used to specified how to split the object inside the HTML table.
+        Used in conjunction with MultiColunms
     .PARAMETER MultiColunms
         Split the object into a HTML table with custom ColumnSize
     .PARAMETER Port
@@ -55,13 +56,13 @@ Function Get-DiaHTMLTable {
     param(
         [string[]] $Rows,
         [string] $Align = 'center',
-        [int] $TableBorder = 1,
-        [int] $CellBorder = 1,
+        [int] $TableBorder = 0,
+        [int] $CellBorder = 0,
         [int] $FontSize = 14,
         [string] $Logo,
-        [Switch]$MultiColunms,
-        [int]$ColumnSize = 2,
-        [Hashtable] $ImagesObj,
+        [Switch] $MultiColunms,
+        [int] $ColumnSize = 2,
+        [Hashtable] $ImagesObj = @{},
         [bool] $URLIcon
     )
 
@@ -69,7 +70,7 @@ Function Get-DiaHTMLTable {
         if ($Rows.Count -le 1) {
             $Group = $Rows
         } else {
-            $Group = Split-Array -inArray $Rows -size $ColumnSize
+            $Group = Split-array -inArray $Rows -size $ColumnSize
         }
 
         $Number = 0

@@ -23,7 +23,7 @@ Function Get-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.1.1
+        Version:        0.1.6
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -45,14 +45,12 @@ Function Get-DiaNodeIcon {
         [string]$IconType,
         [String]$Name,
         [String]$Align,
-        [Hashtable] $ImagesObj,
+        [Hashtable] $ImagesObj = @{},
         [bool] $URLIcon
     )
 
 
     if ($IconType -eq 'NoIcon') {
-        $ICON = 'NoIcon'
-    } elseif ($URLIcon) {
         $ICON = 'NoIcon'
     } elseif ($ImagesObj[$IconType]) {
         $ICON = $ImagesObj[$IconType]
@@ -63,17 +61,33 @@ Function Get-DiaNodeIcon {
         $TR += $r.getEnumerator() | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='14'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
     }
 
-    if ($ICON -ne 'NoIcon') {
-        if ($Align -eq "Center") {
-            "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><B>$Name</B></TD></TR>$TR</TABLE>"
+    if ($URLIcon) {
+        if ($ICON -ne 'NoIcon') {
+            if ($Align -eq "Center") {
+                "<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><B>$Name</B></TD></TR>$TR</TABLE>"
+            } else {
+                "<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'>ICON</TD></TR><TR><TD align='$Align'><B> $Name</B></TD></TR> $TR</TABLE>"
+            }
         } else {
-            "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><B> $Name</B></TD></TR> $TR</TABLE>"
+            if ($Align -eq "Center") {
+                "<TABLE color='red' border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B>$Name</B></TD></TR>$TR</TABLE>"
+            } else {
+                "<TABLE color='red' border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'></TD></TR><TR><TD align='$Align'><B> $Name</B></TD></TR> $TR</TABLE>"
+            }
         }
     } else {
-        if ($Align -eq "Center") {
-            "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B>$Name</B></TD></TR>$TR</TABLE>"
+        if ($ICON -ne 'NoIcon') {
+            if ($Align -eq "Center") {
+                "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><B>$Name</B></TD></TR>$TR</TABLE>"
+            } else {
+                "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><B> $Name</B></TD></TR> $TR</TABLE>"
+            }
         } else {
-            "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'></TD></TR><TR><TD align='$Align'><B> $Name</B></TD></TR> $TR</TABLE>"
+            if ($Align -eq "Center") {
+                "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B>$Name</B></TD></TR>$TR</TABLE>"
+            } else {
+                "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'></TD></TR><TR><TD align='$Align'><B> $Name</B></TD></TR> $TR</TABLE>"
+            }
         }
     }
 
