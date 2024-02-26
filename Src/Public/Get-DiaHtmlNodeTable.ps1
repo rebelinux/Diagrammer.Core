@@ -5,18 +5,29 @@ Function Get-DiaHTMLNodeTable {
     .DESCRIPTION
         Takes an array and converts it to a HTML table used for GraphViz Node label
     .Example
-        $DCs = @("Server-DC-01v", "Server-DC-02v")
-        Get-DiaHTMLNodeTable -Rows $DCs -Align "Center" -IconType "DomainController" -ColumnSize 2
-            ________________________________
-            |               |               |
-            |      Icon     |     Icon      |
-            ________________________________
-            |               |               |
-            | Server-DC-01V | Server-DC-02V |
-            ________________________________
+
+        # Array of String *6 Objects*
+        $DCsArray = @("Server-dc-01v","Server-dc-02v","Server-dc-03v","Server-dc-04v","Server-dc-05v","Server-dc-06v")
+
+        Get-DiaHTMLNodeTable -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -ImagesObj $Images -URLIcon $URLIcon
+
+        ________________________________ _______________
+        |               |               |               |
+        |      Icon     |     Icon      |      Icon     |
+        ________________________________|_______________|
+        |               |               |               |
+        | Server-DC-01V | Server-DC-02V | Server-DC-02V |
+        ________________________________|________________
+        ________________________________ _______________
+        |               |               |               |
+        |      Icon     |     Icon      |      Icon     |
+        ________________________________|_______________|
+        |               |               |               |
+        | Server-DC-04V | Server-DC-05V | Server-DC-06V |
+        ________________________________|________________
 
     .NOTES
-        Version:        0.1.1
+        Version:        0.1.6
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -44,17 +55,18 @@ Function Get-DiaHTMLNodeTable {
         [int] $cellBorder = 0,
         [int] $fontSize = 14,
         [string] $iconType,
-        [int] $columnSize = 2,
+        [int] $columnSize = 1,
         [string] $Port = "EdgeDot",
         [Switch]$MultiIcon,
         [Hashtable] $ImagesObj,
-        [bool] $URLIcon
+        [bool] $URLIcon,
+        [hashtable[]]$Rows
     )
 
     if ($inputObject.Count -le 1) {
         $Group = $inputObject
     } else {
-        $Group = Split-Array -inArray $inputObject -size $columnSize
+        $Group = Split-array -inArray $inputObject -size $columnSize
     }
 
     if ($ImagesObj[$iconType]) {
@@ -63,65 +75,81 @@ Function Get-DiaHTMLNodeTable {
 
     $Number = 0
 
-    $TD = ''
-    $TR = ''
     if ($Icon) {
         if ($URLIcon) {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TD += '<TD PORT="{0}" ALIGN="{1}" colspan="1">ICON</TD>' -f $Port, $Align
+                        $TDICON += '<TD ALIGN="{0}" colspan="1">ICON</TD>' -f $Align
+                    }
+                    foreach ($Element in $Group[$Number]) {
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
                     }
 
-                    $TR += '<TR>{0}</TR>' -f $TD
+                    $TR += '<TR>{0}</TR>' -f $TDICON
+                    $TR += '<TR>{0}</TR>' -f $TDName
 
-                    $TD = ''
+                    $TDICON = ''
+                    $TDName = ''
                     $Number++
                 }
             } else {
-                $TD += '<TD PORT="{0}" ALIGN="{1}" colspan="{2}">ICON</TD>' -f $Port, $Align, $inputObject.Count
-                $TR += '<TR>{0}</TR>' -f $TD
+
+                $TDICON += '<TD ALIGN="{0}" colspan="{1}">ICON</TD>' -f $Align, $inputObject.Count
+
+                $TR += '<TR>{0}</TR>' -f $TDICON
+
+                while ($Number -ne $Group.Count) {
+                    foreach ($Element in $Group[$Number]) {
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                    }
+
+                    $TR += '<TR>{0}</TR>' -f $TDName
+
+                    $TDName = ''
+                    $Number++
+                }
             }
         } else {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TD += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><img src="{2}"/></TD>' -f $Port, $Align, $Icon
+                        $TDICON += '<TD ALIGN="{0}" colspan="1"><img src="{1}"/></TD>' -f $Align, $Icon
+                    }
+                    foreach ($Element in $Group[$Number]) {
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
                     }
 
-                    $TR += '<TR>{0}</TR>' -f $TD
+                    $TR += '<TR>{0}</TR>' -f $TDICON
+                    $TR += '<TR>{0}</TR>' -f $TDName
 
-                    $TD = ''
+                    $TDICON = ''
+                    $TDName = ''
                     $Number++
                 }
             } else {
-                $TD += '<TD PORT="{0}" ALIGN="{1}" colspan="{2}"><img src="{3}"/></TD>' -f $Port, $Align, $inputObject.Count, $Icon
-                $TR += '<TR>{0}</TR>' -f $TD
+
+                $TDICON += '<TD ALIGN="{0}" colspan="{1}"><img src="{2}"/></TD>' -f $Align, $inputObject.Count, $Icon
+
+                $TR += '<TR>{0}</TR>' -f $TDICON
+
+                while ($Number -ne $Group.Count) {
+                    foreach ($Element in $Group[$Number]) {
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                    }
+
+                    $TR += '<TR>{0}</TR>' -f $TDName
+
+                    $TDName = ''
+                    $Number++
+                }
             }
         }
     }
 
-    $Number = 0
-    $TD = ''
-    while ($Number -ne $Group.Count) {
-        foreach ($Element in $Group[$Number]) {
-            # $TRDATA = @()
-            # foreach ($r in $Element.Data) {
-            #     $TRDATA += $r.getEnumerator() | ForEach-Object { "<TR><TD ALIGN='$Align' colspan='1'><FONT POINT-SIZE='$fontSize'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
-            # }
-
-            $TD += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Port, $Align, $FontSize, $Element
-        }
-
-        $TR += '<TR>{0}</TR>' -f $TD
-
-        $TD = ''
-        $Number++
-    }
-
     if ($URLIcon) {
-        return '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="5">{0}</TABLE>' -f $TR
+        return '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="5">{1}</TABLE>' -f $Port, $TR
     } else {
-        return '<TABLE border="{0}" cellborder="{1}" cellpadding="5">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR
+        return '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellpadding="5">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR
     }
 }
