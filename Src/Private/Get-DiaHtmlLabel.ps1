@@ -32,6 +32,10 @@ Function Get-DiaHTMLLabel {
         Allow to create a table used to add a logo to a Graphviz subgraph
     .PARAMETER IconType
         Main Diagram Logo
+    .PARAMETER ImagesObj
+        Hashtable with the IconName > IconPath translation
+    .PARAMETER URLIcon
+        Set the table debug mode (Dont know why is colled like that... Need to change it to something like Debug)
     #>
     param(
         [string] $Label,

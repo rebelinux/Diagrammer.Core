@@ -3,9 +3,9 @@ function Out-Diagram {
     .SYNOPSIS
         Function to export diagram to expecified format.
     .DESCRIPTION
-        Build a diagram of the configuration of Diagrammer.AD in PDF/PNG/SVG formats using Psgraph.
+        Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.1.1
+        Version:        0.1.8
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -65,12 +65,13 @@ function Out-Diagram {
             foreach ($OutputFormat in $Format) {
                 if ($Filename) {
                     Try {
+                        $DestinationPath = Join-Path -Path $OutputFolderPath -ChildPath $FileName
                         if ($OutputFormat -ne "base64") {
                             if ($OutputFormat -ne "svg") {
-                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath "$($OutputFolderPath)$($FileName)" -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
+                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
                                 Write-ColorOutput -Color green  "Diagram '$FileName' has been saved to '$OutputFolderPath'."
                             } else {
-                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath "$($OutputFolderPath)$($FileName)" -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
+                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
                                 #Fix icon path issue with svg output
                                 $images = Select-String -Path $($Document.fullname) -Pattern '<image xlink:href=".*png".*>' -AllMatches
                                 foreach ($match in $images) {
@@ -92,7 +93,7 @@ function Out-Diagram {
 
                             }
                         } else {
-                            $Document = Export-PSGraph -Source $GraphObj -DestinationPath "$($OutputFolderPath)$($FileName)" -OutputFormat 'png' -GraphVizPath $GraphvizPath
+                            $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'png' -GraphVizPath $GraphvizPath
                             if ($Document) {
                                 # Code used to allow rotating image!
                                 if ($Rotate) {
@@ -127,12 +128,13 @@ function Out-Diagram {
                         $File = "Output.$OutputFormat"
                     } else { $File = "Output.png" }
                     Try {
+                        $DestinationPath = Join-Path -Path $OutputFolderPath -ChildPath $File
                         if ($OutputFormat -ne "base64") {
                             if ($OutputFormat -ne "svg") {
-                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath "$($OutputFolderPath)$($File)" -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
+                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
                                 Write-ColorOutput -Color green  "Diagram '$File' has been saved to '$OutputFolderPath'."
                             } else {
-                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath "$($OutputFolderPath)$($File)" -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
+                                $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat $OutputFormat -GraphVizPath $GraphvizPath
                                 $images = Select-String -Path $($Document.fullname) -Pattern '<image xlink:href=".*png".*>' -AllMatches
                                 foreach ($match in $images) {
                                     $matchFound = $match -Match '"(.*png)"'
@@ -152,7 +154,7 @@ function Out-Diagram {
                                 }
                             }
                         } else {
-                            $Document = Export-PSGraph -Source $GraphObj -DestinationPath "$($OutputFolderPath)$($File)" -OutputFormat 'png' -GraphVizPath $GraphvizPath
+                            $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'png' -GraphVizPath $GraphvizPath
                             if ($Document) {
                                 # Code used to allow rotating image!
                                 if ($Rotate) {

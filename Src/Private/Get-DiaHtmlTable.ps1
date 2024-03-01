@@ -34,7 +34,7 @@ Function Get-DiaHTMLTable {
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
     .PARAMETER Rows
-        The array of object to proccess
+        An array of strings/objects to place in this record
     .PARAMETER Align
         Align content inside table cell
     .PARAMETER TableBorder
@@ -50,8 +50,10 @@ Function Get-DiaHTMLTable {
         Used in conjunction with MultiColunms
     .PARAMETER MultiColunms
         Split the object into a HTML table with custom ColumnSize
-    .PARAMETER Port
-        Used inside Graphviz to point the edge between nodes
+    .PARAMETER ImagesObj
+        Hashtable with the IconName > IconPath translation
+    .PARAMETER URLIcon
+        Set the table debug mode (Dont know why is colled like that... Need to change it to something like Debug)
     #>
     param(
         [string[]] $Rows,

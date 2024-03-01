@@ -44,9 +44,17 @@ Function Get-DiaHTMLNodeTable {
     .PARAMETER IconType
         Node Icon type
     .PARAMETER ColumnSize
-        This value is used to specified how to split the object inside the HTML table
+        This value is used to specified a int used to split the object inside the HTML table
     .PARAMETER Port
-        Used inside Graphviz to draw the edge between nodes
+        Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object
+    .PARAMETER MultiIcon
+        Allow to draw an icon to each table element. If not set the table share a single Icon
+    .PARAMETER ImagesObj
+        Hashtable with the IconName > IconPath translation
+    .PARAMETER URLIcon
+        Set the thable debug mode (Dont know why is colled like that... Need to change it to something like Debug)
+    .PARAMETER Rows
+        Hashtable used to add more information to the table elements (Not yet implemented)
     #>
     param(
         [string[]] $inputObject,
