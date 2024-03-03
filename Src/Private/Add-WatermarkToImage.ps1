@@ -16,6 +16,8 @@ function Add-WatermarkToImage {
         Github:         rebelinux
     .PARAMETER ImageInputFile
         The Image file Path (PNG, TIFF, JPEG, JPG)
+    .PARAMETER Base64Input
+        The image in base64 format
     .PARAMETER ImageOutputFile
         The path of the resulting edited image.
     .PARAMETER WaterMarkText
@@ -25,12 +27,12 @@ function Add-WatermarkToImage {
     .PARAMETER FontSize
         The font size.
     .PARAMETER FontColor
-        The font color [System.Drawing.Color] type (Red, Blue, Yellow etc..).
+        The font color [System.Drawing.Color] type (Red, Blue, Yellow etc..)
     #>
 
     param(
         [Parameter(
-            Mandatory = $true,
+            Mandatory = $false,
             HelpMessage = 'Please provide the path to the image file'
         )]
         [ValidateScript( {
@@ -41,32 +43,61 @@ function Add-WatermarkToImage {
                 }
             })]
         [string] $ImageInputFile,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the image base64 string'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $Base64Input,
+
         [Parameter(
             Mandatory = $true,
-            HelpMessage = 'Please provide the path to the image file'
+            HelpMessage = 'Please provide the path for the outpu image file'
         )]
         [ValidateNotNullOrEmpty()]
         [string] $ImageOutputFile,
+
         [Parameter(
             Mandatory = $true,
             HelpMessage = 'Please provide the text to transform'
         )]
         [ValidateNotNullOrEmpty()]
-        [string] $WaterMarkText,
-        [string] $FontName = 'Arial',
-        [int] $FontSize = -20,
-        [System.Drawing.Color] $FontColor = 'Red',
-        [int] $FontOpacity = 100
 
+        [string] $WaterMarkText,
+
+        [string] $FontName = 'Arial',
+
+        [int] $FontSize = -20,
+
+        [System.Drawing.Color] $FontColor = 'Red',
+
+        [int] $FontOpacity = 100
     )
 
     begin {
         Add-Type -AssemblyName System.Windows.Forms
+
+        if (-Not $PSBoundParameters.ContainsKey('Base64Input') -or -Not $PSBoundParameters.ContainsKey('Base64Input')) {
+            throw "Error: Please provide a image path or a base64 string to process."
+        }
     }
 
     process {
 
-        $Bitmap = [System.Drawing.Image]::FromFile($ImageInputFile)
+        if ($PSBoundParameters.ContainsKey('Base64Input')) {
+
+            $ImageByte = New-Object System.IO.MemoryStream(, [convert]::FromBase64String($Base64Input))
+            if ($ImageByte) {
+                $Bitmap = [System.Drawing.Image]::FromStream($ImageByte)
+            } else {
+                throw "Unable to convert base64 string!"
+            }
+
+        } else {
+            $Bitmap = [System.Drawing.Image]::FromFile($ImageInputFile)
+        }
+
         $FontType = [System.Drawing.Font]::new($FontName, $FontSize, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel, [System.Drawing.GraphicsUnit]::Bold)
         $FontColor = [System.Drawing.Color]::FromArgb($FontOpacity, $FontColor)
         $SolidBrush = [System.Drawing.SolidBrush]::new($FontColor)
