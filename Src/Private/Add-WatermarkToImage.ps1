@@ -1,5 +1,4 @@
 function Add-WatermarkToImage {
-
     <#
     .SYNOPSIS
         Used to add a watermark text to Image
@@ -19,15 +18,17 @@ function Add-WatermarkToImage {
     .PARAMETER Base64Input
         The image in base64 format
     .PARAMETER ImageOutputFile
-        The path of the resulting edited image.
+        The path of the resulting edited image
     .PARAMETER WaterMarkText
-        The text to be inserted to the image as a watermark.
+        The text to be inserted to the image as a watermark
     .PARAMETER FontName
-        The font name.
+        The font name
     .PARAMETER FontSize
-        The font size.
+        The font size
     .PARAMETER FontColor
         The font color [System.Drawing.Color] type (Red, Blue, Yellow etc..)
+    .PARAMETER FontOpacity
+        The font color opacity level
     #>
 
     param(
@@ -76,15 +77,18 @@ function Add-WatermarkToImage {
     )
 
     begin {
+        # Initialize .net assemblies
         Add-Type -AssemblyName System.Windows.Forms
 
-        if (-Not $PSBoundParameters.ContainsKey('Base64Input') -or -Not $PSBoundParameters.ContainsKey('Base64Input')) {
+        # Validate mandatory parameters
+        if ((!$PSBoundParameters.ContainsKey('ImageInputFile')) -and (!$PSBoundParameters.ContainsKey('Base64Input'))) {
             throw "Error: Please provide a image path or a base64 string to process."
         }
     }
 
     process {
-
+        # if parameter Base64Input specified convert the string to a byte array the load it as a Bitmap.
+        # Else get the image from the ImageInputFile path
         if ($PSBoundParameters.ContainsKey('Base64Input')) {
 
             $ImageByte = New-Object System.IO.MemoryStream(, [convert]::FromBase64String($Base64Input))
@@ -98,27 +102,30 @@ function Add-WatermarkToImage {
             $Bitmap = [System.Drawing.Image]::FromFile($ImageInputFile)
         }
 
+        # Initialize the font properties and brush
         $FontType = [System.Drawing.Font]::new($FontName, $FontSize, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel, [System.Drawing.GraphicsUnit]::Bold)
         $FontColor = [System.Drawing.Color]::FromArgb($FontOpacity, $FontColor)
         $SolidBrush = [System.Drawing.SolidBrush]::new($FontColor)
 
         If ($Bitmap, $FontType, $FontColor, $SolidBrush) {
 
+            # Get the center of the image
             $Grid = [System.Drawing.Point]::new($Bitmap.Width / 2, $Bitmap.Height / 2)
             $Graphics = [System.Drawing.Graphics]::FromImage($Bitmap)
-            $StringFormat = [System.Drawing.StringFormat]::new()
 
+            # Set the properties to allow the text to be centered
+            $StringFormat = [System.Drawing.StringFormat]::new()
             $StringFormat.Alignment = [System.Drawing.StringAlignment]::Center
             $StringFormat.LineAlignment = [System.Drawing.StringAlignment]::Center
             $StringFormat.FormatFlags = [System.Drawing.StringFormatFlags]::MeasureTrailingSpaces
 
-
+            # Get the center of the image used to rotate the text in a -45 angle
             $Graphics.TranslateTransform($Bitmap.Width / 2, $Bitmap.Height / 2)
             $Graphics.RotateTransform(-45)
 
-            $textSize = $Graphics.MeasureString($WaterMakerText, $FontType);
-
+            # Apply the properties to the Bitmap
             $Graphics.DrawString($WaterMarkText, $FontType, $SolidBrush, - ($Grid.Width / 2), - ($Grid.Height / 2), $StringFormat)
+            # Destroy the graphics object
             $Graphics.Dispose()
 
             $Bitmap.Save($ImageOutputFile)
@@ -129,6 +136,7 @@ function Add-WatermarkToImage {
     }
 
     end {
+        # Destroy the Bitmap object
         $Bitmap.Dispose()
     }
 }
