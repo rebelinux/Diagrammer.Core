@@ -69,7 +69,7 @@ RequiredModules = @(@{ModuleName = 'PSGraph'; ModuleVersion = '2.1.38.27'; })
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-DiaNodeIcon', 'Out-Diagram', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'Add-WatermarkToImag'
+FunctionsToExport = 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-DiaNodeIcon', 'Export-GraphvizDiagram', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 # CmdletsToExport = '*'

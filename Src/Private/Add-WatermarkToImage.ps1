@@ -6,7 +6,7 @@ function Add-WatermarkToImage {
         Takes a string and add it as an 45 degree watermakr to the provided Image file.
     .Example
 
-        Add-WatermarkToImage -ImageInputFile "c:\Image.png" -ImageOutputFile "c:\Image_Edited.png" -WaterMarkText "Zen PR Solutions" -FontName 'Arial' -FontSize 20 -FontColor 'Red'
+        Add-WatermarkToImage ImageInput "c:\Image.png" DestinationPath "c:\Image_Edited.png" -WaterMarkText "Zen PR Solutions" -FontName 'Arial' -FontSize 20 -FontColor 'Red'
 
     .NOTES
         Version:        0.1.8
@@ -33,8 +33,8 @@ function Add-WatermarkToImage {
 
     param(
         [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Please provide the path to the image file'
+            Mandatory = $true,
+            HelpMessage = 'Please provide the path to the image file path'
         )]
         [ValidateScript( {
                 if (Test-Path -Path $_) {
@@ -43,64 +43,46 @@ function Add-WatermarkToImage {
                     throw "File $_ not found!"
                 }
             })]
-        [string] $ImageInputFile,
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Please provide the image base64 string'
-        )]
-        [ValidateNotNullOrEmpty()]
-        [string] $Base64Input,
+        [string] $ImageInput,
 
         [Parameter(
             Mandatory = $true,
-            HelpMessage = 'Please provide the path for the outpu image file'
+            HelpMessage = 'Please provide the complete filepath to export the diagram'
         )]
-        [ValidateNotNullOrEmpty()]
-        [string] $ImageOutputFile,
+        [string] $DestinationPath,
 
         [Parameter(
             Mandatory = $true,
             HelpMessage = 'Please provide the text to transform'
         )]
         [ValidateNotNullOrEmpty()]
-
         [string] $WaterMarkText,
 
         [string] $FontName = 'Arial',
 
-        [int] $FontSize = -20,
+        [int] $FontSize = 180,
 
         [System.Drawing.Color] $FontColor = 'Red',
 
-        [int] $FontOpacity = 100
+        [int] $FontOpacity = 20
     )
 
     begin {
         # Initialize .net assemblies
         Add-Type -AssemblyName System.Windows.Forms
-
-        # Validate mandatory parameters
-        if ((!$PSBoundParameters.ContainsKey('ImageInputFile')) -and (!$PSBoundParameters.ContainsKey('Base64Input'))) {
-            throw "Error: Please provide a image path or a base64 string to process."
-        }
     }
 
     process {
-        # if parameter Base64Input specified convert the string to a byte array the load it as a Bitmap.
-        # Else get the image from the ImageInputFile path
-        if ($PSBoundParameters.ContainsKey('Base64Input')) {
 
-            $ImageByte = New-Object System.IO.MemoryStream(, [convert]::FromBase64String($Base64Input))
-            if ($ImageByte) {
-                $Bitmap = [System.Drawing.Image]::FromStream($ImageByte)
-            } else {
-                throw "Unable to convert base64 string!"
-            }
+        $ImageName = Get-ChildItem -Path $ImageInput
+        # Teporary Image file name
+        $FileName = $ImageName.BaseName + "_WaterMark" + $ImageName.Extension
 
-        } else {
-            $Bitmap = [System.Drawing.Image]::FromFile($ImageInputFile)
-        }
+        # Get the image from the ImageInput path
+        $Bitmap = [System.Drawing.Image]::FromFile($ImageName.FullName)
+
+        # Teporary Image file path
+        $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath $FileName
 
         # Initialize the font properties and brush
         $FontType = [System.Drawing.Font]::new($FontName, $FontSize, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel, [System.Drawing.GraphicsUnit]::Bold)
@@ -128,15 +110,36 @@ function Add-WatermarkToImage {
             # Destroy the graphics object
             $Graphics.Dispose()
 
-            $Bitmap.Save($ImageOutputFile)
-
         } else {
             Write-Information "Unable to add watermark to image!"
         }
     }
 
     end {
-        # Destroy the Bitmap object
-        $Bitmap.Dispose()
+        try {
+            # Save the Image to path define in $ImageOutputFile
+            $Bitmap.Save($TempImageOutput)
+            # Destroy the Bitmap object
+            $Bitmap.Dispose()
+
+            if ($TempImageOutput) {
+                Write-Verbose "Successfully added watermark text to $ImageInput image."
+                if ($PSBoundParameters.ContainsKey('DestinationPath')) {
+                    try {
+                        Copy-Item -Path $TempImageOutput -Destination $DestinationPath
+                        Write-Verbose "Successfully replaced $DestinationPath with $TempImageOutput rotated image."
+                    } catch {
+                        Write-Verbose "Unable to replace $DestinationPath rotated image to $TempImageOutput diagram."
+                        Write-Verbose $($_.Exception.Message)
+                    }
+                } else {
+                    Write-Verbose "Successfully rotated $ImageInput diagram."
+                    Get-ChildItem -Path $TempImageOutput
+                }
+            }
+
+        } catch {
+            $PSCmdlet.ThrowTerminatingError($PSitem)
+        }
     }
 }
