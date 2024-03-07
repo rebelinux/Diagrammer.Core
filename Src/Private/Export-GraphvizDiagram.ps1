@@ -39,33 +39,38 @@ function Export-GraphvizDiagram {
             Mandatory = $false,
             HelpMessage = 'Set the output filename of the generated Graphviz diagram'
         )]
-        [String]$Filename,
+        [string]$Filename,
         [Parameter(
             Position = 4,
             Mandatory = $false,
             HelpMessage = 'Please provide the path to the diagram output file'
         )]
-        [string] $OutputFolderPath,
+        [ValidateScript({
+                if (-Not ($_ | Test-Path) ) {
+                    throw "Folder does not exist"
+                }
+                return $true
+            })]
+        [System.IO.FileInfo] $OutputFolderPath,
         [Parameter(
             Position = 5,
             Mandatory = $false,
             HelpMessage = 'Please provide the path to the icons directory (Used for SVG format)'
         )]
-        [ValidateScript( {
-            if (Test-Path -Path $_) {
-                $true
-            } else {
-                throw "Path $_ not found!"
-            }
-        })]
-        [string] $IconPath,
+        [ValidateScript({
+                if (-Not ($_ | Test-Path) ) {
+                    throw "Folder does not exist"
+                }
+                return $true
+            })]
+        [System.IO.FileInfo] $IconPath,
         [Parameter(
             Position = 6,
             Mandatory = $false,
             HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180, 270)'
         )]
         [ValidateSet(0, 90, 180, 270)]
-        [int] $Rotate = 0,
+        [int] $Rotate,
         [Parameter(
             Position = 7,
             Mandatory = $false,
