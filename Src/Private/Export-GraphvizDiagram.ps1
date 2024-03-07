@@ -120,6 +120,14 @@ function Export-GraphvizDiagram {
                         Write-Verbose "Rotate option is not supported with the dot format."
                     }
                     ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
+                } elseif ($Format -eq "pdf") {
+                    if ($WaterMark) {
+                        Write-Verbose "WaterMark option is not supported with the pdf format."
+                    }
+                    if ($Rotate) {
+                        Write-Verbose "Rotate option is not supported with the pdf format."
+                    }
+                    ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
                 } else {
                     # Always convert to PNG format before edit output image.
                     try {
