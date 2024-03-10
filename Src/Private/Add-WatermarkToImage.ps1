@@ -117,7 +117,7 @@ function Add-WatermarkToImage {
 
     end {
         try {
-            # Save the Image to path define in $ImageOutputFile
+            # Save the Image to path define in $TempImageOutput
             $Bitmap.Save($TempImageOutput)
             # Destroy the Bitmap object
             $Bitmap.Dispose()

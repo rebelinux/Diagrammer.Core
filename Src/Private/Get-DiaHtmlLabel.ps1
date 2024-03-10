@@ -12,8 +12,8 @@ Function Get-DiaHTMLLabel {
             'SitesTopology' { 'Active Directory Site Topology Diagram' }
         }
         $CustomLogo = "Logo Path"
-        $URLIcon = False
-        Get-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -URLIcon $URLIcon
+        $IconDebug = False
+        Get-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
                     __________________
                     |                |
                     |   Main Logo    |
@@ -34,8 +34,8 @@ Function Get-DiaHTMLLabel {
         Main Diagram Logo
     .PARAMETER ImagesObj
         Hashtable with the IconName > IconPath translation
-    .PARAMETER URLIcon
-        Set the table debug mode (Dont know why is colled like that... Need to change it to something like Debug)
+    .PARAMETER IconDebug
+        Set the table debug mode
     #>
     param(
         [string] $Label,
@@ -44,12 +44,12 @@ Function Get-DiaHTMLLabel {
         [string] $IconWidth = 40,
         [string] $IconHeight = 40,
         [Hashtable] $ImagesObj = @{},
-        [bool] $URLIcon
+        [bool] $IconDebug
     )
 
     if ($IconType -eq 'NoIcon') {
         $ICON = 'NoIcon'
-    } elseif ($URLIcon) {
+    } elseif ($IconDebug) {
         $ICON = 'NoIcon'
     } elseif ($ImagesObj[$IconType]) {
         $ICON = $ImagesObj[$IconType]

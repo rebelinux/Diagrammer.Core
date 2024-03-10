@@ -46,7 +46,7 @@ Function Get-DiaNodeIcon {
         [String]$Name,
         [String]$Align,
         [Hashtable] $ImagesObj = @{},
-        [bool] $URLIcon
+        [bool] $IconDebug
     )
 
 
@@ -61,7 +61,7 @@ Function Get-DiaNodeIcon {
         $TR += $r.getEnumerator() | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='14'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
     }
 
-    if ($URLIcon) {
+    if ($IconDebug) {
         if ($ICON -ne 'NoIcon') {
             if ($Align -eq "Center") {
                 "<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><B>$Name</B></TD></TR>$TR</TABLE>"

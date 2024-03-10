@@ -9,7 +9,7 @@ Function Get-DiaHTMLNodeTable {
         # Array of String *6 Objects*
         $DCsArray = @("Server-dc-01v","Server-dc-02v","Server-dc-03v","Server-dc-04v","Server-dc-05v","Server-dc-06v")
 
-        Get-DiaHTMLNodeTable -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -ImagesObj $Images -URLIcon $URLIcon
+        Get-DiaHTMLNodeTable -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -ImagesObj $Images -IconDebug $IconDebug
 
         ________________________________ _______________
         |               |               |               |
@@ -51,8 +51,8 @@ Function Get-DiaHTMLNodeTable {
         Allow to draw an icon to each table element. If not set the table share a single Icon
     .PARAMETER ImagesObj
         Hashtable with the IconName > IconPath translation
-    .PARAMETER URLIcon
-        Set the thable debug mode (Dont know why is colled like that... Need to change it to something like Debug)
+    .PARAMETER IconDebug
+        Set the table debug mode
     .PARAMETER Rows
         Hashtable used to add more information to the table elements (Not yet implemented)
     #>
@@ -67,7 +67,7 @@ Function Get-DiaHTMLNodeTable {
         [string] $Port = "EdgeDot",
         [Switch]$MultiIcon,
         [Hashtable] $ImagesObj,
-        [bool] $URLIcon,
+        [bool] $IconDebug,
         [hashtable[]]$Rows
     )
 
@@ -84,7 +84,7 @@ Function Get-DiaHTMLNodeTable {
     $Number = 0
 
     if ($Icon) {
-        if ($URLIcon) {
+        if ($IconDebug) {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
@@ -155,7 +155,7 @@ Function Get-DiaHTMLNodeTable {
         }
     }
 
-    if ($URLIcon) {
+    if ($IconDebug) {
         return '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="5">{1}</TABLE>' -f $Port, $TR
     } else {
         return '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellpadding="5">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR
