@@ -1,4 +1,4 @@
-function Export-GraphvizDiagram {
+function Export-Diagrammer {
     <#
     .SYNOPSIS
         Function to export diagram to expecified format.
@@ -65,13 +65,6 @@ function Export-GraphvizDiagram {
             })]
         [System.IO.FileInfo] $IconPath,
         [Parameter(
-            Position = 6,
-            Mandatory = $false,
-            HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180, 270)'
-        )]
-        [ValidateSet(0, 90, 180, 270)]
-        [int] $Rotate,
-        [Parameter(
             Position = 7,
             Mandatory = $false,
             HelpMessage = 'Allow to add a watermark to the output image (Not supported in svg format)'
@@ -82,7 +75,14 @@ function Export-GraphvizDiagram {
             Mandatory = $false,
             HelpMessage = 'Allow to specified the color used for the watermark text'
         )]
-        [string] $WaterMarkColor = 'Red'
+        [string] $WaterMarkColor = 'Red',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180, 270)'
+        )]
+        [ValidateSet(0, 90, 180, 270)]
+        [int] $Rotate = 0
     )
 
     process {
@@ -108,24 +108,15 @@ function Export-GraphvizDiagram {
                     if ($WaterMark) {
                         Write-Verbose "WaterMark option is not supported with the svg format."
                     }
-                    if ($Rotate) {
-                        Write-Verbose "Rotate option is not supported with the svg format."
-                    }
-                    ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath
+                    ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
                 } elseif ($Format -eq "dot") {
                     if ($WaterMark) {
                         Write-Verbose "WaterMark option is not supported with the dot format."
-                    }
-                    if ($Rotate) {
-                        Write-Verbose "Rotate option is not supported with the dot format."
                     }
                     ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
                 } elseif ($Format -eq "pdf") {
                     if ($WaterMark) {
                         Write-Verbose "WaterMark option is not supported with the pdf format."
-                    }
-                    if ($Rotate) {
-                        Write-Verbose "Rotate option is not supported with the pdf format."
                     }
                     ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
                 } else {
@@ -138,32 +129,16 @@ function Export-GraphvizDiagram {
                         Write-Verbose $($_.Exception.Message)
                     }
 
-                    if ($Rotate) {
-                        ConvertTo-RotateImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -Angle $Rotate
-                    }
 
                     if ($WaterMark) {
-                        if ($Rotate) {
-
-                            $ImageName = $Document
-                            # Teporary Image file name
-                            $FileName = $ImageName.BaseName + "_Rotated" + $ImageName.Extension
-
-                            # Teporary Image file path
-                            $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath $FileName
-
-                            Add-WatermarkToImage -ImageInput $TempImageOutput -DestinationPath $DestinationPath -WaterMarkText $WaterMark -FontColor $WaterMarkColor
-
-                        } else {
-                            Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMark -FontColor $WaterMarkColor
-                        }
+                        Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMark -FontColor $WaterMarkColor
                     }
                 }
 
                 if ($Format -eq "base64") {
                     ConvertTo-Base64 -ImageInput $Document
                 } elseif ($Format -eq "png") {
-                    if ($Rotate -or $WaterMark) {
+                    if ($WaterMark) {
                         if ($Document) {
                             Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
                             Remove-Item -Path $Document
