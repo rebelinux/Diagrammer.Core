@@ -21,6 +21,7 @@ function Export-Diagrammer {
             Mandatory = $true,
             HelpMessage = 'Please provide the graphviz dot object'
         )]
+        [ValidateNotNullOrEmpty()]
         $GraphObj,
         [Parameter(
             Position = 1,
@@ -69,7 +70,7 @@ function Export-Diagrammer {
             Mandatory = $false,
             HelpMessage = 'Allow to add a watermark to the output image (Not supported in svg format)'
         )]
-        [string] $WaterMark,
+        [string] $WaterMarkText,
         [Parameter(
             Position = 8,
             Mandatory = $false,
@@ -81,7 +82,7 @@ function Export-Diagrammer {
             Mandatory = $false,
             HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180, 270)'
         )]
-        [ValidateSet(0, 90, 180, 270)]
+        [ValidateSet(0, 90)]
         [int] $Rotate = 0
     )
 
@@ -105,17 +106,17 @@ function Export-Diagrammer {
                 $DestinationPath = Join-Path -Path $OutputFolderPath -ChildPath $FileName
 
                 if ($Format -eq "svg") {
-                    if ($WaterMark) {
+                    if ($WaterMarkText) {
                         Write-Verbose "WaterMark option is not supported with the svg format."
                     }
                     ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
                 } elseif ($Format -eq "dot") {
-                    if ($WaterMark) {
+                    if ($WaterMarkText) {
                         Write-Verbose "WaterMark option is not supported with the dot format."
                     }
                     ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
                 } elseif ($Format -eq "pdf") {
-                    if ($WaterMark) {
+                    if ($WaterMarkText) {
                         Write-Verbose "WaterMark option is not supported with the pdf format."
                     }
                     ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
@@ -130,15 +131,15 @@ function Export-Diagrammer {
                     }
 
 
-                    if ($WaterMark) {
-                        Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMark -FontColor $WaterMarkColor
+                    if ($WaterMarkText) {
+                        Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
                     }
                 }
 
                 if ($Format -eq "base64") {
                     ConvertTo-Base64 -ImageInput $Document
                 } elseif ($Format -eq "png") {
-                    if ($WaterMark) {
+                    if ($WaterMarkText) {
                         if ($Document) {
                             Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
                             Remove-Item -Path $Document

@@ -32,11 +32,11 @@ Function Get-DiaHTMLNodeTable {
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
     .PARAMETER inputObject
-        The array of object to processn
+        The array of object to process
     .PARAMETER Align
         Align content inside table cell
     .PARAMETER TableBorder
-        The table border line
+        The table border line size
     .PARAMETER CellBorder
         The table cell border
     .PARAMETER FontSize
@@ -57,17 +57,65 @@ Function Get-DiaHTMLNodeTable {
         Hashtable used to add more information to the table elements (Not yet implemented)
     #>
     param(
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Please provide input object to process'
+        )]
         [string[]] $inputObject,
-        [string] $Align = 'Center',
-        [int] $tableBorder = 0,
-        [int] $cellBorder = 0,
-        [int] $fontSize = 14,
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Please provide the icon type'
+        )]
         [string] $iconType,
-        [int] $columnSize = 1,
-        [string] $Port = "EdgeDot",
-        [Switch]$MultiIcon,
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Please provide the Image Hashtable Object'
+        )]
         [Hashtable] $ImagesObj,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the text align'
+        )]
+        [string] $Align = 'Center',
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the width of the html table border'
+        )]
+        [int] $tableBorder = 0,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the width of the html cell border'
+        )]
+        [int] $cellBorder = 0,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'The cell text font size'
+        )]
+        [int] $fontSize = 14,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'This value is used to specified a int used to split the object inside the HTML table'
+        )]
+        [int] $columnSize = 1,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
+        )]
+        [string] $Port = "EdgeDot",
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
+        )]
+        [Switch]$MultiIcon,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Enable the icon debug mode'
+        )]
         [bool] $IconDebug,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Hashtable used to add more information to the table elements (Not yet implemented)'
+        )]
         [hashtable[]]$Rows
     )
 
@@ -75,6 +123,12 @@ Function Get-DiaHTMLNodeTable {
         $Group = $inputObject
     } else {
         $Group = Split-array -inArray $inputObject -size $columnSize
+    }
+
+    if ($Rows.Count -le 1) {
+        $RowsGroup = $Rows
+    } else {
+        $RowsGroup = Split-array -inArray $Rows -size $columnSize
     }
 
     if ($ImagesObj[$iconType]) {
@@ -90,15 +144,24 @@ Function Get-DiaHTMLNodeTable {
                     foreach ($Element in $Group[$Number]) {
                         $TDICON += '<TD ALIGN="{0}" colspan="1">ICON</TD>' -f $Align
                     }
+                    $TR += '<TR>{0}</TR>' -f $TDICON
+                    $TDICON = ''
+
                     foreach ($Element in $Group[$Number]) {
                         $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
                     }
-
-                    $TR += '<TR>{0}</TR>' -f $TDICON
                     $TR += '<TR>{0}</TR>' -f $TDName
-
-                    $TDICON = ''
                     $TDName = ''
+
+                    if ($Rows) {
+                        foreach ($Element in $RowsGroup[$Number]) {
+                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                        }
+
+                        $TR += '<TR>{0}</TR>' -f $TDInfo
+                        $TDInfo = ''
+                    }
+
                     $Number++
                 }
             } else {
@@ -115,6 +178,16 @@ Function Get-DiaHTMLNodeTable {
                     $TR += '<TR>{0}</TR>' -f $TDName
 
                     $TDName = ''
+
+                    if ($Rows) {
+                        foreach ($Element in $RowsGroup[$Number]) {
+                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                        }
+
+                        $TR += '<TR>{0}</TR>' -f $TDInfo
+                        $TDInfo = ''
+                    }
+
                     $Number++
                 }
             }
@@ -124,15 +197,24 @@ Function Get-DiaHTMLNodeTable {
                     foreach ($Element in $Group[$Number]) {
                         $TDICON += '<TD ALIGN="{0}" colspan="1"><img src="{1}"/></TD>' -f $Align, $Icon
                     }
+                    $TR += '<TR>{0}</TR>' -f $TDICON
+                    $TDICON = ''
+
                     foreach ($Element in $Group[$Number]) {
-                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                    }
+                    $TR += '<TR>{0}</TR>' -f $TDName
+                    $TDName = ''
+
+                    if ($Rows) {
+                        foreach ($Element in $RowsGroup[$Number]) {
+                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                        }
+
+                        $TR += '<TR>{0}</TR>' -f $TDInfo
+                        $TDInfo = ''
                     }
 
-                    $TR += '<TR>{0}</TR>' -f $TDICON
-                    $TR += '<TR>{0}</TR>' -f $TDName
-
-                    $TDICON = ''
-                    $TDName = ''
                     $Number++
                 }
             } else {
@@ -145,10 +227,18 @@ Function Get-DiaHTMLNodeTable {
                     foreach ($Element in $Group[$Number]) {
                         $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
                     }
-
                     $TR += '<TR>{0}</TR>' -f $TDName
-
                     $TDName = ''
+
+                    if ($Rows) {
+                        foreach ($Element in $RowsGroup[$Number]) {
+                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                        }
+
+                        $TR += '<TR>{0}</TR>' -f $TDInfo
+                        $TDInfo = ''
+                    }
+
                     $Number++
                 }
             }

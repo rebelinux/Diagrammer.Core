@@ -27,7 +27,14 @@ function ConvertTo-Svg {
             Mandatory = $true,
             HelpMessage = 'Please provide the file path to export the diagram'
         )]
-        [string] $DestinationPath
+        [string] $DestinationPath,
+
+        [Parameter(
+            Position = 2,
+            Mandatory = $false,
+            HelpMessage = 'Please provide the angle degree to rotate svg image'
+        )]
+        [string] $Angle
     )
     process {
 
@@ -49,6 +56,9 @@ function ConvertTo-Svg {
                 }
                 $iconName = $Matches.Item(1)
                 $iconNamePath = "$IconPath\$($Matches.Item(1))"
+                if ($Angle -ne 0) {
+                    $iconNamePath = (ConvertTo-RotateImage -ImageInput $iconNamePath -Angle 270).FullName
+                }
                 $iconContents = Get-Content $iconNamePath -Encoding byte
                 $iconEncoded = [convert]::ToBase64String($iconContents)
                 ((Get-Content -Path $($Document.fullname) -Raw) -Replace $iconName, "data:image/png;base64,$($iconEncoded)") | Set-Content -Path $($Document.fullname)

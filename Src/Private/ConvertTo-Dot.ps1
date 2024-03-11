@@ -30,7 +30,7 @@ function ConvertTo-Dot {
         [string] $DestinationPath
     )
     process {
-        if ($WaterMark) {
+        if ($WaterMarkText) {
             Write-ColorOutput -Color 'Red' -String "WaterMark option is not supported with the dot format."
         }
 

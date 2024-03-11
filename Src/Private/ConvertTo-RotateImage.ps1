@@ -34,7 +34,7 @@ function ConvertTo-RotateImage {
             Mandatory = $true,
             HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180, 270)'
         )]
-        [ValidateSet(90, 180, 270)]
+        [ValidateSet(0, 90, 180, 270)]
         [int] $Angle,
         [Parameter(
             Position = 2,
