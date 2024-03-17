@@ -34,7 +34,7 @@ Function Get-DiaHTMLTable {
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
     .PARAMETER Rows
-        The array of object to proccess
+        An array of strings/objects to place in this record
     .PARAMETER Align
         Align content inside table cell
     .PARAMETER TableBorder
@@ -50,8 +50,10 @@ Function Get-DiaHTMLTable {
         Used in conjunction with MultiColunms
     .PARAMETER MultiColunms
         Split the object into a HTML table with custom ColumnSize
-    .PARAMETER Port
-        Used inside Graphviz to point the edge between nodes
+    .PARAMETER ImagesObj
+        Hashtable with the IconName > IconPath translation
+    .PARAMETER IconDebug
+        Set the table debug mode
     #>
     param(
         [string[]] $Rows,
@@ -63,7 +65,7 @@ Function Get-DiaHTMLTable {
         [Switch] $MultiColunms,
         [int] $ColumnSize = 2,
         [Hashtable] $ImagesObj = @{},
-        [bool] $URLIcon
+        [bool] $IconDebug
     )
 
     if ($MultiColunms) {
@@ -86,7 +88,7 @@ Function Get-DiaHTMLTable {
             $Number++
         }
 
-        if ($URLIcon) {
+        if ($IconDebug) {
             return '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="5">{0}</TABLE>' -f $TR
         } else {
             return '<TABLE border="0" cellborder="0" cellpadding="5">{0}</TABLE>' -f $TR
@@ -105,7 +107,7 @@ Function Get-DiaHTMLTable {
 
         if (!$ICON) {
             return '<TABLE STYLE="ROUNDED" border="{0}" cellborder="{1}" cellpadding="5">{2}</TABLE>' -f $TableBorder, $CellBorder, $TR
-        } elseif ($URLIcon) {
+        } elseif ($IconDebug) {
             return '<TABLE STYLE="ROUNDED" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD fixedsize="true" width="80" height="80" ALIGN="center" colspan="1" rowspan="4">Logo</TD></TR>{0}</TABLE>' -f $TR
 
         } else {
