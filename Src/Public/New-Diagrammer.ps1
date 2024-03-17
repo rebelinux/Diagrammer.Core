@@ -44,16 +44,16 @@ function New-Diagrammer {
     .PARAMETER CompanyName
         Allow to set footer signature Company Name.
     .PARAMETER Logo
-        Allow to change the Veeam logo to a custom one.
+        Allow to change the Main logo to a custom one.
         Image should be 400px x 100px or less in size.
     .PARAMETER SignatureLogo
-        Allow to change the Vb365.Diagrammer signature logo to a custom one.
+        Allow to change the signature logo to a custom one.
         Image should be 120px x 130px or less in size.
     .PARAMETER Signature
         Allow the creation of footer signature.
         AuthorName and CompanyName must be set to use this property.
     .NOTES
-        Version:        0.1.8
+        Version:        0.3.0
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -82,7 +82,7 @@ function New-Diagrammer {
             HelpMessage = 'Please provide the diagram output format'
         )]
         [ValidateNotNullOrEmpty()]
-        [ValidateSet('pdf', 'svg', 'png', 'dot', 'base64', 'jpg')]
+        [ValidateSet('pdf', 'svg', 'png', 'dot', 'base64')]
         [Array] $Format = 'pdf',
 
         [Parameter(
@@ -133,17 +133,22 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specify the Diagram output filename'
+            HelpMessage = 'Specify the diagram output file name path'
         )]
         [ValidateNotNullOrEmpty()]
         [ValidateScript({
-                if (($Format | Measure-Object).count -lt 2) {
+                if ($Format.count -lt 2) {
                     $true
                 } else {
                     throw "Format value must be unique if Filename is especified."
                 }
+                if (-Not $_.EndsWith($Format)) {
+                    throw "The file specified in the path argument must be of type $Format"
+                }
+                return $true
             })]
         [String] $Filename,
+
 
         [Parameter(
             Mandatory = $false,
@@ -168,7 +173,7 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $true,
-            HelpMessage = 'Controls type of Veeam VB365 generated diagram'
+            HelpMessage = 'Controls type of generated diagram'
         )]
         [ValidateSet('Backup-to-All')]
         [string] $DiagramType,
@@ -206,14 +211,22 @@ function New-Diagrammer {
             Mandatory = $false,
             HelpMessage = 'Allow the creation of footer signature'
         )]
-        [Switch] $Signature = $false
+        [Switch] $Signature = $false,
+
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Set the Main Label used at the top of the diagram'
+        )]
+        [string] $MainDiagramLabel
     )
 
 
     begin {
 
+        # Variable translating Icon to Image Path ($IconPath)
         $script:Images = @{
-            "Default_Logo" = "Diagrammer.png"
+            "Main_Logo" = "Diagrammer.png"
+            "Logo_Footer" = "Diagrammer_footer.png"
         }
 
         if (($Format -ne "base64") -and !(Test-Path $OutputFolderPath)) {
@@ -222,25 +235,21 @@ function New-Diagrammer {
         }
 
         if ($Signature -and (([string]::IsNullOrEmpty($AuthorName)) -or ([string]::IsNullOrEmpty($CompanyName)))) {
-            throw "New-Diagram: AuthorName and CompanyName must be defined if the Signature option is specified"
+            throw "New-Diagrammer: AuthorName and CompanyName must be defined if the Signature option is specified"
         }
 
-        $MainGraphLabel = Switch ($DiagramType) {
-            'Backup-to-All' { 'Backup for Microsoft 365' }
-        }
-
-        $URLIcon = $false
+        $IconDebug = $false
 
         if ($EnableEdgeDebug) {
             $EdgeDebug = @{style = 'filled'; color = 'red' }
-            $URLIcon = $true
+            $IconDebug = $true
         } else { $EdgeDebug = @{style = 'invis'; color = 'red' } }
 
         if ($EnableSubGraphDebug) {
             $SubGraphDebug = @{style = 'dashed'; color = 'red' }
             $NodeDebug = @{color = 'black'; style = 'red'; shape = 'plain' }
             $NodeDebugEdge = @{color = 'black'; style = 'red'; shape = 'plain' }
-            $URLIcon = $true
+            $IconDebug = $true
         } else {
             $SubGraphDebug = @{style = 'invis'; color = 'gray' }
             $NodeDebug = @{color = 'transparent'; style = 'transparent'; shape = 'point' }
@@ -258,7 +267,7 @@ function New-Diagrammer {
         if ($Logo) {
             $CustomLogo = Test-Logo -LogoPath (Get-ChildItem -Path $Logo).FullName -IconPath $IconPath -ImagesObj $Images
         } else {
-            $CustomLogo = "Default_Logo"
+            $CustomLogo = "Main_Logo"
         }
         # Validate Custom Signature Logo
         if ($SignatureLogo) {
@@ -271,7 +280,7 @@ function New-Diagrammer {
             overlap = 'false'
             splines = $EdgeType
             penwidth = 1.5
-            fontname = "Tahoma Black"
+            fontname = "Segoe Ui Black"
             fontcolor = '#005f4b'
             fontsize = 32
             style = "dashed"
@@ -284,7 +293,8 @@ function New-Diagrammer {
 
     process {
 
-        $script:Graph = Graph -Name VeeamVB365 -Attributes $MainGraphAttributes {
+        # Graph default atrributes
+        $script:Graph = Graph -Name Root -Attributes $MainGraphAttributes {
             # Node default theme
             Node @{
                 label = ''
@@ -301,31 +311,42 @@ function New-Diagrammer {
                 dir = 'both'
                 arrowtail = 'dot'
                 color = '#71797E'
-                penwidth = 2
+                penwidth = 3
                 arrowsize = 1
             }
 
+            # Signature Section
             if ($Signature) {
+                Write-PScriboMessage "Generating diagram signature"
                 if ($CustomSignatureLogo) {
-                    $Signature = (Get-HtmlTable -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -align 'left' -Logo $CustomSignatureLogo)
+                    $Signature = (Get-DiaHTMLTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
                 } else {
-                    $Signature = (Get-HtmlTable -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -align 'left' -Logo "VB365_LOGO_Footer")
+                    $Signature = (Get-DiaHTMLTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
                 }
             } else {
+                Write-PScriboMessage "No diagram signature specified"
                 $Signature = " "
             }
 
+            #---------------------------------------------------------------------------------------------#
+            #                             Graphviz Clusters (SubGraph) Section                            #
+            #               SubGraph can be use to bungle the Nodes together like a single entity         #
+            #                     SubGraph allow you to have a graph within a graph                       #
+            #                PSgraph: https://psgraph.readthedocs.io/en/latest/Command-SubGraph/          #
+            #                      Graphviz: https://graphviz.org/docs/attrs/cluster/                     #
+            #---------------------------------------------------------------------------------------------#
+
+            # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
-                SubGraph MainGraph -Attributes @{Label = (Get-DiaHTMLLabel -ImagesObj $Images -Label $MainGraphLabel -IconType $CustomLogo -URLIcon $URLIcon -IconWidth 250 -IconHeight 80); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
-
-
+                # Subgraph MainGraph used to draw the main drawboard.
+                SubGraph MainGraph -Attributes @{Label = (Get-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
 
                 }
             }
         }
     }
     end {
-        #Export Diagram
-        Out-Diagram -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Rotate $Rotate -Format $Format -Filename $Filename -OutputFolderPath $OutputFolderPath
+        #Export  the Diagram
+        Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $Format -Filename $Filename -OutputFolderPath $OutputFolderPath -WaterMarkText $Options.DiagramWaterMark -WaterMarkColor "Green"
     }
 }
