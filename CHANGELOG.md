@@ -5,15 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.8] - 2024-02-28
+## [0.1.8] - 2024-03-16
 
 ### Added
 
 - Added Add-WatermarkToImage cmdlet to add WaterMark text to resulting diagrams.
+- Added per format export function:
+  - ConverTo-Base64
+  - ConverTo-Png
+  - ConverTo-Pdf
+  - ConverTo-Dot
+- Added function to allow image rotation to 90 degree (ConvertTo-RotateImage)
+- Added Initial support for centralized function to create diagram
+
+### Changed
+
+- Renamed Out-Diagram to Export-Diagrammer
+- Improved Get-DiaHTMLNodeTable
 
 ### Fixed
 
-- Improved Out-Diagram cmdlet OutputFolderPath calculation
+- [#12](https://github.com/rebelinux/Diagrammer.Core/issues/12)
+- [#13](https://github.com/rebelinux/Diagrammer.Core/issues/13)
 
 ## [0.1.7] - 2024-02-26
 
