@@ -4,10 +4,6 @@ function New-Diagrammer {
         Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
     .DESCRIPTION
         Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
-    .PARAMETER DiagramType
-        Specifies the type of veeam vbr diagram that will be generated.
-        The supported output diagrams are:
-            Backup-to-All'
     .PARAMETER Format
         Specifies the output format of the diagram.
         The supported output formats are PDF, PNG, DOT & SVG.
@@ -170,13 +166,6 @@ function New-Diagrammer {
         )]
         [ValidateSet(0, 1, 2, 3)]
         [string] $SectionSeparation = .75,
-
-        [Parameter(
-            Mandatory = $true,
-            HelpMessage = 'Controls type of generated diagram'
-        )]
-        [ValidateSet('Backup-to-All')]
-        [string] $DiagramType,
 
         [Parameter(
             Mandatory = $false,
