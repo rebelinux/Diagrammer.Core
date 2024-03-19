@@ -27,7 +27,7 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.1.8
+        Version:        0.1.9
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -53,8 +53,8 @@ Function Get-DiaHTMLNodeTable {
         Hashtable with the IconName > IconPath translation
     .PARAMETER IconDebug
         Set the table debug mode
-    .PARAMETER Rows
-        Hashtable used to add more information to the table elements (Not yet implemented)
+    .PARAMETER AditionalInfo
+        Hashtable used to add more information to the table elements
     #>
     param(
         [Parameter(
@@ -116,7 +116,7 @@ Function Get-DiaHTMLNodeTable {
             Mandatory = $false,
             HelpMessage = 'Hashtable used to add more information to the table elements (Not yet implemented)'
         )]
-        [hashtable[]]$Rows
+        [hashtable[]]$AditionalInfo
     )
 
     if ($inputObject.Count -le 1) {
@@ -125,10 +125,18 @@ Function Get-DiaHTMLNodeTable {
         $Group = Split-array -inArray $inputObject -size $columnSize
     }
 
-    if ($Rows.Count -le 1) {
-        $RowsGroup = $Rows
-    } else {
-        $RowsGroup = Split-array -inArray $Rows -size $columnSize
+    # if (($AditionalInfo.Keys.Count -lt 1 ) -and ($AditionalInfo.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
+    #     $RowsGroupHTs = $AditionalInfo
+    # }
+    if ($AditionalInfo) {
+        $Filter = $AditionalInfo.keys | Select-Object -Unique
+        $RowsGroupHTs = @()
+
+        foreach ($RepoObj in ($Filter | Sort-Object)) {
+            $RowsGroupHTs += @{
+                $RepoObj = $AditionalInfo.$RepoObj
+            }
+        }
     }
 
     if ($ImagesObj[$iconType]) {
@@ -153,13 +161,45 @@ Function Get-DiaHTMLNodeTable {
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
 
-                    if ($Rows) {
-                        foreach ($Element in $RowsGroup[$Number]) {
-                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
-                        }
+                    if ($AditionalInfo) {
+                        if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Single key with Single Values
+                            #  Keys: Path - Values: C:\Backup
+                            #
+                            foreach ($Element in $RowsGroupHTs[$Number]) {
+                                $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                            }
 
-                        $TR += '<TR>{0}</TR>' -f $TDInfo
-                        $TDInfo = ''
+                            $TR += '<TR>{0}</TR>' -f $TDInfo
+                            $TDInfo = ''
+                        } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Multiple key and each key have a Single Values
+                            #  Keys:        Values:
+                            #       Path:          C:\Backup
+                            #       OBjStor:       True
+                            #
+
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                foreach ($Element in $RowsGroupHT) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.Values
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+
+                        } else {
+                            # $RowsGroupHT is Single key and each key have Multiple Values
+                            #  Keys: Path - Values: {C:\Backup, F:\Backup}
+                            #
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                foreach ($Element in $RowsGroup[$Number]) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+                        }
                     }
 
                     $Number++
@@ -179,13 +219,45 @@ Function Get-DiaHTMLNodeTable {
 
                     $TDName = ''
 
-                    if ($Rows) {
-                        foreach ($Element in $RowsGroup[$Number]) {
-                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
-                        }
+                    if ($AditionalInfo) {
+                        if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Single key with Single Values
+                            #  Keys: Path - Values: C:\Backup
+                            #
+                            foreach ($Element in $RowsGroupHTs[$Number]) {
+                                $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                            }
 
-                        $TR += '<TR>{0}</TR>' -f $TDInfo
-                        $TDInfo = ''
+                            $TR += '<TR>{0}</TR>' -f $TDInfo
+                            $TDInfo = ''
+                        } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Multiple key and each key have a Single Values
+                            #  Keys:        Values:
+                            #       Path:          C:\Backup
+                            #       OBjStor:       True
+                            #
+
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                foreach ($Element in $RowsGroupHT) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.Values
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+
+                        } else {
+                            # $RowsGroupHT is Single key and each key have Multiple Values
+                            #  Keys: Path - Values: {C:\Backup, F:\Backup}
+                            #
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                foreach ($Element in $RowsGroup[$Number]) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+                        }
                     }
 
                     $Number++
@@ -206,13 +278,45 @@ Function Get-DiaHTMLNodeTable {
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
 
-                    if ($Rows) {
-                        foreach ($Element in $RowsGroup[$Number]) {
-                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
-                        }
+                    if ($AditionalInfo) {
+                        if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Single key with Single Values
+                            #  Keys: Path - Values: C:\Backup
+                            #
+                            foreach ($Element in $RowsGroupHTs[$Number]) {
+                                $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                            }
 
-                        $TR += '<TR>{0}</TR>' -f $TDInfo
-                        $TDInfo = ''
+                            $TR += '<TR>{0}</TR>' -f $TDInfo
+                            $TDInfo = ''
+                        } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Multiple key and each key have a Single Values
+                            #  Keys:        Values:
+                            #       Path:          C:\Backup
+                            #       OBjStor:       True
+                            #
+
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                foreach ($Element in $RowsGroupHT) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.Values
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+
+                        } else {
+                            # $RowsGroupHT is Single key and each key have Multiple Values
+                            #  Keys: Path - Values: {C:\Backup, F:\Backup}
+                            #
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                foreach ($Element in $RowsGroup[$Number]) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+                        }
                     }
 
                     $Number++
@@ -230,13 +334,45 @@ Function Get-DiaHTMLNodeTable {
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
 
-                    if ($Rows) {
-                        foreach ($Element in $RowsGroup[$Number]) {
-                            $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
-                        }
+                    if ($AditionalInfo) {
+                        if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Single key with Single Values
+                            #  Keys: Path - Values: C:\Backup
+                            #
+                            foreach ($Element in $RowsGroupHTs[$Number]) {
+                                $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
+                            }
 
-                        $TR += '<TR>{0}</TR>' -f $TDInfo
-                        $TDInfo = ''
+                            $TR += '<TR>{0}</TR>' -f $TDInfo
+                            $TDInfo = ''
+                        } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
+                            # $RowsGroupHT is Multiple key and each key have a Single Values
+                            #  Keys:        Values:
+                            #       Path:          C:\Backup
+                            #       OBjStor:       True
+                            #
+
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                foreach ($Element in $RowsGroupHT) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.Values
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+
+                        } else {
+                            # $RowsGroupHT is Single key and each key have Multiple Values
+                            #  Keys: Path - Values: {C:\Backup, F:\Backup}
+                            #
+                            foreach ($RowsGroupHT in $RowsGroupHTs) {
+                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                foreach ($Element in $RowsGroup[$Number]) {
+                                    $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
+                                }
+                                $TR += '<TR>{0}</TR>' -f $TDInfo
+                                $TDInfo = ''
+                            }
+                        }
                     }
 
                     $Number++
