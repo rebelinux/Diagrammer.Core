@@ -7,7 +7,7 @@ function Test-Logo {
         Version:        0.1.1
         Author:         Joanthan Colon
     .EXAMPLE
-        Test-Image -LogoPath "C:\Users\jocolon\logo.png"
+        Test-Logo -LogoPath (Get-ChildItem -Path $Logo).FullName -IconPath $IconPath -ImagesObj $Images
     .LINK
     #>
 
