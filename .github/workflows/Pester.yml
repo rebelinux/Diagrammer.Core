@@ -1,8 +1,8 @@
-name: PSScriptAnalyzer
+name: ModuleTests
 on: [push, pull_request]
 jobs:
     test:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       steps:
         - name: test module
           id: test_module
@@ -13,7 +13,7 @@ jobs:
             report_title: My Module Tests
             github_token: ${{ secrets.GITHUB_TOKEN }}
         - name: dump test results
-          shell: pwsh
+          shell: powershell
           run: |
               Write-Host 'Total Tests Executed...:  ${{ steps.test_module.outputs.total_count }}'
               Write-Host 'Total Tests PASSED.....:  ${{ steps.test_module.outputs.passed_count }}'
