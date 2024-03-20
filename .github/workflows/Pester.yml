@@ -2,7 +2,7 @@ name: ModuleTests
 on: [push, pull_request]
 jobs:
     test:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v4
         - name: Set PSRepository to Trusted for PowerShell Gallery
@@ -26,7 +26,7 @@ jobs:
             report_title: My Module Tests
             github_token: ${{ secrets.GITHUB_TOKEN }}
         - name: dump test results
-          shell: powershell
+          shell: pwsh
           run: |
               Write-Host 'Total Tests Executed...:  ${{ steps.test_module.outputs.total_count }}'
               Write-Host 'Total Tests PASSED.....:  ${{ steps.test_module.outputs.passed_count }}'
