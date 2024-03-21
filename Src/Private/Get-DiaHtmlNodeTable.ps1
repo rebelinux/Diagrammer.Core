@@ -125,9 +125,6 @@ Function Get-DiaHTMLNodeTable {
         $Group = Split-array -inArray $inputObject -size $columnSize
     }
 
-    # if (($AditionalInfo.Keys.Count -lt 1 ) -and ($AditionalInfo.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
-    #     $RowsGroupHTs = $AditionalInfo
-    # }
     if ($AditionalInfo) {
         $Filter = $AditionalInfo.keys | Select-Object -Unique
         $RowsGroupHTs = @()
@@ -379,6 +376,9 @@ Function Get-DiaHTMLNodeTable {
                 }
             }
         }
+    } else {
+        throw "Error: $IconType IconType not found in Images object"
+
     }
 
     if ($IconDebug) {
