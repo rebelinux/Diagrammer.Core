@@ -38,12 +38,28 @@ Function Get-DiaHTMLLabel {
         Set the table debug mode
     #>
     param(
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Please provide Label string to process'
+        )]
         [string] $Label,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide Image hashtable to process'
+        )]
+        [Hashtable] $ImagesObj = @{},
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide Icon type to process'
+        )]
         [string] $IconType,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide SubgraphLabel to process'
+        )]
         [Switch] $SubgraphLabel,
         [string] $IconWidth = 40,
         [string] $IconHeight = 40,
-        [Hashtable] $ImagesObj = @{},
         [bool] $IconDebug
     )
 
