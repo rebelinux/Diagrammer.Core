@@ -6,7 +6,7 @@ Function Get-DiaHTMLTable {
         Takes an array and converts it to a HTML table used for GraphViz Node label
     .Example
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-DiaHTMLTable -Rows $DCs -Align "Center" -ColumnSize 2 -MultiColunms
+        Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2 -MultiColunms
             _________________________________
             |               |               |
             |192.168.5.0/24 |192.168.7.0/24 |
@@ -16,7 +16,7 @@ Function Get-DiaHTMLTable {
             _________________________________
 
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-DiaHTMLTable -Rows $DCs -Align "Center"
+        Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center"
             _________________
             |               |
             |192.168.5.0/24 |
@@ -43,7 +43,7 @@ Function Get-DiaHTMLTable {
         The table cell border
     .PARAMETER FontSize
         The text fornt size used inside the cell
-    .PARAMETER IconType
+    .PARAMETER Logo
         Icon used to draw the node type
     .PARAMETER ColumnSize
         This number is used to specified how to split the object inside the HTML table.
