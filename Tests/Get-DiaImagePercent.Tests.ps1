@@ -6,10 +6,10 @@ BeforeAll {
 }
 
 Describe "Get-DiaImagePercent" {
-    It "Returns image Height" {
+    It "Should returns image Height" {
         $ImgProperties.Height | Should -Be 225
     }
-    It "Returns image Width" {
+    It "Should returns image Width" {
         $ImgProperties.Width | Should -Be 225
     }
 }

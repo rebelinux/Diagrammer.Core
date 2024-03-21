@@ -6,13 +6,13 @@ BeforeAll {
 }
 
 Describe "Split-Array" {
-    It "Returns a object split by size" {
+    It "Should returns a object split by size" {
         $SplitArray.Count | Should -BeExactly 3
     }
-    It "Object SplitArray[0] must returns 3 elements" {
+    It "Should returns 3 Object" {
         $SplitArray[0] | Should -HaveCount 3
     }
-    It "Object SplitArray[1] must returns 3 elements" {
+    It "Should contain 4 as array member" {
         $SplitArray[1] | Should -Contain 4
     }
 }

@@ -11,10 +11,10 @@ BeforeAll {
 }
 
 Describe "Test-Logo" {
-    It "Returns Logo.png string from Images hashtable" {
+    It "Should returns Logo.png string from Images hashtable" {
         $Images[$ImageName] | Should -Be 'Logo.png'
     }
-    It "Vefified if Logo.png is inside icons folder" {
+    It "Vefified if Logo.png is inside TestDrive:\ folder" {
         $LogoPath | Should -Exist
     }
 }
