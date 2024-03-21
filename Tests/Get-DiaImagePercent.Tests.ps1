@@ -1,3 +1,5 @@
+. $PSScriptRoot\_InitializeTests.ps1
+
 BeforeAll {
     $Logo = Join-Path $TestsFolder "Logo.png"
     $ImgProperties = Get-DiaImagePercent -ImageInput $Logo

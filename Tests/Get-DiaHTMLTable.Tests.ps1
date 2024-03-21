@@ -1,3 +1,5 @@
+. $PSScriptRoot\_InitializeTests.ps1
+
 BeforeAll {
     $Images = @{
         "Main_Logo" = "Diagrammer.png"

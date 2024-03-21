@@ -1,3 +1,5 @@
+. $PSScriptRoot\_InitializeTests.ps1
+
 BeforeAll {
     $ArrayObj = @(1,2,3,4,5,6,7,8,9)
     $SplitArray = Split-Array -inArray $ArrayObj -Size 3
