@@ -16,7 +16,7 @@ Describe "Get-DiaHTMLLabel" {
         $HTMLTableSubgraphLabel = Get-DiaHTMLLabel -Label $MainGraphLabel['Forest'] -IconType 'DomainController' -IconDebug $false -ImagesObj $Images -SubgraphLabel
 
     }
-    
+
     It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" {
         $HTMLTableMainLabel | Should -BeExactly "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='40' height='40'><img src='AD_DC.png'/></TD></TR><TR><TD ALIGN='center'>Active Directory Forest Diagram</TD></TR></TABLE>"
     }
