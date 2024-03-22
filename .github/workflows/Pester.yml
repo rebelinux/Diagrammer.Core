@@ -8,15 +8,15 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         - name: Set PSRepository to Trusted for PowerShell Gallery
-          shell: powershell
+          shell: pwsh
           run: |
            Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
         - name: Install PSGraph module
-          shell: powershell
+          shell: pwsh
           run: |
            Install-Module -Name PSGraph -Repository PSGallery -Force
         - name: Load Functions
-          shell: powershell
+          shell: pwsh
           run: |
              .\Diagrammer.Core.psm1
         - name: test module
@@ -28,7 +28,7 @@ jobs:
             report_title: My Module Tests
             github_token: ${{ secrets.GITHUB_TOKEN }}
         - name: dump test results
-          shell: powershell
+          shell: pwsh
           run: |
               Write-Host 'Total Tests Executed...:  ${{ steps.test_module.outputs.total_count }}'
               Write-Host 'Total Tests PASSED.....:  ${{ steps.test_module.outputs.passed_count }}'
