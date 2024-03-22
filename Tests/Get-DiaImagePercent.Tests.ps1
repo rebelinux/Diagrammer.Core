@@ -1,6 +1,6 @@
 . $PSScriptRoot\_InitializeTests.ps1
 
-Describe "Get-DiaImagePercent" {
+Describe Get-DiaImagePercent {
     BeforeAll {
         $Logo = Join-Path $TestsFolder "Logo.png"
         $ImageFile = [System.IO.File]::ReadAllBytes($Logo)

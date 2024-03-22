@@ -1,6 +1,6 @@
 . $PSScriptRoot\_InitializeTests.ps1
 
-Describe "Test-Logo" {
+Describe Test-Logo {
     BeforeAll {
         $IconPath = 'TestDrive:\'
         $Images = @{

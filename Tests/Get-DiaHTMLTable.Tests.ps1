@@ -1,6 +1,6 @@
 . $PSScriptRoot\_InitializeTests.ps1
 
-Describe "Get-DiaHTMLTable" {
+Describe Get-DiaHTMLTable {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"

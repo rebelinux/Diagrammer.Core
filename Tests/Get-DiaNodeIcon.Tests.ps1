@@ -1,6 +1,6 @@
 . $PSScriptRoot\_InitializeTests.ps1
 
-Describe "Get-DiaNodeIcon" {
+Describe Get-DiaNodeIcon {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"

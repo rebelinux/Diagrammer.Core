@@ -1,6 +1,6 @@
 . $PSScriptRoot\_InitializeTests.ps1
 
-Describe "Get-DiaHTMLLabel" {
+Describe Get-DiaHTMLLabel {
     BeforeAll {
         $MainGraphLabel = @{
             'Forest' = 'Active Directory Forest Diagram'

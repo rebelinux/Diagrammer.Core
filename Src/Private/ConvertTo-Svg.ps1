@@ -27,7 +27,7 @@ function ConvertTo-Svg {
             Mandatory = $true,
             HelpMessage = 'Please provide the file path to export the diagram'
         )]
-        [string] $DestinationPath,
+        [System.IO.FileInfo] $DestinationPath,
 
         [Parameter(
             Position = 2,
