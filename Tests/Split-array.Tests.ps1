@@ -1,11 +1,11 @@
 . $PSScriptRoot\_InitializeTests.ps1
 
-BeforeAll {
-    $ArrayObj = @(1,2,3,4,5,6,7,8,9)
-    $SplitArray = Split-Array -inArray $ArrayObj -Size 3
-}
-
 Describe "Split-Array" {
+    BeforeAll {
+        $ArrayObj = @(1,2,3,4,5,6,7,8,9)
+        $SplitArray = Split-Array -inArray $ArrayObj -Size 3
+    }
+
     It "Should returns a object split by size" {
         $SplitArray.Count | Should -BeExactly 3
     }
