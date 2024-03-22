@@ -3,7 +3,8 @@
 Describe "Get-DiaImagePercent" {
     BeforeAll {
         $Logo = Join-Path $TestsFolder "Logo.png"
-        $Base64 = [convert]::ToBase64String((Get-Content $Logo -Encoding byte))
+        $ImageFile = [System.IO.File]::ReadAllBytes($Logo)
+        $Base64 = [convert]::ToBase64String($ImageFile)
         $FromBase64 = Get-DiaImagePercent -GraphObj $Base64
         $FromImg = Get-DiaImagePercent -ImageInput $Logo
     }
