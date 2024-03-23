@@ -18,7 +18,7 @@ Describe ConvertTo-Svg {
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDrive:\output.svg"
+            DestinationPath = "TestDriv:\output.svg"
         }
     }
 
