@@ -1,9 +1,9 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Svg.ps1
+    . $ProjectRoot\SRC\private\ConvertTo-Dot.ps1
 }
 
-Describe ConvertTo-Svg {
+Describe ConvertTo-Dot {
     BeforeAll {
         $GraphvizObj = 'digraph g {
             compound="true";
@@ -14,18 +14,18 @@ Describe ConvertTo-Svg {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.svg'
+            DestinationPath = Join-Path $TestDrive 'output.dot'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDriv:\output.svg"
+            DestinationPath = "TestDriv:\output.dot"
         }
     }
 
-    It "Should return output.svg path" {
-        (ConvertTo-Svg @PassParams).FullName | Should -Exist
+    It "Should return output.dot path" {
+        (ConvertTo-Dot @PassParams).FullName | Should -Exist
     }
     It -Skip "Should throw" {
-        { ConvertTo-Svg @FailParams } | Should -Throw
+        { ConvertTo-Dot @FailParams } | Should -Throw
     }
 }

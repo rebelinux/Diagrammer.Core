@@ -12,20 +12,20 @@ Describe Get-DiaImagePercent {
         $FromImg = Get-DiaImagePercent -ImageInput $Logo
     }
 
-    It "Should returns Height from image file" {
+    It "Should return Height from image file" {
         $FromImg.Height | Should -Be 225
     }
-    It "Should returns Width from image file" {
+    It "Should return Width from image file" {
         $FromImg.Width | Should -Be 225
     }
 
-    It "Should returns Height from base64 file" {
+    It "Should return Height from base64 file" {
         $FromBase64.Height | Should -Be 225
     }
-    It "Should returns Width from base64 file" {
+    It "Should return Width from base64 file" {
         $FromBase64.Width | Should -Be 225
     }
-    It "Should returns throw" {
+    It "Should return throw" {
         { Get-DiaImagePercent } | Should -Throw -ExpectedMessage 'Error: Please provide a image path or a graphviz string to process.'
     }
 }

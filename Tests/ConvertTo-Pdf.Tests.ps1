@@ -1,9 +1,9 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Svg.ps1
+    . $ProjectRoot\SRC\private\ConvertTo-Pdf.ps1
 }
 
-Describe ConvertTo-Svg {
+Describe ConvertTo-Pdf {
     BeforeAll {
         $GraphvizObj = 'digraph g {
             compound="true";
@@ -14,18 +14,18 @@ Describe ConvertTo-Svg {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.svg'
+            DestinationPath = Join-Path $TestDrive 'output.pdf'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDriv:\output.svg"
+            DestinationPath = "TestDriv:\output.pdf"
         }
     }
 
-    It "Should return output.svg path" {
-        (ConvertTo-Svg @PassParams).FullName | Should -Exist
+    It "Should return output.pdf path" {
+        (ConvertTo-Pdf @PassParams).FullName | Should -Exist
     }
     It -Skip "Should throw" {
-        { ConvertTo-Svg @FailParams } | Should -Throw
+        { ConvertTo-Pdf @FailParams } | Should -Throw
     }
 }

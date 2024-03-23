@@ -15,7 +15,7 @@ Describe Test-Logo {
         $LogoPath = Join-Path $IconPath 'Logo.png'
     }
 
-    It "Should returns Logo.png string from Images hashtable" {
+    It "Should return Logo.png string from Images hashtable" {
         $Images[$ImageName] | Should -Be 'Logo.png'
     }
     It "Vefified if Logo.png is inside TestDrive:\ folder" {

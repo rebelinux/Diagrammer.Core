@@ -9,10 +9,10 @@ Describe Split-Array {
         $SplitArray = Split-Array -inArray $ArrayObj -Size 3
     }
 
-    It "Should returns a object split by size" {
+    It "Should return a object split by size" {
         $SplitArray.Count | Should -BeExactly 3
     }
-    It "Should returns 3 Object" {
+    It "Should return 3 Object" {
         $SplitArray[0] | Should -HaveCount 3
     }
     It "Should contain 4 as array member" {
