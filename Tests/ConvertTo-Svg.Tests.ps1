@@ -1,4 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\ConvertTo-Svg.ps1
+}
 
 Describe ConvertTo-Svg {
     BeforeAll {

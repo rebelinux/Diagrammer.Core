@@ -1,4 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Get-NodeIP.ps1
+}
 
 Describe Get-NodeIP {
     It "Should returns Host IP Address" {

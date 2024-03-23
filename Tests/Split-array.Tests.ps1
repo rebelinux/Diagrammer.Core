@@ -1,4 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Split-Array.ps1
+}
 
 Describe Split-Array {
     BeforeAll {

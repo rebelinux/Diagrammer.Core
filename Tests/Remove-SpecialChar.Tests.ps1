@@ -1,4 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Remove-SpecialChar.ps1
+}
 
 Describe Remove-SpecialChar {
     It "Should returns string without SpecialChar" {

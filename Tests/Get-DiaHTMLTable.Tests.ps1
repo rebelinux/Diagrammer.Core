@@ -1,4 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Get-DiaHTMLTable.ps1
+}
 
 Describe Get-DiaHTMLTable {
     BeforeAll {

@@ -1,4 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Get-DiaImagePercent.ps1
+}
 
 Describe Get-DiaImagePercent {
     BeforeAll {

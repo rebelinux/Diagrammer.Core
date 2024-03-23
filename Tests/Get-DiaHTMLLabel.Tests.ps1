@@ -1,4 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Get-DiaHTMLLabel.ps1
+}
 
 Describe Get-DiaHTMLLabel {
     BeforeAll {

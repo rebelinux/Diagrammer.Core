@@ -1,5 +1,7 @@
-. $PSScriptRoot\_InitializeTests.ps1
-
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Test-Image.ps1
+}
 Describe Test-Image {
     It "Should returns true if extension is in @( .jpeg, .jpg, .png )" {
         Test-Image -Path 'Diagrammer.png' | Should -Be $true
