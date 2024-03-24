@@ -16,7 +16,21 @@ function Test-Logo {
     param(
 
         [parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true)]
+        [ValidateScript( {
+            if (Test-Path -Path $_) {
+                $true
+            } else {
+                throw "File $_ not found!"
+            }
+        })]
         [System.IO.FileInfo]$LogoPath,
+        [ValidateScript( {
+            if (Test-Path -Path $_) {
+                $true
+            } else {
+                throw "File $_ not found!"
+            }
+        })]
         [System.IO.FileInfo]$IconPath,
         [hashtable] $ImagesObj
     )

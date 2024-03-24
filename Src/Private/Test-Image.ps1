@@ -18,7 +18,14 @@ function Test-Image {
         [parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()]
         [Alias('PSPath')]
-        $Path
+        [ValidateScript( {
+            if (Test-Path -Path $_) {
+                $true
+            } else {
+                throw "File $_ not found!"
+            }
+        })]
+        [System.IO.FileInfo]$Path
     )
 
     PROCESS {
