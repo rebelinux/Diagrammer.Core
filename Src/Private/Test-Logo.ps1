@@ -16,8 +16,8 @@ function Test-Logo {
     param(
 
         [parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true)]
-        [string]$LogoPath,
-        [string]$IconPath,
+        [System.IO.FileInfo]$LogoPath,
+        [System.IO.FileInfo]$IconPath,
         [hashtable] $ImagesObj
     )
 

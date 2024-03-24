@@ -6,7 +6,7 @@ BeforeAll {
 
 Describe Test-Logo {
     BeforeAll {
-        $IconPath = 'TestDrive:\'
+        $IconPath = $TestDrive
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
         }
