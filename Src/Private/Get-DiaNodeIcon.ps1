@@ -35,6 +35,8 @@ Function Get-DiaNodeIcon {
         Object used to specified aditional node information
     .PARAMETER IconType
         Icon used to draw the node type
+    .PARAMETER ImagesObj
+        Hashtable with the IconName > IconPath translation
     #>
 
     [CmdletBinding()]

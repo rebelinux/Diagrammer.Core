@@ -7,7 +7,7 @@ function Test-Logo {
         Version:        0.1.1
         Author:         Joanthan Colon
     .EXAMPLE
-        Test-Image -LogoPath "C:\Users\jocolon\logo.png"
+        Test-Logo -LogoPath (Get-ChildItem -Path $Logo).FullName -IconPath $IconPath -ImagesObj $Images
     .LINK
     #>
 
@@ -16,8 +16,22 @@ function Test-Logo {
     param(
 
         [parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true)]
-        [string]$LogoPath,
-        [string]$IconPath,
+        [ValidateScript( {
+            if (Test-Path -Path $_) {
+                $true
+            } else {
+                throw "File $_ not found!"
+            }
+        })]
+        [System.IO.FileInfo]$LogoPath,
+        [ValidateScript( {
+            if (Test-Path -Path $_) {
+                $true
+            } else {
+                throw "File $_ not found!"
+            }
+        })]
+        [System.IO.FileInfo]$IconPath,
         [hashtable] $ImagesObj
     )
 

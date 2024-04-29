@@ -13,7 +13,7 @@ function ConvertTo-Base64 {
         https://github.com/rebelinux/Diagrammer.Core
     #>
     [CmdletBinding()]
-    [OutputType([String])]
+    [OutputType([string])]
     Param
     (
         [Parameter(
@@ -28,7 +28,13 @@ function ConvertTo-Base64 {
                     throw "File $_ not found!"
                 }
             })]
-        [string] $ImageInput
+        [System.IO.FileInfo] $ImageInput,
+        [Parameter(
+            Position = 1,
+            Mandatory = $false,
+            HelpMessage = 'Delete temporary image file'
+        )]
+        [Bool] $Delete = $true
     )
     process {
         Write-Verbose "Trying to convert Graphviz object to Base64 format."
@@ -40,10 +46,12 @@ function ConvertTo-Base64 {
             Write-Verbose $($_.Exception.Message)
         }
         if ($Base64) {
-            Write-Verbose -Message "Deleting Temporary PNG file: $($ImageInput)"
-            Remove-Item -Path $ImageInput
+            if ($Delete) {
+                Write-Verbose -Message "Deleting Temporary PNG file: $($ImageInput)"
+                Remove-Item -Path $ImageInput
+            }
             Write-Verbose "Successfully converted Graphviz object to Base64 format."
-            $Base64
+            return $Base64
         } else {
             Write-Verbose -Message "Deleting Temporary PNG file: $($ImageInput)"
             Remove-Item -Path $ImageInput

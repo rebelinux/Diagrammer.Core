@@ -45,6 +45,9 @@ function Convert-DiaTableToHTML {
     .PARAMETER ScriptBlock
     A sub expression that contains Row commands
 
+    .PARAMETER IconDebug
+    Set the table debug mode
+
     .EXAMPLE
 
     .NOTES
@@ -107,7 +110,10 @@ function Convert-DiaTableToHTML {
         $HeaderFontColor = "white",
 
         [string]
-        $BorderColor = "white"
+        $BorderColor = "white",
+
+        [bool]
+        $IconDebug
     )
     begin {
         $tableData = [System.Collections.ArrayList]::new()
@@ -135,7 +141,13 @@ function Convert-DiaTableToHTML {
         }
     }
     end {
-        $html = "<TABLE CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD bgcolor='$HeaderColor' align='center'><font color='$HeaderFontColor'><B>{0}</B></font></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
-        Node $Name @{label = $html; shape = 'none'; fontname = $Fontname; fontsize = $FontSize; style = $Style; penwidth = 1; fillcolor = $Fillcolor; color = $BorderColor }
+        if ($IconDebug) {
+            $html = "<TABLE COLOR='red' CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD bgcolor='red' align='center'><font color='$HeaderFontColor'><B>{0}</B></font></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
+            Node $Name @{label = $html; shape = 'none'; fontname = $Fontname; fontsize = $FontSize; style = $Style; penwidth = 1; fillcolor = $Fillcolor; color = $BorderColor }
+
+        } else {
+            $html = "<TABLE CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD bgcolor='$HeaderColor' align='center'><font color='$HeaderFontColor'><B>{0}</B></font></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
+            Node $Name @{label = $html; shape = 'none'; fontname = $Fontname; fontsize = $FontSize; style = $Style; penwidth = 1; fillcolor = $Fillcolor; color = $BorderColor }
+        }
     }
 }
