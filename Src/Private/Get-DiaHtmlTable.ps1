@@ -29,7 +29,7 @@ Function Get-DiaHTMLTable {
             _________________
 
     .NOTES
-        Version:        0.1.7
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -54,6 +54,9 @@ Function Get-DiaHTMLTable {
         Hashtable with the IconName > IconPath translation
     .PARAMETER IconDebug
         Set the table debug mode
+    .PARAMETER TableStyle
+        Set the table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)
+        styles can be combines ("rounded,dashed")
     #>
     param(
         [string[]] $Rows,
@@ -65,7 +68,9 @@ Function Get-DiaHTMLTable {
         [Switch] $MultiColunms,
         [int] $ColumnSize = 2,
         [Hashtable] $ImagesObj = @{},
-        [bool] $IconDebug
+        [bool] $IconDebug,
+        [string] $TableStyle = "rounded,dashed",
+        [Switch] $NoFontBold
     )
 
     if ($MultiColunms) {
@@ -102,16 +107,20 @@ Function Get-DiaHTMLTable {
         $TR = ''
         foreach ($r in $Rows) {
             Write-Verbose "Creating Node: $r"
-            $TR += '<TR><TD valign="top" align="{0}" colspan="2"><B><FONT POINT-SIZE="{1}">{2}</FONT></B></TD></TR>' -f $Align, $FontSize, $r
+            if ($NoFontBold) {
+                $TR += '<TR><TD valign="top" align="{0}" colspan="2"><FONT POINT-SIZE="{1}">{2}</FONT></TD></TR>' -f $Align, $FontSize, $r
+            } else {
+                $TR += '<TR><TD valign="top" align="{0}" colspan="2"><B><FONT POINT-SIZE="{1}">{2}</FONT></B></TD></TR>' -f $Align, $FontSize, $r
+            }
         }
 
         if (!$ICON) {
-            return '<TABLE STYLE="rounded,dashed" border="{0}" cellborder="{1}" cellpadding="5">{2}</TABLE>' -f $TableBorder, $CellBorder, $TR
+            return '<TABLE STYLE="{0}" border="{1}" cellborder="{2}" cellpadding="5">{3}</TABLE>' -f $TableStyle ,$TableBorder, $CellBorder, $TR
         } elseif ($IconDebug) {
-            return '<TABLE STYLE="rounded,dashed" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD fixedsize="true" width="80" height="80" ALIGN="center" colspan="1" rowspan="4">Logo</TD></TR>{0}</TABLE>' -f $TR
+            return '<TABLE STYLE="{0}" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD fixedsize="true" width="80" height="80" ALIGN="center" colspan="1" rowspan="4">Logo</TD></TR>{1}</TABLE>' -f $TableStyle, $TR
 
         } else {
-            return '<TABLE STYLE="rounded,dashed" border="{0}" cellborder="{1}" cellpadding="5"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{2}" colspan="1" rowspan="4"><img src="{3}"/></TD></TR>{4}</TABLE>' -f $TableBorder, $CellBorder, $Align, $Icon, $TR
+            return '<TABLE STYLE="{0}" border="{1}" cellborder="{2}" cellpadding="5"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{3}" colspan="1" rowspan="4"><img src="{4}"/></TD></TR>{5}</TABLE>' -f $TableStyle, $TableBorder, $CellBorder, $Align, $Icon, $TR
         }
     }
 }
