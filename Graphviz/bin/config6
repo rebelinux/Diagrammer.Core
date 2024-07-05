@@ -29,9 +29,6 @@ gvplugin_core.dll core {
 		cmapx_np:map 1
 	}
 	device {
-		mp:mp -1
-	}
-	device {
 		ps:ps 1
 		ps2:ps 1
 		eps:ps 1
@@ -65,9 +62,6 @@ gvplugin_core.dll core {
 	}
 	render {
 		map 1
-	}
-	render {
-		mp -1
 	}
 	render {
 		ps 1
