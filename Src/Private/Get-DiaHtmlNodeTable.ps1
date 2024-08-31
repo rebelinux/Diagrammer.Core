@@ -171,7 +171,7 @@ Function Get-DiaHTMLNodeTable {
                             $TDInfo = ''
                         } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Multiple key and each key have a Single Values
-                            #  Keys:        Values:
+                            #       Keys:        Values:
                             #       Path:          C:\Backup
                             #       OBjStor:       True
                             #
@@ -229,7 +229,7 @@ Function Get-DiaHTMLNodeTable {
                             $TDInfo = ''
                         } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Multiple key and each key have a Single Values
-                            #  Keys:        Values:
+                            #       Keys:        Values:
                             #       Path:          C:\Backup
                             #       OBjStor:       True
                             #
@@ -288,7 +288,7 @@ Function Get-DiaHTMLNodeTable {
                             $TDInfo = ''
                         } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Multiple key and each key have a Single Values
-                            #  Keys:        Values:
+                            #       Keys:          Values:
                             #       Path:          C:\Backup
                             #       OBjStor:       True
                             #
