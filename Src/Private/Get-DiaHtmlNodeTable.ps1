@@ -27,7 +27,7 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.1.9
+        Version:        0.2.4
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -64,9 +64,9 @@ Function Get-DiaHTMLNodeTable {
         [string[]] $inputObject,
         [Parameter(
             Mandatory = $true,
-            HelpMessage = 'Please provide the icon type'
+            HelpMessage = 'Please provide the icon type or icon type array'
         )]
-        [string] $iconType,
+        [string[]] $iconType,
         [Parameter(
             Mandatory = $true,
             HelpMessage = 'Please provide the Image Hashtable Object'
@@ -136,11 +136,23 @@ Function Get-DiaHTMLNodeTable {
         }
     }
 
-    if ($ImagesObj[$iconType]) {
-        $Icon = $ImagesObj[$iconType]
-    } else { $Icon = $false }
+    if ($iconType.Count -gt 1) {
+        $Icon = @()
+        foreach ($i in $iconType) {
+            if ($ImagesObj[$i]) {
+                $Icon += $ImagesObj[$i]
+            } else {
+                $Icon += $ImagesObj["VBR_No_Icon"]
+            }
+        }
+    } else {
+        if ($ImagesObj[$iconType[0]]) {
+            $Icon = $ImagesObj[$iconType[0]]
+        } else { $Icon = $false }
+    }
 
     $Number = 0
+    $iconNumber = 0
 
     if ($Icon) {
         if ($IconDebug) {
@@ -263,8 +275,15 @@ Function Get-DiaHTMLNodeTable {
         } else {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
-                    foreach ($Element in $Group[$Number]) {
-                        $TDICON += '<TD ALIGN="{0}" colspan="1"><img src="{1}"/></TD>' -f $Align, $Icon
+                    if ($Icon.Count -gt 1) {
+                        foreach ($Element in $Group[$Number]) {
+                            $TDICON += '<TD ALIGN="{0}" colspan="1"><img src="{1}"/></TD>' -f $Align, $Icon[$iconNumber]
+                            $iconNumber++
+                        }
+                    } else {
+                        foreach ($Element in $Group[$Number]) {
+                            $TDICON += '<TD ALIGN="{0}" colspan="1"><img src="{1}"/></TD>' -f $Align, $Icon
+                        }
                     }
                     $TR += '<TR>{0}</TR>' -f $TDICON
                     $TDICON = ''
