@@ -4,6 +4,20 @@ function New-Diagrammer {
         Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
     .DESCRIPTION
         Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
+    .PARAMETER EdgeArrowSize
+        Control edge arrow size (Default 1).
+    .PARAMETER EdgeLineWidth
+        Control edge linewidth (Default 3).
+    .PARAMETER EdgeColor
+        Control edge line color (RGB format Ex: #FFFFFF) (Default #71797E).
+    .PARAMETER FontName
+        Control diagram font name (Default 'Segoe Ui Black').
+    .PARAMETER FontColor
+        Control diagram font color (RGB format Ex: #FFFFFF) (Default #565656).
+    .PARAMETER FontName
+        Control diagram font name (Default 'Segoe Ui Black').
+    .PARAMETER NodeFontSize
+        Control Node font size (Default 14).
     .PARAMETER Format
         Specifies the output format of the diagram.
         The supported output formats are PDF, PNG, DOT & SVG.
@@ -42,14 +56,26 @@ function New-Diagrammer {
     .PARAMETER Logo
         Allow to change the Main logo to a custom one.
         Image should be 400px x 100px or less in size.
+    .PARAMETER LogoName
+        Allow to change the Main logo to a custom one.
+        Image should be 400px x 100px or less in size.
+        Must be defined in $ImageObj
     .PARAMETER SignatureLogo
         Allow to change the signature logo to a custom one.
         Image should be 120px x 130px or less in size.
     .PARAMETER Signature
         Allow the creation of footer signature.
         AuthorName and CompanyName must be set to use this property.
+    .PARAMETER ImagesObj
+        Hashtable with the IconName > IconPath translation
+    .PARAMETER MainGraphAttributes
+        Hashtable with general graph attributes (fontname,fontcolor,imagepath,style,imagepath)
+    .PARAMETER WaterMarkColor
+        Control diagram WaterMark color (Default DarkGray).
+    .PARAMETER WaterMarkText
+        Control diagram WaterMark (Default empty).
     .NOTES
-        Version:        0.3.0
+        Version:        0.2.4
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -73,13 +99,84 @@ function New-Diagrammer {
     param (
 
         [Parameter(
-            Position = 4,
+            Position = 1,
+            Mandatory = $true,
+            HelpMessage = 'Please provide the psgraph input'
+        )]
+        $InputObject,
+
+        [Parameter(
+            Position = 2,
             Mandatory = $false,
             HelpMessage = 'Please provide the diagram output format'
         )]
         [ValidateNotNullOrEmpty()]
         [ValidateSet('pdf', 'svg', 'png', 'dot', 'base64')]
         [Array] $Format = 'pdf',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $Edgecolor = '#71797E',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the edge arrow size (Int)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $EdgeArrowSize = 1,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the edge line width (Int)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $EdgeLineWidth = 3,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $Fontcolor = '#565656',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram font name'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $Fontname = 'Segoe Ui Black',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the node font size (Int)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $NodeFontSize = 14,
+
+        [Parameter(
+            Position = 3,
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram output format'
+        )]
+        [ValidateScript( {
+                if (Test-Path -Path $_) {
+                    $true
+                } else {
+                    throw "Path $_ not found!"
+                }
+            })]
+        [System.IO.FileInfo] $IconPath,
+
+        [Parameter(
+            Position = 4,
+            Mandatory = $false,
+            HelpMessage = 'Please provide the icons hashtable'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [Hashtable] $ImagesObj,
 
         [Parameter(
             Mandatory = $false,
@@ -116,6 +213,12 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Please provide the name of the signature logo (Must be defined in $ImageObj)'
+        )]
+        [string] $SignatureLogoName,
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Please provide the path to the custom logo'
         )]
         [ValidateScript( {
@@ -129,22 +232,16 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specify the diagram output file name path'
+            HelpMessage = 'Please provide the name of the main diagram logo (Must be defined in $ImageObj)'
+        )]
+        [string] $LogoName,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specify the Diagram filename'
         )]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript({
-                if ($Format.count -lt 2) {
-                    $true
-                } else {
-                    throw "Format value must be unique if Filename is especified."
-                }
-                if (-Not $_.EndsWith($Format)) {
-                    throw "The file specified in the path argument must be of type $Format"
-                }
-                return $true
-            })]
         [String] $Filename,
-
 
         [Parameter(
             Mandatory = $false,
@@ -206,16 +303,40 @@ function New-Diagrammer {
             Mandatory = $true,
             HelpMessage = 'Set the Main Label used at the top of the diagram'
         )]
-        [string] $MainDiagramLabel
+        [string] $MainDiagramLabel,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Provide a Hashtable with general graph attributes (fontname,fontcolor,imagepath,style,imagepath)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [Hashtable] $MainGraphAttributes,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Provide a System.Drawing.Color compatible color for the WaterMark text (Ex. Red, Green, Blue, Black)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $WaterMarkColor = 'DarkGray',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow the creation of a watermark in the diagram'
+        )]
+        [string] $WaterMarkText = ''
     )
 
 
     begin {
 
         # Variable translating Icon to Image Path ($IconPath)
-        $script:Images = @{
-            "Main_Logo" = "Diagrammer.png"
-            "Logo_Footer" = "Diagrammer_footer.png"
+        if ($ImagesObj) {
+            $script:Images = $ImagesObj
+        } else {
+            $script:Images = @{
+                "Main_Logo" = "Diagrammer.png"
+                "Logo_Footer" = "Diagrammer_footer.png"
+            }
         }
 
         if (($Format -ne "base64") -and !(Test-Path $OutputFolderPath)) {
@@ -245,22 +366,26 @@ function New-Diagrammer {
             $NodeDebugEdge = @{color = 'transparent'; style = 'transparent'; shape = 'none' }
         }
 
-        $RootPath = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
-        $IconPath = Join-Path $RootPath 'icons'
         $Dir = switch ($Direction) {
             'top-to-bottom' { 'TB' }
             'left-to-right' { 'LR' }
         }
 
         # Validate Custom logo
-        if ($Logo) {
+        if ($Logo -and (-Not $LogoName)) {
             $CustomLogo = Test-Logo -LogoPath (Get-ChildItem -Path $Logo).FullName -IconPath $IconPath -ImagesObj $Images
+        } elseif ($LogoName) {
+            $CustomLogo = $LogoName
         } else {
-            $CustomLogo = "Main_Logo"
+            $CustomLogo = "Diagrammer.png"
         }
         # Validate Custom Signature Logo
-        if ($SignatureLogo) {
+        if ($SignatureLogo -and (-Not $SignatureLogoName )) {
             $CustomSignatureLogo = Test-Logo -LogoPath (Get-ChildItem -Path $SignatureLogo).FullName -IconPath $IconPath -ImagesObj $Images
+        } elseif ($SignatureLogoName) {
+            $CustomSignatureLogo = $SignatureLogoName
+        } else {
+            $CustomSignatureLogo = "Diagrammer.png"
         }
 
         $MainGraphAttributes = @{
@@ -269,8 +394,8 @@ function New-Diagrammer {
             overlap = 'false'
             splines = $EdgeType
             penwidth = 1.5
-            fontname = "Segoe Ui Black"
-            fontcolor = '#005f4b'
+            fontname = $Fontname
+            fontcolor = $Fontcolor
             fontsize = 32
             style = "dashed"
             labelloc = 't'
@@ -291,7 +416,7 @@ function New-Diagrammer {
                 labelloc = 't'
                 style = 'filled'
                 fillColor = '#71797E'
-                fontsize = 14;
+                fontsize = $NodeFontSize
                 imagescale = $true
             }
             # Edge default theme
@@ -299,9 +424,9 @@ function New-Diagrammer {
                 style = 'dashed'
                 dir = 'both'
                 arrowtail = 'dot'
-                color = '#71797E'
-                penwidth = 3
-                arrowsize = 1
+                color = $Edgecolor
+                penwidth = $EdgeLineWidth
+                arrowsize = $EdgeArrowSize
             }
 
             # Signature Section
@@ -329,13 +454,19 @@ function New-Diagrammer {
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
                 SubGraph MainGraph -Attributes @{Label = (Get-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
-
+                    $InputObject
                 }
             }
         }
     }
     end {
-        #Export  the Diagram
-        Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $Format -Filename $Filename -OutputFolderPath $OutputFolderPath -WaterMarkText $Options.DiagramWaterMark -WaterMarkColor "Green"
+        foreach ($OutputFormat in $Format) {
+            #Export the Diagram
+            if ($Graph) {
+                Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath
+            } else {
+                Write-PScriboMessage -IsWarning "No Graph object found. Disabling diagram section"
+            }
+        }
     }
 }
