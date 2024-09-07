@@ -4,6 +4,20 @@ function New-Diagrammer {
         Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
     .DESCRIPTION
         Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
+    .PARAMETER EdgeArrowSize
+        Control edge arrow size (Default 1).
+    .PARAMETER EdgeLineWidth
+        Control edge linewidth (Default 3).
+    .PARAMETER EdgeColor
+        Control edge line color (RGB format Ex: #FFFFFF) (Default #71797E).
+    .PARAMETER FontName
+        Control diagram font name (Default 'Segoe Ui Black').
+    .PARAMETER FontColor
+        Control diagram font color (RGB format Ex: #FFFFFF) (Default #565656).
+    .PARAMETER FontName
+        Control diagram font name (Default 'Segoe Ui Black').
+    .PARAMETER NodeFontSize
+        Control Node font size (Default 14).
     .PARAMETER Format
         Specifies the output format of the diagram.
         The supported output formats are PDF, PNG, DOT & SVG.
@@ -56,6 +70,10 @@ function New-Diagrammer {
         Hashtable with the IconName > IconPath translation
     .PARAMETER MainGraphAttributes
         Hashtable with general graph attributes (fontname,fontcolor,imagepath,style,imagepath)
+    .PARAMETER WaterMarkColor
+        Control diagram WaterMark color (Default DarkGray).
+    .PARAMETER WaterMarkText
+        Control diagram WaterMark (Default empty).
     .NOTES
         Version:        0.2.4
         Author(s):      Jonathan Colon
@@ -95,6 +113,48 @@ function New-Diagrammer {
         [ValidateNotNullOrEmpty()]
         [ValidateSet('pdf', 'svg', 'png', 'dot', 'base64')]
         [Array] $Format = 'pdf',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $Edgecolor = '#71797E',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the edge arrow size (Int)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $EdgeArrowSize = 1,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the edge line width (Int)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $EdgeLineWidth = 3,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $Fontcolor = '#565656',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram font name'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $Fontname = 'Segoe Ui Black',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the node font size (Int)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $NodeFontSize = 14,
 
         [Parameter(
             Position = 3,
@@ -250,7 +310,20 @@ function New-Diagrammer {
             HelpMessage = 'Provide a Hashtable with general graph attributes (fontname,fontcolor,imagepath,style,imagepath)'
         )]
         [ValidateNotNullOrEmpty()]
-        [Hashtable] $MainGraphAttributes
+        [Hashtable] $MainGraphAttributes,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Provide a System.Drawing.Color compatible color for the WaterMark text (Ex. Red, Green, Blue, Black)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $WaterMarkColor = 'DarkGray',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow the creation of a watermark in the diagram'
+        )]
+        [string] $WaterMarkText = ''
     )
 
 
@@ -321,8 +394,8 @@ function New-Diagrammer {
             overlap = 'false'
             splines = $EdgeType
             penwidth = 1.5
-            fontname = "Segoe Ui Black"
-            fontcolor = '#072E58'
+            fontname = $Fontname
+            fontcolor = $Fontcolor
             fontsize = 32
             style = "dashed"
             labelloc = 't'
@@ -343,7 +416,7 @@ function New-Diagrammer {
                 labelloc = 't'
                 style = 'filled'
                 fillColor = '#71797E'
-                fontsize = 14;
+                fontsize = $NodeFontSize
                 imagescale = $true
             }
             # Edge default theme
@@ -351,9 +424,9 @@ function New-Diagrammer {
                 style = 'dashed'
                 dir = 'both'
                 arrowtail = 'dot'
-                color = '#71797E'
-                penwidth = 3
-                arrowsize = 1
+                color = $Edgecolor
+                penwidth = $EdgeLineWidth
+                arrowsize = $EdgeArrowSize
             }
 
             # Signature Section
@@ -390,7 +463,7 @@ function New-Diagrammer {
         foreach ($OutputFormat in $Format) {
             #Export the Diagram
             if ($Graph) {
-                Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $Options.DiagramWaterMark -WaterMarkColor "Green" -IconPath $IconPath
+                Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath
             } else {
                 Write-PScriboMessage -IsWarning "No Graph object found. Disabling diagram section"
             }
