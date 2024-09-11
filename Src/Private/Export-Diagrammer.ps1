@@ -5,7 +5,7 @@ function Export-Diagrammer {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.1.8
+        Version:        0.2.5
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

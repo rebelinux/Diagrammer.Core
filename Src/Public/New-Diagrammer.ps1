@@ -75,7 +75,7 @@ function New-Diagrammer {
     .PARAMETER WaterMarkText
         Control diagram WaterMark (Default empty).
     .NOTES
-        Version:        0.2.4
+        Version:        0.2.5
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
