@@ -5,7 +5,7 @@ function Export-Diagrammer {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.1.8
+        Version:        0.2.5
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -87,84 +87,77 @@ function Export-Diagrammer {
     )
 
     process {
-        if ($ErrorDebug) {
-            $GraphObj
-        } else {
-
-            # Setup all paths required for script to run
-            $script:RootPath = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
-            $script:GraphvizPath = Join-Path $RootPath 'Graphviz\bin\dot.exe'
+        # Setup all paths required for script to run
+        $script:RootPath = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
+        $script:GraphvizPath = Join-Path $RootPath 'Graphviz\bin\dot.exe'
 
 
-            # If Filename parameter is not specified, set filename to the Output.$OutputFormat
-            if (!$Filename) {
-                if ($Format -ne "base64") {
-                    $Filename = "Output.$Format"
-                } else { $Filename = "Output.png" }
-            }
-            Try {
-                $DestinationPath = Join-Path -Path $OutputFolderPath -ChildPath $FileName
-
-                if ($Format -eq "svg") {
-                    if ($WaterMarkText) {
-                        Write-Verbose "WaterMark option is not supported with the svg format."
-                    }
-                    ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
-                } elseif ($Format -eq "dot") {
-                    if ($WaterMarkText) {
-                        Write-Verbose "WaterMark option is not supported with the dot format."
-                    }
-                    ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
-                } elseif ($Format -eq "pdf") {
-                    if ($WaterMarkText) {
-                        Write-Verbose "WaterMark option is not supported with the pdf format."
-                    }
-                    ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
-                } else {
-                    # Always convert to PNG format before edit output image.
-                    try {
-                        $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "TempOutPut.png"
-                        $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
-                    } catch {
-                        Write-Verbose "Unable to convert Graphviz object to PNG format. Path: $TempOutPut"
-                        Write-Verbose $($_.Exception.Message)
-                    }
-
-
-                    if ($WaterMarkText) {
-                        Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
-                    }
-                }
-
-                if ($Format -eq "base64") {
-                    ConvertTo-Base64 -ImageInput $Document
-                } elseif ($Format -eq "png") {
-                    if ($WaterMarkText) {
-                        if ($Document) {
-                            Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
-                            Remove-Item -Path $Document
-                        }
-                        Get-ChildItem -Path $DestinationPath
-                    } else {
-                        Copy-Item -Path $Document.FullName -Destination $DestinationPath
-                        if ($Document) {
-                            Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
-                            Remove-Item -Path $Document
-                        }
-                        Get-ChildItem -Path $DestinationPath
-                    }
-                }
-
-            } catch {
-                if ($Document) {
-                    Remove-Item -Path $Document
-                }
-                $Err = $_
-                Write-Error $Err
-            }
+        # If Filename parameter is not specified, set filename to the Output.$OutputFormat
+        if (!$Filename) {
+            if ($Format -ne "base64") {
+                $Filename = "Output.$Format"
+            } else { $Filename = "Output.png" }
         }
+        Try {
+            $DestinationPath = Join-Path -Path $OutputFolderPath -ChildPath $FileName
+
+            if ($Format -eq "svg") {
+                if ($WaterMarkText) {
+                    Write-Verbose "WaterMark option is not supported with the svg format."
+                }
+                ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
+            } elseif ($Format -eq "dot") {
+                if ($WaterMarkText) {
+                    Write-Verbose "WaterMark option is not supported with the dot format."
+                }
+                ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
+            } elseif ($Format -eq "pdf") {
+                if ($WaterMarkText) {
+                    Write-Verbose "WaterMark option is not supported with the pdf format."
+                }
+                ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
+            } else {
+                # Always convert to PNG format before edit output image.
+                try {
+                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "TempOutPut.png"
+                    $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
+                } catch {
+                    Write-Verbose "Unable to convert Graphviz object to PNG format. Path: $TempOutPut"
+                    Write-Verbose $($_.Exception.Message)
+                }
 
 
+                if ($WaterMarkText) {
+                    Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
+                }
+            }
+
+            if ($Format -eq "base64") {
+                ConvertTo-Base64 -ImageInput $Document
+            } elseif ($Format -eq "png") {
+                if ($WaterMarkText) {
+                    if ($Document) {
+                        Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
+                        Remove-Item -Path $Document
+                    }
+                    Get-ChildItem -Path $DestinationPath
+                } else {
+                    Copy-Item -Path $Document.FullName -Destination $DestinationPath
+                    if ($Document) {
+                        Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
+                        Remove-Item -Path $Document
+                    }
+                    Get-ChildItem -Path $DestinationPath
+                }
+            }
+
+        } catch {
+            if ($Document) {
+                Remove-Item -Path $Document
+            }
+            $Err = $_
+            Write-Error $Err
+        }
     }
     end {}
 }

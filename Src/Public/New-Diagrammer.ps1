@@ -75,7 +75,7 @@ function New-Diagrammer {
     .PARAMETER WaterMarkText
         Control diagram WaterMark (Default empty).
     .NOTES
-        Version:        0.2.4
+        Version:        0.2.5
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -329,6 +329,14 @@ function New-Diagrammer {
 
     begin {
 
+        if ($EnableErrorDebug) {
+            $global:VerbosePreference = 'Continue'
+            $global:DebugPreference = 'Continue'
+        } else {
+            $global:VerbosePreference = 'SilentlyContinue'
+            $global:DebugPreference = 'SilentlyContinue'
+        }
+
         # Variable translating Icon to Image Path ($IconPath)
         if ($ImagesObj) {
             $script:Images = $ImagesObj
@@ -431,14 +439,14 @@ function New-Diagrammer {
 
             # Signature Section
             if ($Signature) {
-                Write-PScriboMessage "Generating diagram signature"
+                Write-Verbose "Generating diagram signature"
                 if ($CustomSignatureLogo) {
                     $Signature = (Get-DiaHTMLTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
                 } else {
                     $Signature = (Get-DiaHTMLTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
                 }
             } else {
-                Write-PScriboMessage "No diagram signature specified"
+                Write-Verbose "No diagram signature specified"
                 $Signature = " "
             }
 
@@ -465,7 +473,7 @@ function New-Diagrammer {
             if ($Graph) {
                 Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath
             } else {
-                Write-PScriboMessage -IsWarning "No Graph object found. Disabling diagram section"
+                Write-Verbose "No Graph object found. Disabling diagram section"
             }
         }
     }
