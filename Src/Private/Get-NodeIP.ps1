@@ -4,7 +4,7 @@ function Get-NodeIP {
         Used by Diagrammer to translate node name to an network ip address type object.
     .DESCRIPTION
     .NOTES
-        Version:        0.1.1
+        Version:        0.2.6
         Author:         Jonathan Colon
     .EXAMPLE
     .LINK
@@ -20,9 +20,12 @@ function Get-NodeIP {
                 } elseif ("InterNetworkV6" -in [System.Net.Dns]::GetHostAddresses($Hostname).AddressFamily) {
                     $IPADDR = ([System.Net.Dns]::GetHostAddresses($Hostname) | Where-Object { $_.AddressFamily -eq 'InterNetworkV6' }).IPAddressToString
                 } else {
-                    $IPADDR = 127.0.0.1
+                    $IPADDR = $Null
                 }
-            } catch { $null }
+            } catch {
+                Write-Verbose "Unable to resolve Hostname Address: $Hostname"
+                $IPADDR = $Null
+            }
             $NodeIP = Switch ([string]::IsNullOrEmpty($IPADDR)) {
                 $true { 'Unknown' }
                 $false { $IPADDR }
