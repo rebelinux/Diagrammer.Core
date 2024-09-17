@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.8] - 2024-09-17
 
+### Added
+
+- Add option to set fontcolor, bgcolor edge color & node fillcolor
+
 ### Changed
 
-- Added option to set fontcolor, bgcolor edge color & node fillcolor
 - Update Graphviz binaries to v12.1.1
 
 ## [0.2.7] - 2024-09-12
