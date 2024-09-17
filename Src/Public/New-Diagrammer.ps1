@@ -157,6 +157,13 @@ function New-Diagrammer {
         [string] $NodeFontSize = 14,
 
         [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF)'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [string] $NodeFontcolor = 'Black',
+
+        [Parameter(
             Position = 3,
             Mandatory = $false,
             HelpMessage = 'Please provide the diagram output format'
@@ -323,7 +330,13 @@ function New-Diagrammer {
             Mandatory = $false,
             HelpMessage = 'Allow the creation of a watermark in the diagram'
         )]
-        [string] $WaterMarkText = ''
+        [string] $WaterMarkText = '',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set diagram backgroud color'
+        )]
+        [string] $MainGraphBGColor = 'White'
     )
 
 
@@ -410,6 +423,7 @@ function New-Diagrammer {
             imagepath = $IconPath
             nodesep = $NodeSeparation
             ranksep = $SectionSeparation
+            bgcolor = $MainGraphBGColor
         }
     }
 
@@ -426,6 +440,7 @@ function New-Diagrammer {
                 fillColor = '#71797E'
                 fontsize = $NodeFontSize
                 imagescale = $true
+                fontcolor = $NodeFontcolor
             }
             # Edge default theme
             Edge @{
@@ -435,6 +450,7 @@ function New-Diagrammer {
                 color = $Edgecolor
                 penwidth = $EdgeLineWidth
                 arrowsize = $EdgeArrowSize
+                fontcolor = $Edgecolor
             }
 
             # Signature Section
