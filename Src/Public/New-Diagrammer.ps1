@@ -137,7 +137,7 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF)'
+            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF) or color string'
         )]
         [ValidateNotNullOrEmpty()]
         [string] $Fontcolor = '#565656',
@@ -158,7 +158,7 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF)'
+            HelpMessage = 'Please provide the node font color in RGB format (Ex: #FFFFFF) or color string'
         )]
         [ValidateNotNullOrEmpty()]
         [string] $NodeFontcolor = 'Black',
