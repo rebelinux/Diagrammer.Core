@@ -38,7 +38,7 @@ function Get-DiaImagePercent {
 
     begin {
         # Validate mandatory parameters
-        if ((!$PSBoundParameters.ContainsKey('ImageInput')) -and (!$PSBoundParameters.ContainsKey('GraphObj'))) {
+        if ((-Not $PSBoundParameters.ContainsKey('ImageInput')) -and (-Not $PSBoundParameters.ContainsKey('GraphObj'))) {
             throw "Error: Please provide a image path or a graphviz string to process."
         }
     }

@@ -6,6 +6,6 @@ $Global:ModuleManifestPath = Join-Path $Global:ModuleRoot ('{0}.psd1' -f $Global
 
 $Global:GraphvizPath = Join-Path $ProjectRoot 'Graphviz\bin\dot.exe'
 
-if(!(Get-Module $ModuleName)){
-	Import-Module $ModuleRoot -Force
+if (-Not (Get-Module $ModuleName)) {
+    Import-Module $ModuleRoot -Force
 }

@@ -9,7 +9,18 @@ Function Get-DiaHTMLNodeTable {
         # Array of String *6 Objects*
         $DCsArray = @("Server-dc-01v","Server-dc-02v","Server-dc-03v","Server-dc-04v","Server-dc-05v","Server-dc-06v")
 
-        Get-DiaHTMLNodeTable -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -ImagesObj $Images -IconDebug $IconDebug
+        $Images = @{
+            "Microsoft_Logo" = "Microsoft_Logo.png"
+            "ForestRoot" = "Forrest_Root.png"
+            "AD_LOGO_Footer" = "DMAD_Logo.png"
+            "AD_DC" = "DomainController.png"
+            "AD_Domain" = "ADDomain.png"
+            "AD_Site" = "Site.png"
+            "AD_Site_Subnet" = "SubNet.png"
+            "AD_Site_Node" = "SiteNode.png"
+        }
+
+        Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -IconDebug $True
 
         ________________________________ _______________
         |               |               |               |
@@ -27,7 +38,7 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.4
+        Version:        0.2.9
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -41,6 +52,10 @@ Function Get-DiaHTMLNodeTable {
         The table cell border
     .PARAMETER FontSize
         The cell text font size
+    .PARAMETER FontName
+        The cell text font size
+    .PARAMETER FontColor
+        The text font color used inside the cell (Default #565656)
     .PARAMETER IconType
         Node Icon type
     .PARAMETER ColumnSize
@@ -55,7 +70,19 @@ Function Get-DiaHTMLNodeTable {
         Set the table debug mode
     .PARAMETER AditionalInfo
         Hashtable used to add more information to the table elements
+    .PARAMETER Subgraph
+        Allow to create a table used to add a logo to a Graphviz subgraph
+    .PARAMETER SubgraphTableStyle
+        Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)
     #>
+
+    <#
+        TODO
+        1. Add Icon to MultiColumns section
+        2. Change hardcoded values (FontName, FontColor, FontSize)
+        3. Document all parameters
+    #>
+
     param(
         [Parameter(
             Mandatory = $true,
@@ -63,15 +90,22 @@ Function Get-DiaHTMLNodeTable {
         )]
         [string[]] $inputObject,
         [Parameter(
-            Mandatory = $true,
-            HelpMessage = 'Please provide the icon type or icon type array'
-        )]
-        [string[]] $iconType,
-        [Parameter(
-            Mandatory = $true,
+            Mandatory = $false,
             HelpMessage = 'Please provide the Image Hashtable Object'
         )]
         [Hashtable] $ImagesObj,
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Please provide the icon type or icon type array'
+        )]
+        [ValidateScript({
+                if ($ImagesObj) {
+                    $true
+                } else {
+                    throw "ImagesObj table needed if IconType option is especified."
+                }
+            })]
+        [string[]] $iconType,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the text align'
@@ -81,17 +115,37 @@ Function Get-DiaHTMLNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set the width of the html table border'
         )]
-        [int] $tableBorder = 0,
+        [int] $TableBorder = 0,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the width of the html cell border'
         )]
-        [int] $cellBorder = 0,
+        [int] $CellBorder = 0,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the padding of the html cell border'
+        )]
+        [int] $CellPadding = 5,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the spacing of the html cell border'
+        )]
+        [int] $CellSpacing = 5,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font size'
         )]
         [int] $fontSize = 14,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'The cell text font name'
+        )]
+        [string] $fontName = "Segoe Ui Black",
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'The cell text font color'
+        )]
+        [string] $fontColor = "#565656",
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'This value is used to specified a int used to split the object inside the HTML table'
@@ -116,7 +170,55 @@ Function Get-DiaHTMLNodeTable {
             Mandatory = $false,
             HelpMessage = 'Hashtable used to add more information to the table elements (Not yet implemented)'
         )]
-        [hashtable[]]$AditionalInfo
+        [hashtable[]]$AditionalInfo,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Create the table with that can be used as a Subgraph replacement with the hashtable inside it'
+        )]
+        [Switch]$Subgraph,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the subgraph table icon'
+        )]
+        [ValidateScript({
+                if ($ImagesObj) {
+                    $true
+                } else {
+                    throw "ImagesObj table needed if SubgraphIconType option is especified."
+                }
+            })]
+        [string]$SubgraphIconType,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the subgraph table label'
+        )]
+        [string]$SubgraphLabel,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the subgraph table label position (top, down)'
+        )]
+        [ValidateSet('top', 'down')]
+        [string]$SubgraphLabelPos = 'down',
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
+        )]
+        [string]$SubgraphTableStyle,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table border color'
+        )]
+        [string]$TableBorderColor = "#000000",
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a subgraph icon width'
+        )]
+        [string] $SubgraphIconWidth,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a subgraph icon height'
+        )]
+        [string] $SubgraphIconHeight
     )
 
     if ($inputObject.Count -le 1) {
@@ -136,19 +238,27 @@ Function Get-DiaHTMLNodeTable {
         }
     }
 
-    if ($iconType.Count -gt 1) {
-        $Icon = @()
-        foreach ($i in $iconType) {
-            if ($ImagesObj[$i]) {
-                $Icon += $ImagesObj[$i]
-            } else {
-                $Icon += $ImagesObj["VBR_No_Icon"]
+    if ($ImagesObj) {
+        if ($iconType.Count -gt 1) {
+            $Icon = @()
+            foreach ($i in $iconType) {
+                if ($ImagesObj[$i]) {
+                    $Icon += $ImagesObj[$i]
+                } else {
+                    $Icon += $ImagesObj["VBR_No_Icon"]
+                }
             }
+        } else {
+            if ($ImagesObj[$iconType[0]]) {
+                $Icon = $ImagesObj[$iconType[0]]
+            } else { $Icon = $false }
         }
-    } else {
-        if ($ImagesObj[$iconType[0]]) {
-            $Icon = $ImagesObj[$iconType[0]]
-        } else { $Icon = $false }
+    }
+
+    If ($SubgraphIconType) {
+        if ($ImagesObj[$SubgraphIconType]) {
+            $SubgraphIcon = $ImagesObj[$SubgraphIconType]
+        } else { $SubgraphIcon = $false }
     }
 
     $Number = 0
@@ -400,9 +510,87 @@ Function Get-DiaHTMLNodeTable {
 
     }
 
+    # This part set the capability to emulate Graphviz Subgraph
+    if ($Subgraph) {
+        if ($SubgraphIcon) {
+            if ($IconDebug) {
+                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor
+                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel
+
+                if ($SubgraphLabelPos -eq 'down') {
+                    $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
+                    $TR += '<TR>{0}</TR>' -f $TDSubgraph
+                } else {
+                    $TRTemp += '<TR>{0}</TR>' -f $TDSubgraphIcon
+                    $TRTemp += '<TR>{0}</TR>' -f $TDSubgraph
+                    $TRTemp += $TR
+                    $TR = $TRTemp
+                }
+            } else {
+                if ($SubgraphIconWidth -and $SubgraphIconHeight) {
+                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="{5}" height="{6}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubGraphIcon, $SubGraphIconWidth, $SubGraphIconHeight
+                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel
+
+                    if ($SubgraphLabelPos -eq 'down') {
+                        $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
+                        $TR += '<TR>{0}</TR>' -f $TDSubgraph
+                    } else {
+                        $TRTemp += '<TR>{0}</TR>' -f $TDSubgraphIcon
+                        $TRTemp += '<TR>{0}</TR>' -f $TDSubgraph
+                        $TRTemp += $TR
+                        $TR = $TRTemp
+                    }
+                } else {
+                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="40" height="40"><IMG src="{2}"></IMG></TD>' -f $Align, $columnSize, $SubGraphIcon
+                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel
+
+                    if ($SubgraphLabelPos -eq 'down') {
+                        $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
+                        $TR += '<TR>{0}</TR>' -f $TDSubgraph
+                    } else {
+                        $TRTemp += '<TR>{0}</TR>' -f $TDSubgraphIcon
+                        $TRTemp += '<TR>{0}</TR>' -f $TDSubgraph
+                        $TRTemp += $TR
+                        $TR = $TRTemp
+                    }
+                }
+            }
+        } else {
+            if ($IconDebug) {
+                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="18"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel
+                if ($SubgraphLabelPos -eq 'down') {
+                    $TR += '<TR>{0}</TR>' -f $TDSubgraph
+                } else {
+                    $TRTemp = '<TR>{0}</TR>' -f $TDSubgraph
+                    $TRTemp += $TR
+                    $TR = $TRTemp
+                }
+            } else {
+                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="18"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel
+                if ($SubgraphLabelPos -eq 'down') {
+                    $TR += '<TR>{0}</TR>' -f $TDSubgraph
+                } else {
+                    $TRTemp = '<TR>{0}</TR>' -f $TDSubgraph
+                    $TRTemp += $TR
+                    $TR = $TRTemp
+                }
+            }
+        }
+    }
+
     if ($IconDebug) {
-        return '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="5">{1}</TABLE>' -f $Port, $TR
+        if ($SubgraphTableStyle) {
+            return '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing
+
+        } else {
+            return '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing
+        }
     } else {
-        return '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellpadding="5">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR
+        if ($SubgraphTableStyle) {
+            return '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing
+
+        } else {
+            return '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
+        }
     }
 }
