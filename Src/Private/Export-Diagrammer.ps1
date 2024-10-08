@@ -5,7 +5,7 @@ function Export-Diagrammer {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.2.5
+        Version:        0.2.9
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -93,7 +93,7 @@ function Export-Diagrammer {
 
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat
-        if (!$Filename) {
+        if (-Not $Filename) {
             if ($Format -ne "base64") {
                 $Filename = "Output.$Format"
             } else { $Filename = "Output.png" }

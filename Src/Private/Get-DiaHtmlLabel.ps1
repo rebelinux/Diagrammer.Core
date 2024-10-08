@@ -22,7 +22,7 @@ Function Get-DiaHTMLLabel {
                     | Diagram Title  |
                     __________________
     .NOTES
-        Version:        0.1.1
+        Version:        0.2.9
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -58,8 +58,20 @@ Function Get-DiaHTMLLabel {
             HelpMessage = 'Please provide SubgraphLabel to process'
         )]
         [Switch] $SubgraphLabel,
-        [string] $IconWidth = 40,
-        [string] $IconHeight = 40,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a subgraph icon width'
+        )]
+        [int] $IconWidth = 40,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a subgraph icon height'
+        )]
+        [int] $IconHeight = 40,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Enable the icon debug mode'
+        )]
         [bool] $IconDebug
     )
 
