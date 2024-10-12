@@ -32,7 +32,7 @@ function Get-NodeIP {
                 default { $Hostname }
             }
         } catch {
-            $_
+            Write-Verbose $_.Exception.Message
         }
 
         return $NodeIP
