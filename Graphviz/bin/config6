@@ -240,6 +240,12 @@ gvplugin_gdiplus.dll gdiplus {
 		tiff:cairo 8
 	}
 }
+gvplugin_kitty.dll kitty {
+	device {
+		kitty:cairo 0
+		kittyz:cairo 1
+	}
+}
 gvplugin_neato_layout.dll neato_layout {
 	layout {
 		neato 0
@@ -272,5 +278,22 @@ gvplugin_pango.dll cairo {
 		eps:cairo -10
 		pdf:cairo 10
 		svg:cairo -10
+	}
+}
+gvplugin_vt.dll vt {
+	device {
+		vt:cairo 0
+		vt-24bit:cairo 0
+		vt-4up:cairo 0
+		vt-6up:cairo 0
+		vt-8up:cairo 0
+	}
+}
+gvplugin_webp.dll webp {
+	device {
+		webp:cairo 1
+	}
+	loadimage {
+		webp:cairo 1
 	}
 }

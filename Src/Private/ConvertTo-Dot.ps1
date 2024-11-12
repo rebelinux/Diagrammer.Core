@@ -5,7 +5,7 @@ function ConvertTo-Dot {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.1.8
+        Version:        0.2.12
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -39,7 +39,7 @@ function ConvertTo-Dot {
             $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'dot' -GraphVizPath $GraphvizPath
         } catch {
             Write-Verbose "Unable to convert Graphviz object to DOT format."
-            Write-Verbose $($_.Exception.Message)
+            Write-Debug $($_.Exception.Message)
         }
         if ($Document) {
             if ($Document) {

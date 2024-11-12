@@ -5,7 +5,7 @@ function Export-Diagrammer {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.2.9
+        Version:        0.2.12
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -123,7 +123,7 @@ function Export-Diagrammer {
                     $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
                 } catch {
                     Write-Verbose "Unable to convert Graphviz object to PNG format. Path: $TempOutPut"
-                    Write-Verbose $($_.Exception.Message)
+                    Write-Debug $($_.Exception.Message)
                 }
 
 
