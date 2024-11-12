@@ -5,7 +5,7 @@ function ConvertTo-RotateImage {
     .DESCRIPTION
         Rotate image to 90, 180 or 270 angle.
     .NOTES
-        Version:        0.1.8
+        Version:        0.2.12
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -80,7 +80,7 @@ function ConvertTo-RotateImage {
                         Write-Verbose "Successfully replaced $DestinationPath with $TempImageOutput rotated image."
                     } catch {
                         Write-Verbose "Unable to replace $DestinationPath rotated image to $TempImageOutput diagram."
-                        Write-Verbose $($_.Exception.Message)
+                        Write-Debug $($_.Exception.Message)
                     }
                 } else {
                     Write-Verbose "Successfully rotated $ImageInput diagram."

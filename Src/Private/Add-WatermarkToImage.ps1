@@ -9,7 +9,7 @@ function Add-WatermarkToImage {
         Add-WatermarkToImage ImageInput "c:\Image.png" DestinationPath "c:\Image_Edited.png" -WaterMarkText "Zen PR Solutions" -FontName 'Arial' -FontSize 20 -FontColor 'Red'
 
     .NOTES
-        Version:        0.1.8
+        Version:        0.2.12
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -130,7 +130,7 @@ function Add-WatermarkToImage {
                         Write-Verbose "Successfully replaced $DestinationPath with $TempImageOutput rotated image."
                     } catch {
                         Write-Verbose "Unable to replace $DestinationPath rotated image to $TempImageOutput diagram."
-                        Write-Verbose $($_.Exception.Message)
+                        Write-Debug $($_.Exception.Message)
                     }
                 } else {
                     Write-Verbose "Successfully rotated $ImageInput diagram."
