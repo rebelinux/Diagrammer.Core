@@ -9,7 +9,7 @@ function Add-WatermarkToImage {
         Add-WatermarkToImage ImageInput "c:\Image.png" DestinationPath "c:\Image_Edited.png" -WaterMarkText "Zen PR Solutions" -FontName 'Arial' -FontSize 20 -FontColor 'Red'
 
     .NOTES
-        Version:        0.2.12
+        Version:        0.2.14
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -37,11 +37,11 @@ function Add-WatermarkToImage {
             HelpMessage = 'Please provide the path to the image file path'
         )]
         [ValidateScript( {
-                if (Test-Path -Path $_) {
-                    $true
-                } else {
-                    throw "File $_ not found!"
-                }
+            if (Test-Path -Path $_) {
+                $true
+            } else {
+                throw "File $_ not found!"
+            }
             })]
         [string] $ImageInput,
 
@@ -58,12 +58,24 @@ function Add-WatermarkToImage {
         [ValidateNotNullOrEmpty()]
         [string] $WaterMarkText,
 
+        [Parameter(
+            HelpMessage = 'Please provide the font name'
+        )]
         [string] $FontName = 'Arial',
 
+        [Parameter(
+            HelpMessage = 'Please provide the font size'
+        )]
         [int] $FontSize = 180,
 
+        [Parameter(
+            HelpMessage = 'Please provide the font color'
+        )]
         [System.Drawing.Color] $FontColor = 'Red',
 
+        [Parameter(
+            HelpMessage = 'Please provide the font opacity level'
+        )]
         [int] $FontOpacity = 20
     )
 

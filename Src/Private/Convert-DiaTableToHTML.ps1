@@ -60,7 +60,8 @@ function Convert-DiaTableToHTML {
     param(
         [Parameter(
             Mandatory,
-            Position = 0
+            Position = 0,
+            HelpMessage = "The table name for this record"
         )]
         [alias('ID', 'Node')]
         [string]
@@ -69,7 +70,8 @@ function Convert-DiaTableToHTML {
         [Parameter(
             Position = 1,
             ValueFromPipeline,
-            ParameterSetName = 'Strings'
+            ParameterSetName = 'Strings',
+            HelpMessage = "An array of strings/objects to place in this record"
         )]
         [alias('Rows')]
         [Object[]]
@@ -77,44 +79,76 @@ function Convert-DiaTableToHTML {
 
         [Parameter(
             Position = 1,
-            ParameterSetName = 'Script'
+            ParameterSetName = 'Script',
+            HelpMessage = "A sub expression that contains Row commands"
         )]
         [ScriptBlock]
         $ScriptBlock,
 
         [Parameter(
-            Position = 2
+            Position = 2,
+            HelpMessage = "A script to run on each row"
         )]
         [ScriptBlock]
         $RowScript,
 
+        [Parameter(
+            HelpMessage = "The label to use for the header of the table."
+        )]
         [string]
         $Label,
 
+        [Parameter(
+            HelpMessage = "The table shape based on: https://graphviz.org/doc/info/shapes.html."
+        )]
         [string]
         $FontName = "Segoe UI",
 
+        [Parameter(
+            HelpMessage = "The table font size."
+        )]
         [int]
         $FontSize = 14,
 
+        [Parameter(
+            HelpMessage = "The table drawing style based on: https://graphviz.org/docs/attr-types/style/."
+        )]
         [string]
         $Style = "filled",
 
+        [Parameter(
+            HelpMessage = "The table fill color."
+        )]
         [string]
         $Fillcolor = "white",
 
+        [Parameter(
+            HelpMessage = "The table header cell color."
+        )]
         [string]
         $HeaderColor = "black",
 
+        [Parameter(
+            HelpMessage = "The table header font color."
+        )]
         [string]
         $HeaderFontColor = "white",
 
+        [Parameter(
+            HelpMessage = "The table border color."
+        )]
         [string]
         $BorderColor = "white",
 
+        [Parameter(
+            HelpMessage = "Set to output HTML."
+        )]
         [bool]
         $HTMLOutput,
 
+        [Parameter(
+            HelpMessage = "Set the table debug mode."
+        )]
         [bool]
         $IconDebug
     )

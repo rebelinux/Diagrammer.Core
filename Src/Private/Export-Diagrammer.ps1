@@ -1,14 +1,51 @@
 function Export-Diagrammer {
     <#
     .SYNOPSIS
-        Function to export diagram to expecified format.
+        Exports a diagram to a specified format.
+
     .DESCRIPTION
-        Export a diagram in PDF/PNG/SVG formats using PSgraph.
+        The Export-Diagrammer function exports a diagram in PDF, PNG, SVG, or base64 formats using PSgraph.
+        It supports adding watermarks to the output image (except for SVG and PDF formats) and allows for
+        rotating the diagram output image.
+
+    .PARAMETER GraphObj
+        The Graphviz dot object to be exported. This parameter is mandatory.
+
+    .PARAMETER ErrorDebug
+        Enables error debugging. This parameter is optional.
+
+    .PARAMETER Format
+        The output format of the generated Graphviz diagram. Supported formats are PDF, PNG, SVG, and base64.
+        This parameter is mandatory.
+
+    .PARAMETER Filename
+        The output filename of the generated Graphviz diagram. If not specified, the default filename is "Output"
+        with the appropriate extension based on the format.
+
+    .PARAMETER OutputFolderPath
+        The path to the folder where the diagram output file will be saved. This parameter is optional but must
+        be a valid path if provided.
+
+    .PARAMETER IconPath
+        The path to the icons directory, used for the SVG format. This parameter is optional but must be a valid
+        path if provided.
+
+    .PARAMETER WaterMarkText
+        The text to be used as a watermark on the output image. This parameter is optional and not supported for
+        SVG and PDF formats.
+
+    .PARAMETER WaterMarkColor
+        The color of the watermark text. The default color is 'Red'. This parameter is optional.
+
+    .PARAMETER Rotate
+        The degree to rotate the diagram output image. Valid rotation degrees are 0 and 90. This parameter is optional.
+
     .NOTES
-        Version:        0.2.12
+        Version:        0.2.14
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
-        Github:         rebelinux
+        GitHub:         rebelinux
+
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
