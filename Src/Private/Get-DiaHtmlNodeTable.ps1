@@ -70,6 +70,8 @@ Function Get-DiaHTMLNodeTable {
         Set the table debug mode
     .PARAMETER AditionalInfo
         Hashtable used to add more information to the table elements
+    .PARAMETER AditionalInfoOrdered
+        Hashtable used to add more information to the table elements (Ordered)
     .PARAMETER Subgraph
         Allow to create a table used to add a logo to a Graphviz subgraph
     .PARAMETER SubgraphTableStyle
@@ -168,9 +170,14 @@ Function Get-DiaHTMLNodeTable {
         [bool] $IconDebug,
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Hashtable used to add more information to the table elements (Not yet implemented)'
+            HelpMessage = 'Hashtable used to add more information to the table elements'
         )]
         [hashtable[]]$AditionalInfo,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Hashtable used to add more information to the table elements (Ordered)'
+        )]
+        [PSCustomObject[]]$AditionalInfoOrdered,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Create the table with that can be used as a Subgraph replacement with the hashtable inside it'
@@ -238,6 +245,17 @@ Function Get-DiaHTMLNodeTable {
         }
     }
 
+    if ($AditionalInfoOrdered) {
+        $Filter = $AditionalInfo.PSObject.Properties | Select-Object -Unique
+        $RowsGroupHTs = @()
+
+        foreach ($RepoObj in ($Filter | Sort-Object)) {
+            $RowsGroupHTs += @{
+                $RepoObj = $AditionalInfo.$RepoObj
+            }
+        }
+    }
+
     if ($ImagesObj) {
         if ($iconType.Count -gt 1) {
             $Icon = @()
@@ -295,7 +313,7 @@ Function Get-DiaHTMLNodeTable {
                             # $RowsGroupHT is Multiple key and each key have a Single Values
                             #       Keys:        Values:
                             #       Path:          C:\Backup
-                            #       OBjStor:       True
+                            #       OBjStor:       True$RowsGroupHTs
                             #
 
                             foreach ($RowsGroupHT in $RowsGroupHTs) {

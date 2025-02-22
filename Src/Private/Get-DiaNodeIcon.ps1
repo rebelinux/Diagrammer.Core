@@ -23,7 +23,7 @@ Function Get-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.2.1
+        Version:        0.2.15
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -33,6 +33,8 @@ Function Get-DiaNodeIcon {
         Align content inside table cell
     .PARAMETER Rows
         Object used to specified aditional node information
+    .PARAMETER RowsOrdered
+        Object used to specified aditional node information (Ordered)
     .PARAMETER IconType
         Icon used to draw the node type
     .PARAMETER ImagesObj
@@ -44,6 +46,7 @@ Function Get-DiaNodeIcon {
 
     param(
         [hashtable[]]$Rows,
+        [PSCustomObject[]]$RowsOrdered,
         [string]$IconType,
         [String]$Name,
         [String]$Align = 'Center',
@@ -63,8 +66,14 @@ Function Get-DiaNodeIcon {
     } else { $ICON = "no_icon.png" }
 
     $TR = @()
-    foreach ($r in $Rows) {
-        $TR += $r.getEnumerator() | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
+    if (-Not $RowsOrdered) {
+        foreach ($r in $Rows) {
+            $TR += $r.getEnumerator() | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
+        }
+    } else {
+        foreach ($r in $RowsOrdered) {
+            $TR += $r.PSObject.Properties  | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Name): $($_.Value)</FONT></TD></TR>" }
+        }
     }
 
     if ($IconDebug) {
