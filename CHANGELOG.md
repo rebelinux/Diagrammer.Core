@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.17] - 2025-03-04
 
+### Added
+
+- Add parameter to set Subgraph Label font size
+  - Get-DiaHTMLNodeTable
+  - Get-DiaHTMLTable
+
 ### Fixed
 
 - Fix Get-DiaHTMLNodeTable cmdlet to honor fontsize parameter
