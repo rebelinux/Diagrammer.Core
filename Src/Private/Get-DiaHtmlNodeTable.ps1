@@ -38,7 +38,7 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.9
+        Version:        0.2.17
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -74,6 +74,8 @@ Function Get-DiaHTMLNodeTable {
         Hashtable used to add more information to the table elements (Ordered)
     .PARAMETER Subgraph
         Allow to create a table used to add a logo to a Graphviz subgraph
+    .PARAMETER SubgraphLabelFontsize
+        Allow to set the subgraph table font size
     .PARAMETER SubgraphTableStyle
         Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)
     #>
@@ -202,7 +204,12 @@ Function Get-DiaHTMLNodeTable {
         [string]$SubgraphLabel,
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set the subgraph table label position (top, down)'
+            HelpMessage = 'Allow to set the subgraph table label font size'
+        )]
+        [int]$SubgraphLabelFontsize = 14,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the subgraph label'
         )]
         [ValidateSet('top', 'down')]
         [string]$SubgraphLabelPos = 'down',
@@ -532,8 +539,8 @@ Function Get-DiaHTMLNodeTable {
     if ($Subgraph) {
         if ($SubgraphIcon) {
             if ($IconDebug) {
-                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel
+                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{3}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontsize
+                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -547,7 +554,7 @@ Function Get-DiaHTMLNodeTable {
             } else {
                 if ($SubgraphIconWidth -and $SubgraphIconHeight) {
                     $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="{5}" height="{6}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubGraphIcon, $SubGraphIconWidth, $SubGraphIconHeight
-                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel
+                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
 
                     if ($SubgraphLabelPos -eq 'down') {
                         $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -560,7 +567,7 @@ Function Get-DiaHTMLNodeTable {
                     }
                 } else {
                     $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="40" height="40"><IMG src="{2}"></IMG></TD>' -f $Align, $columnSize, $SubGraphIcon
-                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel
+                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
 
                     if ($SubgraphLabelPos -eq 'down') {
                         $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -575,7 +582,7 @@ Function Get-DiaHTMLNodeTable {
             }
         } else {
             if ($IconDebug) {
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="18"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel
+                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {
@@ -584,7 +591,7 @@ Function Get-DiaHTMLNodeTable {
                     $TR = $TRTemp
                 }
             } else {
-                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="18"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel
+                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {
