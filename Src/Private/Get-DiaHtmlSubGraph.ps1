@@ -228,8 +228,8 @@ Function Get-DiaHTMLSubGraph {
     # This part set the capability to emulate Graphviz Subgraph
     if ($IconDebug) {
         if ($Icon) {
-            $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor
-            $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label
+            $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $fontSize
+            $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label, $fontSize
 
             if ($LabelPos -eq 'down') {
                 $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -241,7 +241,7 @@ Function Get-DiaHTMLSubGraph {
                 $TR = $TRTemp
             }
         } else {
-            $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label
+            $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label, $fontSize
             if ($LabelPos -eq 'down') {
                 $TR += '<TR>{0}</TR>' -f $TDSubgraph
             } else {
@@ -254,7 +254,7 @@ Function Get-DiaHTMLSubGraph {
 
         if ($Icon) {
             $TDSubgraphIcon = '<TD valign="BOTTOM" ALIGN="{0}" colspan="{1}" fixedsize="true" width="{5}" height="{6}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $fontName, $fontColor, $Icon, $IconWidth, $IconHeight
-            $TDSubgraph = '<TD valign="TOP" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label
+            $TDSubgraph = '<TD valign="TOP" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label, $fontSize
 
             if ($LabelPos -eq 'down') {
                 $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -266,7 +266,7 @@ Function Get-DiaHTMLSubGraph {
                 $TR = $TRTemp
             }
         } else {
-            $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="18"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label
+            $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label, $fontSize
             if ($LabelPos -eq 'down') {
                 $TR += '<TR>{0}</TR>' -f $TDSubgraph
             } else {
