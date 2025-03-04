@@ -16,7 +16,7 @@ Function Get-DiaHTMLLabel {
         Get-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
         # This will generate an HTML table with the specified label and logo.
     .NOTES
-        Version:        0.2.17
+        Version:        0.2.19
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux

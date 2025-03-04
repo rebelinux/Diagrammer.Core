@@ -112,7 +112,7 @@ function New-Diagrammer {
         Specifies the background color of the diagram. Default is 'White'.
 
     .NOTES
-        Version:        0.2.17
+        Version:        0.2.19
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
