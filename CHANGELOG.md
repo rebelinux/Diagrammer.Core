@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix Get-DiaHTMLNodeTable cmdlet to honor fontsize parameter
 - Fix Get-DiaHTMLTable cmdlet to honor fontsize parameter
+- Fix Get-DiaHTMLLabel cmdlet to honor fontsize parameter
+
+## [0.2.18] - 2025-03-04
+
+### Fixed
+
+- Fix Get-DiaHTMLNodeTable fontsize error when calling debug mode
 
 ## [0.2.16] - 2025-03-03
 
