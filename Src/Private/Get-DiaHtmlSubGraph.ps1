@@ -29,7 +29,7 @@ Function Get-DiaHTMLSubGraph {
             _________________
 
     .NOTES
-        Version:        0.2.9
+        Version:        0.2.19
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

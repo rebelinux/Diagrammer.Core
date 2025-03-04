@@ -1,11 +1,13 @@
 Function Get-DiaHTMLNodeTable {
     <#
     .SYNOPSIS
-        Function to convert a array to a HTML Table. Graphviz Nodes split by Columns (Includes Icons)
-    .DESCRIPTION
-        Takes an array and converts it to a HTML table used for GraphViz Node label
-    .Example
+        Converts an array to an HTML table for Graphviz node labels, including icons.
 
+    .DESCRIPTION
+        This function takes an array and converts it into an HTML table, which can be used as a label for Graphviz nodes.
+        The table can include icons and additional information for each element.
+
+    .EXAMPLE
         # Array of String *6 Objects*
         $DCsArray = @("Server-dc-01v","Server-dc-02v","Server-dc-03v","Server-dc-04v","Server-dc-05v","Server-dc-06v")
 
@@ -38,53 +40,89 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.17
+        Version:        0.2.19
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
-    .PARAMETER inputObject
-        The array of object to process
-    .PARAMETER Align
-        Align content inside table cell
-    .PARAMETER TableBorder
-        The table border line size
-    .PARAMETER CellBorder
-        The table cell border
-    .PARAMETER FontSize
-        The cell text font size
-    .PARAMETER FontName
-        The cell text font size
-    .PARAMETER FontColor
-        The text font color used inside the cell (Default #565656)
-    .PARAMETER IconType
-        Node Icon type
-    .PARAMETER ColumnSize
-        This value is used to specified a int used to split the object inside the HTML table
-    .PARAMETER Port
-        Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object
-    .PARAMETER MultiIcon
-        Allow to draw an icon to each table element. If not set the table share a single Icon
-    .PARAMETER ImagesObj
-        Hashtable with the IconName > IconPath translation
-    .PARAMETER IconDebug
-        Set the table debug mode
-    .PARAMETER AditionalInfo
-        Hashtable used to add more information to the table elements
-    .PARAMETER AditionalInfoOrdered
-        Hashtable used to add more information to the table elements (Ordered)
-    .PARAMETER Subgraph
-        Allow to create a table used to add a logo to a Graphviz subgraph
-    .PARAMETER SubgraphLabelFontsize
-        Allow to set the subgraph table font size
-    .PARAMETER SubgraphTableStyle
-        Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)
-    #>
 
-    <#
-        TODO
-        1. Add Icon to MultiColumns section
-        2. Change hardcoded values (FontName, FontColor, FontSize)
-        3. Document all parameters
+    .PARAMETER inputObject
+        The array of objects to process.
+
+    .PARAMETER Align
+        Align content inside table cell. Default is 'Center'.
+
+    .PARAMETER TableBorder
+        The width of the table border line. Default is 0.
+
+    .PARAMETER CellBorder
+        The width of the table cell border. Default is 0.
+
+    .PARAMETER CellPadding
+        The padding inside the table cell. Default is 5.
+
+    .PARAMETER CellSpacing
+        The spacing between table cells. Default is 5.
+
+    .PARAMETER FontSize
+        The cell text font size. Default is 14.
+
+    .PARAMETER FontName
+        The cell text font name. Default is "Segoe Ui Black".
+
+    .PARAMETER FontColor
+        The text font color used inside the cell. Default is #565656.
+
+    .PARAMETER IconType
+        Node Icon type. This parameter is mandatory if ImagesObj is specified.
+
+    .PARAMETER ColumnSize
+        The number of columns to split the object inside the HTML table. Default is 1.
+
+    .PARAMETER Port
+        Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object. Default is "EdgeDot".
+
+    .PARAMETER MultiIcon
+        Allow to draw an icon for each table element. If not set, the table shares a single icon.
+
+    .PARAMETER ImagesObj
+        Hashtable with the IconName to IconPath translation.
+
+    .PARAMETER IconDebug
+        Enable the icon debug mode.
+
+    .PARAMETER AditionalInfo
+        Hashtable used to add more information to the table elements.
+
+    .PARAMETER AditionalInfoOrdered
+        Hashtable used to add more information to the table elements (Ordered).
+
+    .PARAMETER Subgraph
+        Create the table that can be used as a Subgraph replacement with the hashtable inside it.
+
+    .PARAMETER SubgraphIconType
+        Allow to set the subgraph table icon. This parameter is mandatory if ImagesObj is specified.
+
+    .PARAMETER SubgraphLabel
+        Allow to set the subgraph table label.
+
+    .PARAMETER SubgraphLabelFontsize
+        Allow to set the subgraph table label font size. Default is 14.
+
+    .PARAMETER SubgraphLabelPos
+        Allow to set the subgraph label position. Valid values are 'top' and 'down'. Default is 'down'.
+
+    .PARAMETER SubgraphTableStyle
+        Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED).
+
+    .PARAMETER TableBorderColor
+        Allow to set a table border color. Default is #000000.
+
+    .PARAMETER SubgraphIconWidth
+        Allow to set a subgraph icon width.
+
+    .PARAMETER SubgraphIconHeight
+        Allow to set a subgraph icon height.
+
     #>
 
     param(
@@ -539,7 +577,7 @@ Function Get-DiaHTMLNodeTable {
     if ($Subgraph) {
         if ($SubgraphIcon) {
             if ($IconDebug) {
-                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{3}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontsize
+                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontsize
                 $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
 
                 if ($SubgraphLabelPos -eq 'down') {
@@ -582,7 +620,7 @@ Function Get-DiaHTMLNodeTable {
             }
         } else {
             if ($IconDebug) {
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize
+                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize, $fontColor
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {
@@ -591,7 +629,7 @@ Function Get-DiaHTMLNodeTable {
                     $TR = $TRTemp
                 }
             } else {
-                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="#565656" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize
+                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize, $fontColor
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {

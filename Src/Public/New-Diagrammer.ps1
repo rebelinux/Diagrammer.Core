@@ -2,90 +2,129 @@ function New-Diagrammer {
     <#
     .SYNOPSIS
         Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
+
     .DESCRIPTION
-        Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using PSGraph and Graphviz.
-    .PARAMETER EdgeArrowSize
-        Control edge arrow size (Default 1).
-    .PARAMETER EdgeLineWidth
-        Control edge linewidth (Default 3).
-    .PARAMETER EdgeColor
-        Control edge line color (RGB format Ex: #FFFFFF) (Default #71797E).
-    .PARAMETER FontName
-        Control diagram font name (Default 'Segoe Ui Black').
-    .PARAMETER FontColor
-        Control diagram font color (RGB format Ex: #FFFFFF) (Default #565656).
-    .PARAMETER FontName
-        Control diagram font name (Default 'Segoe Ui Black').
-    .PARAMETER NodeFontSize
-        Control Node font size (Default 14).
+        This cmdlet generates diagrams of IT infrastructure configurations in various formats such as PDF, SVG, DOT, and PNG using PSGraph and Graphviz. It provides extensive customization options for diagram appearance, including font settings, colors, node and edge properties, and more.
+
+    .PARAMETER InputObject
+        The PSGraph input object to be used for generating the diagram.
+
     .PARAMETER Format
-        Specifies the output format of the diagram.
-        The supported output formats are PDF, PNG, DOT & SVG.
-        Multiple output formats may be specified, separated by a comma.
+        Specifies the output format of the diagram. Supported formats are PDF, PNG, DOT, SVG, and base64. Default is 'pdf'.
+
+    .PARAMETER EdgeColor
+        Specifies the color of the edge lines in RGB format (e.g., #FFFFFF). Default is #71797E.
+
+    .PARAMETER EdgeArrowSize
+        Specifies the size of the edge arrows. Default is 1.
+
+    .PARAMETER EdgeLineWidth
+        Specifies the width of the edge lines. Default is 3.
+
+    .PARAMETER FontColor
+        Specifies the color of the diagram font in RGB format (e.g., #FFFFFF) or color string. Default is #565656.
+
+    .PARAMETER FontName
+        Specifies the name of the font used in the diagram. Default is 'Segoe Ui Black'.
+
+    .PARAMETER NodeFontSize
+        Specifies the font size of the nodes. Default is 14.
+
+    .PARAMETER NodeFontColor
+        Specifies the color of the node font in RGB format (e.g., #FFFFFF) or color string. Default is 'Black'.
+
+    .PARAMETER IconPath
+        Specifies the path to the icon file.
+
+    .PARAMETER ImagesObj
+        Hashtable with the IconName > IconPath translation.
+
     .PARAMETER Direction
-        Set the direction in which resource are plotted on the visualization
-        The supported directions are:
-            'top-to-bottom', 'left-to-right'
-        By default, direction will be set to top-to-bottom.
-    .PARAMETER NodeSeparation
-        Controls Node separation ratio in visualization
-        By default, NodeSeparation will be set to .60.
-    .PARAMETER SectionSeparation
-        Controls Section (Subgraph) separation ratio in visualization
-        By default, NodeSeparation will be set to .75.
-    .PARAMETER EdgeType
-        Controls how edges lines appear in visualization
-        The supported edge type are:
-            'polyline', 'curved', 'ortho', 'line', 'spline'
-        By default, EdgeType will be set to spline.
-        References: https://graphviz.org/docs/attrs/splines/
+        Specifies the direction in which resources are plotted on the visualization. Supported values are 'left-to-right' and 'top-to-bottom'. Default is 'top-to-bottom'.
+
     .PARAMETER OutputFolderPath
-        Specifies the folder path to save the diagram.
+        Specifies the folder path to save the diagram. Default is the system temporary path.
+
+    .PARAMETER SignatureLogo
+        Specifies the path to the custom logo used for the signature.
+
+    .PARAMETER SignatureLogoName
+        Specifies the name of the signature logo (must be defined in $ImageObj).
+
+    .PARAMETER Logo
+        Specifies the path to the custom logo.
+
+    .PARAMETER LogoName
+        Specifies the name of the main diagram logo (must be defined in $ImageObj).
+
     .PARAMETER Filename
         Specifies a filename for the diagram.
+
+    .PARAMETER EdgeType
+        Specifies how edge lines appear in the visualization. Supported values are 'polyline', 'curved', 'ortho', 'line', and 'spline'. Default is 'line'.
+
+    .PARAMETER NodeSeparation
+        Controls the node separation ratio in the visualization. Default is 0.60.
+
+    .PARAMETER SectionSeparation
+        Controls the section (subgraph) separation ratio in the visualization. Default is 0.75.
+
     .PARAMETER EnableEdgeDebug
-        Control to enable edge debugging ( Dummy Edge and Node lines ).
+        Enables edge debugging (dummy edge and node lines).
+
     .PARAMETER EnableSubGraphDebug
-        Control to enable subgraph debugging ( Subgraph Lines ).
+        Enables subgraph debugging (subgraph lines).
+
     .PARAMETER EnableErrorDebug
-        Control to enable error debugging.
+        Enables error debugging.
+
     .PARAMETER AuthorName
-        Allow to set footer signature Author Name.
+        Sets the footer signature author name.
+
     .PARAMETER CompanyName
-        Allow to set footer signature Company Name.
-    .PARAMETER Logo
-        Allow to change the Main logo to a custom one.
-        Image should be 400px x 100px or less in size.
-    .PARAMETER LogoName
-        Allow to change the Main logo to a custom one.
-        Image should be 400px x 100px or less in size.
-        Must be defined in $ImageObj
-    .PARAMETER SignatureLogo
-        Allow to change the signature logo to a custom one.
-        Image should be 120px x 130px or less in size.
+        Sets the footer signature company name.
+
     .PARAMETER Signature
-        Allow the creation of footer signature.
-        AuthorName and CompanyName must be set to use this property.
-    .PARAMETER ImagesObj
-        Hashtable with the IconName > IconPath translation
+        Enables the creation of a footer signature. AuthorName and CompanyName must be set to use this property.
+
+    .PARAMETER MainDiagramLabel
+        Sets the main label used at the top of the diagram.
+
+    .PARAMETER MainDiagramLabelFontSize
+        Sets the font size of the main label used at the top of the diagram. Default is 24.
+
+    .PARAMETER MainDiagramLabelFontName
+        Sets the font name of the main label used at the top of the diagram. Default is 'Segoe Ui Black'.
+
+    .PARAMETER MainDiagramLabelFontColor
+        Sets the font color of the main label used at the top of the diagram. Default is #565656.
+
     .PARAMETER MainGraphAttributes
-        Hashtable with general graph attributes (fontname,fontcolor,imagepath,style,imagepath)
+        Provides a hashtable with general graph attributes (fontname, fontcolor, imagepath, style, imagepath).
+
     .PARAMETER WaterMarkColor
-        Control diagram WaterMark color (Default DarkGray).
+        Specifies the color of the watermark text. Default is 'DarkGray'.
+
     .PARAMETER WaterMarkText
-        Control diagram WaterMark (Default empty).
+        Specifies the text for the watermark.
+
+    .PARAMETER MainGraphBGColor
+        Specifies the background color of the diagram. Default is 'White'.
+
     .NOTES
-        Version:        0.2.5
+        Version:        0.2.19
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
-        Credits:        Kevin Marquette (@KevinMarquette) -  PSGraph module
-        Credits:        Prateek Singh (@PrateekKumarSingh) - AzViz module
+        Credits:        Kevin Marquette (@KevinMarquette) - PSGraph module
+                        Prateek Singh (@PrateekKumarSingh) - AzViz module
+
     .LINK
         https://github.com/rebelinux/
         https://github.com/KevinMarquette/PSGraph
         https://github.com/PrateekKumarSingh/AzViz
     #>
+
 
     [Diagnostics.CodeAnalysis.SuppressMessage(
         'PSUseShouldProcessForStateChangingFunctions',
@@ -314,6 +353,24 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Set the Main Label font size used at the top of the diagram'
+        )]
+        [int] $MainDiagramLabelFontsize = 24,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Set the Main Label font name used at the top of the diagram'
+        )]
+        [string] $MainDiagramLabelFontname = "Segoe Ui Black",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Set the Main Label font color used at the top of the diagram'
+        )]
+        [string] $MainDiagramLabelFontColor = "#565656",
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Provide a Hashtable with general graph attributes (fontname,fontcolor,imagepath,style,imagepath)'
         )]
         [ValidateNotNullOrEmpty()]
@@ -477,7 +534,7 @@ function New-Diagrammer {
             # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
-                SubGraph MainGraph -Attributes @{Label = (Get-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
+                SubGraph MainGraph -Attributes @{Label = (Get-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80 -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
                     $InputObject
                 }
             }
