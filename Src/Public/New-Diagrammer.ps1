@@ -112,7 +112,7 @@ function New-Diagrammer {
         Specifies the background color of the diagram. Default is 'White'.
 
     .NOTES
-        Version:        0.2.19
+        Version:        0.2.20
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -150,7 +150,7 @@ function New-Diagrammer {
             HelpMessage = 'Please provide the diagram output format'
         )]
         [ValidateNotNullOrEmpty()]
-        [ValidateSet('pdf', 'svg', 'png', 'dot', 'base64')]
+        [ValidateSet('pdf', 'svg', 'png', 'dot', 'base64', 'jpg')]
         [Array] $Format = 'pdf',
 
         [Parameter(
