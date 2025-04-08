@@ -41,7 +41,7 @@ function Export-Diagrammer {
         The degree to rotate the diagram output image. Valid rotation degrees are 0 and 90. This parameter is optional.
 
     .NOTES
-        Version:        0.2.14
+        Version:        0.2.20
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux
@@ -143,6 +143,11 @@ function Export-Diagrammer {
                     Write-Verbose "WaterMark option is not supported with the svg format."
                 }
                 ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
+            } elseif ($Format -eq "jpg") {
+                if ($WaterMarkText) {
+                    Write-Verbose "WaterMark option is not supported with the dot format."
+                }
+                ConvertTo-Jpg -GraphObj $GraphObj -DestinationPath $DestinationPath
             } elseif ($Format -eq "dot") {
                 if ($WaterMarkText) {
                     Write-Verbose "WaterMark option is not supported with the dot format."

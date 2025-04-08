@@ -23,22 +23,26 @@ Function Get-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.2.15
+        Version:        0.2.20
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
-    .PARAMETER Name
-        The string to process
+
+    Specifies the name of the node to process.
+
     .PARAMETER Align
-        Align content inside table cell
+    Specifies the alignment of the content inside the table cell.
+    Acceptable values may include alignment options such as 'Left', 'Center', or 'Right'.
+
     .PARAMETER Rows
-        Object used to specified aditional node information
+    An object containing additional information about the node.
+    This can be used to provide supplementary details for the node.
+
     .PARAMETER RowsOrdered
-        Object used to specified aditional node information (Ordered)
+    An ordered object containing additional information about the node.
+    This ensures the information is processed in a specific sequence.
+
     .PARAMETER IconType
-        Icon used to draw the node type
-    .PARAMETER ImagesObj
-        Hashtable with the IconName > IconPath translation
     #>
 
     [CmdletBinding()]
@@ -49,7 +53,9 @@ Function Get-DiaNodeIcon {
         [PSCustomObject[]]$RowsOrdered,
         [string]$IconType,
         [String]$Name,
-        [String]$Align = 'Center',
+        [ValidateNotNullOrEmpty()]
+        [ValidateSet('Center', 'Right', 'Left')]
+        [string] $Align = 'Center',
         [Hashtable] $ImagesObj = @{},
         [bool] $IconDebug,
         [int] $TableBorder = 0,
@@ -130,9 +136,9 @@ Function Get-DiaNodeIcon {
                 }
             } else {
                 if ($NoFontBold) {
-                    "<TABLE border='$TableBorderyyy' cellborder='$CellBorder' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
+                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
                 } else {
-                    "<TABLE border='$TableBorderyyy' cellborder='$CellBorder' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
+                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='5' cellpadding='0'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
                 }
             }
         }
