@@ -12,7 +12,7 @@
 RootModule = 'Diagrammer.Core.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.20'
+ModuleVersion = '0.2.21'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,7 +69,7 @@ RequiredModules = @(@{ModuleName = 'PSGraph'; ModuleVersion = '2.1.38.27'; })
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-DiaHtmlSignatureTable', 'Group-Node', 'Get-DiaHTMLSubGraph', 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-DiaNodeIcon', 'Export-Diagrammer', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'New-Diagrammer'
+FunctionsToExport = 'Get-DiaHtmlSignatureTable', 'Group-Node', 'Get-DiaHTMLSubGraph', 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-DiaNodeIcon', 'Export-Diagrammer', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'New-Diagrammer', 'Get-DiaNodeFiller'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 # CmdletsToExport = '*'
