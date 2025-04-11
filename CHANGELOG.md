@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Refactor code structure for improved readability and maintainabilit
+- Refactor code structure for improved readability and maintainability
 
 ## [0.2.21] - 2025-04-09
 
