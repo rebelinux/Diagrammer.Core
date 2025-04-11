@@ -93,9 +93,6 @@ Function Get-DiaHTMLNodeTable {
     .PARAMETER AditionalInfo
         Hashtable used to add more information to the table elements.
 
-    .PARAMETER AditionalInfoOrdered
-        Hashtable used to add more information to the table elements (Ordered).
-
     .PARAMETER Subgraph
         Create the table that can be used as a Subgraph replacement with the hashtable inside it.
 
