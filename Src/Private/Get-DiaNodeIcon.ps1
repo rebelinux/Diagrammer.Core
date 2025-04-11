@@ -23,7 +23,7 @@ Function Get-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.2.20
+        Version:        0.2.22
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -66,13 +66,8 @@ Function Get-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'A hashtable array containing additional information about the node.'
         )]
-        [hashtable[]]$Rows,
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'An ordered PSCustomObject array containing additional information about the node.'
-        )]
-        [PSCustomObject[]]$RowsOrdered,
+        [Alias("RowsOrdered", "Rows")]
+        $AditionalInfo,
 
         [Parameter(
             Mandatory = $true,
@@ -151,13 +146,32 @@ Function Get-DiaNodeIcon {
     } else { $ICON = "no_icon.png" }
 
     $TR = @()
-    if (-Not $RowsOrdered) {
-        foreach ($r in $Rows) {
-            $TR += $r.getEnumerator() | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
-        }
-    } else {
-        foreach ($r in $RowsOrdered) {
-            $TR += $r.PSObject.Properties  | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Name): $($_.Value)</FONT></TD></TR>" }
+
+    if ($AditionalInfo) {
+        switch ($AditionalInfo.GetType().Name) {
+            'Hashtable' {
+                foreach ($r in $AditionalInfo) {
+                    $TR += $r.getEnumerator() | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
+                }
+            }
+
+            'OrderedDictionary' {
+                foreach ($r in $AditionalInfo) {
+                    $TR += $r.getEnumerator() | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Key): $($_.Value)</FONT></TD></TR>" }
+                }
+            }
+
+            'PSCustomObject' {
+                foreach ($r in $AditionalInfo) {
+                    $TR += $r.PSObject.Properties | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Name): $($_.Value)</FONT></TD></TR>" }
+                }
+            }
+
+            'Object[]' {
+                foreach ($r in $AditionalInfo) {
+                    $TR += $r.PSObject.Properties | ForEach-Object { "<TR><TD align='$Align' colspan='1'><FONT POINT-SIZE='$FontSize'>$($_.Name): $($_.Value)</FONT></TD></TR>" }
+                }
+            }
         }
     }
 
