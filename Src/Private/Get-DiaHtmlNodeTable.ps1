@@ -40,7 +40,7 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.19
+        Version:        0.2.22
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -92,9 +92,6 @@ Function Get-DiaHTMLNodeTable {
 
     .PARAMETER AditionalInfo
         Hashtable used to add more information to the table elements.
-
-    .PARAMETER AditionalInfoOrdered
-        Hashtable used to add more information to the table elements (Ordered).
 
     .PARAMETER Subgraph
         Create the table that can be used as a Subgraph replacement with the hashtable inside it.
@@ -209,15 +206,13 @@ Function Get-DiaHTMLNodeTable {
         )]
         [bool] $IconDebug,
         [Parameter(
+            ParameterSetName = 'AdditionalInfo',
             Mandatory = $false,
             HelpMessage = 'Hashtable used to add more information to the table elements'
         )]
-        [hashtable[]]$AditionalInfo,
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Hashtable used to add more information to the table elements (Ordered)'
-        )]
-        [PSCustomObject[]]$AditionalInfoOrdered,
+        [Alias("RowsOrdered", "Rows", "AditionalInfoOrdered")]
+        $AditionalInfo,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Create the table with that can be used as a Subgraph replacement with the hashtable inside it'
@@ -279,24 +274,66 @@ Function Get-DiaHTMLNodeTable {
         $Group = Split-array -inArray $inputObject -size $columnSize
     }
 
-    if ($AditionalInfo) {
-        $Filter = $AditionalInfo.keys | Select-Object -Unique
-        $RowsGroupHTs = @()
 
-        foreach ($RepoObj in ($Filter | Sort-Object)) {
-            $RowsGroupHTs += @{
-                $RepoObj = $AditionalInfo.$RepoObj
+    switch ($AditionalInfo.GetType().Name) {
+        'Hashtable' {
+            if ($AditionalInfo) {
+                $Filter = $AditionalInfo.keys | Select-Object -Unique
+                $RowsGroupHTs = @()
+
+                foreach ($RepoObj in ($Filter)) {
+                    $RowsGroupHTs += @{
+                        $RepoObj = $AditionalInfo.$RepoObj
+                    }
+                }
             }
         }
-    }
 
-    if ($AditionalInfoOrdered) {
-        $Filter = $AditionalInfo.PSObject.Properties | Select-Object -Unique
-        $RowsGroupHTs = @()
+        'OrderedDictionary' {
+            if ($AditionalInfo) {
+                $Filter = $AditionalInfo.keys | Select-Object -Unique
+                $RowsGroupHTs = @()
 
-        foreach ($RepoObj in ($Filter | Sort-Object)) {
-            $RowsGroupHTs += @{
-                $RepoObj = $AditionalInfo.$RepoObj
+                foreach ($RepoObj in ($Filter)) {
+                    $RowsGroupHTs += @{
+                        $RepoObj = $AditionalInfo.$RepoObj
+                    }
+                }
+            }
+        }
+
+        'Object[]' {
+            if ($AditionalInfo[0].GetType().Name -eq 'PSCustomObject') {
+                $Filter = $AditionalInfo | ForEach-Object { $_.PSObject.Properties.name } | Select-Object -Unique
+                $RowsGroupHTs = @()
+
+                foreach ($RepoObj in ($Filter)) {
+                    $RowsGroupHTs += @{
+                        $RepoObj = $AditionalInfo.$RepoObj
+                    }
+                }
+            } else {
+                $Filter = $AditionalInfo.keys | Select-Object -Unique
+                $RowsGroupHTs = @()
+
+                foreach ($RepoObj in ($Filter)) {
+                    $RowsGroupHTs += @{
+                        $RepoObj = $AditionalInfo.$RepoObj
+                    }
+                }
+            }
+        }
+
+        'PSCustomObject' {
+            if ($AditionalInfo) {
+                $Filter = $AditionalInfo | ForEach-Object { $_.PSObject.Properties.name } | Select-Object -Unique
+                $RowsGroupHTs = @()
+
+                foreach ($RepoObj in ($Filter)) {
+                    $RowsGroupHTs += @{
+                        $RepoObj = $AditionalInfo.$RepoObj
+                    }
+                }
             }
         }
     }
@@ -343,7 +380,7 @@ Function Get-DiaHTMLNodeTable {
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
 
-                    if ($AditionalInfo) {
+                    if ($AditionalInfo -or $AditionalInfoOrdered) {
                         if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Single key with Single Values
                             #  Keys: Path - Values: C:\Backup
@@ -358,7 +395,7 @@ Function Get-DiaHTMLNodeTable {
                             # $RowsGroupHT is Multiple key and each key have a Single Values
                             #       Keys:        Values:
                             #       Path:          C:\Backup
-                            #       OBjStor:       True$RowsGroupHTs
+                            #       OBjStor:       True$RowsGroupHTs$RowsGroupHTs
                             #
 
                             foreach ($RowsGroupHT in $RowsGroupHTs) {
@@ -401,7 +438,7 @@ Function Get-DiaHTMLNodeTable {
 
                     $TDName = ''
 
-                    if ($AditionalInfo) {
+                    if ($AditionalInfo -or $AditionalInfoOrdered) {
                         if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Single key with Single Values
                             #  Keys: Path - Values: C:\Backup
@@ -467,7 +504,7 @@ Function Get-DiaHTMLNodeTable {
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
 
-                    if ($AditionalInfo) {
+                    if ($AditionalInfo -or $AditionalInfoOrdered) {
                         if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Single key with Single Values
                             #  Keys: Path - Values: C:\Backup
@@ -523,7 +560,7 @@ Function Get-DiaHTMLNodeTable {
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
 
-                    if ($AditionalInfo) {
+                    if ($AditionalInfo -or $AditionalInfoOrdered) {
                         if (($RowsGroupHTs.Keys.Count -le 1 ) -and ($RowsGroupHTs.Values.Count -le 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Single key with Single Values
                             #  Keys: Path - Values: C:\Backup
