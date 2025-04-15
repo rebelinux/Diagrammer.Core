@@ -41,7 +41,7 @@ function Export-Diagrammer {
         The degree to rotate the diagram output image. Valid rotation degrees are 0 and 90. This parameter is optional.
 
     .NOTES
-        Version:        0.2.20
+        Version:        0.2.23
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux
@@ -161,7 +161,7 @@ function Export-Diagrammer {
             } else {
                 # Always convert to PNG format before edit output image.
                 try {
-                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "TempOutPut.png"
+                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-RandomFileName)png"
                     $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
                 } catch {
                     Write-Verbose "Unable to convert Graphviz object to PNG format. Path: $TempOutPut"
