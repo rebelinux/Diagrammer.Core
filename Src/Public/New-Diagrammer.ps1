@@ -112,7 +112,7 @@ function New-Diagrammer {
         Specifies the background color of the diagram. Default is 'White'.
 
     .NOTES
-        Version:        0.2.20
+        Version:        0.2.24
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -126,10 +126,10 @@ function New-Diagrammer {
     #>
 
 
-    [Diagnostics.CodeAnalysis.SuppressMessage(
-        'PSUseShouldProcessForStateChangingFunctions',
-        ''
-    )]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingConvertToSecureStringWithPlainText", "", Scope="Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingUserNameAndPassWordParams", "", Scope="Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingPlainTextForPassword", "", Scope="Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "", Scope="Function")]
 
     [CmdletBinding(
         PositionalBinding = $false,
