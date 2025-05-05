@@ -179,7 +179,11 @@ function Export-Diagrammer {
             }
 
             if ($Format -eq "base64") {
-                ConvertTo-Base64 -ImageInput $DestinationPath
+                if (-Not $WaterMarkText) {
+                    ConvertTo-Base64 -ImageInput $Document
+                } else {
+                    ConvertTo-Base64 -ImageInput $DestinationPath
+                }
             } elseif ($Format -in @("jpg", "png")) {
                 if ($WaterMarkText) {
                     if ($Document) {
