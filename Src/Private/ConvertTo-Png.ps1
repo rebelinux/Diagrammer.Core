@@ -31,15 +31,15 @@ function ConvertTo-Png {
     )
     process {
         try {
-            Write-Verbose "Trying to convert Graphviz object to PNG format. Destination Path: $DestinationPath."
+            Write-Verbose -Message "Trying to convert Graphviz object to PNG format. Destination Path: $DestinationPath."
             $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'png' -GraphVizPath $GraphvizPath
         } catch {
-            Write-Verbose "Unable to convert Graphviz object to PNG format."
-            Write-Debug $($_.Exception.Message)
+            Write-Verbose -Message "Unable to convert Graphviz object to PNG format."
+            Write-Debug -Message $($_.Exception.Message)
         }
         if ($Document) {
             if ($Document) {
-                Write-Verbose "Successfully converted Graphviz object to PNG format. Saved Path: $DestinationPath."
+                Write-Verbose -Message "Successfully converted Graphviz object to PNG format. Saved Path: $DestinationPath."
                 Get-ChildItem -Path $Document
             }
         }

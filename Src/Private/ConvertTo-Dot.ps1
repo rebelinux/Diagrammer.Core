@@ -31,19 +31,19 @@ function ConvertTo-Dot {
     )
     process {
         if ($WaterMarkText) {
-            Write-ColorOutput -Color 'Red' -String "WaterMark option is not supported with the dot format."
+            Write-Verbose -Message "WaterMark option is not supported with the dot format."
         }
 
         try {
-            Write-Verbose "Trying to convert Graphviz object to DOT format. Destination Path: $DestinationPath."
+            Write-Verbose -Message "Trying to convert Graphviz object to DOT format. Destination Path: $DestinationPath."
             $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'dot' -GraphVizPath $GraphvizPath
         } catch {
-            Write-Verbose "Unable to convert Graphviz object to DOT format."
-            Write-Debug $($_.Exception.Message)
+            Write-Verbose -Message "Unable to convert Graphviz object to DOT format."
+            Write-Debug -Message $($_.Exception.Message)
         }
         if ($Document) {
             if ($Document) {
-                Write-Verbose "Successfully converted Graphviz object to DOT format. Saved Path: $DestinationPath."
+                Write-Verbose -Message "Successfully converted Graphviz object to DOT format. Saved Path: $DestinationPath."
                 Get-ChildItem -Path $Document
             }
         }

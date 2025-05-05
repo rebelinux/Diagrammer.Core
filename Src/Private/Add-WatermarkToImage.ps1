@@ -127,7 +127,7 @@ function Add-WatermarkToImage {
             $Graphics.Dispose()
 
         } else {
-            Write-Information "Unable to add watermark to image!"
+            Write-Information -Message "Unable to add watermark to image!"
         }
     }
 
@@ -139,17 +139,17 @@ function Add-WatermarkToImage {
             $Bitmap.Dispose()
 
             if ($TempImageOutput) {
-                Write-Verbose "Successfully added watermark text to $ImageInput image."
+                Write-Verbose -Message "Successfully added watermark text to $ImageInput image."
                 if ($PSBoundParameters.ContainsKey('DestinationPath')) {
                     try {
                         Copy-Item -Path $TempImageOutput -Destination $DestinationPath
-                        Write-Verbose "Successfully replaced $DestinationPath with $TempImageOutput watermarked image."
+                        Write-Verbose -Message "Successfully replaced $DestinationPath with $TempImageOutput watermarked image."
                     } catch {
-                        Write-Verbose "Unable to replace $DestinationPath watermark image to $TempImageOutput diagram."
-                        Write-Debug $($_.Exception.Message)
+                        Write-Verbose -Message "Unable to replace $DestinationPath watermark image to $TempImageOutput diagram."
+                        Write-Debug -Message $($_.Exception.Message)
                     }
                 } else {
-                    Write-Verbose "Successfully watermark $ImageInput diagram."
+                    Write-Verbose -Message "Successfully watermark $ImageInput diagram."
                     Get-ChildItem -Path $TempImageOutput
                 }
             }

@@ -65,7 +65,7 @@ Function Resize-Image() {
         }
 
         If ($Percentage -and $MaintainRatio) {
-            Write-Warning "The MaintainRatio flag while using the Percentage parameter does nothing"
+            Write-Warning -Message"The MaintainRatio flag while using the Percentage parameter does nothing"
         }
     }
     Process {
