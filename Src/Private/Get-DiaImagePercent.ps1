@@ -49,8 +49,8 @@ function Get-DiaImagePercent {
             try {
                 $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
             } catch {
-                Write-Verbose "Unable to convert Graphviz object to base64 format needed to get image dimensions"
-                Write-Debug $($_.Exception.Message)
+                Write-Verbose -Message "Unable to convert Graphviz object to base64 format needed to get image dimensions"
+                Write-Debug -Message $($_.Exception.Message)
             }
 
             if ($Image_FromStream) {
@@ -60,15 +60,15 @@ function Get-DiaImagePercent {
                 }
                 return $ImagePrty
             } else {
-                Write-Verbose "Unable to validate image dimensions"
+                Write-Verbose -Message "Unable to validate image dimensions"
             }
         } else {
             $ImagePrty = @{}
             try {
                 $Image = [System.Drawing.Image]::FromFile((Get-ChildItem -Path $ImageInput).FullName)
             } catch {
-                Write-Verbose "Unable to validate image path needed to get image dimensions"
-                Write-Debug $($_.Exception.Message)
+                Write-Verbose -Message "Unable to validate image path needed to get image dimensions"
+                Write-Debug -Message $($_.Exception.Message)
             }
 
             if ($Image) {
@@ -78,7 +78,7 @@ function Get-DiaImagePercent {
                 }
                 return $ImagePrty
             } else {
-                Write-Verbose "Unable to validate image dimensions"
+                Write-Verbose -Message "Unable to validate image dimensions"
             }
         }
     }

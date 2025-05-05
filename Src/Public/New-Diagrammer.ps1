@@ -418,7 +418,7 @@ function New-Diagrammer {
         }
 
         if (($Format -ne "base64") -and !(Test-Path $OutputFolderPath)) {
-            Write-Error "OutputFolderPath '$OutputFolderPath' is not a valid folder path."
+            Write-Error -Message "OutputFolderPath '$OutputFolderPath' is not a valid folder path."
             break
         }
 
@@ -512,14 +512,14 @@ function New-Diagrammer {
 
             # Signature Section
             if ($Signature) {
-                Write-Verbose "Generating diagram signature"
+                Write-Verbose -Message "Generating diagram signature"
                 if ($CustomSignatureLogo) {
                     $Signature = (Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
                 } else {
                     $Signature = (Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
                 }
             } else {
-                Write-Verbose "No diagram signature specified"
+                Write-Verbose -Message "No diagram signature specified"
                 $Signature = " "
             }
 
@@ -546,7 +546,7 @@ function New-Diagrammer {
             if ($Graph) {
                 Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath
             } else {
-                Write-Verbose "No Graph object found. Disabling diagram section"
+                Write-Verbose -Message "No Graph object found. Disabling diagram section"
             }
         }
     }

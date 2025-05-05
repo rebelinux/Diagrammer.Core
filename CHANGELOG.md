@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update version to `0.2.25`.
 - Refine verbose messages in the `Add-WatermarkToImage` and `Export-Diagrammer` functions for improved clarity.
 - Enhance font size calculation in the `Add-WatermarkToImage` cmdlet for scenarios where no size is specified.
+- Refactor verbose output messages to use -Message parameter for consistency across functions
 
 ### Fixed
 

@@ -73,17 +73,17 @@ function ConvertTo-RotateImage {
             $RotatedIMG.Dispose()
 
             if ($TempImageOutput) {
-                Write-Verbose "Successfully rotated $ImageInput image."
+                Write-Verbose -Message "Successfully rotated $ImageInput image."
                 if ($PSBoundParameters.ContainsKey('DestinationPath')) {
                     try {
                         Copy-Item -Path $TempImageOutput -Destination $DestinationPath
-                        Write-Verbose "Successfully replaced $DestinationPath with $TempImageOutput rotated image."
+                        Write-Verbose -Message "Successfully replaced $DestinationPath with $TempImageOutput rotated image."
                     } catch {
-                        Write-Verbose "Unable to replace $DestinationPath rotated image to $TempImageOutput diagram."
-                        Write-Debug $($_.Exception.Message)
+                        Write-Verbose -Message "Unable to replace $DestinationPath rotated image to $TempImageOutput diagram."
+                        Write-Debug -Message $($_.Exception.Message)
                     }
                 } else {
-                    Write-Verbose "Successfully rotated $ImageInput diagram."
+                    Write-Verbose -Message "Successfully rotated $ImageInput diagram."
                     Get-ChildItem -Path $TempImageOutput
                 }
             }

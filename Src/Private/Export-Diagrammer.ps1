@@ -140,17 +140,17 @@ function Export-Diagrammer {
 
             if ($Format -eq "svg") {
                 if ($WaterMarkText) {
-                    Write-Verbose "WaterMark option is not supported with the svg format."
+                    Write-Verbose -Message "WaterMark option is not supported with the svg format."
                 }
                 ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
             } elseif ($Format -eq "dot") {
                 if ($WaterMarkText) {
-                    Write-Verbose "WaterMark option is not supported with the dot format."
+                    Write-Verbose -Message "WaterMark option is not supported with the dot format."
                 }
                 ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
             } elseif ($Format -eq "pdf") {
                 if ($WaterMarkText) {
-                    Write-Verbose "WaterMark option is not supported with the pdf format."
+                    Write-Verbose -Message "WaterMark option is not supported with the pdf format."
                 }
                 ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
             } else {
@@ -169,8 +169,8 @@ function Export-Diagrammer {
                         $Document = ConvertTo-Jpg -GraphObj $GraphObj -DestinationPath $TempOutPut
                     }
                 } catch {
-                    Write-Verbose "Unable to convert Graphviz object to $tempFormat format. Path: $TempOutPut"
-                    Write-Debug $($_.Exception.Message)
+                    Write-Verbose -Message "Unable to convert Graphviz object to $tempFormat format. Path: $TempOutPut"
+                    Write-Debug -Message $($_.Exception.Message)
                 }
 
                 if ($WaterMarkText) {
@@ -206,7 +206,7 @@ function Export-Diagrammer {
                 Remove-Item -Path $Document
             }
             $Err = $_
-            Write-Error $Err
+            Write-Error -Message $Err
         }
     }
     end {}

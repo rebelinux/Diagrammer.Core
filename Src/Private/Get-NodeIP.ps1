@@ -23,7 +23,7 @@ function Get-NodeIP {
                     $IPADDR = $Null
                 }
             } catch {
-                Write-Verbose "Unable to resolve Hostname Address: $Hostname"
+                Write-Verbose -Message "Unable to resolve Hostname Address: $Hostname"
                 $IPADDR = $Null
             }
             $NodeIP = Switch ([string]::IsNullOrEmpty($IPADDR)) {
@@ -32,7 +32,7 @@ function Get-NodeIP {
                 default { $Hostname }
             }
         } catch {
-            Write-Verbose $_.Exception.Message
+            Write-Verbose -Message $_.Exception.Message
         }
 
         return $NodeIP

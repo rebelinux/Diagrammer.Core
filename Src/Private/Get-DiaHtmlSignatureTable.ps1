@@ -190,7 +190,7 @@ Function Get-DiaHtmlSignatureTable {
 
     $TR = ''
     foreach ($r in $Rows) {
-        Write-Verbose "Creating Node: $r"
+        Write-Verbose -Message "Creating Node: $r"
         if ($NoFontBold) {
             $TR += '<TR><TD valign="top" align="{0}" colspan="2"><FONT POINT-SIZE="{1}">{2}</FONT></TD></TR>' -f $Align, $FontSize, $r
         } else {
