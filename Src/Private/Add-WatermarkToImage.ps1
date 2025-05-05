@@ -127,7 +127,7 @@ function Add-WatermarkToImage {
             $Graphics.Dispose()
 
         } else {
-            Write-Information -Message "Unable to add watermark to image!"
+            Write-Information -MessageData "Unable to add watermark to image!"
         }
     }
 
