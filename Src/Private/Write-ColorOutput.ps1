@@ -24,7 +24,8 @@ function Write-ColorOutput {
 
         [Parameter(
             Position = 1,
-            Mandatory = $true
+            Mandatory = $true,
+            ValueFromPipeline = $true
         )]
         [ValidateNotNullOrEmpty()]
         [String] $String

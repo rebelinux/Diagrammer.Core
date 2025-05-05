@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.25] - 2025-05-04
+
+### Changed
+
+- Enable `ValueFromPipeline` support in the `Write-ColorOutput` cmdlet.
+- Update version to `0.2.25`.
+- Refine verbose messages in the `Add-WatermarkToImage` and `Export-Diagrammer` functions for improved clarity.
+- Enhance font size calculation in the `Add-WatermarkToImage` cmdlet for scenarios where no size is specified.
+
+### Fixed
+
+- Resolve an issue where watermarks were not being generated in base64 format.
+
 ## [0.2.24] - 2025-04-18
 
 ### Added
