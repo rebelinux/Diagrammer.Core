@@ -41,7 +41,7 @@ function Export-Diagrammer {
         The degree to rotate the diagram output image. Valid rotation degrees are 0 and 90. This parameter is optional.
 
     .NOTES
-        Version:        0.2.23
+        Version:        0.2.25
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux
@@ -143,11 +143,6 @@ function Export-Diagrammer {
                     Write-Verbose "WaterMark option is not supported with the svg format."
                 }
                 ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
-            } elseif ($Format -eq "jpg") {
-                if ($WaterMarkText) {
-                    Write-Verbose "WaterMark option is not supported with the dot format."
-                }
-                ConvertTo-Jpg -GraphObj $GraphObj -DestinationPath $DestinationPath
             } elseif ($Format -eq "dot") {
                 if ($WaterMarkText) {
                     Write-Verbose "WaterMark option is not supported with the dot format."
@@ -159,15 +154,24 @@ function Export-Diagrammer {
                 }
                 ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
             } else {
-                # Always convert to PNG format before edit output image.
                 try {
-                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-RandomFileName)png"
-                    $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
+                    if ($Format -eq "base64") {
+                        $tempFormat = "png"
+                    } else {
+                        $tempFormat = $Format
+                    }
+                    # Always convert to @(PNG or JPG) format before edit output image.
+                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-RandomFileName)$tempFormat"
+
+                    if ($tempFormat -eq "png") {
+                        $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
+                    } else {
+                        $Document = ConvertTo-Jpg -GraphObj $GraphObj -DestinationPath $TempOutPut
+                    }
                 } catch {
-                    Write-Verbose "Unable to convert Graphviz object to PNG format. Path: $TempOutPut"
+                    Write-Verbose "Unable to convert Graphviz object to $tempFormat format. Path: $TempOutPut"
                     Write-Debug $($_.Exception.Message)
                 }
-
 
                 if ($WaterMarkText) {
                     Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
@@ -175,18 +179,18 @@ function Export-Diagrammer {
             }
 
             if ($Format -eq "base64") {
-                ConvertTo-Base64 -ImageInput $Document
-            } elseif ($Format -eq "png") {
+                ConvertTo-Base64 -ImageInput $DestinationPath
+            } elseif ($Format -in @("jpg", "png")) {
                 if ($WaterMarkText) {
                     if ($Document) {
-                        Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
+                        Write-Verbose -Message "Deleting Temporary $Format file: $($Document.FullName)"
                         Remove-Item -Path $Document
                     }
                     Get-ChildItem -Path $DestinationPath
                 } else {
                     Copy-Item -Path $Document.FullName -Destination $DestinationPath
                     if ($Document) {
-                        Write-Verbose -Message "Deleting Temporary PNG file: $($Document.FullName)"
+                        Write-Verbose -Message "Deleting Temporary $Format file: $($Document.FullName)"
                         Remove-Item -Path $Document
                     }
                     Get-ChildItem -Path $DestinationPath

@@ -9,7 +9,7 @@ function Add-WatermarkToImage {
         Add-WatermarkToImage ImageInput "c:\Image.png" DestinationPath "c:\Image_Edited.png" -WaterMarkText "Zen PR Solutions" -FontName 'Arial' -FontSize 20 -FontColor 'Red'
 
     .NOTES
-        Version:        0.2.14
+        Version:        0.2.25
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -37,11 +37,11 @@ function Add-WatermarkToImage {
             HelpMessage = 'Please provide the path to the image file path'
         )]
         [ValidateScript( {
-            if (Test-Path -Path $_) {
-                $true
-            } else {
-                throw "File $_ not found!"
-            }
+                if (Test-Path -Path $_) {
+                    $true
+                } else {
+                    throw "File $_ not found!"
+                }
             })]
         [string] $ImageInput,
 
@@ -66,7 +66,7 @@ function Add-WatermarkToImage {
         [Parameter(
             HelpMessage = 'Please provide the font size'
         )]
-        [int] $FontSize = 180,
+        [int] $FontSize,
 
         [Parameter(
             HelpMessage = 'Please provide the font color'
@@ -86,15 +86,20 @@ function Add-WatermarkToImage {
 
     process {
 
+        # Teporary Image file path
+        $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath $FileName
+
         $ImageName = Get-ChildItem -Path $ImageInput
+
         # Teporary Image file name
         $FileName = $ImageName.BaseName + "_WaterMark" + $ImageName.Extension
 
         # Get the image from the ImageInput path
         $Bitmap = [System.Drawing.Image]::FromFile($ImageName.FullName)
 
-        # Teporary Image file path
-        $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath $FileName
+        if (-Not $FontSize) {
+            $FontSize = (($Bitmap.Width + $Bitmap.Height) / 2) / $WaterMarkText.Length
+        }
 
         # Initialize the font properties and brush
         $FontType = [System.Drawing.Font]::new($FontName, $FontSize, [System.Drawing.FontStyle]::Italic, [System.Drawing.GraphicsUnit]::Pixel, [System.Drawing.GraphicsUnit]::Bold)
@@ -103,8 +108,7 @@ function Add-WatermarkToImage {
 
         If ($Bitmap, $FontType, $FontColor, $SolidBrush) {
 
-            # Get the center of the image
-            $Grid = [System.Drawing.Point]::new($Bitmap.Width / 2, $Bitmap.Height / 2)
+            # Get the content of the image
             $Graphics = [System.Drawing.Graphics]::FromImage($Bitmap)
 
             # Set the properties to allow the text to be centered
@@ -118,7 +122,7 @@ function Add-WatermarkToImage {
             $Graphics.RotateTransform(-45)
 
             # Apply the properties to the Bitmap
-            $Graphics.DrawString($WaterMarkText, $FontType, $SolidBrush, - ($Grid.Width / 2), - ($Grid.Height / 2), $StringFormat)
+            $Graphics.DrawString($WaterMarkText, $FontType, $SolidBrush, 0, 0, $StringFormat)
             # Destroy the graphics object
             $Graphics.Dispose()
 
@@ -139,13 +143,13 @@ function Add-WatermarkToImage {
                 if ($PSBoundParameters.ContainsKey('DestinationPath')) {
                     try {
                         Copy-Item -Path $TempImageOutput -Destination $DestinationPath
-                        Write-Verbose "Successfully replaced $DestinationPath with $TempImageOutput rotated image."
+                        Write-Verbose "Successfully replaced $DestinationPath with $TempImageOutput watermarked image."
                     } catch {
-                        Write-Verbose "Unable to replace $DestinationPath rotated image to $TempImageOutput diagram."
+                        Write-Verbose "Unable to replace $DestinationPath watermark image to $TempImageOutput diagram."
                         Write-Debug $($_.Exception.Message)
                     }
                 } else {
-                    Write-Verbose "Successfully rotated $ImageInput diagram."
+                    Write-Verbose "Successfully watermark $ImageInput diagram."
                     Get-ChildItem -Path $TempImageOutput
                 }
             }
