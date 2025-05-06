@@ -40,6 +40,10 @@ Function Get-DiaHTMLLabel {
         Specifies the font name for the cell text. Default is "Segoe Ui Black".
     .PARAMETER fontColor
         Specifies the font color for the cell text. Default is "#565656".
+    .PARAMETER CellPadding
+        The padding inside the table cell. Default is 5.
+    .PARAMETER CellSpacing
+        The spacing between table cells. Default is 5.
     #>
 
     param(
@@ -82,7 +86,7 @@ Function Get-DiaHTMLLabel {
             Mandatory = $false,
             HelpMessage = 'Allow to set a label font size'
         )]
-        [int] $Fontsize = 1,
+        [int] $Fontsize = 14,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
@@ -92,7 +96,31 @@ Function Get-DiaHTMLLabel {
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#565656"
+        [string] $fontColor = "#565656",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specifies the padding inside the HTML table cells.'
+        )]
+        [int] $CellPadding = 10,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specifies the spacing between HTML table cells.'
+        )]
+        [int] $CellSpacing = 20,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specifies the SubgraphLabel padding inside the HTML table cells.'
+        )]
+        [int] $SubgraphCellPadding = 5,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specifies the SubgraphLabel spacing between HTML table cells.'
+        )]
+        [int] $SubgraphCellSpacing = 5
     )
 
     if ($IconType -eq 'NoIcon') {
@@ -107,21 +135,21 @@ Function Get-DiaHTMLLabel {
         # Todo add IconWidth and Icon Height
         if ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                return "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
 
             } else {
-                return "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
 
             }
         } else {
-            return "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
+            return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
         }
     }
     if ($SubgraphLabel) {
         if ($ICON -ne 'NoIcon') {
-            return "<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
         } else {
-            return "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
         }
     }
 }
