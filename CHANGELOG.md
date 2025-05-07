@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Increment module version to `0.2.26`.
 - Add new parameters to the `Get-DiaHTMLLabel` and `Get-DiaNodeIcon` functions.
 - Update changelog to reflect the latest changes.
+- Implement code changes to enhance functionality and improve performance
 
 ## [0.2.25] - 2025-05-04
 
