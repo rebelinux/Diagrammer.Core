@@ -138,7 +138,9 @@ Function Get-DiaNodeIcon {
         [int] $CellSpacing = 5
     )
 
-    $rowspan = 0
+    # Todo set the rowspan value dinamically
+    # $rowspan = 0
+
     if ($IconType -eq 'NoIcon') {
         $ICON = 'NoIcon'
     } elseif ($ImagesObj[$IconType]) {
