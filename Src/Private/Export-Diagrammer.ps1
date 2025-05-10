@@ -161,7 +161,7 @@ function Export-Diagrammer {
                         $tempFormat = $Format
                     }
                     # Always convert to @(PNG or JPG) format before edit output image.
-                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-RandomFileName)$tempFormat"
+                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-Random)$tempFormat"
 
                     if ($tempFormat -eq "png") {
                         $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
