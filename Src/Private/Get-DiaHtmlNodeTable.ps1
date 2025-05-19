@@ -40,7 +40,7 @@ Function Get-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.22
+        Version:        0.2.27
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -197,7 +197,7 @@ Function Get-DiaHTMLNodeTable {
         [string] $Port = "EdgeDot",
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
+            HelpMessage = 'This value enable the option to assign a unique icon per node object'
         )]
         [Switch]$MultiIcon,
         [Parameter(
@@ -275,63 +275,65 @@ Function Get-DiaHTMLNodeTable {
     }
 
 
-    switch ($AditionalInfo.GetType().Name) {
-        'Hashtable' {
-            if ($AditionalInfo) {
-                $Filter = $AditionalInfo.keys | Select-Object -Unique
-                $RowsGroupHTs = @()
+    if ($AditionalInfo) {
+        switch ($AditionalInfo.GetType().Name) {
+            'Hashtable' {
+                if ($AditionalInfo) {
+                    $Filter = $AditionalInfo.keys | Select-Object -Unique
+                    $RowsGroupHTs = @()
 
-                foreach ($RepoObj in ($Filter)) {
-                    $RowsGroupHTs += @{
-                        $RepoObj = $AditionalInfo.$RepoObj
+                    foreach ($RepoObj in ($Filter)) {
+                        $RowsGroupHTs += @{
+                            $RepoObj = $AditionalInfo.$RepoObj
+                        }
                     }
                 }
             }
-        }
 
-        'OrderedDictionary' {
-            if ($AditionalInfo) {
-                $Filter = $AditionalInfo.keys | Select-Object -Unique
-                $RowsGroupHTs = @()
+            'OrderedDictionary' {
+                if ($AditionalInfo) {
+                    $Filter = $AditionalInfo.keys | Select-Object -Unique
+                    $RowsGroupHTs = @()
 
-                foreach ($RepoObj in ($Filter)) {
-                    $RowsGroupHTs += @{
-                        $RepoObj = $AditionalInfo.$RepoObj
+                    foreach ($RepoObj in ($Filter)) {
+                        $RowsGroupHTs += @{
+                            $RepoObj = $AditionalInfo.$RepoObj
+                        }
                     }
                 }
             }
-        }
 
-        'Object[]' {
-            if ($AditionalInfo[0].GetType().Name -eq 'PSCustomObject') {
-                $Filter = $AditionalInfo | ForEach-Object { $_.PSObject.Properties.name } | Select-Object -Unique
-                $RowsGroupHTs = @()
+            'Object[]' {
+                if ($AditionalInfo[0].GetType().Name -eq 'PSCustomObject') {
+                    $Filter = $AditionalInfo | ForEach-Object { $_.PSObject.Properties.name } | Select-Object -Unique
+                    $RowsGroupHTs = @()
 
-                foreach ($RepoObj in ($Filter)) {
-                    $RowsGroupHTs += @{
-                        $RepoObj = $AditionalInfo.$RepoObj
+                    foreach ($RepoObj in ($Filter)) {
+                        $RowsGroupHTs += @{
+                            $RepoObj = $AditionalInfo.$RepoObj
+                        }
                     }
-                }
-            } else {
-                $Filter = $AditionalInfo.keys | Select-Object -Unique
-                $RowsGroupHTs = @()
+                } else {
+                    $Filter = $AditionalInfo.keys | Select-Object -Unique
+                    $RowsGroupHTs = @()
 
-                foreach ($RepoObj in ($Filter)) {
-                    $RowsGroupHTs += @{
-                        $RepoObj = $AditionalInfo.$RepoObj
+                    foreach ($RepoObj in ($Filter)) {
+                        $RowsGroupHTs += @{
+                            $RepoObj = $AditionalInfo.$RepoObj
+                        }
                     }
                 }
             }
-        }
 
-        'PSCustomObject' {
-            if ($AditionalInfo) {
-                $Filter = $AditionalInfo | ForEach-Object { $_.PSObject.Properties.name } | Select-Object -Unique
-                $RowsGroupHTs = @()
+            'PSCustomObject' {
+                if ($AditionalInfo) {
+                    $Filter = $AditionalInfo | ForEach-Object { $_.PSObject.Properties.name } | Select-Object -Unique
+                    $RowsGroupHTs = @()
 
-                foreach ($RepoObj in ($Filter)) {
-                    $RowsGroupHTs += @{
-                        $RepoObj = $AditionalInfo.$RepoObj
+                    foreach ($RepoObj in ($Filter)) {
+                        $RowsGroupHTs += @{
+                            $RepoObj = $AditionalInfo.$RepoObj
+                        }
                     }
                 }
             }

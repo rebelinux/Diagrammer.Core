@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.27] - 2025-05-XX
+
+### Added
+
+- Added new test file Get-DiaNodeFiller.Tests.ps1 to validate Get-DiaNodeFiller functionality.
+
+### Changed
+
+- Corrected "HMLT" to "HTML" in multiple test descriptions across Get-DiaHtmlSignatureTable.Tests.ps1 and Get-DiaHtmlSubGraph.Tests.ps1.
+- Updated function names from Get-DiaHtmlSubGraph to Get-DiaHTMLSubGraph for consistency in Get-DiaHtmlSubGraph.Tests.ps1.
+- Updated test descriptions in Get-DiaNodeIcon.Tests.ps1 to correct spelling and improve clarity.
+
+### Fixed
+
+- Fix spelling errors in test descriptions and update function names for consistency
+- Fix isssue in cmdlet Get-DiaHtmlSubGraph pester test
+- Fix isssue in cmdlet Get-Get-DiaHTMLNodeTable pester test
+
 ## [0.2.26] - 2025-05-09
 
 ### Changed
