@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Increment module version to `0.2.27`.
 - Corrected "HMLT" to "HTML" in multiple test descriptions across Get-DiaHtmlSignatureTable.Tests.ps1 and Get-DiaHtmlSubGraph.Tests.ps1.
 - Updated function names from Get-DiaHtmlSubGraph to Get-DiaHTMLSubGraph for consistency in Get-DiaHtmlSubGraph.Tests.ps1.
 - Updated test descriptions in Get-DiaNodeIcon.Tests.ps1 to correct spelling and improve clarity.
