@@ -91,6 +91,9 @@ Function Add-DiaHtmlSignatureTable {
         3. Document all parameters
     #>
 
+    [CmdletBinding()]
+    [Alias('Get-DiaHtmlSignatureTable')]
+    [OutputType([System.String])]
     param(
         [Parameter(
             Mandatory = $true,

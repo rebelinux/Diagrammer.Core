@@ -67,6 +67,10 @@ Function Add-DiaHTMLTable {
         Allows setting a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED).
     #>
 
+    [CmdletBinding()]
+    [Alias('Get-DiaHTMLTable')]
+    [OutputType([System.String])]
+
     param(
         [Parameter(
             Mandatory = $false,
@@ -148,12 +152,12 @@ Function Add-DiaHTMLTable {
             HelpMessage = 'Allow to set the subgraph table icon'
         )]
         [ValidateScript({
-            if ($ImagesObj) {
-                $true
-            } else {
-                throw "ImagesObj table needed if SubgraphIconType option is especified."
-            }
-        })]
+                if ($ImagesObj) {
+                    $true
+                } else {
+                    throw "ImagesObj table needed if SubgraphIconType option is especified."
+                }
+            })]
         [string]$SubgraphIconType,
         [Parameter(
             Mandatory = $false,

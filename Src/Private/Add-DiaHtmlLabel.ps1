@@ -46,6 +46,9 @@ Function Add-DiaHTMLLabel {
         The spacing between table cells. Default is 5.
     #>
 
+    [CmdletBinding()]
+    [Alias('Get-DiaHTMLLabel')]
+    [OutputType([System.String])]
     param(
         [Parameter(
             Mandatory = $true,

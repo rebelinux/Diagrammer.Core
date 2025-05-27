@@ -91,6 +91,9 @@ Function Add-DiaHTMLSubGraph {
         4. Look for a solution for the Icon and Label problem
     #>
 
+    [CmdletBinding()]
+    [Alias('Add-DiaHTMLSubGraph')]
+    [OutputType([System.String])]
     param(
         [Parameter(
             Mandatory = $true,
@@ -162,12 +165,12 @@ Function Add-DiaHTMLSubGraph {
             HelpMessage = 'Allow to set the subgraph table icon'
         )]
         [ValidateScript({
-            if ($ImagesObj) {
-                $true
-            } else {
-                throw "ImagesObj table needed if IconType option is especified."
-            }
-        })]
+                if ($ImagesObj) {
+                    $true
+                } else {
+                    throw "ImagesObj table needed if IconType option is especified."
+                }
+            })]
         [string]$IconType,
         [Parameter(
             Mandatory = $false,

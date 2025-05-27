@@ -31,6 +31,7 @@ function Add-WatermarkToImage {
         The font color opacity level
     #>
 
+    [CmdletBinding()]
     param(
         [Parameter(
             Mandatory = $true,

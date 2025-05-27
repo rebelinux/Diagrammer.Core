@@ -24,6 +24,7 @@ Function Add-DiaNodeFiller {
     #>
 
     [CmdletBinding()]
+    [Alias('Get-DiaNodeFiller')]
     [OutputType([System.String])]
 
     param(

@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added new test file Add-DiaNodeFiller.Tests.ps1 to validate Add-DiaNodeFiller functionality
-- Introduced a Todo file for future enhancements, including research on creating directional lines in dot graphs.
+- Introduced a Todo file for future enhancements, including research on creating directional lines in dot graphs
+- add additional tests for Get-NodeIP functionality
 
 ### Changed
 
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated function names from Add-DiaHtmlSubGraph to Add-DiaHTMLSubGraph for consistency in Add-DiaHtmlSubGraph.Tests.ps1
 - Updated test descriptions in Add-DiaNodeIcon.Tests.ps1 to correct spelling and improve clarity
 - Update cmdlet verb to better reflect its intended action
+- Enhance module with aliases and output types for various functions
 
 ### Fixed
 
