@@ -1,9 +1,9 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Get-DiaHTMLNodeTable.ps1
+    . $ProjectRoot\SRC\private\Add-DiaHTMLNodeTable.ps1
 }
 
-Describe Get-DiaHTMLNodeTable {
+Describe Add-DiaHTMLNodeTable {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
@@ -14,25 +14,25 @@ Describe Get-DiaHTMLNodeTable {
         $SubnetsArray = @("192.168.5.0", "192.168.7.0", "192.168.9.0", "172.16.9.0", "172.16.18.0", "10.10.8.0")
 
 
-        $HTMLMultiColumn = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon
-        $HTMLMultiColumnDebug = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -IconDebug $true
+        $HTMLMultiColumn = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon
+        $HTMLMultiColumnDebug = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -IconDebug $true
 
-        $HTMLMultiColumnSubGraph = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers'
-        $HTMLMultiColumnSubGraphDebug = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true
+        $HTMLMultiColumnSubGraph = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers'
+        $HTMLMultiColumnSubGraphDebug = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true
 
-        $HTMLMultiColumnSubGraphTop = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -SubgraphLabelPos 'Top'
-        $HTMLMultiColumnSubGraphDebugTop = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true -SubgraphLabelPos 'Top'
+        $HTMLMultiColumnSubGraphTop = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -SubgraphLabelPos 'Top'
+        $HTMLMultiColumnSubGraphDebugTop = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true -SubgraphLabelPos 'Top'
 
 
 
-        $HTMLSingleColumn = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Align 'Center' -iconType "DomainController"
-        $HTMLSingleColumnDebug = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Align 'Center' -iconType "DomainController" -IconDebug $true
+        $HTMLSingleColumn = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Align 'Center' -iconType "DomainController"
+        $HTMLSingleColumnDebug = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Align 'Center' -iconType "DomainController" -IconDebug $true
 
-        $HTMLSingleSubGraph = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers'
-        $HTMLSingleSubGraphDebug = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true
+        $HTMLSingleSubGraph = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers'
+        $HTMLSingleSubGraphDebug = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true
 
-        $HTMLSingleSubGraphTop = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -SubgraphLabelPos 'Top'
-        $HTMLSingleSubGraphDebugTop = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true -SubgraphLabelPos 'Top'
+        $HTMLSingleSubGraphTop = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -SubgraphLabelPos 'Top'
+        $HTMLSingleSubGraphDebugTop = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -Subgraph -SubgraphIconType 'DomainController' -SubgraphLabel 'Domain Controllers' -IconDebug $true -SubgraphLabelPos 'Top'
     }
 
     It "Should return a multi column HTML table with icon image at each cell" {
@@ -72,6 +72,6 @@ Describe Get-DiaHTMLNodeTable {
         $HTMLSingleSubGraphDebugTop | Should -BeExactly '<TABLE PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="3"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>SubGraph Icon</B></FONT></TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="3"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Domain Controllers</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="6">ICON</TD></TR><TR><TD PORT="Server-dc-01v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14">Server-dc-01v</FONT></TD><TD PORT="Server-dc-02v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14">Server-dc-02v</FONT></TD><TD PORT="Server-dc-03v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14">Server-dc-03v</FONT></TD></TR><TR><TD PORT="Server-dc-04v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14">Server-dc-04v</FONT></TD><TD PORT="Server-dc-05v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14">Server-dc-05v</FONT></TD><TD PORT="Server-dc-06v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14">Server-dc-06v</FONT></TD></TR></TABLE>'
     }
     It 'Should Throw a Message' {
-        { Get-DiaHTMLNodeTable -inputObject $DCsArray -ImagesObj $Images -Align 'Center' -iconType "DomainControlle" } | Should -Throw -ExpectedMessage 'Error: DomainControlle IconType not found in Images object'
+        { Add-DiaHTMLNodeTable -inputObject $DCsArray -ImagesObj $Images -Align 'Center' -iconType "DomainControlle" } | Should -Throw -ExpectedMessage 'Error: DomainControlle IconType not found in Images object'
     }
 }

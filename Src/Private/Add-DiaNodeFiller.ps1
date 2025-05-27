@@ -1,4 +1,4 @@
-Function Get-DiaNodeFiller {
+Function Add-DiaNodeFiller {
     <#
     .SYNOPSIS
         Function to create a html table used as Filler
@@ -6,14 +6,14 @@ Function Get-DiaNodeFiller {
         Function to create a html table used as Filler
     .Example
 
-        Get-DiaNodeFiller -IconDebug:$true
+        Add-DiaNodeFiller -IconDebug:$true
                     _________________
                     |               |
                     |      Icon     |
                     _________________
 
     .NOTES
-        Version:        0.2.21
+        Version:        0.2.27
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

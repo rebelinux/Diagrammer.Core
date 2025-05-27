@@ -1,4 +1,4 @@
-Function Get-DiaHTMLNodeTable {
+Function Add-DiaHTMLNodeTable {
     <#
     .SYNOPSIS
         Converts an array to an HTML table for Graphviz node labels, including icons.
@@ -22,7 +22,7 @@ Function Get-DiaHTMLNodeTable {
             "AD_Site_Node" = "SiteNode.png"
         }
 
-        Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -IconDebug $True
+        Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -IconDebug $True
 
         ________________________________ _______________
         |               |               |               |

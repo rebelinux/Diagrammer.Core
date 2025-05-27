@@ -9,27 +9,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added new test file Get-DiaNodeFiller.Tests.ps1 to validate Get-DiaNodeFiller functionality.
+- Added new test file Add-DiaNodeFiller.Tests.ps1 to validate Add-DiaNodeFiller functionality
+- Introduced a Todo file for future enhancements, including research on creating directional lines in dot graphs.
 
 ### Changed
 
-- Increment module version to `0.2.27`.
-- Corrected "HMLT" to "HTML" in multiple test descriptions across Get-DiaHtmlSignatureTable.Tests.ps1 and Get-DiaHtmlSubGraph.Tests.ps1.
-- Updated function names from Get-DiaHtmlSubGraph to Get-DiaHTMLSubGraph for consistency in Get-DiaHtmlSubGraph.Tests.ps1.
-- Updated test descriptions in Get-DiaNodeIcon.Tests.ps1 to correct spelling and improve clarity.
+- Increment module version to `0.2.27`
+- Corrected "HMLT" to "HTML" in multiple test descriptions across Add-DiaHtmlSignatureTable.Tests.ps1 and Add-DiaHtmlSubGraph.Tests.ps1
+- Updated function names from Add-DiaHtmlSubGraph to Add-DiaHTMLSubGraph for consistency in Add-DiaHtmlSubGraph.Tests.ps1
+- Updated test descriptions in Add-DiaNodeIcon.Tests.ps1 to correct spelling and improve clarity
+- Update cmdlet verb to better reflect its intended action
 
 ### Fixed
 
 - Fix spelling errors in test descriptions and update function names for consistency
-- Fix isssue in cmdlet Get-DiaHtmlSubGraph pester test
-- Fix isssue in cmdlet Get-Get-DiaHTMLNodeTable pester test
+- Fix isssue in cmdlet Add-DiaHtmlSubGraph pester test
+- Fix isssue in cmdlet Get-Add-DiaHTMLNodeTable pester test
 
 ## [0.2.26] - 2025-05-09
 
 ### Changed
 
 - Increment module version to `0.2.26`.
-- Add new parameters to the `Get-DiaHTMLLabel` and `Get-DiaNodeIcon` functions.
+- Add new parameters to the `Add-DiaHTMLLabel` and `Add-DiaNodeIcon` functions.
 - Update changelog to reflect the latest changes.
 - Implement code changes to enhance functionality and improve performance
 
@@ -55,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add parameters to Get-DiaNodeFiller for icon direction and image handling
+- Add parameters to Add-DiaNodeFiller for icon direction and image handling
 
 ### Changed
 
@@ -80,7 +82,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add Get-DiaNodeFiller cmdlet
+- Add Add-DiaNodeFiller cmdlet
 
 ## [0.2.20] - 2025-04-08
 
@@ -90,40 +92,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix Get-DiaNodeIcon cmdlet to honor align parameter
+- Fix Add-DiaNodeIcon cmdlet to honor align parameter
 
 ## [0.2.19] - 2025-03-04
 
 ### Added
 
 - Add parameter to set Subgraph Label font size
-  - Get-DiaHTMLNodeTable
-  - Get-DiaHTMLTable
+  - Add-DiaHTMLNodeTable
+  - Add-DiaHTMLTable
 
 ### Fixed
 
-- Fix Get-DiaHTMLNodeTable cmdlet to honor fontsize parameter
-- Fix Get-DiaHTMLTable cmdlet to honor fontsize parameter
-- Fix Get-DiaHTMLLabel cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLNodeTable cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLTable cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLLabel cmdlet to honor fontsize parameter
 
 ## [0.2.18] - 2025-03-04
 
 ### Fixed
 
-- Fix Get-DiaHTMLNodeTable fontsize error when calling debug mode
+- Fix Add-DiaHTMLNodeTable fontsize error when calling debug mode
 
 ## [0.2.16] - 2025-03-03
 
 ### Fixed
 
-- Fix Get-DiaHTMLSubGraph cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLSubGraph cmdlet to honor fontsize parameter
 
 ## [0.2.15] - 2025-02-21
 
 ### Changed
 
 - Improved cmdlet documentation
-- Added Ordered list to the Get-DiaNodeIcon cmdlet
+- Added Ordered list to the Add-DiaNodeIcon cmdlet
 
 ## [0.2.14] - 2025-02-11
 
@@ -149,7 +151,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix error in cmdlet Get-DiaHtmlSignatureTable
+- Fix error in cmdlet Add-DiaHtmlSignatureTable
 
 ## [0.2.10] - 2024-10-12
 
@@ -162,11 +164,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add option to mimic Graphviz Subgraph
-  - Get-DiaHTMLNodeTable
-  - Get-DiaHTMLTable
-  - Get-DiaHtmlSubGraph
+  - Add-DiaHTMLNodeTable
+  - Add-DiaHTMLTable
+  - Add-DiaHtmlSubGraph
 - Add cmdlet to create the Signature table
-  - Get-DiaHtmlSignatureTable
+  - Add-DiaHtmlSignatureTable
 
 ### Changed
 
@@ -209,7 +211,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add feature to set per object type icon in Get-DiaHtmlNodeTable module
+- Add feature to set per object type icon in Add-DiaHtmlNodeTable module
 
 ### Changed
 
@@ -232,7 +234,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Improved Get-DiaHTMLTable and Get-DiaNodeIcon cmdlet
+- Improved Add-DiaHTMLTable and Add-DiaNodeIcon cmdlet
 
 ## [0.2.0] - 2024-04-29
 
@@ -244,7 +246,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Improved Get-DiaHTMLNodeTable function. Close [#14](https://github.com/rebelinux/Diagrammer.Core/issues/14)
+- Improved Add-DiaHTMLNodeTable function. Close [#14](https://github.com/rebelinux/Diagrammer.Core/issues/14)
   - Allow to add more Information to the Node Object
 
 ## [0.1.8] - 2024-03-16
@@ -263,7 +265,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Renamed Out-Diagram to Export-Diagrammer
-- Improved Get-DiaHTMLNodeTable
+- Improved Add-DiaHTMLNodeTable
 
 ### Fixed
 
@@ -279,8 +281,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improved Get-DiaImagePercent module
-- Improved Get-DiaHTMLNodeTable to better align MultiColumn Icon
-- Improved Get-DiaNodeIcon debug mode
+- Improved Add-DiaHTMLNodeTable to better align MultiColumn Icon
+- Improved Add-DiaNodeIcon debug mode
 
 ## [0.1.6] - 2024-02-23
 

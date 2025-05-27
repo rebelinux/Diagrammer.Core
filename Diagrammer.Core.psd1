@@ -69,7 +69,7 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = 'Get-DiaHtmlSignatureTable', 'Group-Node', 'Get-DiaHTMLSubGraph', 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-DiaNodeIcon', 'Export-Diagrammer', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'New-Diagrammer', 'Get-DiaNodeFiller', 'Write-PSObject'
+    FunctionsToExport = 'Add-DiaHtmlSignatureTable', 'Group-Node', 'Add-DiaHTMLSubGraph', 'Convert-DiaTableToHTML', 'Add-DiaHtmlLabel', 'Add-DiaHtmlNodeTable', 'Add-DiaHtmlTable', 'Get-NodeIP', 'Add-DiaNodeIcon', 'Export-Diagrammer', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'New-Diagrammer', 'Add-DiaNodeFiller', 'Write-PSObject'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     # CmdletsToExport = '*'

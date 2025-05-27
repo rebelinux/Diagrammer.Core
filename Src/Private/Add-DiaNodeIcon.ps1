@@ -1,4 +1,4 @@
-Function Get-DiaNodeIcon {
+Function Add-DiaNodeIcon {
     <#
     .SYNOPSIS
         Function to convert a Graphviz node label to a HTML Table with Icon
@@ -10,7 +10,7 @@ Function Get-DiaNodeIcon {
             Memory = "4GB"
             CPU = "2"
         }
-        Get-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows
+        Add-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows
                     _________________
                     |               |
                     |      Icon     |
@@ -23,7 +23,7 @@ Function Get-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.2.22
+        Version:        0.2.27
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

@@ -1,12 +1,12 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Get-DiaNodeFiller.ps1
+    . $ProjectRoot\SRC\private\Add-DiaNodeFiller.ps1
 }
 
-Describe Get-DiaNodeFiller {
+Describe Add-DiaNodeFiller {
     BeforeAll {
-        $HTMLOutPut = Get-DiaNodeFiller
-        $HTMLOutPutDebug = Get-DiaNodeFiller -IconDebug $true
+        $HTMLOutPut = Add-DiaNodeFiller
+        $HTMLOutPutDebug = Add-DiaNodeFiller -IconDebug $true
     }
 
     It "Should return a HTML table with BlankFiller.png icon" {

@@ -1,4 +1,4 @@
-Function Get-DiaHTMLLabel {
+Function Add-DiaHTMLLabel {
     <#
     .SYNOPSIS
         Converts a string to an HTML table for the report main logo and title.
@@ -13,10 +13,10 @@ Function Get-DiaHTMLLabel {
         }
         $CustomLogo = "Logo Path"
         $IconDebug = $false
-        Get-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
+        Add-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
         # This will generate an HTML table with the specified label and logo.
     .NOTES
-        Version:        0.2.19
+        Version:        0.2.27
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux

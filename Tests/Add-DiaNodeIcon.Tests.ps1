@@ -1,9 +1,9 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Get-DiaNodeIcon.ps1
+    . $ProjectRoot\SRC\private\Add-DiaNodeIcon.ps1
 }
 
-Describe Get-DiaNodeIcon {
+Describe Add-DiaNodeIcon {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
@@ -13,8 +13,8 @@ Describe Get-DiaNodeIcon {
         $DCRows = [ordered]@{
             Memory = "4GB"
         }
-        $HTMLOutPut = Get-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows -ImagesObj $Images
-        $HTMLOutPutDebug = Get-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows -ImagesObj $Images -IconDebug $true
+        $HTMLOutPut = Add-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows -ImagesObj $Images
+        $HTMLOutPutDebug = Add-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows -ImagesObj $Images -IconDebug $true
     }
 
     It "Should return a HTML table" {

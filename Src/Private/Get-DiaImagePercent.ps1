@@ -5,7 +5,7 @@ function Get-DiaImagePercent {
     .DESCRIPTION
         This allow the diagram image to fit the report page margins
     .NOTES
-        Version:        0.2.12
+        Version:        0.2.27
         Author:         Jonathan Colon
     .EXAMPLE
     .LINK

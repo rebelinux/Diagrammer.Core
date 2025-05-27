@@ -1,9 +1,9 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Get-DiaHTMLTable.ps1
+    . $ProjectRoot\SRC\private\Add-DiaHTMLTable.ps1
 }
 
-Describe Get-DiaHTMLTable {
+Describe Add-DiaHTMLTable {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
@@ -11,11 +11,11 @@ Describe Get-DiaHTMLTable {
         }
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
 
-        $HTMLMultiColumn = Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
-        $HTMLMultiColumnDebug = Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
+        $HTMLMultiColumn = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
+        $HTMLMultiColumnDebug = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
 
-        $HTMLSingleColumn = Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1
-        $HTMLSingleColumnDebug = Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1
+        $HTMLSingleColumn = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1
+        $HTMLSingleColumnDebug = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1
 
     }
     # Todo

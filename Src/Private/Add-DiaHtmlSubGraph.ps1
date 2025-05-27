@@ -1,4 +1,4 @@
-Function Get-DiaHTMLSubGraph {
+Function Add-DiaHTMLSubGraph {
     <#
     .SYNOPSIS
         Function to convert a array to a HTML Table to mimic Graphviz Cluster (Subgraph).
@@ -6,7 +6,7 @@ Function Get-DiaHTMLSubGraph {
         Takes a array and converts it to a HTML table to mimic Graphviz Subgraph
     .Example
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center" -ColumnSize 2
+        Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center" -ColumnSize 2
             _________________________________
             |               |               |
             |192.168.5.0/24 |192.168.7.0/24 |
@@ -16,7 +16,7 @@ Function Get-DiaHTMLSubGraph {
             _________________________________
 
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center"
+        Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center"
             _________________
             |               |
             |192.168.5.0/24 |
@@ -29,7 +29,7 @@ Function Get-DiaHTMLSubGraph {
             _________________
 
     .NOTES
-        Version:        0.2.19
+        Version:        0.2.27
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

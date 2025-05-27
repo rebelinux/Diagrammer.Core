@@ -1,9 +1,9 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Get-DiaHTMLLabel.ps1
+    . $ProjectRoot\SRC\private\Add-DiaHTMLLabel.ps1
 }
 
-Describe Get-DiaHTMLLabel {
+Describe Add-DiaHTMLLabel {
     BeforeAll {
         $MainGraphLabel = @{
             'Forest' = 'Active Directory Forest Diagram'
@@ -15,8 +15,8 @@ Describe Get-DiaHTMLLabel {
             "Main_Logo" = "Diagrammer.png"
             "DomainController" = "AD_DC.png"
         }
-        $HTMLTableMainLabel = Get-DiaHTMLLabel -Label $MainGraphLabel['Forest'] -IconType 'DomainController' -IconDebug $false -ImagesObj $Images
-        $HTMLTableSubgraphLabel = Get-DiaHTMLLabel -Label $MainGraphLabel['Forest'] -IconType 'DomainController' -IconDebug $false -ImagesObj $Images -SubgraphLabel
+        $HTMLTableMainLabel = Add-DiaHTMLLabel -Label $MainGraphLabel['Forest'] -IconType 'DomainController' -IconDebug $false -ImagesObj $Images
+        $HTMLTableSubgraphLabel = Add-DiaHTMLLabel -Label $MainGraphLabel['Forest'] -IconType 'DomainController' -IconDebug $false -ImagesObj $Images -SubgraphLabel
 
     }
 

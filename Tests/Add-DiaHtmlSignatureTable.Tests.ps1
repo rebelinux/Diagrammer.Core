@@ -1,17 +1,17 @@
 BeforeAll {
     . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Get-DiaHtmlSignatureTable.ps1
+    . $ProjectRoot\SRC\private\Add-DiaHtmlSignatureTable.ps1
 }
 
-Describe Get-DiaHtmlSignatureTable {
+Describe Add-DiaHtmlSignatureTable {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
             "ForestRoot" = "RootDomain.png"
         }
         $Rows = @("Jonathan Colon", "Zen PR Solutions")
-        $HTMLSignaturewithLogo = Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows $Rows -Align "Center"  -Logo 'Main_Logo'
-        $HTMLSignaturewithLogoDebug = Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows $Rows -Align "Center"  -Logo 'Main_Logo' -IconDebug $true
+        $HTMLSignaturewithLogo = Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows $Rows -Align "Center"  -Logo 'Main_Logo'
+        $HTMLSignaturewithLogoDebug = Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows $Rows -Align "Center"  -Logo 'Main_Logo' -IconDebug $true
 
     }
 

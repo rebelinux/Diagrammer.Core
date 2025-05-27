@@ -1,4 +1,4 @@
-Function Get-DiaHtmlSignatureTable {
+Function Add-DiaHtmlSignatureTable {
     <#
     .SYNOPSIS
         Function to convert a string array to a HTML Table used to create the Signature table
@@ -12,11 +12,11 @@ Function Get-DiaHtmlSignatureTable {
         }
         $DCsArray = @("Server-dc-01v", "Server-dc-02v", "Server-dc-03v", "Server-dc-04v", "Server-dc-05v", "Server-dc-06v")
 
-        $DCNodes = Get-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon
+        $DCNodes = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon
 
         $TableObjects = @($DCNodes)
 
-        Get-DiaHtmlSubGraph -ImagesObj $Images -TableArray $TableObjects -Align "Center" -IconType 'DomainController' -columnSize 1 -Label 'Domain Controllers' -LabelPos 'top' -IconDebug $true
+        Add-DiaHtmlSubGraph -ImagesObj $Images -TableArray $TableObjects -Align "Center" -IconType 'DomainController' -columnSize 1 -Label 'Domain Controllers' -LabelPos 'top' -IconDebug $true
         ____________________________________________________
         | |                      ICON                     | |
         ___________________________________________________ |
@@ -37,7 +37,7 @@ Function Get-DiaHtmlSignatureTable {
         __________________________________|__________________
 
     .NOTES
-        Version:        0.2.9
+        Version:        0.2.27
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

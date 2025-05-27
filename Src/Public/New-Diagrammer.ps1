@@ -126,10 +126,10 @@ function New-Diagrammer {
     #>
 
 
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingConvertToSecureStringWithPlainText", "", Scope="Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingUserNameAndPassWordParams", "", Scope="Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingPlainTextForPassword", "", Scope="Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "", Scope="Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingConvertToSecureStringWithPlainText", "", Scope = "Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingUserNameAndPassWordParams", "", Scope = "Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingPlainTextForPassword", "", Scope = "Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "", Scope = "Function")]
 
     [CmdletBinding(
         PositionalBinding = $false,
@@ -514,9 +514,9 @@ function New-Diagrammer {
             if ($Signature) {
                 Write-Verbose -Message "Generating diagram signature"
                 if ($CustomSignatureLogo) {
-                    $Signature = (Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
+                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
                 } else {
-                    $Signature = (Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
+                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
                 }
             } else {
                 Write-Verbose -Message "No diagram signature specified"
@@ -534,7 +534,7 @@ function New-Diagrammer {
             # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
-                SubGraph MainGraph -Attributes @{Label = (Get-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80 -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
+                SubGraph MainGraph -Attributes @{Label = (Add-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80 -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
                     $InputObject
                 }
             }

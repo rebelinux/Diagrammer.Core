@@ -1,4 +1,4 @@
-Function Get-DiaHTMLTable {
+Function Add-DiaHTMLTable {
     <#
     .SYNOPSIS
         Converts a string array to an HTML table with Graphviz nodes split by columns (No Icons).
@@ -6,7 +6,7 @@ Function Get-DiaHTMLTable {
         This function takes an array and converts it to an HTML table used for Graphviz node labels.
     .EXAMPLE
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
+        Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
             _________________________________
             |               |               |
             |192.168.5.0/24 |192.168.7.0/24 |
@@ -16,7 +16,7 @@ Function Get-DiaHTMLTable {
             _________________________________
 
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Get-DiaHTMLTable -Rows $SiteSubnets -Align "Center"
+        Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center"
             _________________
             |               |
             |192.168.5.0/24 |
@@ -29,7 +29,7 @@ Function Get-DiaHTMLTable {
             _________________
 
     .NOTES
-        Version:        0.2.17
+        Version:        0.2.27
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

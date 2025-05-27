@@ -1,0 +1,101 @@
+[] Research a way to create directional Lines in dot
+    [] Straight vertical/horizontal line --------
+    [] A [L] line and all of its variants
+        |
+        |__
+# Straight line (Horizontal)
+digraph structs {
+    node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
+    {
+        graph [rank=same];
+        HorizontalLineStart [label="Horizontal Line Start"];
+        HorizontalLineEnd [label="Horizontal Line End"];
+        HorizontalLineStart -> HorizontalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
+    }
+}
+
+# Straight line (Vertical)
+digraph structs {
+    node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
+    {
+        VerticalLineStart [label="Vertical Line Start"];
+        VerticalLineEnd [label="Vertical Line End"];
+        VerticalLineStart -> VerticalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
+    }
+}
+
+# L Normal
+#  |
+# __
+# This code creates a directed graph with two horizontal lines and one vertical line.
+digraph structs {
+    node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
+    {
+        graph [rank=same];
+        HorizontalLineStart [label="Horizontal Line Start"];
+        HorizontalLineEnd [label="Horizontal Line End"];
+        HorizontalLineStart -> HorizontalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
+    }
+    {
+        VerticalLineStart [label="Vertical Line Start"];
+    }
+    VerticalLineStart -> HorizontalLineStart [arrowtail = none; arrowhead = none; style = filled];
+}
+
+# L reversed
+#  |
+# __
+# This code creates a directed graph with two horizontal lines and one vertical line.
+digraph structs {
+    node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
+    {
+        graph [rank=same];
+        HorizontalLineStart [label="Horizontal Line Start"];
+        HorizontalLineEnd [label="Horizontal Line End"];
+        HorizontalLineStart -> HorizontalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
+    }
+    {
+        VerticalLineStart [label="Vertical Line Start"];
+    }
+    VerticalLineStart -> HorizontalLineEnd [arrowtail = none; arrowhead = none; style = filled];
+
+}
+
+
+# L pointing downwards (Left)
+# __
+#  |
+# This code creates a directed graph with two horizontal lines and one vertical line.
+digraph structs {
+    node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
+    {
+        graph [rank=same];
+        HorizontalLineStart [label="Horizontal Line Start"];
+        HorizontalLineEnd [label="Horizontal Line End"];
+        HorizontalLineStart -> HorizontalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
+    }
+    {
+        VerticalLineStart [label="Vertical Line Start"];
+    }
+    HorizontalLineEnd -> VerticalLineStart [arrowtail = none; arrowhead = none; style = filled];
+
+}
+
+# L pointing downwards (Right)
+# __
+# |
+# This code creates a directed graph with two horizontal lines and one vertical line.
+digraph structs {
+    node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
+    {
+        graph [rank=same];
+        HorizontalLineStart [label="Horizontal Line Start"];
+        HorizontalLineEnd [label="Horizontal Line End"];
+        HorizontalLineStart -> HorizontalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
+    }
+    {
+        VerticalLineStart [label="Vertical Line Start"];
+    }
+    HorizontalLineStart ->  VerticalLineStart [arrowtail = none; arrowhead = none; style = filled];
+
+}
