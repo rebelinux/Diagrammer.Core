@@ -59,7 +59,7 @@ Function Add-DiaNodeIcon {
     #>
 
     [CmdletBinding()]
-    [Alias('Get-DiaHTMLTable')]
+    [Alias('Get-DiaNodeIcon')]
     [OutputType([System.String])]
     param(
         [Parameter(

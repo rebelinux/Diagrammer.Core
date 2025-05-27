@@ -92,7 +92,7 @@ Function Add-DiaHTMLSubGraph {
     #>
 
     [CmdletBinding()]
-    [Alias('Add-DiaHTMLSubGraph')]
+    [Alias('Get-DiaHTMLSubGraph')]
     [OutputType([System.String])]
     param(
         [Parameter(
