@@ -72,13 +72,13 @@
     FunctionsToExport = 'Add-DiaHtmlSignatureTable', 'Group-Node', 'Add-DiaHTMLSubGraph', 'Convert-DiaTableToHTML', 'Add-DiaHtmlLabel', 'Add-DiaHtmlNodeTable', 'Add-DiaHtmlTable', 'Get-NodeIP', 'Add-DiaNodeIcon', 'Export-Diagrammer', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'New-Diagrammer', 'Add-DiaNodeFiller', 'Write-PSObject'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    # CmdletsToExport = '*'
+    CmdletsToExport = @()
 
     # Variables to export from this module
     # VariablesToExport = '*'
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport = 'Get-DiaHTMLLabel', 'Get-DiaHTMLSubGraph', 'Get-DiaHTMLTable', 'Get-DiaHTMLNodeTable', 'Get-DiaHTMLSignatureTable', 'Get-DiaNodeIcon', 'Get-DiaNodeFiller'
+    AliasesToExport = @()
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()

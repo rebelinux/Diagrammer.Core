@@ -47,7 +47,6 @@ Function Add-DiaHTMLLabel {
     #>
 
     [CmdletBinding()]
-    [Alias('Get-DiaHTMLLabel')]
     [OutputType([System.String])]
     param(
         [Parameter(

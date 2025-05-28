@@ -68,7 +68,6 @@ Function Add-DiaHTMLTable {
     #>
 
     [CmdletBinding()]
-    [Alias('Get-DiaHTMLTable')]
     [OutputType([System.String])]
 
     param(

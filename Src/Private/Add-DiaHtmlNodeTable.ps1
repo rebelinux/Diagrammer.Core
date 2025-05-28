@@ -123,7 +123,6 @@ Function Add-DiaHTMLNodeTable {
     #>
 
     [CmdletBinding()]
-    [Alias('Get-DiaHTMLNodeTable')]
     [OutputType([System.String])]
     param(
         [Parameter(

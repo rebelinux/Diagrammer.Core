@@ -92,7 +92,6 @@ Function Add-DiaHtmlSignatureTable {
     #>
 
     [CmdletBinding()]
-    [Alias('Get-DiaHtmlSignatureTable')]
     [OutputType([System.String])]
     param(
         [Parameter(

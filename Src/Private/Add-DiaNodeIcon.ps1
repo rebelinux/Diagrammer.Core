@@ -59,7 +59,6 @@ Function Add-DiaNodeIcon {
     #>
 
     [CmdletBinding()]
-    [Alias('Get-DiaNodeIcon')]
     [OutputType([System.String])]
     param(
         [Parameter(
