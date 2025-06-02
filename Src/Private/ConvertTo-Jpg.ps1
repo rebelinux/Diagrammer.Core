@@ -38,10 +38,8 @@ function ConvertTo-Jpg {
             Write-Debug -Message $($_.Exception.Message)
         }
         if ($Document) {
-            if ($Document) {
-                Write-Verbose -Message "Successfully converted Graphviz object to JPG format. Saved Path: $DestinationPath."
-                Get-ChildItem -Path $Document
-            }
+            Write-Verbose -Message "Successfully converted Graphviz object to JPG format. Saved Path: $DestinationPath."
+            Get-ChildItem -Path $Document
         }
     }
     end {}

@@ -48,8 +48,6 @@ function Group-Node {
         [string] $Minlen = 1
     )
     process {
-        Write-Verbose -Message "Trying to convert Graphviz object to Base64 format."
-        # Code used to output image to base64 format
         $Output = &{
             $Group = Split-array -inArray $InputObject -size $SplitinGroups
             $Start = 0

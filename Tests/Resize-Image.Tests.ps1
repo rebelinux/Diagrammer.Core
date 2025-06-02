@@ -1,0 +1,42 @@
+BeforeAll {
+    . $PSScriptRoot\_InitializeTests.ps1
+    . $ProjectRoot\SRC\private\Resize-Image.ps1
+}
+
+Describe Resize-Image {
+    BeforeAll {
+        # Force the redirection of TMP to the TestDrive folder
+        $env:TMP = $TestDrive
+
+        $PassParamsValidParameters = @{
+            ImagePath = Join-Path $TestsFolder "AsBuiltReport.png"
+            DestinationPath = $TestDrive
+            Width = 1000
+            Height = 1000
+        }
+        $PassParamsInvalidImagePath = @{
+            ImagePath = "AsBuiltReport.png"
+            DestinationPath = $TestDrive
+            Width = 1000
+            Height = 1000
+
+        }
+        $PassParamsNoDestinationPath = @{
+            ImagePath = Join-Path $TestsFolder "AsBuiltReport.png"
+            Width = 1000
+            Height = 1000
+        }
+    }
+
+    It "Should return resized image" {
+        (Resize-Image @PassParamsValidParameters).FullName | Should -Exist
+    }
+    It "Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" {
+        $scriptBlock = { Resize-Image @PassParamsInvalidImagePath -ErrorAction Stop }
+        $scriptBlock | Should -Throw -ExceptionType ([System.Management.Automation.ParameterBindingException])
+    }
+    It "Should throw missing mandatory parameters" {
+        $scriptBlock = { Resize-Image @PassParamsNoDestinationPath -ErrorAction Stop }
+        $scriptBlock | Should -Throw -ExpectedMessage "Cannot process command because of one or more missing mandatory parameters: DestinationPath."
+    }
+}

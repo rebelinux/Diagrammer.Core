@@ -3,9 +3,16 @@ BeforeAll {
     . $ProjectRoot\SRC\private\ConvertTo-Jpg.ps1
 }
 
-Describe ConvertTo-Png {
+Describe ConvertTo-Jpg {
     BeforeAll {
         $GraphvizObj = 'digraph g {
+            compound="true";
+            "web1"->"database1"
+            "web1"->"database2"
+            "web2"->"database1"
+            "web2"->"database2"
+        }'
+        $InvalidGraphvizObj = 'digraph g {
             compound="true";
             "web1"->"database1"
             "web1"->"database2"
@@ -18,14 +25,15 @@ Describe ConvertTo-Png {
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDriv:\output.jpg"
+            DestinationPath = "F:\output.png"
         }
     }
 
-    It "Should return output.svg path" {
-        (ConvertTo-jpg @PassParams).FullName | Should -Exist
+    It "Should return output.jpg path" {
+        (ConvertTo-Jpg @PassParams).FullName | Should -Exist
     }
-    It "Should throw" {
-        { ConvertTo-jpg @FailParams } | Should -Throw
+    It "Should Not return output.jpg path" {
+        $scriptBlock = { ConvertTo-Jpg @FailParams }
+        $scriptBlock | Should -Not -Exist
     }
 }

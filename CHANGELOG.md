@@ -11,22 +11,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added new test file Add-DiaNodeFiller.Tests.ps1 to validate Add-DiaNodeFiller functionality
 - Introduced a Todo file for future enhancements, including research on creating directional lines in dot graphs
-- add additional tests for Get-NodeIP functionality
+- Add additional tests for Get-NodeIP functionality
+- Add Add-DiaHorizontalLine and Add-DiaVerticalLine functions for creating horizontal and vertical lines in diagrams.
+- Add ConvertTo-Pdf-WaterMark function to convert images to PDF format using ImageMagick, allowing for watermark insertion.
+- Add tests for Add-WatermarkToImage, ConvertTo-Pdf-WaterMark, and other conversion functions to ensure functionality and reliability.
 
 ### Changed
 
 - Increment module version to `0.2.27`
-- Corrected "HMLT" to "HTML" in multiple test descriptions across Add-DiaHtmlSignatureTable.Tests.ps1 and Add-DiaHtmlSubGraph.Tests.ps1
 - Updated function names from Add-DiaHtmlSubGraph to Add-DiaHTMLSubGraph for consistency in Add-DiaHtmlSubGraph.Tests.ps1
 - Updated test descriptions in Add-DiaNodeIcon.Tests.ps1 to correct spelling and improve clarity
 - Update cmdlet verb to better reflect its intended action
 - Enhance module with aliases and output types for various functions
+- Add diagram line functions, watermarking, and PDF conversion
+
+- Enhanced Add-WatermarkToImage function to add watermarks to pdf files, with support for optional parameters.
+- Updated existing conversion functions (ConvertTo-Dot, ConvertTo-Jpg, ConvertTo-Pdf, ConvertTo-Png) to improve error handling and streamline output.
 
 ### Fixed
 
 - Fix spelling errors in test descriptions and update function names for consistency
 - Fix isssue in cmdlet Add-DiaHtmlSubGraph pester test
 - Fix isssue in cmdlet Get-Add-DiaHTMLNodeTable pester test
+- Fix "HMLT" to "HTML" in multiple test descriptions across Add-DiaHtmlSignatureTable.Tests.ps1 and Add-DiaHtmlSubGraph.Tests.ps1
+
 
 ## [0.2.26] - 2025-05-09
 

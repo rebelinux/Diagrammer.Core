@@ -1,8 +1,16 @@
+[Done] Migrate Convert-PDF to use magick to convert the PNG image to PDF to allow inseting Watermark text.
+[] Create Pester test for:
+    [Done] Add-WatermarkToImage
+    [Done] ConvertTo-Pdf-WaterMark
+    [] ConvertTo-RotateImage
+    [] Export-Diagrammer
+    [Done] Resize-Image
 [] Research a way to create directional Lines in dot
-    [] Straight vertical/horizontal line --------
-    [] A [L] line and all of its variants
-        |
-        |__
+    [] Straight vertical/horizontal line
+    [] L shape (all variants)
+    [] T shape (all variants)
+    [] Cross shape (all variants)
+
 # Straight line (Horizontal)
 digraph structs {
     node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
@@ -10,10 +18,11 @@ digraph structs {
         graph [rank=same];
         HorizontalLineStart [label="Horizontal Line Start"];
         HorizontalLineEnd [label="Horizontal Line End"];
-        HorizontalLineStart -> HorizontalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
+        HorizontalLineStart -> HorizontalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = solid];
     }
 }
 
+```Dot
 # Straight line (Vertical)
 digraph structs {
     node [shape=point; fixedsize=true; width=.2 ; height=.2;fillColor = transparent]
@@ -23,7 +32,8 @@ digraph structs {
         VerticalLineStart -> VerticalLineEnd [minlen=2;arrowtail = none; arrowhead = none; style = filled];
     }
 }
-
+```
+```Dot
 # L Normal
 #  |
 # __
@@ -41,7 +51,9 @@ digraph structs {
     }
     VerticalLineStart -> HorizontalLineStart [arrowtail = none; arrowhead = none; style = filled];
 }
+```
 
+```Dot
 # L reversed
 #  |
 # __
@@ -60,8 +72,9 @@ digraph structs {
     VerticalLineStart -> HorizontalLineEnd [arrowtail = none; arrowhead = none; style = filled];
 
 }
+```
 
-
+```Dot
 # L pointing downwards (Left)
 # __
 #  |
@@ -80,7 +93,9 @@ digraph structs {
     HorizontalLineEnd -> VerticalLineStart [arrowtail = none; arrowhead = none; style = filled];
 
 }
+```
 
+```Dot
 # L pointing downwards (Right)
 # __
 # |
@@ -99,3 +114,4 @@ digraph structs {
     HorizontalLineStart ->  VerticalLineStart [arrowtail = none; arrowhead = none; style = filled];
 
 }
+```

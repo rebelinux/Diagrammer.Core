@@ -46,6 +46,7 @@ Function Resize-Image() {
                     Test-Path $_
                 }
             })][String[]]$ImagePath,
+        [Parameter(Mandatory = $True)][String]$DestinationPath,
         [Parameter(Mandatory = $False)][Switch]$MaintainRatio,
         [Parameter(Mandatory = $False, ParameterSetName = "Absolute")][Int]$Height,
         [Parameter(Mandatory = $False, ParameterSetName = "Absolute")][Int]$Width,
@@ -103,8 +104,8 @@ Function Resize-Image() {
 
             #Retrieving the best quality possible
             $NewImage.SmoothingMode = $SmoothingMode
-            $NewImage.InterpolationMode = $InterpolationMode
-            $NewImage.PixelOffsetMBitmapode = $PixelOffsetMode
+            # $NewImage.InterpolationMode = $IPixelOffsetMBitmapodenterpolationMode
+            # $NewImage.PixelOffsetMBitmapode = $PixelOffsetMode
             $NewImage.DrawImage($OldImage, $(New-Object -TypeName System.Drawing.Rectangle -ArgumentList 0, 0, $Width, $Height))
 
             If ($PSCmdlet.ShouldProcess("Resized image based on $Path", "save to $OutputPath")) {
@@ -114,6 +115,11 @@ Function Resize-Image() {
             $Bitmap.Dispose()
             $NewImage.Dispose()
             $OldImage.Dispose()
+
+            if (Test-Path -Path $OutputPath) {
+                Write-Verbose -Message "Successfully resized image. Saved Path: $OutputPath."
+                Get-ChildItem -Path $OutputPath
+            }
         }
     }
 }

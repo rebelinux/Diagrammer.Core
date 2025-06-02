@@ -127,6 +127,7 @@ function Export-Diagrammer {
         # Setup all paths required for script to run
         $script:RootPath = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
         $script:GraphvizPath = Join-Path $RootPath 'Graphviz\bin\dot.exe'
+        $script:ImageMagickPath = Join-Path $RootPath 'ImageMagick\'
 
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat
@@ -148,22 +149,19 @@ function Export-Diagrammer {
                     Write-Verbose -Message "WaterMark option is not supported with the dot format."
                 }
                 ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
-            } elseif ($Format -eq "pdf") {
-                if ($WaterMarkText) {
-                    Write-Verbose -Message "WaterMark option is not supported with the pdf format."
-                }
-                ConvertTo-pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
+            } elseif ($Format -eq "pdf" -and (-Not $WaterMarkText)) {
+                ConvertTo-Pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
             } else {
                 try {
-                    if ($Format -eq "base64") {
+                    if ($Format -in @('base64', 'pdf')) {
                         $tempFormat = "png"
                     } else {
                         $tempFormat = $Format
                     }
                     # Always convert to @(PNG or JPG) format before edit output image.
-                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-Random)$tempFormat"
+                    $TempOutPut = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-Random).$tempFormat"
 
-                    if ($tempFormat -eq "png") {
+                    if ($tempFormat -in @('png', 'pdf')) {
                         $Document = ConvertTo-Png -GraphObj $GraphObj -DestinationPath $TempOutPut
                     } else {
                         $Document = ConvertTo-Jpg -GraphObj $GraphObj -DestinationPath $TempOutPut
@@ -174,7 +172,16 @@ function Export-Diagrammer {
                 }
 
                 if ($WaterMarkText) {
-                    Add-WatermarkToImage -ImageInput $Document.FullName -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
+                    if ($Format -eq "pdf") {
+                        $Document = Add-WatermarkToImage -ImageInput $Document.FullName -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
+                    } else {
+                        Add-WatermarkToImage -ImageInput $TempOutPut -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
+                    }
+                }
+                # After adding watermark, convert it to PDF if required. GraphObj is not required for this step.
+                # Needed because .NET does not support adding watermark to PDF files. Used ImageMagick to convert WaterMakerd PNG to PDF.
+                if ($Format -eq "pdf") {
+                    ConvertTo-Pdf-WaterMark -ImageInput $Document.FullName -DestinationPath $DestinationPath
                 }
             }
 
@@ -184,20 +191,32 @@ function Export-Diagrammer {
                 } else {
                     ConvertTo-Base64 -ImageInput $DestinationPath
                 }
-            } elseif ($Format -in @("jpg", "png")) {
+            } elseif ($Format -in @('jpg', 'png', 'pdf')) {
                 if ($WaterMarkText) {
                     if ($Document) {
                         Write-Verbose -Message "Deleting Temporary $Format file: $($Document.FullName)"
-                        Remove-Item -Path $Document
+                        try {
+                            Remove-Item -Path $Document
+                        } catch {
+                            Write-Verbose -Message "Unable to delete temporary file: $($Document.FullName)."
+                            Write-Debug -Message $($_.Exception.Message)
+                        }
                     }
                     Get-ChildItem -Path $DestinationPath
                 } else {
-                    Copy-Item -Path $Document.FullName -Destination $DestinationPath
-                    if ($Document) {
-                        Write-Verbose -Message "Deleting Temporary $Format file: $($Document.FullName)"
-                        Remove-Item -Path $Document
+                    if ($Format -ne "pdf") {
+                        Copy-Item -Path $Document.FullName -Destination $DestinationPath
+                        if ($Document) {
+                            Write-Verbose -Message "Deleting Temporary $Format file: $($Document.FullName)"
+                            try {
+                                Remove-Item -Path $Document
+                            } catch {
+                                Write-Verbose -Message "Unable to delete temporary file: $($Document.FullName)."
+                                Write-Debug -Message $($_.Exception.Message)
+                            }
+                        }
+                        Get-ChildItem -Path $DestinationPath
                     }
-                    Get-ChildItem -Path $DestinationPath
                 }
             }
 
