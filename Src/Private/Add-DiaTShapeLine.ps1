@@ -1,9 +1,9 @@
-function Add-DiaHorizontalLine {
+function Add-DiaTShapeLine {
     <#
     .SYNOPSIS
-        Function to create a horizontal line in the diagram.
+        Function to create a T shape object in the diagram.
     .DESCRIPTION
-        Function to create a horizontal line in the diagram.
+        Function to create a T shape object in the diagram.
     .NOTES
         Version:        0.6.30
         Author:         Jonathan Colon
@@ -23,13 +23,25 @@ function Add-DiaHorizontalLine {
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as Start Node Name'
         )]
-        [string] $StartName = 'HStart',
+        [string] $StartName = 'TStart',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
-        [string] $EndName = 'HEnd',
+        [string] $EndName = 'TEnd',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide a string to be used as End Node Name'
+        )]
+        [string] $MiddleTop = 'TMiddleTop',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Please provide a string to be used as End Node Name'
+        )]
+        [string] $MiddleDown = 'TMiddleDown',
 
         [Parameter(
             Mandatory = $false,
@@ -69,9 +81,13 @@ function Add-DiaHorizontalLine {
 
     process {
         try {
-            Node $StartName, $EndName @{shape = 'none'; fixedsize = 'true'; width = .2 ; height = .2; fillColor = 'transparent'; style = 'invis'}
-            Rank $StartName, $EndName
-            Edge -From $StartName -To $EndName @{minlen = $LineSize; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor }
+            Node $StartName, $MiddleDown, $EndName @{shape = 'none'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'invis' }
+            Node $MiddleTop @{shape = 'point'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'filled' }
+            Rank $StartName, $MiddleTop, $EndName
+            Edge -From $StartName -To $MiddleTop @{minlen = $LineSize; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor }
+            Edge -From $MiddleTop -To $EndName @{minlen = $LineSize; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor }
+            Edge -From $MiddleTop -To $MiddleDown @{minlen = $LineSize; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor }
+
 
         } catch {
             Write-Verbose -Message $_.Exception.Message

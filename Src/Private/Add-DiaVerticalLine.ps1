@@ -67,7 +67,7 @@ function Add-DiaVerticalLine {
 
     process {
         try {
-            Node $StartName, $EndName @{shape = 'point'; fixedsize = 'true'; width = .2 ; height = .2; fillColor = 'transparent' }
+            Node $StartName, $EndName @{shape = 'none'; fixedsize = 'true'; width = .2 ; height = .2; fillColor = 'transparent'; style = 'invis' }
             Edge -From $StartName -To $EndName @{minlen = $LineSize; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor }
 
         } catch {
