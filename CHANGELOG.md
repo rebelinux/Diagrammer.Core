@@ -25,9 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update cmdlet verb to better reflect its intended action
 - Enhance module with aliases and output types for various functions
 - Add diagram line functions, watermarking, and PDF conversion
-
 - Enhance Add-WatermarkToImage function to add watermarks to pdf files, with support for optional parameters.
 - Update existing conversion functions (ConvertTo-Dot, ConvertTo-Jpg, ConvertTo-Pdf, ConvertTo-Png) to improve error handling and streamline output.
+- Update Graphviz binaries to v13.0.0
 
 ### Fixed
 

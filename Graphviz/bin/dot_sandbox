@@ -17,7 +17,7 @@ import shutil
 import subprocess as sp
 import sys
 from pathlib import Path
-from typing import List, Type, Union
+from typing import Optional, Type, Union
 
 
 class Sandbox:
@@ -35,12 +35,12 @@ class Sandbox:
 
     @staticmethod
     @abc.abstractmethod
-    def _run(args: List[Union[Path, str]]) -> int:
+    def _run(args: list[Union[Path, str]]) -> int:
         """run the given command line within the sandbox"""
         raise NotImplementedError
 
     @classmethod
-    def run(cls, args: List[Union[Path, str]]) -> int:
+    def run(cls, args: list[Union[Path, str]]) -> int:
         """wrapper around `_run` to perform common sanity checks"""
         assert cls.is_usable(), "attempted to use unusable sandbox"
         return cls._run(args)
@@ -53,19 +53,43 @@ class Bubblewrap(Sandbox):
     ¹ https://github.com/containers/bubblewrap
     """
 
+    @staticmethod
     def is_usable() -> bool:
         return shutil.which("bwrap") is not None
 
-    def _run(args: List[Union[Path, str]]) -> sp.CompletedProcess:
+    @staticmethod
+    def _run(args: list[Union[Path, str]]) -> sp.CompletedProcess:
         prefix = ["bwrap", "--ro-bind", "/", "/", "--unshare-all", "--"]
         return sp.call(prefix + args)
 
 
-def main(args: List[str]) -> int:
+class MacSandbox(Sandbox):
+    """
+    macOS’ sandbox API
+    """
+
+    @staticmethod
+    def is_usable() -> bool:
+        return platform.system() == "Darwin"
+
+    @staticmethod
+    def _run(args: list[Union[Path, str]]) -> sp.CompletedProcess:
+
+        # create a sandbox policy that allows only read-only file access
+        policy = (
+            '(version 1)(allow default)(deny file-write* (subpath "/"))(deny network*)'
+        )
+
+        # run Graphviz under this policy
+        prefix = ["sandbox-exec", "-p", policy]
+        return sp.call(prefix + args)
+
+
+def main(args: list[str]) -> int:
     """entry point"""
 
     # available sandboxes in order of preference
-    SANDBOXES: Tuple[Type[Sandbox]] = (Bubblewrap,)
+    SANDBOXES: tuple[Type[Sandbox]] = (Bubblewrap, MacSandbox)
 
     # locate Graphviz, preferring the version collocated with us
     exe = ".exe" if platform.system() == "Windows" else ""
