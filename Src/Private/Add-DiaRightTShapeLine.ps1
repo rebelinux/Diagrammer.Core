@@ -1,16 +1,19 @@
-function Add-DiaInvertedTShapeLine {
+function Add-DiaRightTShapeLine {
     <#
     .SYNOPSIS
-        Function to create an inverted T-shaped ( _|_ ) object in the diagram, connecting specified nodes with customizable line styles and attributes.
+        Creates and adds a Right T-shaped connector to the diagram, representing a vertical line intersecting a horizontal line to the right.
             Example:
-                        (InvertedTMiddleDown)
+                        (RightTShapeUpper)
                                 o
                                 |
-            (InvertedTStart)o___|___o(InvertedTEnd)
+                                |
+            (RightTShapeEnd) o___o (LeftTShapeEnd)
+                                |
+                                |
                                 o
-                      (InvertedTMiddleDown)
+                        (RightTShapeDown)
     .DESCRIPTION
-        Function to create a Inverted T _|_ shape object in the diagram.
+        Function to create a Right T shape object in the diagram.
     .NOTES
         Version:        0.6.30
         Author:         Jonathan Colon
@@ -20,7 +23,6 @@ function Add-DiaInvertedTShapeLine {
         https://github.com/rebelinux/Diagrammer.Core
     #>
 
-    # Todo: Add support for creating more than 1 line and able to join them with Rank parameter.
     [CmdletBinding()]
 
     [CmdletBinding()]
@@ -30,25 +32,25 @@ function Add-DiaInvertedTShapeLine {
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as Start Node Name'
         )]
-        [string] $StartName = 'InvertedTStart',
+        [string] $StartName = 'RightTShapeStart',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
-        [string] $EndName = 'InvertedTEnd',
+        [string] $EndName = 'RightTShapeEnd',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
-        [string] $MiddleTop = 'InvertedTMiddleTop',
+        [string] $MiddleRight = 'RightTShapeMiddleRight',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
-        [string] $MiddleDown = 'InvertedTMiddleDown',
+        [string] $MiddleLeft = 'RightTShapeMiddleLeft',
 
         [Parameter(
             Mandatory = $false,
@@ -80,7 +82,7 @@ function Add-DiaInvertedTShapeLine {
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
         [ValidateRange(1, 10)]
-        [int] $LineLength = 1,
+        [int] $LineSize = 1,
 
         [Parameter(
             Mandatory = $false,
@@ -101,12 +103,12 @@ function Add-DiaInvertedTShapeLine {
 
     process {
         try {
-            Node $StartName, $MiddleTop, $EndName @{shape = 'none'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'invis' }
-            Node $MiddleDown @{shape = 'point'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'filled' }
-            Rank $StartName, $MiddleDown, $EndName
-            Edge -From $StartName -To $MiddleDown @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $MiddleDown -To $EndName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $MiddleTop -To $MiddleDown @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Node $StartName, $MiddleLeft, $EndName @{shape = 'none'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'invis' }
+            Node $MiddleRight @{shape = 'point'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'filled' }
+            Rank $MiddleRight, $MiddleLeft
+            Edge -From $StartName -To $MiddleRight @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $MiddleRight -To $EndName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $MiddleLeft -To $MiddleRight @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
 
         } catch {

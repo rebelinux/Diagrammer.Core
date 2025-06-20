@@ -181,7 +181,7 @@ function Export-Diagrammer {
                 # After adding watermark, convert it to PDF if required. GraphObj is not required for this step.
                 # Needed because .NET does not support adding watermark to PDF files. Used ImageMagick to convert WaterMakerd PNG to PDF.
                 if ($Format -eq "pdf") {
-                    ConvertTo-Pdf-WaterMark -ImageInput $Document.FullName -DestinationPath $DestinationPath
+                    ConvertTo-Pdf-WaterMark -ImageInput $Document.FullName -DestinationPath $DestinationPath | Out-Null
                 }
             }
 

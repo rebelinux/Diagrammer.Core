@@ -1,12 +1,13 @@
-function Add-DiaHorizontalLine {
+function Add-DiaInvertedLShapeLine {
     <#
     .SYNOPSIS
-        Function to create a customizable horizontal line between two nodes in the diagram, allowing specification of style, length, width, and color.
-        Example:
-
-                (HStart)o-----------------o(Hend)
+        Function to create a inverted L shape object in the diagram.
+                    (InvertedLShapeUp)o___o(InvertedLShapeRight)
+        Example:                      |
+                                      o
+                            (InvertedLShapeDown)
     .DESCRIPTION
-        Function to create a horizontal line in the diagram.
+        Function to create a inverted L shape object in the diagram.
     .NOTES
         Version:        0.6.30
         Author:         Jonathan Colon
@@ -16,7 +17,6 @@ function Add-DiaHorizontalLine {
         https://github.com/rebelinux/Diagrammer.Core
     #>
 
-    # Todo: Add support for creating more than 1 line and able to join them with Rank parameter.
     [CmdletBinding()]
 
     [CmdletBinding()]
@@ -24,19 +24,25 @@ function Add-DiaHorizontalLine {
     param(
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the name of the start node for the horizontal line.'
+            HelpMessage = 'Name of the starting node (Up direction) for the L shape.'
         )]
-        [string] $HStart = 'HStart',
+        [string] $StartName = 'InvertedLShapeUp',
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the name of the end node for the horizontal line.'
+            HelpMessage = 'Name of the ending node (Down direction) for the L shape.'
         )]
-        [string] $HEnd = 'HEnd',
+        [string] $EndName = 'InvertedLShapeDown',
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the arrow style at the start of the line. Default is "none".'
+            HelpMessage = 'Name of the right node (Right direction) for the L shape.'
+        )]
+        [string] $RightName = 'InvertedLShapeRight',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Arrow style at the start of the line (arrowtail).'
         )]
         [ValidateSet(
             'none', 'normal', 'inv', 'dot', 'invdot', 'odot', 'invodot', 'diamond', 'odiamond', 'ediamond', 'crow', 'box', 'obox', 'open', 'halfopen', 'empty', 'invempty', 'tee', 'vee', 'icurve', 'lcurve', 'rcurve', 'icurve', 'box', 'obox', 'diamond', 'odiamond', 'ediamond', 'crow', 'tee', 'vee', 'dot', 'odot', 'inv', 'invodot', 'invempty', 'invbox', 'invodiamond', 'invtee', 'invvee', 'none'
@@ -45,7 +51,7 @@ function Add-DiaHorizontalLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the arrow style at the end of the line. Default is "none".'
+            HelpMessage = 'Arrow style at the end of the line (arrowhead).'
         )]
         [ValidateSet(
             'none', 'normal', 'inv', 'dot', 'invdot', 'odot', 'invodot', 'diamond', 'odiamond', 'ediamond', 'crow', 'box', 'obox', 'open', 'halfopen', 'empty', 'invempty', 'tee', 'vee', 'icurve', 'lcurve', 'rcurve', 'icurve', 'box', 'obox', 'diamond', 'odiamond', 'ediamond', 'crow', 'tee', 'vee', 'dot', 'odot', 'inv', 'invodot', 'invempty', 'invbox', 'invodiamond', 'invtee', 'invvee', 'none'
@@ -54,28 +60,28 @@ function Add-DiaHorizontalLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the style of the line. Valid values: dashed, dotted, solid, bold, invis, filled, tapered.'
+            HelpMessage = 'Style of the line (e.g., solid, dashed, dotted, etc.).'
         )]
         [ValidateSet('dashed', 'dotted', 'solid', 'bold', 'invis', 'filled', 'tapered')]
         [string] $LineStyle = 'solid',
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the length of the line (minlen). Valid range: 1 to 10.'
+            HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $HStartLineLength = 1,
+        [int] $LineLength = 1,
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the width of the line (penwidth). Valid range: 1 to 10.'
+            HelpMessage = 'Width of the line (penwidth), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
         [int] $LineWidth = 1,
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Specifies the color of the line. Default is black. See https://graphviz.org/doc/info/colors.html for supported colors.'
+            HelpMessage = 'Color of the line. See https://graphviz.org/doc/info/colors.html for supported colors.'
         )]
         [string] $LineColor = "black",
 
@@ -104,12 +110,20 @@ function Add-DiaHorizontalLine {
                 $Color = $LineColor
             }
             if ($IconDebug) {
-                Node $HStart, $HEnd @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
+                Node $StartName, $EndName @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
+                Node $StartName, $MiddleTop, $MiddleDown, $EndName @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
+                Node $Middle @{color = $Color; shape = 'point'; fillColor = $fillColor; style = $Style }
             } else {
-                Node $HStart, $HEnd @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
+                Node $StartName, $MiddleTop, $MiddleDown, $EndName @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
+                Node $Middle @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
             }
-            Rank $HStart, $HEnd
-            Edge -From $HStart -To $HEnd @{minlen = $HStartLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+
+            Node $EndName, $RightName @{shape = 'none'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'invis' }
+            Node $StartName @{shape = 'point'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'filled' }
+            Rank $RightName, $StartName
+            Edge -From $StartName -To $EndName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $StartName -To $RightName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+
 
         } catch {
             Write-Verbose -Message $_.Exception.Message

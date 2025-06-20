@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add ConvertTo-Pdf-WaterMark function to convert images to PDF format using ImageMagick, allowing for watermark insertion.
 - Add tests for Add-WatermarkToImage, ConvertTo-Pdf-WaterMark, and other conversion functions to ensure functionality and reliability
 - Add new line functions: Cross, Inverted T, T, Horizontal and Vertical line shapes
+- Added cleanup logic in Resize-Image tests to remove temporary files after tests.
 
 ### Changed
 
@@ -28,6 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhance Add-WatermarkToImage function to add watermarks to pdf files, with support for optional parameters.
 - Update existing conversion functions (ConvertTo-Dot, ConvertTo-Jpg, ConvertTo-Pdf, ConvertTo-Png) to improve error handling and streamline output.
 - Update Graphviz binaries to v13.0.0
+- Expanded the Todo list to include new directional line shapes and testing tasks.
+- Implemented Add-DiaInvertedLShapeLine, Add-DiaLShapeLine, Add-DiaLeftLShapeLine, Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine,
+  Add-DiaRightTShapeLine for various L and  T shaped connectors in diagrams.
 
 ### Fixed
 

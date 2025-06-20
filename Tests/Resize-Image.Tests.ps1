@@ -28,6 +28,13 @@ Describe Resize-Image {
         }
     }
 
+    AfterAll {
+        # Delete files or perform other cleanup tasks
+        if (Test-Path -Path "$TestsFolder\AsBuiltReport_resized.png") {
+            Remove-Item "$TestsFolder\AsBuiltReport_resized.png"
+        }
+    }
+
     It "Should return resized image" {
         (Resize-Image @PassParamsValidParameters).FullName | Should -Exist
     }
@@ -39,4 +46,5 @@ Describe Resize-Image {
         $scriptBlock = { Resize-Image @PassParamsNoDestinationPath -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExpectedMessage "Cannot process command because of one or more missing mandatory parameters: DestinationPath."
     }
+
 }

@@ -1,12 +1,35 @@
-[Done] Migrate Convert-PDF to use magick to convert the PNG image to PDF to allow inseting Watermark text.
-[] Create Pester test for:
+[Done] Updated Convert-PDF to use ImageMagick for converting PNG images to PDF, enabling watermark text insertion.
+[] Create Pester tests for:
     [Done] Add-WatermarkToImage
     [Done] ConvertTo-Pdf-WaterMark
     [] ConvertTo-RotateImage
     [] Export-Diagrammer
     [Done] Resize-Image
-[] Research a way to create directional Lines in dot
-    [Done] Straight vertical/horizontal line
-    [] L shape (all variants)
-    [] T shape (all variants)
-    [Done] Cross shape
+    [] Add-DiaCrossShapeLine
+    [] Add-DiaTShapeLine
+    [] Add-DiaRightTShapeLine
+    [] Add-DiaHorizontalLine
+    [] Add-DiaInvertedLShapeLine
+    [] Add-DiaInvertedTShapeLine
+    [] Add-DiaLeftTShapeLine
+    [] Add-DiaLShapeLine
+    [] Add-DiaVerticalLine
+    [] Add-DiaRightLShapeLine
+    [] Add-DiaLeftLShapeLine
+[] Research methods to create directional lines in DOT:
+    [Done] Straight vertical/horizontal lines
+    [Done] L-shaped lines (all variants)
+    [Done] T-shaped lines (all variants)
+    [Done] Cross-shaped lines
+    [] Add option to set line length per line point
+        [Done] Add-DiaCrossShapeLine
+        [] Add-DiaTShapeLine
+        [] Add-DiaRightTShapeLine
+        [Done] Add-DiaHorizontalLine
+        [] Add-DiaInvertedLShapeLine
+        [] Add-DiaInvertedTShapeLine
+        [] Add-DiaLeftTShapeLine
+        [] Add-DiaLShapeLine
+        [] Add-DiaVerticalLine
+        [] Add-DiaRightLShapeLine
+        [] Add-DiaLeftLShapeLine

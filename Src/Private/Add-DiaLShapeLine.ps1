@@ -1,15 +1,15 @@
-function Add-DiaVerticalLine {
+function Add-DiaLShapeLine {
     <#
     .SYNOPSIS
-        Function to create a customizable vertical line between two nodes in the diagram, allowing specification of style, length, width, and color.
+        Creates an L-shaped connector composed of two lines and nodes for use in diagram generation.
         Example:
+                    (LShapeUp)
+                        o
+                        |
+            (LShapeDown)o___o(LShapeRight)
 
-                (VStart)o
-                        |
-                        |
-                        o(VEnd)
     .DESCRIPTION
-        Function to create a vertical line in the diagram.
+        Function to create a L shape object in the diagram.
     .NOTES
         Version:        0.6.30
         Author:         Jonathan Colon
@@ -18,6 +18,7 @@ function Add-DiaVerticalLine {
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
+
     [CmdletBinding()]
 
     [CmdletBinding()]
@@ -25,19 +26,25 @@ function Add-DiaVerticalLine {
     param(
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as Start Node Name'
+            HelpMessage = 'Name of the starting node (Up direction) for the L shape.'
         )]
-        [string] $StartName = 'VStart',
+        [string] $StartName = 'LShapeUp',
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as End Node Name'
+            HelpMessage = 'Name of the ending node (Down direction) for the L shape.'
         )]
-        [string] $EndName = 'VEnd',
+        [string] $EndName = 'LShapeDown',
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as End Node Name'
+            HelpMessage = 'Name of the right node (Right direction) for the L shape.'
+        )]
+        [string] $RightName = 'LShapeRight',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Arrow style at the start of the line (arrowtail).'
         )]
         [ValidateSet(
             'none', 'normal', 'inv', 'dot', 'invdot', 'odot', 'invodot', 'diamond', 'odiamond', 'ediamond', 'crow', 'box', 'obox', 'open', 'halfopen', 'empty', 'invempty', 'tee', 'vee', 'icurve', 'lcurve', 'rcurve', 'icurve', 'box', 'obox', 'diamond', 'odiamond', 'ediamond', 'crow', 'tee', 'vee', 'dot', 'odot', 'inv', 'invodot', 'invempty', 'invbox', 'invodiamond', 'invtee', 'invvee', 'none'
@@ -46,7 +53,7 @@ function Add-DiaVerticalLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as End Node Name'
+            HelpMessage = 'Arrow style at the end of the line (arrowhead).'
         )]
         [ValidateSet(
             'none', 'normal', 'inv', 'dot', 'invdot', 'odot', 'invodot', 'diamond', 'odiamond', 'ediamond', 'crow', 'box', 'obox', 'open', 'halfopen', 'empty', 'invempty', 'tee', 'vee', 'icurve', 'lcurve', 'rcurve', 'icurve', 'box', 'obox', 'diamond', 'odiamond', 'ediamond', 'crow', 'tee', 'vee', 'dot', 'odot', 'inv', 'invodot', 'invempty', 'invbox', 'invodiamond', 'invtee', 'invvee', 'none'
@@ -55,14 +62,14 @@ function Add-DiaVerticalLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as End Node Name'
+            HelpMessage = 'Style of the line (e.g., solid, dashed, dotted, etc.).'
         )]
         [ValidateSet('dashed', 'dotted', 'solid', 'bold', 'invis', 'filled', 'tapered')]
         [string] $LineStyle = 'solid',
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as End Node Name'
+            HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
         [int] $LineLength = 1,
@@ -76,15 +83,9 @@ function Add-DiaVerticalLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a color to be used in the line. Default is black. Supported color https://graphviz.org/doc/info/colors.html'
+            HelpMessage = 'Color of the line. See https://graphviz.org/doc/info/colors.html for supported colors.'
         )]
-        [string] $LineColor = "black",
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
-        )]
-        [bool] $IconDebug = $false
+        [string] $LineColor = "black"
     )
 
     begin {
@@ -92,24 +93,12 @@ function Add-DiaVerticalLine {
 
     process {
         try {
-            if ($IconDebug) {
-                $Shape = 'plain'
-                $fillColor = 'red'
-                $Style = 'filled'
-                $Color = 'black'
-                $LineColor = 'red'
-            } else {
-                $Shape = 'point'
-                $fillColor = 'transparent'
-                $Style = 'invis'
-                $Color = $LineColor
-            }
-            if ($IconDebug) {
-                Node $StartName, $EndName @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
-            } else {
-                Node $StartName, $EndName @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
-            }
+            Node $StartName, $RightName @{shape = 'none'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'invis' }
+            Node $EndName @{shape = 'point'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'filled' }
+            Rank $RightName, $EndName
             Edge -From $StartName -To $EndName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $EndName -To $RightName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+
 
         } catch {
             Write-Verbose -Message $_.Exception.Message
