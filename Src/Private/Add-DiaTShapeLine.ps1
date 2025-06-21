@@ -1,26 +1,67 @@
 function Add-DiaTShapeLine {
     <#
     .SYNOPSIS
-        Function to create an T-shaped ( T ) object in the diagram, connecting specified nodes with customizable line styles and attributes.
-            Example:
+        Creates a T-shaped connector in a diagram, linking specified nodes with customizable line styles, widths, and colors.
+        Example:
                                 (TShapeMiddleUpper)
                (TShapeStart)o___o___o(TShapeEnd)
                                 |
                                 o
                                 (TShapeMiddleDown)
+
     .DESCRIPTION
-        Function to create a T shape object in the diagram.
+        The Add-DiaTShapeLine function generates a T-shaped (⊥) structure in a diagram by connecting four nodes: a horizontal line between a start node, a middle top node, and an end node, with a vertical line extending down from the middle node to a lower node.
+        The function allows customization of node names, line style, arrowhead/tail types, line length, width, and color.
+        It also supports a debug mode to visually highlight the nodes for troubleshooting.
+
+    .PARAMETER StartName
+        The name of the starting node on the horizontal line. Default is 'TShapeStart'.
+
+    .PARAMETER EndName
+        The name of the ending node on the horizontal line. Default is 'TShapeEnd'.
+
+    .PARAMETER MiddleTop
+        The name of the node at the intersection of the T (top of the vertical line). Default is 'TShapeMiddleUpper'.
+
+    .PARAMETER MiddleDown
+        The name of the node at the bottom of the vertical line. Default is 'TShapeMiddleDown'.
+
+    .PARAMETER Arrowtail
+        The style of the arrow tail for the connecting lines. Accepts various Graphviz arrow types. Default is 'none'.
+
+    .PARAMETER Arrowhead
+        The style of the arrow head for the connecting lines. Accepts various Graphviz arrow types. Default is 'none'.
+
+    .PARAMETER LineStyle
+        The style of the connecting lines (e.g., solid, dashed, dotted, bold). Default is 'solid'.
+
+    .PARAMETER LineLength
+        The minimum length of each line segment (Graphviz minlen). Range: 1-10. Default is 1.
+
+    .PARAMETER LineWidth
+        The width (penwidth) of the lines. Range: 1-10. Default is 1.
+
+    .PARAMETER LineColor
+        The color of the lines. Accepts any Graphviz-supported color. Default is 'black'.
+
+    .PARAMETER IconDebug
+        Switch to enable debug mode, which highlights the nodes and lines in red for easier troubleshooting. Default is $false.
+
+    .EXAMPLE
+        Add-DiaTShapeLine -StartName "A" -EndName "B" -MiddleTop "C" -MiddleDown "D" -LineStyle "dashed" -LineColor "blue"
+
+        Creates a T-shaped connector with custom node names, dashed blue lines, and default arrow styles.
+
     .NOTES
-        Version:        0.6.30
-        Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
-        Github:         rebelinux
+        Author: Jonathan Colon
+        Version: 0.6.30
+        GitHub: https://github.com/rebelinux/Diagrammer.Core
+
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
 
     # Todo: Add support for creating more than 1 line and able to join them with Rank parameter.
-    [CmdletBinding()]
 
     [CmdletBinding()]
     [OutputType([System.String])]
@@ -98,6 +139,7 @@ function Add-DiaTShapeLine {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false
     )
 

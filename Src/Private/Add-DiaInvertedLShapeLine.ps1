@@ -1,23 +1,67 @@
 function Add-DiaInvertedLShapeLine {
     <#
     .SYNOPSIS
-        Function to create a inverted L shape object in the diagram.
-                    (InvertedLShapeUp)o___o(InvertedLShapeRight)
-        Example:                      |
-                                      o
+        Adds an inverted L-shaped line to a diagram, connecting three nodes with customizable styles and attributes.
+
+                (InvertedLShapeUp)  o___o (InvertedLShapeRight)
+        Example:                    |
+                                    o
                             (InvertedLShapeDown)
+
     .DESCRIPTION
-        Function to create a inverted L shape object in the diagram.
+        The Add-DiaInvertedLShapeLine function creates an inverted L-shaped connector in a diagram by linking three nodes:
+        - The "Up" node (vertical start)
+        - The "Down" node (vertical end)
+        - The "Right" node (horizontal branch)
+
+        The function allows customization of arrow styles, line styles, widths, colors, and node appearance. It is useful for visually representing relationships or flows in diagrams where an inverted L-shape is needed.
+
+    .PARAMETER InvertedLShapeUp
+        The name of the starting node at the top of the inverted L-shape (vertical segment).
+
+    .PARAMETER InvertedLShapeDown
+        The name of the ending node at the bottom of the inverted L-shape (vertical segment).
+
+    .PARAMETER InvertedLShapeRight
+        The name of the node at the right end of the horizontal segment of the inverted L-shape.
+
+    .PARAMETER Arrowtail
+        The arrow style at the start of the line (tail). Accepts various Graphviz arrow styles.
+
+    .PARAMETER Arrowhead
+        The arrow style at the end of the line (head). Accepts various Graphviz arrow styles.
+
+    .PARAMETER LineStyle
+        The style of the line connecting the nodes (e.g., solid, dashed, dotted, bold, etc.).
+
+    .PARAMETER LineWidth
+        The width of the line (penwidth), from 1 to 10.
+
+    .PARAMETER InvertedLShapeUpLineLength
+        The minimum length of the vertical segment (from Up to Down), from 1 to 10.
+
+    .PARAMETER InvertedLShapeRightLineLength
+        The minimum length of the horizontal segment (from Up to Right), from 1 to 10.
+
+    .PARAMETER LineColor
+        The color of the line. Accepts any color supported by Graphviz (see https://graphviz.org/doc/info/colors.html).
+
+    .PARAMETER IconDebug
+        If set to $true, enables debug mode for icons, highlighting the nodes and lines in red for easier visualization.
+
+    .EXAMPLE
+        Add-DiaInvertedLShapeLine -InvertedLShapeUp "NodeA" -InvertedLShapeDown "NodeB" -InvertedLShapeRight "NodeC" -Arrowhead "normal" -LineStyle "dashed" -LineColor "blue"
+
+        Creates an inverted L-shaped line from NodeA down to NodeB and right to NodeC, with a normal arrowhead, dashed blue line.
+
     .NOTES
-        Version:        0.6.30
-        Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
-        Github:         rebelinux
+        Author: Jonathan Colon
+        Version: 0.6.30
+        GitHub: https://github.com/rebelinux/Diagrammer.Core
+
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
-
-    [CmdletBinding()]
 
     [CmdletBinding()]
     [OutputType([System.String])]
@@ -26,19 +70,19 @@ function Add-DiaInvertedLShapeLine {
             Mandatory = $false,
             HelpMessage = 'Name of the starting node (Up direction) for the L shape.'
         )]
-        [string] $StartName = 'InvertedLShapeUp',
+        [string] $InvertedLShapeUp = 'InvertedLShapeUp',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Name of the ending node (Down direction) for the L shape.'
         )]
-        [string] $EndName = 'InvertedLShapeDown',
+        [string] $InvertedLShapeDown = 'InvertedLShapeDown',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Name of the right node (Right direction) for the L shape.'
         )]
-        [string] $RightName = 'InvertedLShapeRight',
+        [string] $InvertedLShapeRight = 'InvertedLShapeRight',
 
         [Parameter(
             Mandatory = $false,
@@ -67,17 +111,24 @@ function Add-DiaInvertedLShapeLine {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Width of the line (penwidth), from 1 to 10.'
+        )]
+        [ValidateRange(1, 10)]
+        [int] $LineWidth = 1,
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $LineLength = 1,
+        [int] $InvertedLShapeUpLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Width of the line (penwidth), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $LineWidth = 1,
+        [int] $InvertedLShapeRightLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
@@ -89,6 +140,7 @@ function Add-DiaInvertedLShapeLine {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false
     )
 
@@ -110,19 +162,15 @@ function Add-DiaInvertedLShapeLine {
                 $Color = $LineColor
             }
             if ($IconDebug) {
-                Node $StartName, $EndName @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
-                Node $StartName, $MiddleTop, $MiddleDown, $EndName @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
-                Node $Middle @{color = $Color; shape = 'point'; fillColor = $fillColor; style = $Style }
+                Node $InvertedLShapeDown, $InvertedLShapeRight, $InvertedLShapeUp @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
             } else {
-                Node $StartName, $MiddleTop, $MiddleDown, $EndName @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
-                Node $Middle @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
+                Node $InvertedLShapeDown, $InvertedLShapeRight, $InvertedLShapeUp @{shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = $Style }
             }
 
-            Node $EndName, $RightName @{shape = 'none'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'invis' }
-            Node $StartName @{shape = 'point'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'filled' }
-            Rank $RightName, $StartName
-            Edge -From $StartName -To $EndName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $StartName -To $RightName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Rank $InvertedLShapeRight, $InvertedLShapeUp
+
+            Edge -From $InvertedLShapeUp -To $InvertedLShapeDown @{minlen = $InvertedLShapeUpLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $InvertedLShapeUp -To $InvertedLShapeRight @{minlen = $InvertedLShapeRightLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
 
         } catch {

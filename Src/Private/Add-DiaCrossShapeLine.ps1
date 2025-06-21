@@ -1,7 +1,8 @@
 function Add-DiaCrossShapeLine {
     <#
     .SYNOPSIS
-        Creates and adds a cross-shaped line object to the diagram with customizable nodes, style, and color options.
+        Adds a customizable cross-shaped line (plus sign) to a diagram.
+
                             (CrossShapeMiddleTop)
         Example:                    o
                                     |
@@ -11,21 +12,88 @@ function Add-DiaCrossShapeLine {
                                     |
                                     o
                             (CrossShapeMiddleDown)
-                .DESCRIPTION
-        Function to create a Cross shape object in the diagram.
+
+
+    .DESCRIPTION
+        The Add-DiaCrossShapeLine function creates a cross-shaped (plus sign) line object within a diagram, using configurable node names and visual properties.
+        The cross consists of a central node with lines extending vertically and horizontally, forming a symmetrical intersection.
+        This is useful for representing intersections, connection points, or central hubs in diagrammatic representations.
+
+        The function allows customization of:
+            - Node names for each segment of the cross (start, end, middle, top, down)
+            - Line style (solid, dashed, dotted, etc.)
+            - Line color and width
+            - Arrowhead and arrowtail styles
+            - Individual segment lengths
+            - Debug mode for visualizing node positions
+
+    .PARAMETER CrossShapeStart
+        Name of the node at the left end of the horizontal line in the cross shape. Default is 'CrossShapeStart'.
+
+    .PARAMETER CrossShapeEnd
+        Name of the node at the right end of the horizontal line in the cross shape. Default is 'CrossShapeEnd'.
+
+    .PARAMETER CrossShapeMiddle
+        Name of the central node where the vertical and horizontal lines intersect. Default is 'CrossShapeMiddle'.
+
+    .PARAMETER CrossShapeMiddleTop
+        Name of the node at the top end of the vertical line in the cross shape. Default is 'CrossShapeMiddleTop'.
+
+    .PARAMETER CrossShapeMiddleDown
+        Name of the node at the bottom end of the vertical line in the cross shape. Default is 'CrossShapeMiddleDown'.
+
+    .PARAMETER Arrowtail
+        Style of the arrow tail for the lines. Accepts various Graphviz arrow styles. Default is 'none'.
+
+    .PARAMETER Arrowhead
+        Style of the arrow head for the lines. Accepts various Graphviz arrow styles. Default is 'none'.
+
+    .PARAMETER LineStyle
+        Style of the line (e.g., solid, dashed, dotted, bold). Default is 'solid'.
+
+    .PARAMETER LineWidth
+        Width of the line (penwidth), from 1 to 10. Default is 1.
+
+    .PARAMETER CrossShapeStartLineLength
+        Length of the line from CrossShapeStart to CrossShapeMiddle. Default is 1.
+
+    .PARAMETER CrossShapeEndLineLength
+        Length of the line from CrossShapeMiddle to CrossShapeEnd. Default is 1.
+
+    .PARAMETER CrossShapeMiddleTopLineLength
+        Length of the line from CrossShapeMiddleTop to CrossShapeMiddle. Default is 1.
+
+    .PARAMETER CrossShapeMiddleDownLineLength
+        Length of the line from CrossShapeMiddle to CrossShapeMiddleDown. Default is 1.
+
+    .PARAMETER LineColor
+        Color of the cross-shaped line. Default is 'black'. Supports Graphviz color names.
+
+    .PARAMETER IconDebug
+        Switch to enable debug mode, which highlights the cross shape in red for easier visualization.
+
+    .EXAMPLE
+        # Adds a cross-shaped line to the diagram with default settings
+        Add-DiaCrossShapeLine
+
+        # Visual representation:
+        #         o
+        #         |
+        #         |
+        #  o------o------o
+        #         |
+        #         |
+        #         o
+
     .NOTES
         Version:        0.6.30
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
-        Github:         rebelinux
+        GitHub:         rebelinux
+
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
-
-    [CmdletBinding()]
-
-    [CmdletBinding()]
-    [OutputType([System.String])]
     param(
         [Parameter(
             Mandatory = $false,
@@ -91,13 +159,6 @@ function Add-DiaCrossShapeLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as End Node Name'
-        )]
-        [ValidateRange(1, 10)]
-        [int] $LineLength = 1,
-
-        [Parameter(
-            Mandatory = $false,
             HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
@@ -134,6 +195,7 @@ function Add-DiaCrossShapeLine {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false
     )
 

@@ -69,11 +69,8 @@ function New-Diagrammer {
     .PARAMETER SectionSeparation
         Controls the section (subgraph) separation ratio in the visualization. Default is 0.75.
 
-    .PARAMETER EnableEdgeDebug
-        Enables edge debugging (dummy edge and node lines).
-
-    .PARAMETER EnableSubGraphDebug
-        Enables subgraph debugging (subgraph lines).
+    .PARAMETER DraftMode
+        Enables subgraph visualization debugging of subgraph, edges & nodes.
 
     .PARAMETER EnableErrorDebug
         Enables error debugging.
@@ -312,15 +309,10 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to enable edge debugging ( Dummy Edge and Node lines)'
+            HelpMessage = 'Allow to enable visualization debugging of subgraph, edges and nodes'
         )]
-        [Switch] $EnableEdgeDebug = $false,
+        [Switch] $DraftMode = $false,
 
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Allow to enable subgraph debugging ( Subgraph Lines )'
-        )]
-        [Switch] $EnableSubGraphDebug = $false,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to enable error debugging'
@@ -428,20 +420,17 @@ function New-Diagrammer {
 
         $IconDebug = $false
 
-        if ($EnableEdgeDebug) {
-            $EdgeDebug = @{style = 'filled'; color = 'red' }
-            $IconDebug = $true
-        } else { $EdgeDebug = @{style = 'invis'; color = 'red' } }
-
-        if ($EnableSubGraphDebug) {
+        if ($DraftMode) {
             $SubGraphDebug = @{style = 'dashed'; color = 'red' }
             $NodeDebug = @{color = 'black'; style = 'red'; shape = 'plain' }
             $NodeDebugEdge = @{color = 'black'; style = 'red'; shape = 'plain' }
+            $EdgeDebug = @{style = 'filled'; color = 'red' }
             $IconDebug = $true
         } else {
             $SubGraphDebug = @{style = 'invis'; color = 'gray' }
             $NodeDebug = @{color = 'transparent'; style = 'transparent'; shape = 'point' }
             $NodeDebugEdge = @{color = 'transparent'; style = 'transparent'; shape = 'none' }
+            $EdgeDebug = @{style = 'invis'; color = 'red' }
         }
 
         $Dir = switch ($Direction) {
@@ -490,7 +479,7 @@ function New-Diagrammer {
         $script:Graph = Graph -Name Root -Attributes $MainGraphAttributes {
             # Node default theme
             Node @{
-                label = ''
+                # label = ''
                 shape = 'none'
                 labelloc = 't'
                 style = 'filled'

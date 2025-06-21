@@ -1,23 +1,56 @@
 function Add-DiaHorizontalLine {
     <#
     .SYNOPSIS
-        Function to create a customizable horizontal line between two nodes in the diagram, allowing specification of style, length, width, and color.
+        Creates a customizable horizontal line between two nodes in a diagram.
         Example:
 
                 (HStart)o-----------------o(Hend)
+
     .DESCRIPTION
-        Function to create a horizontal line in the diagram.
+        The Add-DiaHorizontalLine function generates a horizontal line between two specified nodes, allowing for extensive customization of the line's appearance.
+        You can specify the start and end node names, arrow styles at both ends, line style, length, width, and color.
+        The function is designed for use with diagramming tools (such as Graphviz) and supports debug mode for visual troubleshooting.
+
+    .PARAMETER HStart
+        The name of the start node for the horizontal line. Default is 'HStart'.
+
+    .PARAMETER HEnd
+        The name of the end node for the horizontal line. Default is 'HEnd'.
+
+    .PARAMETER Arrowtail
+        The arrow style at the start of the line. Accepts values such as 'none', 'normal', 'inv', 'dot', etc. Default is 'none'.
+
+    .PARAMETER Arrowhead
+        The arrow style at the end of the line. Accepts values such as 'none', 'normal', 'inv', 'dot', etc. Default is 'none'.
+
+    .PARAMETER LineStyle
+        The style of the line. Valid values are 'dashed', 'dotted', 'solid', 'bold', 'invis', 'filled', 'tapered'. Default is 'solid'.
+
+    .PARAMETER HStartLineLength
+        The minimum length of the line (minlen). Valid range is 1 to 10. Default is 1.
+
+    .PARAMETER LineWidth
+        The width of the line (penwidth). Valid range is 1 to 10. Default is 1.
+
+    .PARAMETER LineColor
+        The color of the line. Default is 'black'. Refer to https://graphviz.org/doc/info/colors.html for supported color names.
+
+    .PARAMETER IconDebug
+        Switch to enable debug mode, which highlights the nodes and line in red for troubleshooting. Alias: DraftMode. Default is $false.
+
+    .EXAMPLE
+        Add-DiaHorizontalLine -HStart "NodeA" -HEnd "NodeB" -LineStyle "dashed" -LineColor "blue" -Arrowhead "normal"
+
+        Creates a dashed blue horizontal line from NodeA to NodeB with a normal arrowhead at the end.
+
     .NOTES
-        Version:        0.6.30
-        Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
-        Github:         rebelinux
+        Author: Jonathan Colon
+        Version: 0.6.30
+        GitHub: https://github.com/rebelinux/Diagrammer.Core
+
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
-
-    # Todo: Add support for creating more than 1 line and able to join them with Rank parameter.
-    [CmdletBinding()]
 
     [CmdletBinding()]
     [OutputType([System.String])]
@@ -83,6 +116,7 @@ function Add-DiaHorizontalLine {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false
     )
 

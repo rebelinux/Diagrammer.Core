@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add tests for Add-WatermarkToImage, ConvertTo-Pdf-WaterMark, and other conversion functions to ensure functionality and reliability
 - Add new line functions: Cross, Inverted T, T, Horizontal and Vertical line shapes
 - Added cleanup logic in Resize-Image tests to remove temporary files after tests.
+- Add-DiaRightTShapeLine for various L and  T shaped connectors in diagrams.
+- Implemented Add-DiaInvertedLShapeLine, Add-DiaLShapeLine, Add-DiaLeftLShapeLine, Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine,
+
 
 ### Changed
 
@@ -30,8 +33,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update existing conversion functions (ConvertTo-Dot, ConvertTo-Jpg, ConvertTo-Pdf, ConvertTo-Png) to improve error handling and streamline output.
 - Update Graphviz binaries to v13.0.0
 - Expanded the Todo list to include new directional line shapes and testing tasks.
-- Implemented Add-DiaInvertedLShapeLine, Add-DiaLShapeLine, Add-DiaLeftLShapeLine, Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine,
-  Add-DiaRightTShapeLine for various L and  T shaped connectors in diagrams.
+- Enhance diagram functions with improved parameterization and debugging options
+- Updated Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine, Add-DiaRightTShapeLine, Add-DiaTShapeLine, Add-DiaVerticalLine to include detailed parameter descriptions for
+  better usability.
+- Refactored DraftMode parameter to enable visual debugging in diagram functions, highlighting nodes and lines in red.
+- Refactored node and edge creation logic to accommodate new parameters and improve clarity.
+- Improved example usage in documentation for each function to demonstrate customization capabilities.
+- Consolidated versioning and author information across all modified scripts for consistency.
+- Updated New-Diagrammer to integrate DraftMode for enhanced visualization debugging.
+- Completed various TODO items related to directional lines and line length customization.
 
 ### Fixed
 

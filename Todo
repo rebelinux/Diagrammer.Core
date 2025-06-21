@@ -1,4 +1,5 @@
 [Done] Updated Convert-PDF to use ImageMagick for converting PNG images to PDF, enabling watermark text insertion.
+[] Research if possible to add Text Name in plain shape to diagnose visualization in DraftMode to the Add-DiaNodeIcon, Add-DiaHTMLNodeTable, Add-DiaHTMLSubGraph
 [] Create Pester tests for:
     [Done] Add-WatermarkToImage
     [Done] ConvertTo-Pdf-WaterMark
@@ -16,20 +17,20 @@
     [] Add-DiaVerticalLine
     [] Add-DiaRightLShapeLine
     [] Add-DiaLeftLShapeLine
-[] Research methods to create directional lines in DOT:
+[Done] Research methods to create directional lines in DOT:
     [Done] Straight vertical/horizontal lines
     [Done] L-shaped lines (all variants)
     [Done] T-shaped lines (all variants)
     [Done] Cross-shaped lines
-    [] Add option to set line length per line point
+    [Done] Add option to set line length per line point
         [Done] Add-DiaCrossShapeLine
-        [] Add-DiaTShapeLine
-        [] Add-DiaRightTShapeLine
+        [Done] Add-DiaTShapeLine
+        [Done] Add-DiaRightTShapeLine
         [Done] Add-DiaHorizontalLine
-        [] Add-DiaInvertedLShapeLine
-        [] Add-DiaInvertedTShapeLine
-        [] Add-DiaLeftTShapeLine
-        [] Add-DiaLShapeLine
-        [] Add-DiaVerticalLine
-        [] Add-DiaRightLShapeLine
-        [] Add-DiaLeftLShapeLine
+        [Done] Add-DiaInvertedLShapeLine
+        [Done] Add-DiaInvertedTShapeLine
+        [Done] Add-DiaLeftTShapeLine
+        [Done] Add-DiaLShapeLine
+        [Done] Add-DiaVerticalLine
+        [Done] Add-DiaRightLShapeLine
+        [Done] Add-DiaLeftLShapeLine

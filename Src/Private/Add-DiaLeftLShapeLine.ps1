@@ -1,25 +1,66 @@
 function Add-DiaLeftLShapeLine {
     <#
     .SYNOPSIS
-        Creates an Left L-shaped connector composed of two lines and nodes for use in diagram generation.
+        Adds a left-oriented L-shaped connector to a diagram, composed of two lines and three nodes.
+
         Example:
-                    (LShapeUp)
-        (LShapeLeft)o______o
-                            |
-                (LShapeDown)o
+                        (LeftLShapeUp)
+        (LeftLShapeLeft) o______o
+                                |
+                                |
+                                o (LeftLShapeDown)
 
     .DESCRIPTION
-        Function to create a Left L shape object in the diagram.
+        The Add-DiaLeftLShapeLine function creates a left-facing L-shaped connector for use in diagram generation, such as with Graphviz.
+        The connector consists of two lines (vertical and horizontal) and three nodes, allowing for customizable styles, colors, arrowheads, and lengths.
+        This function is useful for visually representing relationships or flows in diagrams where an L-shaped connection is required.
+
+    .PARAMETER LeftLShapeUp
+        The name of the starting node at the top of the L shape (vertical segment). Default is 'LeftLShapeUp'.
+
+    .PARAMETER LeftLShapeDown
+        The name of the ending node at the bottom of the L shape (vertical segment). Default is 'LeftLShapeDown'.
+
+    .PARAMETER LeftLShapeLeft
+        The name of the node at the left end of the L shape (horizontal segment). Default is 'LeftLShapeLeft'.
+
+    .PARAMETER Arrowtail
+        The arrow style at the start of the line (arrowtail). Accepts various Graphviz arrow styles. Default is 'none'.
+
+    .PARAMETER Arrowhead
+        The arrow style at the end of the line (arrowhead). Accepts various Graphviz arrow styles. Default is 'none'.
+
+    .PARAMETER LineStyle
+        The style of the line (e.g., solid, dashed, dotted, etc.). Default is 'solid'.
+
+    .PARAMETER LeftLShapeUpLineLength
+        The length (minlen) of the vertical segment of the L shape, from 1 to 10. Default is 1.
+
+    .PARAMETER LeftLShapeLeftLineLength
+        The length (minlen) of the horizontal segment of the L shape, from 1 to 10. Default is 1.
+
+    .PARAMETER LineWidth
+        The width (penwidth) of the lines, from 1 to 10. Default is 1.
+
+    .PARAMETER LineColor
+        The color of the lines. Accepts any color supported by Graphviz. Default is 'black'.
+
+    .PARAMETER IconDebug
+        If set to $true, enables debug mode, highlighting the nodes and lines in red for easier visualization during development.
+
+    .EXAMPLE
+        Add-DiaLeftLShapeLine -LeftLShapeUp "StartNode" -LeftLShapeDown "EndNode" -LeftLShapeLeft "LeftNode" -LineColor "blue" -LineStyle "dashed"
+
+        Creates a blue, dashed, left-oriented L-shaped connector between the specified nodes.
+
     .NOTES
-        Version:        0.6.30
-        Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
-        Github:         rebelinux
+        Author: Jonathan Colon
+        Version: 0.6.30
+        GitHub: https://github.com/rebelinux/Diagrammer.Core
+
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
-
-    [CmdletBinding()]
 
     [CmdletBinding()]
     [OutputType([System.String])]
@@ -28,19 +69,19 @@ function Add-DiaLeftLShapeLine {
             Mandatory = $false,
             HelpMessage = 'Name of the starting node (Up direction) for the L shape.'
         )]
-        [string] $StartName = 'LShapeUp',
+        [string] $LeftLShapeUp = 'LeftLShapeUp',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Name of the ending node (Down direction) for the L shape.'
         )]
-        [string] $EndName = 'LShapeDown',
+        [string] $LeftLShapeDown = 'LeftLShapeDown',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Name of the right node (Right direction) for the L shape.'
         )]
-        [string] $LeftName = 'LShapeLeft',
+        [string] $LeftLShapeLeft = 'LeftLShapeLeft',
 
         [Parameter(
             Mandatory = $false,
@@ -72,7 +113,14 @@ function Add-DiaLeftLShapeLine {
             HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $LineLength = 1,
+        [int] $LeftLShapeUpLineLength = 1,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Length of the line (minlen), from 1 to 10.'
+        )]
+        [ValidateRange(1, 10)]
+        [int] $LeftLShapeLeftLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
@@ -85,7 +133,14 @@ function Add-DiaLeftLShapeLine {
             Mandatory = $false,
             HelpMessage = 'Color of the line. See https://graphviz.org/doc/info/colors.html for supported colors.'
         )]
-        [string] $LineColor = "black"
+        [string] $LineColor = "black",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
+        )]
+        [Alias('DraftMode')]
+        [bool] $IconDebug = $false
     )
 
     begin {
@@ -93,11 +148,28 @@ function Add-DiaLeftLShapeLine {
 
     process {
         try {
-            Node $StartName, $EndName @{shape = 'none'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'invis' }
-            Node $LeftName @{shape = 'point'; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = 'filled' }
-            Rank $StartName, $EndName
-            Edge -From $StartName -To $EndName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $EndName -To $LeftName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            if ($IconDebug) {
+                $Shape = 'plain'
+                $fillColor = 'red'
+                $Style = 'filled'
+                $Color = 'black'
+                $LineColor = 'red'
+            } else {
+                $Shape = 'point'
+                $fillColor = 'transparent'
+                $Style = 'invis'
+                $Color = $LineColor
+            }
+            if ($IconDebug) {
+                Node $LeftLShapeUp, $LeftLShapeDown, $LeftLShapeLeft @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
+
+            } else {
+                Node $LeftLShapeUp, $LeftLShapeDown, $LeftLShapeLeft @{shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = $Style }
+            }
+
+            Rank $LeftLShapeUp, $LeftLShapeLeft
+            Edge -From $LeftLShapeUp -To $LeftLShapeDown @{minlen = $LeftLShapeUpLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $LeftLShapeLeft -To $LeftLShapeUp @{minlen = $LeftLShapeLeftLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
 
         } catch {
