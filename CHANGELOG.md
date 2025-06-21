@@ -18,7 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add new line functions: Cross, Inverted T, T, Horizontal and Vertical line shapes
 - Added cleanup logic in Resize-Image tests to remove temporary files after tests.
 - Add-DiaRightTShapeLine for various L and  T shaped connectors in diagrams.
-- Implemented Add-DiaInvertedLShapeLine, Add-DiaLShapeLine, Add-DiaLeftLShapeLine, Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine,
+- Implemented Add-DiaInvertedLShapeLine, Add-DiaLShapeLine, Add-DiaLeftLShapeLine, Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine
+- Add Pester files for some cmdlet to test functionality:
+  - Add-DiaVerticalLine
 
 
 ### Changed

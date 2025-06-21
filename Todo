@@ -14,7 +14,7 @@
     [] Add-DiaInvertedTShapeLine
     [] Add-DiaLeftTShapeLine
     [] Add-DiaLShapeLine
-    [] Add-DiaVerticalLine
+    [Done] Add-DiaVerticalLine
     [] Add-DiaRightLShapeLine
     [] Add-DiaLeftLShapeLine
 [Done] Research methods to create directional lines in DOT:
