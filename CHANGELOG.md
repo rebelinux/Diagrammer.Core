@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implemented Add-DiaInvertedLShapeLine, Add-DiaLShapeLine, Add-DiaLeftLShapeLine, Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine
 - Add Pester files for some cmdlet to test functionality:
   - Add-DiaVerticalLine
+  - ConvertTo-RotateImage
 
 
 ### Changed
@@ -44,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Consolidated versioning and author information across all modified scripts for consistency.
 - Updated New-Diagrammer to integrate DraftMode for enhanced visualization debugging.
 - Completed various TODO items related to directional lines and line length customization.
+- Enhance ConvertTo-RotateImage function with detailed documentation.
 
 ### Fixed
 

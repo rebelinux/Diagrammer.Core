@@ -3,13 +3,13 @@
 [] Create Pester tests for:
     [Done] Add-WatermarkToImage
     [Done] ConvertTo-Pdf-WaterMark
-    [] ConvertTo-RotateImage
+    [Done] ConvertTo-RotateImage
     [] Export-Diagrammer
     [Done] Resize-Image
     [] Add-DiaCrossShapeLine
     [] Add-DiaTShapeLine
     [] Add-DiaRightTShapeLine
-    [] Add-DiaHorizontalLine
+    [Done] Add-DiaHorizontalLine
     [] Add-DiaInvertedLShapeLine
     [] Add-DiaInvertedTShapeLine
     [] Add-DiaLeftTShapeLine
