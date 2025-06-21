@@ -1,42 +1,56 @@
 function Add-DiaTShapeLine {
     <#
     .SYNOPSIS
-        Creates a T-shaped connector in a diagram, linking specified nodes with customizable line styles, widths, and colors.
+        Adds a T-shaped connector to a diagram, linking four nodes with customizable line styles, widths, and colors.
         Example:
-                                (TShapeMiddleUpper)
-               (TShapeStart)o___o___o(TShapeEnd)
+                                (TShapeMiddleUp)
+                (TShapeLeft)o___o___o(TShapeRight)
                                 |
                                 o
                                 (TShapeMiddleDown)
 
     .DESCRIPTION
-        The Add-DiaTShapeLine function generates a T-shaped (⊥) structure in a diagram by connecting four nodes: a horizontal line between a start node, a middle top node, and an end node, with a vertical line extending down from the middle node to a lower node.
-        The function allows customization of node names, line style, arrowhead/tail types, line length, width, and color.
-        It also supports a debug mode to visually highlight the nodes for troubleshooting.
+        The Add-DiaTShapeLine function creates a T-shaped (⊥) connector in a diagram by connecting four nodes:
+        - A horizontal line between a left node, a middle (top) node, and a right node.
+        - A vertical line extending down from the middle node to a lower node.
 
-    .PARAMETER StartName
-        The name of the starting node on the horizontal line. Default is 'TShapeStart'.
+        The function supports customization of:
+        - Node names for each point of the T-shape.
+        - Arrowhead and arrowtail styles (Graphviz types).
+        - Line style (solid, dashed, dotted, etc.).
+        - Individual line segment lengths for left, right, and vertical lines.
+        - Line width and color.
+        - Debug mode to visually highlight nodes and lines for troubleshooting.
 
-    .PARAMETER EndName
-        The name of the ending node on the horizontal line. Default is 'TShapeEnd'.
+    .PARAMETER TShapeLeft
+        The name of the starting node on the horizontal line (left side). Default is 'TShapeLeft'.
 
-    .PARAMETER MiddleTop
-        The name of the node at the intersection of the T (top of the vertical line). Default is 'TShapeMiddleUpper'.
+    .PARAMETER TShapeRight
+        The name of the ending node on the horizontal line (right side). Default is 'TShapeRight'.
 
-    .PARAMETER MiddleDown
+    .PARAMETER TShapeMiddleUp
+        The name of the node at the intersection of the T (top of the vertical line). Default is 'TShapeMiddleUp'.
+
+    .PARAMETER TShapeMiddleDown
         The name of the node at the bottom of the vertical line. Default is 'TShapeMiddleDown'.
 
     .PARAMETER Arrowtail
-        The style of the arrow tail for the connecting lines. Accepts various Graphviz arrow types. Default is 'none'.
+        The style of the arrow tail for the connecting lines. Accepts Graphviz arrow types. Default is 'none'.
 
     .PARAMETER Arrowhead
-        The style of the arrow head for the connecting lines. Accepts various Graphviz arrow types. Default is 'none'.
+        The style of the arrow head for the connecting lines. Accepts Graphviz arrow types. Default is 'none'.
 
     .PARAMETER LineStyle
         The style of the connecting lines (e.g., solid, dashed, dotted, bold). Default is 'solid'.
 
-    .PARAMETER LineLength
-        The minimum length of each line segment (Graphviz minlen). Range: 1-10. Default is 1.
+    .PARAMETER TShapeLeftLineLength
+        The minimum length (Graphviz minlen) of the left horizontal segment. Range: 1-10. Default is 1.
+
+    .PARAMETER TShapeRightLineLength
+        The minimum length (Graphviz minlen) of the right horizontal segment. Range: 1-10. Default is 1.
+
+    .PARAMETER TShapeMiddleDownLineLength
+        The minimum length (Graphviz minlen) of the vertical segment. Range: 1-10. Default is 1.
 
     .PARAMETER LineWidth
         The width (penwidth) of the lines. Range: 1-10. Default is 1.
@@ -48,7 +62,7 @@ function Add-DiaTShapeLine {
         Switch to enable debug mode, which highlights the nodes and lines in red for easier troubleshooting. Default is $false.
 
     .EXAMPLE
-        Add-DiaTShapeLine -StartName "A" -EndName "B" -MiddleTop "C" -MiddleDown "D" -LineStyle "dashed" -LineColor "blue"
+        Add-DiaTShapeLine -TShapeLeft "A" -TShapeRight "B" -TShapeMiddleUp "C" -TShapeMiddleDown "D" -LineStyle "dashed" -LineColor "blue"
 
         Creates a T-shaped connector with custom node names, dashed blue lines, and default arrow styles.
 
@@ -70,25 +84,25 @@ function Add-DiaTShapeLine {
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as Start Node Name'
         )]
-        [string] $StartName = 'TShapeStart',
+        [string] $TShapeLeft = 'TShapeLeft',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
-        [string] $EndName = 'TShapeEnd',
+        [string] $TShapeRight = 'TShapeRight',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
-        [string] $MiddleTop = 'TShapeMiddleUpper',
+        [string] $TShapeMiddleUp = 'TShapeMiddleUp',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as End Node Name'
         )]
-        [string] $MiddleDown = 'TShapeMiddleDown',
+        [string] $TShapeMiddleDown = 'TShapeMiddleDown',
 
         [Parameter(
             Mandatory = $false,
@@ -117,10 +131,24 @@ function Add-DiaTShapeLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Please provide a string to be used as End Node Name'
+            HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $LineLength = 1,
+        [int] $TShapeLeftLineLength = 1,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Length of the line (minlen), from 1 to 10.'
+        )]
+        [ValidateRange(1, 10)]
+        [int] $TShapeRightLineLength = 1,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Length of the line (minlen), from 1 to 10.'
+        )]
+        [ValidateRange(1, 10)]
+        [int] $TShapeMiddleDownLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
@@ -161,16 +189,16 @@ function Add-DiaTShapeLine {
                 $Color = $LineColor
             }
             if ($IconDebug) {
-                Node $StartName, $MiddleDown, $EndName, $MiddleTop @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
+                Node $TShapeLeft, $TShapeMiddleDown, $TShapeRight, $TShapeMiddleUp @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
             } else {
-                Node $StartName, $MiddleDown, $EndName @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
-                Node $MiddleTop @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
+                Node $TShapeLeft, $TShapeMiddleDown, $TShapeRight, $TShapeMiddleUp @{color = $Color; shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = $fillColor; style = $Style }
             }
 
-            Rank $StartName, $MiddleTop, $EndName
-            Edge -From $StartName -To $MiddleTop @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $MiddleTop -To $EndName @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $MiddleTop -To $MiddleDown @{minlen = $LineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Rank $TShapeLeft, $TShapeMiddleUp, $TShapeRight
+
+            Edge -From $TShapeLeft -To $TShapeMiddleUp @{minlen = $TShapeLeftLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $TShapeMiddleUp -To $TShapeRight @{minlen = $TShapeRightLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $TShapeMiddleUp -To $TShapeMiddleDown @{minlen = $TShapeMiddleDownLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
 
         } catch {

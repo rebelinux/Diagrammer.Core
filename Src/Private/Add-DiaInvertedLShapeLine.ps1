@@ -125,7 +125,7 @@ function Add-DiaInvertedLShapeLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Width of the line (penwidth), from 1 to 10.'
+            HelpMessage = 'Width of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
         [int] $InvertedLShapeRightLineLength = 1,

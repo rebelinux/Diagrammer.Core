@@ -6,7 +6,7 @@ function Add-DiaRightTShapeLine {
                                 (RightTShapeUp)
                                         o
                                         |
-            (RightTShapeMiddleRight)o___o(RightTShapeMiddleLeft)
+            (RightTShapeMiddleLeft)o___o(RightTShapeMiddleRight)
                                         |
                                         o
                                 (RightTShapeDown)
@@ -143,22 +143,14 @@ function Add-DiaRightTShapeLine {
             HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $RightTShapeEndLength = 1,
+        [int] $RightTShapeDownLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $RightTShapeMiddleRightLength = 1,
-
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Length of the line (minlen), from 1 to 10.'
-        )]
-        [ValidateRange(1, 10)]
-        [int] $RightTShapeMiddleLeftLength = 1,
+        [int] $RightTShapeMiddleRightLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
@@ -206,9 +198,9 @@ function Add-DiaRightTShapeLine {
 
             Rank $RightTShapeMiddleRight, $RightTShapeMiddleLeft
 
-            Edge -From $RightTShapeUp -To $RightTShapeMiddleRight @{minlen = $RightTShapeUpLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $RightTShapeMiddleRight -To $RightTShapeDown @{minlen = $RightTShapeMiddleRightLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
-            Edge -From $RightTShapeMiddleLeft -To $RightTShapeMiddleRight @{minlen = $RightTShapeMiddleLeftLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $RightTShapeUp -To $RightTShapeMiddleLeft @{minlen = $RightTShapeUpLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $RightTShapeMiddleLeft -To $RightTShapeDown @{minlen = $RightTShapeDownLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $RightTShapeMiddleLeft -To $RightTShapeMiddleRight @{minlen = $RightTShapeMiddleRightLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
 
         } catch {

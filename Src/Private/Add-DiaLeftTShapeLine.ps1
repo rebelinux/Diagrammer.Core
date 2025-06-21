@@ -4,7 +4,7 @@ function Add-DiaLeftTShapeLine {
         Adds a Left T-shaped connector to a diagram, representing a vertical line intersecting a horizontal line extending to the right.
 
         Example:
-                        (LeftTShapeUpper)
+                        (LeftTShapeUp)
                                 o
                                 |
                                 |
@@ -20,8 +20,8 @@ function Add-DiaLeftTShapeLine {
         The function allows customization of node names, line styles, arrow types, line widths, and colors.
         It also supports a debug mode for visualizing node placement.
 
-    .PARAMETER LeftTShapeUpper
-        The name of the upper node in the T-shape. Default is 'LeftTShapeUpper'.
+    .PARAMETER LeftTShapeUp
+        The name of the up node in the T-shape. Default is 'LeftTShapeUp'.
 
     .PARAMETER LeftTShapeDown
         The name of the lower node in the T-shape. Default is 'LeftTShapeDown'.
@@ -44,8 +44,8 @@ function Add-DiaLeftTShapeLine {
     .PARAMETER LineWidth
         The width of the connector lines (penwidth), from 1 to 10. Default is 1.
 
-    .PARAMETER LeftTShapeUpperLineLength
-        The minimum length of the line from the upper node to the intersection. Default is 1.
+    .PARAMETER LeftTShapeUpLineLength
+        The minimum length of the line from the up node to the intersection. Default is 1.
 
     .PARAMETER LeftTShapeDownLineLength
         The minimum length of the line from the intersection to the lower node. Default is 1.
@@ -60,7 +60,7 @@ function Add-DiaLeftTShapeLine {
         Switch to enable debug mode, which highlights the nodes and lines in red for easier visualization. Default is $false.
 
     .EXAMPLE
-        Add-DiaLeftTShapeLine -LeftTShapeUpper "Top" -LeftTShapeDown "Bottom" -LeftTShapeMiddleRight "Right" -LeftTShapeMiddleLeft "Center" -LineColor "blue" -LineStyle "dashed"
+        Add-DiaLeftTShapeLine -LeftTShapeUp "Top" -LeftTShapeDown "Bottom" -LeftTShapeMiddleRight "Right" -LeftTShapeMiddleLeft "Center" -LineColor "blue" -LineStyle "dashed"
 
         Creates a blue, dashed Left T-shaped connector with custom node names.
 
@@ -80,7 +80,7 @@ function Add-DiaLeftTShapeLine {
             Mandatory = $false,
             HelpMessage = 'Please provide a string to be used as Start Node Name'
         )]
-        [string] $LeftTShapeUpper = 'LeftTShapeUpper',
+        [string] $LeftTShapeUp = 'LeftTShapeUp',
 
         [Parameter(
             Mandatory = $false,
@@ -134,24 +134,24 @@ function Add-DiaLeftTShapeLine {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Width of the line (penwidth), from 1 to 10.'
+            HelpMessage = 'Width of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $LeftTShapeUpperLineLength = 1,
+        [int] $LeftTShapeUpLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Width of the line (penwidth), from 1 to 10.'
+            HelpMessage = 'Width of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
         [int] $LeftTShapeDownLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Width of the line (penwidth), from 1 to 10.'
+            HelpMessage = 'Width of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $LeftTShapeMiddleRightLineLength = 1,
+        [int] $LeftTShapeMiddleLeftLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
@@ -185,19 +185,19 @@ function Add-DiaLeftTShapeLine {
                 $Color = $LineColor
             }
             if ($IconDebug) {
-                Node $LeftTShapeUpper, $LeftTShapeMiddleRight, $LeftTShapeDown, $LeftTShapeMiddleLeft  @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
+                Node $LeftTShapeUp, $LeftTShapeMiddleRight, $LeftTShapeDown, $LeftTShapeMiddleLeft  @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
 
             } else {
-                Node $LeftTShapeUpper, $LeftTShapeMiddleRight, $LeftTShapeDown, $LeftTShapeMiddleLeft @{shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = $Style }
+                Node $LeftTShapeUp, $LeftTShapeMiddleRight, $LeftTShapeDown, $LeftTShapeMiddleLeft @{shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = $Style }
             }
 
             Rank $LeftTShapeMiddleRight, $LeftTShapeMiddleLeft
 
-            Edge -From $LeftTShapeUpper -To $LeftTShapeMiddleLeft @{minlen = $LeftTShapeUpperLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $LeftTShapeUp -To $LeftTShapeMiddleRight @{minlen = $LeftTShapeUpLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
-            Edge -From $LeftTShapeMiddleLeft -To $LeftTShapeDown @{minlen = $LeftTShapeDownLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $LeftTShapeMiddleRight -To $LeftTShapeDown @{minlen = $LeftTShapeDownLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
-            Edge -From $LeftTShapeMiddleLeft -To $LeftTShapeMiddleRight @{minlen = $LeftTShapeMiddleRightLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $LeftTShapeMiddleLeft -To $LeftTShapeMiddleRight @{minlen = $LeftTShapeMiddleLeftLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
         } catch {
             Write-Verbose -Message $_.Exception.Message
