@@ -60,24 +60,28 @@ function Export-Diagrammer {
         )]
         [ValidateNotNullOrEmpty()]
         $GraphObj,
+
         [Parameter(
             Position = 1,
             Mandatory = $false,
             HelpMessage = 'Allow to enable error debugging'
         )]
         [bool]$ErrorDebug,
+
         [Parameter(
             Position = 2,
             Mandatory = $true,
-            HelpMessage = 'Set the output format of the generated Graphviz diagram'
+            HelpMessage = 'Set the output format of the generated Graphviz diagram (Valid formats: pdf, png, svg, jpg, base64, dot)'
         )]
         [Array]$Format,
+
         [Parameter(
             Position = 3,
             Mandatory = $false,
-            HelpMessage = 'Set the output filename of the generated Graphviz diagram'
+            HelpMessage = 'Set the output filename of the generated Graphviz diagram (If not specified, the default filename is Output with the appropriate extension based on the format)'
         )]
         [string]$Filename,
+
         [Parameter(
             Position = 4,
             Mandatory = $false,
@@ -89,7 +93,8 @@ function Export-Diagrammer {
                 }
                 return $true
             })]
-        [System.IO.FileInfo] $OutputFolderPath,
+        [System.IO.FileInfo] $OutputFolderPath = [system.io.path]::GetTempPath(),
+
         [Parameter(
             Position = 5,
             Mandatory = $false,
@@ -102,12 +107,14 @@ function Export-Diagrammer {
                 return $true
             })]
         [System.IO.FileInfo] $IconPath,
+
         [Parameter(
             Position = 7,
             Mandatory = $false,
             HelpMessage = 'Allow to add a watermark to the output image (Not supported in svg format)'
         )]
         [string] $WaterMarkText,
+
         [Parameter(
             Position = 8,
             Mandatory = $false,
@@ -115,11 +122,12 @@ function Export-Diagrammer {
         )]
         [string] $WaterMarkColor = 'Red',
 
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180, 270)'
         )]
-        [ValidateSet(0, 90)]
+        [ValidateSet(0, 90, 180, 270)]
         [int] $Rotate = 0
     )
 
@@ -128,7 +136,6 @@ function Export-Diagrammer {
         $script:RootPath = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
         $script:GraphvizPath = Join-Path $RootPath 'Graphviz\bin\dot.exe'
         $script:ImageMagickPath = Join-Path $RootPath 'ImageMagick\'
-
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat
         if (-Not $Filename) {
