@@ -132,6 +132,6 @@ Describe Export-Diagrammer {
     }
     It "Should throw error when invalid Rotate value is provided" {
         $GraphvizOutput = { Export-Diagrammer @GraphvizInvalidRotate -ErrorAction Stop }
-        $GraphvizOutput | Should -Throw -ExpectedMessage 'Cannot validate argument on parameter ''Rotate''. The argument "80" does not belong to the set "90,180,270" specified by the ValidateSet attribute. Supply an argument that is in the set and then try the command again.'
+        $GraphvizOutput | Should -Throw -ExpectedMessage 'Cannot validate argument on parameter ''Rotate''. The argument "80" does not belong to the set "0,90,180,270" specified by the ValidateSet attribute. Supply an argument that is in the set and then try the command again.'
     }
 }
