@@ -34,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add diagram line functions, watermarking, and PDF conversion
 - Enhance Add-WatermarkToImage function to add watermarks to pdf files, with support for optional parameters.
 - Update existing conversion functions (ConvertTo-Dot, ConvertTo-Jpg, ConvertTo-Pdf, ConvertTo-Png) to improve error handling and streamline output.
-- Update Graphviz binaries to v13.0.0
+- Update Graphviz binaries to v13.0.1
 - Expanded the Todo list to include new directional line shapes and testing tasks.
 - Enhance diagram functions with improved parameterization and debugging options
 - Updated Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine, Add-DiaRightTShapeLine, Add-DiaTShapeLine, Add-DiaVerticalLine to include detailed parameter descriptions for
