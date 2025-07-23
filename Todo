@@ -1,10 +1,17 @@
 [Done] Updated Convert-PDF to use ImageMagick for converting PNG images to PDF, enabling watermark text insertion.
 [] Research if possible to add Text Name in plain shape to diagnose visualization in DraftMode to the Add-DiaNodeIcon, Add-DiaHTMLNodeTable, Add-DiaHTMLSubGraph
+[] Implement Rotate capability to the Convertto functions
+    [] ConvertTo-PNG
+    [] ConvertTo-JPG
+    [] ConvertTo-PDF
+        [] Use imagemagik
+    [] ConvertTo-SVG
+    [] ConvertTo-Base64
 [] Create Pester tests for:
     [Done] Add-WatermarkToImage
     [Done] ConvertTo-Pdf-WaterMark
     [Done] ConvertTo-RotateImage
-    [] Export-Diagrammer
+    [Done] Export-Diagrammer
     [Done] Resize-Image
     [] Add-DiaCrossShapeLine
     [] Add-DiaTShapeLine

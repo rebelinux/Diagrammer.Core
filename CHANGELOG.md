@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix isssue in cmdlet Add-DiaHtmlSubGraph pester test
 - Fix isssue in cmdlet Get-Add-DiaHTMLNodeTable pester test
 - Fix "HMLT" to "HTML" in multiple test descriptions across Add-DiaHtmlSignatureTable.Tests.ps1 and Add-DiaHtmlSubGraph.Tests.ps1
+- Fix rotation angle handling in ConvertTo-Svg function
 
 
 ## [0.2.26] - 2025-05-09
