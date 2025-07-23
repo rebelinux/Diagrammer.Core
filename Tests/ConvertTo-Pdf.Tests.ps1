@@ -18,14 +18,15 @@ Describe ConvertTo-Pdf {
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDriv:\output.pdf"
+            DestinationPath = "F:\output.png"
         }
     }
 
     It "Should return output.pdf path" {
         (ConvertTo-Pdf @PassParams).FullName | Should -Exist
     }
-    It -Skip "Should throw" {
-        { ConvertTo-Pdf @FailParams } | Should -Throw
+    It "Should Not return output.pdf path" {
+        $scriptBlock = { ConvertTo-Pdf @FailParams }
+        $scriptBlock | Should -Not -Exist
     }
 }

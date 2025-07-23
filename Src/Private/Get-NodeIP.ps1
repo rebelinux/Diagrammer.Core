@@ -4,11 +4,13 @@ function Get-NodeIP {
         Used by Diagrammer to translate node name to an network ip address type object.
     .DESCRIPTION
     .NOTES
-        Version:        0.2.6
+        Version:        0.2.27
         Author:         Jonathan Colon
     .EXAMPLE
     .LINK
     #>
+    [CmdletBinding()]
+    [OutputType([System.String])]
     param(
         [string]$Hostname
     )

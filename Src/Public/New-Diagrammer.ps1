@@ -69,11 +69,8 @@ function New-Diagrammer {
     .PARAMETER SectionSeparation
         Controls the section (subgraph) separation ratio in the visualization. Default is 0.75.
 
-    .PARAMETER EnableEdgeDebug
-        Enables edge debugging (dummy edge and node lines).
-
-    .PARAMETER EnableSubGraphDebug
-        Enables subgraph debugging (subgraph lines).
+    .PARAMETER DraftMode
+        Enables subgraph visualization debugging of subgraph, edges & nodes.
 
     .PARAMETER EnableErrorDebug
         Enables error debugging.
@@ -126,10 +123,10 @@ function New-Diagrammer {
     #>
 
 
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingConvertToSecureStringWithPlainText", "", Scope="Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingUserNameAndPassWordParams", "", Scope="Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingPlainTextForPassword", "", Scope="Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "", Scope="Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingConvertToSecureStringWithPlainText", "", Scope = "Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingUserNameAndPassWordParams", "", Scope = "Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingPlainTextForPassword", "", Scope = "Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "", Scope = "Function")]
 
     [CmdletBinding(
         PositionalBinding = $false,
@@ -312,15 +309,10 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to enable edge debugging ( Dummy Edge and Node lines)'
+            HelpMessage = 'Allow to enable visualization debugging of subgraph, edges and nodes'
         )]
-        [Switch] $EnableEdgeDebug = $false,
+        [Switch] $DraftMode = $false,
 
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Allow to enable subgraph debugging ( Subgraph Lines )'
-        )]
-        [Switch] $EnableSubGraphDebug = $false,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to enable error debugging'
@@ -428,20 +420,17 @@ function New-Diagrammer {
 
         $IconDebug = $false
 
-        if ($EnableEdgeDebug) {
-            $EdgeDebug = @{style = 'filled'; color = 'red' }
-            $IconDebug = $true
-        } else { $EdgeDebug = @{style = 'invis'; color = 'red' } }
-
-        if ($EnableSubGraphDebug) {
+        if ($DraftMode) {
             $SubGraphDebug = @{style = 'dashed'; color = 'red' }
             $NodeDebug = @{color = 'black'; style = 'red'; shape = 'plain' }
             $NodeDebugEdge = @{color = 'black'; style = 'red'; shape = 'plain' }
+            $EdgeDebug = @{style = 'filled'; color = 'red' }
             $IconDebug = $true
         } else {
             $SubGraphDebug = @{style = 'invis'; color = 'gray' }
             $NodeDebug = @{color = 'transparent'; style = 'transparent'; shape = 'point' }
             $NodeDebugEdge = @{color = 'transparent'; style = 'transparent'; shape = 'none' }
+            $EdgeDebug = @{style = 'invis'; color = 'red' }
         }
 
         $Dir = switch ($Direction) {
@@ -490,7 +479,7 @@ function New-Diagrammer {
         $script:Graph = Graph -Name Root -Attributes $MainGraphAttributes {
             # Node default theme
             Node @{
-                label = ''
+                # label = ''
                 shape = 'none'
                 labelloc = 't'
                 style = 'filled'
@@ -514,9 +503,9 @@ function New-Diagrammer {
             if ($Signature) {
                 Write-Verbose -Message "Generating diagram signature"
                 if ($CustomSignatureLogo) {
-                    $Signature = (Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
+                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
                 } else {
-                    $Signature = (Get-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
+                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
                 }
             } else {
                 Write-Verbose -Message "No diagram signature specified"
@@ -534,7 +523,7 @@ function New-Diagrammer {
             # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
-                SubGraph MainGraph -Attributes @{Label = (Get-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80 -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
+                SubGraph MainGraph -Attributes @{Label = (Add-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80 -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
                     $InputObject
                 }
             }

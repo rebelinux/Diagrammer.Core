@@ -31,6 +31,7 @@ function Add-WatermarkToImage {
         The font color opacity level
     #>
 
+    [CmdletBinding()]
     param(
         [Parameter(
             Mandatory = $true,
@@ -46,7 +47,7 @@ function Add-WatermarkToImage {
         [string] $ImageInput,
 
         [Parameter(
-            Mandatory = $true,
+            Mandatory = $false,
             HelpMessage = 'Please provide the complete filepath to export the diagram'
         )]
         [string] $DestinationPath,
@@ -86,12 +87,16 @@ function Add-WatermarkToImage {
 
     process {
 
-        # Teporary Image file path
-        $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath $FileName
+        if (-Not $tempFormat) {
+            # Set the temporary image format to PNG
+            $tempFormat = 'png'
+        }
+        # Temporary Image file path
+        $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "$(Get-Random).$tempFormat"
 
         $ImageName = Get-ChildItem -Path $ImageInput
 
-        # Teporary Image file name
+        # Temporary Image file name
         $FileName = $ImageName.BaseName + "_WaterMark" + $ImageName.Extension
 
         # Get the image from the ImageInput path
@@ -138,15 +143,22 @@ function Add-WatermarkToImage {
             # Destroy the Bitmap object
             $Bitmap.Dispose()
 
-            if ($TempImageOutput) {
+            if (Test-Path -Path $TempImageOutput) {
                 Write-Verbose -Message "Successfully added watermark text to $ImageInput image."
                 if ($PSBoundParameters.ContainsKey('DestinationPath')) {
                     try {
-                        Copy-Item -Path $TempImageOutput -Destination $DestinationPath
-                        Write-Verbose -Message "Successfully replaced $DestinationPath with $TempImageOutput watermarked image."
+                        if (Copy-Item -Path $TempImageOutput -Destination $DestinationPath) {
+                            Write-Verbose -Message "Successfully replaced $DestinationPath with $TempImageOutput watermarked image."
+                            if (Test-Path -Path $TempImageOutput) {
+                                Remove-Item -Path $TempImageOutput -Force -ErrorAction SilentlyContinue
+                            }
+                        }
                     } catch {
                         Write-Verbose -Message "Unable to replace $DestinationPath watermark image to $TempImageOutput diagram."
                         Write-Debug -Message $($_.Exception.Message)
+                        if (Test-Path -Path $TempImageOutput) {
+                            Remove-Item -Path $TempImageOutput -Force -ErrorAction SilentlyContinue
+                        }
                     }
                 } else {
                     Write-Verbose -Message "Successfully watermark $ImageInput diagram."

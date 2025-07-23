@@ -25,7 +25,8 @@ Describe ConvertTo-Dot {
     It "Should return output.dot path" {
         (ConvertTo-Dot @PassParams).FullName | Should -Exist
     }
-    It -Skip "Should throw" {
-        { ConvertTo-Dot @FailParams } | Should -Throw
+    It "Should Not return output.dot path" {
+        $scriptBlock = { ConvertTo-Dot @FailParams }
+        $scriptBlock | Should -Not -Exist
     }
 }

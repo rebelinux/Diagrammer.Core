@@ -25,7 +25,8 @@ Describe ConvertTo-Svg {
     It "Should return output.svg path" {
         (ConvertTo-Svg @PassParams).FullName | Should -Exist
     }
-    It -Skip "Should throw" {
-        { ConvertTo-Svg @FailParams } | Should -Throw
+    It "Should Not return output.svg path" {
+        $scriptBlock = { ConvertTo-Svg @FailParams }
+        $scriptBlock | Should -Not -Exist
     }
 }

@@ -1,14 +1,43 @@
 function ConvertTo-RotateImage {
     <#
     .SYNOPSIS
-        Funtion to rotate image.
+        Rotates an image file by a specified angle and optionally exports or deletes the rotated image.
+
     .DESCRIPTION
-        Rotate image to 90, 180 or 270 angle.
+        The ConvertTo-RotateImage function loads an image from a given file path, rotates it by a specified angle (90, 180, or 270 degrees), and saves the rotated image to a temporary file.
+        Optionally, the rotated image can be copied to a specified destination path and/or deleted after processing.
+        This function is useful for manipulating diagram or image files within automation scripts.
+
+    .PARAMETER ImageInput
+        The file path of the image to be rotated. The file must exist.
+
+    .PARAMETER Angle
+        The angle in degrees to rotate the image. Valid values are 0, 90, 180, or 270.
+
+    .PARAMETER DeleteImage
+        If specified, deletes the temporary rotated image file after processing.
+
+    .PARAMETER DestinationPath
+        The file path where the rotated image should be exported. If not specified, the rotated image remains in the temporary location.
+
+    .OUTPUTS
+        [String] - The path to the rotated image file or output from Get-ChildItem if no destination is specified.
+
+    .EXAMPLE
+        ConvertTo-RotateImage -ImageInput "C:\Images\diagram.png" -Angle 90
+
+        Rotates 'diagram.png' by 90 degrees and saves the rotated image to a temporary file.
+
+    .EXAMPLE
+        ConvertTo-RotateImage -ImageInput "C:\Images\diagram.png" -Angle 180 -DestinationPath "C:\Images\diagram_rotated.png" -DeleteImage
+
+        Rotates 'diagram.png' by 180 degrees, copies the rotated image to 'diagram_rotated.png', and deletes the temporary rotated file.
+
     .NOTES
-        Version:        0.2.12
-        Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
-        Github:         rebelinux
+        Author: Jonathan Colon
+        Version: 0.2.27
+        GitHub: https://github.com/rebelinux/Diagrammer.Core
+
     .LINK
         https://github.com/rebelinux/Diagrammer.Core
     #>
@@ -81,6 +110,15 @@ function ConvertTo-RotateImage {
                     } catch {
                         Write-Verbose -Message "Unable to replace $DestinationPath rotated image to $TempImageOutput diagram."
                         Write-Debug -Message $($_.Exception.Message)
+                    }
+                    if ($DeleteImage) {
+                        try {
+                            Remove-Item -Path $TempImageOutput -Force
+                            Write-Verbose -Message "Successfully deleted temporary rotated image file $TempImageOutput."
+                        } catch {
+                            Write-Verbose -Message "Unable to delete temporary rotated image file $TempImageOutput."
+                            Write-Debug -Message $($_.Exception.Message)
+                        }
                     }
                 } else {
                     Write-Verbose -Message "Successfully rotated $ImageInput diagram."

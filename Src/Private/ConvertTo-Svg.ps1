@@ -57,7 +57,7 @@ function ConvertTo-Svg {
                 $iconName = $Matches.Item(1)
                 $iconNamePath = "$IconPath\$($Matches.Item(1))"
                 if ($Angle -ne 0) {
-                    $iconNamePath = (ConvertTo-RotateImage -ImageInput $iconNamePath -Angle 270).FullName
+                    $iconNamePath = (ConvertTo-RotateImage -ImageInput $iconNamePath -Angle $Angle).FullName
                 }
                 $iconContents = Get-Content $iconNamePath -Encoding byte
                 $iconEncoded = [convert]::ToBase64String($iconContents)

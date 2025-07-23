@@ -1,0 +1,137 @@
+digraph VeeamVBR {
+    bgcolor="White";
+    nodesep="0.6";
+    imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Veeam.Diagrammer\icons";
+    fontcolor="#565656";
+    fontname="Segoe Ui Black";
+    overlap="false";
+    ranksep="0.75";
+    penwidth="1.5";
+    style="dashed";
+    pad="1";
+    compound="true";
+    fontsize="32";
+    labelloc="t";
+    splines="polyline";
+    rankdir="TB";
+    node [labelloc="t";shape="none";fontcolor="Black";style="filled";imagescale="True";fillcolor="transparent";fontsize="14";]
+    edge [color="#71797E";fontcolor="#71797E";dir="both";style="dashed";penwidth="3";arrowsize="1";arrowtail="dot";]
+    subgraph clusterOUTERDRAWBOARD1 {
+        label=" ";
+        color="red";
+        labelloc="b";
+        style="dashed";
+        penwidth="1.5";
+        labeljust="r";
+        fontsize="24";
+        "OUTERDRAWBOARD1" [label="";style="invis";shape="point";]
+        subgraph clusterMainGraph {
+            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='28'>Wan Accelerators Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>>;
+            penwidth="0";
+            labeljust="c";
+            labelloc="t";
+            fontsize="24";
+            "MainGraph" [label="";style="invis";shape="point";]
+            "BackupServers" [label=<<TABLE STYLE="rounded" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD align="Right" colspan="1"><FONT POINT-SIZE="14"><TABLE STYLE="dashed,rounded" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="3"><FONT FACE="Segoe Ui Black" Color="#005f4b" POINT-SIZE="26"><B>Backup Server</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="26"><TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'>ICON</TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>VEEAM-EM</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>IP: 192.168.7.83</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Role: Enterprise Manager Server</FONT></TD></TR></TABLE></FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="26"><TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'>ICON</TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='14'> </FONT></B></TD></TR></TABLE></FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="26"><TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'>ICON</TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>VEEAM-VBR-01V</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Role: Backup and Database</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>IP: 192.168.7.74</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 12.3.1.1139</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Database Type: PostgreSql</FONT></TD></TR></TABLE></FONT></TD></TR></TABLE></FONT></TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="Right" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Management</B></FONT></TD></TR></TABLE>>;fontname="Segoe
+Ui";shape="plain";style="filled,rounded";fillcolor="#ceedc4";fontsize="14";]
+
+            "WanAccelServer" [label=<<TABLE STYLE="dashed,rounded" PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>SubGraph Icon</B></FONT></TD></TR><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>Wan Accelerators</B></FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center"
+colspan="1">ICON</TD></TR><TR><TD PORT="VEEAM-REPO-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-REPO-01V  </FONT></TD><TD PORT="VEEAM-VBR  "
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR  </FONT></TD><TD PORT="VEEAM-WAN-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-WAN-01V
+</FONT></TD><TD PORT="VEEAM-VBR-02V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR-02V  </FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 100
+GB</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: 192.168.7.216</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: C:\VeeamWAN</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD></TR></TABLE>>;fontname="Segoe Ui";shape="plain";fontsize="14";]
+            "WanAccelServer2" [label=<<TABLE STYLE="dashed,rounded" PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>SubGraph Icon</B></FONT></TD></TR><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>Wan Accelerators</B></FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center"
+colspan="1">ICON</TD></TR><TR><TD PORT="VEEAM-REPO-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-REPO-01V  </FONT></TD><TD PORT="VEEAM-VBR  "
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR  </FONT></TD><TD PORT="VEEAM-WAN-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-WAN-01V
+</FONT></TD><TD PORT="VEEAM-VBR-02V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR-02V  </FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 100
+GB</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: 192.168.7.216</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: C:\VeeamWAN</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD></TR></TABLE>>;fontname="Segoe Ui";shape="plain";fontsize="14";]
+            "WanAccelServer3" [label=<<TABLE STYLE="dashed,rounded" PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>SubGraph Icon</B></FONT></TD></TR><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>Wan Accelerators</B></FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center"
+colspan="1">ICON</TD></TR><TR><TD PORT="VEEAM-REPO-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-REPO-01V  </FONT></TD><TD PORT="VEEAM-VBR  "
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR  </FONT></TD><TD PORT="VEEAM-WAN-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-WAN-01V
+</FONT></TD><TD PORT="VEEAM-VBR-02V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR-02V  </FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 100
+GB</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: 192.168.7.216</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: C:\VeeamWAN</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD></TR></TABLE>>;fontname="Segoe Ui";shape="plain";fontsize="14";]
+            "WanAccelServer4" [label=<<TABLE STYLE="dashed,rounded" PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>SubGraph Icon</B></FONT></TD></TR><TR><TD
+bgcolor="#FFCCCC" ALIGN="Center" colspan="4"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>Wan Accelerators</B></FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center" colspan="1">ICON</TD><TD ALIGN="Center"
+colspan="1">ICON</TD></TR><TR><TD PORT="VEEAM-REPO-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-REPO-01V  </FONT></TD><TD PORT="VEEAM-VBR  "
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR  </FONT></TD><TD PORT="VEEAM-WAN-01V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-WAN-01V
+</FONT></TD><TD PORT="VEEAM-VBR-02V  " ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">VEEAM-VBR-02V  </FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">TrafficPort: 6165/TCP</FONT></TD></TR><TR><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD
+ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 10 GB</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Size: 100
+GB</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: 192.168.7.216</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP: Unknown</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">IP:
+Unknown</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT
+POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Cache Path: C:\VeeamWAN</FONT></TD><TD ALIGN="Center"
+colspan="1"><FONT POINT-SIZE="18">Cache Path: E:\VeeamWAN</FONT></TD></TR></TABLE>>;fontname="Segoe Ui";shape="plain";fontsize="14";]
+            "BackupServers"->"WanAccelServer" [minlen="3";]
+            "LeftTShapeUp" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "LeftTShapeMiddleRight" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "LeftTShapeDown" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "LeftTShapeMiddleLeft" [color="black";fillcolor="red";shape="plain";style="filled";]
+            { rank=same;  "LeftTShapeMiddleRight"; "LeftTShapeMiddleLeft"; }
+            "LeftTShapeUp"->"LeftTShapeMiddleRight" [arrowhead="none";color="red";minlen="1";style="dashed";penwidth="3";arrowtail="none";]
+            "LeftTShapeMiddleRight"->"LeftTShapeDown" [arrowhead="none";color="red";minlen="1";style="dashed";penwidth="3";arrowtail="none";]
+            "LeftTShapeMiddleLeft"->"LeftTShapeMiddleRight" [arrowhead="none";color="red";minlen="1";style="dashed";penwidth="3";arrowtail="none";]
+            "WanAccelServer"->"LeftTShapeUp" [color="#71797E";arrowhead="none";minlen="3";arrowtail="none";style="dashed";]
+            "LeftTShapeDown"->"WanAccelServer3" [color="#71797E";arrowhead="none";minlen="2";arrowtail="none";style="dashed";]
+            "CrossShapeStart" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "CrossShapeEnd" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "CrossShapeStart" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "CrossShapeMiddleTop" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "CrossShapeMiddleDown" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "CrossShapeEnd" [color="black";fillcolor="red";shape="plain";style="filled";]
+            "CrossShapeMiddle" [color="black";fillcolor="red";shape="point";style="filled";]
+            { rank=same;  "CrossShapeStart"; "CrossShapeMiddle"; "CrossShapeEnd"; }
+            "CrossShapeStart"->"CrossShapeMiddle" [arrowhead="none";color="red";minlen="9";style="dashed";penwidth="3";arrowtail="none";]
+            "CrossShapeMiddle"->"CrossShapeEnd" [arrowhead="none";color="red";minlen="1";style="dashed";penwidth="3";arrowtail="none";]
+            "CrossShapeMiddleTop"->"CrossShapeMiddle" [arrowhead="none";color="red";minlen="1";style="dashed";penwidth="3";arrowtail="none";]
+            "CrossShapeMiddle"->"CrossShapeMiddleDown" [arrowhead="none";color="red";minlen="1";style="dashed";penwidth="3";arrowtail="none";]
+            "WanAccelServer"->"CrossShapeStart" [color="#71797E";arrowhead="none";minlen="2";arrowtail="none";style="dashed";]
+            { rank=same;  "WanAccelServer"; "CrossShapeStart"; }
+            { rank=same;  "WanAccelServer2"; "CrossShapeEnd"; }
+            "CrossShapeEnd"->"WanAccelServer2" [color="#71797E";arrowhead="none";minlen="2";arrowtail="none";style="dashed";]
+            "WanAccelServer4"->"CrossShapeMiddleTop" [color="#71797E";arrowhead="none";minlen="2";arrowtail="none";style="dashed";]
+            "VB365Server" [label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center'
+colspan='1'>ICON</TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Veeam-VBF-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT
+POINT-SIZE='18'>Version: 13</FONT></TD></TR></TABLE>>;fillcolor="transparent";shape="plain";fontsize="14";]
+            "CrossShapeMiddleDown"->"VB365Server" [color="#71797E";arrowhead="none";minlen="2";arrowtail="none";style="dashed";]
+        }
+
+    }
+}

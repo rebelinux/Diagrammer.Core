@@ -5,12 +5,63 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.27] - 2025-07-23
+
+### Added
+
+- Added new test file Add-DiaNodeFiller.Tests.ps1 to validate Add-DiaNodeFiller functionality
+- Introduce a Todo file for future enhancements, including research on creating directional lines in dot graphs
+- Add additional tests for Get-NodeIP functionality
+- Add Add-DiaHorizontalLine and Add-DiaVerticalLine functions for creating horizontal and vertical lines in diagrams.
+- Add ConvertTo-Pdf-WaterMark function to convert images to PDF format using ImageMagick, allowing for watermark insertion.
+- Add tests for Add-WatermarkToImage, ConvertTo-Pdf-WaterMark, and other conversion functions to ensure functionality and reliability
+- Add new line functions: Cross, Inverted T, T, Horizontal and Vertical line shapes
+- Added cleanup logic in Resize-Image tests to remove temporary files after tests.
+- Add-DiaRightTShapeLine for various L and  T shaped connectors in diagrams.
+- Implemented Add-DiaInvertedLShapeLine, Add-DiaLShapeLine, Add-DiaLeftLShapeLine, Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine
+- Add Pester files for some cmdlet to test functionality:
+  - Add-DiaVerticalLine
+  - ConvertTo-RotateImage
+
+
+### Changed
+
+- Increment module version to `0.2.27`
+- Update function names from Add-DiaHtmlSubGraph to Add-DiaHTMLSubGraph for consistency in Add-DiaHtmlSubGraph.Tests.ps1
+- Update test descriptions in Add-DiaNodeIcon.Tests.ps1 to correct spelling and improve clarity
+- Update cmdlet verb to better reflect its intended action
+- Enhance module with aliases and output types for various functions
+- Add diagram line functions, watermarking, and PDF conversion
+- Enhance Add-WatermarkToImage function to add watermarks to pdf files, with support for optional parameters.
+- Update existing conversion functions (ConvertTo-Dot, ConvertTo-Jpg, ConvertTo-Pdf, ConvertTo-Png) to improve error handling and streamline output.
+- Update Graphviz binaries to v13.0.1
+- Expanded the Todo list to include new directional line shapes and testing tasks.
+- Enhance diagram functions with improved parameterization and debugging options
+- Updated Add-DiaLeftTShapeLine, Add-DiaRightLShapeLine, Add-DiaRightTShapeLine, Add-DiaTShapeLine, Add-DiaVerticalLine to include detailed parameter descriptions for
+  better usability.
+- Refactored DraftMode parameter to enable visual debugging in diagram functions, highlighting nodes and lines in red.
+- Refactored node and edge creation logic to accommodate new parameters and improve clarity.
+- Improved example usage in documentation for each function to demonstrate customization capabilities.
+- Consolidated versioning and author information across all modified scripts for consistency.
+- Updated New-Diagrammer to integrate DraftMode for enhanced visualization debugging.
+- Completed various TODO items related to directional lines and line length customization.
+- Enhance ConvertTo-RotateImage function with detailed documentation.
+
+### Fixed
+
+- Fix spelling errors in test descriptions and update function names for consistency
+- Fix isssue in cmdlet Add-DiaHtmlSubGraph pester test
+- Fix isssue in cmdlet Get-Add-DiaHTMLNodeTable pester test
+- Fix "HMLT" to "HTML" in multiple test descriptions across Add-DiaHtmlSignatureTable.Tests.ps1 and Add-DiaHtmlSubGraph.Tests.ps1
+- Fix rotation angle handling in ConvertTo-Svg function
+
+
 ## [0.2.26] - 2025-05-09
 
 ### Changed
 
 - Increment module version to `0.2.26`.
-- Add new parameters to the `Get-DiaHTMLLabel` and `Get-DiaNodeIcon` functions.
+- Add new parameters to the `Add-DiaHTMLLabel` and `Add-DiaNodeIcon` functions.
 - Update changelog to reflect the latest changes.
 - Implement code changes to enhance functionality and improve performance
 
@@ -36,7 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add parameters to Get-DiaNodeFiller for icon direction and image handling
+- Add parameters to Add-DiaNodeFiller for icon direction and image handling
 
 ### Changed
 
@@ -61,7 +112,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add Get-DiaNodeFiller cmdlet
+- Add Add-DiaNodeFiller cmdlet
 
 ## [0.2.20] - 2025-04-08
 
@@ -71,40 +122,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix Get-DiaNodeIcon cmdlet to honor align parameter
+- Fix Add-DiaNodeIcon cmdlet to honor align parameter
 
 ## [0.2.19] - 2025-03-04
 
 ### Added
 
 - Add parameter to set Subgraph Label font size
-  - Get-DiaHTMLNodeTable
-  - Get-DiaHTMLTable
+  - Add-DiaHTMLNodeTable
+  - Add-DiaHTMLTable
 
 ### Fixed
 
-- Fix Get-DiaHTMLNodeTable cmdlet to honor fontsize parameter
-- Fix Get-DiaHTMLTable cmdlet to honor fontsize parameter
-- Fix Get-DiaHTMLLabel cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLNodeTable cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLTable cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLLabel cmdlet to honor fontsize parameter
 
 ## [0.2.18] - 2025-03-04
 
 ### Fixed
 
-- Fix Get-DiaHTMLNodeTable fontsize error when calling debug mode
+- Fix Add-DiaHTMLNodeTable fontsize error when calling debug mode
 
 ## [0.2.16] - 2025-03-03
 
 ### Fixed
 
-- Fix Get-DiaHTMLSubGraph cmdlet to honor fontsize parameter
+- Fix Add-DiaHTMLSubGraph cmdlet to honor fontsize parameter
 
 ## [0.2.15] - 2025-02-21
 
 ### Changed
 
 - Improved cmdlet documentation
-- Added Ordered list to the Get-DiaNodeIcon cmdlet
+- Added Ordered list to the Add-DiaNodeIcon cmdlet
 
 ## [0.2.14] - 2025-02-11
 
@@ -130,7 +181,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix error in cmdlet Get-DiaHtmlSignatureTable
+- Fix error in cmdlet Add-DiaHtmlSignatureTable
 
 ## [0.2.10] - 2024-10-12
 
@@ -143,11 +194,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add option to mimic Graphviz Subgraph
-  - Get-DiaHTMLNodeTable
-  - Get-DiaHTMLTable
-  - Get-DiaHtmlSubGraph
+  - Add-DiaHTMLNodeTable
+  - Add-DiaHTMLTable
+  - Add-DiaHtmlSubGraph
 - Add cmdlet to create the Signature table
-  - Get-DiaHtmlSignatureTable
+  - Add-DiaHtmlSignatureTable
 
 ### Changed
 
@@ -190,7 +241,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add feature to set per object type icon in Get-DiaHtmlNodeTable module
+- Add feature to set per object type icon in Add-DiaHtmlNodeTable module
 
 ### Changed
 
@@ -213,7 +264,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Improved Get-DiaHTMLTable and Get-DiaNodeIcon cmdlet
+- Improved Add-DiaHTMLTable and Add-DiaNodeIcon cmdlet
 
 ## [0.2.0] - 2024-04-29
 
@@ -225,7 +276,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Improved Get-DiaHTMLNodeTable function. Close [#14](https://github.com/rebelinux/Diagrammer.Core/issues/14)
+- Improved Add-DiaHTMLNodeTable function. Close [#14](https://github.com/rebelinux/Diagrammer.Core/issues/14)
   - Allow to add more Information to the Node Object
 
 ## [0.1.8] - 2024-03-16
@@ -244,7 +295,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Renamed Out-Diagram to Export-Diagrammer
-- Improved Get-DiaHTMLNodeTable
+- Improved Add-DiaHTMLNodeTable
 
 ### Fixed
 
@@ -260,8 +311,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improved Get-DiaImagePercent module
-- Improved Get-DiaHTMLNodeTable to better align MultiColumn Icon
-- Improved Get-DiaNodeIcon debug mode
+- Improved Add-DiaHTMLNodeTable to better align MultiColumn Icon
+- Improved Add-DiaNodeIcon debug mode
 
 ## [0.1.6] - 2024-02-23
 

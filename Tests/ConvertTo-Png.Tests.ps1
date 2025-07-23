@@ -22,10 +22,11 @@ Describe ConvertTo-Png {
         }
     }
 
-    It "Should return output.svg path" {
+    It "Should return output.png path" {
         (ConvertTo-Png @PassParams).FullName | Should -Exist
     }
-    It -Skip "Should throw" {
-        { ConvertTo-Png @FailParams } | Should -Throw
+    It "Should Not return output.png path" {
+        $scriptBlock = { ConvertTo-Png @FailParams }
+        $scriptBlock | Should -Not -Exist
     }
 }

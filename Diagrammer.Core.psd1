@@ -12,7 +12,7 @@
     RootModule = 'Diagrammer.Core.psm1'
 
     # Version number of this module.
-    ModuleVersion = '0.2.26'
+    ModuleVersion = '0.2.27'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -69,16 +69,16 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = 'Get-DiaHtmlSignatureTable', 'Group-Node', 'Get-DiaHTMLSubGraph', 'Convert-DiaTableToHTML', 'Get-DiaHtmlLabel', 'Get-DiaHtmlNodeTable', 'Get-DiaHtmlTable', 'Get-NodeIP', 'Get-DiaNodeIcon', 'Export-Diagrammer', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'New-Diagrammer', 'Get-DiaNodeFiller', 'Write-PSObject'
+    FunctionsToExport = 'Add-DiaLeftLShapeLine', 'Add-DiaRightLShapeLine', 'Add-DiaInvertedLShapeLine', 'Add-DiaLShapeLine', 'Add-DiaLeftTShapeLine', 'Add-DiaRightTShapeLine', 'Add-DiaCrossShapeLine', 'Add-DiaInvertedTShapeLine', 'Add-DiaTShapeLine', 'Add-DiaVerticalLine', 'Add-DiaHorizontalLine', 'Add-DiaHtmlSignatureTable', 'Group-Node', 'Add-DiaHTMLSubGraph', 'Convert-DiaTableToHTML', 'Add-DiaHtmlLabel', 'Add-DiaHtmlNodeTable', 'Add-DiaHtmlTable', 'Get-NodeIP', 'Add-DiaNodeIcon', 'Export-Diagrammer', 'Remove-SpecialChar', 'Split-array', 'Test-Image', 'Test-Logo', 'Write-ColorOutput', 'Get-DiaImagePercent', 'New-Diagrammer', 'Add-DiaNodeFiller', 'Write-PSObject'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    # CmdletsToExport = '*'
+    CmdletsToExport = @()
 
     # Variables to export from this module
     # VariablesToExport = '*'
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    # AliasesToExport = '*'
+    AliasesToExport = @()
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()

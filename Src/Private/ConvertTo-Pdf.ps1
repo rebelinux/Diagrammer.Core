@@ -38,10 +38,8 @@ function ConvertTo-Pdf {
             Write-Debug -Message $($_.Exception.Message)
         }
         if ($Document) {
-            if ($Document) {
-                Write-Verbose -Message "Successfully converted Graphviz object to PDF format. Saved Path: $DestinationPath."
-                Get-ChildItem -Path $Document
-            }
+            Write-Verbose -Message "Successfully converted Graphviz object to PDF format. Saved Path: $DestinationPath."
+            Get-ChildItem -Path $Document
         }
     }
     end {}
