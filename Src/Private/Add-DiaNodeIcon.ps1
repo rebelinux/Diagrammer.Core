@@ -1,4 +1,4 @@
-Function Add-DiaNodeIcon {
+function Add-DiaNodeIcon {
     <#
     .SYNOPSIS
         Function to convert a Graphviz node label to a HTML Table with Icon
@@ -31,31 +31,40 @@ Function Add-DiaNodeIcon {
     Specifies the name of the node to process.
 
     .PARAMETER Align
-    Specifies the alignment of the content inside the table cell.
-    Acceptable values may include alignment options such as 'Left', 'Center', or 'Right'.
+        Specifies the alignment of the content inside the table cell. Acceptable values are 'Center', 'Right', or 'Left'. Default is 'Center'.
 
-    .PARAMETER Rows
-    An object containing additional information about the node.
-    This can be used to provide supplementary details for the node.
-
-    .PARAMETER RowsOrdered
-    An ordered object containing additional information about the node.
-    This ensures the information is processed in a specific sequence.
-
-    .PARAMETER IconType
-        Node Icon type. This parameter is mandatory if ImagesObj is specified.
-
-    .PARAMETER TableBorder
-        The width of the table border line. Default is 0.
+    .PARAMETER AditionalInfo
+        A hashtable or ordered hashtable containing additional information about the node. This data is displayed as extra rows in the table.
 
     .PARAMETER CellBorder
-        The width of the table cell border. Default is 0.
+        Specifies the width of the HTML cell border. Default is 0.
 
     .PARAMETER CellPadding
-        The padding inside the table cell. Default is 5.
+        Specifies the padding inside the HTML table cells. Default is 5.
 
     .PARAMETER CellSpacing
-        The spacing between table cells. Default is 5.
+        Specifies the spacing between HTML table cells. Default is 5.
+
+    .PARAMETER FontSize
+        Specifies the font size for the text inside the table. Default is 14.
+
+    .PARAMETER IconDebug
+        If set to $true, enables debug mode for icons, highlighting the table border in red for troubleshooting.
+
+    .PARAMETER IconType
+        Specifies the type of icon to use for the node. This parameter is required.
+
+    .PARAMETER ImagesObj
+        A hashtable mapping icon types to their corresponding image paths. Used to resolve the icon image for the node.
+
+    .PARAMETER Name
+        The name of the node to display in the table. This parameter is required.
+
+    .PARAMETER NoFontBold
+        If specified, disables bold font for the text inside the table.
+
+    .PARAMETER TableBorder
+        Specifies the width of the HTML table border. Default is 0.
     #>
 
     [CmdletBinding()]
@@ -69,54 +78,12 @@ Function Add-DiaNodeIcon {
         $AditionalInfo,
 
         [Parameter(
-            Mandatory = $true,
-            HelpMessage = 'Specifies the type of icon to use for the node.'
-        )]
-        [string]$IconType,
-
-        [Parameter(
-            Mandatory = $true,
-            HelpMessage = 'Specifies the name of the node.'
-        )]
-        [String]$Name,
-
-        [Parameter(
             Mandatory = $false,
             HelpMessage = 'Specifies the alignment of the content inside the table cell. Acceptable values are Center, Right, or Left.'
         )]
         [ValidateNotNullOrEmpty()]
         [ValidateSet('Center', 'Right', 'Left')]
         [string] $Align = 'Center',
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'A hashtable containing mappings of icon types to their corresponding image paths.'
-        )]
-        [Hashtable] $ImagesObj = @{},
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
-        )]
-        [bool] $IconDebug = $false,
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Specifies the font size for the text inside the table.'
-        )]
-        [int] $FontSize = 14,
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Disables bold font for the text inside the table.'
-        )]
-        [Switch] $NoFontBold,
-
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Specifies the width of the HTML table border.'
-        )]
-        [int] $TableBorder = 0,
 
         [Parameter(
             Mandatory = $false,
@@ -134,7 +101,49 @@ Function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'Specifies the spacing between HTML table cells.'
         )]
-        [int] $CellSpacing = 5
+        [int] $CellSpacing = 5,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specifies the font size for the text inside the table.'
+        )]
+        [int] $FontSize = 14,
+
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Specifies the type of icon to use for the node.'
+        )]
+        [string]$IconType,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'A hashtable containing mappings of icon types to their corresponding image paths.'
+        )]
+        [Hashtable] $ImagesObj = @{},
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
+        )]
+        [bool] $IconDebug = $false,
+
+        [Parameter(
+            Mandatory = $true,
+            HelpMessage = 'Specifies the name of the node.'
+        )]
+        [String]$Name,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Disables bold font for the text inside the table.'
+        )]
+        [Switch] $NoFontBold,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specifies the width of the HTML table border.'
+        )]
+        [int] $TableBorder = 0
     )
 
     # Todo set the rowspan value dinamically

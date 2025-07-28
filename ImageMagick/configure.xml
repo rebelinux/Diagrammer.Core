@@ -15,14 +15,14 @@
   <configure name="COPYRIGHT" value="Copyright (C) 1999 ImageMagick Studio LLC"/>
   <configure name="CXX" value="VS2022"/>
   <configure name="DOCUMENTATION_PATH" value="unavailable"/>
-  <configure name="GIT_REVISION" value="21316" />
-  <configure name="LIB_VERSION_NUMBER" value="7,1,1,47"/>
-  <configure name="LIB_VERSION" value="0x711"/>
+  <configure name="GIT_REVISION" value="3fcd081:20250713" />
+  <configure name="LIB_VERSION_NUMBER" value="7,1,2,0"/>
+  <configure name="LIB_VERSION" value="0x712"/>
   <configure name="NAME" value="ImageMagick"/>
   <configure name="QuantumDepth" value="16"/>
-  <configure name="RELEASE_DATE" value="2025-03-29"/>
+  <configure name="RELEASE_DATE" value="2025-07-13"/>
   <configure name="TARGET_CPU" value="x64"/>
   <configure name="TARGET_OS" value="Windows"/>
-  <configure name="VERSION" value="7.1.1"/>
+  <configure name="VERSION" value="7.1.2"/>
   <configure name="WEBSITE" value="https://imagemagick.org"/>
 </configuremap>
