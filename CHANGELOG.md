@@ -11,14 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add Get-RandomColorHex cmdlet and pester tests
 - Add Get-RandomPastelColorHex cmdlet and pester tests
-- Add option to set the table or cell background color
+- Enhanced functions to support optional table and cell background colors.
   - Add-DiaHTMLNodeTable
   - Add-DiaNodeIcon
 
 ### Changed
 
 - Update Graphviz binaries to v13.1.2
-- Increased 'actions/checkout' action to v5
+- Updated all workflow files to use actions/checkout@v5.
 
 ## [0.2.28] - 2025-07-28
 
