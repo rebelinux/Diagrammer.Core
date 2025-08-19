@@ -23,7 +23,7 @@ function Add-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.2.27
+        Version:        0.2.29
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -65,6 +65,12 @@ function Add-DiaNodeIcon {
 
     .PARAMETER TableBorder
         Specifies the width of the HTML table border. Default is 0.
+
+    .PARAMETER TableBackgroundColor
+        Allow to set a table background color (Hex format EX: #FFFFFF).
+
+    .PARAMETER CellBackgroundColor
+        Allow to set a cell background color (Hex format EX: #FFFFFF).
     #>
 
     [CmdletBinding()]
@@ -143,7 +149,19 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'Specifies the width of the HTML table border.'
         )]
-        [int] $TableBorder = 0
+        [int] $TableBorder = 0,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table background color'
+        )]
+        [string] $TableBackgroundColor,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a cell background color'
+        )]
+        [string] $CellBackgroundColor
     )
 
     # Todo set the rowspan value dinamically
@@ -219,9 +237,22 @@ function Add-DiaNodeIcon {
         if ($ICON -ne 'NoIcon') {
             if ($Align -eq "Center") {
                 if ($NoFontBold) {
-                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    if ($TableBackgroundColor) {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding' bgcolor='$TableBackgroundColor'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+
+                    } elseif ($CellBackgroundColor) {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD bgcolor='$CellBackgroundColor' align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    } else {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    }
                 } else {
-                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    if ($TableBackgroundColor) {
+                        "<TABLE bgcolor='$TableBackgroundColor' border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    } elseif ($CellBackgroundColor) {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD bgcolor='$CellBackgroundColor' align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    } else {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    }
                 }
             } else {
                 if ($NoFontBold) {
@@ -233,15 +264,40 @@ function Add-DiaNodeIcon {
         } else {
             if ($Align -eq "Center") {
                 if ($NoFontBold) {
-                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    if ($TableBackgroundColor) {
+                        "<TABLE bgcolor='$TableBackgroundColor' border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    } elseif ($CellBackgroundColor) {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD bgcolor='$CellBackgroundColor' align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    } else {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    }
                 } else {
-                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    if ($TableBackgroundColor) {
+                        "<TABLE bgcolor='$TableBackgroundColor' border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    } elseif ($CellBackgroundColor) {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD bgcolor='$CellBackgroundColor' align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+
+                    } else {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    }
                 }
             } else {
                 if ($NoFontBold) {
-                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
+                    if ($TableBackgroundColor) {
+                        "<TABLE bgcolor='$TableBackgroundColor' border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
+                    } elseif ($CellBackgroundColor) {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD bgcolor='$CellBackgroundColor' align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
+                    } else {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
+                    }
                 } else {
-                    "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
+                    if ($TableBackgroundColor) {
+                        "<TABLE bgcolor='$TableBackgroundColor' border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
+                    } elseif ($CellBackgroundColor) {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD bgcolor='$CellBackgroundColor' align='$Align'><B><FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
+                    } else {
+                        "<TABLE border='$TableBorder' cellborder='$CellBorder' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
+                    }
                 }
             }
         }
