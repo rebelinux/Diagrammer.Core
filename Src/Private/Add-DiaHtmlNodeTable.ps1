@@ -1,4 +1,4 @@
-Function Add-DiaHTMLNodeTable {
+function Add-DiaHTMLNodeTable {
     <#
     .SYNOPSIS
         Converts an array to an HTML table for Graphviz node labels, including icons.
@@ -40,7 +40,7 @@ Function Add-DiaHTMLNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.27
+        Version:        0.2.29
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -120,6 +120,11 @@ Function Add-DiaHTMLNodeTable {
     .PARAMETER SubgraphIconHeight
         Allow to set a subgraph icon height.
 
+    .PARAMETER TableBackgroundColor
+        Allow to set a table background color (Hex format EX: #FFFFFF).
+
+    .PARAMETER CellBackgroundColor
+        Allow to set a cell background color (Hex format EX: #FFFFFF).
     #>
 
     [CmdletBinding()]
@@ -267,7 +272,19 @@ Function Add-DiaHTMLNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a subgraph icon height'
         )]
-        [string] $SubgraphIconHeight
+        [string] $SubgraphIconHeight,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table background color'
+        )]
+        [string] $TableBackgroundColor,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a cell background color'
+        )]
+        [string] $CellBackgroundColor
     )
 
     if ($inputObject.Count -le 1) {
@@ -359,7 +376,7 @@ Function Add-DiaHTMLNodeTable {
         }
     }
 
-    If ($SubgraphIconType) {
+    if ($SubgraphIconType) {
         if ($ImagesObj[$SubgraphIconType]) {
             $SubgraphIcon = $ImagesObj[$SubgraphIconType]
         } else { $SubgraphIcon = $false }
@@ -503,7 +520,11 @@ Function Add-DiaHTMLNodeTable {
                     $TDICON = ''
 
                     foreach ($Element in $Group[$Number]) {
-                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        if ($CellBackgroundColor) {
+                            $TDName += '<TD BGCOLOR="{4}" PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element, $CellBackgroundColor
+                        } else {
+                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        }
                     }
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
@@ -559,7 +580,11 @@ Function Add-DiaHTMLNodeTable {
 
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        if ($CellBackgroundColor) {
+                            $TDName += '<TD BGColor ="{4}" PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element, $CellBackgroundColor
+                        } else {
+                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        }
                     }
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
@@ -573,7 +598,7 @@ Function Add-DiaHTMLNodeTable {
                                 $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.values
                             }
 
-                            $TR += '<TR>{0}</TR>' -f $TDInfo
+                            $TR += '<TR>{0}</TR>' -f $TDInfobgcolor
                             $TDInfo = ''
                         } elseif (($RowsGroupHTs.Keys.Count -gt 1) -and ($RowsGroupHTs.Values.Count -gt 1) -and ($inputObject.Count -le 1)) {
                             # $RowsGroupHT is Multiple key and each key have a Single Values
@@ -604,7 +629,6 @@ Function Add-DiaHTMLNodeTable {
                             }
                         }
                     }
-
                     $Number++
                 }
             }
@@ -691,10 +715,17 @@ Function Add-DiaHTMLNodeTable {
         }
     } else {
         if ($SubgraphTableStyle) {
-            return '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing
-
+            if ($TableBackgroundColor) {
+                return '<TABLE bgcolor="{8}" COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+            } else {
+                return '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+            }
         } else {
-            return '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
+            if ($TableBackgroundColor) {
+                return '<TABLE bgcolor="{7}" COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+            } else {
+                return '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
+            }
         }
     }
 }

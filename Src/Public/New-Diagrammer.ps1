@@ -458,7 +458,6 @@ function New-Diagrammer {
         $MainGraphAttributes = @{
             pad = 1
             rankdir = $Dir
-            overlap = 'false'
             splines = $EdgeType
             penwidth = 1.5
             fontname = $Fontname

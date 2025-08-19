@@ -6,7 +6,7 @@ jobs:
       permissions:
         checks: write
       steps:
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v5
         - name: Set PSRepository to Trusted for PowerShell Gallery
           shell: pwsh
           run: |
