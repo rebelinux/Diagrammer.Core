@@ -207,15 +207,15 @@ function Add-DiaNodeIcon {
         if ($ICON -ne 'NoIcon') {
             if ($Align -eq "Center") {
                 if ($NoFontBold) {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
                 } else {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
                 }
             } else {
                 if ($NoFontBold) {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'>ICON</TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' rowspan='4' valign='Bottom'>ICON</TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
                 } else {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'>ICON</TD></TR><TR><TD align='$Align'><B> <FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' rowspan='4' valign='Bottom'>ICON</TD></TR><TR><TD align='$Align'><B> <FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
                 }
             }
         } else {
