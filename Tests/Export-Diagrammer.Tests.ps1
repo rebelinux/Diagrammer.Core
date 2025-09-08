@@ -102,6 +102,10 @@ Describe Export-Diagrammer {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputSVG
         ($GraphvizOutput).FullName | Should -Exist
     }
+    It "Should return Diagrammer.dot full path" {
+        $GraphvizOutput = Export-Diagrammer @GraphvizOutputDot
+        ($GraphvizOutput).FullName | Should -Exist
+    }
     It "Should create Output.png file image" {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
         "$TestDrive\OutPut.png" | Should -Exist
