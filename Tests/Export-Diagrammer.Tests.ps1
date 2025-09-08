@@ -16,7 +16,6 @@ Describe Export-Diagrammer {
     BeforeAll {
         $dotSource = Get-Content -Path (Join-Path $TestsFolder GraphvizSource.dot)
         $base64Source = Get-Content -Path (Join-Path $TestsFolder GraphvizBase64Source.txt)
-        $IconPath = Join-Path $ProjectRoot 'Icons'
         $GraphvizOutputPNG = @{
             FileName = 'Diagrammer.png'
             Format = 'png'
