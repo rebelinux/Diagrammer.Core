@@ -1,7 +1,6 @@
+#     ** This time we will connect the nodes to show relationships.
 <#
     Simple example of how to create a 3 tier web application diagram using the Diagrammer module. Without using any object icons.
-
-    ** This time we will connect the nodes to show relationships.
 #>
 
 [CmdletBinding()]
@@ -51,16 +50,21 @@ $example2 = & {
                         ----------------------
                         |       Web01        |
                         ----------------------
-                            |             |
-                            | HTTP        | SQL
-                            |             |
-                        ---------    ---------
-                        | App01 |    |  DB01  |
-                        ---------    ---------
+                                  |
+                                  | HTTP
+                                  |
+                              ---------
+                              | App01 |
+                              ---------
+                                  | SQL
+                                  |
+                              ---------
+                             |  DB01  |
+                              ---------
     #>
 
-    Edge -From Web01 -To App01 @{label = 'HTTP'; color = 'black'; fontsize = 12; fontcolor = 'black' }
-    Edge -From Web01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black' }
+    Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black' }
+    Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black' }
 }
 
 

@@ -1,7 +1,6 @@
+#     ** This time we will extend the edges size using the Graphviz minlen attribute. **
 <#
-    Simple example of creating a 3-tier web application diagram using the Diagrammer module, without using object icons.
-
-    ** In this example, servers are grouped in a cluster (SubGraph).
+    Simple example of how to create a 3 tier web application diagram using the Diagrammer module. Without using any object icons.
 #>
 
 [CmdletBinding()]
@@ -10,91 +9,60 @@ param (
 )
 
 <#
-    From PowerShell v3 onwards, the module does not need to be explicitly imported. It is included here for clarity.
+    From Powershell v3 onwards, the module should not need to be explicitly imported. It is included
+    here to avoid any ambiguity.
 #>
 
 Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
-    As the diagram output is a file, specify the output folder path using $OutputFolderPath.
+    As the output of the diagram is a file, we need to specify the output folder path. In this example, $OutputFolderPath
 #>
 
 $OutputFolderPath = Resolve-Path $Path
 
 <#
-    The $MainGraphLabel variable sets the main title of the diagram.
+    The $MainGraphLabel variable is used to set the main title of the diagram.
 #>
 
 $MainGraphLabel = 'Web Application Diagram'
 
-<#
-    This section creates custom objects to hold server information, which are used for node labels in the diagram.
-#>
-
-$WebServerInfo = [PSCustomObject][ordered]@{
-    'Server Name' = "Web01"
-    'OS' = 'Redhat Linux'
-    'Version' = '10'
-    'Build' = "10.1"
-    'Edition' = "Enterprise"
-}
-
-$AppServerInfo = [PSCustomObject][ordered]@{
-    'Server Name' = "App01"
-    'OS' = 'Windows Server'
-    'Version' = '2019'
-    'Build' = "17763.3163"
-    'Edition' = "Datacenter"
-}
-
-$DBServerInfo = [PSCustomObject][ordered]@{
-    'Server Name' = "DB01"
-    'OS' = 'Oracle Server'
-    'Version' = '8'
-    'Build' = "8.2"
-    'Edition' = "Enterprise"
-}
 
 $example3 = & {
     <#
-        A SubGraph groups objects in a container, like a graph within a graph. SubGraph attributes allow you to set background color, label, border color, style, etc. (SubGraph is a reserved word in the PSGraph module)
-        https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
+        This creates a 3 server diagram with custom node labels and shapes (No Object icons).
+        The Node statements create the nodes in the diagram. (Node is a reserved word in PSGraph module)
+        https://psgraph.readthedocs.io/en/latest/Command-Node/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
-        <#
-            This creates a diagram with three servers, custom node labels, and shapes (no object icons).
-            Node statements create the nodes in the diagram. (Node is a reserved word in the PSGraph module)
-            https://psgraph.readthedocs.io/en/latest/Command-Node/
-        #>
+    Node -Name Web01 -Attributes @{Label = 'Web01'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
+    Node -Name App01 -Attributes @{ Label = 'App01'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
+    Node -Name DB01 -Attributes @{Label = 'DB01'; shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
 
-        Node -Name Web01 -Attributes @{Label = $WebServerInfo.'Server Name'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
-        Node -Name App01 -Attributes @{ Label = $AppServerInfo.'Server Name'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
-        Node -Name DB01 -Attributes @{Label = $DBServerInfo.'Server Name'; shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
+    <#
+        This section creates connections between the nodes in a herarchical layout.
+        The Edge statements create connections between the nodes. (Edge is a reserved word in PSGraph module)
+        https://psgraph.readthedocs.io/en/latest/Command-Edge/
 
-        <#
-            This section creates connections between the nodes in a hierarchical layout.
-            Edge statements create connections between nodes. (Edge is a reserved word in the PSGraph module)
-            https://psgraph.readthedocs.io/en/latest/Command-Edge/
-        #>
+        ** The minlen attribute is used to increase the minimum length of the edge lines. **
+    #>
 
-        Edge -From Web01 -To App01 @{label = 'HTTP'; color = 'black'; fontsize = 12; fontcolor = 'black' }
-        Edge -From Web01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black' }
-    }
+    Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
+    Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
 }
 
 
 <#
-    This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
-    -InputObject accepts the custom object created above.
-    -OutputFolderPath specifies where to save the generated diagram.
-    -Format sets the output format (png, jpg, svg, etc.).
-    -ImagesObj passes a hashtable of images for custom icons.
-    -MainDiagramLabel sets the diagram title.
-    -Filename specifies the output file name (without extension).
-    -LogoName selects which image from the hashtable to use as a logo in the diagram.
-    If the specified logo image is not found, the diagram uses no_icon.png [?].
-    -Direction sets the diagram layout direction: left-to-right or top-to-bottom.
-    The layout is set to top-to-bottom using the Graph attribute.
+    This command generates the diagram using the New-Diagrammer cmdlet (Part of Diagrammer.Core).
+    The -InputObject parameter accepts the custom object created above.
+    The -OutputFolderPath parameter specifies where to save the generated diagram.
+    The -Format parameter specifies the output format (png, jpg, svg, etc.).
+    The -ImagesObj parameter passes the hashtable of images for custom icons.
+    The -MainDiagramLabel parameter sets the title of the diagram.
+    The -Filename parameter specifies the name of the output file (without extension).
+    The -LogoName parameter specifies which image from the hashtable to use as a logo in the diagram.
+    If the specified logo image is not found in the hashtable, the diagram will be generated using a no_icon.png [?].
+    The -Direction parameter sets the layout direction of the diagram. Options are: left-to-right, top-to-bottom.
+    The layout is set to top-to-bottom (Top to Bottom) using the Graph attribute.
 #>
 New-Diagrammer -InputObject $example3 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example3 -LogoName "Main_Logo" -Direction top-to-bottom
