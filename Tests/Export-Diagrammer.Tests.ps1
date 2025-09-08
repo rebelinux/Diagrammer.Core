@@ -107,23 +107,23 @@ Describe Export-Diagrammer {
         ($GraphvizOutput).FullName | Should -Exist
     }
     It "Should create Output.png file image" {
-        $GraphvizOutput = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
+        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
         "$TestDrive\OutPut.png" | Should -Exist
     }
     It "Should create Output.jpg file image" {
-        $GraphvizOutput = Export-Diagrammer @GraphvizOutputNoFileName -Format 'jpg'
+        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'jpg'
         "$TestDrive\OutPut.jpg" | Should -Exist
     }
     It "Should create Output.pdf file image" {
-        $GraphvizOutput = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
+        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
         "$TestDrive\OutPut.pdf" | Should -Exist
     }
     It "Should create Output.svg file image" {
-        $GraphvizOutput = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
+        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
         "$TestDrive\OutPut.svg" | Should -Exist
     }
     It "Should create Output.dot file image" {
-        $GraphvizOutput = Export-Diagrammer @GraphvizOutputNoFileName -Format 'dot'
+        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'dot'
         "$TestDrive\OutPut.dot" | Should -Exist
     }
     It "Should throw error when invalid OutputFolderPath is provided" {
