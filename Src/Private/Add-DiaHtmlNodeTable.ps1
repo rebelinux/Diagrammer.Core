@@ -447,7 +447,7 @@ function Add-DiaHTMLNodeTable {
                 }
             } else {
 
-                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{3}" Color="{5}" POINT-SIZE="{2}"><B>Icon</B></FONT></TD>' -f $Align, $inputObject.Count, $FontSize, $FontName, $FontColor
+                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{3}" Color="{4}" POINT-SIZE="{2}"><B>Icon</B></FONT></TD>' -f $Align, $inputObject.Count, $FontSize, $FontName, $FontColor
 
                 $TR += '<TR>{0}</TR>' -f $TDICON
 
