@@ -1,4 +1,4 @@
-Function Add-DiaHTMLSubGraph {
+function Add-DiaHTMLSubGraph {
     <#
     .SYNOPSIS
         Function to convert a array to a HTML Table to mimic Graphviz Cluster (Subgraph).
@@ -153,6 +153,7 @@ Function Add-DiaHTMLSubGraph {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
+        [Alias("DraftMode")]
         [bool] $IconDebug,
         [Parameter(
             Mandatory = $false,
@@ -231,7 +232,7 @@ Function Add-DiaHTMLSubGraph {
     if ($IconDebug) {
         if ($Icon) {
             $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $fontSize
-            $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label, $fontSize
+            $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label, $fontSize
 
             if ($LabelPos -eq 'down') {
                 $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon

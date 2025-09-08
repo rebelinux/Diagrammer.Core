@@ -1,4 +1,4 @@
-Function Add-DiaHTMLTable {
+function Add-DiaHTMLTable {
     <#
     .SYNOPSIS
         Converts a string array to an HTML table with Graphviz nodes split by columns (No Icons).
@@ -130,6 +130,7 @@ Function Add-DiaHTMLTable {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
+        [Alias("DraftMode")]
         [bool] $IconDebug,
         [Parameter(
             Mandatory = $false,

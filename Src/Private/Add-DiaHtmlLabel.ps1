@@ -1,4 +1,4 @@
-Function Add-DiaHTMLLabel {
+function Add-DiaHTMLLabel {
     <#
     .SYNOPSIS
         Converts a string to an HTML table for the report main logo and title.
@@ -83,6 +83,7 @@ Function Add-DiaHTMLLabel {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
+        [Alias("DraftMode")]
         [bool] $IconDebug,
         [Parameter(
             Mandatory = $false,
@@ -133,7 +134,7 @@ Function Add-DiaHTMLLabel {
         $ICON = $ImagesObj[$IconType]
     } else { $ICON = "no_icon.png" }
 
-    if (-Not $SubgraphLabel) {
+    if (-not $SubgraphLabel) {
         # Todo add IconWidth and Icon Height
         if ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {

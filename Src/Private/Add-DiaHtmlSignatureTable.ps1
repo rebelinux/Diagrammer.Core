@@ -1,4 +1,4 @@
-Function Add-DiaHtmlSignatureTable {
+function Add-DiaHtmlSignatureTable {
     <#
     .SYNOPSIS
         Function to convert a string array to a HTML Table used to create the Signature table
@@ -148,6 +148,7 @@ Function Add-DiaHtmlSignatureTable {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
+        [Alias("DraftMode")]
         [bool] $IconDebug,
         [Parameter(
             Mandatory = $false,

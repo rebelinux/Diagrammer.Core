@@ -15,3 +15,5 @@
     [Done] Add-DiaVerticalLine
     [] Add-DiaRightLShapeLine
     [] Add-DiaLeftLShapeLine
+[] Add Documentation (use pscribo as example)
+    [] [Example](https://github.com/iainbrighton/PScribo/blob/dev/Examples/Example01.ps1)

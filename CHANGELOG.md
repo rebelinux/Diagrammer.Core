@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.30] - 2025-09-XX
+
+### Added
+
+- Add examples for creating 3-tier web application diagrams using Diagrammer module
+  - Created Example01.ps1 demonstrating a basic 3-tier web application diagram without object icons.
+  - Created Example02.ps1 to illustrate connecting nodes and showing relationships in the diagram.
+  - Created Example03.ps1 featuring a clustered representation of servers using SubGraph.
+  - Created Example04.ps1 to enhance diagrams with icons and additional server information.
+  - Created Example05.ps1 to enable DraftMode for easier troubleshooting and layout adjustments.
+- Added icon files (Diagrammer.png, Server.png, no_icon.png) for use in diagrams.
+- Updated New-Diagrammer.ps1 to support image resolution size and improved icon handling.
+- Enhanced Add-DiaNodeIcon and related functions to support additional font styling options.
+- Updated documentation in Todo.md to include new examples and tasks.
+
+### Changed
+
+- Enhance function to set cell background color for Icon/SubGraph Icon table rows in Draftmode
+  - Add-DiaNodeIcon
+  - Add-DiaHTMLNodeTable
+- Updated all workflow files to use windows-latest
+
 ## [0.2.29] - 2025-08-18
 
 ### Added

@@ -211,6 +211,7 @@ function Add-DiaHTMLNodeTable {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
+        [Alias("DraftMode")]
         [bool] $IconDebug,
         [Parameter(
             ParameterSetName = 'AdditionalInfo',
@@ -390,13 +391,13 @@ function Add-DiaHTMLNodeTable {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TDICON += '<TD ALIGN="{0}" colspan="1">ICON</TD>' -f $Align
+                        $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{1}"><B>Icon</B></FONT></TD>' -f $Align, $FontSize, $FontName, $FontColor
                     }
                     $TR += '<TR>{0}</TR>' -f $TDICON
                     $TDICON = ''
 
                     foreach ($Element in $Group[$Number]) {
-                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
                     }
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
@@ -446,13 +447,13 @@ function Add-DiaHTMLNodeTable {
                 }
             } else {
 
-                $TDICON += '<TD ALIGN="{0}" colspan="{1}">ICON</TD>' -f $Align, $inputObject.Count
+                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{3}" Color="{5}" POINT-SIZE="{2}"><B>Icon</B></FONT></TD>' -f $Align, $inputObject.Count, $FontSize, $FontName, $FontColor
 
                 $TR += '<TR>{0}</TR>' -f $TDICON
 
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
                     }
 
                     $TR += '<TR>{0}</TR>' -f $TDName
@@ -643,7 +644,7 @@ function Add-DiaHTMLNodeTable {
         if ($SubgraphIcon) {
             if ($IconDebug) {
                 $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontsize
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
+                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
