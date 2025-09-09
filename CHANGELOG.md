@@ -15,7 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created Example03.ps1 featuring a clustered representation of servers using SubGraph.
   - Created Example04.ps1 to enhance diagrams with icons and additional server information.
   - Created Example05.ps1 to enable DraftMode for easier troubleshooting and layout adjustments.
-- Added icon files (Diagrammer.png, Server.png, no_icon.png) for use in diagrams.
+  - Created Example06.ps1
+  - Created Example07.ps1
+- Added icon files (Diagrammer.png, Server.png, no_icon.png) for use in tests.
 - Updated New-Diagrammer.ps1 to support image resolution size and improved icon handling.
 - Enhanced Add-DiaNodeIcon and related functions to support additional font styling options.
 - Updated documentation in Todo.md to include new examples and tasks.
@@ -26,6 +28,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Add-DiaNodeIcon
   - Add-DiaHTMLNodeTable
 - Updated all workflow files to use windows-latest
+
+### Fixed
+
+- Fix expected output for tests related to HTML tables with logos and labels.
+- Fix consistency in the HTML structure for both top and bottom logo placements.
+- Fix test cases to reflect the correct HTML output for better validation.
+- Fix HTML table output by bolding cell content in Add-DiaHTMLNodeTable function
 
 ## [0.2.29] - 2025-08-18
 

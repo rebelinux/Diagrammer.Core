@@ -582,9 +582,9 @@ function Add-DiaHTMLNodeTable {
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
                         if ($CellBackgroundColor) {
-                            $TDName += '<TD BGColor ="{4}" PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element, $CellBackgroundColor
+                            $TDName += '<TD BGColor ="{4}" PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element, $CellBackgroundColor
                         } else {
-                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}</FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
                         }
                     }
                     $TR += '<TR>{0}</TR>' -f $TDName
