@@ -73,40 +73,6 @@ $example8 = & {
 
     SubGraph 3tier -Attributes @{Label = '3Tier Concept'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
 
-        <#
-            This time, we will simulate a Web Server Farm with multiple web server node. While the Add-DiaNodeIcon cmdlet is typically used to add icons/properties to nodes, it lack the ability to create multiple nodes with distinct properties.
-
-            Add-DiaHTMLNodeTable has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
-
-                                _________________________________ _______________
-                                |               |               |               |
-                                |      Icon     |     Icon      |      Icon     |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                | Web-Server-01 | Web-Server-02 | Web-Server-03 |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                |   Properties  |   Properties  |   Properties  |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                |      Icon     |     Icon      |      Icon     |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                | Web-Server-04 | Web-Server-05 | Web-Server-06 |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                |   Properties  |   Properties  |   Properties  |
-                                |_______________|_______________|_______________|
-
-            ** The $Images object and IconType "Server" must be defined earlier in the script **
-
-            -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
-            -Align parameter sets the alignment of the icon and text (Left, Right, Center).
-            -ImagesObj parameter passes the hashtable of images defined earlier in the script.
-            -FontSize 18 sets the font size for the node label text.
-            -DraftMode $true enables DraftMode, which adds a border around the node to help with positioning and layout adjustments.
-        #>
-
         $WebServerFarm = @(
             @{
                 Name = 'Web-Server-01';
@@ -136,6 +102,39 @@ $example8 = & {
                 }
             }
         )
+
+        <#
+            This time, we will simulate a Web Server Farm with multiple web server node. While the Add-DiaNodeIcon cmdlet is typically used to add icons/properties to nodes, it lack the ability to create multiple nodes with distinct properties.
+
+            Add-DiaHTMLNodeTable has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
+                                _________________________________ _______________
+                                |               |               |               |
+                                |               |     Icon      |               |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                | Web-Server-01 | Web-Server-02 | Web-Server-03 |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                |   Properties  |   Properties  |   Properties  |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                | Web-Server-04 | Web-Server-05 | Web-Server-06 |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                |   Properties  |   Properties  |   Properties  |
+                                |_______________|_______________|_______________|
+
+            ** The $Images object and IconType "Server" must be defined earlier in the script **
+
+            -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
+            -columnSize parameter sets the number of columns in the table layout.
+            -Subgraph parameter creates a subgraph container around the table.
+            -SubgraphLabel parameter sets the label for the subgraph container.
+            -SubgraphLabelPos parameter sets the position of the subgraph label (top, bottom).
+            -SubgraphTableStyle parameter sets the style of the subgraph border (dashed, rounded, solid).
+            -TableBorderColor parameter sets the color of the table border.
+            -TableBorder sets the thickness of the table border.
+        #>
 
         $Web01Label = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontsize 20 -fontSize 18
 
@@ -168,5 +167,5 @@ $example8 = & {
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $example8 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example8 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -EdgeType line
+New-Diagrammer -InputObject $example8 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example8 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images
 

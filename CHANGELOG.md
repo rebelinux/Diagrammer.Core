@@ -17,7 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created Example05.ps1 to enable DraftMode for easier troubleshooting and layout adjustments.
   - Created Example06.ps1
   - Created Example07.ps1
-- Added icon files (Diagrammer.png, Server.png, no_icon.png) for use in tests.
+  - Created Example08.ps1 to demonstrate Add-DiaHTMLNodeTable feature
+  - Created Example09.ps1 to demonstrate Add-DiaHTMLNodeTable with MultiIcon feature
+- Added multiple icon files for use in tests.
 - Updated New-Diagrammer.ps1 to support image resolution size and improved icon handling.
 - Enhanced Add-DiaNodeIcon and related functions to support additional font styling options.
 - Updated documentation in Todo.md to include new examples and tasks.
