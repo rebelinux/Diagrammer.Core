@@ -95,6 +95,6 @@ $example4 = & {
     -LogoName selects which image from the hashtable to use as a logo in the diagram.
     If the specified logo image is not found, the diagram uses no_icon.png [?].
     -Direction sets the diagram layout direction: left-to-right or top-to-bottom.
-    The layout is set to top-to-bottom using the Graph attribute.
+    The layout is set to top-to-bottom using the Graphviz attribute (TB).
 #>
 New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName "Main_Logo" -Direction top-to-bottom

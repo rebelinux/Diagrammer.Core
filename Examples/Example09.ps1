@@ -1,4 +1,4 @@
-#    ** This time, we'll demonstrate the use of the Rank cmdlet (Part of PSGraph module). **
+#    ** This time, we'll demonstrate the use of the Add-DiaHTMLNodeTable cmdlet (Part of Diagrammer.Core module). **
 
 <#
     This example demonstrates how to create a 3-tier web application diagram using the Diagrammer module.
@@ -49,13 +49,6 @@ $MainGraphLabel = 'Web Application Diagram'
     This section creates custom objects to hold server information, which are used to set node labels in the diagram.
 #>
 
-$WebServerInfo = [PSCustomObject][ordered]@{
-    'OS' = 'Redhat Linux'
-    'Version' = '10'
-    'Build' = "10.1"
-    'Edition' = "Enterprise"
-}
-
 $AppServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Windows Server'
     'Version' = '2019'
@@ -70,7 +63,7 @@ $DBServerInfo = [PSCustomObject][ordered]@{
     'Edition' = "Enterprise"
 }
 
-$example7 = & {
+$example8 = & {
     <#
         A SubGraph allows you to group objects in a container, creating a graph within a graph.
         SubGraph, Node, and Edge have attributes for setting background color, label, border color, style, etc.
@@ -78,12 +71,30 @@ $example7 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
+    SubGraph 3tier -Attributes @{Label = '3Tier Concept'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
 
         <#
-            This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties.
-            Graphviz supports HTML tables to extend object labels, allowing images, text, and tables within Node, Edge, and Subgraph attribute script blocks.
-            Add-DiaNodeIcon extends PSGraph to improve the appearance of the generated diagram (Add-DiaNodeIcon is part of Diagrammer.Core).
+            This time, we will simulate a Web Server Farm with multiple web server node. While the Add-DiaNodeIcon cmdlet is typically used to add icons/properties to nodes, it lack the ability to create multiple nodes with distinct properties.
+
+            Add-DiaHTMLNodeTable has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
+
+                                _________________________________ _______________
+                                |               |               |               |
+                                |               |     Icon      |               |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                | Web-Server-01 | Web-Server-02 | Web-Server-03 |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                |   Properties  |   Properties  |   Properties  |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                | Web-Server-04 | Web-Server-05 | Web-Server-06 |
+                                |_______________|_______________|_______________|
+                                |               |               |               |
+                                |   Properties  |   Properties  |   Properties  |
+                                |_______________|_______________|_______________|
+
             ** The $Images object and IconType "Server" must be defined earlier in the script **
 
             -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
@@ -93,7 +104,39 @@ $example7 = & {
             -DraftMode $true enables DraftMode, which adds a border around the node to help with positioning and layout adjustments.
         #>
 
-        $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AdditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
+        $WebServerFarm = @(
+            @{
+                Name = 'Web-Server-01';
+                AdditionalInfo = [PSCustomObject][ordered]@{
+                    'OS' = 'Redhat Linux'
+                    'Version' = '10'
+                    'Build' = "10.1"
+                    'Edition' = "Enterprise"
+                }
+            },
+            @{
+                Name = 'Web-Server-02';
+                AdditionalInfo = [PSCustomObject][ordered]@{
+                    'OS' = 'Redhat Linux'
+                    'Version' = '10'
+                    'Build' = "10.1"
+                    'Edition' = "Enterprise"
+                }
+            },
+            @{
+                Name = 'Web-Server-03';
+                AdditionalInfo = [PSCustomObject][ordered]@{
+                    'OS' = 'Ubuntu Linux'
+                    'Version' = '24'
+                    'Build' = "11"
+                    'Edition' = "Enterprise"
+                }
+            }
+        )
+
+        $Web01Label = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontsize 20 -fontSize 18
+
+
         $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AdditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
         $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AdditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
 
@@ -113,7 +156,6 @@ $example7 = & {
         <#
             The Rank cmdlet is used to place nodes at the same hierarchical level.
             In this example, App01 and DB01 are aligned horizontally.
-            https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/
         #>
         Rank -Nodes App01, DB01
     }
@@ -123,5 +165,5 @@ $example7 = & {
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $example7 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example7 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images
+New-Diagrammer -InputObject $example8 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example8 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -EdgeType line
 

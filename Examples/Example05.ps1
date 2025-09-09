@@ -82,8 +82,8 @@ $example5 = & {
 
         <#
             This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties.
-            Graphviz supports HTML tables to extend object labels, allowing images, text, and tables within Node, Edge, and Subgraph attribute script blocks.
-            Add-DiaNodeIcon extends PSGraph to improve the appearance of the generated diagram (Add-DiaNodeIcon is part of Diagrammer.Core).
+            Graphviz supports HTML tables to extend object labels, allowing images, text, and tables within Node, Edge, and Subgraph @{Label=} script blocks attributes.
+            Add-DiaNodeIcon extends PSGraph to improve the appearance of the generated Node objects (Add-DiaNodeIcon is part of Diagrammer.Core).
             ** The $Images object and IconType "Server" must be defined earlier in the script **
 
             -AditionalInfo parameter accepts a custom object with properties to display in the node label.

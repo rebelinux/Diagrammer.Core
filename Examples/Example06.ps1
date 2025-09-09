@@ -107,25 +107,13 @@ $example6 = & {
             https://psgraph.readthedocs.io/en/latest/Command-Edge/
         #>
 
-        Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'gray'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
-        Edge -From App01 -To DB01 @{label = 'SQL'; color = 'gray'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+        Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+        Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
     }
 }
 
 <#
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
-    -InputObject accepts the custom object created above.
-    -OutputFolderPath specifies where to save the generated diagram.
-    -Format sets the output format (png, jpg, svg, etc.).
-    -ImagesObj passes the hashtable of images for custom icons.
-    -MainDiagramLabel sets the diagram title.
-    -Filename specifies the output file name (without extension).
-    -LogoName selects which image from the hashtable to use as the diagram logo.
-    If the specified logo image is not found, the diagram uses no_icon.png [?].
-    -Direction sets the diagram layout direction: left-to-right or top-to-bottom.
-    The layout is set to top-to-bottom using the Graph attribute.
-    -IconPath and -ImagesObj allow Diagrammer.Core to locate the png icon files.
-
     -DraftMode $true enables DraftMode, which adds borders around nodes to help with positioning and layout adjustments.
 #>
 
