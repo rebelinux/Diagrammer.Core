@@ -32,6 +32,7 @@ $RootPath = $PSScriptRoot
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.
     The image files must be located in the directory specified by $IconPath.
+    ** Image sizes should be around 100x100, 150x150 pixels for optimal display. **
 #>
 
 $script:Images = @{
@@ -78,7 +79,7 @@ $example7 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
 
         <#
             This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties.

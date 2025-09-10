@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated New-Diagrammer.ps1 to support image resolution size and improved icon handling.
 - Enhanced Add-DiaNodeIcon and related functions to support additional font styling options.
 - Updated documentation in Todo.md to include new examples and tasks.
+- Introduced a new PowerShell function, Add-DiaNodeImage, to generate an HTML table for displaying
+  images with customizable properties such as border, style, and image size.
 
 ### Changed
 

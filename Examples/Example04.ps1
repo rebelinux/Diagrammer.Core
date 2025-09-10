@@ -29,6 +29,7 @@ $MainGraphLabel = 'Web Application Diagram'
 
 <#
     This section creates custom objects to hold server information, which are used for node labels in the diagram.
+    The use of [PSCustomObject][ordered]@{} preserves the order of properties.
 #>
 
 $WebServerInfo = [PSCustomObject][ordered]@{
@@ -61,7 +62,7 @@ $example4 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
         <#
             This creates a diagram with three servers, custom node labels, and shapes (no object icons).
             Node statements create the nodes in the diagram. (Node is a reserved word in the PSGraph module)

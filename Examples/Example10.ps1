@@ -1,4 +1,4 @@
-#    ** This time, we'll demonstrate the use of the Add-DiaHTMLNodeTable MultiIcon feature (Part of Diagrammer.Core module). **
+#    ** This time, we'll demonstrate the use of the Add-DiaNodeImage to add a custom image to the diagram (Part of Diagrammer.Core module). **
 
 <#
     This example demonstrates how to create a 3-tier web application diagram using the Diagrammer module.
@@ -20,14 +20,14 @@ Import-Module Diagrammer.Core -Force -Verbose:$false
     The diagram output is a file, so we need to specify the output folder path. In this example, $OutputFolderPath is used.
 #>
 
-$OutputFolderPath = Resolve-Path $Path
+$OutputFolderPath = Resolve-Path -Path $Path
 
 <#
     If the diagram uses custom icons, specify the path to the icons directory. This is a Graphviz requirement.
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.
@@ -40,6 +40,8 @@ $script:Images = @{
     "Server" = "Server.png"
     "ServerRedhat" = "Linux_Server_RedHat.png"
     "ServerUbuntu" = "Linux_Server_Ubuntu.png"
+    "Cloud" = "Cloud.png"
+    "Router" = "Router.png"
 }
 
 <#
@@ -66,7 +68,7 @@ $DBServerInfo = [PSCustomObject][ordered]@{
     'Edition' = "Enterprise"
 }
 
-$example9 = & {
+$example10 = & {
     <#
         A SubGraph allows you to group objects in a container, creating a graph within a graph.
         SubGraph, Node, and Edge have attributes for setting background color, label, border color, style, etc.
@@ -121,38 +123,10 @@ $example9 = & {
             This time, we will simulate a Web Server Farm with multiple web server node. While the Add-DiaNodeIcon cmdlet is typically used to add icons/properties to nodes, it lack the ability to create multiple nodes with distinct properties.
 
             Add-DiaHTMLNodeTable has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
-                                _________________________________ _______________
-                                |               |               |               |
-                                |      Icon     |     Icon      |     Icon      |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                | Web-Server-01 | Web-Server-02 | Web-Server-03 |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                |   Properties  |   Properties  |   Properties  |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                |      Icon     |     Icon      |     Icon      |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                | Web-Server-04 | Web-Server-05 | Web-Server-06 |
-                                |_______________|_______________|_______________|
-                                |               |               |               |
-                                |   Properties  |   Properties  |   Properties  |
-                                |_______________|_______________|_______________|
 
             ** The $Images object and IconType "Server" must be defined earlier in the script **
 
-            -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
-            -columnSize parameter sets the number of columns in the table layout.
-            -Subgraph parameter creates a subgraph container around the table.
-            -SubgraphLabel parameter sets the label for the subgraph container.
-            -SubgraphLabelPos parameter sets the position of the subgraph label (top, bottom).
-            -SubgraphTableStyle parameter sets the style of the subgraph border (dashed, rounded, solid).
-            -TableBorderColor parameter sets the color of the table border.
-            -TableBorder sets the thickness of the table border.
-
-            ** -MultiIcon parameter allows multiple icons to be displayed in the table. (IconType must be specified in the inputObject) **
+            -MultiIcon parameter allows multiple icons to be displayed in the table. (IconType must be specified in the inputObject)
             -iconType parameter sets the type of icon to use for the nodes. In this case the $WebServerFarm.IconType hashtable value is used
             (must match a key in the $Images hashtable).
         #>
@@ -181,6 +155,32 @@ $example9 = & {
             In this example, App01 and DB01 are aligned horizontally.
         #>
         Rank -Nodes App01, DB01
+
+        <#
+            In this section, we add a network router and a cloud icon to represent internet connectivity.
+        #>
+
+        $RouterInfo = [PSCustomObject][ordered]@{
+            'OS' = 'Cisco IOS'
+            'Version' = '15.2'
+        }
+
+        $RouterLabel = Add-DiaNodeIcon -Name 'Core-Router' -AdditionalInfo $RouterInfo -ImagesObj $Images -IconType "Router" -Align "Center" -FontSize 18
+
+        Node -Name Router01 -Attributes @{label = $RouterLabel ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+
+        Edge -From Router01 -To Web01 @{label = 'GE0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
+
+        <#
+            This section demonstrates the use of the Add-DiaNodeImage to add a custom image to the diagram (Part of Diagrammer.Core module).
+
+            -Name parameter sets the name of the node (WAN in this case).
+            -ImageSizePercent parameter sets the size of the image as a percentage (30% in this case).
+        #>
+
+        Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Cloud" -IconPath $IconPath -ImageSizePercent 30
+
+        Edge -From WAN -To Router01 @{label = 'Serial0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
     }
 }
 
@@ -188,4 +188,4 @@ $example9 = & {
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $example9 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example9 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images
+New-Diagrammer -InputObject $example10 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example10 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images
