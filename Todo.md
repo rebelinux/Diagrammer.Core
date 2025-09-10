@@ -3,6 +3,7 @@
     [] Add option to set image opacity in percent
     [Done] Add option to set image borderline color, borderline style, etc..
     [] Add option to set image label
+    [] Add pester test
 [] Add cmdlet to add shapes (Rectangle, Circle, Triangle)
     [] Add option to set shape size (WxH)
     [] Add option to set shape color, borderline color, borderline style, etc..
@@ -31,7 +32,9 @@
     [] Add Watermark example
     [] Add Signature example
     [] Add ShapeLine example
-[] Add option to set image size by percent
+[] Add option to set icon size by percent
     [] Add-DiaNodeIcon
     [] Add-DiaHTMLNodeTable
     [] Add-DiaHTMLSubGraph
+    [] Add-DiaNodeFiller
+    [] Add pester to test this funtionality
