@@ -29,7 +29,7 @@ function Add-DiaHTMLTable {
             _________________
 
     .NOTES
-        Version:        0.2.27
+        Version:        0.2.30
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -71,6 +71,11 @@ function Add-DiaHTMLTable {
     [OutputType([System.String])]
 
     param(
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'The node name (optional'
+        )]
+        [string] $Name,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The table array to process'
@@ -194,7 +199,24 @@ function Add-DiaHTMLTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a subgraph icon height'
         )]
-        [string] $SubgraphIconHeight
+        [string] $SubgraphIconHeight,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the text align'
+        )]
+        [ValidateScript({
+                if ($Name) {
+                    $true
+                } else {
+                    throw "Name parameter is required when NodeObject is set."
+                }
+            })]
+        [switch] $NodeObject,
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Additional Graphviz attributes to add to the node (e.g., style=filled,color=lightgrey)'
+        )]
+        [hashtable] $GraphvizAttributes = @{}
     )
 
     if ($ImagesObj -and $ImagesObj[$SubgraphIconType]) {
@@ -291,17 +313,48 @@ function Add-DiaHTMLTable {
 
     if ($IconDebug) {
         if ($SubgraphTableStyle) {
-            return '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{3}">{0}</TABLE>' -f $TR, $SubgraphTableStyle, $CellSpacing, $CellPadding
+            if ($NodeObject) {
+                $HTML = '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{3}">{0}</TABLE>' -f $TR, $SubgraphTableStyle, $CellSpacing, $CellPadding
 
+                $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+
+                Node -Name $Name -Attributes $JoinHash
+
+            } else {
+                return '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{3}">{0}</TABLE>' -f $TR, $SubgraphTableStyle, $CellSpacing, $CellPadding
+            }
+        } else {
+            if ($NodeObject) {
+                $HTML = '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="{1}">{0}</TABLE>' -f $TR, $CellPadding
+
+                $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+
+                Node -Name $Name -Attributes $JoinHash
+            }
         } else {
             return '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="{1}">{0}</TABLE>' -f $TR, $CellPadding
         }
     } else {
         if ($SubgraphTableStyle) {
-            return '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellSpacing, $CellPadding
+            if ($NodeObject) {
+                $HTML = '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellSpacing, $CellPadding
 
+                $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+
+                Node -Name $Name -Attributes $JoinHash
+            } else {
+                return '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellSpacing, $CellPadding
+            }
         } else {
-            return '<TABLE STYLE="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
+            if ($NodeObject) {
+                $HTML = '<TABLE STYLE="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
+
+                $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+
+                Node -Name $Name -Attributes $JoinHash
+            } else {
+                return '<TABLE STYLE="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
+            }
         }
     }
 }

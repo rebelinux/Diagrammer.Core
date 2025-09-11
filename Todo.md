@@ -2,7 +2,6 @@
     [Done] Add option to set image in percent
     [] Add option to set image opacity in percent
     [Done] Add option to set image borderline color, borderline style, etc..
-    [] Add option to set image label
     [] Add pester test
 [] Add cmdlet to add shapes (Rectangle, Circle, Triangle)
     [] Add option to set shape size (WxH)
@@ -28,7 +27,8 @@
 [] Add support for MACOS (Graphviz)
 [] Add Documentation (use pscribo as example)
     [] [Example](https://github.com/iainbrighton/PScribo/blob/dev/Examples/Example01.ps1)
-    [] Add Add-DiaHTMLTable example
+        [] Add pester to test Example files
+    [Done] Add Add-DiaHTMLTable example
     [] Add Watermark example
     [] Add Signature example
     [] Add ShapeLine example
@@ -38,3 +38,8 @@
     [] Add-DiaHTMLSubGraph
     [] Add-DiaNodeFiller
     [] Add pester to test this funtionality
+[] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
+    [] Add-DiaNodeFiller
+    [] Add-DiaNodeIcon
+    [] Add-DiaHTMLNodeTable
+    [] Add-DiaHTMLSubGraph
