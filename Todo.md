@@ -43,3 +43,4 @@
     [] Add-DiaNodeIcon
     [] Add-DiaHTMLNodeTable
     [] Add-DiaHTMLSubGraph
+    [] Add pester to test this funtionality

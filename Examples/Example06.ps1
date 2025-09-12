@@ -6,7 +6,8 @@
 
 [CmdletBinding()]
 param (
-    [System.IO.FileInfo] $Path = '~\Desktop\'
+    [System.IO.FileInfo] $Path = '~\Desktop\',
+    [array] $Format = @('dot')
 )
 
 <#
@@ -118,4 +119,4 @@ $example6 = & {
     -DraftMode $true enables DraftMode, which adds borders around nodes to help with positioning and layout adjustments.
 #>
 
-New-Diagrammer -InputObject $example6 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example6 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode
+New-Diagrammer -InputObject $example6 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example6 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode

@@ -226,7 +226,7 @@ function Add-DiaHTMLTable {
     if ($Rows.Count -le 1) {
         $Group = $Rows
     } else {
-        $Group = Split-array -inArray $Rows -size $ColumnSize
+        $Group = Split-Array -inArray $Rows -size $ColumnSize
     }
 
     $Number = 0
@@ -330,9 +330,9 @@ function Add-DiaHTMLTable {
                 $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
 
                 Node -Name $Name -Attributes $JoinHash
+            } else {
+                return '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="{1}">{0}</TABLE>' -f $TR, $CellPadding
             }
-        } else {
-            return '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="{1}">{0}</TABLE>' -f $TR, $CellPadding
         }
     } else {
         if ($SubgraphTableStyle) {

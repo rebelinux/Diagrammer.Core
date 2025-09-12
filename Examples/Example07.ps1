@@ -6,7 +6,8 @@
 
 [CmdletBinding()]
 param (
-    [System.IO.FileInfo] $Path = '~\Desktop\'
+    [System.IO.FileInfo] $Path = '~\Desktop\',
+    [array] $Format = @('dot')
 )
 
 <#
@@ -124,5 +125,5 @@ $example7 = & {
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $example7 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example7 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images
+New-Diagrammer -InputObject $example7 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example7 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images
 

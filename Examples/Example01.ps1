@@ -4,7 +4,8 @@
 
 [CmdletBinding()]
 param (
-    [System.IO.FileInfo] $Path = '~\Desktop\'
+    [System.IO.FileInfo] $Path = '~\Desktop\',
+    [array] $Format = @('dot')
 )
 
 <#
@@ -46,4 +47,4 @@ $example1 = & {
     -LogoName: Selects an image from the hashtable to use as the diagram logo.
     If the specified logo image is not found, a default no_icon.png is used.
 #>
-New-Diagrammer -InputObject $example1 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example1 -LogoName "Main_Logo"
+New-Diagrammer -InputObject $example1 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example1 -LogoName "Main_Logo"

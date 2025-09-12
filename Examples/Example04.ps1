@@ -6,7 +6,8 @@
 
 [CmdletBinding()]
 param (
-    [System.IO.FileInfo] $Path = '~\Desktop\'
+    [System.IO.FileInfo] $Path = '~\Desktop\',
+    [array] $Format = @('dot')
 )
 
 <#
@@ -98,4 +99,4 @@ $example4 = & {
     -Direction sets the diagram layout direction: left-to-right or top-to-bottom.
     The layout is set to top-to-bottom using the Graphviz attribute (TB).
 #>
-New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format png -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName "Main_Logo" -Direction top-to-bottom
+New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName "Main_Logo" -Direction top-to-bottom
