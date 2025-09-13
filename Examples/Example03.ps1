@@ -6,7 +6,7 @@
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
-    [array] $Format = @('dot')
+    [array] $Format = @('png')
 )
 
 <#

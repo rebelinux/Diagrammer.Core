@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update module manifest
 - Enhance Add-DiaHTMLTable with NodeObject support;
 - Refactor Split-Array function name
+- Update main project icon (Thanks to Copilot)
 
 ### Fixed
 

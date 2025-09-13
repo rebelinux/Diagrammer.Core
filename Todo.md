@@ -2,7 +2,7 @@
     [Done] Add option to set image in percent
     [] Add option to set image opacity in percent
     [Done] Add option to set image borderline color, borderline style, etc..
-    [] Add pester test
+    [Done] Add pester test
 [] Add cmdlet to add shapes (Rectangle, Circle, Triangle)
     [] Add option to set shape size (WxH)
     [] Add option to set shape color, borderline color, borderline style, etc..
@@ -44,3 +44,9 @@
     [] Add-DiaHTMLNodeTable
     [] Add-DiaHTMLSubGraph
     [] Add pester to test this funtionality
+[] Add-DiaHTMLLabel
+    [Done] Add Image WxH size by percent (use Add-DiaNodeImage as example)
+    [] Add Pester Tests
+        [] DraftMode
+        [] Set Image WxH (-IconWidth & -IconHeight)
+        [] Set Image size by percent (-ImageSizePercent)

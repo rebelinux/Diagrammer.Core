@@ -397,7 +397,14 @@ function New-Diagrammer {
             Mandatory = $false,
             HelpMessage = 'Allow to set image resolution size (Ex: 8,11! = 800x1100 pixels)'
         )]
-        [string] $MainGraphSize
+        [string] $MainGraphSize,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Set the image size in percent (100% is default)'
+        )]
+        [ValidateRange(1, 100)]
+        [int] $MainGraphLogoSizePercent = 100
     )
 
     begin {
@@ -527,7 +534,7 @@ function New-Diagrammer {
             # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
-                SubGraph MainGraph -Attributes @{Label = (Add-DiaHTMLLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80 -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
+                SubGraph MainGraph -Attributes @{Label = (Add-DiaHTMLLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
                     $InputObject
                 }
             }

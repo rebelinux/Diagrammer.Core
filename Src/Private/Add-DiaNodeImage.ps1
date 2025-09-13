@@ -73,7 +73,7 @@ function Add-DiaNodeImage {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Include the full path for the icon images (default is false'
+            HelpMessage = 'Include the full path for the icon images (default is false)'
         )]
         [System.IO.FileInfo] $IconPath,
 
@@ -81,7 +81,7 @@ function Add-DiaNodeImage {
             Mandatory = $false,
             HelpMessage = 'Set the image size in percent (100% is default)'
         )]
-        [ValidateRange(10, 100)]
+        [ValidateRange(1, 100)]
         [int] $ImageSizePercent = 100,
 
         [Parameter(
@@ -120,7 +120,19 @@ function Add-DiaNodeImage {
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
         [ValidateSet("ROUNDED", "RADIAL", "SOLID", "INVISIBLE", "INVIS", "DOTTED", "DASHED")]
-        [string] $TableBorderStyle
+        [string] $TableBorderStyle,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the text align'
+        )]
+        [switch] $NodeObject,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Additional Graphviz attributes to add to the node (e.g., style=filled,color=lightgrey)'
+        )]
+        [hashtable] $GraphvizAttributes = @{}
     )
 
 
@@ -129,31 +141,60 @@ function Add-DiaNodeImage {
     } else { $ICON = "no_icon.png" }
 
     if ($ImageSizePercent -lt 100) {
+        if (-not $IconPath) {
+            throw "IconPath is required when ImageSizePercent is less than 100."
+        }
         $ImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }
 
     if ($IconDebug) {
-        $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'>{1} Image</TD></TR></TABLE>" -f 'SOLID', $Name
+        if ($NodeObject) {
+            $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'>{1} Image</TD></TR></TABLE>" -f 'SOLID', $Name
 
-        Node $Name @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 }
+            $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
 
+            Node -Name $Name -Attributes $JoinHash
+        } else {
+            "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'>{1} Image</TD></TR></TABLE>" -f 'SOLID', $Name
+        }
     } else {
         if ($ImageSize) {
-            $HTML = if ($TableBorderStyle) {
-                "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' fixedsize='true' width='{4}' height='{5}' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
-            } else {
-                "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='{3}' height='{4}' colspan='1'><img Scale='Both' src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
-            }
+            if ($NodeObject) {
+                $HTML = if ($TableBorderStyle) {
+                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' fixedsize='true' width='{4}' height='{5}' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
+                } else {
+                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='{3}' height='{4}' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
+                }
 
-            Node $Name @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 }
+                $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+
+                Node -Name $Name -Attributes $JoinHash
+            } else {
+                if ($TableBorderStyle) {
+                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' fixedsize='true' width='{4}' height='{5}' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
+                } else {
+                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='{3}' height='{4}' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
+                }
+            }
         } else {
-            $HTML = if ($TableBorderStyle) {
-                "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON
-            } else {
-                "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img Scale='Both' src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON
-            }
+            if ($NodeObject) {
+                $HTML = if ($TableBorderStyle) {
+                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON
+                } else {
+                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON
+                }
 
-            Node $Name @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 }
+                $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+
+                Node -Name $Name -Attributes $JoinHash
+            } else {
+                if ($TableBorderStyle) {
+                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON
+                } else {
+                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON
+                }
+
+            }
         }
     }
 

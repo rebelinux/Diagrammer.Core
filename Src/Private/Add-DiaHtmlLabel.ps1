@@ -73,12 +73,12 @@ function Add-DiaHTMLLabel {
             Mandatory = $false,
             HelpMessage = 'Allow to set a subgraph icon width'
         )]
-        [int] $IconWidth = 40,
+        [int] $IconWidth,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a subgraph icon height'
         )]
-        [int] $IconHeight = 40,
+        [int] $IconHeight,
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
@@ -123,7 +123,14 @@ function Add-DiaHTMLLabel {
             Mandatory = $false,
             HelpMessage = 'Specifies the SubgraphLabel spacing between HTML table cells.'
         )]
-        [int] $SubgraphCellSpacing = 5
+        [int] $SubgraphCellSpacing = 5,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Set the image size in percent (100% is default)'
+        )]
+        [ValidateRange(1, 100)]
+        [int] $ImageSizePercent = 100
     )
 
     if ($IconType -eq 'NoIcon') {
@@ -134,11 +141,18 @@ function Add-DiaHTMLLabel {
         $ICON = $ImagesObj[$IconType]
     } else { $ICON = "no_icon.png" }
 
+    if ($ImageSizePercent -lt 100) {
+        $CalculatedImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
+    }
+
     if (-not $SubgraphLabel) {
-        # Todo add IconWidth and Icon Height
+        # Todo add Icon WxH by percentage of the image original size
         if ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
                 return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+
+            } elseif ($CalculatedImageSize) {
+                return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
 
             } else {
                 return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
@@ -151,6 +165,9 @@ function Add-DiaHTMLLabel {
     if ($SubgraphLabel) {
         if ($ICON -ne 'NoIcon') {
             return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+        } elseif ($CalculatedImageSize) {
+            return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+
         } else {
             return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
         }
