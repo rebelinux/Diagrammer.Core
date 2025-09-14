@@ -5,6 +5,7 @@ BeforeAll {
 
 Describe Add-WatermarkToImage {
     BeforeAll {
+        $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
         Add-Type -AssemblyName System.Windows.Forms
         $env:TMP = $TestDrive
         $GraphvizObj = 'digraph g {
@@ -15,17 +16,17 @@ Describe Add-WatermarkToImage {
             "web2"->"database2"
         }'
         $PassParamsNoDestinationPath = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             WaterMarkText = "Test"
             FontColor = "White"
         }
         $PassParamsNoFontColor = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             WaterMarkText = "Test"
         }
         $PassParamsDestinationPath = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
-            DestinationPath = Join-Path $TestDrive 'AsBuiltReportMarked.png'
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
+            DestinationPath = Join-Path -Path $IconsPath -ChildPath 'AsBuiltReportMarked.png'
             WaterMarkText = "Test"
             FontColor = "White"
         }

@@ -10,16 +10,18 @@ Describe ConvertTo-Pdf-WaterMark {
         # Force the redirection of TMP to the TestDrive folder
         $env:TMP = $TestDrive
 
+        $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
+
         $PassParamsValidParameters = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
-            DestinationPath = Join-Path $TestDrive 'output.pdf'
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
         }
         $PassParamsInvalidImagePath = @{
             ImageInput = "AsBuiltReport.png"
-            DestinationPath = Join-Path $TestDrive 'output.pdf'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
         }
         $PassParamsNoDestinationPath = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
         }
     }
 
