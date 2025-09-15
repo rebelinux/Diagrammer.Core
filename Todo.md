@@ -46,7 +46,8 @@
     [] Add pester to test this funtionality
 [] Add-DiaHTMLLabel
     [Done] Add Image WxH size by percent (use Add-DiaNodeImage as example)
-    [] Add Pester Tests
-        [] DraftMode
-        [] Set Image WxH (-IconWidth & -IconHeight)
-        [] Set Image size by percent (-ImageSizePercent)
+    [Done] Add Pester Tests
+        [Done] DraftMode
+        [Done] Set Image WxH (-IconWidth & -IconHeight)
+        [Done] Set Image size by percent (-ImageSizePercent)
+        [] Add NoIcon Test (To add a label without attached icon)

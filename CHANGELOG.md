@@ -14,9 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created Example02.ps1 to illustrate connecting nodes and showing relationships in the diagram.
   - Created Example03.ps1 featuring a clustered representation of servers using SubGraph.
   - Created Example04.ps1 to enhance diagrams with icons and additional server information.
-  - Created Example05.ps1 to enable DraftMode for easier troubleshooting and layout adjustments.
-  - Created Example06.ps1
-  - Created Example07.ps1
+  - Created Example05.ps1 to add icons and additional information to Node objects.
+  - Created Example06.ps1 to enable DraftMode for easier troubleshooting and layout adjustments
+  - Created Example07.ps1 to demonstrate the use of the Rank.
   - Created Example08.ps1 to demonstrate Add-DiaHTMLNodeTable feature
   - Created Example09.ps1 to demonstrate Add-DiaHTMLNodeTable with MultiIcon feature
 - Added multiple icon files for use in tests.
@@ -37,6 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhance Add-DiaHTMLTable with NodeObject support;
 - Refactor Split-Array function name
 - Update main project icon (Thanks to Copilot)
+- Enhance Add-DiaHTMLLabel function with new IconPath parameter and improve image handling
+  - Update tests to cover new functionality and adjust existing test cases.
 
 ### Fixed
 

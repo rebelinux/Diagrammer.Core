@@ -16,7 +16,7 @@ function Add-DiaHTMLLabel {
         Add-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
         # This will generate an HTML table with the specified label and logo.
     .NOTES
-        Version:        0.2.27
+        Version:        0.2.30
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux
@@ -30,6 +30,8 @@ function Add-DiaHTMLLabel {
         Hashtable containing the IconName to IconPath translation.
     .PARAMETER IconDebug
         Enables the table debug mode if set to $true.
+    .PARAMETER IconPath
+        Optionally specifies the full path to the icon image file. If not provided, the default image path is used.
     .PARAMETER IconWidth
         Specifies the width of the subgraph icon. Default is 40.
     .PARAMETER IconHeight
@@ -130,24 +132,32 @@ function Add-DiaHTMLLabel {
             HelpMessage = 'Set the image size in percent (100% is default)'
         )]
         [ValidateRange(1, 100)]
-        [int] $ImageSizePercent = 100
+        [int] $ImageSizePercent = 100,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Include the full path for the icon images (default is false)'
+        )]
+        [System.IO.FileInfo] $IconPath
     )
 
     if ($IconType -eq 'NoIcon') {
-        $ICON = 'NoIcon'
-    } elseif ($IconDebug) {
         $ICON = 'NoIcon'
     } elseif ($ImagesObj[$IconType]) {
         $ICON = $ImagesObj[$IconType]
     } else { $ICON = "no_icon.png" }
 
     if ($ImageSizePercent -lt 100) {
+        if (-not $IconPath) {
+            throw "IconPath is required when ImageSizePercent is less than 100."
+        }
         $CalculatedImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }
 
     if (-not $SubgraphLabel) {
-        # Todo add Icon WxH by percentage of the image original size
-        if ($ICON -ne 'NoIcon') {
+        if ($IconDebug) {
+            return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
+        } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
                 return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
 
@@ -159,17 +169,22 @@ function Add-DiaHTMLLabel {
 
             }
         } else {
-            return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
+            return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
         }
     }
     if ($SubgraphLabel) {
-        if ($ICON -ne 'NoIcon') {
-            return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
-        } elseif ($CalculatedImageSize) {
-            return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
-
-        } else {
+        if ($IconDebug) {
             return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+        } if ($ICON -ne 'NoIcon') {
+            if ($IconWidth -and $IconHeight) {
+                return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            } elseif ($CalculatedImageSize) {
+                return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            } else {
+                return "<TABLE border='0' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            }
+        } else {
+            return "<TABLE border='0' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD ALIGN='center' colspan='1'>Subgraph Logo</TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
         }
     }
 }
