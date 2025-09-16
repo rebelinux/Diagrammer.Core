@@ -37,11 +37,14 @@ function Export-Diagrammer {
     .PARAMETER WaterMarkColor
         The color of the watermark text. The default color is 'Red'. This parameter is optional.
 
+    .PARAMETER WaterMarkFontOpacity
+        The font opacity of the watermark text. The default opacity is 30. This parameter is optional.
+
     .PARAMETER Rotate
         The degree to rotate the diagram output image. Valid rotation degrees are 0 and 90. This parameter is optional.
 
     .NOTES
-        Version:        0.2.25
+        Version:        0.2.30
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux
@@ -51,7 +54,7 @@ function Export-Diagrammer {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -88,7 +91,7 @@ function Export-Diagrammer {
             HelpMessage = 'Please provide the path to the diagram output file'
         )]
         [ValidateScript({
-                if (-Not ($_ | Test-Path) ) {
+                if (-not ($_ | Test-Path) ) {
                     throw "Folder does not exist"
                 }
                 return $true
@@ -101,7 +104,7 @@ function Export-Diagrammer {
             HelpMessage = 'Please provide the path to the icons directory (Used for SVG format)'
         )]
         [ValidateScript({
-                if (-Not ($_ | Test-Path) ) {
+                if (-not ($_ | Test-Path) ) {
                     throw "Folder does not exist"
                 }
                 return $true
@@ -122,8 +125,15 @@ function Export-Diagrammer {
         )]
         [string] $WaterMarkColor = 'Red',
 
+        [Parameter(
+            Position = 9,
+            Mandatory = $false,
+            HelpMessage = 'Allow to specified the color used for the watermark text'
+        )]
+        [int] $WaterMarkFontOpacity = 30,
 
         [Parameter(
+            Position = 10,
             Mandatory = $false,
             HelpMessage = 'Allow to rotate the diagram output image. valid rotation degree (90, 180, 270)'
         )]
@@ -138,12 +148,12 @@ function Export-Diagrammer {
         $script:ImageMagickPath = Join-Path $RootPath 'ImageMagick\'
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat
-        if (-Not $Filename) {
+        if (-not $Filename) {
             if ($Format -ne "base64") {
                 $Filename = "Output.$Format"
             } else { $Filename = "Output.png" }
         }
-        Try {
+        try {
             $DestinationPath = Join-Path -Path $OutputFolderPath -ChildPath $FileName
 
             if ($Format -eq "svg") {
@@ -156,7 +166,7 @@ function Export-Diagrammer {
                     Write-Verbose -Message "WaterMark option is not supported with the dot format."
                 }
                 ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
-            } elseif ($Format -eq "pdf" -and (-Not $WaterMarkText)) {
+            } elseif ($Format -eq "pdf" -and (-not $WaterMarkText)) {
                 ConvertTo-Pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
             } else {
                 try {
@@ -180,9 +190,9 @@ function Export-Diagrammer {
 
                 if ($WaterMarkText) {
                     if ($Format -eq "pdf") {
-                        $Document = Add-WatermarkToImage -ImageInput $Document.FullName -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
+                        $Document = Add-WatermarkToImage -ImageInput $Document.FullName -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor -FontOpacity $WaterMarkFontOpacity
                     } else {
-                        Add-WatermarkToImage -ImageInput $TempOutPut -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor
+                        Add-WatermarkToImage -ImageInput $TempOutPut -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor -FontOpacity $WaterMarkFontOpacity
                     }
                 }
                 # After adding watermark, convert it to PDF if required. GraphObj is not required for this step.
@@ -193,7 +203,7 @@ function Export-Diagrammer {
             }
 
             if ($Format -eq "base64") {
-                if (-Not $WaterMarkText) {
+                if (-not $WaterMarkText) {
                     ConvertTo-Base64 -ImageInput $Document
                 } else {
                     ConvertTo-Base64 -ImageInput $DestinationPath

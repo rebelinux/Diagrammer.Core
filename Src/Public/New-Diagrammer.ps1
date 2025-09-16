@@ -105,6 +105,9 @@ function New-Diagrammer {
     .PARAMETER WaterMarkText
         Specifies the text for the watermark.
 
+    .PARAMETER WaterMarkFontOpacity
+        The font opacity of the watermark text. The default opacity is 30. This parameter is optional.
+
     .PARAMETER MainGraphBGColor
         Specifies the background color of the diagram. Default is 'White'.
 
@@ -112,7 +115,7 @@ function New-Diagrammer {
         Specifies the image resolution size. (e.g., 8,11! = 800x1100 pixels) Default = None.
 
     .NOTES
-        Version:        0.2.24
+        Version:        0.2.30
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -389,6 +392,12 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Allow to set the font opacity of the watermark text (0 to 100)'
+        )]
+        [int] $WaterMarkFontOpacity = 30,
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Allow to set diagram backgroud color'
         )]
         [string] $MainGraphBGColor = 'White',
@@ -544,7 +553,7 @@ function New-Diagrammer {
         foreach ($OutputFormat in $Format) {
             #Export the Diagram
             if ($Graph) {
-                Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath
+                Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath -WaterMarkFontOpacity $WaterMarkFontOpacity
             } else {
                 Write-Verbose -Message "No Graph object found. Disabling diagram section"
             }

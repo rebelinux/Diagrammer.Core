@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created Example07.ps1 to demonstrate the use of the Rank.
   - Created Example08.ps1 to demonstrate Add-DiaHTMLNodeTable feature
   - Created Example09.ps1 to demonstrate Add-DiaHTMLNodeTable with MultiIcon feature
+  - Created Example10.ps1 to demonstrate the use of the Add-DiaNodeImage cmdlet
+  - Created Example11.ps1 to demonstrate the use of the Add-DiaHTMLTable cmdlet
+  - Created Example12.ps1 to demonstrate the use of the WaterMark feature
+  - Created Example13.ps1 to demonstrate the use of the Signature feature (Add-DiaHtmlSignatureTable)
+
 - Added multiple icon files for use in tests.
 - Updated New-Diagrammer.ps1 to support image resolution size and improved icon handling.
 - Enhanced Add-DiaNodeIcon and related functions to support additional font styling options.
@@ -39,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update main project icon (Thanks to Copilot)
 - Enhance Add-DiaHTMLLabel function with new IconPath parameter and improve image handling
   - Update tests to cover new functionality and adjust existing test cases.
+- Enhanced Export-Diagrammer.ps1 and New-Diagrammer.ps1 to support watermark font opacity.
 
 ### Fixed
 

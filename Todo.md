@@ -29,8 +29,8 @@
     [] [Example](https://github.com/iainbrighton/PScribo/blob/dev/Examples/Example01.ps1)
         [] Add pester to test Example files
     [Done] Add Add-DiaHTMLTable example
-    [] Add Watermark example
-    [] Add Signature example
+    [Done] Add Watermark example
+    [Done] Add Signature example
     [] Add ShapeLine example
 [] Add option to set icon size by percent
     [] Add-DiaNodeIcon
@@ -43,6 +43,7 @@
     [] Add-DiaNodeIcon
     [] Add-DiaHTMLNodeTable
     [] Add-DiaHTMLSubGraph
+    [] Add-DiaHTMLLabel
     [] Add pester to test this funtionality
 [] Add-DiaHTMLLabel
     [Done] Add Image WxH size by percent (use Add-DiaNodeImage as example)
@@ -50,4 +51,4 @@
         [Done] DraftMode
         [Done] Set Image WxH (-IconWidth & -IconHeight)
         [Done] Set Image size by percent (-ImageSizePercent)
-        [] Add NoIcon Test (To add a label without attached icon)
+        [Done] Add NoIcon Test (To add a label without attached icon)
