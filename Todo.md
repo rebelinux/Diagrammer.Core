@@ -45,7 +45,7 @@
     [] Add-DiaHTMLSubGraph
     [] Add-DiaHTMLLabel
     [] Add pester to test this funtionality
-[] Add-DiaHTMLLabel
+[Done] Add-DiaHTMLLabel
     [Done] Add Image WxH size by percent (use Add-DiaNodeImage as example)
     [Done] Add Pester Tests
         [Done] DraftMode

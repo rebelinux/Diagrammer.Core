@@ -188,6 +188,8 @@ $example11 = & {
             -Name parameter sets the name of the node (RouterNetworkInfo in this case).
             -Rows parameter takes an array of strings to populate the table rows.
             -NodeObject switch indicates that the table is to be used as a Graphviz Node in the diagram.
+                - If this parameter is omitted, the table will be created as a standalone HTML file.
+                - If this parameter is omitted, a Node must be created separately and the table assigned to the node's Label attribute.
             -ColumnSize parameter sets the number of columns in the table (2 in this case).
             -Subgraph switch creates a container around the table with a label.
             -SubgraphLabel parameter sets the label for the subgraph container.
