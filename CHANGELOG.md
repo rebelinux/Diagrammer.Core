@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created Example11.ps1 to demonstrate the use of the Add-DiaHTMLTable cmdlet
   - Created Example12.ps1 to demonstrate the use of the WaterMark feature
   - Created Example13.ps1 to demonstrate the use of the Signature feature (Add-DiaHtmlSignatureTable)
+  - Created Example14.ps1 to demonstrate the use of the Custom shapes feature (Add-DiaNodeShape)
+
 
 - Added multiple icon files for use in tests.
 - Updated New-Diagrammer.ps1 to support image resolution size and improved icon handling.
