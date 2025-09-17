@@ -4,8 +4,9 @@
     [Done] Add option to set image borderline color, borderline style, etc..
     [Done] Add pester test
 [] Add cmdlet to add shapes (Rectangle, Circle, Triangle)
-    [] Add option to set shape size (WxH)
-    [] Add option to set shape color, borderline color, borderline style, etc..
+    [Done] Add option to set shape size (WxH)
+    [Done] Add option to set shape color, borderline color, borderline style, etc..
+    [] Add Pester tests
 [] Create Pester tests for:
     [Done] Add-WatermarkToImage
     [Done] ConvertTo-Pdf-WaterMark

@@ -1,12 +1,12 @@
 function Add-DiaNodeShape {
     <#
     .SYNOPSIS
-        Generates an HTML table for visualizing an icon with customizable properties, such as border, style, and image size.
+        Generates an Node with a specific shape and customizable attributes for diagramming purposes.
 
     .DESCRIPTION
-        The Add-DiaNodeShape function creates an HTML table to display an icon image, typically used for diagramming nodes.
-        It supports customization of the icon's appearance, including border width, color, style, and image size percentage.
-        The function also allows for debug mode, which highlights the table for easier troubleshooting, and supports specifying the icon image via a hashtable object.
+        The Add-DiaNodeShape function creates an Node with a specific shape and customizable attributes for diagramming purposes.
+        It supports customization of the node's appearance, including border width, color, style, and image size percentage.
+        The function also allows for debug mode, which highlights the node for easier troubleshooting, and supports specifying the icon image via a hashtable object.
 
     .PARAMETER Name
         Specifies the name of the node to be illustrated. This is a required parameter.
@@ -115,7 +115,7 @@ function Add-DiaNodeShape {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Shape Orientation (0-360 degrees).'
+            HelpMessage = 'Shape Border Size (1-10).'
         )]
         [ValidateRange(1, 10)]
         [int] $ShapeBorderSize = 1,
