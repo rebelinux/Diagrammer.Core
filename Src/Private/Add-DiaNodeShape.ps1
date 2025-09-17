@@ -135,12 +135,6 @@ function Add-DiaNodeShape {
         [string] $ShapeLabelPosition = 'center'
     )
 
-    if ($ShapeWidth -and -not $ShapeHeight) {
-        throw "ShapeWidth must be used if ShapeHeight is specified."
-    } elseif ($ShapeHeight -and -not $ShapeWidth) {
-        throw "ShapeHeight must be used if ShapeWidth is specified."
-    }
-
     $ShapeLabelAllocation = switch ($ShapeLabelPosition) {
         'top' { 't' }
         'bottom' { 'b' }

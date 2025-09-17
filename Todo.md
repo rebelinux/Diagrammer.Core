@@ -1,3 +1,4 @@
+[] Add Web Site (Github Pages with Mkdocs)
 [] Add Add-DiaNodeImage cmdlet to add a image with no text
     [Done] Add option to set image in percent
     [] Add option to set image opacity in percent
@@ -6,7 +7,7 @@
 [] Add cmdlet to add shapes (Rectangle, Circle, Triangle)
     [Done] Add option to set shape size (WxH)
     [Done] Add option to set shape color, borderline color, borderline style, etc..
-    [] Add Pester tests
+    [Done] Add Pester tests
 [] Create Pester tests for:
     [Done] Add-WatermarkToImage
     [Done] ConvertTo-Pdf-WaterMark
@@ -32,7 +33,8 @@
     [Done] Add Add-DiaHTMLTable example
     [Done] Add Watermark example
     [Done] Add Signature example
-    [] Add ShapeLine example
+    [Done] Add Shapes example
+    [] Add Add-DiaHTMLSubGraph example
 [] Add option to set icon size by percent
     [] Add-DiaNodeIcon
     [] Add-DiaHTMLNodeTable
