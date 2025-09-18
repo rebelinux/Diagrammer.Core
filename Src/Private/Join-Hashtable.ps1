@@ -16,6 +16,7 @@ function Join-Hashtable {
 
     .PARAMETER PreferSecondary
         If specified, values from the secondary hashtable will overwrite those from the primary hashtable for duplicate keys.
+        If either hashtable is null or not provided, an empty hashtable is used in its place.
 
     .EXAMPLE
         $primary = @{ Name = "Alice"; Age = 30 }
@@ -32,20 +33,23 @@ function Join-Hashtable {
         # Result: @{ Name = "Alice"; Age = 30; City = "Seattle" }
 
     .NOTES
-        If either hashtable is null or not provided, an empty hashtable is used in its place.
+        Author: Jonathan Colon
+        Version: 0.2.30
+        Twitter: @jcolonfzenpr
+        Github: rebelinux
     #>
     param (
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The primary hashtable to merge.'
         )]
-        [hashtable] $PrimaryHash,
+        [hashtable] $PrimaryHash = @{},
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The secondary hashtable to merge.'
         )]
-        [hashtable] $SecondaryHash,
+        [hashtable] $SecondaryHash = @{},
 
         [Parameter(
             Mandatory = $false,
@@ -53,10 +57,6 @@ function Join-Hashtable {
         )]
         [switch] $PreferSecondary
     )
-
-    # Validate input
-    if (-not $PrimaryHash) { $PrimaryHash = @{} }
-    if (-not $SecondaryHash) { $SecondaryHash = @{} }
 
     $merged = @{}
 

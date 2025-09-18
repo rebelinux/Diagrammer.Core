@@ -7,7 +7,8 @@
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
-    [array] $Format = @('png')
+    [array] $Format = @('png'),
+    [bool] $DraftMode = $false
 )
 
 <#
@@ -94,9 +95,9 @@ $example5 = & {
             -FontSize 18 sets the font size for the node label text.
         #>
 
-        $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
-        $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
-        $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
+        $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
+        $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
+        $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
 
         Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
         Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
@@ -122,11 +123,12 @@ $example5 = & {
     -MainDiagramLabel sets the diagram title.
     -Filename specifies the output file name (without extension).
     -LogoName selects which image from the hashtable to use as the diagram logo.
-    If the specified logo image is not found, the diagram uses no_icon.png [?].
+        - If the specified logo image is not found, the diagram uses no_icon.png [?].
     -Direction sets the diagram layout direction: left-to-right or top-to-bottom.
-    The layout is set to top-to-bottom using the Graph attribute.
+        - The layout is set to top-to-bottom using the Graph attribute.
+    -DraftMode, when set to $true, generates a draft version of the diagram for troubleshooting.
 
     -IconPath and -ImagesObj allow Diagrammer.Core to locate the png icon files.
 #>
 
-New-Diagrammer -InputObject $example5 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example5 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images
+New-Diagrammer -InputObject $example5 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example5 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

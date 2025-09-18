@@ -7,7 +7,8 @@
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
-    [array] $Format = @('png')
+    [array] $Format = @('png'),
+    [bool] $DraftMode = $false
 )
 
 <#

@@ -6,7 +6,8 @@
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
-    [array] $Format = @('png')
+    [array] $Format = @('png'),
+    [bool] $DraftMode = $false
 )
 
 <#
@@ -81,5 +82,6 @@ $example2 = & {
     If the specified logo image is not found in the hashtable, the diagram will be generated using a no_icon.png [?].
     The -Direction parameter sets the layout direction of the diagram. Options are: left-to-right, top-to-bottom.
     The layout is set to top-to-bottom (Top to Bottom) using the Graph attribute.
+    The -DraftMode parameter, when set to $true, generates a draft version of the diagram for troubleshooting.
 #>
-New-Diagrammer -InputObject $example2 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example2 -LogoName "Main_Logo" -Direction top-to-bottom
+New-Diagrammer -InputObject $example2 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example2 -LogoName "Main_Logo" -Direction top-to-bottom -DraftMode:$DraftMode

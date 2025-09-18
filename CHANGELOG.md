@@ -31,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Introduced a new PowerShell function, Add-DiaNodeImage, to generate an HTML table for displaying
   images with customizable properties such as border, style, and image size.
 - Add Join-Hashtable function for merging hashtables
+- Introduce the Add-DiaNodeSpacer function for creating spacer nodes.
+  - Add comprehensive tests for new and modified functions.
 
 ### Changed
 
@@ -46,6 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Update tests to cover new functionality and adjust existing test cases.
 - Enhanced Export-Diagrammer.ps1 and New-Diagrammer.ps1 to support watermark font opacity.
 - Update ImageMagick v7.1.2-3
+- Refactored the Add-DiaHtmlSignatureTable function to improve documentation and parameter descriptions.
+- Updated the Join-Hashtable function to handle null hashtables.
 
 ### Fixed
 
@@ -53,6 +57,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix consistency in the HTML structure for both top and bottom logo placements.
 - Fix test cases to reflect the correct HTML output for better validation.
 - Fix HTML table output by bolding cell content in Add-DiaHTMLNodeTable function
+
+### Removed
+
+- Removed the deprecated Add-DiaNodeFiller function.
 
 ## [0.2.29] - 2025-08-18
 

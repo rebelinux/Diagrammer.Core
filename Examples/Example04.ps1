@@ -7,7 +7,8 @@
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
-    [array] $Format = @('png')
+    [array] $Format = @('png'),
+    [bool] $DraftMode = $false
 )
 
 <#
@@ -95,8 +96,9 @@ $example4 = & {
     -MainDiagramLabel sets the diagram title.
     -Filename specifies the output file name (without extension).
     -LogoName selects which image from the hashtable to use as a logo in the diagram.
-    If the specified logo image is not found, the diagram uses no_icon.png [?].
+        - If the specified logo image is not found, the diagram uses no_icon.png [?].
     -Direction sets the diagram layout direction: left-to-right or top-to-bottom.
-    The layout is set to top-to-bottom using the Graphviz attribute (TB).
+        - The layout is set to top-to-bottom using the Graphviz attribute (TB).
+    -DraftMode, when set to $true, generates a draft version of the diagram for troubleshooting.
 #>
-New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName "Main_Logo" -Direction top-to-bottom
+New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName "Main_Logo" -Direction top-to-bottom -DraftMode:$DraftMode

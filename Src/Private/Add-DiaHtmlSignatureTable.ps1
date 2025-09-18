@@ -1,94 +1,70 @@
 function Add-DiaHtmlSignatureTable {
     <#
     .SYNOPSIS
-        Function to convert a string array to a HTML Table used to create the Signature table
+        Converts a string array to an HTML table for use in a Signature table.
+
     .DESCRIPTION
-        Takes an array and converts it to a HTML table used for GraphViz Node label
-    .Example
-        $Images = @{
-            "Main_Logo" = "Diagrammer.png"
-            "DomainController" = "AD_DC.png"
-            "Subnets" = "AD_Subnets.png"
-        }
-        $DCsArray = @("Server-dc-01v", "Server-dc-02v", "Server-dc-03v", "Server-dc-04v", "Server-dc-05v", "Server-dc-06v")
+        The Add-DiaHtmlSignatureTable function generates an HTML table representation from a string array, suitable for use as a Signature table, such as in GraphViz labels. It supports customization of table appearance, cell formatting, font styles, and inclusion of a logo image from a provided hashtable. The function also offers debug mode and various style options.
 
-        $DCNodes = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -columnSize 3 -Align 'Center' -iconType "DomainController" -MultiIcon
+    .PARAMETER Rows
+        An array of strings/objects to place in the table rows.
 
-        $TableObjects = @($DCNodes)
+    .PARAMETER Align
+        Alignment of content inside table cells. Default is 'Center'.
 
-        Add-DiaHtmlSubGraph -ImagesObj $Images -TableArray $TableObjects -Align "Center" -IconType 'DomainController' -columnSize 1 -Label 'Domain Controllers' -LabelPos 'top' -IconDebug $true
-        ____________________________________________________
-        | |                      ICON                     | |
-        ___________________________________________________ |
-        | |                Domain Controllers             | |
-        _____________________________________________________
-        | |               |               |               | |
-        | |      Icon     |     Icon      |      Icon     | |
-        __________________________________|_______________| |
-        | |               |               |               | |
-        | | Server-DC-01V | Server-DC-02V | Server-DC-02V | |
-        __________________________________|__________________
-        _____________________________________________________
-        | |               |               |               | |
-        | |      Icon     |     Icon      |      Icon     | |
-        __________________________________|_______________| |
-        | |               |               |               | |
-        | | Server-DC-04V | Server-DC-05V | Server-DC-06V | |
-        __________________________________|__________________
+    .PARAMETER TableBorder
+        The table border thickness. Default is 0.
+
+    .PARAMETER CellBorder
+        The table cell border thickness. Default is 0.
+
+    .PARAMETER CellSpacing
+        The table cell spacing. Default is 5.
+
+    .PARAMETER CellPadding
+        The table cell padding space. Default is 5.
+
+    .PARAMETER fontSize
+        The text font size used inside the cell. Default is 14.
+
+    .PARAMETER fontName
+        The text font name used inside the cell. Default is "Segoe Ui Black".
+
+    .PARAMETER fontColor
+        The text font color used inside the cell. Default is "#565656".
+
+    .PARAMETER ImagesObj
+        Hashtable mapping IconName to IconPath. Required for logo image support.
+
+    .PARAMETER IconDebug
+        Enables table debug mode, highlighting table borders and logo cell.
+
+    .PARAMETER TableStyle
+        Sets the table style (e.g., "ROUNDED", "RADIAL", "SOLID", "INVISIBLE", "INVIS", "DOTTED", "DASHED"). Styles can be combined.
+
+    .PARAMETER NoFontBold
+        Disables bold formatting for additional node info text.
+
+    .PARAMETER Label
+        Sets the SubGraph label.
+
+    .PARAMETER Logo
+        Icon name used to represent the node type, resolved from ImagesObj.
+
+    .PARAMETER TableBorderColor
+        Sets the subgraph table border color. Default is "#000000".
+
+    .OUTPUTS
+        [System.String] - Returns the generated HTML table as a string.
+
+    .EXAMPLE
+        Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: Bugs Bunny", "Company: ACME Inc." -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -DraftMode:$DraftMode
 
     .NOTES
-        Version:        0.2.27
+        Version:        0.2.30
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
-    .PARAMETER Row
-        An array of strings/objects to place in this record
-    .PARAMETER Align
-        Align content inside table cell
-    .PARAMETER TableBorder
-        The table border (Default: 0)
-    .PARAMETER CellBorder
-        The table cell border (Default: 0)
-    .PARAMETER CellPadding
-        The table cell padding space (Default: 5)
-    .PARAMETER CellSpace
-        The table cell space space (Default: 5)
-    .PARAMETER FontColor
-        The text font color used inside the cell (Default #565656)
-    .PARAMETER FontName
-        The text font name used inside the cell
-    .PARAMETER FontSize
-        The text font size used inside the cell
-    .PARAMETER Logo
-        Icon used to draw the node type
-    .PARAMETER ColumnSize
-        This number is used to specified how to split the object inside the HTML table.
-    .PARAMETER ImagesObj
-        Hashtable with the IconName > IconPath translation
-    .PARAMETER IconDebug
-        Set the table debug mode
-    .PARAMETER NoFontBold
-        Disable the node aditionalinfo bold in text
-    .PARAMETER Label
-        Allow to set SubGraph Label
-    .PARAMETER TableStyle
-        Set the table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)
-        styles can be combines ("rounded,dashed")
-    .PARAMETER TableBorderColor
-        Set the subgraph table border color
-    .PARAMETER IconWidth
-        Set the table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)
-        styles can be combines ("rounded,dashed")
-    .PARAMETER IconHeight
-        Set the table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)
-        styles can be combines ("rounded,dashed")
-    #>
-
-    <#
-        TODO
-        1. Add Icon to MultiColumns section
-        2. Change hardcoded values (FontName, FontColor, FontSize)
-        3. Document all parameters
     #>
 
     [CmdletBinding()]
@@ -160,16 +136,7 @@ function Add-DiaHtmlSignatureTable {
             HelpMessage = 'Disable the aditional text bold configuration'
         )]
         [Switch] $NoFontBold,
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Allow to set a subgraph icon width'
-        )]
-        [string] $IconWidth,
-        [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Allow to set a subgraph icon height'
-        )]
-        [string] $IconHeight,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the subgraph table label'
@@ -203,7 +170,7 @@ function Add-DiaHtmlSignatureTable {
 
     if ($ICON) {
         if ($IconDebug) {
-            return '<TABLE STYLE="{0}" border="{1}" cellborder="1" cellpadding="5"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{2}" colspan="1" rowspan="4">Logo</TD></TR>{3}</TABLE>' -f $TableStyle, $tableBorder, $Align, $TR
+            return '<TABLE STYLE="{0}" COLOR="red" border="{1}" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" colspan="1" rowspan="4">Logo</TD></TR>{3}</TABLE>' -f $TableStyle, $tableBorder, $Align, $TR
         } else {
             return '<TABLE STYLE="{0}" border="{1}" cellborder="{2}" cellpadding="{6}"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{3}" colspan="1" rowspan="4"><img src="{4}"/></TD></TR>{5}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $Align, $Icon, $TR, $CellPadding
         }
