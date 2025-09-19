@@ -5,8 +5,10 @@ BeforeAll {
 
 Describe ConvertTo-Base64 {
     BeforeAll {
+        $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
+
         $PassParams = @{
-            ImageInput = Join-Path $TestsFolder "Logo.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "Logo.png"
             Delete = $false
         }
         $FailParams = @{

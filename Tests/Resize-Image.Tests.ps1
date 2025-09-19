@@ -9,7 +9,7 @@ Describe Resize-Image {
         $env:TMP = $TestDrive
 
         $PassParamsValidParameters = @{
-            ImagePath = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImagePath = Join-Path "$TestsFolder\Icons" "AsBuiltReport.png"
             DestinationPath = $TestDrive
             Width = 1000
             Height = 1000
@@ -22,7 +22,7 @@ Describe Resize-Image {
 
         }
         $PassParamsNoDestinationPath = @{
-            ImagePath = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImagePath = Join-Path "$TestsFolder\Icons" "AsBuiltReport.png"
             Width = 1000
             Height = 1000
         }

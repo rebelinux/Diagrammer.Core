@@ -23,7 +23,7 @@ function Add-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.2.29
+        Version:        0.2.30
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -80,7 +80,7 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'A hashtable array containing additional information about the node.'
         )]
-        [Alias("RowsOrdered", "Rows")]
+        [Alias("RowsOrdered", "Rows", "AdditionalInfo")]
         $AditionalInfo,
 
         [Parameter(
@@ -116,6 +116,18 @@ function Add-DiaNodeIcon {
         [int] $FontSize = 14,
 
         [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'The cell text font name'
+        )]
+        [string] $FontName = "Segoe Ui Black",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'The cell text font color'
+        )]
+        [string] $FontColor = "#565656",
+
+        [Parameter(
             Mandatory = $true,
             HelpMessage = 'Specifies the type of icon to use for the node.'
         )]
@@ -131,6 +143,7 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
+        [Alias("DraftMode")]
         [bool] $IconDebug = $false,
 
         [Parameter(
@@ -207,15 +220,15 @@ function Add-DiaNodeIcon {
         if ($ICON -ne 'NoIcon') {
             if ($Align -eq "Center") {
                 if ($NoFontBold) {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' colspan='1'><FONT FACE='$FontName' Color='$FontColor' POINT-SIZE='$FontSize'>Icon</FONT></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'>$Name</FONT></TD></TR>$TR</TABLE>"
                 } else {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' colspan='1'>ICON</TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' colspan='1'><FONT FACE='$FontName' Color='$FontColor' POINT-SIZE='$FontSize'>Icon</FONT></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'>$Name</FONT></B></TD></TR>$TR</TABLE>"
                 }
             } else {
                 if ($NoFontBold) {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'>ICON</TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' rowspan='4' valign='Bottom'><FONT FACE='$FontName' Color='$FontColor' POINT-SIZE='$FontSize'>Icon</FONT></TD></TR><TR><TD align='$Align'><FONT POINT-SIZE='$FontSize'> $Name</FONT></TD></TR> $TR</TABLE>"
                 } else {
-                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD ALIGN='$Align' rowspan='4' valign='Bottom'>ICON</TD></TR><TR><TD align='$Align'><B> <FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
+                    "<TABLE color='red' border='1' cellborder='1' cellspacing='$CellSpacing' cellpadding='$CellPadding'><TR><TD bgcolor='#FFCCCC' ALIGN='$Align' rowspan='4' valign='Bottom'><FONT FACE='$FontName' Color='$FontColor' POINT-SIZE='$FontSize'>Icon</FONT></TD></TR><TR><TD align='$Align'><B><FONT POINT-SIZE='$FontSize'> $Name</FONT></B></TD></TR> $TR</TABLE>"
                 }
             }
         } else {

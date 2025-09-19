@@ -105,11 +105,17 @@ function New-Diagrammer {
     .PARAMETER WaterMarkText
         Specifies the text for the watermark.
 
+    .PARAMETER WaterMarkFontOpacity
+        The font opacity of the watermark text. The default opacity is 30. This parameter is optional.
+
     .PARAMETER MainGraphBGColor
         Specifies the background color of the diagram. Default is 'White'.
 
+    .PARAMETER MainGraphSize
+        Specifies the image resolution size. (e.g., 8,11! = 800x1100 pixels) Default = None.
+
     .NOTES
-        Version:        0.2.24
+        Version:        0.2.30
         Author(s):      Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -211,7 +217,7 @@ function New-Diagrammer {
                     throw "Path $_ not found!"
                 }
             })]
-        [System.IO.FileInfo] $IconPath,
+        [System.IO.FileInfo] $IconPath = (Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) 'icons'),
 
         [Parameter(
             Position = 4,
@@ -219,7 +225,10 @@ function New-Diagrammer {
             HelpMessage = 'Please provide the icons hashtable'
         )]
         [ValidateNotNullOrEmpty()]
-        [Hashtable] $ImagesObj,
+        [Hashtable] $ImagesObj = @{
+            "Main_Logo" = "Diagrammer.png"
+            "Logo_Footer" = "Diagrammer_footer.png"
+        },
 
         [Parameter(
             Mandatory = $false,
@@ -383,11 +392,29 @@ function New-Diagrammer {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Allow to set the font opacity of the watermark text (0 to 100)'
+        )]
+        [int] $WaterMarkFontOpacity = 30,
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Allow to set diagram backgroud color'
         )]
-        [string] $MainGraphBGColor = 'White'
-    )
+        [string] $MainGraphBGColor = 'White',
 
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set image resolution size (Ex: 8,11! = 800x1100 pixels)'
+        )]
+        [string] $MainGraphSize,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Set the image size in percent (100% is default)'
+        )]
+        [ValidateRange(1, 100)]
+        [int] $MainGraphLogoSizePercent = 100
+    )
 
     begin {
 
@@ -397,16 +424,6 @@ function New-Diagrammer {
         } else {
             $global:VerbosePreference = 'SilentlyContinue'
             $global:DebugPreference = 'SilentlyContinue'
-        }
-
-        # Variable translating Icon to Image Path ($IconPath)
-        if ($ImagesObj) {
-            $script:Images = $ImagesObj
-        } else {
-            $script:Images = @{
-                "Main_Logo" = "Diagrammer.png"
-                "Logo_Footer" = "Diagrammer_footer.png"
-            }
         }
 
         if (($Format -ne "base64") -and !(Test-Path $OutputFolderPath)) {
@@ -439,16 +456,16 @@ function New-Diagrammer {
         }
 
         # Validate Custom logo
-        if ($Logo -and (-Not $LogoName)) {
-            $CustomLogo = Test-Logo -LogoPath (Get-ChildItem -Path $Logo).FullName -IconPath $IconPath -ImagesObj $Images
+        if ($Logo -and (-not $LogoName)) {
+            $CustomLogo = Test-Logo -LogoPath (Get-ChildItem -Path $Logo).FullName -IconPath $IconPath -ImagesObj $ImagesObj
         } elseif ($LogoName) {
             $CustomLogo = $LogoName
         } else {
             $CustomLogo = "Diagrammer.png"
         }
         # Validate Custom Signature Logo
-        if ($SignatureLogo -and (-Not $SignatureLogoName )) {
-            $CustomSignatureLogo = Test-Logo -LogoPath (Get-ChildItem -Path $SignatureLogo).FullName -IconPath $IconPath -ImagesObj $Images
+        if ($SignatureLogo -and (-not $SignatureLogoName )) {
+            $CustomSignatureLogo = Test-Logo -LogoPath (Get-ChildItem -Path $SignatureLogo).FullName -IconPath $IconPath -ImagesObj $ImagesObj
         } elseif ($SignatureLogoName) {
             $CustomSignatureLogo = $SignatureLogoName
         } else {
@@ -469,6 +486,11 @@ function New-Diagrammer {
             nodesep = $NodeSeparation
             ranksep = $SectionSeparation
             bgcolor = $MainGraphBGColor
+            compound = $true
+        }
+
+        if ($MainGraphSize) {
+            $MainGraphAttributes['size'] = $MainGraphSize
         }
     }
 
@@ -502,9 +524,9 @@ function New-Diagrammer {
             if ($Signature) {
                 Write-Verbose -Message "Generating diagram signature"
                 if ($CustomSignatureLogo) {
-                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
+                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $ImagesObj -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
                 } else {
-                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
+                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $ImagesObj -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
                 }
             } else {
                 Write-Verbose -Message "No diagram signature specified"
@@ -522,7 +544,7 @@ function New-Diagrammer {
             # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
-                SubGraph MainGraph -Attributes @{Label = (Add-DiaHTMLLabel -ImagesObj $Images -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -IconWidth 250 -IconHeight 80 -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
+                SubGraph MainGraph -Attributes @{Label = (Add-DiaHTMLLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
                     $InputObject
                 }
             }
@@ -532,7 +554,7 @@ function New-Diagrammer {
         foreach ($OutputFormat in $Format) {
             #Export the Diagram
             if ($Graph) {
-                Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath
+                Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"([A-Z])\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath -WaterMarkFontOpacity $WaterMarkFontOpacity
             } else {
                 Write-Verbose -Message "No Graph object found. Disabling diagram section"
             }

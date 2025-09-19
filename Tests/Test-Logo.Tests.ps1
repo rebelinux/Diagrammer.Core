@@ -10,7 +10,7 @@ Describe Test-Logo {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
         }
-        $Logo = Join-Path $TestsFolder "Logo.png"
+        $Logo = Join-Path "$TestsFolder\Icons" "Logo.png"
         $ImageName = Test-Logo -LogoPath $Logo -IconPath $IconPath -ImagesObj $Images
         $LogoPath = Join-Path $IconPath 'Logo.png'
     }

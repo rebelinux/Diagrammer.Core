@@ -1,4 +1,4 @@
-function Split-array {
+function Split-Array {
     <#
     .SYNOPSIS
         Used by Diagrammer to split a object to a group of array.

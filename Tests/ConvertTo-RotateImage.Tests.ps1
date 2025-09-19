@@ -8,8 +8,10 @@ Describe ConvertTo-RotateImage {
         # Force the redirect-BeExactlyion of TMP to the TestDrive folder
         # $env:TMP = $TestDrive
 
+        $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
+
         $PassParamsValidParameters = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             DestinationPath = $TestDrive
             Angle = 90
         }
@@ -19,17 +21,17 @@ Describe ConvertTo-RotateImage {
             Angle = 90
         }
         $PassParamsNoDestinationPath = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             Angle = 90
         }
         $PassParamsDeleteImage = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             DestinationPath = $TestDrive
             Angle = 90
             DeleteImage = $true
         }
         $PassParamsAngleParameters = @{
-            ImageInput = Join-Path $TestsFolder "AsBuiltReport.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             DestinationPath = $TestDrive
         }
     }

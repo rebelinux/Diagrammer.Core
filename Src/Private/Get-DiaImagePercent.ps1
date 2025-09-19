@@ -5,22 +5,21 @@ function Get-DiaImagePercent {
     .DESCRIPTION
         This allow the diagram image to fit the report page margins
     .NOTES
-        Version:        0.2.27
+        Version:        0.2.30
         Author:         Jonathan Colon
     .EXAMPLE
     .LINK
     #>
     [CmdletBinding()]
     [OutputType([Hashtable])]
-    Param
+    param
     (
         [Parameter (
             Position = 0,
             Mandatory = $false,
             HelpMessage = 'Please provide Graphviz object'
         )]
-        [string]
-        $GraphObj,
+        [string] $GraphObj,
         [Parameter(
             Position = 1,
             Mandatory = $false,
@@ -33,16 +32,24 @@ function Get-DiaImagePercent {
                     throw "File $_ not found!"
                 }
             })]
-        [string] $ImageInput
+        [string] $ImageInput,
+
+        [Parameter (
+            Mandatory = $false,
+            HelpMessage = 'Set the image size in percent (100% is default)'
+        )]
+        [ValidateRange(10, 100)]
+        [int] $Percent
+
     )
 
     begin {
         # Validate mandatory parameters
-        if ((-Not $PSBoundParameters.ContainsKey('ImageInput')) -and (-Not $PSBoundParameters.ContainsKey('GraphObj'))) {
+        if ((-not $PSBoundParameters.ContainsKey('ImageInput')) -and (-not $PSBoundParameters.ContainsKey('GraphObj'))) {
             throw "Error: Please provide a image path or a graphviz string to process."
         }
     }
-    Process {
+    process {
 
         if ($GraphObj) {
             $ImagePrty = @{}
@@ -54,9 +61,16 @@ function Get-DiaImagePercent {
             }
 
             if ($Image_FromStream) {
-                $ImagePrty = @{
-                    'Width' = $Image_FromStream.Width
-                    'Height' = $Image_FromStream.Height
+                if ($Percent) {
+                    $ImagePrty = @{
+                        'Width' = ($Image_FromStream.Width / 100) * $Percent
+                        'Height' = ($Image_FromStream.Height / 100) * $Percent
+                    }
+                } else {
+                    $ImagePrty = @{
+                        'Width' = $Image_FromStream.Width
+                        'Height' = $Image_FromStream.Height
+                    }
                 }
                 return $ImagePrty
             } else {
@@ -72,9 +86,16 @@ function Get-DiaImagePercent {
             }
 
             if ($Image) {
-                $ImagePrty = @{
-                    'Width' = $Image.Width
-                    'Height' = $Image.Height
+                if ($Percent) {
+                    $ImagePrty = @{
+                        'Width' = ($Image.Width / 100) * $Percent
+                        'Height' = ($Image.Height / 100) * $Percent
+                    }
+                } else {
+                    $ImagePrty = @{
+                        'Width' = $Image.Width
+                        'Height' = $Image.Height
+                    }
                 }
                 return $ImagePrty
             } else {
