@@ -246,16 +246,16 @@ $example15 = & {
                 ** In this example, we create two spacer nodes to help align the web server node. **
             #>
 
-            Add-DiaNodeSpacer -Name "FillerRight" -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
-            Add-DiaNodeSpacer -Name "FillerLeft" -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
+            Add-DiaNodeSpacer -Name "SpaceRight" -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
+            Add-DiaNodeSpacer -Name "SpaceLeft" -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
 
-            Rank -Nodes FillerLeft, Web01, FillerRight
+            Rank -Nodes SpaceLeft, Web01, SpaceRight
 
             $Style = if ($DraftMode) { 'filled' } else { 'invis' }
             $StyleColor = if ($DraftMode) { 'red' } else { 'transparent' }
 
-            Edge -From FillerLeft -To Web01 @{minlen = 2; style = $Style; color = $StyleColor; }
-            Edge -From Web01 -To FillerRight @{minlen = 2; style = $Style; color = $StyleColor; }
+            Edge -From SpaceLeft -To Web01 @{minlen = 2; style = $Style; color = $StyleColor; }
+            Edge -From Web01 -To SpaceRight @{minlen = 2; style = $Style; color = $StyleColor; }
         }
     }
 }

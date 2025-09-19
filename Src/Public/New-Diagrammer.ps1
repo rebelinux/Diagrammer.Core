@@ -486,6 +486,7 @@ function New-Diagrammer {
             nodesep = $NodeSeparation
             ranksep = $SectionSeparation
             bgcolor = $MainGraphBGColor
+            compound = $true
         }
 
         if ($MainGraphSize) {

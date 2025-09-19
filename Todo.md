@@ -36,7 +36,6 @@
     [] Add-DiaNodeIcon
     [] Add-DiaHTMLNodeTable
     [] Add-DiaHTMLSubGraph
-    [] Add-DiaNodeFiller
     [] Add pester to test this funtionality
 [] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
     [] Add-DiaNodeFiller
