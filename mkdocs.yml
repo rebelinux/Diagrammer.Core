@@ -1,0 +1,85 @@
+# https://www.mkdocs.org/user-guide/configuration/
+# https://www.mkdocs.org/user-guide/writing-your-docs/
+# https://www.mkdocs.org/user-guide/writing-your-docs/#writing-with-markdown
+# https://mkdocs.readthedocs.io/en/0.15.2/user-guide/writing-your-docs/
+# https://mkdocs.readthedocs.io/en/0.15.2/user-guide/styling-your-docs/
+# https://example-mkdocs-basic.readthedocs.io/en/latest/
+# https://github.com/mkdocs/mkdocs/blob/master/mkdocs.yml
+# https://squidfunk.github.io/mkdocs-material/creating-your-site/
+# mkdocs.yml
+---
+site_name: "Diagrammer.Core"
+site_url: "https://rebelinux.github.io/Diagrammer.Core"
+repo_url: "https://github.com/rebelinux/Diagrammer.Core"
+repo_name: "rebelinux/Diagrammer.Core"
+# edit_uri: edit/main/docs/
+# edit_uri_template:
+site_description: "Diagrammer.Core is a PowerShell module which provides the core framework for generating as built diagrams for many common datacenter systems." # meta tag to the generated HTML header
+site_author: "Jonathan Colon" # meta tag to the generated HTML header
+copyright: "(c) 2025 Jonathan Colon."
+# remote_branch: gh-deploy
+# remote_name:
+docs_dir: "Docs"
+# site_dir:
+# extra_css:
+# extra_javascript:
+# markdown_extensions:
+# Python Markdown
+# - admonition
+# - toc:
+#     permalink: true
+# code highlighting
+# - pymdownx.highlight:
+#     use_pygments: true
+# - pymdownx.highlight:
+#     anchor_linenums: true
+# - pymdownx.inlinehilite
+# - pymdownx.snippets
+# - pymdownx.superfences
+
+# extra_templates:
+# extra:
+
+# #plugins:
+# #  - social
+
+theme:
+  name: material
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - powershell
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+  language: en
+  # custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - toc.integrate
