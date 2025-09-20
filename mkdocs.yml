@@ -45,7 +45,7 @@ docs_dir: "Docs"
 
 theme:
   name: material
-  favicon: images/favicon.png
+  favicon: images/favicon.ico
   highlightjs: true
   hljs_languages:
     - yaml
