@@ -31,7 +31,7 @@
 
 Diagrammer.Core is a PowerShell module which provides the core framework for generating as built diagrams for many common datacenter systems. The Diagrammer.Core module is required by each individual diagrammer module used to generate as built diagrams for a specific product and/or technology.
 
-# :account-school-outline: Getting Started
+# :beginner: Getting Started
 
 The following simple list of instructions will get you started with the Diagrammer.Core module.
 
