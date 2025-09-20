@@ -96,17 +96,17 @@ Describe Example15 {
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match FillerRight node" {
+            It "Should match SpaceRight node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "FillerRight"
+                $ExpectedText = "SpaceRight"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match FillerLeft node" {
+            It "Should match SpaceLeft node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "FillerLeft"
+                $ExpectedText = "SpaceLeft"
 
                 $DotContent | Should -Match $ExpectedText
             }
@@ -220,17 +220,17 @@ Describe Example15 {
             $DotContent | Should -Match $ExpectedText
             $DotContent | Should -Match $ExpectedEdgeLabel
         }
-        It "Should match FillerLeft -> Web01 edge" {
+        It "Should match SpaceLeft -> Web01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "FillerLeft -> Web01"
+            $ExpectedText = "SpaceLeft -> Web01"
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Web01 -> FillerRight edge" {
+        It "Should match Web01 -> SpaceRight edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01 -> FillerRight"
+            $ExpectedText = "Web01 -> SpaceRight"
 
             $DotContent | Should -Match $ExpectedText
         }
