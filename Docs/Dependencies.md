@@ -84,7 +84,6 @@ graph g {
 
 ### Resulting GraphViz Source Code
 
-
 ```dot
 digraph Root {
 	graph [bb="0,0,414,1618.8",
@@ -93,7 +92,6 @@ digraph Root {
 		fontcolor="#565656",
 		fontname="Segoe Ui Black",
 		fontsize=32,
-		imagepath="Icons",
 		labelloc=t,
 		nodesep=0.6,
 		pad=1,
@@ -120,53 +118,42 @@ digraph Root {
 		penwidth=3,
 		style=dashed
 	];
-    subgraph cluster3tier {
-    graph [bb="24,65.75,628,847",
-        color=darkgray,
-        fontsize=18,
-        label="3 Tier Concept",
-        labelloc=t,
-        lheight=0.34,
-        lp="326,830.62",
-        lwidth=1.75,
-        penwidth=1.5,
-        style="dashed,rounded"
-    ];
     {
-        graph [rank=same];
-        App01	[fillcolor=transparent,
+        {
+            graph [rank=same];
+            App01	[fillcolor=transparent,
+                height=3.8194,
+                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='../Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>App-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Windows Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 2019</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 17763.3163</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Datacenter</FONT></TD></TR></TABLE>>,
+                pos="118,211.25",
+                shape=plain,
+                width=2.3924];
+            DB01	[fillcolor=transparent,
+                height=3.8194,
+                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='../Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Db-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Oracle Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 8</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 8.2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
+                pos="541,211.25",
+                shape=plain,
+                width=2.2049];
+        }
+        Web01	[fillcolor=transparent,
             height=3.8194,
-            label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='../Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>App-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Windows Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 2019</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 17763.3163</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Datacenter</FONT></TD></TR></TABLE>>,
-            pos="118,211.25",
-            shape=plain,
-            width=2.3924];
-        DB01	[fillcolor=transparent,
-            height=3.8194,
-            label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='../Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Db-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Oracle Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 8</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 8.2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
-            pos="541,211.25",
+            label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='../Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
+            pos="118,668.75",
             shape=plain,
             width=2.2049];
-    }
-    Web01	[fillcolor=transparent,
-        height=3.8194,
-        label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='../Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
-        pos="118,668.75",
-        shape=plain,
-        width=2.2049];
-    Web01 -> App01	[color=black,
-        fontcolor=black,
-        fontsize=14,
-        label=gRPC,
-        lp="134.12,440",
-        minlen=3,
-        pos="s,118,531.3 e,118,348.43 118,520.44 118,480.56 118,448.25 118,448.25 118,448.25 118,409.14 118,362.7"];
-    App01 -> DB01	[color=black,
-        fontcolor=black,
-        fontsize=14,
-        label=SQL,
-        lp="332.88,222.5",
-        minlen=3,
-        pos="s,204.11,211.25 e,461.8,211.25 214.94,211.25 284.76,211.25 378.43,211.25 447.46,211.25"];
+        Web01 -> App01	[color=black,
+            fontcolor=black,
+            fontsize=14,
+            label=gRPC,
+            lp="134.12,440",
+            minlen=3,
+            pos="s,118,531.3 e,118,348.43 118,520.44 118,480.56 118,448.25 118,448.25 118,448.25 118,409.14 118,362.7"];
+        App01 -> DB01	[color=black,
+            fontcolor=black,
+            fontsize=14,
+            label=SQL,
+            lp="332.88,222.5",
+            minlen=3,
+            pos="s,204.11,211.25 e,461.8,211.25 214.94,211.25 284.76,211.25 378.43,211.25 447.46,211.25"];
     }
 }
 ```
