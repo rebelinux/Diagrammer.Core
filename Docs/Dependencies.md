@@ -76,8 +76,8 @@ graph g {
     Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
     Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
     Node -Name DB01 -Attributes @{Label = $DB01Label; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
-    Edge Web,App @{label='HTTP'}
-    Edge App,DB @{label='SQL'}
+    Edge -From Web -To App @{label='HTTP'}
+    Edge -From App -To DB @{label='SQL'}
     Rank -Nodes App01, DB01
 }
 ```
