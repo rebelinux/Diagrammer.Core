@@ -47,7 +47,6 @@ theme:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/rebelinux
-    - icon: fontawesome/brands/twitter
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/jcolonfzenpr
     - icon: fontawesome/brands/bluesky
