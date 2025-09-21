@@ -40,7 +40,18 @@ theme:
         name: Switch to system preference
 
   language: en
-  # custom_dir: overrides
+  extra:
+  analytics:
+    provider: google
+    property: G-YKVJHV5M0M
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rebelinux
+    - icon: fontawesome/brands/twitter
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/jcolonfzenpr
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/jcolonfpr.bsky.social
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -54,18 +65,6 @@ theme:
     - toc.follow
     - toc.integrate
 
-extra:
-  analytics:
-    provider: google
-    property: G-YKVJHV5M0M
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/rebelinux
-    - icon: fontawesome/brands/twitter
-    - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/in/jcolonfzenpr
-    - icon: fontawesome/brands/bluesky
-      link: https://bsky.app/profile/jcolonfpr.bsky.social
 
 markdown_extensions:
   - attr_list
