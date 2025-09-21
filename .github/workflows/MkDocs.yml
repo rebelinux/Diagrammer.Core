@@ -41,8 +41,6 @@ jobs:
           pip install mkdocs mkdocs-material mkdocs-graphviz
 
       - name: Build & Deploy MkDocs
-        env:
-          CONFIG_FILE: Docs/mkdocs.yml
         run: |
-          mkdocs build
+          mkdocs build --config-file Docs/mkdocs.yml
           mkdocs gh-deploy --force
