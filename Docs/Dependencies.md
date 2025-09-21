@@ -22,7 +22,7 @@ Graph g {
     Mode DB @{shape='oval'}
     Edge Web,App @{label='HTTP'}
     Edge App,DB @{label='SQL'}
-    Rank Web,App,DB
+    Rank App,DB
 }
 ```
 
