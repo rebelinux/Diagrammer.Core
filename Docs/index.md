@@ -79,13 +79,13 @@ On the offline system, open a PowerShell console window and run the following co
 
 **Windows**
 
-```powershell title=""
+```powershell
 $env:PSModulePath -Split ';'
 ```
 
 **macOS & Linux**
 
-```powershell title=""
+```powershell
 $env:PSModulePath -Split ':'
 ```
 
