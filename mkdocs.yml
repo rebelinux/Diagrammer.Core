@@ -57,6 +57,14 @@ extra:
   analytics:
     provider: google
     property: G-YKVJHV5M0M
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rebelinux
+    - icon: fontawesome/brands/twitter
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/jcolonfzenpr
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/jcolonfpr.bsky.social
 
 markdown_extensions:
   - attr_list
