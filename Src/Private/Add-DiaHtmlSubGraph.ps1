@@ -29,7 +29,7 @@ function Add-DiaHTMLSubGraph {
             _________________
 
     .NOTES
-        Version:        0.2.27
+        Version:        0.2.30
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -195,6 +195,11 @@ function Add-DiaHTMLSubGraph {
         [string]$TableBorderColor = "#000000",
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Allow to set a table border color'
+        )]
+        [string]$TableBackgroundColor = "#ffffff",
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Allow to set a subgraph icon width'
         )]
         [int] $IconWidth = 40,
@@ -212,7 +217,7 @@ function Add-DiaHTMLSubGraph {
     if ($TableArray.Count -le 1) {
         $Group = $TableArray
     } else {
-        $Group = Split-array -inArray $TableArray -size $ColumnSize
+        $Group = Split-Array -inArray $TableArray -size $ColumnSize
     }
 
     $Number = 0
@@ -285,17 +290,17 @@ function Add-DiaHTMLSubGraph {
 
     if ($IconDebug) {
         if ($TableStyle) {
-            return '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{3}">{0}</TABLE>' -f $TR, $TableStyle, $CellSpacing, $CellPadding
+            return '<TABLE BGColor="{0}" STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{3}</TABLE>' -f $TableBackgroundColor, $TableStyle, $CellPadding, $TR
 
         } else {
-            return '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="{1}">{0}</TABLE>' -f $TR, $CellPadding
+            return '<TABLE BGColor="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{1}">{2}</TABLE>' -f $TableBackgroundColor, $CellPadding, $TR
         }
     } else {
         if ($TableStyle) {
-            return '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
+            return '<TABLE BGColor="{0}" COLOR="{5}" STYLE="{4}" border="{1}" cellborder="{2}" cellpadding="{7}" cellspacing="{6}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
 
         } else {
-            return '<TABLE COLOR="{3}" border="{0}" cellborder="{1}" cellpadding="{5}" cellspacing="{4}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
+            return '<TABLE BGColor="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
         }
     }
 }
