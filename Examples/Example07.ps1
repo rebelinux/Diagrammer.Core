@@ -81,9 +81,7 @@ $example7 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
-
-        <#
+    <#
             This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties.
             Graphviz supports HTML tables to extend object labels, allowing images, text, and tables within Node, Edge, and Subgraph attribute script blocks.
             Add-DiaNodeIcon extends PSGraph to improve the appearance of the generated diagram (Add-DiaNodeIcon is part of Diagrammer.Core).
@@ -96,30 +94,29 @@ $example7 = & {
             -DraftMode $true enables DraftMode, which adds a border around the node to help with positioning and layout adjustments.
         #>
 
-        $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AdditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18  -DraftMode:$DraftMode
-        $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AdditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-        $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AdditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
+    $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AdditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18  -DraftMode:$DraftMode
+    $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AdditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
+    $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AdditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
 
-        Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
-        Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
-        Node -Name DB01 -Attributes @{Label = $DB01Label; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+    Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+    Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+    Node -Name DB01 -Attributes @{Label = $DB01Label; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
 
-        <#
+    <#
             This section creates connections between the nodes in a hierarchical layout.
             The Edge statements create connections between the nodes. (Edge is a reserved word in the PSGraph module)
             https://psgraph.readthedocs.io/en/latest/Command-Edge/
         #>
 
-        Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
-        Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+    Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+    Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
 
-        <#
+    <#
             The Rank cmdlet is used to place nodes at the same hierarchical level.
             In this example, App01 and DB01 are aligned horizontally.
             https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/
         #>
-        Rank -Nodes App01, DB01
-    }
+    Rank -Nodes App01, DB01
 }
 
 <#
