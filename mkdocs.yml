@@ -49,6 +49,7 @@ theme:
     - navigation.instant.prefetch
     - navigation.tracking
     - navigation.sections
+    - navigation.footer
     - navigation.top
     - toc.follow
     - toc.integrate
