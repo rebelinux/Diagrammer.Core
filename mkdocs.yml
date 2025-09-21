@@ -43,7 +43,7 @@ theme:
   extra:
   analytics:
     provider: google
-    property: G-YKVJHV5M0M
+    property: !ENV GOOGLE_ANALYTICS_KEY
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/rebelinux
