@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add TableBackgroundColor parameter to Add-DiaHTMLSubGraph cmdlet
 - Add Dependabot support for GitHub Actions and PowerShell modules
 - Add tests for Add-DiaHTMLSubGraph with custom TableBackgroundColor and update existing test cases
+- Add Graphviz support and update documentation
+- Install mkdocs-graphviz as a dependency in the workflow.
+- Create Dependencies.md to outline essential dependencies for PSGraph.
+
+### Changed
+
+- Update index.md with additional content for clarity.
+- Modify mkdocs.yml to include Graphviz in markdown extensions and extra JavaScript.
 
 ### Fixed
 

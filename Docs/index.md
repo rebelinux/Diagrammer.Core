@@ -15,3 +15,6 @@ The objective of Diagrammer.Core is to provide a standardized, extensible platfo
 - Simplified integration for product-specific diagrammer modules.
 - Enhanced collaboration and communication among IT teams.
 - Greater flexibility and customization in visualizing complex environments.
+
+
+
