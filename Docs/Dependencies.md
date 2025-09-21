@@ -84,7 +84,7 @@ graph g {
 
 ### Resulting GraphViz Source Code
 
-<img src="./assets/example_diagram.png" alt="Example Diagram" width="200"/>
+<img src="../assets/example_diagram.png" alt="Example Diagram" width="200"/>
 
 
 
