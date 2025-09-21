@@ -84,7 +84,8 @@ graph g {
 
 ### Resulting GraphViz Source Code
 
-![Example Diagram](./assets/example_diagram.png)
+<img src="./assets/example_diagram.png" alt="Example Diagram" width="600"/>
+
 
 
 ```dot
