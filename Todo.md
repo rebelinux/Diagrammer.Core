@@ -1,3 +1,24 @@
+[] Research a way to put the Add-DiaNodeIcon in a horizontal like design
+    [Done] Current design is vertical
+        _________
+        | Image |
+        _________
+        | Name  |
+        _________
+        |       |
+        | Info  |
+        |       |
+        _________
+    [] Desired design is horizontal
+        _______________________________
+        | Image |                     |
+        |       |                     |
+        ---------        Info         |
+        |       |                     |
+        | Name  |                     |
+        _______________________________
+
+[] Add cmdlet to create Text Box (Add-DiaNodeHTMLText)
 [] Add Web Site (Github Pages with Mkdocs)
     [Done] Add Logo and Favicon
     [Done] Add Google Analytics
@@ -20,7 +41,8 @@
 [] Add support for MACOS (Graphviz)
 [] Add Documentation (use pscribo as example)
     [] Add ShapeLine example
-    [] Add Add-DiaHTMLSubGraph example
+    [Done] Add Add-DiaHTMLSubGraph example
+    [] Add Add-DiaHTMLText example
 [] Add option to set icon size by percent
     [] Add-DiaNodeIcon
     [] Add-DiaHTMLNodeTable
