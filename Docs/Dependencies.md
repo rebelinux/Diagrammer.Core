@@ -18,6 +18,8 @@ graph g {
 }
 ```
 
+### Resulting GraphViz Dot source code
+
 ```dot
 digraph g {
     "start" [shape="house"]
