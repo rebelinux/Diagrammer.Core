@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.31] - 2025-09-??
 
+### Added
+
+- Add AdvancedExample01.ps1 to demonstrate the use of Add-DiaHTMLSubGraph cmdlet
+- Add TableBackgroundColor parameter to Add-DiaHTMLSubGraph cmdlet
+
 ### Fixed
 
 Fix regex pattern in New-Diagrammer function to correctly match graph object labels for export
@@ -16,26 +21,26 @@ Fix regex pattern in New-Diagrammer function to correctly match graph object lab
 ### Added
 
 - Add examples for creating 3-tier web application diagrams using Diagrammer module
-  - Created Example01.ps1 demonstrating a basic 3-tier web application diagram without object icons.
-  - Created Example02.ps1 to illustrate connecting nodes and showing relationships in the diagram.
-  - Created Example03.ps1 featuring a clustered representation of servers using SubGraph.
-  - Created Example04.ps1 to enhance diagrams with icons and additional server information.
-  - Created Example05.ps1 to add icons and additional information to Node objects.
-  - Created Example06.ps1 to enable DraftMode for easier troubleshooting and layout adjustments
-  - Created Example07.ps1 to demonstrate the use of the Rank.
-  - Created Example08.ps1 to demonstrate Add-DiaHTMLNodeTable feature
-  - Created Example09.ps1 to demonstrate Add-DiaHTMLNodeTable with MultiIcon feature
-  - Created Example10.ps1 to demonstrate the use of the Add-DiaNodeImage cmdlet
-  - Created Example11.ps1 to demonstrate the use of the Add-DiaHTMLTable cmdlet
-  - Created Example12.ps1 to demonstrate the use of the WaterMark feature
-  - Created Example13.ps1 to demonstrate the use of the Signature feature (Add-DiaHtmlSignatureTable)
-  - Created Example14.ps1 to demonstrate the use of the Custom shapes feature (Add-DiaNodeShape)
-  - Created Example15.ps1 to demostrate the use of Add-DiaNodeSpacer cmdlet
-- Added multiple icon files for use in tests.
-- Updated New-Diagrammer.ps1 to support image resolution size and improved icon handling.
-- Enhanced Add-DiaNodeIcon and related functions to support additional font styling options.
-- Updated documentation in Todo.md to include new examples and tasks.
-- Introduced a new PowerShell function, Add-DiaNodeImage, to generate an HTML table for displaying
+  - Create Example01.ps1 demonstrating a basic 3-tier web application diagram without object icons.
+  - Create Example02.ps1 to illustrate connecting nodes and showing relationships in the diagram.
+  - Create Example03.ps1 featuring a clustered representation of servers using SubGraph.
+  - Create Example04.ps1 to enhance diagrams with icons and additional server information.
+  - Create Example05.ps1 to add icons and additional information to Node objects.
+  - Create Example06.ps1 to enable DraftMode for easier troubleshooting and layout adjustments
+  - Create Example07.ps1 to demonstrate the use of the Rank.
+  - Create Example08.ps1 to demonstrate Add-DiaHTMLNodeTable feature
+  - Create Example09.ps1 to demonstrate Add-DiaHTMLNodeTable with MultiIcon feature
+  - Create Example10.ps1 to demonstrate the use of the Add-DiaNodeImage cmdlet
+  - Create Example11.ps1 to demonstrate the use of the Add-DiaHTMLTable cmdlet
+  - Create Example12.ps1 to demonstrate the use of the WaterMark feature
+  - Create Example13.ps1 to demonstrate the use of the Signature feature (Add-DiaHtmlSignatureTable)
+  - Create Example14.ps1 to demonstrate the use of the Custom shapes feature (Add-DiaNodeShape)
+  - Create Example15.ps1 to demonstrate the use of Add-DiaNodeSpacer cmdlet
+- Add multiple icon files for use in tests.
+- Update New-Diagrammer.ps1 to support image resolution size and improved icon handling.
+- Enhance Add-DiaNodeIcon and related functions to support additional font styling options.
+- Update documentation in Todo.md to include new examples and tasks.
+- Introduce a new PowerShell function, Add-DiaNodeImage, to generate an HTML table for displaying
   images with customizable properties such as border, style, and image size.
 - Add Join-Hashtable function for merging hashtables
 - Introduce the Add-DiaNodeSpacer function for creating spacer nodes.
@@ -46,17 +51,17 @@ Fix regex pattern in New-Diagrammer function to correctly match graph object lab
 - Enhance function to set cell background color for Icon/SubGraph Icon table rows in Draftmode
   - Add-DiaNodeIcon
   - Add-DiaHTMLNodeTable
-- Updated all workflow files to use windows-latest
+- Update all workflow files to use windows-latest
 - Update module manifest
 - Enhance Add-DiaHTMLTable with NodeObject support;
 - Refactor Split-Array function name
 - Update main project icon (Thanks to Copilot)
 - Enhance Add-DiaHTMLLabel function with new IconPath parameter and improve image handling
   - Update tests to cover new functionality and adjust existing test cases.
-- Enhanced Export-Diagrammer.ps1 and New-Diagrammer.ps1 to support watermark font opacity.
+- Enhance Export-Diagrammer.ps1 and New-Diagrammer.ps1 to support watermark font opacity.
 - Update ImageMagick v7.1.2-3
-- Refactored the Add-DiaHtmlSignatureTable function to improve documentation and parameter descriptions.
-- Updated the Join-Hashtable function to handle null hashtables.
+- Refactor the Add-DiaHtmlSignatureTable function to improve documentation and parameter descriptions.
+- Update the Join-Hashtable function to handle null hashtables.
 
 ### Fixed
 
