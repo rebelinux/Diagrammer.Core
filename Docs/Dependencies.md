@@ -17,9 +17,11 @@ These dependencies are essential for the module's functionality and performance.
 
 ```powershell
 graph g {
-    node start @{shape='house'}
-    node end @{shape='invhouse'}
-    edge start,middle,end
+    node Web @{shape='oval'}
+    node App @{shape='oval'}
+    node DB @{shape='oval'}
+    edge Web,App @{label='HTTP'}
+    edge App,DB @{label='SQL'}
 }
 ```
 
@@ -27,9 +29,11 @@ graph g {
 
 ```dot
 digraph g {
-    "start" [shape="house"]
-    "end" [shape="invhouse"]
-    "start"->"middle"
-    "middle"->"end"
+    compound="true";
+    "Web" [shape="oval";]
+    "App" [shape="oval";]
+    "DB" [shape="oval";]
+    "Web"->"App" [label="HTTP";]
+    "App"->"DB" [label="SQL";]
 }
 ```
