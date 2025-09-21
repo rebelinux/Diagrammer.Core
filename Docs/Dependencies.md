@@ -17,12 +17,10 @@ These dependencies are essential for the module's functionality and performance.
 
 ```powershell
 Graph g {
-    Node Web @{shape='oval'}
-    Mode App @{shape='oval'}
-    Mode DB @{shape='oval'}
+    Node Web,App,DB @{shape='oval'}
     Edge Web,App @{label='HTTP'}
     Edge App,DB @{label='SQL'}
-    Rank App,DB
+    Rank App, DB
 }
 ```
 
@@ -38,6 +36,7 @@ digraph g {
     "DB" [shape="oval";]
     "Web"->"App" [label="HTTP";]
     "App"->"DB" [label="SQL";]
+    { rank=same;  "App"; "DB"; }
 }
 ```
 
