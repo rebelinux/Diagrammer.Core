@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add AdvancedExample01.ps1 to demonstrate the use of Add-DiaHTMLSubGraph cmdlet
 - Add TableBackgroundColor parameter to Add-DiaHTMLSubGraph cmdlet
 - Add Dependabot support for GitHub Actions and PowerShell modules
+- Add tests for Add-DiaHTMLSubGraph with custom TableBackgroundColor and update existing test cases
 
 ### Fixed
 
