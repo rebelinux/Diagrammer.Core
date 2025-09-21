@@ -1,6 +1,6 @@
 ## Dependencies
 
-Diagrammer.Core relies on the following dependencies to PSGraph to facilitate diagram generation and rendering.
+Diagrammer.Core relies on the following dependencies to facilitate diagram generation and rendering.
 
 - **PSGraph**: A PowerShell module for creating and rendering GraphViz diagrams.
 - **GraphViz**: An open-source graph visualization software that provides the necessary tools to render diagrams defined in the DOT language.
@@ -82,6 +82,12 @@ graph g {
 }
 ```
 
+In essence, Diagrammer.Core uses the Graphviz capabilities to render HTML-like labels, which allows for a more detailed and structured representation of nodes within the diagrams. This feature enhances the clarity and comprehensibility of the diagrams, making them more effective for conveying information.
+
 ### Resulting GraphViz Source Code
 
 <img src="../assets/example_diagram.png" alt="Example Diagram" width="400"/>
+
+
+Diagrammer.Core leverages the capabilities of PSGraph and GraphViz to provide a powerful and flexible solution for generating and rendering diagrams. By utilizing these dependencies, Diagrammer.Core can create visually appealing and informative diagrams that effectively communicate complex information.
+
