@@ -84,7 +84,10 @@ graph g {
 
 ### Resulting GraphViz Source Code
 
-```dot
+![Example Diagram](./assets/example_diagram.png)
+
+
+<!-- ```dot
 digraph Root {
 	graph [bb="0,0,414,1618.8",
 		bgcolor=White,
@@ -156,4 +159,4 @@ digraph Root {
             pos="s,204.11,211.25 e,461.8,211.25 214.94,211.25 284.76,211.25 378.43,211.25 447.46,211.25"];
     }
 }
-```
+``` -->
