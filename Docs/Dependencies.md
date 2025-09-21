@@ -89,5 +89,5 @@ In essence, Diagrammer.Core uses the Graphviz capabilities to render HTML-like l
 <img src="../assets/example_diagram.png" alt="Example Diagram" width="400"/>
 
 
-Diagrammer.Core leverages the capabilities of PSGraph and GraphViz to provide a powerful and flexible solution for generating and rendering diagrams. By utilizing these dependencies, Diagrammer.Core can create visually appealing and informative diagrams that effectively communicate complex information.
+In summary, Diagrammer.Core leverages the capabilities of PSGraph and GraphViz to provide a powerful and flexible solution for generating and rendering diagrams. By utilizing these dependencies, Diagrammer.Core can create visually appealing and informative diagrams that effectively communicate complex information.
 
