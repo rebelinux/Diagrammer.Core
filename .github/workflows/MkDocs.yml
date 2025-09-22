@@ -42,5 +42,5 @@ jobs:
 
       - name: Build & Deploy MkDocs
         run: |
-          mkdocs build --config-file
+          mkdocs build
           mkdocs gh-deploy --force
