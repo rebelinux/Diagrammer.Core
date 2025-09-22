@@ -1,7 +1,7 @@
 # mkdocs.yml
 ---
 site_name: "Diagrammer.Core"
-site_url: "https://rebelinux.github.io/Diagrammer.Core"
+site_url: "https://diagrammer.techmyth.blog/"
 repo_url: "https://github.com/rebelinux/Diagrammer.Core"
 repo_name: "rebelinux/Diagrammer.Core"
 
@@ -39,36 +39,77 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
   language: en
+
+  # Customizations
   extra:
-  analytics:
-    provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/rebelinux
-    - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/in/jcolonfzenpr
-    - icon: fontawesome/brands/bluesky
-      link: https://bsky.app/profile/jcolonfpr.bsky.social
-  features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.path
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.tracking
-    - navigation.sections
-    - navigation.footer
-    - navigation.top
-    - toc.follow
-    - toc.integrate
+    analytics:
+      provider: google
+      property: !ENV GOOGLE_ANALYTICS_KEY
+    social:
+      - icon: fontawesome/brands/github
+        link: https://github.com/rebelinux
+      - icon: fontawesome/brands/linkedin
+        link: https://linkedin.com/in/jcolonfzenpr
+      - icon: fontawesome/brands/bluesky
+        link: https://bsky.app/profile/jcolonfpr.bsky.social
+    # features:
+    #   - navigation.tabs
+    #   - navigation.tabs.sticky
+    #   - navigation.path
+    #   - navigation.instant
+    #   - navigation.instant.prefetch
+    #   - navigation.tracking
+    #   - navigation.sections
+    #   - navigation.footer
+    #   - navigation.top
+    #   - toc.follow
+    #   - toc.integrate
+
+# Plugins
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: false
+      fallback_to_build_date: true
+  - social:
+      cards_layout_options:
+        font_family: Montserrat Alternates
+        color: "#063561"
 
 markdown_extensions:
   - mkdocs_graphviz
   - attr_list
+  - admonition
+  - meta
+  - tables
+  - pymdownx.superfences
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      use_pygments: true
+  - md_in_html
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
 
 extra_javascript:
   - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
+
+# Page Navigation
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Introduction: start/introduction.md
+      - Installation: start/installation.md
+  - Support: support.md
+  - About:
+      - Contact: about/contact.md
+      - Changelog: about/changelog.md
+      - License: about/license.md
