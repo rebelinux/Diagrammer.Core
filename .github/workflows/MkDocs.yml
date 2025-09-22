@@ -10,7 +10,7 @@ on:
     paths:
       - 'Docs/**'
       - '.github/workflows/MkDocs.yml'
-      - 'Docs/mkdocs.yml'
+      - './mkdocs.yml'
   workflow_dispatch:
 
 jobs:
