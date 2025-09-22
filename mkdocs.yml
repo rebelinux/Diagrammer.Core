@@ -10,60 +10,30 @@ copyright: "(c) 2025 Jonathan Colon."
 
 docs_dir: "Docs"
 
-theme:
-  name: material
-  logo: images/logo.png
-  favicon: images/favicon.ico
-  highlightjs: true
-  hljs_languages:
-    - yaml
-    - powershell
-  palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
-  language: en
-
-  # Customizations
-  extra:
-    analytics:
-      provider: google
-      property: !ENV GOOGLE_ANALYTICS_KEY
-    social:
-      - icon: fontawesome/brands/github
-        link: https://github.com/rebelinux
-      - icon: fontawesome/brands/linkedin
-        link: https://linkedin.com/in/jcolonfzenpr
-      - icon: fontawesome/brands/bluesky
-        link: https://bsky.app/profile/jcolonfpr.bsky.social
-    features:
-      - navigation.tabs
-      - navigation.tabs.sticky
-      - navigation.path
-      - navigation.instant
-      - navigation.instant.prefetch
-      - navigation.tracking
-      - navigation.sections
-      - navigation.footer
-      - navigation.top
-      - toc.follow
-      - toc.integrate
+# Customizations
+extra:
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rebelinux
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/jcolonfzenpr
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/jcolonfpr.bsky.social
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.sections
+    - navigation.footer
+    - navigation.top
+    - toc.follow
+    - toc.integrate
 
 # Plugins
 plugins:
@@ -101,6 +71,36 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
+
+theme:
+  name: material
+  logo: images/logo.png
+  favicon: images/favicon.ico
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - powershell
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  language: en
 
 # Page Navigation
 nav:
