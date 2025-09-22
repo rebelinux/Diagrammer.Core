@@ -52,18 +52,18 @@ theme:
         link: https://linkedin.com/in/jcolonfzenpr
       - icon: fontawesome/brands/bluesky
         link: https://bsky.app/profile/jcolonfpr.bsky.social
-    # features:
-    #   - navigation.tabs
-    #   - navigation.tabs.sticky
-    #   - navigation.path
-    #   - navigation.instant
-    #   - navigation.instant.prefetch
-    #   - navigation.tracking
-    #   - navigation.sections
-    #   - navigation.footer
-    #   - navigation.top
-    #   - toc.follow
-    #   - toc.integrate
+    features:
+      - navigation.tabs
+      - navigation.tabs.sticky
+      - navigation.path
+      - navigation.instant
+      - navigation.instant.prefetch
+      - navigation.tracking
+      - navigation.sections
+      - navigation.footer
+      - navigation.top
+      - toc.follow
+      - toc.integrate
 
 # Plugins
 plugins:
