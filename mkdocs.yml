@@ -109,6 +109,9 @@ nav:
   - Getting Started:
       - Introduction: start/introduction.md
       - Installation: start/installation.md
+  - Developer Guide:
+      - Commands: dev-guide/commands.md
+      - Examples: dev-guide/examples.md
   - Support: support.md
   - About:
       - Contact: about/contact.md
