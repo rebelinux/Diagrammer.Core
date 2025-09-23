@@ -145,7 +145,7 @@ digraph Root {
         Web01 -> App01	[color=black,
             fontcolor=black,
             fontsize=14,
-            label=gRPC,
+            label=HTTP,
             lp="134.12,440",
             minlen=3,
             pos="s,118,531.3 e,118,348.43 118,520.44 118,480.56 118,448.25 118,448.25 118,448.25 118,409.14 118,362.7"];
