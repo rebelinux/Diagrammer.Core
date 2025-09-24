@@ -65,7 +65,7 @@ $example2 = & {
                               ---------
     #>
 
-    Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black' }
+    Edge -From Web01 -To App01 @{label = 'HTTP'; color = 'black'; fontsize = 12; fontcolor = 'black' }
     Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black' }
 }
 

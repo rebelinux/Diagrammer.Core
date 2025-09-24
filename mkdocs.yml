@@ -123,6 +123,23 @@ nav:
       - Commands: dev-guide/commands.md
       - Examples:
           - Example 1: dev-guide/examples/example1.md
+          - Example 2: dev-guide/examples/example2.md
+          - Example 3: dev-guide/examples/example3.md
+          - Example 4: dev-guide/examples/example4.md
+          - Example 5: dev-guide/examples/example5.md
+          - Example 6: dev-guide/examples/example6.md
+          - Example 7: dev-guide/examples/example7.md
+          - Example 8: dev-guide/examples/example8.md
+          - Example 9: dev-guide/examples/example9.md
+          - Example 10: dev-guide/examples/example10.md
+          - Example 11: dev-guide/examples/example11.md
+          - Example 12: dev-guide/examples/example12.md
+          - Example 13: dev-guide/examples/example13.md
+          - Example 14: dev-guide/examples/example14.md
+          - Example 15: dev-guide/examples/example15.md
+      - Advanced Examples:
+          - Advanced Example 1: dev-guide/examples/advancedexample1.md
+          - Advanced Example 2: dev-guide/examples/advancedexample2.md
   - Support: support.md
   - About:
       - Contact: about/contact.md
