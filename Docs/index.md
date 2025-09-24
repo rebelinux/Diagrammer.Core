@@ -1,7 +1,5 @@
 ![Diagrammer.Core Logo](./assets/background.png)
 
-# Diagrammer.Core
-
 Diagrammer.Core is a foundational PowerShell module designed to streamline the creation of as-built diagrams for a wide range of datacenter systems. Serving as the core framework, it enables consistent, automated diagram generation by providing essential tools and APIs. Individual diagrammer modules for specific products or technologies depend on Diagrammer.Core to deliver accurate, customizable visual documentation, helping IT professionals efficiently capture and communicate infrastructure details.
 
 ## Objective
@@ -17,4 +15,19 @@ The objective of Diagrammer.Core is to provide a standardized, extensible platfo
 - Greater flexibility and customization in visualizing complex environments.
 
 
+## Examples
 
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.AD-(Forest).png" width="50%" height="50%" /></a></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Netapp.Ontap.png" width="50%" height="50%" /></a></td>
+    </tr>
+    <tr>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.SCVMM.Infrastructure.png" /></a></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veaam.VBR-SOBR.png" width="50%" height="50%" /></a></td>
+    </tr>
+    <tr>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VB365.png" width="50%" height="50%" /></a></td>
+    </tr>
+</table>

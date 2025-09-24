@@ -13,7 +13,7 @@ These dependencies are essential for the module's functionality and performance.
 - **subgraph**: Groups related nodes and edges within a larger graph.
 - **rank**: Specifies the vertical positioning of nodes within the graph.
 
-### Example Usage of PSGraph Commands
+### Example Usage of PSGraph Commands:
 
 ```powershell
 Graph g {
@@ -26,7 +26,7 @@ Graph g {
 
 The PSGraph commands above define a simple graph with three nodes (Web, App, DB) and two edges (Web to App with label "HTTP" and App to DB with label "SQL"). Each node is styled as an oval. The resulting code is passed to GraphViz dot.exe command that translates the PSGraph DSL into the DOT language, which is then used to generate a visual representation of the graph. Finally, the graph is rendered into an image format such as PNG, SVG etc...
 
-### Resulting GraphViz Source Code
+### Resulting GraphViz Source Code:
 
 ```dot
 digraph g {
@@ -44,7 +44,7 @@ Until now, the example has been using PSGraph to generate the diagrams. However,
 
 As an example, Diagrammer.Core introduces the `Add-DiaNodeIcon` command, which allows users to easily add icons to nodes in the diagram. This command abstracts the complexity of manually specifying icon properties and provides a straightforward way to enhance the visual appeal of the diagrams.
 
-### Example Usage of Diagrammer.Core Commands
+### Example Usage of Diagrammer.Core Commands:
 
 ```powershell
 
@@ -84,7 +84,7 @@ graph g {
 
 In essence, Diagrammer.Core uses the Graphviz capabilities to render HTML-like labels, which allows for a more detailed and structured representation of nodes within the diagrams. This feature enhances the clarity and comprehensibility of the diagrams, making them more effective for conveying information.
 
-### Resulting GraphViz Source Code
+### Resulting GraphViz Source Code:
 
 ```graphviz dot example_diag.png
 digraph Root {

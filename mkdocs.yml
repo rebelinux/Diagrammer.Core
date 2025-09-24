@@ -65,8 +65,8 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/github
-  logo: images/logo.png
-  favicon: images/favicon.ico
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
   highlightjs: true
   hljs_languages:
     - yaml
@@ -81,6 +81,8 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -88,11 +90,12 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
   language: en
-  primary: indigo
   features:
     - navigation.tabs
     - navigation.tabs.sticky
