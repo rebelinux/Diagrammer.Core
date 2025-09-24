@@ -1,5 +1,5 @@
 <#
-    This is a simple example demonstrating how to create a 3-tier web application diagram using the Diagrammer module, without using any object icons.
+    This is a simple example demonstrating how to create a 3-tier web application diagram using the PSgraph module, without using any object icons.
 #>
 
 [CmdletBinding()]

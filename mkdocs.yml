@@ -121,7 +121,8 @@ nav:
       - Installation: start/installation.md
   - Developer Guide:
       - Commands: dev-guide/commands.md
-      - Examples: dev-guide/examples.md
+      - Examples:
+          - Example 1: dev-guide/examples/example1.md
   - Support: support.md
   - About:
       - Contact: about/contact.md
