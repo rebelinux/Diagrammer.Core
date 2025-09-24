@@ -36,6 +36,8 @@ plugins:
         color: "#063561"
 
 markdown_extensions:
+  - pymdownx.snippets:
+      url_download: true
   - mkdocs_graphviz
   - attr_list
   - admonition
