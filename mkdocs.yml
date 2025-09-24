@@ -99,6 +99,8 @@ theme:
         name: Switch to system preference
   language: en
   features:
+    - content.code.copy
+    - content.code.select
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.path

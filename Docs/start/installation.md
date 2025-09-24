@@ -52,8 +52,7 @@ PowerShell 5.1, and the following PowerShell modules are required for generating
 
 For an online installation, install the `Diagrammer.Core` module using the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=Diagrammer.Core);
 
-```powershell
-# Install Diagrammer.Core module
+```powershell title="Install Diagrammer.Core module"
 Install-Module -Name 'Diagrammer.Core' -Repository 'PSGallery' -Scope 'CurrentUser'
 ```
 
@@ -63,8 +62,7 @@ For an offline installation, perform the following steps from a machine with int
 
 Save the required `Diagrammer.Core` module to a specified folder.
 
-```powershell
-# Save Diagrammer.Core module
+```powershell title="Save Diagrammer.Core module"
 Save-Module -Name 'Diagrammer.Core' -Repository 'PSGallery' -Path '<Folder Path>'
 ```
 
@@ -73,15 +71,11 @@ e.g. USB Flash Drive, Internal File Share etc.
 
 On the offline system, open a PowerShell console window and run the following command to determine the PowerShell module path.
 
-**Windows**
-
-```powershell
+```powershell title="Windows"
 $env:PSModulePath -Split ';'
 ```
 
-**macOS & Linux**
-
-```powershell
+```powershell title="macOS & Linux"
 $env:PSModulePath -Split ':'
 ```
 
@@ -94,7 +88,7 @@ If you are unable to use the PowerShell Gallery, you can still install the `Diag
 2. Extract the zip file
 3. Copy the folder `Diagrammer.Core` to a path that is set in `$env:PSModulePath`.
 4. For Windows users only, open a PowerShell terminal window and unblock the downloaded files with
-    ```powershell
+    ```powershell title="Unblock Diagrammer.Core module files"
     $path = (Get-Module -Name Diagrammer.Core -ListAvailable).ModuleBase; Unblock-File -Path $path\*.psd1; Unblock-File -Path $path\Src\Public\*.ps1
     ```
 5. Close and reopen the PowerShell terminal window.

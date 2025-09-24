@@ -13,9 +13,7 @@ These dependencies are essential for the module's functionality and performance.
 - **subgraph**: Groups related nodes and edges within a larger graph.
 - **rank**: Specifies the vertical positioning of nodes within the graph.
 
-### Example Usage of PSGraph Commands:
-
-```powershell
+```powershell title="Example Usage of PSGraph Commands"
 Graph g {
     Node Web,App,DB @{shape='oval'}
     Edge Web,App @{label='HTTP'}
@@ -44,9 +42,7 @@ Until now, the example has been using PSGraph to generate the diagrams. However,
 
 As an example, Diagrammer.Core introduces the `Add-DiaNodeIcon` command, which allows users to easily add icons to nodes in the diagram. This command abstracts the complexity of manually specifying icon properties and provides a straightforward way to enhance the visual appeal of the diagrams.
 
-### Example Usage of Diagrammer.Core Commands:
-
-```powershell
+```powershell title="Example Usage of Diagrammer.Core Commands"
 
 $WebServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Redhat Linux'
