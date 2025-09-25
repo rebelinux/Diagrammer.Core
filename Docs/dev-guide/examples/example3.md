@@ -38,8 +38,7 @@ The Edge statements create connections between the nodes.
 [https://graphviz.org/docs/attrs/minlen/](https://graphviz.org/docs/attrs/minlen/){:target="_blank"}
 
 ```powershell
-$example1 = & {
-
+$example3 = & {
     Node -Name Web01 -Attributes @{Label = 'Web01'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
     Node -Name App01 -Attributes @{Label = 'App01'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
     Node -Name DB01 -Attributes @{Label = 'DB01'; shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
@@ -53,7 +52,7 @@ $example1 = & {
 Finally, call the New-Diagrammer cmdlet with the specified parameters.
 
 ```powershell
-New-Diagrammer -InputObject $example1 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example1 -LogoName "Main_Logo"  -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example3 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example3 -LogoName "Main_Logo"  -DraftMode:$DraftMode
 ```
 
 The parameters used in the New-Diagrammer cmdlet are explained below:
@@ -69,6 +68,8 @@ The parameters used in the New-Diagrammer cmdlet are explained below:
     - If the specified logo image is not found, a default no_icon.png is used.
 -DraftMode: If set to $true, generates a draft version of the diagram for troubleshooting.
 ```
+
+When you run the script, it generates a PNG file named Example6.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:
 

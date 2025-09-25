@@ -37,15 +37,23 @@ This section introduces the Subgraph feature, which allows grouping nodes togeth
 [https://psgraph.readthedocs.io/en/latest/Command-SubGraph/](https://psgraph.readthedocs.io/en/latest/Command-SubGraph/){:target="_blank"}
 
 ```powershell
-SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
+$example4 = & {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 
-    Node -Name Web01 -Attributes @{shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
-    Node -Name App01 -Attributes @{shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
-    Node -Name DB01 -Attributes @{shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
+        Node -Name Web01 -Attributes @{shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
+        Node -Name App01 -Attributes @{shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
+        Node -Name DB01 -Attributes @{shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
 
-    Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
-    Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
+        Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
+        Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
+    }
 }
+```
+
+Finally, call the New-Diagrammer cmdlet with the specified parameters.
+
+```powershell
+New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName "Main_Logo"  -DraftMode:$DraftMode
 ```
 
 The parameters used in the New-Diagrammer cmdlet are explained below:
@@ -61,6 +69,8 @@ The parameters used in the New-Diagrammer cmdlet are explained below:
     - If the specified logo image is not found, a default no_icon.png is used.
 -DraftMode: If set to $true, generates a draft version of the diagram for troubleshooting.
 ```
+
+When you run the script, it generates a PNG file named Example6.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:
 

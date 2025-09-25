@@ -107,9 +107,7 @@ $example8 = & {
         )
 
         <#
-            This time, we will simulate a Web Server Farm with multiple web server node. While the Add-DiaNodeIcon cmdlet is typically used to add icons/properties to nodes, it lack the ability to create multiple nodes with distinct properties.
 
-            Add-DiaHTMLNodeTable has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
                                 _________________________________ _______________
                                 |               |               |               |
                                 |               |     Icon      |               |
@@ -131,6 +129,7 @@ $example8 = & {
 
             -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
             -columnSize parameter sets the number of columns in the table layout.
+            -inputObject parameter accepts an array of names for the nodes in the table.
             -Subgraph parameter creates a subgraph container around the table.
             -SubgraphLabel parameter sets the label for the subgraph container.
             -SubgraphLabelPos parameter sets the position of the subgraph label (top, bottom).

@@ -1,4 +1,4 @@
-### ** This time we will add icons and additional information to Node objects. **
+### ** This time, we'll demonstrate the use of the Rank cmdlet (Part of PSGraph module). **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
@@ -72,22 +72,15 @@ $DBServerInfo = [PSCustomObject][ordered]@{
 }
 ```
 
-This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties. Graphviz supports HTML-Like tables to extend object labels, allowing images, text, and tables within Node, Edge, and Subgraph @{Label=} script blocks attributes.
+The Rank cmdlet is used to place nodes at the same hierarchical level.
 
-**`Add-DiaNodeIcon`** extends PSGraph to improve the appearance of the generated Node objects (Add-DiaNodeIcon is part of Diagrammer.Core).
+[https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/](https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/)
 
-#### Node: The $Images object and IconType "Server" must be defined earlier in the script
+In this example, App01 and DB01 are aligned horizontally.
 
 ```powershell
-$example5 = & {
+$example7 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
-
-        <#
-            -AditionalInfo parameter accepts a custom object with properties to display in the node label.
-            -Align parameter sets the alignment of the icon and text (Left, Right, Center).
-            -ImagesObj parameter passes the hashtable of images defined earlier in the script.
-            -FontSize 18 sets the font size for the node label text.
-        #>
 
         $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
         $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
@@ -99,6 +92,9 @@ $example5 = & {
 
         Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
         Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
+
+        # The Rank cmdlet (part of PSGraph module) forces nodes to be on the same level (same rank).
+        Rank -Nodes App01, DB01
     }
 }
 ```
@@ -106,7 +102,7 @@ $example5 = & {
 Finally, call the New-Diagrammer cmdlet with the specified parameters.
 
 ```powershell
-New-Diagrammer -InputObject $example5 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example5 -LogoName "Main_Logo"  -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example7 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example7 -LogoName "Main_Logo"  -DraftMode:$DraftMode
 ```
 
 The parameters used in the New-Diagrammer cmdlet are explained below:
@@ -122,14 +118,13 @@ The parameters used in the New-Diagrammer cmdlet are explained below:
     - If the specified logo image is not found, a default no_icon.png is used.
 -DraftMode: If set to $true, generates a draft version of the diagram for troubleshooting.
 ```
-
 When you run the script, it generates a PNG file named Example6.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:
 
 ```graphviz dot example1.png
 digraph Root {
-	graph [bb="0,0,414,1618.8",
+	graph [bb="0,0,652,1165.8",
 		bgcolor=White,
 		compound=true,
 		fontcolor="#565656",
@@ -162,73 +157,76 @@ digraph Root {
 		style=dashed
 	];
 	subgraph clusterOUTERDRAWBOARD1 {
-		graph [bb="8,8,406,1610.8",
+		graph [bb="8,8,644,1157.8",
 			color=gray,
 			fontsize=24,
 			label=" ",
 			labeljust=r,
 			labelloc=b,
 			lheight=0.47,
-			lp="394.62,28.875",
+			lp="632.62,28.875",
 			lwidth=0.09,
 			penwidth=1.5,
 			style=invis
 		];
 		subgraph clusterMainGraph {
-			graph [bb="16,57.75,398,1602.8",
+			graph [bb="16,57.75,636,1149.8",
 				fontsize=24,
 				label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,
 				labeljust=c,
 				labelloc=t,
 				lheight=3.98,
-				lp="207,1455.4",
+				lp="326,1002.4",
 				lwidth=5.09,
 				penwidth=0
 			];
 			subgraph cluster3tier {
-				graph [bb="113,65.75,301,1300",
-					color=gray,
+				graph [bb="24,65.75,628,847",
+					color=darkgray,
 					fontsize=18,
 					label="3 Tier Concept",
 					labelloc=t,
 					lheight=0.34,
-					lp="207,1283.6",
+					lp="326,830.62",
 					lwidth=1.75,
 					penwidth=1.5,
 					style="dashed,rounded"
 				];
+				{
+					graph [rank=same];
+					App01	[fillcolor=transparent,
+						height=3.8194,
+						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>App-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Windows Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 2019</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 17763.3163</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Datacenter</FONT></TD></TR></TABLE>>,
+						pos="118,211.25",
+						shape=plain,
+						width=2.3924];
+					DB01	[fillcolor=transparent,
+						height=3.8194,
+						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Db-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Oracle Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 8</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 8.2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
+						pos="541,211.25",
+						shape=plain,
+						width=2.2049];
+				}
 				Web01	[fillcolor=transparent,
 					height=3.8194,
 					label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
-					pos="207,1121.8",
+					pos="118,668.75",
 					shape=plain,
 					width=2.2049];
-				App01	[fillcolor=transparent,
-					height=3.8194,
-					label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>App-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Windows Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 2019</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 17763.3163</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Datacenter</FONT></TD></TR></TABLE>>,
-					pos="207,666.5",
-					shape=plain,
-					width=2.3924];
 				Web01 -> App01	[color=black,
 					fontcolor=black,
-					fontsize=12,
+					fontsize=14,
 					label=gRPC,
-					lp="221.62,894.12",
+					lp="134.12,440",
 					minlen=3,
-					pos="s,207,984.3 e,207,803.73 207,973.44 207,933.56 207,901.25 207,901.25 207,901.25 207,863.35 207,818.01"];
-				DB01	[fillcolor=transparent,
-					height=3.8194,
-					label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Db-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Oracle Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 8</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 8.2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
-					pos="207,211.25",
-					shape=plain,
-					width=2.2049];
+					pos="s,118,531.3 e,118,348.43 118,520.44 118,480.56 118,448.25 118,448.25 118,448.25 118,409.14 118,362.7"];
 				App01 -> DB01	[color=black,
 					fontcolor=black,
-					fontsize=12,
+					fontsize=14,
 					label=SQL,
-					lp="218.62,438.88",
+					lp="332.88,222.5",
 					minlen=3,
-					pos="s,207,529.05 e,207,348.48 207,518.19 207,478.31 207,446 207,446 207,446 207,408.1 207,362.76"];
+					pos="s,204.11,211.25 e,461.8,211.25 214.94,211.25 284.76,211.25 378.43,211.25 447.46,211.25"];
 			}
 		}
 	}
