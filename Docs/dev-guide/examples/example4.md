@@ -1,3 +1,6 @@
+---
+comments: true
+---
 ** In this example, servers are grouped in a cluster (SubGraph). **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.

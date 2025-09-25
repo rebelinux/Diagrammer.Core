@@ -1,3 +1,6 @@
+---
+comments: true
+---
 ** This time we will extend the edges size using the Graphviz minlen attribute. **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.

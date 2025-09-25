@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 <p align="center">
     <a href="https://github.com/rebelinux/Diagrammer.Core" alt="Diagrammer"></a>
             <img src='https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/dev/Icons/Diagrammer.png' width="15%" height="15%" /></a>

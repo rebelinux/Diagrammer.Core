@@ -1,3 +1,6 @@
+---
+comments: true
+---
 ** This time, we'll demonstrate the use of the Add-DiaNodeImage to add a custom image to the diagram (Part of Diagrammer.Core module). **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
