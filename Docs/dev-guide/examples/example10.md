@@ -103,21 +103,6 @@ $example10 = & {
             }
         )
 
-        <#
-            -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
-            -columnSize parameter sets the number of columns in the table layout.
-            -Subgraph parameter creates a subgraph container around the table.
-            -SubgraphLabel parameter sets the label for the subgraph container.
-            -SubgraphLabelPos parameter sets the position of the subgraph label (top, bottom).
-            -SubgraphTableStyle parameter sets the style of the subgraph border (dashed, rounded, solid).
-            -TableBorderColor parameter sets the color of the table border.
-            -TableBorder sets the thickness of the table border.
-            -iconType parameter sets the type of icon to use for the nodes. In this case the $WebServerFarm.IconType hashtable value is used
-            (must match a key in the $Images hashtable).
-
-            ** -MultiIcon parameter allows multiple icons to be displayed in the table. (IconType must be specified in the inputObject) **
-        #>
-
         $Web01Label = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontsize 20 -fontSize 18 -MultiIcon -DraftMode:$DraftMode
 
 
@@ -131,8 +116,9 @@ $example10 = & {
         Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
         Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
 
-        # The Rank cmdlet (part of PSGraph module) forces nodes to be on the same level (same rank).
         Rank -Nodes App01, DB01
+
+        # Adding a router icon to represent the network router using Add-DiaNodeIcon (part of Diagrammer.Core module).
 
         $RouterInfo = [PSCustomObject][ordered]@{
             'OS' = 'Cisco IOS'

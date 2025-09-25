@@ -74,7 +74,7 @@ $DBServerInfo = [PSCustomObject][ordered]@{
 
 This time, we demonstrate the use of DraftMode to help with troubleshooting and fine-tuning the diagram.
 
-Every Diagrammer cmdlet accepts the -DraftMode parameter. When set to $true, it generates a draft version of the diagram, which is useful for troubleshooting layout issues.
+All Diagrammer cmdlets support the -DraftMode parameter. Setting -DraftMode to $true produces a draft version of the diagram, making it easier to troubleshoot and adjust the layout.
 
 ```powershell
 $example6 = & {
