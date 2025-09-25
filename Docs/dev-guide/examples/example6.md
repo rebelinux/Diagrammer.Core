@@ -72,11 +72,9 @@ $DBServerInfo = [PSCustomObject][ordered]@{
 }
 ```
 
-This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties. Graphviz supports HTML-Like tables to extend object labels, allowing images, text, and tables within Node, Edge, and Subgraph @{Label=} script blocks attributes.
+This time, we demonstrate the use of DraftMode to help with troubleshooting and fine-tuning the diagram.
 
-**`Add-DiaNodeIcon`** extends PSGraph to improve the appearance of the generated Node objects (Add-DiaNodeIcon is part of Diagrammer.Core).
-
-The $Images object and IconType "Server" must be defined earlier in the script
+Every Diagrammer cmdlet accepts the -DraftMode parameter. When set to $true, it generates a draft version of the diagram, which is useful for troubleshooting layout issues.
 
 ```powershell
 $example6 = & {
