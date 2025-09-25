@@ -62,7 +62,7 @@ The parameters used in the New-Diagrammer cmdlet are explained below:
 -DraftMode: If set to $true, generates a draft version of the diagram for troubleshooting.
 ```
 
-When you run the script, it generates a PNG file named Example6.png in the specified output folder.
+When you run the script, it generates a PNG file named Example1.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:
 

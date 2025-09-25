@@ -149,7 +149,7 @@ Finally, call the New-Diagrammer cmdlet with the specified parameters.
 New-Diagrammer -InputObject $example9 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example9 -LogoName "Main_Logo"  -DraftMode:$DraftMode
 ```
 
-When you run the script, it generates a PNG file named Example6.png in the specified output folder.
+When you run the script, it generates a PNG file named Example9.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:
 

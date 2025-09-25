@@ -179,7 +179,7 @@ The WaterMark feature is demonstrated here, which adds a watermark text to the d
 New-Diagrammer -InputObject $example12 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example12 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -WaterMarkText "Confidential" -WaterMarkColor "DarkGray" -WaterMarkFontOpacity 40 -DraftMode:$DraftMode
 ```
 
-When you run the script, it generates a PNG file named Example6.png in the specified output folder.
+When you run the script, it generates a PNG file named Example12.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:
 
