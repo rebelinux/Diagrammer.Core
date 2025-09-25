@@ -12,6 +12,7 @@ docs_dir: "Docs"
 
 # Customizations
 extra:
+  disqus: "diagrammer"
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
@@ -69,7 +70,6 @@ theme:
     repo: fontawesome/brands/github
   logo: assets/logo.png
   favicon: assets/favicon.ico
-  disqus: "diagrammer"
   highlightjs: true
   hljs_languages:
     - yaml
