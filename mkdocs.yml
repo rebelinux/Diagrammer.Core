@@ -120,7 +120,7 @@ nav:
       - Introduction: start/introduction.md
       - Installation: start/installation.md
   - Developer Guide:
-      - Commands: dev-guide/commands.md
+      - Commands: dev-guide/commands/commands.md
       - Examples:
           - Example 1: dev-guide/examples/example1.md
           - Example 2: dev-guide/examples/example2.md

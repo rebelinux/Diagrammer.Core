@@ -69,7 +69,7 @@ This time, we will simulate a Web Server Farm with multiple web server node. Whi
 
 **`Add-DiaHTMLNodeTable`** has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
 
-#### ** The $Images object and IconType "Server" must be defined earlier in the script **
+** The $Images object and IconType "Server" must be defined earlier in the script **
 
 In this example, Web-Server-01, Web-Server-02, and Web-Server-03 are part of the web server farm. Each server has its own properties defined in the AdditionalInfo parameter ($WebServerFarm).
 

@@ -33,7 +33,7 @@ $MainGraphLabel = '3tier Web Application Diagram'
 This section creates connections between the nodes in a herarchical layout.
 The Edge statements create connections between the nodes.
 
-#### The minlen attribute is used to increase the minimum length of the edge lines.
+The minlen attribute is used to increase the minimum length of the edge lines.
 
 [https://graphviz.org/docs/attrs/minlen/](https://graphviz.org/docs/attrs/minlen/){:target="_blank"}
 

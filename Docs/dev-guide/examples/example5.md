@@ -76,7 +76,7 @@ This time, we enhance the diagram by adding images to the Node objects and embed
 
 **`Add-DiaNodeIcon`** extends PSGraph to improve the appearance of the generated Node objects (Add-DiaNodeIcon is part of Diagrammer.Core).
 
-#### Node: The $Images object and IconType "Server" must be defined earlier in the script
+The $Images object and IconType "Server" must be defined earlier in the script
 
 ```powershell
 $example5 = & {
