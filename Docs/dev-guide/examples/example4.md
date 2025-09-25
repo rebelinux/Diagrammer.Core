@@ -32,7 +32,7 @@ $MainGraphLabel = '3tier Web Application Diagram'
 
 This section introduces the Subgraph feature, which allows grouping nodes together. In this example, all servers are grouped within a cluster named "3tier".
 
-#### A SubGraph groups objects in a container, like a graph within a graph. SubGraph attributes allow you to set background color, label, border color, style, etc.
+A SubGraph groups objects in a container, like a graph within a graph. SubGraph attributes allow you to set background color, label, border color, style, etc.
 
 [https://psgraph.readthedocs.io/en/latest/Command-SubGraph/](https://psgraph.readthedocs.io/en/latest/Command-SubGraph/){:target="_blank"}
 
