@@ -1,4 +1,4 @@
-** This time, we'll demonstrate the use of the Add-DiaHTMLNodeTable MultiIcon feature (Part of Diagrammer.Core module). **
+** This time, we'll demonstrate the use of the Add-DiaHTMLTable to add a list table to the diagram (Part of Diagrammer.Core module).  **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
@@ -65,18 +65,14 @@ $DBServerInfo = [PSCustomObject][ordered]@{
 }
 ```
 
-This time, we will simulate a Web Server Farm with multiple web server node. While the **`Add-DiaNodeIcon`** cmdlet is typically used to add icons/properties to nodes, it lack the ability to create multiple nodes with distinct properties.
+In this section we demonstrates the use of the **`Add-DiaHTMLTable`** to create a list table to display additional information about a object (Part of Diagrammer.Core module).
 
-**`Add-DiaHTMLNodeTable`** has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
+To improve the diagram, we'll add a network router and a cloud icon to represent the WAN/Internet connection. We'll also include a table to display the router's network interface information.
 
-** The $Images object and IconType "Server" must be defined earlier in the script **
-
-In this example, Web-Server-01, Web-Server-02, and Web-Server-03 are part of the web server farm. Each server has its own properties defined in the AdditionalInfo parameter ($WebServerFarm).
-
-The MultiIcon parameter allows multiple icons to be displayed in the table.
+The rank directive is used to alignnodes horizontally.
 
 ```powershell
-$example9 = & {
+$example10 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 
         $WebServerFarm = @(
@@ -109,21 +105,6 @@ $example9 = & {
             }
         )
 
-        <#
-            -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
-            -columnSize parameter sets the number of columns in the table layout.
-            -Subgraph parameter creates a subgraph container around the table.
-            -SubgraphLabel parameter sets the label for the subgraph container.
-            -SubgraphLabelPos parameter sets the position of the subgraph label (top, bottom).
-            -SubgraphTableStyle parameter sets the style of the subgraph border (dashed, rounded, solid).
-            -TableBorderColor parameter sets the color of the table border.
-            -TableBorder sets the thickness of the table border.
-            -iconType parameter sets the type of icon to use for the nodes. In this case the $WebServerFarm.IconType hashtable value is used
-            (must match a key in the $Images hashtable).
-
-            ** -MultiIcon parameter allows multiple icons to be displayed in the table. (IconType must be specified in the inputObject) **
-        #>
-
         $Web01Label = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontsize 20 -fontSize 18 -MultiIcon -DraftMode:$DraftMode
 
 
@@ -137,8 +118,49 @@ $example9 = & {
         Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
         Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
 
-        # The Rank cmdlet (part of PSGraph module) forces nodes to be on the same level (same rank).
         Rank -Nodes App01, DB01
+
+        $RouterInfo = [PSCustomObject][ordered]@{
+            'OS' = 'Cisco IOS'
+            'Version' = '15.2'
+        }
+
+        $RouterLabel = Add-DiaNodeIcon -Name 'Core-Router' -AdditionalInfo $RouterInfo -ImagesObj $Images -IconType "Router" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
+
+        Node -Name Router01 -Attributes @{label = $RouterLabel ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+
+        Edge -From Router01 -To Web01 @{label = 'GE0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
+
+        Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Cloud" -IconPath $IconPath -ImageSizePercent 30 -DraftMode:$DraftMode
+
+        Edge -From WAN -To Router01 @{label = 'Serial0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
+
+        <#
+            In this example, we create a table to display the router's network interface information.
+            -Name parameter sets the name of the node (RouterNetworkInfo in this case).
+            -Rows parameter takes an array of strings to populate the table rows.
+            -NodeObject switch indicates that the table is to be used as a Graphviz Node in the diagram.
+                - If this parameter is omitted, the table will be created as a standalone HTML file.
+                - If this parameter is omitted, a Node must be created separately and the table assigned to the node's Label attribute.
+            -ColumnSize parameter sets the number of columns in the table (2 in this case).
+            -Subgraph switch creates a container around the table with a label.
+            -SubgraphLabel parameter sets the label for the subgraph container.
+            -GraphvizAttributes parameter allows setting additional Graphviz attributes for the node container.
+        #>
+
+        $RouterNetworkInfo = @(
+            "S0/0:"
+            "164.42.203.10/30"
+            "G0/0:"
+            "192.168.5.10/24"
+        )
+
+        Add-DiaHTMLTable -Name 'RouterNetworkInfo' -Rows $RouterNetworkInfo -NodeObject -ColumnSize 2 -TableBorder 1 -TableBorderColor "black" -FontSize 14 -Subgraph -SubgraphLabel "Interfaces Table" -SubgraphLabelPos "top" -SubgraphTableStyle "solid,rounded" -SubgraphLabelFontsize 20 -GraphvizAttributes @{style = 'filled,rounded'; fillcolor = 'lightblue' } -DraftMode:$DraftMode
+
+        Edge -From Router01 -To RouterNetworkInfo @{color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 1; style = 'filled'; arrowhead = 'none'; arrowtail = 'none' }
+
+        # Ranking the router and its network info table together to keep them aligned horizontally.
+        Rank Router01, RouterNetworkInfo
     }
 }
 ```
@@ -146,7 +168,7 @@ $example9 = & {
 Finally, call the New-Diagrammer cmdlet with the specified parameters.
 
 ```powershell
-New-Diagrammer -InputObject $example9 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example9 -LogoName "Main_Logo"  -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example10 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example10 -LogoName "Main_Logo"  -DraftMode:$DraftMode
 ```
 
 When you run the script, it generates a PNG file named Example6.png in the specified output folder.
@@ -155,7 +177,7 @@ When you run the script, it generates a PNG file named Example6.png in the speci
 
 ```graphviz dot example1.png
 digraph Root {
-	graph [bb="0,0,652,1215.8",
+	graph [bb="0,0,652,1843.8",
 		bgcolor=White,
 		compound=true,
 		fontcolor="#565656",
@@ -188,7 +210,7 @@ digraph Root {
 		style=dashed
 	];
 	subgraph clusterOUTERDRAWBOARD1 {
-		graph [bb="8,8,644,1207.8",
+		graph [bb="8,8,644,1835.8",
 			color=gray,
 			fontsize=24,
 			label=" ",
@@ -201,24 +223,24 @@ digraph Root {
 			style=invis
 		];
 		subgraph clusterMainGraph {
-			graph [bb="16,57.75,636,1199.8",
+			graph [bb="16,57.75,636,1827.8",
 				fontsize=24,
 				label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,
 				labeljust=c,
 				labelloc=t,
 				lheight=3.98,
-				lp="326,1052.4",
+				lp="326,1680.4",
 				lwidth=5.09,
 				penwidth=0
 			];
 			subgraph cluster3tier {
-				graph [bb="24,65.75,628,897",
+				graph [bb="24,65.75,628,1525",
 					color=darkgray,
 					fontsize=22,
 					label="3 Tier Concept",
 					labelloc=t,
 					lheight=0.43,
-					lp="326,877.62",
+					lp="326,1505.6",
 					lwidth=2.17,
 					penwidth=1.5,
 					style="dashed,rounded"
@@ -237,6 +259,22 @@ digraph Root {
 						pos="541,211.25",
 						shape=plain,
 						width=2.2049];
+				}
+				{
+					graph [rank=same];
+					Router01	[fillcolor=transparent,
+						height=2.8194,
+						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Router.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Core-Router</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Cisco IOS</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 15.2</FONT></TD></TR></TABLE>>,
+						pos="266,1082.8",
+						shape=plain,
+						width=1.7569];
+					RouterNetworkInfo	[fillcolor=lightblue,
+						height=1.4514,
+						label=<<TABLE COLOR="black" STYLE="solid,rounded" border="1" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="center" colspan="2"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Interfaces Table</B></FONT></TD></TR><TR><TD align="center" colspan="1"><FONT POINT-SIZE="14">S0/0:</FONT></TD><TD align="center" colspan="1"><FONT POINT-SIZE="14">164.42.203.10/30</FONT></TD></TR><TR><TD align="center" colspan="1"><FONT POINT-SIZE="14">G0/0:</FONT></TD><TD align="center" colspan="1"><FONT POINT-SIZE="14">192.168.5.10/24</FONT></TD></TR></TABLE>>,
+						pos="497,1082.8",
+						shape=plain,
+						style="filled,rounded",
+						width=2.2743];
 				}
 				Web01	[fillcolor=transparent,
 					height=4.4306,
@@ -258,6 +296,34 @@ digraph Root {
 					lp="332.88,222.5",
 					minlen=3,
 					pos="s,204.11,211.25 e,461.8,211.25 214.94,211.25 284.76,211.25 378.43,211.25 447.46,211.25"];
+				Router01 -> Web01	[color=black,
+					fontcolor=black,
+					fontsize=18,
+					label="GE0/0",
+					lp="289.62,915.75",
+					minlen=2,
+					pos="s,266,981.43 e,266,850.12 266,970.75 266,945.63 266,926.25 266,926.25 266,926.25 266,899.76 266,864.56"];
+				Router01 -> RouterNetworkInfo	[arrowhead=none,
+					arrowtail=none,
+					color=black,
+					fontcolor=black,
+					fontsize=18,
+					minlen=1,
+					pos="329.16,1082.8 357.9,1082.8 386.64,1082.8 415.38,1082.8",
+					style=filled];
+				WAN	[fillcolor=transparent,
+					height=2.2639,
+					label=<<TABLE border='0' color='#000000' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='153.6' height='153.6' colspan='1'><img src='Docs/Icons/Cloud.png'/></TD></TR></TABLE>>,
+					pos="266,1396.8",
+					shape=plain,
+					width=2.2639];
+				WAN -> Router01	[color=black,
+					fontcolor=black,
+					fontsize=18,
+					label="Serial0/0",
+					lp="299,1249.8",
+					minlen=2,
+					pos="s,266,1315.4 e,266,1184.2 266,1304.6 266,1280.1 266,1260.2 266,1260.2 266,1260.2 266,1232.2 266,1198.4"];
 			}
 		}
 	}

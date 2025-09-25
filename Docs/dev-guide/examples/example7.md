@@ -105,19 +105,6 @@ Finally, call the New-Diagrammer cmdlet with the specified parameters.
 New-Diagrammer -InputObject $example7 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example7 -LogoName "Main_Logo"  -DraftMode:$DraftMode
 ```
 
-The parameters used in the New-Diagrammer cmdlet are explained below:
-
-```text title="Parameters Explained:"
--InputObject: Accepts the custom object defined above.
--OutputFolderPath: Specifies where to save the generated diagram.
--Format: Sets the output format (png, jpg, svg, etc.).
--ImagesObj: Passes a hashtable of images for custom icons.
--MainDiagramLabel: Sets the diagram's title.
--Filename: Specifies the output file name (without extension).
--LogoName: Selects an image from the hashtable to use as the diagram logo.
-    - If the specified logo image is not found, a default no_icon.png is used.
--DraftMode: If set to $true, generates a draft version of the diagram for troubleshooting.
-```
 When you run the script, it generates a PNG file named Example6.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:

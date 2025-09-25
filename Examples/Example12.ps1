@@ -187,7 +187,7 @@ $example12 = & {
         <#
             The Add-DiaHTMLTable cmdlet is used to create a list table to display additional information about a object.
 
-           In this example, we create a table to display the router's network interface information.
+            In this example, we create a table to display the router's network interface information.
         #>
 
         $RouterNetworkInfo = @(
