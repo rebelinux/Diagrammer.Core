@@ -1,4 +1,4 @@
-### ** This time we will add icons and additional information to Node objects. **
+** This time we will add icons and additional information to Node objects. **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 

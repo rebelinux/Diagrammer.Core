@@ -1,4 +1,4 @@
-### ** This time, we'll turn on the DraftMode attribute to make it easier to troubleshoot and fine-tune the diagram. **
+** This time, we'll turn on the DraftMode attribute to make it easier to troubleshoot and fine-tune the diagram. **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
