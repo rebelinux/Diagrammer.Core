@@ -156,7 +156,7 @@ When you run the script, it generates a PNG file named Example9.png in the speci
 
 ### Resulting GraphViz Source Code:
 
-```graphviz dot example1.png
+```graphviz dot example9.png
 digraph Root {
 	graph [bb="0,0,652,1215.8",
 		bgcolor=White,
