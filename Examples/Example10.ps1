@@ -180,7 +180,7 @@ $example10 = & {
             -ImageSizePercent parameter sets the size of the image as a percentage (30% in this case).
         #>
 
-        Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Cloud" -IconPath $IconPath -ImageSizePercent 30 -DraftMode:$DraftMode
+        Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Cloud" -IconPath $IconPath -ImageSizePercent 30 -NodeObject -DraftMode:$DraftMode
 
         Edge -From WAN -To Router01 @{label = 'Serial0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
     }
