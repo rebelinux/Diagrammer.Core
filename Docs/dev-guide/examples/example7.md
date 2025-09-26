@@ -77,7 +77,7 @@ $DBServerInfo = [PSCustomObject][ordered]@{
 
 The Rank cmdlet is used to place nodes at the same hierarchical level.
 
-[https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/](https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/)
+[https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/](https://psgraph.readthedocs.io/en/stable/Command-Rank-Advanced/){:target="_blank"}
 
 In this example, App01 and DB01 are aligned horizontally.
 
