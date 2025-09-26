@@ -201,7 +201,9 @@ New-Diagrammer -InputObject $advancedexample01 -OutputFolderPath $OutputFolderPa
 ```
 When you run the script, it generates a PNG file named Example15.png in the specified output folder.
 
-### Resulting GraphViz Source Code:
+### Resulting diagram:
+
+The diagram below visually compares a traditional Graphviz SubGraph with a Diagrammer.Core HTML-like SubGraph, highlighting the enhanced layout and connectivity options available in Diagrammer.Core.
 
 ```graphviz dot example15.png
 digraph Root {

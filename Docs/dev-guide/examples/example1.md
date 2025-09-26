@@ -67,7 +67,9 @@ The parameters used in the New-Diagrammer cmdlet are explained below:
 
 When you run the script, it generates a PNG file named Example1.png in the specified output folder.
 
-### Resulting GraphViz Source Code:
+### Resulting diagram:
+
+The following diagram visually represents the 3-tier web application, showing the Web, Application, and Database servers as distinct colored rectangles.
 
 ```graphviz dot example1.png
 DiGraph Root {

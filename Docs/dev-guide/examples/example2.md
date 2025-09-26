@@ -60,7 +60,9 @@ New-Diagrammer -InputObject $example2 -OutputFolderPath $OutputFolderPath -Forma
 
 When you run the script, it generates a PNG file named Example2.png in the specified output folder.
 
-### Resulting GraphViz Source Code:
+### Resulting diagram:
+
+The diagram below visualizes a 3-tier web application architecture. Each tier—Web, Application, and Database—is represented by a distinct color-coded rectangle for clarity. Connections between the tiers are labeled to indicate the communication protocols: the Web server communicates with the Application server via gRPC, and the Application server interacts with the Database server using SQL.
 
 ```graphviz dot example2.png
 digraph Root {
