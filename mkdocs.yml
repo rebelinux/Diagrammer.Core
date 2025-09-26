@@ -89,7 +89,6 @@ theme:
     - navigation.sections
     - navigation.footer
     - navigation.top
-    - toc.follow
 
 # Page Navigation
 nav:
