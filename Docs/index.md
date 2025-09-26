@@ -22,7 +22,6 @@ The objective of Diagrammer.Core is to provide a standardized, extensible platfo
 
 ## Examples
 
-
 <table border="1" width="100%">
     <tr>
         <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.AD-(Forest).png" width="50%" height="50%" /></td>
