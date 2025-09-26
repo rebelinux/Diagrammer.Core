@@ -1,9 +1,10 @@
 ---
 comments: true
 ---
-** This time, we'll demonstrate the use of the Signature (Add-DiaHtmlSignatureTable) feature (Part of Diagrammer.Core module). **
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
+This time, we'll demonstrate the use of the Signature feature (Part of Diagrammer.Core module)
+
+To include a signature table as a footer in the diagram, use the `Add-DiaHtmlSignatureTable` cmdlet. This cmdlet generates a signature table, which you assign to a variable (e.g., `$Signature`). You then set this variable as the label of a dedicated SubGraph. By configuring the SubGraph's style to be invisible and positioning its label at the bottom, the signature table appears as a custom footer in the final diagram output.
 
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
@@ -47,6 +48,11 @@ The $Images variable is a hashtable containing the names of image files used in 
 $script:Images = @{
     "Main_Logo" = "Diagrammer.png"
     "Server" = "Server.png"
+    "ServerRedhat" = "Linux_Server_RedHat.png"
+    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
+    "Cloud" = "Cloud.png"
+    "Router" = "Router.png"
+    "Logo_Footer" = "Signature_Logo.png"
 }
 ```
 

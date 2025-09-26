@@ -1,9 +1,11 @@
 ---
 comments: true
 ---
-** This time, we'll demonstrate the use of Add-DiaNodeShape cmdlet to add custom shapes to the diagram (Part of Diagrammer.Core module). **
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
+This time, we'll demonstrate the use of Add-DiaNodeShape (part of Diagrammer.Core module) cmdlet to add custom shapes to the diagram.
+
+The Add-DiaNodeShape cmdlet allows you to create custom shapes with various styles and attributes, enhancing the visual representation of your diagrams. In this example, we create a rectangle shape to represent a firewall in the network diagram.
+
 
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
@@ -47,6 +49,11 @@ The $Images variable is a hashtable containing the names of image files used in 
 $script:Images = @{
     "Main_Logo" = "Diagrammer.png"
     "Server" = "Server.png"
+    "ServerRedhat" = "Linux_Server_RedHat.png"
+    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
+    "Cloud" = "Cloud.png"
+    "Router" = "Router.png"
+    "Logo_Footer" = "Signature_Logo.png"
 }
 ```
 

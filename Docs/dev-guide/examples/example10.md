@@ -1,9 +1,9 @@
 ---
 comments: true
 ---
-** This time, we'll demonstrate the use of the Add-DiaNodeImage to add a custom image to the diagram (Part of Diagrammer.Core module). **
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
+This time, we'll demonstrate the use of the **`Add-DiagramNodeImage`** (part of Diagrammer.Core module) to add a custom image to the diagram. The **`Add-DiaNodeImage`** function allows you to incorporate images into your diagrams, enhancing their visual appeal and providing additional context. In this example, we will add a network router and a cloud icon to represent internet connectivity.
+
 
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
@@ -47,6 +47,11 @@ The $Images variable is a hashtable containing the names of image files used in 
 $script:Images = @{
     "Main_Logo" = "Diagrammer.png"
     "Server" = "Server.png"
+    "ServerRedhat" = "Linux_Server_RedHat.png"
+    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
+    "Cloud" = "Cloud.png"
+    "Router" = "Router.png"
+    "Logo_Footer" = "Signature_Logo.png"
 }
 ```
 
