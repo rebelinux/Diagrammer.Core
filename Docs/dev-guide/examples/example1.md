@@ -69,8 +69,6 @@ When you run the script, it generates a PNG file named Example1.png in the speci
 
 ### Resulting diagram:
 
-The following diagram visually represents the 3-tier web application, showing the Web, Application, and Database servers as distinct colored rectangles.
-
 ```graphviz dot example1.png
 DiGraph Root {
     Graph [bb="0,0,477,420.5",

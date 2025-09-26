@@ -1,7 +1,10 @@
 ---
 comments: true
 ---
-** This time we will add icons and additional information to Node objects. **
+
+This time we will add icons and additional information to Node objects.
+
+The Add-DiaNodeIcon function enhances the visual representation of nodes by incorporating icons and detailed information. In this example, each server node (Web, Application, and Database) is depicted with a server icon and a table listing its operating system, version, build, and edition. The nodes are organized within a dashed rounded rectangle labeled "3 Tier Concept," visually encapsulating the three-tier architecture. Connections between the nodes are clearly labeled with the communication protocols used (gRPC and SQL), providing a comprehensive overview of the web application structure.
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
@@ -115,8 +118,6 @@ New-Diagrammer -InputObject $example5 -OutputFolderPath $OutputFolderPath -Forma
 When you run the script, it generates a PNG file named Example5.png in the specified output folder.
 
 ### Resulting diagram:
-
-The Add-DiaNodeIcon function enhances the visual representation of nodes by incorporating icons and detailed information. In this example, each server node (Web, Application, and Database) is depicted with a server icon and a table listing its operating system, version, build, and edition. The nodes are organized within a dashed rounded rectangle labeled "3 Tier Concept," visually encapsulating the three-tier architecture. Connections between the nodes are clearly labeled with the communication protocols used (gRPC and SQL), providing a comprehensive overview of the web application structure.
 
 ```graphviz dot example5.png
 digraph Root {

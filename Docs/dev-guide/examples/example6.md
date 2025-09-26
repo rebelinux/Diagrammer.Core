@@ -1,7 +1,10 @@
 ---
 comments: true
 ---
-** This time, we'll turn on the DraftMode attribute to make it easier to troubleshoot and fine-tune the diagram. **
+
+This time, we'll turn on the DraftMode attribute to make it easier to troubleshoot and fine-tune the diagram.
+
+When enabled, the **DraftMode** feature generates a simplified, draft version of the diagram. This mode highlights layout boundaries, disables advanced rendering options, and uses placeholder icons or labels, making it easier to identify alignment issues, spacing problems, and node relationships. DraftMode is especially useful during the design and troubleshooting phase, allowing you to quickly iterate and fine-tune the diagram before producing the final polished output.
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
@@ -113,8 +116,6 @@ New-Diagrammer -InputObject $example6 -OutputFolderPath $OutputFolderPath -Forma
 When you run the script, it generates a PNG file named Example6.png in the specified output folder.
 
 ### Resulting diagram:
-
-When enabled, the **DraftMode** feature generates a simplified, draft version of the diagram. This mode highlights layout boundaries, disables advanced rendering options, and uses placeholder icons or labels, making it easier to identify alignment issues, spacing problems, and node relationships. DraftMode is especially useful during the design and troubleshooting phase, allowing you to quickly iterate and fine-tune the diagram before producing the final polished output.
 
 ```graphviz dot example6.png
 digraph Root {

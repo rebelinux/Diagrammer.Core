@@ -1,9 +1,10 @@
 ---
 comments: true
 ---
-** This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs. (part of Diagrammer.Core) **
+This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs (part of Diagrammer.Core).
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
+The diagram below visually compares a traditional Graphviz SubGraph with a Diagrammer.Core HTML-like SubGraph, highlighting the enhanced layout and connectivity options available in Diagrammer.Core.
+
 
 ```powershell title="PowerShell: Example1.ps1 - param block"
 [CmdletBinding()]
@@ -20,7 +21,6 @@ Starting with PowerShell v3, modules are auto-imported when needed. Importing th
 ```powershell
 Import-Module Diagrammer.Core -Force -Verbose:$false
 ```
-
 Since the diagram output is a file, specify the output folder path using $OutputFolderPath.
 
 ```powershell
@@ -202,8 +202,6 @@ New-Diagrammer -InputObject $advancedexample01 -OutputFolderPath $OutputFolderPa
 When you run the script, it generates a PNG file named Example15.png in the specified output folder.
 
 ### Resulting diagram:
-
-The diagram below visually compares a traditional Graphviz SubGraph with a Diagrammer.Core HTML-like SubGraph, highlighting the enhanced layout and connectivity options available in Diagrammer.Core.
 
 ```graphviz dot example15.png
 digraph Root {

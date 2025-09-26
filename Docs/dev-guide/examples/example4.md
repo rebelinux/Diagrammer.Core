@@ -1,7 +1,10 @@
 ---
 comments: true
 ---
-** In this example, servers are grouped in a cluster (SubGraph). **
+
+In this example, servers are grouped in a cluster (SubGraph).
+
+The SubGraph feature groups the three servers into a dashed rounded rectangle labeled "3 Tier Concept," visually encapsulating the Web, Application, and Database servers along with their connections.
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
@@ -62,8 +65,6 @@ New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Forma
 When you run the script, it generates a PNG file named Example4.png in the specified output folder.
 
 ### Resulting diagram:
-
-The SubGraph feature groups the three servers into a dashed rounded rectangle labeled "3 Tier Concept," visually encapsulating the Web, Application, and Database servers along with their connections.
 
 ```graphviz dot example4.png
 digraph Root {
