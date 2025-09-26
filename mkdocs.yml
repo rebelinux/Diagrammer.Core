@@ -90,7 +90,6 @@ theme:
     - navigation.footer
     - navigation.top
     - toc.follow
-    - toc.integrate
 
 # Page Navigation
 nav:
