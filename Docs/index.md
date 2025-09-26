@@ -25,14 +25,15 @@ The objective of Diagrammer.Core is to provide a standardized, extensible platfo
 
 <table border="1" width="100%">
     <tr>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.AD-(Forest).png" width="50%" height="50%" /></a></td>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Netapp.Ontap.png" width="50%" height="50%" /></a></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.AD-(Forest).png" width="50%" height="50%" /></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Netapp.Ontap.png" width="50%" height="50%" /></td>
     </tr>
     <tr>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.SCVMM.Infrastructure.png" /></a></td>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veaam.VBR-SOBR.png" width="50%" height="50%" /></a></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.SCVMM.Infrastructure.png" /></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veaam.VBR-SOBR.png" width="50%" height="50%" /></td>
     </tr>
     <tr>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VB365.png" width="50%" height="50%" /></a></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VB365.png" width="50%" height="50%" /></td>
+        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VBR-CloudConnectTenant-Tenant2.png" width="75%" height="75%" /></td>
     </tr>
 </table>
