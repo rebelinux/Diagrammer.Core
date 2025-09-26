@@ -87,6 +87,7 @@ $example12 = & {
                     'Build' = "10.1"
                     'Edition' = "Enterprise"
                 }
+                IconType = "ServerRedhat"
             },
             @{
                 Name = 'Web-Server-02';
@@ -96,6 +97,7 @@ $example12 = & {
                     'Build' = "10.1"
                     'Edition' = "Enterprise"
                 }
+                IconType = "ServerRedhat"
             },
             @{
                 Name = 'Web-Server-03';
@@ -105,6 +107,7 @@ $example12 = & {
                     'Build' = "11"
                     'Edition' = "Enterprise"
                 }
+                IconType = "ServerUbuntu"
             }
         )
 

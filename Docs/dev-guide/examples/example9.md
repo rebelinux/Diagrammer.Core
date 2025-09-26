@@ -47,6 +47,11 @@ The $Images variable is a hashtable containing the names of image files used in 
 $script:Images = @{
     "Main_Logo" = "Diagrammer.png"
     "Server" = "Server.png"
+    "ServerRedhat" = "Linux_Server_RedHat.png"
+    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
+    "Cloud" = "Cloud.png"
+    "Router" = "Router.png"
+    "Logo_Footer" = "Signature_Logo.png"
 }
 ```
 
@@ -91,6 +96,7 @@ $example9 = & {
                     'Build' = "10.1"
                     'Edition' = "Enterprise"
                 }
+                IconType = "ServerRedhat"
             },
             @{
                 Name = 'Web-Server-02';
@@ -100,6 +106,7 @@ $example9 = & {
                     'Build' = "10.1"
                     'Edition' = "Enterprise"
                 }
+                IconType = "ServerRedhat"
             },
             @{
                 Name = 'Web-Server-03';
@@ -109,6 +116,7 @@ $example9 = & {
                     'Build' = "11"
                     'Edition' = "Enterprise"
                 }
+                IconType = "ServerUbuntu"
             }
         )
 

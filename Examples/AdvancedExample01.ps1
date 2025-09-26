@@ -1,4 +1,4 @@
-#    ** This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs. (part of Diagrammer.Core) **
+# ** This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs. (part of Diagrammer.Core) **
 
 <#
     This example demonstrates how to create a 3-tier web application diagram using the Diagrammer module.

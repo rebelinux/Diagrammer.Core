@@ -1,7 +1,7 @@
 ---
 comments: true
 ---
-** This example demonstrates how to use the Add-DiaNodeSpacer cmdlet to add spacer nodes that assist with diagram alignment. (part of Diagrammer.Core) **
+** This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs. (part of Diagrammer.Core) **
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
@@ -47,6 +47,11 @@ The $Images variable is a hashtable containing the names of image files used in 
 $script:Images = @{
     "Main_Logo" = "Diagrammer.png"
     "Server" = "Server.png"
+    "ServerRedhat" = "Linux_Server_RedHat.png"
+    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
+    "Cloud" = "Cloud.png"
+    "Router" = "Router.png"
+    "Logo_Footer" = "Signature_Logo.png"
 }
 ```
 
@@ -89,7 +94,6 @@ $example15 = & {
                         'Build' = "10.1"
                         'Edition' = "Enterprise"
                     }
-                    IconType = "ServerRedhat"
                 },
                 @{
                     Name = 'Web-Server-02';
@@ -99,7 +103,6 @@ $example15 = & {
                         'Build' = "10.1"
                         'Edition' = "Enterprise"
                     }
-                    IconType = "ServerRedhat"
                 },
                 @{
                     Name = 'Web-Server-03';
@@ -109,7 +112,6 @@ $example15 = & {
                         'Build' = "11"
                         'Edition' = "Enterprise"
                     }
-                    IconType = "ServerUbuntu"
                 }
             )
 
