@@ -6,6 +6,8 @@ This time we will connect the nodes to show relationships.
 
 The diagram below visualizes a 3-tier web application architecture. Each tier—Web, Application, and Database—is represented by a distinct color-coded rectangle for clarity. Connections between the tiers are labeled to indicate the communication protocols: the Web server communicates with the Application server via gRPC, and the Application server interacts with the Database server using SQL.
 
+The **`Edge`** statements create connections between the nodes, illustrating the flow of data and interactions within the architecture.
+
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (

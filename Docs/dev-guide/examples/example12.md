@@ -187,6 +187,6 @@ New-Diagrammer -InputObject $example12 -OutputFolderPath $OutputFolderPath -Form
 
 When you run the script, it generates a PNG file named Example12.png in the specified output folder.
 
-### Resulting GraphViz Source Code:
+**Resulting diagram:**
 
 ![Example12.png](../../assets/images/Example12.png)

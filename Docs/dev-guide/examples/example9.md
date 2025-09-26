@@ -1,9 +1,10 @@
 ---
 comments: true
 ---
-** This time, we'll demonstrate the use of the Add-DiaHTMLNodeTable MultiIcon feature (Part of Diagrammer.Core module). **
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
+This time we will demonstrate the use of the **`Add-DiaHTMLNodeTable`** MultiIcon feature. The **`Add-DiaHTMLNodeTable`** function enhances the visual representation of nodes by creating a table layout that can include multiple icons and detailed information for each node. In this example, we simulate a web server farm with three web servers, each represented with its own icon and properties.
+
+The web servers are organized within a dashed rounded rectangle labeled "Web Server Farm," visually encapsulating the group. Additionally, the Application and Database servers are depicted with their respective icons and properties. Connections between the nodes are clearly labeled with the communication protocols used (gRPC and SQL), providing a comprehensive overview of the web application structure.
 
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
@@ -162,7 +163,7 @@ New-Diagrammer -InputObject $example9 -OutputFolderPath $OutputFolderPath -Forma
 
 When you run the script, it generates a PNG file named Example9.png in the specified output folder.
 
-### Resulting GraphViz Source Code:
+**Resulting diagram:**
 
 ```graphviz dot example9.png
 digraph Root {

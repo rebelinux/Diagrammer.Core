@@ -4,7 +4,7 @@ comments: true
 
 In this example, servers are grouped in a cluster (SubGraph).
 
-The SubGraph feature groups the three servers into a dashed rounded rectangle labeled "3 Tier Concept," visually encapsulating the Web, Application, and Database servers along with their connections.
+The **`SubGraph`** (part of PSGraph module) feature groups the three servers into a dashed rounded rectangle labeled "3 Tier Concept," visually encapsulating the Web, Application, and Database servers along with their connections.
 
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
