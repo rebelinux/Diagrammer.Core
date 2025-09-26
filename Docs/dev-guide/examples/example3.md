@@ -6,8 +6,6 @@ This time we will extend the edges size using the Graphviz minlen attribute.
 
 The diagram below illustrates a 3-tier web application architecture. Each tier—Web, Application, and Database—is depicted as a color-coded rectangle for easy identification. Labeled connections show the communication protocols: the Web server connects to the Application server using gRPC, while the Application server communicates with the Database server via SQL. The minlen attribute has been applied to the edges to enhance the spacing between the nodes, resulting in a clearer and more organized layout.
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
-
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (

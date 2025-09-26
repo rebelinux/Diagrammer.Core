@@ -6,8 +6,6 @@ The Rank cmdlet is used in diagramming tools (like PowerShell-based graph module
 
 For example, in a 3-tier architecture diagram, using the Rank cmdlet on App01 and DB01 ensures these nodes are visually grouped together at the same layer. This makes the diagram easier to read and helps clarify the relationships between components.
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
-
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (

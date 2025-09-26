@@ -6,8 +6,6 @@ This time we will connect the nodes to show relationships.
 
 The diagram below visualizes a 3-tier web application architecture. Each tier—Web, Application, and Database—is represented by a distinct color-coded rectangle for clarity. Connections between the tiers are labeled to indicate the communication protocols: the Web server communicates with the Application server via gRPC, and the Application server interacts with the Database server using SQL.
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
-
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (
