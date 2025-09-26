@@ -62,7 +62,7 @@ New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Forma
 
 When you run the script, it generates a PNG file named Example4.png in the specified output folder.
 
-### Resulting diagram:
+**Resulting diagram:**
 
 ```graphviz dot example4.png
 digraph Root {

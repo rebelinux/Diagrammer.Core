@@ -67,7 +67,7 @@ The parameters used in the New-Diagrammer cmdlet are explained below:
 
 When you run the script, it generates a PNG file named Example1.png in the specified output folder.
 
-### Resulting diagram:
+**Resulting diagram:**
 
 ```graphviz dot example1.png
 DiGraph Root {

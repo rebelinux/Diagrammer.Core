@@ -100,3 +100,5 @@ If you are unable to use the PowerShell Gallery, you can still install the `Diag
 _Note: You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
 
 ## :x: Known Issues
+
+- Unknown at this time but please report any issues you may find in the [GitHub Issues](https://github.com/rebelinux/Diagrammer.Core/issues){:target="_blank"} page.

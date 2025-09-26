@@ -1,9 +1,8 @@
 ---
 comments: true
 ---
-** This time, we'll demonstrate the use of the Add-DiaHTMLNodeTable cmdlet (Part of Diagrammer.Core module). **
 
-This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
+In this example, the **Add-DiaHTMLNodeTable** cmdlet generates a table layout that visually groups multiple web server nodes, displaying each server alongside its individual properties within the web server farm.
 
 ```powershell title="PowerShell: param block"
 [CmdletBinding()]
@@ -151,7 +150,7 @@ New-Diagrammer -InputObject $example8 -OutputFolderPath $OutputFolderPath -Forma
 
 When you run the script, it generates a PNG file named Example8.png in the specified output folder.
 
-### Resulting GraphViz Source Code:
+**Resulting diagram:**
 
 ```graphviz dot example8.png
 digraph Root {
