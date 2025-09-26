@@ -1,6 +1,3 @@
----
-comments: true
----
 # Support
 
 If you need help or have questions, feel free to reach out via the [GitHub Issues](https://github.com/rebelinux/Diagrammer.Core/issues){:target="_blank"} page.
