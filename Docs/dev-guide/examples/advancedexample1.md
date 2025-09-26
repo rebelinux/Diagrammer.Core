@@ -30,7 +30,7 @@ $OutputFolderPath = Resolve-Path $Path
 The $MainGraphLabel variable sets the main title of the diagram.
 
 ```powershell
-$MainGraphLabel = '3tier Web Application Diagram'
+$MainGraphLabel = 'Web Application Diagram'
 ```
 
 If the diagram uses custom icons, specify the path to the icons directory. This is a Graphviz requirement.

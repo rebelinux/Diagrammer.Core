@@ -75,6 +75,8 @@ theme:
     - yaml
     - powershell
   language: en
+  palette:
+    primary: black
   features:
     - content.code.copy
     - content.code.select
