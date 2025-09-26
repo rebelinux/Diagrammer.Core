@@ -61,7 +61,9 @@ New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Forma
 
 When you run the script, it generates a PNG file named Example4.png in the specified output folder.
 
-### Resulting GraphViz Source Code:
+### Resulting diagram:
+
+The SubGraph feature groups the three servers into a dashed rounded rectangle labeled "3 Tier Concept," visually encapsulating the Web, Application, and Database servers along with their connections.
 
 ```graphviz dot example4.png
 digraph Root {
