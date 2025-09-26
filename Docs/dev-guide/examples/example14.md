@@ -5,7 +5,7 @@ comments: true
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
-```powershell title="PowerShell: Example1.ps1 - param block"
+```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
@@ -73,7 +73,7 @@ In this example, we use the Add-DiaNodeShape cmdlet to add a custom rectangle sh
 [Supported Shapes](https://graphviz.org/doc/info/shapes.html){:target="_blank"}
 
 ```powershell
-$example10 = & {
+$example14 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 
         $Signature = Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: Bugs Bunny", "Company: ACME Inc." -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -DraftMode:$DraftMode
@@ -173,7 +173,7 @@ $example10 = & {
 
             Edge -From WAN -To Firewall @{labeldistance = 5; headlabel = 'port1'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2; arrowhead = 'normal'; arrowtail = 'normal' }
             Edge -From Firewall -To Router01 @{labeldistance = 4; headlabel = 'Serial0/0'; taillabel = 'port2'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2; arrowhead = 'normal'; arrowtail = 'normal' }
-         }
+        }
     }
 }
 ```
@@ -181,13 +181,13 @@ $example10 = & {
 Finally, call the New-Diagrammer cmdlet with the specified parameters.
 
 ```powershell
-New-Diagrammer -InputObject $example13 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example13 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -WaterMarkText "Confidential" -WaterMarkColor "DarkGray" -WaterMarkFontOpacity 40 -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example14 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example14 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -WaterMarkText "Confidential" -WaterMarkColor "DarkGray" -WaterMarkFontOpacity 40 -DraftMode:$DraftMode
 ```
-When you run the script, it generates a PNG file named Example13.png in the specified output folder.
+When you run the script, it generates a PNG file named Example14.png in the specified output folder.
 
 ### Resulting GraphViz Source Code:
 
-```graphviz dot example13.png
+```graphviz dot example14.png
 digraph Root {
 	graph [bb="0,0,668,2082.8",
 		bgcolor=White,

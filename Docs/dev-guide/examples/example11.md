@@ -5,7 +5,7 @@ comments: true
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
-```powershell title="PowerShell: Example1.ps1 - param block"
+```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
@@ -75,7 +75,7 @@ To improve the diagram, we'll add a network router and a cloud icon to represent
 The rank directive is used to alignnodes horizontally.
 
 ```powershell
-$example10 = & {
+$example11 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 
         $WebServerFarm = @(

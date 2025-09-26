@@ -5,7 +5,7 @@ comments: true
 
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
-```powershell title="PowerShell: Example1.ps1 - param block"
+```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
@@ -71,7 +71,7 @@ $DBServerInfo = [PSCustomObject][ordered]@{
 In this section we demonstrates the use of the Add-DiaHtmlSignatureTable cmdlet used to creates a signature table to be used as a footer in the diagram. The Signature SubGraph contains the $Signature table created above. It is styled to be invisible and positioned at the bottom of the diagram.
 
 ```powershell
-$example10 = & {
+$example13 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 
         # The $Signature variable store the result of the signature table to be used as a footer in the diagram.

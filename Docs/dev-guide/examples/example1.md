@@ -3,7 +3,7 @@ comments: true
 ---
 This is a simple example demonstrating how to create a 3-tier web application diagram using the PSGraph module, without using any object icons.
 
-```powershell title="PowerShell: Example1.ps1 - param block"
+```powershell title="PowerShell: param block"
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',

@@ -231,7 +231,7 @@ $example15 = & {
             <#
                 The Add-DiaNodeSpacer cmdlet is used to create invisible spacer nodes that help with diagram alignment (Part of Diagrammer.Core module).
 
-                In this diagram there is a aliment issue with the Web01 node, as it is not centered with the App01 and DB01 nodes below it. To fix this,
+                In this diagram there is a alignment issue with the Web01 node, as it is not centered with the App01 and DB01 nodes below it. To fix this,
                 we create two spacer nodes (FillerRight and FillerLeft) on either side of the Web01 node.
 
                 -Name parameter sets the name of the spacer node.
