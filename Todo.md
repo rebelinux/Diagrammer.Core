@@ -1,15 +1,15 @@
 - [ ] Research a way to put the Add-DiaNodeIcon in a horizontal like design
     - [x] Current design is vertical
-    ```markdown
-            _________
-            | Image |
-            _________
-            | Name  |
-            _________
-            |       |
-            | Info  |
-            |       |
-            _________
+        ```markdown
+                _________
+                | Image |
+                _________
+                | Name  |
+                _________
+                |       |
+                | Info  |
+                |       |
+                _________
         ```
     - [ ] Desired design is horizontal
         ```markdown
