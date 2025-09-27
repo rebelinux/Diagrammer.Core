@@ -205,134 +205,274 @@ When you run the script, it generates a PNG file named Example15.png in the spec
 
 ### Resulting diagram:
 
-```graphviz dot example15.png
-digraph Root {
-	graph [bb="0,0,1710,1024.2",
-		bgcolor=White,
-		compound=true,
-		fontcolor="#565656",
-		fontname="Segoe Ui Black",
-		fontsize=32,
-		labelloc=t,
-		nodesep=0.6,
-		pad=1,
-		penwidth=1.5,
-		rankdir=TB,
-		ranksep=0.75,
-		splines=line,
-		style=dashed
-	];
-	node [fillcolor="#71797E",
-		fontcolor=Black,
-		fontsize=14,
-		imagescale=True,
-		label="\N",
-		labelloc=t,
-		shape=none,
-		style=filled
-	];
-	edge [arrowsize=1,
-		arrowtail=dot,
-		color="#71797E",
-		dir=both,
-		fontcolor="#71797E",
-		penwidth=3,
-		style=dashed
-	];
-	subgraph clusterOUTERDRAWBOARD1 {
-		graph [bb="8,8,1702,1016.2",
-			color=gray,
-			fontsize=24,
-			label=" ",
-			labeljust=r,
-			labelloc=b,
-			lheight=0.47,
-			lp="1690.6,28.875",
-			lwidth=0.09,
-			penwidth=1.5,
-			style=invis
-		];
-		subgraph clusterMainGraph {
-			graph [bb="16,57.75,1694,1008.2",
-				fontsize=24,
-				label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,
-				labeljust=c,
-				labelloc=t,
-				lheight=3.98,
-				lp="855,860.88",
-				lwidth=5.09,
-				penwidth=0
-			];
-			subgraph cluster3tier {
-				graph [bb="24,65.75,1686,705.5",
-					color=darkgray,
-					fontsize=22,
-					label="Advanced Diagram Concepts",
-					labelloc=t,
-					lheight=0.43,
-					lp="855,686.12",
-					lwidth=4.29,
-					penwidth=1.5,
-					style="dashed,rounded"
-				];
-				subgraph clusterTraditional {
-					graph [bb="32,238.75,1175,532.5",
-						bgcolor="#c1cfe5ff",
-						color=darkgray,
-						fontsize=22,
-						label="Native Graphviz SubGraph",
-						labelloc=t,
-						lheight=0.43,
-						lp="603.5,513.12",
-						lwidth=3.95,
-						penwidth=1.5,
-						style="dashed,rounded"
-					];
-					"UK-WebServer-01"	[fillcolor=transparent,
-						height=3.3194,
-						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
-						pos="116,366.25",
-						shape=plain,
-						width=2.1111];
-					"UK-WebServer-02"	[fillcolor=transparent,
-						height=3.3194,
-						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-02</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
-						pos="311,366.25",
-						shape=plain,
-						width=2.1111];
-					"UK-WebServer-03"	[fillcolor=transparent,
-						height=3.3194,
-						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-03</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
-						pos="506,366.25",
-						shape=plain,
-						width=2.1111];
-					"UK-WebServer-04"	[fillcolor=transparent,
-						height=3.3194,
-						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-04</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
-						pos="701,366.25",
-						shape=plain,
-						width=2.1111];
-					"UK-WebServer-05"	[fillcolor=transparent,
-						height=3.3194,
-						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-05</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
-						pos="896,366.25",
-						shape=plain,
-						width=2.1111];
-					"UK-WebServer-06"	[fillcolor=transparent,
-						height=3.3194,
-						label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-06</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
-						pos="1091,366.25",
-						shape=plain,
-						width=2.1111];
-				}
-				"USA-WebServers"	[fillcolor=transparent,
-					height=8.125,
-					label=<<TABLE BGColor="#a8c3b8ff" COLOR="darkgray" STYLE="dashed,rounded" border="1" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD valign="BOTTOM" ALIGN="Center" colspan="1" fixedsize="true" width="40" height="40"><IMG src="Docs/Icons/Server.png"></IMG></TD></TR><TR><TD valign="TOP" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>Diagrammer SubGraph</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="22"><TABLE COLOR="#000000" PORT="EdgeDot" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD></TR><TR><TD PORT="Web-Server-01" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-01</B></FONT></TD><TD PORT="Web-Server-02" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-02</B></FONT></TD><TD PORT="Web-Server-03" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-03</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD></TR><TR><TD PORT="Web-Server-04" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-04</B></FONT></TD><TD PORT="Web-Server-05" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-05</B></FONT></TD><TD PORT="Web-Server-06" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-06</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR></TABLE></FONT></TD></TR></TABLE>>,
-					pos="1444,366.25",
-					shape=plain,
-					width=6.5];
-			}
-		}
-	}
-}
-```
+!!! example
+
+    === "Example 01"
+
+        ```graphviz dot advancedexample01.png
+        digraph Root {
+            graph [bb="0,0,1710,1024.2",
+                bgcolor=White,
+                compound=true,
+                fontcolor="#565656",
+                fontname="Segoe Ui Black",
+                fontsize=32,
+                labelloc=t,
+                nodesep=0.6,
+                pad=1,
+                penwidth=1.5,
+                rankdir=TB,
+                ranksep=0.75,
+                splines=line,
+                style=dashed
+            ];
+            node [fillcolor="#71797E",
+                fontcolor=Black,
+                fontsize=14,
+                imagescale=True,
+                label="\N",
+                labelloc=t,
+                shape=none,
+                style=filled
+            ];
+            edge [arrowsize=1,
+                arrowtail=dot,
+                color="#71797E",
+                dir=both,
+                fontcolor="#71797E",
+                penwidth=3,
+                style=dashed
+            ];
+            subgraph clusterOUTERDRAWBOARD1 {
+                graph [bb="8,8,1702,1016.2",
+                    color=gray,
+                    fontsize=24,
+                    label=" ",
+                    labeljust=r,
+                    labelloc=b,
+                    lheight=0.47,
+                    lp="1690.6,28.875",
+                    lwidth=0.09,
+                    penwidth=1.5,
+                    style=invis
+                ];
+                subgraph clusterMainGraph {
+                    graph [bb="16,57.75,1694,1008.2",
+                        fontsize=24,
+                        label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,
+                        labeljust=c,
+                        labelloc=t,
+                        lheight=3.98,
+                        lp="855,860.88",
+                        lwidth=5.09,
+                        penwidth=0
+                    ];
+                    subgraph cluster3tier {
+                        graph [bb="24,65.75,1686,705.5",
+                            color=darkgray,
+                            fontsize=22,
+                            label="Advanced Diagram Concepts",
+                            labelloc=t,
+                            lheight=0.43,
+                            lp="855,686.12",
+                            lwidth=4.29,
+                            penwidth=1.5,
+                            style="dashed,rounded"
+                        ];
+                        subgraph clusterTraditional {
+                            graph [bb="32,238.75,1175,532.5",
+                                bgcolor="#c1cfe5ff",
+                                color=darkgray,
+                                fontsize=22,
+                                label="Native Graphviz SubGraph",
+                                labelloc=t,
+                                lheight=0.43,
+                                lp="603.5,513.12",
+                                lwidth=3.95,
+                                penwidth=1.5,
+                                style="dashed,rounded"
+                            ];
+                            "UK-WebServer-01"	[fillcolor=transparent,
+                                height=3.3194,
+                                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="116,366.25",
+                                shape=plain,
+                                width=2.1111];
+                            "UK-WebServer-02"	[fillcolor=transparent,
+                                height=3.3194,
+                                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-02</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="311,366.25",
+                                shape=plain,
+                                width=2.1111];
+                            "UK-WebServer-03"	[fillcolor=transparent,
+                                height=3.3194,
+                                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-03</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="506,366.25",
+                                shape=plain,
+                                width=2.1111];
+                            "UK-WebServer-04"	[fillcolor=transparent,
+                                height=3.3194,
+                                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-04</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="701,366.25",
+                                shape=plain,
+                                width=2.1111];
+                            "UK-WebServer-05"	[fillcolor=transparent,
+                                height=3.3194,
+                                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-05</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="896,366.25",
+                                shape=plain,
+                                width=2.1111];
+                            "UK-WebServer-06"	[fillcolor=transparent,
+                                height=3.3194,
+                                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-06</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="1091,366.25",
+                                shape=plain,
+                                width=2.1111];
+                        }
+                        "USA-WebServers"	[fillcolor=transparent,
+                            height=8.125,
+                            label=<<TABLE BGColor="#a8c3b8ff" COLOR="darkgray" STYLE="dashed,rounded" border="1" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD valign="BOTTOM" ALIGN="Center" colspan="1" fixedsize="true" width="40" height="40"><IMG src="Docs/Icons/Server.png"></IMG></TD></TR><TR><TD valign="TOP" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>Diagrammer SubGraph</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="22"><TABLE COLOR="#000000" PORT="EdgeDot" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD></TR><TR><TD PORT="Web-Server-01" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-01</B></FONT></TD><TD PORT="Web-Server-02" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-02</B></FONT></TD><TD PORT="Web-Server-03" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-03</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Linux_Server_RedHat.png"/></TD></TR><TR><TD PORT="Web-Server-04" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-04</B></FONT></TD><TD PORT="Web-Server-05" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-05</B></FONT></TD><TD PORT="Web-Server-06" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-06</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR></TABLE></FONT></TD></TR></TABLE>>,
+                            pos="1444,366.25",
+                            shape=plain,
+                            width=6.5];
+                    }
+                }
+            }
+        }
+        ```
+
+    === "Example 01 - DraftMode"
+
+        ```graphviz dot advancedexample01_draftmode.png
+
+        digraph Root {
+            graph [bb="0,0,1738,954.25",
+                bgcolor=White,
+                compound=true,
+                fontcolor="#565656",
+                fontname="Segoe Ui Black",
+                fontsize=32,
+                imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Examples\icons",
+                labelloc=t,
+                nodesep=0.6,
+                pad=1,
+                penwidth=1.5,
+                rankdir=TB,
+                ranksep=0.75,
+                splines=line,
+                style=dashed
+            ];
+            node [fillcolor="#71797E",
+                fontcolor=Black,
+                fontsize=14,
+                imagescale=True,
+                label="\N",
+                labelloc=t,
+                shape=none,
+                style=filled
+            ];
+            edge [arrowsize=1,
+                arrowtail=dot,
+                color="#71797E",
+                dir=both,
+                fontcolor="#71797E",
+                penwidth=3,
+                style=dashed
+            ];
+            subgraph clusterOUTERDRAWBOARD1 {
+                graph [bb="8,8,1730,946.25",
+                    color=red,
+                    fontsize=24,
+                    label=" ",
+                    labeljust=r,
+                    labelloc=b,
+                    lheight=0.47,
+                    lp="1718.6,28.875",
+                    lwidth=0.09,
+                    penwidth=1.5,
+                    style=dashed
+                ];
+                subgraph clusterMainGraph {
+                    graph [bb="16,57.75,1722,938.25",
+                        fontsize=24,
+                        label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>>,
+                        labeljust=c,
+                        labelloc=t,
+                        lheight=4.18,
+                        lp="869,783.62",
+                        lwidth=5.37,
+                        penwidth=0
+                    ];
+                    subgraph cluster3tier {
+                        graph [bb="24,65.75,1714,621",
+                            color=darkgray,
+                            fontsize=22,
+                            label="Advanced Diagram Concepts",
+                            labelloc=t,
+                            lheight=0.43,
+                            lp="869,601.62",
+                            lwidth=4.29,
+                            penwidth=1.5,
+                            style="dashed,rounded"
+                        ];
+                        subgraph clusterTraditional {
+                            graph [bb="32,215.62,1199,471.12",
+                                bgcolor="#c1cfe5ff",
+                                color=darkgray,
+                                fontsize=22,
+                                label="Native Graphviz SubGraph",
+                                labelloc=t,
+                                lheight=0.43,
+                                lp="615.5,451.75",
+                                lwidth=3.95,
+                                penwidth=1.5,
+                                style="dashed,rounded"
+                            ];
+                            "UK-WebServer-01"	[fillcolor=transparent,
+                                height=2.7882,
+                                label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='18'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="118,324",
+                                shape=plain,
+                                width=2.1667];
+                            "UK-WebServer-02"	[fillcolor=transparent,
+                                height=2.7882,
+                                label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='18'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-02</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="317,324",
+                                shape=plain,
+                                width=2.1667];
+                            "UK-WebServer-03"	[fillcolor=transparent,
+                                height=2.7882,
+                                label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='18'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-03</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="516,324",
+                                shape=plain,
+                                width=2.1667];
+                            "UK-WebServer-04"	[fillcolor=transparent,
+                                height=2.7882,
+                                label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='18'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-04</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="715,324",
+                                shape=plain,
+                                width=2.1667];
+                            "UK-WebServer-05"	[fillcolor=transparent,
+                                height=2.7882,
+                                label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='18'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-05</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="914,324",
+                                shape=plain,
+                                width=2.1667];
+                            "UK-WebServer-06"	[fillcolor=transparent,
+                                height=2.7882,
+                                label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='18'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-06</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,
+                                pos="1113,324",
+                                shape=plain,
+                                width=2.1667];
+                        }
+                        "USA-WebServers"	[fillcolor=transparent,
+                            height=6.9514,
+                            label=<<TABLE BGColor="#a8c3b8ff" STYLE="dashed,rounded" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>SubGraph Icon</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="22"><B>Diagrammer SubGraph</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="22"><TABLE PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="18"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="18"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="18"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Web-Server-01" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-01</B></FONT></TD><TD PORT="Web-Server-02" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-02</B></FONT></TD><TD PORT="Web-Server-03" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-03</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="18"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="18"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="18"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Web-Server-04" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-04</B></FONT></TD><TD PORT="Web-Server-05" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-05</B></FONT></TD><TD PORT="Web-Server-06" ALIGN="Center" colspan="1"><FONT POINT-SIZE="18"><B>Web-Server-06</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR></TABLE></FONT></TD></TR></TABLE>>,
+                            pos="1470,324",
+                            shape=plain,
+                            width=6.5556];
+                    }
+                }
+            }
+        }
+        ```

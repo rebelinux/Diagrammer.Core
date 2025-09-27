@@ -58,6 +58,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_javascript:
   - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
