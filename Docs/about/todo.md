@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Github Changelog file for Maintainer.
-comments: false
+comments: true
 hide:
   - toc
 ---
