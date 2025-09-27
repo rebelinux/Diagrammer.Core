@@ -63,6 +63,9 @@ markdown_extensions:
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra_javascript:
   - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
@@ -127,3 +130,4 @@ nav:
       - Contact: about/contact.md
       - Changelog: about/changelog.md
       - License: about/license.md
+      - Todo: about/todo.md
