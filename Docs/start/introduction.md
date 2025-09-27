@@ -30,19 +30,19 @@ Graph g {
 
 The PSGraph commands above define a simple graph with three nodes (Web, App, DB) and two edges (Web to App with label "HTTP" and App to DB with label "SQL"). Each node is styled as an oval. The resulting code is passed to GraphViz dot.exe command that translates the PSGraph DSL into the DOT language, which is then used to generate a visual representation of the graph. Finally, the graph is rendered into an image format such as PNG, SVG etc...
 
-### Resulting GraphViz Source Code:
 
-```dot
-digraph g {
-    compound="true";
-    "Web" [shape="oval";]
-    "App" [shape="oval";]
-    "DB" [shape="oval";]
-    "Web"->"App" [label="HTTP";]
-    "App"->"DB" [label="SQL";]
-    { rank=same;  "App"; "DB"; }
-}
-```
+=== "PSGraph Example Diagram"
+    ```dot
+    digraph g {
+        compound="true";
+        "Web" [shape="oval";]
+        "App" [shape="oval";]
+        "DB" [shape="oval";]
+        "Web"->"App" [label="HTTP";]
+        "App"->"DB" [label="SQL";]
+        { rank=same;  "App"; "DB"; }
+    }
+    ```
 
 Until now, the example has been using PSGraph to generate the diagrams. However, to enhance the diagram rendering capabilities, Diagrammer.Core defines a bundle of custom commands that extend the PSGraph DSL. These commands are designed to simplify the creation of complex diagrams and improve the overall user experience.
 
@@ -86,80 +86,80 @@ graph g {
 
 In essence, Diagrammer.Core uses the Graphviz capabilities to render HTML-like labels, which allows for a more detailed and structured representation of nodes within the diagrams. This feature enhances the clarity and comprehensibility of the diagrams, making them more effective for conveying information.
 
-### Resulting GraphViz Source Code:
+=== "Diagrammer Example Diagram"
 
-```graphviz dot example_diag.png
-digraph Root {
-	graph [bb="0,0,414,1618.8",
-		bgcolor=White,
-		compound=true,
-		fontcolor="#565656",
-		fontname="Segoe Ui Black",
-		fontsize=32,
-		labelloc=t,
-		nodesep=0.6,
-		pad=1,
-		penwidth=1.5,
-		rankdir=TB,
-		ranksep=0.75,
-		splines=line,
-		style=dashed
-	];
-	node [fillcolor="#71797E",
-		fontcolor=Black,
-		fontsize=14,
-		imagescale=True,
-		label="\N",
-		labelloc=t,
-		shape=none,
-		style=filled
-	];
-	edge [arrowsize=1,
-		arrowtail=dot,
-		color="#71797E",
-		dir=both,
-		fontcolor="#71797E",
-		penwidth=3,
-		style=dashed
-	];
-    {
+    ```graphviz dot example_diag.png
+    digraph Root {
+        graph [bb="0,0,414,1618.8",
+            bgcolor=White,
+            compound=true,
+            fontcolor="#565656",
+            fontname="Segoe Ui Black",
+            fontsize=32,
+            labelloc=t,
+            nodesep=0.6,
+            pad=1,
+            penwidth=1.5,
+            rankdir=TB,
+            ranksep=0.75,
+            splines=line,
+            style=dashed
+        ];
+        node [fillcolor="#71797E",
+            fontcolor=Black,
+            fontsize=14,
+            imagescale=True,
+            label="\N",
+            labelloc=t,
+            shape=none,
+            style=filled
+        ];
+        edge [arrowsize=1,
+            arrowtail=dot,
+            color="#71797E",
+            dir=both,
+            fontcolor="#71797E",
+            penwidth=3,
+            style=dashed
+        ];
         {
-            graph [rank=same];
-            App01	[fillcolor=transparent,
+            {
+                graph [rank=same];
+                App01	[fillcolor=transparent,
+                    height=3.8194,
+                    label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>App-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Windows Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 2019</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 17763.3163</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Datacenter</FONT></TD></TR></TABLE>>,
+                    pos="118,211.25",
+                    shape=plain,
+                    width=2.3924];
+                DB01	[fillcolor=transparent,
+                    height=3.8194,
+                    label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Db-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Oracle Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 8</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 8.2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
+                    pos="541,211.25",
+                    shape=plain,
+                    width=2.2049];
+            }
+            Web01	[fillcolor=transparent,
                 height=3.8194,
-                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>App-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Windows Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 2019</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 17763.3163</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Datacenter</FONT></TD></TR></TABLE>>,
-                pos="118,211.25",
-                shape=plain,
-                width=2.3924];
-            DB01	[fillcolor=transparent,
-                height=3.8194,
-                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Db-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Oracle Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 8</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 8.2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
-                pos="541,211.25",
+                label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
+                pos="118,668.75",
                 shape=plain,
                 width=2.2049];
+            Web01 -> App01	[color=black,
+                fontcolor=black,
+                fontsize=14,
+                label=HTTP,
+                lp="134.12,440",
+                minlen=3,
+                pos="s,118,531.3 e,118,348.43 118,520.44 118,480.56 118,448.25 118,448.25 118,448.25 118,409.14 118,362.7"];
+            App01 -> DB01	[color=black,
+                fontcolor=black,
+                fontsize=14,
+                label=SQL,
+                lp="332.88,222.5",
+                minlen=3,
+                pos="s,204.11,211.25 e,461.8,211.25 214.94,211.25 284.76,211.25 378.43,211.25 447.46,211.25"];
         }
-        Web01	[fillcolor=transparent,
-            height=3.8194,
-            label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,
-            pos="118,668.75",
-            shape=plain,
-            width=2.2049];
-        Web01 -> App01	[color=black,
-            fontcolor=black,
-            fontsize=14,
-            label=HTTP,
-            lp="134.12,440",
-            minlen=3,
-            pos="s,118,531.3 e,118,348.43 118,520.44 118,480.56 118,448.25 118,448.25 118,448.25 118,409.14 118,362.7"];
-        App01 -> DB01	[color=black,
-            fontcolor=black,
-            fontsize=14,
-            label=SQL,
-            lp="332.88,222.5",
-            minlen=3,
-            pos="s,204.11,211.25 e,461.8,211.25 214.94,211.25 284.76,211.25 378.43,211.25 447.46,211.25"];
     }
-}
-```
+    ```
 
 In summary, Diagrammer.Core leverages the capabilities of PSGraph and GraphViz to provide a powerful and flexible solution for generating and rendering diagrams. By utilizing these dependencies, Diagrammer.Core can create visually appealing and informative diagrams that effectively communicate complex information.

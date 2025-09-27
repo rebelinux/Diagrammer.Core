@@ -21,9 +21,9 @@ The objective of Diagrammer.Core is to provide a standardized, extensible platfo
 - Greater flexibility and customization in visualizing complex environments.
 
 
-## Examples
+## Integrations
 
-<table border="1" width="100%">
+<!-- <table border="1" width="100%">
     <tr>
         <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.AD-(Forest).png" width="50%" height="50%" /></td>
         <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Netapp.Ontap.png" width="50%" height="50%" /></td>
@@ -36,4 +36,19 @@ The objective of Diagrammer.Core is to provide a standardized, extensible platfo
         <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VB365.png" width="50%" height="50%" /></td>
         <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VBR-CloudConnectTenant-Tenant2.png" width="75%" height="75%" /></td>
     </tr>
-</table>
+</table> -->
+
+!!! example
+
+    === "AsBuiltReport.Microsoft.AD"
+        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Microsoft.AD-(Forest).png){ width=400 }
+    === "AsBuiltReport.Netapp.Ontap"
+        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Netapp.Ontap.png){ width=400 }
+    === "AsBuiltReport.Microsoft.SCVMM"
+        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Microsoft.SCVMM.Infrastructure.png){ width=800 }
+    === "AsBuiltReport.Veaam.VBR-SOBR"
+        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Veaam.VBR-SOBR.png){ width=600 }
+    === "AsBuiltReport.Veeam.VB365"
+        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Veeam.VB365.png){ width=600 }
+    === "AsBuiltReport.Veeam.VBR-CloudConnectTenant"
+        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Veeam.VBR-CloudConnectTenant-Tenant2.png){ width=800 }
