@@ -197,4 +197,12 @@ When you run the script, it generates a PNG file named Example12.png in the spec
 
 **Resulting diagram:**
 
-![Example12.png](../../assets/images/Example12.png)
+!!! example
+
+    === "Example 12"
+
+        ![Example12.png](../../assets/images/Example12.png)
+
+    === "Example 12 - DraftMode"
+
+        ![Example12_DraftMode.png](../../assets/images/Example12_DraftMode.png)
