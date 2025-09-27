@@ -40,15 +40,15 @@ The objective of Diagrammer.Core is to provide a standardized, extensible platfo
 
 !!! example
 
-    === "AsBuiltReport.Microsoft.AD"
+    === "Diagrammer.Microsoft.AD"
         ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Microsoft.AD-(Forest).png){ width=400 }
     === "AsBuiltReport.Netapp.Ontap"
-        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Netapp.Ontap.png){ width=400 }
+        ![AsBuiltReport.Netapp.Ontap](./assets/images/AsBuiltReport.Netapp.Ontap.png){ width=400 }
     === "AsBuiltReport.Microsoft.SCVMM"
-        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Microsoft.SCVMM.Infrastructure.png){ width=800 }
-    === "AsBuiltReport.Veaam.VBR-SOBR"
-        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Veaam.VBR-SOBR.png){ width=600 }
+        ![AsBuiltReport.Microsoft.SCVMM.Infrastructure](./assets/images/AsBuiltReport.Microsoft.SCVMM.Infrastructure.png){ width=800 }
     === "AsBuiltReport.Veeam.VB365"
-        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Veeam.VB365.png){ width=600 }
-    === "AsBuiltReport.Veeam.VBR-CloudConnectTenant"
-        ![Diagrammer.Core Logo](./assets/images/AsBuiltReport.Veeam.VBR-CloudConnectTenant-Tenant2.png){ width=800 }
+        ![AsBuiltReport.Veeam.VB365](./assets/images/AsBuiltReport.Veeam.VB365.png){ width=600 }
+    === "Veeam.Diagrammer"
+        ![AsBuiltReport.Veaam.VBR-SOBR](./assets/images/AsBuiltReport.Veaam.VBR-SOBR.png){ width=600 }
+    === "Veeam.Diagrammer"
+        ![Veeam.Diagrammer](./assets/images/AsBuiltReport.Veeam.VBR-CloudConnectTenant-Tenant2.png){ width=800 }
