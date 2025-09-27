@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 The Rank cmdlet (part of PSgraph module) is used in diagramming tools (like PowerShell-based graph modules or Graphviz) to control the vertical or horizontal alignment of nodes. When you apply the Rank cmdlet to a set of nodes, it forces them to appear at the same level in the diagram—either in a row (horizontal alignment) or a column (vertical alignment).

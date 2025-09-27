@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This time, we'll demonstrate the use of the **`WaterMark`** feature (Part of Diagrammer.Core module).

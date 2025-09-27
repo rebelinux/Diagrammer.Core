@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs (part of Diagrammer.Core).
 

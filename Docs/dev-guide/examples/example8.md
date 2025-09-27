@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 In this example, the **`Add-DiaHTMLNodeTable`** cmdlet generates a table layout that visually groups multiple web server nodes, displaying each server alongside its individual properties within the web server farm.

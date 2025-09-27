@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This time we will extend the edges size using the Graphviz minlen attribute.

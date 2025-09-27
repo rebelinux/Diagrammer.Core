@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 In this example, servers are grouped in a cluster (SubGraph).

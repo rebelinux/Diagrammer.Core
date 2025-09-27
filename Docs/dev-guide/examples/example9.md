@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This time we will demonstrate the use of the Add-DiaHTMLNodeTable **MultiIcon** feature. The **`Add-DiaHTMLNodeTable`** function enhances the visual representation of nodes by creating a table layout that can include multiple icons and detailed information for each node. In this example, we simulate a web server farm with three web servers, each represented with its own icon and properties.

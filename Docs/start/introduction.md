@@ -1,6 +1,9 @@
 ---
 comments: true
+hide:
+  - toc
 ---
+
 ## Dependencies
 
 Diagrammer.Core relies on the following dependencies to facilitate diagram generation and rendering.

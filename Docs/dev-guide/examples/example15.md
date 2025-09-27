@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This example demonstrates how to use the Add-DiaNodeSpacer (part of Diagrammer.Core) cmdlet to add spacer nodes that assist with diagram alignment.

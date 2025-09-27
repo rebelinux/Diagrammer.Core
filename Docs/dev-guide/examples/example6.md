@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This time, we'll turn on the **`DraftMode`** attribute to make it easier to troubleshoot and fine-tune the diagram.

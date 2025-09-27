@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This time, we'll demonstrate the use of the **`Add-DiagramNodeImage`** (part of Diagrammer.Core module) to add a custom image to the diagram. The **`Add-DiaNodeImage`** function allows you to incorporate images into your diagrams, enhancing their visual appeal and providing additional context. In this example, we will add a network router and a cloud icon to represent internet connectivity.

@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This time, we'll demonstrate the use of Add-DiaNodeShape (part of Diagrammer.Core module) cmdlet to add custom shapes to the diagram.

@@ -1,5 +1,7 @@
 ---
 comments: true
+hide:
+  - toc
 ---
 
 This time, we'll demonstrate the use of the **`Add-DiaHTMLTable`** (part of Diagrammer.Core module) to add a list table to the diagram. In this example the table displays additional information about a network router interfaces.
