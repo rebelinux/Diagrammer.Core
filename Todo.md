@@ -1,6 +1,5 @@
 - [ ] Research a way to put the Add-DiaNodeIcon in a horizontal like design
     - [x] Current design is vertical
-          ==== Example
             ```markdown
                     _________
                     | Image |
@@ -13,7 +12,6 @@
                     _________
             ```
     - [ ] Desired design is horizontal
-        ==== Example
             ```markdown
                 _______________________________
                 | Image |                     |
