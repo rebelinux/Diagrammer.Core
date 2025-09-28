@@ -6,37 +6,22 @@ hide:
 
 ![Diagrammer.Core Logo](./assets/background.png)
 
-Diagrammer.Core is a foundational PowerShell module designed to streamline the creation of as-built diagrams for a wide range of datacenter systems. Serving as the core framework, it enables consistent, automated diagram generation by providing essential tools and APIs. Individual diagrammer modules for specific products or technologies depend on Diagrammer.Core to deliver accurate, customizable visual documentation, helping IT professionals efficiently capture and communicate infrastructure details.
+Diagrammer.Core is a foundational PowerShell module that simplifies and standardizes the automated creation of diagrams across diverse datacenter environments. Acting as the central framework, it offers robust tools for consistent diagram generation. Product-specific modules leverage Diagrammer.Core to produce accurate, customizable visual documentation, empowering IT professionals to efficiently document and communicate complex infrastructure details.
 
-## Objective
+Diagrammer.Core aims to deliver a standardized, extensible platform for automating infrastructure diagram generation. By abstracting common diagramming tasks and providing reusable components, it reduces manual effort, minimizes errors, and enhances the quality and consistency of technical documentation across diverse environments.
 
-The objective of Diagrammer.Core is to provide a standardized, extensible platform for automating the generation of infrastructure diagrams. By abstracting common diagramming tasks and offering reusable components, the project aims to reduce manual effort, minimize errors, and improve the quality of technical documentation across diverse environments.
+## Key Features
 
-## Outcomes
+By leveraging Diagrammer.Core, organizations can:
 
-- Accelerated creation of as-built diagrams for datacenter systems.
-- Improved consistency and accuracy in infrastructure documentation.
-- Simplified integration for product-specific diagrammer modules.
-- Enhanced collaboration and communication among IT teams.
-- Greater flexibility and customization in visualizing complex environments.
+- Rapidly generate as-built diagrams for datacenter systems.
+- Ensure greater consistency and accuracy in infrastructure documentation.
+- Seamlessly integrate product-specific diagrammer modules.
+- Foster improved collaboration and communication among IT teams.
+- Achieve enhanced flexibility and customization when visualizing complex environments.
 
 
 ## Integrations
-
-<!-- <table border="1" width="100%">
-    <tr>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.AD-(Forest).png" width="50%" height="50%" /></td>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Netapp.Ontap.png" width="50%" height="50%" /></td>
-    </tr>
-    <tr>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Microsoft.SCVMM.Infrastructure.png" /></td>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veaam.VBR-SOBR.png" width="50%" height="50%" /></td>
-    </tr>
-    <tr>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VB365.png" width="50%" height="50%" /></td>
-        <td align="center" valign="middle" width="50%"><img src="../assets/images/AsBuiltReport.Veeam.VBR-CloudConnectTenant-Tenant2.png" width="75%" height="75%" /></td>
-    </tr>
-</table> -->
 
 !!! example
 
