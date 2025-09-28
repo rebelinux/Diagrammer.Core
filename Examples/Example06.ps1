@@ -120,4 +120,4 @@ $example6 = & {
     -DraftMode $true enables DraftMode, which adds borders around nodes to help with positioning and layout adjustments.
 #>
 
-New-Diagrammer -InputObject $example6 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example6 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode $DraftMode
+New-Diagrammer -InputObject $example6 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example6 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
