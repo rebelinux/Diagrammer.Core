@@ -67,96 +67,195 @@ When you run the script, it generates a PNG file named Example2.png in the speci
 
 **Resulting diagram:**
 
-```graphviz dot example2.png
-digraph Root {
-	graph [bb="0,0,414,629",
-		bgcolor=White,
-		compound=true,
-		fontcolor="#565656",
-		fontname="Segoe Ui Black",
-		fontsize=32,
-		imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
-		labelloc=t,
-		nodesep=0.6,
-		pad=1,
-		penwidth=1.5,
-		rankdir=TB,
-		ranksep=0.75,
-		splines=line,
-		style=dashed
-	];
-	node [fillcolor="#71797E",
-		fontcolor=Black,
-		fontsize=14,
-		imagescale=True,
-		label="\N",
-		labelloc=t,
-		shape=none,
-		style=filled
-	];
-	edge [arrowsize=1,
-		arrowtail=dot,
-		color="#71797E",
-		dir=both,
-		fontcolor="#71797E",
-		penwidth=3,
-		style=dashed
-	];
-	subgraph clusterOUTERDRAWBOARD1 {
-		graph [bb="8,8,406,621",
-			color=gray,
-			fontsize=24,
-			label=" ",
-			labeljust=r,
-			labelloc=b,
-			lheight=0.47,
-			lp="394.62,28.875",
-			lwidth=0.09,
-			penwidth=1.5,
-			style=invis
-		];
-		subgraph clusterMainGraph {
-			graph [bb="16,57.75,398,613",
-				fontsize=24,
-				label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,
-				labeljust=c,
-				labelloc=t,
-				lheight=3.98,
-				lp="207,465.62",
-				lwidth=5.09,
-				penwidth=0
-			];
-			Web01	[fillcolor=Green,
-				height=0.5,
-				label=Web01,
-				pos="214,292.25",
-				shape=rectangle,
-				width=0.75347];
-			App01	[fillcolor=Blue,
-				height=0.5,
-				label=App01,
-				pos="214,188",
-				shape=rectangle,
-				width=0.75];
-			Web01 -> App01	[color=black,
-				fontcolor=black,
-				fontsize=12,
-				label=gRPC,
-				lp="228.62,240.12",
-				pos="s,214,273.9 e,214,206.43 214,263.09 214,249.91 214,234.17 214,220.59"];
-			DB01	[fillcolor=Red,
-				height=0.5,
-				label=DB01,
-				pos="214,83.75",
-				shape=rectangle,
-				width=0.75];
-			App01 -> DB01	[color=black,
-				fontcolor=black,
-				fontsize=12,
-				label=SQL,
-				lp="225.62,135.88",
-				pos="s,214,169.65 e,214,102.18 214,158.84 214,145.66 214,129.92 214,116.34"];
-		}
-	}
-}
-```
+!!! example
+
+    === "Example 2"
+
+        ```graphviz dot example2.png
+            digraph Root {
+                graph [bb="0,0,414,629",
+                    bgcolor=White,
+                    compound=true,
+                    fontcolor="#565656",
+                    fontname="Segoe Ui Black",
+                    fontsize=32,
+                    imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
+                    labelloc=t,
+                    nodesep=0.6,
+                    pad=1,
+                    penwidth=1.5,
+                    rankdir=TB,
+                    ranksep=0.75,
+                    splines=line,
+                    style=dashed
+                ];
+                node [fillcolor="#71797E",
+                    fontcolor=Black,
+                    fontsize=14,
+                    imagescale=True,
+                    label="\N",
+                    labelloc=t,
+                    shape=none,
+                    style=filled
+                ];
+                edge [arrowsize=1,
+                    arrowtail=dot,
+                    color="#71797E",
+                    dir=both,
+                    fontcolor="#71797E",
+                    penwidth=3,
+                    style=dashed
+                ];
+                subgraph clusterOUTERDRAWBOARD1 {
+                    graph [bb="8,8,406,621",
+                        color=gray,
+                        fontsize=24,
+                        label=" ",
+                        labeljust=r,
+                        labelloc=b,
+                        lheight=0.47,
+                        lp="394.62,28.875",
+                        lwidth=0.09,
+                        penwidth=1.5,
+                        style=invis
+                    ];
+                    subgraph clusterMainGraph {
+                        graph [bb="16,57.75,398,613",
+                            fontsize=24,
+                            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,
+                            labeljust=c,
+                            labelloc=t,
+                            lheight=3.98,
+                            lp="207,465.62",
+                            lwidth=5.09,
+                            penwidth=0
+                        ];
+                        Web01	[fillcolor=Green,
+                            height=0.5,
+                            label=Web01,
+                            pos="214,292.25",
+                            shape=rectangle,
+                            width=0.75347];
+                        App01	[fillcolor=Blue,
+                            height=0.5,
+                            label=App01,
+                            pos="214,188",
+                            shape=rectangle,
+                            width=0.75];
+                        Web01 -> App01	[color=black,
+                            fontcolor=black,
+                            fontsize=12,
+                            label=gRPC,
+                            lp="228.62,240.12",
+                            pos="s,214,273.9 e,214,206.43 214,263.09 214,249.91 214,234.17 214,220.59"];
+                        DB01	[fillcolor=Red,
+                            height=0.5,
+                            label=DB01,
+                            pos="214,83.75",
+                            shape=rectangle,
+                            width=0.75];
+                        App01 -> DB01	[color=black,
+                            fontcolor=black,
+                            fontsize=12,
+                            label=SQL,
+                            lp="225.62,135.88",
+                            pos="s,214,169.65 e,214,102.18 214,158.84 214,145.66 214,129.92 214,116.34"];
+                    }
+                }
+            }
+        ```
+    === "Example 2 - DraftMode"
+
+        ```graphviz dot example2_draftmode.png
+            digraph Root {
+                graph [bb="0,0,435,643.5",
+                    bgcolor=White,
+                    compound=true,
+                    fontcolor="#565656",
+                    fontname="Segoe Ui Black",
+                    fontsize=32,
+                    imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
+                    labelloc=t,
+                    nodesep=0.6,
+                    pad=1,
+                    penwidth=1.5,
+                    rankdir=TB,
+                    ranksep=0.75,
+                    splines=line,
+                    style=dashed
+                ];
+                node [fillcolor="#71797E",
+                    fontcolor=Black,
+                    fontsize=14,
+                    imagescale=True,
+                    label="\N",
+                    labelloc=t,
+                    shape=none,
+                    style=filled
+                ];
+                edge [arrowsize=1,
+                    arrowtail=dot,
+                    color="#71797E",
+                    dir=both,
+                    fontcolor="#71797E",
+                    penwidth=3,
+                    style=dashed
+                ];
+                subgraph clusterOUTERDRAWBOARD1 {
+                    graph [bb="8,8,427,635.5",
+                        color=red,
+                        fontsize=24,
+                        label=" ",
+                        labeljust=r,
+                        labelloc=b,
+                        lheight=0.47,
+                        lp="415.62,28.875",
+                        lwidth=0.09,
+                        penwidth=1.5,
+                        style=dashed
+                    ];
+                    subgraph clusterMainGraph {
+                        graph [bb="16,57.75,419,627.5",
+                            fontsize=24,
+                            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>>,
+                            labeljust=c,
+                            labelloc=t,
+                            lheight=4.18,
+                            lp="217.5,472.88",
+                            lwidth=5.37,
+                            penwidth=0
+                        ];
+                        Web01	[fillcolor=Green,
+                            height=0.5,
+                            label=Web01,
+                            pos="223,292.25",
+                            shape=rectangle,
+                            width=0.75347];
+                        App01	[fillcolor=Blue,
+                            height=0.5,
+                            label=App01,
+                            pos="223,188",
+                            shape=rectangle,
+                            width=0.75];
+                        Web01 -> App01	[color=black,
+                            fontcolor=black,
+                            fontsize=12,
+                            label=HTTP,
+                            lp="238.38,240.12",
+                            pos="s,223,273.9 e,223,206.43 223,263.09 223,249.91 223,234.17 223,220.59"];
+                        DB01	[fillcolor=Red,
+                            height=0.5,
+                            label=DB01,
+                            pos="223,83.75",
+                            shape=rectangle,
+                            width=0.75];
+                        App01 -> DB01	[color=black,
+                            fontcolor=black,
+                            fontsize=12,
+                            label=SQL,
+                            lp="234.62,135.88",
+                            pos="s,223,169.65 e,223,102.18 223,158.84 223,145.66 223,129.92 223,116.34"];
+                    }
+                }
+            }
+        ```
