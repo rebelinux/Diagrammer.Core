@@ -4,35 +4,6 @@ hide:
   - toc
 ---
 
-<p align="center">
-    <a href="https://github.com/rebelinux/Diagrammer.Core" alt="Diagrammer"></a>
-            <img src='https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/dev/Icons/Diagrammer.png' width="15%" height="15%" /></a>
-</p>
-<p align="center">
-    <a href="https://www.powershellgallery.com/packages/Diagrammer.Core/" alt="PowerShell Gallery Version">
-        <img src="https://img.shields.io/powershellgallery/v/Diagrammer.Core.svg" /></a>
-    <a href="https://www.powershellgallery.com/packages/Diagrammer.Core/" alt="PS Gallery Downloads">
-        <img src="https://img.shields.io/powershellgallery/dt/Diagrammer.Core.svg" /></a>
-    <a href="https://www.powershellgallery.com/packages/Diagrammer.Core/" alt="PS Platform">
-        <img src="https://img.shields.io/powershellgallery/p/Diagrammer.Core.svg" /></a>
-</p>
-<p align="center">
-    <a href="https://github.com/rebelinux/Diagrammer.Core/graphs/commit-activity" alt="GitHub Last Commit">
-        <img src="https://img.shields.io/github/last-commit/rebelinux/Diagrammer.Core/master.svg" /></a>
-    <a href="https://raw.githubusercontent.com/rebelinux/Diagrammer.Core/master/LICENSE" alt="GitHub License">
-        <img src="https://img.shields.io/github/license/rebelinux/Diagrammer.Core.svg" /></a>
-    <a href="https://github.com/rebelinux/Diagrammer.Core/graphs/contributors" alt="GitHub Contributors">
-        <img src="https://img.shields.io/github/contributors/rebelinux/Diagrammer.Core.svg"/></a>
-</p>
-<p align="center">
-    <a href="https://twitter.com/rebelinux" alt="Twitter">
-            <img src="https://img.shields.io/twitter/follow/rebelinux.svg?style=social"/></a>
-</p>
-
-<p align="center">
-    <a href='https://ko-fi.com/F1F8DEV80' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-</p>
-
 # :beginner: Getting Started
 
 The following simple list of instructions will get you started with the Diagrammer.Core module.
@@ -41,13 +12,13 @@ The following simple list of instructions will get you started with the Diagramm
 ### **PowerShell**
 This module is compatible with the following PowerShell versions;
 
-| Windows PowerShell 5.1 |    PowerShell 7    |
-| :--------------------: | :----------------: |
-|   :white_check_mark:   | :white_check_mark: |
+| Windows PowerShell 5.1 | Windows PowerShell 7 |
+| :--------------------: | :------------------: |
+|   :white_check_mark:   |  :white_check_mark:  |
 
 ## :wrench: System Requirements
 
-PowerShell 5.1, and the following PowerShell modules are required for generating a Diagrammer.Core diagram.
+PowerShell 5.1+, and the following PowerShell modules are required for generating a Diagrammer.Core diagram.
 
 - [PSGraph Module](https://github.com/KevinMarquette/PSGraph)
 
@@ -99,7 +70,7 @@ If you are unable to use the PowerShell Gallery, you can still install the `Diag
     ```
 5. Close and reopen the PowerShell terminal window.
 
-_Note: You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
+> **Note:** You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
 
 ## :x: Known Issues
 

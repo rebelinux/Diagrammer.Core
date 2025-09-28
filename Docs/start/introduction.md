@@ -50,6 +50,17 @@ As an example, Diagrammer.Core introduces the `Add-DiaNodeIcon` command, which a
 
 ```powershell title="Example Usage of Diagrammer.Core Commands"
 
+# Set paths and image resources
+$RootPath = $PSScriptRoot
+[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+
+# Define images for use in nodes
+$script:Images = @{
+    "Main_Logo" = "Diagrammer.png"
+    "Server" = "Server.png"
+}
+
+# Define server information as custom objects
 $WebServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Redhat Linux'
     'Version' = '10'
@@ -70,11 +81,13 @@ $DBServerInfo = [PSCustomObject][ordered]@{
     'Edition' = "Enterprise"
 }
 
+# Create labels with icons and additional information
 $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
 $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
 $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18
 
-graph g {
+# Define the diagram using PSGraph commands
+$Diagram = &{
     Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
     Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
     Node -Name DB01 -Attributes @{Label = $DB01Label; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
@@ -82,6 +95,9 @@ graph g {
     Edge -From App -To DB @{label='SQL'}
     Rank -Nodes App01, DB01
 }
+
+# Render the diagram to a PNG file
+New-Diagrammer -InputObject $Diagram -OutputFolderPath '~\Desktop\' -Format 'PNG' -MainDiagramLabel "First Diagram" -Filename Example1 -LogoName "Main_Logo" -ImagesObj $Images
 ```
 
 In essence, Diagrammer.Core uses the Graphviz capabilities to render HTML-like labels, which allows for a more detailed and structured representation of nodes within the diagrams. This feature enhances the clarity and comprehensibility of the diagrams, making them more effective for conveying information.
