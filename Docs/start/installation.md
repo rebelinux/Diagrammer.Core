@@ -20,14 +20,14 @@ This module is compatible with the following PowerShell versions;
 
 PowerShell 5.1+, and the following PowerShell modules are required for generating a Diagrammer.Core diagram.
 
-- [PSGraph Module](https://github.com/KevinMarquette/PSGraph)
+- [PSGraph Module](https://github.com/KevinMarquette/PSGraph){:target="_blank"}
 
 ## :package: Module Installation
 
 ### PowerShell
 #### Online Installation
 
-For an online installation, install the `Diagrammer.Core` module using the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=Diagrammer.Core);
+For an online installation, install the `Diagrammer.Core` module using the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=Diagrammer.Core){:target="_blank"};
 
 ```powershell title="Install Diagrammer.Core module"
 Install-Module -Name 'Diagrammer.Core' -Repository 'PSGallery' -Scope 'CurrentUser'
@@ -59,9 +59,9 @@ $env:PSModulePath -Split ':'
 Copy the downloaded `Diagrammer.Core` module folder to a folder specified in the `$env:PSModulePath` output.
 
 ### **GitHub**
-If you are unable to use the PowerShell Gallery, you can still install the `Diagrammer.Core` module manually. Ensure you repeat the following steps for the [system requirements](https://github.com/rebelinux/Diagrammer.Core#wrench-system-requirements) also.
+If you are unable to use the PowerShell Gallery, you can still install the `Diagrammer.Core` module manually. Ensure you repeat the following steps for the [system requirements](https://github.com/rebelinux/Diagrammer.Core#wrench-system-requirements){:target="_blank"} also.
 
-1. Download the [latest release](https://github.com/rebelinux/Diagrammer.Core/releases/latest) zip from GitHub
+1. Download the [latest release](https://github.com/rebelinux/Diagrammer.Core/releases/latest){:target="_blank"} zip from GitHub
 2. Extract the zip file
 3. Copy the folder `Diagrammer.Core` to a path that is set in `$env:PSModulePath`.
 4. For Windows users only, open a PowerShell terminal window and unblock the downloaded files with
