@@ -13,7 +13,7 @@ docs_dir: "Docs"
 extra:
   analytics:
     provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
+    property: G-YKVJHV5M0M
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/rebelinux
