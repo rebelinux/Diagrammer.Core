@@ -104,6 +104,7 @@ nav:
       - Installation: start/installation.md
       - Introduction: start/introduction.md
       - Limitations: start/limitations.md
+      - FAQ: start/faq.md
   - Developer Guide:
       - Commands: dev-guide/commands/commands.md
       - Examples:
