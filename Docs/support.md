@@ -36,7 +36,7 @@ We will occasionally post a topic for discussion in the discussions section on [
 Reproducibility: Include steps that allow us to easily reproduce the issue.
 Minimal Example: Strip down your example to the bare minimum necessary to exhibit the problem.
 Clarity and Detail: Provide enough context for others to understand your environment and scenario.
-By following these guidelines, you help us address issues faster and more effectively. Thank you for contributing to making MilestonePSTools better!
+By following these guidelines, you help us address issues faster and more effectively. Thank you for contributing to making Diagrammer.Core better!
 
 ## How to submit a bug report
 
@@ -57,11 +57,10 @@ Include any relevant output or screenshots.
 3. Provide Context Information
 
 Help us understand your environment by including these relevant details in your report:
-The version of MilestonePSTools you are using (find using Get-Module).
+The version of Diagrammer.Core you are using (find using Get-Module).
 The version of PowerShell returned by $PSVersionTable.PSVersion
-The Milestone XProtect VMS version you are connected (or trying to connect) to.
 
-4. Write a Clear Description
+1. Write a Clear Description
 
 Craft a concise yet detailed description of the issue:
 Start with a short summary or title for your report.
