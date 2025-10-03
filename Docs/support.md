@@ -6,7 +6,7 @@ hide:
 
 # Support
 
-Diagrammer.Core is actively maintained and supported by @rebelinux. I value your feedback and am committed to resolving any issues you encounter with our PowerShell module. Questions, suggestions, and bug reports should be submitted to us using our public GitHub issue tracker.
+Diagrammer.Core is actively maintained and supported by :simple-github: [rebelinux](https://github.com/rebelinux){:target="_blank"}. I value your feedback and am committed to resolving any issues you encounter with our PowerShell module. Questions, suggestions, and bug reports should be submitted to us using our public GitHub [issue tracker](https://github.com/rebelinux/Diagrammer.Core/issues){:target="_blank"}.
 
 > **Note:** Our team addresses reported issues as time permits. We do not provide a guaranteed response time for reported issues at this time.
 
@@ -29,7 +29,7 @@ If you have an idea for an improvement or new feature for Diagrammer.Core, let u
 
 ### :octicons-discussion-closed-24: Discussions
 
-We will occasionally post a topic for discussion in the discussions section on [Discussions](https://github.com/rebelinux/Diagrammer.Core/discussions){:target="_blank"}. These are great for broad discussions that don't necessarily fall under the category of "bugs" or "feature requests". If you're looking for a more casual chat, you can also reach me on the [Discord](https://discord.gg/yourdiscordlink){:target="_blank"}.
+We will occasionally post a topic for discussion in the discussions section on [Discussions](https://github.com/rebelinux/Diagrammer.Core/discussions){:target="_blank"}. These are great for broad discussions that don't necessarily fall under the category of "bugs" or "feature requests". If you're looking for a more casual chat, you can also reach me on the Diagrammer.Core [Discord](https://discord.gg/Q5bMhr24VN){:target="_blank"}.
 
 ## What Makes a Good Bug Report?
 

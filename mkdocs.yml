@@ -21,6 +21,8 @@ extra:
       link: https://linkedin.com/in/jcolonfzenpr
     - icon: fontawesome/brands/bluesky
       link: https://bsky.app/profile/jcolonfpr.bsky.social
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/Q5bMhr24VN
 
 # Plugins
 plugins:
