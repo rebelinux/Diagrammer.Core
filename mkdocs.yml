@@ -106,7 +106,8 @@ nav:
       - Limitations: start/limitations.md
       - FAQ: start/faq.md
   - Developer Guide:
-      - Commands: dev-guide/commands/commands.md
+      - Commands:
+          - Add-DiaNodeIcon: dev-guide/commands/add-dianodeicon.md
       - Examples:
           - Basic:
               - Example 1: dev-guide/examples/example1.md
