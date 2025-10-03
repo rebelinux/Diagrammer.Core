@@ -44,32 +44,32 @@ Your detailed reports help us to improve this valuable tool to the benefit of th
 
 1. Search Existing Issues
 
-Before opening a new issue, check if someone else has already reported the same problem:
-Go to our GitHub repository.
-Click on the “Issues” tab and use the search tool.
+    Before opening a new issue, check if someone else has already reported the same problem:
+    Go to our GitHub repository.
+    Click on the “Issues” tab and use the search tool.
 
 2. Create a Minimal Example
 
-Write down the exact steps needed to replicate the issue:
-Provide the necessary commands or scripts that trigger the error.
-Include any relevant output or screenshots.
+    Write down the exact steps needed to replicate the issue:
+    Provide the necessary commands or scripts that trigger the error.
+    Include any relevant output or screenshots.
 
 3. Provide Context Information
 
-Help us understand your environment by including these relevant details in your report:
-The version of Diagrammer.Core you are using (find using Get-Module).
-The version of PowerShell returned by $PSVersionTable.PSVersion
+    Help us understand your environment by including these relevant details in your report:
+    The version of Diagrammer.Core you are using (find using Get-Module).
+    The version of PowerShell returned by $PSVersionTable.PSVersion
 
-1. Write a Clear Description
+4. Write a Clear Description
 
-Craft a concise yet detailed description of the issue:
-Start with a short summary or title for your report.
-Describe what you expected to happen versus what actually occurred.
-Mention any error messages and their context (e.g., where they appear in logs).
+    Craft a concise yet detailed description of the issue:
+    Start with a short summary or title for your report.
+    Describe what you expected to happen versus what actually occurred.
+    Mention any error messages and their context (e.g., where they appear in logs).
 
 5. Submit Your Report
 
-Finally, submit your bug report. We will respond as time permits.
+    Finally, submit your bug report. We will respond as time permits.
 
 ## Support the Project
 If you find this project helpful, consider supporting development:
