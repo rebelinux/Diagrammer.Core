@@ -44,7 +44,6 @@ markdown_extensions:
   - admonition
   - meta
   - tables
-  - pymdownx.superfences
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -52,6 +51,11 @@ markdown_extensions:
       anchor_linenums: true
       auto_title: true
       use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: code
+          class: highlight
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - md_in_html
   - pymdownx.inlinehilite
   - pymdownx.snippets
@@ -106,9 +110,9 @@ nav:
       - Installation: start/installation.md
       - Introduction: start/introduction.md
       - Limitations: start/limitations.md
-      - FAQ: start/faq.md
   - Developer Guide:
       - Commands:
+          - Command Index: dev-guide/commands/commands.md
           - Add-DiaNodeIcon: dev-guide/commands/add-dianodeicon.md
       - Examples:
           - Basic:
@@ -130,9 +134,11 @@ nav:
               - Example 15: dev-guide/examples/example15.md
           - Expert:
               - Example 1: dev-guide/examples/advancedexample1.md
-  - Support: support.md
   - About:
       - Contact: about/contact.md
       - Changelog: about/changelog.md
       - License: about/license.md
       - Todo: about/todo.md
+  - Help:
+      - Support: help/support.md
+      - FAQ: help/faq.md

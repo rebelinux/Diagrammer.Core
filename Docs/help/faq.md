@@ -1,4 +1,6 @@
 ---
+title: Frequently Asked Questions
+description: Answers to common questions about Diagrammer.Core.
 comments: false
 hide:
   - toc
