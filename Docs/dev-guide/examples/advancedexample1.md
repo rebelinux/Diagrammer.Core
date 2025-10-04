@@ -3,12 +3,12 @@ comments: true
 hide:
   - toc
 ---
-This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs (part of Diagrammer.Core).
+This example demonstrates how to use the **`Add-DiaHTMLSubGraph`** cmdlet to simulate Graphviz SubGraphs (part of Diagrammer.Core).
 
 The diagram below visually compares a traditional Graphviz SubGraph with a Diagrammer.Core HTML-like SubGraph, highlighting the enhanced layout and connectivity options available in Diagrammer.Core.
 
 
-```powershell title="PowerShell: Example1.ps1 - param block"
+```powershell title="PowerShell: AdvancedExample1.ps1 - param block"
 [CmdletBinding()]
 param (
     [System.IO.FileInfo] $Path = '~\Desktop\',
@@ -82,7 +82,7 @@ Additionally, Nodes inside SubGraphs cannot be split across multiple rows or col
 Diagrammer.Core provides a workaround using HTML-like labels to simulate SubGraphs with enhanced layout and connectivity options.By using HTML-like labels, we can create more complex and flexible layouts for nodes within
 a SubGraph. This allows us to better organize and present information in the diagram.Additionally, HTML-like labels provide more control over the appearance and formatting of the nodes, allowing for a more polished and professional look. This approach can help to overcome some of the limitations of traditional Graphviz SubGraphs, making it easier to create clear and effective diagrams.
 
-```powershell
+```powershell linenums="1" hl_lines="96-102" title="AdvancedExample1.ps1 - Add-DiaHTMLSubGraph"
 $advancedexample01 = & {
 
     SubGraph 3tier -Attributes @{Label = 'Advanced Diagram Concepts'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
@@ -199,15 +199,15 @@ $advancedexample01 = & {
 Finally, call the New-Diagrammer cmdlet with the specified parameters.
 
 ```powershell
-New-Diagrammer -InputObject $advancedexample01 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample01 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $advancedexample01 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample1 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
 ```
-When you run the script, it generates a PNG file named Example15.png in the specified output folder.
+When you run the script, it generates a PNG file named AdvancedExample1.png in the specified output folder.
 
 ### Resulting diagram:
 
 !!! example
 
-    === "Example 01"
+    === "Advanced Example 01"
 
         ```graphviz dot advancedexample01.png
         digraph Root {
@@ -341,7 +341,7 @@ When you run the script, it generates a PNG file named Example15.png in the spec
         }
         ```
 
-    === "Example 01 - DraftMode"
+    === "Advanced Example 01 - DraftMode"
 
         ```graphviz dot advancedexample01_draftmode.png
 

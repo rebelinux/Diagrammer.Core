@@ -86,7 +86,7 @@ In this example, Web-Server-01, Web-Server-02, and Web-Server-03 are part of the
 
 The MultiIcon parameter allows multiple icons to be displayed in the table.
 
-```powershell
+```powershell linenums="1" hl_lines="37-52" title="Example9.ps1 - Add-DiaHTMLNodeTable MultiIcon"
 $example9 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

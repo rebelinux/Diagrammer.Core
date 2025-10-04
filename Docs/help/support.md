@@ -8,7 +8,8 @@ hide:
 
 Diagrammer.Core is actively maintained and supported by :simple-github: [rebelinux](https://github.com/rebelinux){:target="_blank"}. I value your feedback and am committed to resolving any issues you encounter with our PowerShell module. Questions, suggestions, and bug reports should be submitted to us using our public GitHub [issue tracker](https://github.com/rebelinux/Diagrammer.Core/issues){:target="_blank"}.
 
-> **Note:** Our team addresses reported issues as time permits. We do not provide a guaranteed response time for reported issues at this time.
+!!! note
+    Our team addresses reported issues as time permits. We do not provide a guaranteed response time for reported issues at this time.
 
 ## What kind of support is available?
 

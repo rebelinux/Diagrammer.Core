@@ -114,6 +114,7 @@ nav:
       - Cmdlets:
           - Index: dev-guide/commands/commands.md
       - Examples:
+          - Index: dev-guide/examples/examples.md
           - Basic:
               - Example 1: dev-guide/examples/example1.md
               - Example 2: dev-guide/examples/example2.md

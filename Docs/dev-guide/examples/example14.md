@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-This time, we'll demonstrate the use of Add-DiaNodeShape (part of Diagrammer.Core module) cmdlet to add custom shapes to the diagram.
+This time, we'll demonstrate the use of **`Add-DiaNodeShape`** (part of Diagrammer.Core module) cmdlet to add custom shapes to the diagram.
 
 The Add-DiaNodeShape cmdlet allows you to create custom shapes with various styles and attributes, enhancing the visual representation of your diagrams. In this example, we create a rectangle shape to represent a firewall in the network diagram.
 

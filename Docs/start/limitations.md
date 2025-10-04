@@ -10,4 +10,5 @@ Diagrammer.Core is a library for generating and manipulating diagrams programmat
 - **Integration**: May require additional work to integrate with other systems or workflows, especially for real-time or collaborative scenarios.
 - **Documentation**: Documentation and community support may be limited compared to more mature libraries.
 
-> **Note:** These limitations are based on typical features and constraints observed in Diagrammer.Core as of mid-2025. For the latest details, consult the official documentation.
+!!! note
+    These limitations are based on typical features and constraints observed in Diagrammer.Core as of mid-2025. For the latest details, consult the official documentation.

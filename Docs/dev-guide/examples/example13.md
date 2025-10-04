@@ -76,7 +76,7 @@ $DBServerInfo = [PSCustomObject][ordered]@{
 }
 ```
 
-In this section we demonstrates the use of the Add-DiaHtmlSignatureTable cmdlet used to creates a signature table to be used as a footer in the diagram. The Signature SubGraph contains the $Signature table created above. It is styled to be invisible and positioned at the bottom of the diagram.
+In this section we demonstrates the use of the **`Add-DiaHtmlSignatureTable`** cmdlet used to creates a signature table to be used as a footer in the diagram. The Signature SubGraph contains the $Signature table created above. It is styled to be invisible and positioned at the bottom of the diagram.
 
 ```powershell linenums="1" hl_lines="04-10" title="Example13.ps1 - Signature feature"
 $example13 = & {

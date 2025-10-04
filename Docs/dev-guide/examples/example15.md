@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-This example demonstrates how to use the `Add-DiaNodeSpacer` (part of Diagrammer.Core) cmdlet to add spacer nodes that assist with diagram alignment.
+This example demonstrates how to use the **`Add-DiaNodeSpacer`** (part of Diagrammer.Core) cmdlet to add spacer nodes that assist with diagram alignment.
 
 The `Add-DiaNodeSpacer` cmdlet allows you to insert invisible spacer nodes into your diagram. These spacer nodes do not appear in the final output but play a crucial role in controlling the alignment and spacing of visible nodes. By strategically placing spacer nodes, you can resolve layout issues—such as centering or evenly distributing nodes—ensuring your diagram appears balanced and visually organized.
 

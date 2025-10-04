@@ -65,7 +65,8 @@ If you are unable to use the PowerShell Gallery, you can still install the `Diag
     ```
 1. Close and reopen the PowerShell terminal window.
 
-> **Note:** You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
+!!! note
+    You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
 
 ## :rocket: Usage
 
