@@ -52,7 +52,7 @@ $env:PSModulePath -Split ';'
 
 Copy the downloaded `Diagrammer.Core` module folder to a folder specified in the `$env:PSModulePath` output.
 
-### **GitHub**
+#### :material-github: GitHub
 If you are unable to use the PowerShell Gallery, you can still install the `Diagrammer.Core` module manually. Ensure you repeat the following steps for the **system requirements** also.
 
 1. Download the [latest release](https://github.com/rebelinux/Diagrammer.Core/releases/latest){:target="_blank"} zip from GitHub
