@@ -111,8 +111,8 @@ nav:
       - Introduction: start/introduction.md
       - Limitations: start/limitations.md
   - Developer Guide:
-      - Commands:
-          - Command Index: dev-guide/commands/commands.md
+      - Cmdlets:
+          - Index: dev-guide/commands/commands.md
       - Examples:
           - Basic:
               - Example 1: dev-guide/examples/example1.md
