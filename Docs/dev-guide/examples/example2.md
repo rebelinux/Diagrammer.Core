@@ -45,7 +45,7 @@ Edge is a reserved word in PSGraph module:
 
 [https://psgraph.readthedocs.io/en/latest/Command-Edge/](https://psgraph.readthedocs.io/en/latest/Command-Edge/){:target="_blank"}
 
-```powershell
+```powershell linenums="1" hl_lines="08-09" title="Example2.ps1 - Edge cmdlet"
 $example2 = & {
     Node -Name Web01 -Attributes @{Label = 'Web01'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
     Node -Name App01 -Attributes @{Label = 'App01'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }

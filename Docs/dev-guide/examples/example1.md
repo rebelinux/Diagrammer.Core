@@ -35,7 +35,7 @@ $MainGraphLabel = '3tier Web Application Diagram'
 
 This block creates a diagram with three servers, each represented by a custom node label and shape (without object icons).
 
-```powershell
+```powershell linenums="1" hl_lines="06-08" title="Example1.ps1 - Node cmdlet"
 $example1 = & {
 
     # The Node function creates nodes with specified attributes, including custom labels and shapes.

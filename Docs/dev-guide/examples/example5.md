@@ -84,7 +84,7 @@ This time, we enhance the diagram by adding images to the Node objects and embed
 
 The $Images object and IconType "Server" must be defined earlier in the script
 
-```powershell
+```powershell linenums="1" hl_lines="11-13" title="Example5.ps1 - Add-DiaNodeIcon"
 $example5 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

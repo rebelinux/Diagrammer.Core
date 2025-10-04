@@ -45,7 +45,7 @@ The minlen attribute is used to increase the minimum length of the edge lines.
 
 [https://graphviz.org/docs/attrs/minlen/](https://graphviz.org/docs/attrs/minlen/){:target="_blank"}
 
-```powershell
+```powershell linenums="1" hl_lines="08-09" title="Example3.ps1 - Edge minlen attribute"
 $example3 = & {
     Node -Name Web01 -Attributes @{Label = 'Web01'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
     Node -Name App01 -Attributes @{Label = 'App01'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }

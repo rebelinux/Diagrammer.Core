@@ -82,7 +82,7 @@ This time, we demonstrate the use of DraftMode to help with troubleshooting and 
 
 All Diagrammer cmdlets support the -DraftMode parameter. Setting -DraftMode to $true produces a draft version of the diagram, making it easier to troubleshoot and adjust the layout.
 
-```powershell
+```powershell linenums="1" hl_lines="11-13" title="Example6.ps1 - DraftMode feature"
 $example6 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

@@ -42,7 +42,7 @@ A SubGraph groups objects in a container, like a graph within a graph. SubGraph 
 
 [https://psgraph.readthedocs.io/en/latest/Command-SubGraph/](https://psgraph.readthedocs.io/en/latest/Command-SubGraph/){:target="_blank"}
 
-```powershell
+```powershell linenums="1" hl_lines="02" title="Example4.ps1 - SubGraph cmdlet"
 $example4 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

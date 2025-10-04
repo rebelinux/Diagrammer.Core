@@ -84,7 +84,7 @@ The Rank cmdlet is used to place nodes at the same hierarchical level.
 
 In this example, App01 and DB01 are aligned horizontally.
 
-```powershell
+```powershell linenums="1" hl_lines="15-16" title="Example7.ps1 - Rank cmdlet"
 $example7 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

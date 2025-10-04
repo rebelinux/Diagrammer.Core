@@ -77,7 +77,7 @@ This time, we will simulate a Web Server Farm with multiple web server node. Whi
 
 In this example, Web-Server-01, Web-Server-02, and Web-Server-03 are part of the web server farm. Each server has its own properties defined in the AdditionalInfo parameter ($WebServerFarm).
 
-```powershell linenums="1" hl_lines="34-48" title="Example9.ps1 - Add-DiaHTMLNodeTable"
+```powershell linenums="1" hl_lines="34-48" title="Example8.ps1 - Add-DiaHTMLNodeTable"
 $example8 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 
