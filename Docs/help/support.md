@@ -58,7 +58,7 @@ Your detailed reports help us to improve this valuable tool to the benefit of th
 
     Help us understand your environment by including these relevant details in your report:
     The version of Diagrammer.Core you are using (find using Get-Module).
-    The version of PowerShell returned by $PSVersionTable.PSVersion
+    The version of PowerShell returned by **`$PSVersionTable.PSVersion`**
 
 4. Write a Clear Description
 

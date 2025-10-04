@@ -113,7 +113,6 @@ nav:
   - Developer Guide:
       - Commands:
           - Command Index: dev-guide/commands/commands.md
-          - Add-DiaNodeIcon: dev-guide/commands/add-dianodeicon.md
       - Examples:
           - Basic:
               - Example 1: dev-guide/examples/example1.md
