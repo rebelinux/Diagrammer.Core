@@ -113,6 +113,31 @@ nav:
   - Developer Guide:
       - Cmdlets:
           - Index: dev-guide/commands/commands.md
+          - Add-DiaCrossShapeLine: dev-guide/commands/Add-DiaCrossShapeLine.md
+          - Add-DiaHorizontalLine: dev-guide/commands/Add-DiaHorizontalLine.md
+          - Add-DiaHTMLLabel: dev-guide/commands/Add-DiaHTMLLabel.md
+          - Add-DiaHTMLNodeTable: dev-guide/commands/Add-DiaHTMLNodeTable.md
+          - Add-DiaHtmlSignatureTable: dev-guide/commands/Add-DiaHtmlSignatureTable.md
+          - Add-DiaHTMLSubGraph: dev-guide/commands/Add-DiaHTMLSubGraph.md
+          - Add-DiaHTMLTable: dev-guide/commands/Add-DiaHTMLTable.md
+          - Add-DiaInvertedLShapeLine: dev-guide/commands/Add-DiaInvertedLShapeLine.md
+          - Add-DiaInvertedTShapeLine: dev-guide/commands/Add-DiaInvertedTShapeLine.md
+          - Add-DiaLeftLShapeLine: dev-guide/commands/Add-DiaLeftLShapeLine.md
+          - Add-DiaLeftTShapeLine: dev-guide/commands/Add-DiaLeftTShapeLine.md
+          - Add-DiaLShapeLine: dev-guide/commands/Add-DiaLShapeLine.md
+          - Add-DiaNodeIcon: dev-guide/commands/Add-DiaNodeIcon.md
+          - Add-DiaNodeImage: dev-guide/commands/Add-DiaNodeImage.md
+          - Add-DiaNodeShape: dev-guide/commands/Add-DiaNodeShape.md
+          - Add-DiaNodeSpacer: dev-guide/commands/Add-DiaNodeSpacer.md
+          - Add-DiaRightLShapeLine: dev-guide/commands/Add-DiaRightLShapeLine.md
+          - Add-DiaRightTShapeLine: dev-guide/commands/Add-DiaRightTShapeLine.md
+          - Add-DiaTShapeLine: dev-guide/commands/Add-DiaTShapeLine.md
+          - Add-DiaVerticalLine: dev-guide/commands/Add-DiaVerticalLine.md
+          - Export-Diagrammer: dev-guide/commands/Export-Diagrammer.md
+          - Get-DiaImagePercent: dev-guide/commands/Get-DiaImagePercent.md
+          - Get-RandomColorHex: dev-guide/commands/Get-RandomColorHex.md
+          - Get-RandomPastelColorHex: dev-guide/commands/Get-RandomPastelColorHex.md
+          - New-Diagrammer: dev-guide/commands/New-Diagrammer.md
       - Examples:
           - Index: dev-guide/examples/examples.md
           - Basic:
