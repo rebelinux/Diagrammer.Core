@@ -23,6 +23,9 @@ extra:
       link: https://bsky.app/profile/jcolonfpr.bsky.social
     - icon: fontawesome/brands/discord
       link: https://discord.gg/Q5bMhr24VN
+# Extra JavaScript
+extra_javascript:
+  - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
 
 # Plugins
 plugins:
@@ -72,9 +75,6 @@ markdown_extensions:
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
-
-extra_javascript:
-  - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
 
 theme:
   name: material

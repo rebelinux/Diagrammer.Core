@@ -80,6 +80,7 @@ In this diagram there is a alignment issue with the Web01 node, as it is not cen
 
 The `Add-DiaNodeSpacer` cmdlet is used to create invisible spacer nodes that help with diagram alignment (Part of Diagrammer.Core module).
 
+:material-powershell:
 ```powershell linenums="1" hl_lines="104-119" title="Example15.ps1 - Add-DiaNodeSpacer"
 $example15 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
