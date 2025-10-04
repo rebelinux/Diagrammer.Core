@@ -79,9 +79,9 @@ In this section we demonstrates the use of the **`Add-DiaHTMLTable`** to create 
 
 To improve the diagram, we'll add a network router and a cloud icon to represent the WAN/Internet connection. We'll also include a table to display the router's network interface information.
 
-The rank directive is used to alignnodes horizontally.
+The rank directive is used to align nodes horizontally.
 
-```powershell
+```powershell linenums="1" hl_lines="67-92" title="Example11.ps1 - Add-DiaHTMLTable"
 $example11 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

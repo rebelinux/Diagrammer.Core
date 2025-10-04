@@ -81,7 +81,7 @@ In this example, we use the Add-DiaNodeShape cmdlet to add a custom rectangle sh
 
 [Supported Shapes](https://graphviz.org/doc/info/shapes.html){:target="_blank"}
 
-```powershell
+```powershell linenums="1" hl_lines="84-103" title="Example14.ps1 - Add-DiaNodeShape"
 $example14 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

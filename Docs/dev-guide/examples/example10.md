@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-This time, we'll demonstrate the use of the **`Add-DiagramNodeImage`** (part of Diagrammer.Core module) to add a custom image to the diagram. The **`Add-DiaNodeImage`** function allows you to incorporate images into your diagrams, enhancing their visual appeal and providing additional context. In this example, we will add a network router and a cloud icon to represent internet connectivity.
+This time, we'll demonstrate the use of the **`Add-DiaNodeImage`** (part of Diagrammer.Core module) to add a custom image to the diagram. The **`Add-DiaNodeImage`** function allows you to incorporate images into your diagrams, enhancing their visual appeal and providing additional context. In this example, we will add a network router and a cloud icon to represent internet connectivity.
 
 
 ```powershell title="PowerShell: param block"
@@ -79,7 +79,7 @@ In this section we demonstrates the use of the **`Add-DiaNodeImage`** to add a c
 
 To improve the diagram, we will add a network router and a cloud icon to represent internet connectivity.
 
-```powershell
+```powershell linenums="1" hl_lines="65-73" title="Example10.ps1 - Add-DiaNodeImage"
 $example10 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 

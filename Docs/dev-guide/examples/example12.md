@@ -80,9 +80,9 @@ In this section we demonstrates the use of the **`Add-DiaHTMLTable`** to create 
 
 To improve the diagram, we'll add a network router and a cloud icon to represent the WAN/Internet connection. We'll also include a table to display the router's network interface information.
 
-The rank directive is used to alignnodes horizontally.
+The rank directive is used to align nodes horizontally.
 
-```powershell
+```powershell linenums="1" title="Example12.ps1 - WaterMark feature"
 $example12 = & {
     SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
 
@@ -181,9 +181,9 @@ $example12 = & {
 
 The WaterMark feature is demonstrated here, which adds a watermark text to the diagram.
 
-```powershell
+```powershell linenums="1" hl_lines="01-09" title="Example12.ps1 - WaterMark feature"
 <#
-    The WaterMark atttributes defines the parameters for the watermark properties of the text.
+    The WaterMark attributes define the parameters for the watermark properties of the text.
 
     -WaterMarkText parameter sets the text for the watermark.
     -WaterMarkColor parameter sets the color of the watermark text.

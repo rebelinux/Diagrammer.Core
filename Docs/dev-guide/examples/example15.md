@@ -208,7 +208,7 @@ $example15 = & {
 
 Finally, call the New-Diagrammer cmdlet with the specified parameters.
 
-```powershell title="Example15.ps1 - New-Diagrammer"
+```powershell
 New-Diagrammer -InputObject $example15 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example15 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -WaterMarkText "Confidential" -WaterMarkColor "DarkGray" -WaterMarkFontOpacity 40 -DraftMode:$DraftMode
 ```
 When you run the script, it generates a PNG file named Example15.png in the specified output folder.
