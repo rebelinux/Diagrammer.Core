@@ -29,9 +29,7 @@ All commands in the latest release of Diagrammer.Core can be found in the table 
 | [Add-DiaRightTShapeLine](../../dev-guide/commands/Add-DiaRightTShapeLine.md)       | Adds a line between two right T shapes              | 0.2.31  |
 | [Add-DiaTShapeLine](../../dev-guide/commands/Add-DiaTShapeLine.md)                 | Adds a line between two T shapes                    | 0.2.31  |
 | [Add-DiaVerticalLine](../../dev-guide/commands/Add-DiaVerticalLine.md)             | Adds a vertical line between two nodes              | 0.2.31  |
-| [Convert-DiaTableToHTML](../../dev-guide/commands/Convert-DiaTableToHTML.md)       | Converts a table to HTML format                     | 0.2.31  |
 | [Export-Diagrammer](../../dev-guide/commands/Export-Diagrammer.md)                 | Exports the diagram to a file                       | 0.2.31  |
 | [Get-DiaImagePercent](../../dev-guide/commands/Get-DiaImagePercent.md)             | Gets the image percent for a given width and height | 0.2.31  |
-| [Get-NodeIP](../../dev-guide/commands/Get-NodeIP.md)                               | Gets the IP address of a node                       | 0.2.31  |
 | [Get-RandomColorHex](../../dev-guide/commands/Get-RandomColorHex.md)               | Gets a random color in hex format                   | 0.2.31  |
 | [Get-RandomPastelColorHex](../../dev-guide/commands/Get-RandomPastelColorHex.md)   | Gets a random pastel color in hex format            | 0.2.31  |
