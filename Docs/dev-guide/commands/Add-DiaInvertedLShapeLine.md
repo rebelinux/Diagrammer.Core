@@ -15,10 +15,12 @@ title: Add-DiaInvertedLShapeLine
 
 Adds an inverted L-shaped line to a diagram, connecting three nodes with customizable styles and attributes.
 
+```
         (InvertedLShapeUp)  o___o (InvertedLShapeRight)
 Example:                    |
                             o
                     (InvertedLShapeDown)
+```
 
 ## SYNTAX
 
@@ -35,7 +37,8 @@ Add-DiaInvertedLShapeLine [[-InvertedLShapeUp] <string>] [[-InvertedLShapeDown] 
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -51,9 +54,37 @@ It is useful for visually representing relationships or flows in diagrams where 
 
 ### EXAMPLE 1
 
-Add-DiaInvertedLShapeLine -InvertedLShapeUp "NodeA" -InvertedLShapeDown "NodeB" -InvertedLShapeRight "NodeC" -Arrowhead "normal" -LineStyle "dashed" -LineColor "blue"
+```powershell
+# Creates an inverted L-shaped line from NodeA down to NodeB and right to NodeC, with a normal arrowhead, dashed blue line.
 
-Creates an inverted L-shaped line from NodeA down to NodeB and right to NodeC, with a normal arrowhead, dashed blue line.
+Add-DiaInvertedLShapeLine -InvertedLShapeUp "NodeA" -InvertedLShapeDown "NodeB" -InvertedLShapeRight "NodeC" -Arrowhead "normal" -LineStyle "dashed" -LineColor "blue"
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaInvertedLShapeLine.png
+            digraph g {
+                "NodeB" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "NodeC" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "NodeA" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                { rank=same;  "NodeC"; "NodeA"; }
+                "NodeA"->"NodeB" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "NodeA"->"NodeC" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaInvertedLShapeLine_draftmode.png
+            digraph g {
+                "NodeB" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "NodeC" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "NodeA" [color="black";fillcolor="red";shape="plain";style="filled";]
+                { rank=same;  "NodeC"; "NodeA"; }
+                "NodeA"->"NodeB" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "NodeA"->"NodeC" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -305,15 +336,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string that can be used as a Graphviz node label.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
-
+```
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+- [Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

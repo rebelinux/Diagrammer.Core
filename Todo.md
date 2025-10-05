@@ -54,3 +54,5 @@
     - [ ] Add-DiaHTMLLabel
     - [ ] Add pester to test this funtionality
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
+- [ ] Add minlen parameter to shape lines
+    - [ ] Add-DiaInvertedLShapeLine

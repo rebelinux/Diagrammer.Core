@@ -15,6 +15,7 @@ title: Add-DiaInvertedTShapeLine
 
 Creates an inverted T-shaped ( _|_ ) connector in a diagram, linking four nodes with customizable line styles, colors, and attributes.
 
+```
 Example:
                     (InvertedTMiddleTop)
                             o
@@ -22,6 +23,7 @@ Example:
         (InvertedTStart)o___|___o(InvertedTEnd)
                             o
                     (InvertedTMiddleDown)
+```
 
 ## SYNTAX
 
@@ -38,7 +40,8 @@ Add-DiaInvertedTShapeLine [[-InvertedTStart] <string>] [[-InvertedTEnd] <string>
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -55,9 +58,42 @@ It also supports a debug mode to visually highlight the nodes for troubleshootin
 
 ### EXAMPLE 1
 
-Add-DiaInvertedTShapeLine -InvertedTStart "A" -InvertedTEnd "B" -InvertedTMiddleTop "C" -InvertedTMiddleDown "D" -LineColor "blue" -LineStyle "dashed"
+```powershell
+# Creates an inverted T-shaped connector with custom node names, blue dashed lines, and default arrow styles.
 
-Creates an inverted T-shaped connector with custom node names, blue dashed lines, and default arrow styles.
+Add-DiaInvertedTShapeLine -InvertedTStart "A" -InvertedTEnd "B" -InvertedTMiddleTop "C" -InvertedTMiddleDown "D" -LineColor "blue" -LineStyle "dashed"
+```
+
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaInvertedTShapeLine.png
+            digraph g {
+                "A" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "C" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "B" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "D" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                { rank=same;  "A"; "D"; "B"; }
+                "A"->"D" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "D"->"B" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "C"->"D" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaInvertedTShapeLine_draftmode.png
+            digraph g {
+                "A" [fillcolor="red";style="filled";shape="plain";scolor="black";]
+                "C" [fillcolor="red";style="filled";shape="plain";scolor="black";]
+                "B" [fillcolor="red";style="filled";shape="plain";scolor="black";]
+                "D" [fillcolor="red";style="filled";shape="plain";scolor="black";]
+                { rank=same;  "A"; "D"; "B"; }
+                "A"->"D" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "D"->"B" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "C"->"D" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -365,15 +401,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+The cmdlet returns the names of the nodes that were connected by the inverted T-shaped line.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+- [Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

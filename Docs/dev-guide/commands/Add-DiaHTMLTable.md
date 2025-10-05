@@ -17,7 +17,7 @@ Converts a string array to an HTML table with Graphviz nodes split by columns (N
 
 ## SYNTAX
 
-### __AllParameterSets
+### __AllParameteSets
 
 ```
 Add-DiaHTMLTable [[-Name] <string>] [[-Rows] <string[]>] [[-Align] <string>] [[-TableBorder] <int>]
@@ -33,7 +33,8 @@ Add-DiaHTMLTable [[-Name] <string>] [[-Rows] <string[]>] [[-Align] <string>] [[-
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -43,28 +44,51 @@ This function takes an array and converts it to an HTML table used for Graphviz 
 
 ### EXAMPLE 1
 
+```powershell
 $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
-    _________________________________
-    |               |               |
-    |192.168.5.0/24 |192.168.7.0/24 |
-    ________________________________
-    |               |               |
-    |  10.0.0.0/24  |               |
-    _________________________________
+Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 3
+```
 
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaHTMLTable.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE STYLE="rounded,dashed" COLOR="#000000" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaHTMLTable_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
+
+```powershell
 $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
 Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center"
-    _________________
-    |               |
-    |192.168.5.0/24 |
-    _________________
-    |               |
-    |192.168.7.0/24 |
-    _________________
-    |               |
-    |  10.0.0.0/24  |
-    _________________
+```
+
+!!! example
+    === "Example 2"
+
+        ```graphviz dot AddDiaHTMLTable2.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE STYLE="rounded,dashed" COLOR="#000000" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 2 - DraftMode"
+
+        ```graphviz dot AddDiaHTMLTable2_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
 
 ## PARAMETERS
 
@@ -628,17 +652,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string that can be used as a Graphviz node label.
 
 ## NOTES
 
+```
 Version:        0.2.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 Github:         rebelinux
+```
 
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
-
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
