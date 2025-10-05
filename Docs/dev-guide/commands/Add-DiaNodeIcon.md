@@ -30,7 +30,8 @@ Add-DiaNodeIcon [[-AditionalInfo] <Object>] [[-Align] <string>] [[-CellBorder] <
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+None
 
 ## DESCRIPTION
 
@@ -40,6 +41,7 @@ Takes a string and converts it to a HTML table used for GraphViz Node label
 
 ### EXAMPLE 1
 
+```powershell
 $DC = "Server-DC-01v"
 $DCRows = @{
     Memory = "4GB"
@@ -57,6 +59,7 @@ Add-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows
             |    CPU = 2    |
             | Memory = 4GB  |
             _________________
+```
 
 ## PARAMETERS
 
@@ -424,7 +427,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the HTML table for the node label.
 
 ## NOTES
 

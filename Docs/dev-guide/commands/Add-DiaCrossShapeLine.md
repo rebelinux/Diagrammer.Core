@@ -43,7 +43,8 @@ Add-DiaCrossShapeLine [[-CrossShapeStart] <string>] [[-CrossShapeEnd] <string>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -65,17 +66,57 @@ The function allows customization of:
 
 ```
 # Adds a cross-shaped line to the diagram with default settings
-Add-DiaCrossShapeLine
+PS /home/rebelinux/> Add-DiaCrossShapeLine
 
-# Visual representation:
-#         o
-#         |
-#         |
-#  o------o------o
-#         |
-#         |
-#         o
+"CrossShapeStart" [style="filled";color="black";fillcolor="red";shape="plain";]
+"CrossShapeEnd" [style="filled";color="black";fillcolor="red";shape="plain";]
+"CrossShapeStart" [style="filled";color="black";fillcolor="red";shape="plain";]
+"CrossShapeMiddleTop" [style="filled";color="black";fillcolor="red";shape="plain";]
+"CrossShapeMiddleDown" [style="filled";color="black";fillcolor="red";shape="plain";]
+"CrossShapeEnd" [style="filled";color="black";fillcolor="red";shape="plain";]
+"CrossShapeMiddle" [style="filled";color="black";fillcolor="red";shape="point";]
+{ rank=same;  "CrossShapeStart"; "CrossShapeMiddle"; "CrossShapeEnd"; }
+"CrossShapeStart"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+"CrossShapeMiddle"->"CrossShapeEnd" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+"CrossShapeMiddleTop"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+"CrossShapeMiddle"->"CrossShapeMiddleDown" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
 ```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaCrossShapeLine.png
+        digraph g {
+            "CrossShapeStart" [shape="point";height="0.001";style="invis";fixedsize="true";fillcolor="transparent";width="0.001";color="black";]
+            "CrossShapeMiddleTop" [shape="point";height="0.001";style="invis";fixedsize="true";fillcolor="transparent";width="0.001";color="black";]
+            "CrossShapeMiddleDown" [shape="point";height="0.001";style="invis";fixedsize="true";fillcolor="transparent";width="0.001";color="black";]
+            "CrossShapeEnd" [shape="point";height="0.001";style="invis";fixedsize="true";fillcolor="transparent";width="0.001";color="black";]
+            "CrossShapeMiddle" [shape="point";height="0.001";style="invis";fixedsize="true";fillcolor="transparent";width="0.001";color="black";]
+            { rank=same;  "CrossShapeStart"; "CrossShapeMiddle"; "CrossShapeEnd"; }
+            "CrossShapeStart"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="black";]
+            "CrossShapeMiddle"->"CrossShapeEnd" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="black";]
+            "CrossShapeMiddleTop"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="black";]
+            "CrossShapeMiddle"->"CrossShapeMiddleDown" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="black";]
+        }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaCrossShapeLine_draftmode.png
+        digraph g {
+            "CrossShapeStart" [style="filled";color="black";fillcolor="red";shape="plain";]
+            "CrossShapeEnd" [style="filled";color="black";fillcolor="red";shape="plain";]
+            "CrossShapeStart" [style="filled";color="black";fillcolor="red";shape="plain";]
+            "CrossShapeMiddleTop" [style="filled";color="black";fillcolor="red";shape="plain";]
+            "CrossShapeMiddleDown" [style="filled";color="black";fillcolor="red";shape="plain";]
+            "CrossShapeEnd" [style="filled";color="black";fillcolor="red";shape="plain";]
+            "CrossShapeMiddle" [style="filled";color="black";fillcolor="red";shape="point";]
+            { rank=same;  "CrossShapeStart"; "CrossShapeMiddle"; "CrossShapeEnd"; }
+            "CrossShapeStart"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+            "CrossShapeMiddle"->"CrossShapeEnd" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+            "CrossShapeMiddleTop"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+            "CrossShapeMiddle"->"CrossShapeMiddleDown" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+        }
+        ```
 
 ## PARAMETERS
 
@@ -423,14 +464,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.String
+
+A Graphviz dot string representing the name of the node in the cross shape.
+
 ## NOTES
 
+```
 Version:        0.6.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 GitHub:         rebelinux
-
+```
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

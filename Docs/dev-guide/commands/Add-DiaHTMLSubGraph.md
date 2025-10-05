@@ -537,5 +537,5 @@ Github:         rebelinux
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
 

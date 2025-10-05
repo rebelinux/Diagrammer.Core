@@ -30,7 +30,8 @@ Add-DiaHTMLLabel [-Label] <string> [[-ImagesObj] <hashtable>] [[-IconType] <stri
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -41,16 +42,38 @@ It supports customization of the logo, font, and debug options.
 
 ### EXAMPLE 1
 
-$MainGraphLabel = Switch ($DiagramType) {
-    'Forest' { 'Active Directory Forest Diagram' }
-    'Domain' { 'Active Directory Domain Diagram' }
-    'Sites' { 'Active Directory Site Inventory Diagram' }
-    'SitesTopology' { 'Active Directory Site Topology Diagram' }
+```powershell
+$script:Images = @{
+    "Main_Logo" = "Diagrammer.png"
+    "Server" = "Server.png"
 }
+
 $CustomLogo = "Logo Path"
 $IconDebug = $false
-Add-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
+$RootPath = $PSScriptRoot
+[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+
 # This will generate an HTML table with the specified label and logo.
+Add-DiaHTMLLabel -Label "Active Directory Forest Diagram" -IconType $CustomLogo -IconDebug $IconDebug -ImagesObj $Images
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot ADDiaHTMLLabel.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot ADDiaHTMLLabel_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>>];
+            }
+        ```
 
 ## PARAMETERS
 
@@ -435,17 +458,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the HTML table in Graphviz DOT format.
 
 ## NOTES
 
+```
 Version:        0.2.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 GitHub:         rebelinux
+```
 
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
 

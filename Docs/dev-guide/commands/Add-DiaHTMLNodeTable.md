@@ -33,7 +33,8 @@ Add-DiaHTMLNodeTable -inputObject <string[]> -iconType <string[]> [-ImagesObj <h
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -44,6 +45,7 @@ The table can include icons and additional information for each element.
 
 ### EXAMPLE 1
 
+```powershell
 # Array of String *6 Objects*
 $DCsArray = @("Server-dc-01v","Server-dc-02v","Server-dc-03v","Server-dc-04v","Server-dc-05v","Server-dc-06v")
 
@@ -51,7 +53,7 @@ $Images = @{
     "Microsoft_Logo" = "Microsoft_Logo.png"
     "ForestRoot" = "Forrest_Root.png"
     "AD_LOGO_Footer" = "DMAD_Logo.png"
-    "AD_DC" = "DomainController.png"
+    "AD_DC" = "Server.png"
     "AD_Domain" = "ADDomain.png"
     "AD_Site" = "Site.png"
     "AD_Site_Subnet" = "SubNet.png"
@@ -59,21 +61,25 @@ $Images = @{
 }
 
 Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Columnsize 3 -Align 'Center' -IconType "AD_DC" -MultiIcon -IconDebug $True
+```
 
-________________________________ _______________
-|               |               |               |
-|      Icon     |     Icon      |      Icon     |
-________________________________|_______________|
-|               |               |               |
-| Server-DC-01V | Server-DC-02V | Server-DC-02V |
-________________________________|________________
-________________________________ _______________
-|               |               |               |
-|      Icon     |     Icon      |      Icon     |
-________________________________|_______________|
-|               |               |               |
-| Server-DC-04V | Server-DC-05V | Server-DC-06V |
-________________________________|________________
+!!! example
+    === "Example 1"
+
+        ```graphviz dot ADDDiaHTMLNodeTable.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE COLOR="#000000" PORT="EdgeDot" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Server.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Server.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Server.png"/></TD></TR><TR><TD PORT="Server-dc-01v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-01v</B></FONT></TD><TD PORT="Server-dc-02v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-02v</B></FONT></TD><TD PORT="Server-dc-03v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-03v</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Server.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Server.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Docs/Icons/Server.png"/></TD></TR><TR><TD PORT="Server-dc-04v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-04v</B></FONT></TD><TD PORT="Server-dc-05v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-05v</B></FONT></TD><TD PORT="Server-dc-06v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-06v</B></FONT></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot ADDDiaHTMLNodeTable_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Server-dc-01v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-01v</B></FONT></TD><TD PORT="Server-dc-02v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-02v</B></FONT></TD><TD PORT="Server-dc-03v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-03v</B></FONT></TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Server-dc-04v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-04v</B></FONT></TD><TD PORT="Server-dc-05v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-05v</B></FONT></TD><TD PORT="Server-dc-06v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-06v</B></FONT></TD></TR></TABLE>>];
+            }
+        ```
 
 ## PARAMETERS
 
@@ -678,17 +684,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the HTML table.
 
 ## NOTES
 
+```
 Version:        0.2.29
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 Github:         rebelinux
-
+```
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
 

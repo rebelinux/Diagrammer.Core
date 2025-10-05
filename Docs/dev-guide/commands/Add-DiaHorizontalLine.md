@@ -16,7 +16,9 @@ title: Add-DiaHorizontalLine
 Creates a customizable horizontal line between two nodes in a diagram.
 Example:
 
-        (HStart)o-----------------o(Hend)
+```
+(HStart)o-----------------o(Hend)
+```
 
 ## SYNTAX
 
@@ -31,7 +33,8 @@ Add-DiaHorizontalLine [[-HStart] <string>] [[-HEnd] <string>] [[-Arrowtail] <str
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -43,9 +46,33 @@ The function is designed for use with diagramming tools (such as Graphviz) and s
 
 ### EXAMPLE 1
 
-Add-DiaHorizontalLine -HStart "NodeA" -HEnd "NodeB" -LineStyle "dashed" -LineColor "blue" -Arrowhead "normal"
+```powershell
+# Creates a dashed blue horizontal line from NodeA to NodeB with a normal arrowhead at the end.
+Add-DiaHorizontalLine -HStart "NodeA" -HEnd "NodeB" -LineStyle "dashed" -LineColor "blue" -Arrowhead "normal" -LineWidth 2 -HStartLineLength 2
+```
 
-Creates a dashed blue horizontal line from NodeA to NodeB with a normal arrowhead at the end.
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot ADDDiaHorizontalLine.png
+            digraph g {
+                "HStart" [shape="point";height="0.001";style="invis";fixedsize="true";fillcolor="transparent";width="0.001";color="black";]
+                "HEnd" [shape="point";height="0.001";style="invis";fixedsize="true";fillcolor="transparent";width="0.001";color="black";]
+                { rank=same;  "HStart"; "HEnd"; }
+                "HStart"->"HEnd" [minlen="2";style="solid";arrowhead="none";arrowtail="none";penwidth="2";color="black";]
+            }
+            ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot ADDDiaHorizontalLine_draftmode.png
+            digraph g {
+                "HStart" [style="filled";color="black";fillcolor="red";shape="plain";]
+                "HEnd" [style="filled";color="black";fillcolor="red";shape="plain";]
+                { rank=same;  "HStart"; "HEnd"; }
+                "HStart"->"HEnd" [minlen="2";style="solid";arrowhead="none";arrowtail="none";penwidth="2";color="red";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -268,15 +295,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the horizontal line in Graphviz DOT format.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
-
+```
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
