@@ -30,7 +30,8 @@ Add-DiaHtmlSignatureTable [-Rows] <string[]> [[-Align] <string>] [[-TableBorder]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -42,7 +43,33 @@ The function also offers debug mode and various style options.
 
 ### EXAMPLE 1
 
+```powershell
+$Images = @{
+    "Logo_Footer" = "Signature_Logo.png"
+}
+
+$DraftMode = $true
+
 Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: Bugs Bunny", "Company: ACME Inc." -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -DraftMode:$DraftMode
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaHtmlSignatureTable.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE STYLE="rounded,dashed" border="2" cellborder="0" cellpadding="5"><TR><TD fixedsize="true" width="80" height="80" ALIGN="left" colspan="1" rowspan="4"><img src="Docs/Icons/Signature_Logo.png"/></TD></TR><TR><TD valign="top" align="left" colspan="2"><B><FONT POINT-SIZE="14">Author: Bugs Bunny</FONT></B></TD></TR><TR><TD valign="top" align="left" colspan="2"><B><FONT POINT-SIZE="14">Company: ACME Inc.</FONT></B></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaHtmlSignatureTable_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE STYLE="rounded,dashed" COLOR="red" border="2" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="left" colspan="1" rowspan="4">Logo</TD></TR><TR><TD valign="top" align="left" colspan="2"><B><FONT POINT-SIZE="14">Author: Bugs Bunny</FONT></B></TD></TR><TR><TD valign="top" align="left" colspan="2"><B><FONT POINT-SIZE="14">Company: ACME Inc.</FONT></B></TD></TR></TABLE>>];
+            }
+        ```
 
 ## PARAMETERS
 
@@ -405,20 +432,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### [System.String] - Returns the generated HTML table as a string.
-
-{{ Fill in the Description }}
-
 ### System.String
 
-{{ Fill in the Description }}
+Returns the generated HTML table as a string.
 
 ## NOTES
 
+```
 Version:        0.2.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 Github:         rebelinux
+```
 
 
 ## RELATED LINKS
