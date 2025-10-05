@@ -31,7 +31,8 @@ Add-DiaHTMLSubGraph [-TableArray] <string[]> [[-ImagesObj] <hashtable>] [[-Align
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -41,28 +42,53 @@ Takes a array and converts it to a HTML table to mimic Graphviz Subgraph
 
 ### EXAMPLE 1
 
+```powershell
 $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
 Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center" -ColumnSize 2
-    _________________________________
-    |               |               |
-    |192.168.5.0/24 |192.168.7.0/24 |
-    ________________________________
-    |               |               |
-    |  10.0.0.0/24  |               |
-    _________________________________
+```
 
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaHTMLSubGraph.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE BGColor="#ffffff" COLOR="#000000" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="2"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaHTMLSubGraph_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE BGColor="#ffffff" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="2"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
+
+### EXAMPLE 2
+
+```powershell
 $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
 Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center"
-    _________________
-    |               |
-    |192.168.5.0/24 |
-    _________________
-    |               |
-    |192.168.7.0/24 |
-    _________________
-    |               |
-    |  10.0.0.0/24  |
-    _________________
+```
+
+!!! example
+    === "Example 2"
+
+        ```graphviz dot AddDiaHTMLSubGraph2.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE BGColor="#ffffff" COLOR="#000000" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 2 - DraftMode"
+
+        ```graphviz dot AddDiaHTMLSubGraph2_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE BGColor="#ffffff" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
+            }
+        ```
 
 ## PARAMETERS
 
@@ -525,14 +551,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+The HTML table string to be used inside a node label.
 
 ## NOTES
 
+```
 Version:        0.2.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 Github:         rebelinux
+```
 
 
 ## RELATED LINKS
