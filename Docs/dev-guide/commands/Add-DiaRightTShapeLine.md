@@ -14,6 +14,8 @@ title: Add-DiaRightTShapeLine
 ## SYNOPSIS
 
 Adds a Right T-shaped connector to a diagram, representing a vertical line intersecting a horizontal line to the right.
+
+```
 Example:
                         (RightTShapeUp)
                                 o
@@ -22,6 +24,7 @@ Example:
                                 |
                                 o
                         (RightTShapeDown)
+```
 
 ## SYNTAX
 
@@ -39,7 +42,8 @@ Add-DiaRightTShapeLine [[-RightTShapeUp] <string>] [[-RightTShapeDown] <string>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -51,9 +55,43 @@ The function allows customization of node names, line styles, arrowheads, colors
 
 ### EXAMPLE 1
 
-Add-DiaRightTShapeLine -RightTShapeUp "TopNode" -RightTShapeDown "BottomNode" -LineColor "blue" -LineStyle "dashed"
+```powershell
+# Creates a Right T-shaped connector with custom node names, blue dashed lines.
 
-Creates a Right T-shaped connector with custom node names, blue dashed lines.
+Add-DiaRightTShapeLine -RightTShapeUp "TopNode" -RightTShapeDown "BottomNode" -LineColor "blue" -LineStyle "dashed"
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaRightTShapeLine.png
+            digraph g {
+                node [shape=plain];
+                "TopNode" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "RightTShapeMiddleLeft" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "RightTShapeMiddleRight" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "BottomNode" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                { rank=same;  "RightTShapeMiddleRight"; "RightTShapeMiddleLeft"; }
+                "TopNode"->"RightTShapeMiddleLeft" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "RightTShapeMiddleLeft"->"BottomNode" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "RightTShapeMiddleLeft"->"RightTShapeMiddleRight" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaRightTShapeLine_draftmode.png
+            digraph g {
+                node [shape=plain];
+                "TopNode" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "RightTShapeMiddleLeft" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "RightTShapeMiddleRight" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "BottomNode" [color="black";fillcolor="red";shape="plain";style="filled";]
+                { rank=same;  "RightTShapeMiddleRight"; "RightTShapeMiddleLeft"; }
+                "TopNode"->"RightTShapeMiddleLeft" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "RightTShapeMiddleLeft"->"BottomNode" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "RightTShapeMiddleLeft"->"RightTShapeMiddleRight" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -384,15 +422,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the right T-shaped connector in Graphviz format.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

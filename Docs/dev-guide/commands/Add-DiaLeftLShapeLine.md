@@ -15,12 +15,14 @@ title: Add-DiaLeftLShapeLine
 
 Adds a left-oriented L-shaped connector to a diagram, composed of two lines and three nodes.
 
+```
 Example:
                 (LeftLShapeUp)
 (LeftLShapeLeft) o______o
                         |
                         |
                         o (LeftLShapeDown)
+```
 
 ## SYNTAX
 
@@ -36,7 +38,8 @@ Add-DiaLeftLShapeLine [[-LeftLShapeUp] <string>] [[-LeftLShapeDown] <string>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -48,9 +51,37 @@ This function is useful for visually representing relationships or flows in diag
 
 ### EXAMPLE 1
 
-Add-DiaLeftLShapeLine -LeftLShapeUp "StartNode" -LeftLShapeDown "EndNode" -LeftLShapeLeft "LeftNode" -LineColor "blue" -LineStyle "dashed"
+```powershell
+# Creates a blue, dashed, left-oriented L-shaped connector between the specified nodes.
 
-Creates a blue, dashed, left-oriented L-shaped connector between the specified nodes.
+Add-DiaLeftLShapeLine -LeftLShapeUp "StartNode" -LeftLShapeDown "EndNode" -LeftLShapeLeft "LeftNode" -LineColor "blue" -LineStyle "dashed"
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaLeftLShapeLine.png
+            digraph g {
+                "StartNode" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "EndNode" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "LeftNode" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                { rank=same;  "StartNode"; "LeftNode"; }
+                "StartNode"->"EndNode" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "LeftNode"->"StartNode" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaLeftLShapeLine_draftmode.png
+            digraph g {
+                "StartNode" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "EndNode" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "LeftNode" [color="black";fillcolor="red";shape="plain";style="filled";]
+                { rank=same;  "StartNode"; "LeftNode"; }
+                "StartNode"->"EndNode" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "LeftNode"->"StartNode" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -312,15 +343,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the Graphviz code for the left-oriented L-shaped connector.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+- [Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

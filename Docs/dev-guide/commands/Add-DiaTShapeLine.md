@@ -14,12 +14,15 @@ title: Add-DiaTShapeLine
 ## SYNOPSIS
 
 Adds a T-shaped connector to a diagram, linking four nodes with customizable line styles, widths, and colors.
+
+```
 Example:
                         (TShapeMiddleUp)
         (TShapeLeft)o___o___o(TShapeRight)
                         |
                         o
                         (TShapeMiddleDown)
+```
 
 ## SYNTAX
 
@@ -36,15 +39,18 @@ Add-DiaTShapeLine [[-TShapeLeft] <string>] [[-TShapeRight] <string>] [[-TShapeMi
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
 The Add-DiaTShapeLine function creates a T-shaped (⊥) connector in a diagram by connecting four nodes:
+
 - A horizontal line between a left node, a middle (top) node, and a right node.
 - A vertical line extending down from the middle node to a lower node.
 
 The function supports customization of:
+
 - Node names for each point of the T-shape.
 - Arrowhead and arrowtail styles (Graphviz types).
 - Line style (solid, dashed, dotted, etc.).
@@ -56,9 +62,43 @@ The function supports customization of:
 
 ### EXAMPLE 1
 
-Add-DiaTShapeLine -TShapeLeft "A" -TShapeRight "B" -TShapeMiddleUp "C" -TShapeMiddleDown "D" -LineStyle "dashed" -LineColor "blue"
+```powershell
+# Creates a T-shaped connector with custom node names, dashed blue lines, and default arrow styles.
 
-Creates a T-shaped connector with custom node names, dashed blue lines, and default arrow styles.
+Add-DiaTShapeLine -TShapeLeft "A" -TShapeRight "B" -TShapeMiddleUp "C" -TShapeMiddleDown "D" -LineStyle "dashed" -LineColor "blue"
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaTShapeLine.png
+            digraph g {
+                node [shape=plain];
+                "A" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "D" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "B" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "C" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                { rank=same;  "A"; "C"; "B"; }
+                "A"->"C" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "C"->"B" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "C"->"D" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaTShapeLine_draftmode.png
+            digraph g {
+                node [shape=plain];
+                "A" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "D" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "B" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "C" [color="black";fillcolor="red";shape="plain";style="filled";]
+                { rank=same;  "A"; "C"; "B"; }
+                "A"->"C" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "C"->"B" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "C"->"D" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -369,15 +409,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the T-shaped connector in Graphviz format.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

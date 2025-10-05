@@ -27,21 +27,31 @@ Add-DiaNodeSpacer [-Name] <string> [[-IconDebug] <bool>] [[-ShapeWidth] <float>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
-Function to create a node share (rectangle) used as Spacer
+Function to create a node shape (rectangle) used as Spacer
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
-Add-DiaNodeSpacer -IconDebug:$true
-            _________________
-            |               |
-            |      Icon     |
-            _________________
+```powershell
+## Add a Spacer node with a specific name
+Add-DiaNodeSpacer -Name 'SpacerLeft'
+```
+
+!!! example
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaNodeSpacer_draftmode.png
+            digraph g {
+                node [shape=plain];
+                "SpacerLeft" [orientation="0";height="1";penwidth="1";shape="rectangle";labelloc="c";style="filled";color="red";label="SpacerLeft";fillcolor="#FFCCCC";width="2";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -185,17 +195,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+HTML string representing the node with the specified shape and properties.
 
 ## NOTES
 
+```
 Version:        0.2.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 Github:         rebelinux
+```
 
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
-
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

@@ -29,7 +29,8 @@ Add-DiaNodeImage [-Name] <string> [[-IconDebug] <bool>] [[-IconPath] <FileInfo>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -41,15 +42,35 @@ The function also allows for debug mode, which highlights the table for easier t
 
 ### EXAMPLE 1
 
-Add-DiaNodeImage -Name "MyNode" -ImagesObj $Images -IconType "ServerWindows" -ImageSizePercent 50 -TableBorder 1 -TableBorderColor "#FF0000" -TableBorderStyle "Solid"
+```powershell
+# Generates an HTML table with a "ServerWindows" icon, 50% size, red solid border.
 
-** Generates an HTML table with a "ServerWindows" icon, 50% size, red solid border.
-**
-            _________________
-            |               |
-            |     Image     |
-            |               |
-            |_______________|
+$RootPath = $PSScriptRoot
+[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+
+$Images = @{
+    Internet = "Cloud.png"
+}
+Add-DiaNodeImage -Name "MyNode" -ImagesObj $Images -IconType "Internet" -ImageSizePercent 50 -TableBorder 1 -TableBorderColor "#FF0000" -TableBorderStyle "Solid" -IconPath $IconPath
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaNodeImage.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE STYLE='Solid' border='1' color='#FF0000' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='Solid' ALIGN='Center' fixedsize='true' width='153.6' height='153.6' colspan='1'><img src='Docs/Icons/Cloud.png'/></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaNodeImage_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='SOLID' ALIGN='Center' colspan='1'>MyNode Image</TD></TR></TABLE>>];
+            }
+        ```
 
 ## PARAMETERS
 
@@ -308,17 +329,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+HTML string representing the node with the specified icon and properties.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.2.30
 Twitter: @jcolonfzenpr
 Github: rebelinux
+```
 
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
-
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

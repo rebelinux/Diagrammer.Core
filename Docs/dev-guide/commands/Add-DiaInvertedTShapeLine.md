@@ -64,7 +64,6 @@ It also supports a debug mode to visually highlight the nodes for troubleshootin
 Add-DiaInvertedTShapeLine -InvertedTStart "A" -InvertedTEnd "B" -InvertedTMiddleTop "C" -InvertedTMiddleDown "D" -LineColor "blue" -LineStyle "dashed"
 ```
 
-
 !!! example
     === "Example 1"
 

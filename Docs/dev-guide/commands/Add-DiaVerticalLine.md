@@ -15,14 +15,14 @@ title: Add-DiaVerticalLine
 
 Adds a customizable vertical line between two nodes in a diagram.
 
+```
 Example:
 
     (VStart)o
             |
             |
             o(VEnd)
-
-Demonstrates a vertical line connecting two nodes labeled 'VStart' and 'VEnd'.
+```
 
 ## SYNTAX
 
@@ -37,7 +37,8 @@ Add-DiaVerticalLine [[-VStart] <string>] [[-VEnd] <string>] [[-Arrowtail] <strin
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -53,15 +54,33 @@ diagramming scenarios, such as organizational charts, flow diagrams, or network 
 
 ### EXAMPLE 1
 
+```powershell
+# Draws a dashed blue vertical line of width 2 between nodes "NodeA" and "NodeB".
+
 Add-DiaVerticalLine -VStart "NodeA" -VEnd "NodeB" -LineStyle "dashed" -LineColor "blue" -LineWidth 2
+```
 
-Draws a dashed blue vertical line of width 2 between nodes "NodeA" and "NodeB".
+!!! example
+    === "Example 1"
 
-### EXAMPLE 2
+        ```graphviz dot AddDiaTShapeLine.png
+            digraph g {
+                node [shape=plain];
+                "NodeA" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "NodeB" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "NodeA"->"NodeB" [penwidth="2";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
 
-Add-DiaVerticalLine -IconDebug $true
-
-Draws a vertical line between the default nodes, highlighting the line and nodes in red for debugging.
+        ```graphviz dot AddDiaTShapeLine_draftmode.png
+            digraph g {
+                node [shape=plain];
+                "NodeA" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "NodeB" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "NodeA"->"NodeB" [penwidth="2";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -279,16 +298,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the vertical line in Graphviz format.
 
 ## NOTES
 
+```
 Version:        0.6.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 GitHub:         rebelinux
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

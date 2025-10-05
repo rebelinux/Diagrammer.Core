@@ -15,6 +15,7 @@ title: Add-DiaLeftTShapeLine
 
 Adds a Left T-shaped connector to a diagram, representing a vertical line intersecting a horizontal line extending to the right.
 
+```
 Example:
                 (LeftTShapeUp)
                         o
@@ -25,6 +26,7 @@ Example:
                         |
                         o
                 (LeftTShapeDown)
+```
 
 ## SYNTAX
 
@@ -42,7 +44,8 @@ Add-DiaLeftTShapeLine [[-LeftTShapeUp] <string>] [[-LeftTShapeDown] <string>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -55,9 +58,41 @@ It also supports a debug mode for visualizing node placement.
 
 ### EXAMPLE 1
 
-Add-DiaLeftTShapeLine -LeftTShapeUp "Top" -LeftTShapeDown "Bottom" -LeftTShapeMiddleRight "Right" -LeftTShapeMiddleLeft "Center" -LineColor "blue" -LineStyle "dashed"
+```powershell
+# Creates a blue, dashed Left T-shaped connector with custom node names.
 
-Creates a blue, dashed Left T-shaped connector with custom node names.
+Add-DiaLeftTShapeLine -LeftTShapeUp "Top" -LeftTShapeDown "Bottom" -LeftTShapeMiddleRight "Right" -LeftTShapeMiddleLeft "Center" -LineColor "blue" -LineStyle "dashed"
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaLeftTShapeLine.png
+            digraph g {
+                "Top" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "Right" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "Bottom" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                "Center" [shape="point";fixedsize="true";fillcolor="transparent";height="0.001";width="0.001";style="invis";]
+                { rank=same;  "Right"; "Center"; }
+                "Top"->"Right" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "Right"->"Bottom" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "Center"->"Right" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaLeftTShapeLine_draftmode.png
+            digraph g {
+                "Top" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "Right" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "Bottom" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "Center" [color="black";fillcolor="red";shape="plain";style="filled";]
+                { rank=same;  "Right"; "Center"; }
+                "Top"->"Right" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "Right"->"Bottom" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "Center"->"Right" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -364,15 +399,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A string representing the Graphviz code for the left-oriented T-shaped connector.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+- [Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

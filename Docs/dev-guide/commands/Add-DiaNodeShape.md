@@ -31,7 +31,8 @@ Add-DiaNodeShape [-Name] <string> [-Shape] <string> [[-IconDebug] <bool>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -43,15 +44,32 @@ The function also allows for debug mode, which highlights the node for easier tr
 
 ### EXAMPLE 1
 
-Add-DiaNodeShape -Name "MyNode" -ImagesObj $Images -IconType "ServerWindows" -ImageSizePercent 50 -TableBorder 1 -TableBorderColor "#FF0000" -TableBorderStyle "Solid"
+```
+# Generates an HTML table with a Node of shape "box", red solid border.
 
-** Generates an HTML table with a "ServerWindows" icon, 50% size, red solid border.
-**
-            _________________
-            |               |
-            |     Image     |
-            |               |
-            |_______________|
+$DraftMode = $false
+
+Add-DiaNodeShape -Name "Firewall" -Shape rectangle -ShapeStyle 'filled' -ShapeFillColor 'red:white' -ShapeFontSize 14 -ShapeFontColor 'black' -ShapeFontName 'Arial' -ShapeWidth 3 -ShapeLabelPosition center -ShapeLineColor 'black' -DraftMode:$DraftMode
+```
+
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaNodeShape.png
+            digraph g {
+                node [shape=plain];
+                "Firewall" [fontcolor="black";fillcolor="red:white";fontsize="14";penwidth="1";height="0.5";style="filled";label="Firewall";labelloc="c";fontname="Arial";width="3";orientation="0";shape="rectangle";color="black";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaNodeShape_draftmode.png
+            digraph g {
+                node [shape=plain];
+                "Firewall" [fontcolor="black";fillcolor="red:white";fontsize="14";penwidth="1";height="0.5";style="filled";label="Firewall";labelloc="c";fontname="Arial";width="3";orientation="0";shape="rectangle";color="red";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -386,17 +404,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+HTML string representing the node with the specified shape and properties.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.2.30
 Twitter: @jcolonfzenpr
 Github: rebelinux
+```
 
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
-
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

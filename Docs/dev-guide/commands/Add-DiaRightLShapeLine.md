@@ -14,11 +14,14 @@ title: Add-DiaRightLShapeLine
 ## SYNOPSIS
 
 Adds a right-facing L-shaped connector to a diagram, composed of two lines and three nodes.
+
+```
 Example:
             (RightLShapeUp)
                     o_____o(RightLShapeRight)
                     |
   (RightLShapeDown) o
+```
 
 ## SYNTAX
 
@@ -35,14 +38,17 @@ Add-DiaRightLShapeLine [[-RightLShapeUp] <string>] [[-RightLShapeDown] <string>]
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
 The Add-DiaRightLShapeLine function creates a right-facing L-shaped connector for use in diagram generation.
 It defines three nodes (Up, Down, and Right) and connects them with two lines to form an L shape:
-    - A vertical line from the Up node to the Down node.
-    - A horizontal line from the Up node to the Right node.
+
+- A vertical line from the Up node to the Down node.
+- A horizontal line from the Up node to the Right node.
+
 The function allows customization of node names, line styles, arrow styles, colors, and lengths.
 It is intended for use with diagramming tools that support node and edge definitions, such as Graphviz.
 
@@ -50,9 +56,40 @@ It is intended for use with diagramming tools that support node and edge definit
 
 ### EXAMPLE 1
 
-Add-DiaRightLShapeLine -RightLShapeUp "A" -RightLShapeDown "B" -RightLShapeRight "C" -LineColor "blue" -LineStyle "dashed"
+```powershell
+# Creates a right-facing L-shaped connector with custom node names and a blue dashed line.
 
-Creates a right-facing L-shaped connector with custom node names and a blue dashed line.
+Add-DiaRightLShapeLine -RightLShapeUp "A" -RightLShapeDown "B" -RightLShapeRight "C" -LineColor "blue" -LineStyle "dashed"
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaRightLShapeLine.png
+            digraph g {
+                node [shape=plain];
+                "A" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "B" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                "C" [shape="point";fixedsize="true";fillcolor="transparent";color="blue";height="0.001";width="0.001";style="invis";]
+                { rank=same;  "A"; "C"; }
+                "A"->"B" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="1";style="dashed";]
+                "A"->"C" [penwidth="1";arrowhead="none";arrowtail="none";color="blue";minlen="";style="dashed";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaRightLShapeLine_draftmode.png
+            digraph g {
+                node [shape=plain];
+                "A" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "B" [color="black";fillcolor="red";shape="plain";style="filled";]
+                "C" [color="black";fillcolor="red";shape="plain";style="filled";]
+                { rank=same;  "A"; "C"; }
+                "A"->"B" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="1";style="dashed";]
+                "A"->"C" [penwidth="1";arrowhead="none";arrowtail="none";color="red";minlen="";style="dashed";]
+            }
+        ```
+
 
 ## PARAMETERS
 
@@ -340,15 +377,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+HTML string representing the right L-shaped connector with the specified nodes and properties.
 
 ## NOTES
 
+```
 Author: Jonathan Colon
 Version: 0.6.30
 GitHub: https://github.com/rebelinux/Diagrammer.Core
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/Diagrammer.Core)
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)

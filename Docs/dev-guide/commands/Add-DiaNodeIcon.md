@@ -42,24 +42,34 @@ Takes a string and converts it to a HTML table used for GraphViz Node label
 ### EXAMPLE 1
 
 ```powershell
+$Images = @{
+    Server = "Server.png"
+}
 $DC = "Server-DC-01v"
 $DCRows = @{
     Memory = "4GB"
     CPU = "2"
 }
-Add-DiaNodeIcon -Name $DC -IconType "ForestRoot" -Align "Center" -Rows $DCRows
-            _________________
-            |               |
-            |      Icon     |
-            _________________
-            |               |
-            | Server-DC-01V |
-            _________________
-            |               |
-            |    CPU = 2    |
-            | Memory = 4GB  |
-            _________________
+Add-DiaNodeIcon -Name $DC -IconType "Server" -Align "Center" -Rows $DCRows -ImagesObj $Images
 ```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot AddDiaLeftTShapeLine.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Docs/Icons/Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='14'>Server-DC-01v</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>CPU: 2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>Memory: 4GB</FONT></TD></TR></TABLE>>];
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot AddDiaLeftTShapeLine_draftmode.png
+            digraph g {
+                node [shape=plain];
+                a [label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='14'>Server-DC-01v</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>CPU: 2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>Memory: 4GB</FONT></TD></TR></TABLE>>];
+            }
+        ```
 
 ## PARAMETERS
 
@@ -431,15 +441,14 @@ A string representing the HTML table for the node label.
 
 ## NOTES
 
+```
 Version:        0.2.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 Github:         rebelinux
-
-Specifies the name of the node to process.
-
+```
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
 

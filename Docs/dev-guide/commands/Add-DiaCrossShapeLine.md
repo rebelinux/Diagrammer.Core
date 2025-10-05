@@ -53,6 +53,7 @@ The cross consists of a central node with lines extending vertically and horizon
 This is useful for representing intersections, connection points, or central hubs in diagrammatic representations.
 
 The function allows customization of:
+
 - Node names for each segment of the cross (start, end, middle, top, down)
 - Line style (solid, dashed, dotted, etc.)
 - Line color and width
@@ -64,22 +65,10 @@ The function allows customization of:
 
 ### EXAMPLE 1
 
-```
+```powershell
 # Adds a cross-shaped line to the diagram with default settings
-PS /home/rebelinux/> Add-DiaCrossShapeLine
 
-"CrossShapeStart" [style="filled";color="black";fillcolor="red";shape="plain";]
-"CrossShapeEnd" [style="filled";color="black";fillcolor="red";shape="plain";]
-"CrossShapeStart" [style="filled";color="black";fillcolor="red";shape="plain";]
-"CrossShapeMiddleTop" [style="filled";color="black";fillcolor="red";shape="plain";]
-"CrossShapeMiddleDown" [style="filled";color="black";fillcolor="red";shape="plain";]
-"CrossShapeEnd" [style="filled";color="black";fillcolor="red";shape="plain";]
-"CrossShapeMiddle" [style="filled";color="black";fillcolor="red";shape="point";]
-{ rank=same;  "CrossShapeStart"; "CrossShapeMiddle"; "CrossShapeEnd"; }
-"CrossShapeStart"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
-"CrossShapeMiddle"->"CrossShapeEnd" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
-"CrossShapeMiddleTop"->"CrossShapeMiddle" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
-"CrossShapeMiddle"->"CrossShapeMiddleDown" [minlen="1";style="solid";arrowhead="none";arrowtail="none";penwidth="1";color="red";]
+Add-DiaCrossShapeLine
 ```
 
 !!! example
