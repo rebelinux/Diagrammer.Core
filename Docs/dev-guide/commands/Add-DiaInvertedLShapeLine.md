@@ -343,7 +343,7 @@ A string that can be used as a Graphviz node label.
 
 ```
 Author: Jonathan Colon
-Version: 0.6.30
+Version: 0.2.31
 GitHub: https://github.com/rebelinux/Diagrammer.Core
 ```
 

@@ -460,7 +460,7 @@ A Graphviz dot string representing the name of the node in the cross shape.
 ## NOTES
 
 ```
-Version:        0.6.30
+Version:        0.2.31
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 GitHub:         rebelinux

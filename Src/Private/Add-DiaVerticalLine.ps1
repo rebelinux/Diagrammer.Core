@@ -62,7 +62,7 @@ function Add-DiaVerticalLine {
         Draws a vertical line between the default nodes, highlighting the line and nodes in red for debugging.
 
     .NOTES
-        Version:        0.6.30
+        Version:        0.2.31
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         GitHub:         rebelinux

@@ -32,3 +32,4 @@ All commands in the latest release of Diagrammer.Core can be found in the table 
 | [Export-Diagrammer](../../dev-guide/commands/Export-Diagrammer.md)                 | Exports the diagram to a file               | 0.2.31  |
 | [Get-RandomColorHex](../../dev-guide/commands/Get-RandomColorHex.md)               | Gets a random color in hex format           | 0.2.31  |
 | [Get-RandomPastelColorHex](../../dev-guide/commands/Get-RandomPastelColorHex.md)   | Gets a random pastel color in hex format    | 0.2.31  |
+| [New-Diagrammer](../../dev-guide/commands/New-Diagrammer.md)                       | Creates a new diagram from an input object  | 0.2.31  |

@@ -303,7 +303,7 @@ A string representing the vertical line in Graphviz format.
 ## NOTES
 
 ```
-Version:        0.6.30
+Version:        0.2.31
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 GitHub:         rebelinux

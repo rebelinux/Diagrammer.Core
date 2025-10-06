@@ -406,7 +406,7 @@ The cmdlet returns the names of the nodes that were connected by the inverted T-
 
 ```
 Author: Jonathan Colon
-Version: 0.6.30
+Version: 0.2.31
 GitHub: https://github.com/rebelinux/Diagrammer.Core
 ```
 

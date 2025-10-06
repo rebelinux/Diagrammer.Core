@@ -405,7 +405,7 @@ A string representing the Graphviz code for the left-oriented T-shaped connector
 
 ```
 Author: Jonathan Colon
-Version: 0.6.30
+Version: 0.2.31
 GitHub: https://github.com/rebelinux/Diagrammer.Core
 ```
 
