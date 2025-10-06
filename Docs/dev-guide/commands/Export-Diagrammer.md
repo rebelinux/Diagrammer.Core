@@ -29,7 +29,8 @@ Export-Diagrammer [-GraphObj] <Object> [[-ErrorDebug] <bool>] [-Format] <array>
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -38,6 +39,42 @@ It supports adding watermarks to the output image (except for SVG and PDF format
 rotating the diagram output image.
 
 ## EXAMPLES
+
+### EXAMPLE 1
+
+```powershell
+# Exports a diagram object to a PNG file with a watermark.
+
+$diagram  = &{
+    Add-DiaNodeShape -Name "Start" -Shape "ellipse" -ShapeFillColor "lightblue" -DraftMode:$true
+    Add-DiaNodeShape -Name "End" -Shape "ellipse" -ShapeFillColor "lightgreen" -DraftMode:$true
+    Edge -From "Start" -To "End" @{ xlabel="Example";minlen=3;Style = "dashed"; Color = "blue" }
+}
+
+Export-Diagrammer -GraphObj $diagram -Format PNG -Filename "Diagram.png" -WaterMarkText "Confidential" -WaterMarkColor "Red" -WaterMarkFontOpacity 50
+```
+
+!!! example
+    === "Example 1"
+
+        ```graphviz dot ExportDiagrammer.png
+            digraph g {
+                node [shape=plain];
+                "Start" [fontcolor="black";fillcolor="lightblue";fontsize="14";penwidth="1";height="0.5";style="filled";label="Start";labelloc="c";fontname="Times-Roman";width="0.75";orientation="0";shape="ellipse";color="black";]
+                "End" [fontcolor="black";fillcolor="lightgreen";fontsize="14";penwidth="1";height="0.5";style="filled";label="End";labelloc="c";fontname="Times-Roman";width="0.75";orientation="0";shape="ellipse";color="black";]
+                "Start"->"End" [minlen="3";style="dashed";color="blue";xlabel="Example";]
+            }
+        ```
+    === "Example 1 - DraftMode"
+
+        ```graphviz dot ExportDiagrammer_draftmode.png
+            digraph g {
+                node [shape=plain];
+                "Start" [fontcolor="black";fillcolor="lightblue";fontsize="14";penwidth="1";height="0.5";style="filled";label="Start";labelloc="c";fontname="Times-Roman";width="0.75";orientation="0";shape="ellipse";color="red";]
+                "End" [fontcolor="black";fillcolor="lightgreen";fontsize="14";penwidth="1";height="0.5";style="filled";label="End";labelloc="c";fontname="Times-Roman";width="0.75";orientation="0";shape="ellipse";color="red";]
+                "Start"->"End" [minlen="3";style="dashed";color="blue";xlabel="Example";]
+            }
+        ```
 
 ## PARAMETERS
 
@@ -282,14 +319,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-{{ Fill in the Description }}
+A diagram in the specified format (PDF, PNG, SVG, or base64).
 
 ## NOTES
 
+```
 Version:        0.2.30
 Author:         Jonathan Colon
 Twitter:        @jcolonfzenpr
 GitHub:         rebelinux
+```
 
 
 ## RELATED LINKS
