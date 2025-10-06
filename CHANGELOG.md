@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update index.md with additional content for clarity.
 - Modify mkdocs.yml to include Graphviz in markdown extensions and extra JavaScript.
-- Update Graphviz binaries to v14.0.0
+- Update Graphviz binaries to v14.0.1
 
 ### :bug: Fixed
 
