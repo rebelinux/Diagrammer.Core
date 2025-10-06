@@ -13,7 +13,7 @@ title: Get-RandomPastelColorHex
 
 ## SYNOPSIS
 
-{{ Fill in the Synopsis }}
+Gets a random pastel color in hex format.
 
 ## SYNTAX
 
@@ -26,17 +26,24 @@ Get-RandomPastelColorHex
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
-{{ Fill in the Description }}
+This cmdlet generates a random pastel color in hex format. The color is represented as a six-digit hexadecimal string, prefixed with a hash symbol (#). This can be useful for creating random pastel colors for diagrams or other visual elements.
 
 ## EXAMPLES
 
 ### Example 1
 
-{{ Add example description here }}
+```powershell
+Get-RandomPastelColorHex
+
+#B2C8DF
+```
+
+This command generates and returns a random pastel color in hex format.
 
 ## PARAMETERS
 
@@ -46,13 +53,13 @@ This cmdlet has the following aliases,
 
 ### System.Object
 
-{{ Fill in the Description }}
+A string representing a random pastel color in hex format (e.g., #D1E2F3).
 
 ## NOTES
 
-{{ Fill in the Notes }}
+This cmdlet is useful for generating random pastel colors for diagrams or other visual elements.
 
 ## RELATED LINKS
 
-{{ Fill in the related links here }}
+[Diagrammer.Core](https://github.com/your-repo/Diagrammer.Core)
 

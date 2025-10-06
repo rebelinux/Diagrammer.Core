@@ -137,7 +137,6 @@ nav:
           - Export:
               - Export-Diagrammer: dev-guide/commands/Export-Diagrammer.md
           - Get:
-              - Get-DiaImagePercent: dev-guide/commands/Get-DiaImagePercent.md
               - Get-RandomColorHex: dev-guide/commands/Get-RandomColorHex.md
               - Get-RandomPastelColorHex: dev-guide/commands/Get-RandomPastelColorHex.md
           - New:

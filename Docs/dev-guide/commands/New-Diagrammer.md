@@ -42,7 +42,8 @@ New-Diagrammer [-InputObject] <Object> [[-Format] <array>] [[-IconPath] <FileInf
 ## ALIASES
 
 This cmdlet has the following aliases,
-  {{Insert list of aliases}}
+
+- None
 
 ## DESCRIPTION
 
@@ -50,6 +51,14 @@ This cmdlet generates diagrams of IT infrastructure configurations in various fo
 It provides extensive customization options for diagram appearance, including font settings, colors, node and edge properties, and more.
 
 ## EXAMPLES
+
+### Example 1
+
+```powershell
+New-Diagrammer -InputObject $myObject -Format PDF -OutputFolderPath "C:\Diagrams"
+```
+
+This command generates a new diagram from the specified input object and saves it as a PDF file in the specified output folder.
 
 ## PARAMETERS
 
@@ -870,21 +879,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Object
+
+A representation of the newly created diagram.
+
 ## NOTES
 
+```
 Version:        0.2.30
 Author(s):      Jonathan Colon
 Twitter:        @jcolonfzenpr
 Github:         rebelinux
 Credits:        Kevin Marquette (@KevinMarquette) - PSGraph module
                 Prateek Singh (@PrateekKumarSingh) - AzViz module
+```
 
 
 ## RELATED LINKS
 
-- [](https://github.com/rebelinux/
-https://github.com/KevinMarquette/PSGraph
-https://github.com/PrateekKumarSingh/AzViz)
-- [https://github.com/rebelinux/
-https://github.com/KevinMarquette/PSGraph
-https://github.com/PrateekKumarSingh/AzViz]()
+[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
