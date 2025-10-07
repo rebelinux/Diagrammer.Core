@@ -9,7 +9,9 @@
     | Name  |                     |
     _______________________________
     ```
-- [ ] Add cmdlet to create Text Box (Add-DiaNodeHTMLText)
+- [ ] Add cmdlet to create Text Box (Add-DiaNodeText)
+  - [ ] Add option to set Textbox properties (BorderStyle, BorderColor, BorderSize, FillColor, FontSize, FontColor, TextAlign)
+  - [ ] Add option to set Textbox size by percent (Hack by using Text size)
 - [ ] Add Web Site (Github Pages with Mkdocs)
     - [x] Add Logo and Favicon
     - [x] Add Google Analytics
