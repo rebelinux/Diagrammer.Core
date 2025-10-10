@@ -15,7 +15,7 @@ param (
     From PowerShell v3 onwards, the module does not need to be explicitly imported. It is included here for clarity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     As the diagram output is a file, specify the output folder path using $OutputFolderPath.

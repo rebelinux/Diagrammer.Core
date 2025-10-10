@@ -16,7 +16,7 @@ param (
     It is included here for clarity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     The diagram output is a file, so we need to specify the output folder path. In this example, $OutputFolderPath is used.
