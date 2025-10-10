@@ -3,12 +3,12 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Pdf-WaterMark.ps1')
 }
 
-Describe ConvertTo-Pdf-WaterMark -Skip {
+Describe ConvertTo-Pdf-WaterMark {
     BeforeAll {
         # Set the path to the ImageMagick executable (magick.exe)
         $ImageMagickPath = Join-Path $ProjectRoot '\ImageMagick'
         # Force the redirection of TMP to the TestDrive folder
-        $env:TMP = $TestDrive
+        # $env:TMP = $TestDrive
 
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 

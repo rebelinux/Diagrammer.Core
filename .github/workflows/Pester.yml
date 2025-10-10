@@ -1,4 +1,4 @@
-name: ModuleTests
+name: PesterTests
 on: [push]
 jobs:
     test:

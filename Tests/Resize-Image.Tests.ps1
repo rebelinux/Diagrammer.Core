@@ -6,7 +6,7 @@ BeforeAll {
 Describe Resize-Image {
     BeforeAll {
         # Force the redirection of TMP to the TestDrive folder
-        $env:TMP = $TestDrive
+        # $env:TMP = $TestDrive
 
         $PassParamsValidParameters = @{
             ImagePath = Join-Path "$TestsFolder\Icons" "AsBuiltReport.png"

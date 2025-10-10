@@ -7,7 +7,7 @@ Describe Add-WatermarkToImage {
     BeforeAll {
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
         Add-Type -AssemblyName System.Windows.Forms
-        $env:TMP = $TestDrive
+        # $env:TMP = $TestDrive
         $GraphvizObj = 'digraph g {
             compound="true";
             "web1"->"database1"
