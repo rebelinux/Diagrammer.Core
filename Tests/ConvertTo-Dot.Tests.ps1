@@ -1,6 +1,6 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Dot.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Dot.ps1')
 }
 
 Describe ConvertTo-Dot {

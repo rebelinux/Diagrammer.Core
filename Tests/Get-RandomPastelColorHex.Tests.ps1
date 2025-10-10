@@ -1,6 +1,6 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Get-RandomPastelColorHex.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Get-RandomPastelColorHex.ps1')
 }
 
 Describe Get-RandomPastelColorHex {

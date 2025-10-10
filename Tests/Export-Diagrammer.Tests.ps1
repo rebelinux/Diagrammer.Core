@@ -1,15 +1,12 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Export-Diagrammer.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Png.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Jpg.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Pdf.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Svg.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Dot.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Base64.ps1
-
-
-
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Export-Diagrammer.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Png.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Jpg.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Pdf.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Svg.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Dot.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Base64.ps1')
 }
 
 Describe Export-Diagrammer {

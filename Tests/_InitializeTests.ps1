@@ -1,11 +1,13 @@
-$Global:ModuleName = 'Diagrammer.Core.psd1'
-$Global:TestsFolder = Split-Path -Parent $MyInvocation.MyCommand.Path
-$Global:ProjectRoot = Split-Path -Parent $TestsFolder
-$Global:ModuleRoot = Join-Path $ProjectRoot $ModuleName
-$Global:ModuleManifestPath = Join-Path $Global:ModuleRoot ('{0}.psd1' -f $Global:ModuleName)
+$Script:ModuleName = 'Diagrammer.Core.psd1'
+$Script:TestsFolder = Split-Path -Parent $MyInvocation.MyCommand.Path
+$Script:ProjectRoot = Split-Path -Parent $TestsFolder
+$Script:ModuleRoot = Join-Path $ProjectRoot $ModuleName
+$Script:ModuleManifestPath = Join-Path $Script:ModuleRoot ('{0}.psd1' -f $Script:ModuleName)
 
-$Global:GraphvizPath = Join-Path $ProjectRoot 'Graphviz\bin\dot.exe'
+$Script:PrivateFolder = Join-Path -Path $ProjectRoot -ChildPath ('Src{0}Private' -f [System.IO.Path]::DirectorySeparatorChar)
 
-if (-Not (Get-Module $ModuleName)) {
+$Script:GraphvizPath = Join-Path $ProjectRoot 'Graphviz\bin\dot.exe'
+
+if (-not (Get-Module $ModuleName)) {
     Import-Module $ModuleRoot -Force
 }

@@ -1,7 +1,7 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Test-Image.ps1
-    . $ProjectRoot\SRC\private\Test-Logo.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Test-Image.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Test-Logo.ps1')
 }
 
 Describe Test-Logo {
