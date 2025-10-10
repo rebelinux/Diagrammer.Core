@@ -58,3 +58,7 @@
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
 - [Done] Add minlen parameter to shape lines
     - [Done] Add-DiaInvertedLShapeLine
+- [] Fix Test with $env:TMP = $TestDrive
+    - [x] Resize-Image.Tests.ps1
+    - [x] Add-WatermarkToImage.Tests.ps1
+    - [x] ConvertTo-Pdf-WaterMark.Tests.ps1

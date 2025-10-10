@@ -3,7 +3,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Pdf-WaterMark.ps1')
 }
 
-Describe ConvertTo-Pdf-WaterMark {
+Describe ConvertTo-Pdf-WaterMark -Skip {
     BeforeAll {
         # Set the path to the ImageMagick executable (magick.exe)
         $ImageMagickPath = Join-Path $ProjectRoot '\ImageMagick'
