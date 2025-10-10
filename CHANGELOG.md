@@ -25,7 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### :bug: Fixed
 
-Fix regex pattern in New-Diagrammer function to correctly match graph object labels for export
+- Fix regex pattern in New-Diagrammer function to correctly match graph object labels for export
+- Fix issue with Graphviz v14.0.0 not rendering edges correctly by updating to version v14.0.1
 
 ## [0.2.30] - 2025-09-18
 

@@ -259,7 +259,6 @@ function Add-DiaHTMLSubGraph {
             }
         }
     } else {
-
         if ($Icon) {
             $TDSubgraphIcon = '<TD valign="BOTTOM" ALIGN="{0}" colspan="{1}" fixedsize="true" width="{5}" height="{6}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $fontName, $fontColor, $Icon, $IconWidth, $IconHeight
             $TDSubgraph = '<TD valign="TOP" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$Label, $fontSize
