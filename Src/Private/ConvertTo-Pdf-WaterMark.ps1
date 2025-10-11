@@ -31,10 +31,16 @@ function ConvertTo-Pdf-WaterMark {
         [System.IO.FileInfo] $ImageInput,
         [Parameter(
             Position = 1,
-            Mandatory = $true,
-            HelpMessage = 'Please provide the file path to export the diagram'
+            Mandatory = $True,
+            HelpMessage = 'Please provide the path to the image output file'
         )]
-        [string] $DestinationPath
+        [ValidateScript({
+                if (-not ($_ | Test-Path) ) {
+                    throw "Folder does not exist"
+                }
+                return $true
+            })]
+        [System.IO.FileInfo]$DestinationPath
     )
     process {
         try {

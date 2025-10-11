@@ -14,14 +14,15 @@ Describe ConvertTo-Pdf-WaterMark {
 
         $PassParamsValidParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
+            DestinationPath = $TestDrive
         }
         $PassParamsInvalidImagePath = @{
             ImageInput = "AsBuiltReport.png"
-            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
+            DestinationPath = $TestDrive
         }
         $PassParamsNoDestinationPath = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
+            DestinationPath = "WrongPath"
         }
     }
 
@@ -32,8 +33,8 @@ Describe ConvertTo-Pdf-WaterMark {
         $scriptBlock = { ConvertTo-Pdf-WaterMark @PassParamsInvalidImagePath -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'ImageInput'. File AsBuiltReport.png not found!"
     }
-    It "Should throw missing mandatory parameters" {
+    It "Should throw Folder does not exist" {
         $scriptBlock = { ConvertTo-Pdf-WaterMark @PassParamsNoDestinationPath -ErrorAction Stop }
-        $scriptBlock | Should -Throw -ExpectedMessage "Cannot process command because of one or more missing mandatory parameters: DestinationPath."
+        $scriptBlock | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'DestinationPath'. Folder does not exist"
     }
 }

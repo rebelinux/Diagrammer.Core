@@ -49,7 +49,6 @@ function Resize-Image {
             })]
         [String[]]$ImagePath,
         [Parameter(
-            Position = 4,
             Mandatory = $True,
             HelpMessage = 'Please provide the path to the image output file'
         )]
