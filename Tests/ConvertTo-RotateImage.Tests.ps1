@@ -6,7 +6,7 @@ BeforeAll {
 Describe ConvertTo-RotateImage {
     BeforeAll {
         # Force the redirect-BeExactlyion of TMP to the TestDrive folder
-        # $env:TMP = $TestDrive
+        $env:TMP = $TestDrive
 
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 
@@ -51,7 +51,7 @@ Describe ConvertTo-RotateImage {
         (ConvertTo-RotateImage @PassParamsNoDestinationPath).FullName | Should -Exist
     }
     It "Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" {
-        $scriptBlock = { Resize-Image @PassParamsInvalidImagePath -ErrorAction Stop }
+        $scriptBlock = { ConvertTo-RotateImage @PassParamsInvalidImagePath -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExceptionType ([System.Management.Automation.ParameterBindingException])
     }
     It "Should delete the TempImageOutput temporary file when DeleteImage switch is used" {
