@@ -10,14 +10,17 @@ Describe ConvertTo-RotateImage {
 
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 
+        # Create Rotated folder in TestDrive
+        New-Item -Path "$TestDrive\Rotated" -ItemType Directory
+
         $PassParamsValidParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = "$TestDrive\Rotated"
             Angle = 90
         }
         $PassParamsInvalidImagePath = @{
             ImageInput = "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = "$TestDrive\Rotated"
             Angle = 90
         }
         $PassParamsNoDestinationPath = @{
@@ -26,13 +29,13 @@ Describe ConvertTo-RotateImage {
         }
         $PassParamsDeleteImage = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = "$TestDrive\Rotated"
             Angle = 90
             DeleteImage = $true
         }
         $PassParamsAngleParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = "$TestDrive\Rotated"
         }
     }
 
