@@ -5,7 +5,7 @@ function ConvertTo-Base64 {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.2.12
+        Version:        0.2.31
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -14,7 +14,7 @@ function ConvertTo-Base64 {
     #>
     [CmdletBinding()]
     [OutputType([string])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -40,7 +40,7 @@ function ConvertTo-Base64 {
         Write-Verbose -Message "Trying to convert Graphviz object to Base64 format."
         # Code used to output image to base64 format
         try {
-            $Base64 = [convert]::ToBase64String((Get-Content $ImageInput -Encoding byte))
+            $Base64 = [convert]::ToBase64String(([System.IO.File]::ReadAllBytes($ImageInput)))
         } catch {
             Write-Verbose -Message "Unable to convert Graphviz object to Base64 format."
             Write-Debug -Message $($_.Exception.Message)

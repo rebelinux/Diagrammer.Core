@@ -5,7 +5,7 @@ function ConvertTo-Svg {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.2.12
+        Version:        0.2.31
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -14,7 +14,7 @@ function ConvertTo-Svg {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -50,7 +50,7 @@ function ConvertTo-Svg {
             #Fix icon path issue with svg output
             $images = Select-String -Path $($Document.fullname) -Pattern '<image xlink:href=".*png".*>' -AllMatches
             foreach ($match in $images) {
-                $matchFound = $match -Match '"(.*png)"'
+                $matchFound = $match -match '"(.*png)"'
                 if ($matchFound -eq $false) {
                     continue
                 }
@@ -59,9 +59,9 @@ function ConvertTo-Svg {
                 if ($Angle -ne 0) {
                     $iconNamePath = (ConvertTo-RotateImage -ImageInput $iconNamePath -Angle $Angle).FullName
                 }
-                $iconContents = Get-Content $iconNamePath -Encoding byte
+                $iconContents = [System.IO.File]::ReadAllBytes($iconNamePath)
                 $iconEncoded = [convert]::ToBase64String($iconContents)
-                ((Get-Content -Path $($Document.fullname) -Raw) -Replace $iconName, "data:image/png;base64,$($iconEncoded)") | Set-Content -Path $($Document.fullname)
+                ((Get-Content -Path $($Document.fullname) -Raw) -replace $iconName, "data:image/png;base64,$($iconEncoded)") | Set-Content -Path $($Document.fullname)
             }
             if ($DeleteImage) {
                 if ($Document) {
