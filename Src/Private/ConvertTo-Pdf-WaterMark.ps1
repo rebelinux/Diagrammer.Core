@@ -46,7 +46,7 @@ function ConvertTo-Pdf-WaterMark {
     process {
         try {
             Write-Verbose -Message "Trying to convert $($ImageInput.Name) object to PDF format. Destination Path: $DestinationPath."
-            & $ImageMagickPath\magick.exe -quality 100 $ImageInput $DestinationPath
+            & $ImageMagickPath -quality 100 $ImageInput $DestinationPath
         } catch {
             Write-Verbose -Message "Unable to convert $($ImageInput.Name) object to PDF format."
             Write-Debug -Message $($_.Exception.Message)

@@ -163,8 +163,25 @@ function Export-Diagrammer {
             }
             default { Join-Path -Path $RootPath -ChildPath 'Graphviz\bin\dot.exe' }
         }
-        # $script:GraphvizPath = Join-Path $RootPath 'Graphviz\bin\dot.exe'
-        $script:ImageMagickPath = Join-Path $RootPath 'ImageMagick\'
+        # Set the path to the ImageMagick executable
+        $script:ImageMagickPath = switch ($PSVersionTable.Platform) {
+            'Unix' {
+                & {
+                    if (Test-Path -Path '/usr/bin/magick') {
+                        '/usr/bin/magick'
+                    } elseif (Test-Path -Path '/bin/magick') {
+                        '/bin/magick'
+                    } elseif (Test-Path -Path '/usr/local/bin/magick') {
+                        '/usr/local/bin/magick'
+                    } elseif (Test-Path -Path '/opt/homebrew/bin/magick') {
+                        '/opt/homebrew/bin/magick'
+                    } else {
+                        throw "ImageMagick 'magick' executable not found in standard Unix paths. Please install ImageMagick."
+                    }
+                }
+            }
+            default { Join-Path $RootPath 'ImageMagick\magick.exe' }
+        }
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat
         if (-not $Filename) {
