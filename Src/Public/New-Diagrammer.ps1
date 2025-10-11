@@ -217,7 +217,7 @@ function New-Diagrammer {
                     throw "Path $_ not found!"
                 }
             })]
-        [System.IO.FileInfo] $IconPath = (Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) 'icons'),
+        [System.IO.FileInfo] $IconPath = (Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) 'Icons'),
 
         [Parameter(
             Position = 4,

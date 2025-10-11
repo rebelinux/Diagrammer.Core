@@ -1,9 +1,9 @@
 BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
-    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHTMLTable.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHtmlTable.ps1')
 }
 
-Describe Add-DiaHTMLTable {
+Describe Add-DiaHtmlTable {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
@@ -11,11 +11,11 @@ Describe Add-DiaHTMLTable {
         }
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
 
-        $HTMLMultiColumn = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
-        $HTMLMultiColumnDebug = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2 -DraftMode $true
+        $HTMLMultiColumn = Add-DiaHtmlTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
+        $HTMLMultiColumnDebug = Add-DiaHtmlTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2 -DraftMode $true
 
-        $HTMLSingleColumn = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1
-        $HTMLSingleColumnDebug = Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1 -DraftMode $true
+        $HTMLSingleColumn = Add-DiaHtmlTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1
+        $HTMLSingleColumnDebug = Add-DiaHtmlTable -Rows $SiteSubnets -Align "Center" -ColumnSize 1 -DraftMode $true
 
     }
     # Todo

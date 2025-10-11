@@ -1,9 +1,9 @@
 BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
-    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHTMLLabel.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHtmlLabel.ps1')
 }
 
-Describe Add-DiaHTMLLabel {
+Describe Add-DiaHtmlLabel {
     BeforeAll {
         $MainGraphLabel = @{
             'Forest' = 'Active Directory Forest Diagram'

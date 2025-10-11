@@ -52,7 +52,7 @@ As an example, Diagrammer.Core introduces the `Add-DiaNodeIcon` command, which a
 
 # Set paths and image resources
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
 
 # Define images for use in nodes
 $script:Images = @{

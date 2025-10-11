@@ -46,7 +46,7 @@ The function also allows for debug mode, which highlights the table for easier t
 # Generates an HTML table with a "ServerWindows" icon, 50% size, red solid border.
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
 
 $Images = @{
     Internet = "Cloud.png"

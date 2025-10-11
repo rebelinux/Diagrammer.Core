@@ -1,9 +1,9 @@
 BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
-    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHTMLNodeTable.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHtmlNodeTable.ps1')
 }
 
-Describe Add-DiaHTMLNodeTable {
+Describe Add-DiaHtmlNodeTable {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"

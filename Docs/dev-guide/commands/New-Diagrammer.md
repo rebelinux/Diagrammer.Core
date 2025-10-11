@@ -352,7 +352,7 @@ Specifies the path to the icon file.
 
 ```yaml
 Type: System.IO.FileInfo
-DefaultValue: (Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) 'icons')
+DefaultValue: (Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) 'Icons')
 SupportsWildcards: false
 Aliases: []
 ParameterSets:

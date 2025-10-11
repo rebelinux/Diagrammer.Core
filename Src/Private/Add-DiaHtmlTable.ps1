@@ -1,4 +1,4 @@
-function Add-DiaHTMLTable {
+function Add-DiaHtmlTable {
     <#
     .SYNOPSIS
         Converts a string array to an HTML table with Graphviz nodes split by columns (No Icons).

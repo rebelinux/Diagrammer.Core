@@ -10,15 +10,15 @@ Describe Test-Logo {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"
         }
-        $Logo = Join-Path "$TestsFolder\Icons" "Logo.png"
+        $Logo = Join-Path "$TestsFolder\Icons" "Logo_Test.png"
         $ImageName = Test-Logo -LogoPath $Logo -IconPath $IconPath -ImagesObj $Images
-        $LogoPath = Join-Path $IconPath 'Logo.png'
+        $LogoPath = Join-Path $IconPath 'Logo_Test.png'
     }
 
-    It "Should return Logo.png string from Images hashtable" {
-        $Images[$ImageName] | Should -Be 'Logo.png'
+    It "Should return Logo_Test.png string from Images hashtable" {
+        $Images[$ImageName] | Should -Be 'Logo_Test.png'
     }
-    It "Vefified if Logo.png is inside TestDrive:\ folder" {
+    It "Verified if Logo_Test.png is inside TestDrive:\ folder" {
         $LogoPath | Should -Exist
     }
 }

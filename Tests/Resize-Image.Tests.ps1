@@ -3,7 +3,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'Resize-Image.ps1')
 }
 
-Describe Resize-Image -Skip {
+Describe Resize-Image {
     BeforeAll {
         # Force the redirection of TMP to the TestDrive folder
         # $env:TMP = $TestDrive
