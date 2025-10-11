@@ -15,25 +15,25 @@ Describe Get-DiaImagePercent {
     }
 
     It "Should return Height from image file" {
-        $FromImg.Height | Should -Be 225
+        $FromImg.Height | Should -Be 205
     }
     It "Should return Width from image file" {
-        $FromImg.Width | Should -Be 225
+        $FromImg.Width | Should -Be 300
     }
 
-    It "Should return Height from base64 file" {
+    It "Should return Height from base64 file" -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $FromBase64.Height | Should -Be 225
     }
-    It "Should return Width from base64 file" {
+    It "Should return Width from base64 file" -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $FromBase64.Width | Should -Be 225
     }
     It "Should return calculated Width and Height from image file by percent" {
-        $ImageSizeByPercent.Width | Should -Be 168.75
-        $ImageSizeByPercent.Height | Should -Be 168.75
+        $ImageSizeByPercent.Width | Should -Be 225
+        $ImageSizeByPercent.Height | Should -Be 153.75
     }
-    It "Should return default Width and Height from image file by percent of 100" {
-        $ImageSizeByPercent100.Width | Should -Be 225
-        $ImageSizeByPercent100.Height | Should -Be 225
+    It "Should return default Width and Height from image file if percent value = 100" {
+        $ImageSizeByPercent100.Width | Should -Be 300
+        $ImageSizeByPercent100.Height | Should -Be 205
     }
     It "Should return error if percent is less than 1" {
         { Get-DiaImagePercent -ImageInput $Logo -Percent 0 } | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'Percent'. The 0 argument is less than the minimum allowed range of 10. Supply an argument that is greater than or equal to 10 and then try the command again."

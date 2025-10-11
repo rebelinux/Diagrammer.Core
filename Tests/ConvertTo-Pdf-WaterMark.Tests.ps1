@@ -31,11 +31,11 @@ Describe ConvertTo-Pdf-WaterMark {
 
         $PassParamsValidParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = "$TestDrive\output.pdf"
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "output.pdf"
         }
         $PassParamsInvalidImagePath = @{
             ImageInput = "AsBuiltReport.png"
-            DestinationPath = "$TestDrive\output.pdf"
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "output.pdf"
         }
         $PassParamsNoDestinationPath = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"

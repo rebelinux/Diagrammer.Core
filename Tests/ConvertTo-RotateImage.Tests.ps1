@@ -5,22 +5,22 @@ BeforeAll {
 
 Describe ConvertTo-RotateImage {
     BeforeAll {
-        # Force the redirect-BeExactlyion of TMP to the TestDrive folder
+        # Force the redirect of TMP to the TestDrive folder
         $env:TMP = $TestDrive
 
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 
         # Create Rotated folder in TestDrive
-        New-Item -Path "$TestDrive\Rotated" -ItemType Directory
+        New-Item -Path (Join-Path -Path $TestDrive -ChildPath "Rotated") -ItemType Directory
 
         $PassParamsValidParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = "$TestDrive\Rotated"
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
             Angle = 90
         }
         $PassParamsInvalidImagePath = @{
             ImageInput = "AsBuiltReport.png"
-            DestinationPath = "$TestDrive\Rotated"
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
             Angle = 90
         }
         $PassParamsNoDestinationPath = @{
@@ -29,20 +29,20 @@ Describe ConvertTo-RotateImage {
         }
         $PassParamsDeleteImage = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = "$TestDrive\Rotated"
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
             Angle = 90
             DeleteImage = $true
         }
         $PassParamsAngleParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = "$TestDrive\Rotated"
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
         }
     }
 
     AfterAll {
         # Delete files or perform other cleanup tasks
-        if (Test-Path -Path "$TestsFolder\AsBuiltReport_Rotated.png") {
-            Remove-Item "$TestsFolder\AsBuiltReport_Rotated.png"
+        if (Test-Path -Path (Join-Path -Path $TestsFolder -ChildPath "AsBuiltReport_Rotated.png")) {
+            Remove-Item (Join-Path -Path $TestsFolder -ChildPath "AsBuiltReport_Rotated.png")
         }
     }
 
