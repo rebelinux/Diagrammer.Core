@@ -103,24 +103,24 @@ Describe Export-Diagrammer {
         ($GraphvizOutput).FullName | Should -Exist
     }
     It "Should create Output.png file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
-        "$TestDrive\OutPut.png" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.jpg file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'jpg'
-        "$TestDrive\OutPut.jpg" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'jpg'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.pdf file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
-        "$TestDrive\OutPut.pdf" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.svg file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
-        "$TestDrive\OutPut.svg" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.dot file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'dot'
-        "$TestDrive\OutPut.dot" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'dot'
+        $OutPutPath | Should -Exist
     }
     It "Should throw error when invalid OutputFolderPath is provided" {
         $GraphvizOutput = { Export-Diagrammer @GraphvizInvalidOutputFolderPath -ErrorAction Stop }
