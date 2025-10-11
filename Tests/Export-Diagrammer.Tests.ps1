@@ -12,7 +12,11 @@ BeforeAll {
 Describe Export-Diagrammer {
     BeforeAll {
         $dotSource = Get-Content -Path (Join-Path $TestsFolder GraphvizSource.dot)
-        $base64Source = Get-Content -Path (Join-Path $TestsFolder GraphvizBase64Source.txt)
+        $base64Source = switch ($PSVersionTable.Platform) {
+            'Unix' { Get-Content -Path (Join-Path $TestsFolder GraphvizBase64SourceLinux.txt) }
+            default { Get-Content -Path (Join-Path $TestsFolder GraphvizBase64SourceWindows.txt) }
+        }
+
         $GraphvizOutputPNG = @{
             FileName = 'Diagrammer.png'
             Format = 'png'
