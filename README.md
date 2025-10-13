@@ -83,12 +83,6 @@ On the offline system, open a PowerShell console window and run the following co
 $env:PSModulePath -Split ';'
 ```
 
-**macOS & Linux**
-
-```powershell title=""
-$env:PSModulePath -Split ':'
-```
-
 Copy the downloaded `Diagrammer.Core` module folder to a folder specified in the `$env:PSModulePath` output.
 
 ### **GitHub**
