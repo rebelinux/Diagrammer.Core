@@ -20,7 +20,7 @@ jobs:
             - name: Remove Misc files
               shell: pwsh
               run: |
-                  Remove-Item -Path .\Docs, .\Tests, .\Todo.md, .\.cache, .\mkdocs.yml -Recurse -Force
+                  Remove-Item -Path .\Docs, .\Tests, .\Todo.md, .\mkdocs.yml -Recurse -Force
             - name: Test Module Manifest
               shell: pwsh
               run: |
