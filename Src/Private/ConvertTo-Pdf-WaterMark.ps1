@@ -5,7 +5,7 @@ function ConvertTo-Pdf-WaterMark {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.2.12
+        Version:        0.2.31
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -14,7 +14,7 @@ function ConvertTo-Pdf-WaterMark {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -32,14 +32,21 @@ function ConvertTo-Pdf-WaterMark {
         [Parameter(
             Position = 1,
             Mandatory = $true,
-            HelpMessage = 'Please provide the file path to export the diagram'
+            HelpMessage = 'Please provide the path to the image output file'
         )]
-        [string] $DestinationPath
+        [ValidateScript({
+            $parentPath = Split-Path -Path $_ -Parent
+            if (-not ($parentPath | Test-Path) ) {
+                throw "Folder does not exist"
+            }
+            return $true
+        })]
+        [String]$DestinationPath
     )
     process {
         try {
             Write-Verbose -Message "Trying to convert $($ImageInput.Name) object to PDF format. Destination Path: $DestinationPath."
-            & $ImageMagickPath\magick.exe -quality 100 $ImageInput $DestinationPath
+            & $ImageMagickPath -quality 100 $ImageInput.FullName $DestinationPath
         } catch {
             Write-Verbose -Message "Unable to convert $($ImageInput.Name) object to PDF format."
             Write-Debug -Message $($_.Exception.Message)

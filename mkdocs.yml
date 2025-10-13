@@ -1,0 +1,172 @@
+# mkdocs.yml
+---
+site_name: "Diagrammer.Core"
+site_url: "https://diagrammer.techmyth.blog"
+repo_url: "https://github.com/rebelinux/Diagrammer.Core"
+repo_name: "rebelinux/Diagrammer.Core"
+site_author: "Jonathan Colon"
+copyright: "Copyright &copy; 2025 Jonathan Colon."
+
+docs_dir: "Docs"
+
+# Customizations
+extra:
+  analytics:
+    provider: google
+    property: G-YKVJHV5M0M
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rebelinux
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/jcolonfzenpr
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/jcolonfpr.bsky.social
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/Q5bMhr24VN
+# Extra JavaScript
+extra_javascript:
+  - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
+
+# Plugins
+plugins:
+  - glightbox
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: false
+      fallback_to_build_date: true
+  - social:
+      cards_layout_options:
+        font_family: Montserrat Alternates
+        color: "#063561"
+
+markdown_extensions:
+  - pymdownx.snippets:
+      url_download: true
+  - mkdocs_graphviz
+  - attr_list
+  - admonition
+  - meta
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: code
+          class: highlight
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - md_in_html
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+theme:
+  name: material
+  custom_dir: Docs/assets/overrides
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - powershell
+  language: en
+  palette:
+    primary: black
+  features:
+    - content.code.copy
+    - content.code.select
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.sections
+    - navigation.footer
+    - navigation.top
+
+# Page Navigation
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: start/installation.md
+      - Introduction: start/introduction.md
+      - Limitations: start/limitations.md
+  - Developer Guide:
+      - Cmdlets:
+          - Index: dev-guide/commands/commands.md
+          - Add:
+              - Add-DiaCrossShapeLine: dev-guide/commands/Add-DiaCrossShapeLine.md
+              - Add-DiaHorizontalLine: dev-guide/commands/Add-DiaHorizontalLine.md
+              - Add-DiaHTMLLabel: dev-guide/commands/Add-DiaHTMLLabel.md
+              - Add-DiaHTMLNodeTable: dev-guide/commands/Add-DiaHTMLNodeTable.md
+              - Add-DiaHtmlSignatureTable: dev-guide/commands/Add-DiaHtmlSignatureTable.md
+              - Add-DiaHTMLSubGraph: dev-guide/commands/Add-DiaHTMLSubGraph.md
+              - Add-DiaHTMLTable: dev-guide/commands/Add-DiaHTMLTable.md
+              - Add-DiaInvertedLShapeLine: dev-guide/commands/Add-DiaInvertedLShapeLine.md
+              - Add-DiaInvertedTShapeLine: dev-guide/commands/Add-DiaInvertedTShapeLine.md
+              - Add-DiaLeftLShapeLine: dev-guide/commands/Add-DiaLeftLShapeLine.md
+              - Add-DiaLeftTShapeLine: dev-guide/commands/Add-DiaLeftTShapeLine.md
+              - Add-DiaLShapeLine: dev-guide/commands/Add-DiaLShapeLine.md
+              - Add-DiaNodeIcon: dev-guide/commands/Add-DiaNodeIcon.md
+              - Add-DiaNodeImage: dev-guide/commands/Add-DiaNodeImage.md
+              - Add-DiaNodeShape: dev-guide/commands/Add-DiaNodeShape.md
+              - Add-DiaNodeSpacer: dev-guide/commands/Add-DiaNodeSpacer.md
+              - Add-DiaRightLShapeLine: dev-guide/commands/Add-DiaRightLShapeLine.md
+              - Add-DiaRightTShapeLine: dev-guide/commands/Add-DiaRightTShapeLine.md
+              - Add-DiaTShapeLine: dev-guide/commands/Add-DiaTShapeLine.md
+              - Add-DiaVerticalLine: dev-guide/commands/Add-DiaVerticalLine.md
+          - Export:
+              - Export-Diagrammer: dev-guide/commands/Export-Diagrammer.md
+          - Get:
+              - Get-RandomColorHex: dev-guide/commands/Get-RandomColorHex.md
+              - Get-RandomPastelColorHex: dev-guide/commands/Get-RandomPastelColorHex.md
+          - New:
+              - New-Diagrammer: dev-guide/commands/New-Diagrammer.md
+      - Examples:
+          - Index: dev-guide/examples/examples.md
+          - Basic:
+              - Example 1: dev-guide/examples/example1.md
+              - Example 2: dev-guide/examples/example2.md
+              - Example 3: dev-guide/examples/example3.md
+              - Example 4: dev-guide/examples/example4.md
+              - Example 5: dev-guide/examples/example5.md
+              - Example 6: dev-guide/examples/example6.md
+              - Example 7: dev-guide/examples/example7.md
+          - Advanced:
+              - Example 8: dev-guide/examples/example8.md
+              - Example 9: dev-guide/examples/example9.md
+              - Example 10: dev-guide/examples/example10.md
+              - Example 11: dev-guide/examples/example11.md
+              - Example 12: dev-guide/examples/example12.md
+              - Example 13: dev-guide/examples/example13.md
+              - Example 14: dev-guide/examples/example14.md
+              - Example 15: dev-guide/examples/example15.md
+          - Expert:
+              - Example 1: dev-guide/examples/advancedexample1.md
+  - About:
+      - Contact: about/contact.md
+      - Changelog: about/changelog.md
+      - License: about/license.md
+      - Todo: about/todo.md
+  - Help:
+      - Support: help/support.md
+      - FAQ: help/faq.md

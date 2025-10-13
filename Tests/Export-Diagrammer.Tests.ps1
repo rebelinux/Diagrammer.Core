@@ -1,21 +1,22 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Export-Diagrammer.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Png.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Jpg.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Pdf.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Svg.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Dot.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-Base64.ps1
-
-
-
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Export-Diagrammer.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Png.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Jpg.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Pdf.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Svg.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Dot.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Base64.ps1')
 }
 
 Describe Export-Diagrammer {
     BeforeAll {
         $dotSource = Get-Content -Path (Join-Path $TestsFolder GraphvizSource.dot)
-        $base64Source = Get-Content -Path (Join-Path $TestsFolder GraphvizBase64Source.txt)
+        $base64Source = switch ($PSVersionTable.Platform) {
+            'Unix' { Get-Content -Path (Join-Path $TestsFolder GraphvizBase64SourceLinux.txt) }
+            default { Get-Content -Path (Join-Path $TestsFolder GraphvizBase64SourceWindows.txt) }
+        }
+
         $GraphvizOutputPNG = @{
             FileName = 'Diagrammer.png'
             Format = 'png'
@@ -106,24 +107,24 @@ Describe Export-Diagrammer {
         ($GraphvizOutput).FullName | Should -Exist
     }
     It "Should create Output.png file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
-        "$TestDrive\OutPut.png" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.jpg file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'jpg'
-        "$TestDrive\OutPut.jpg" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'jpg'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.pdf file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
-        "$TestDrive\OutPut.pdf" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.svg file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
-        "$TestDrive\OutPut.svg" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
+        $OutPutPath | Should -Exist
     }
     It "Should create Output.dot file image" {
-        $Null = Export-Diagrammer @GraphvizOutputNoFileName -Format 'dot'
-        "$TestDrive\OutPut.dot" | Should -Exist
+        $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'dot'
+        $OutPutPath | Should -Exist
     }
     It "Should throw error when invalid OutputFolderPath is provided" {
         $GraphvizOutput = { Export-Diagrammer @GraphvizInvalidOutputFolderPath -ErrorAction Stop }

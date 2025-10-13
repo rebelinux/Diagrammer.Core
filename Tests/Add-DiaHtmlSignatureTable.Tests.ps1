@@ -1,6 +1,6 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Add-DiaHtmlSignatureTable.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHtmlSignatureTable.ps1')
 }
 
 Describe Add-DiaHtmlSignatureTable {

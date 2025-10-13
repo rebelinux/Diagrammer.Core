@@ -16,7 +16,7 @@ param (
     It is included here for clarity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     The diagram output is a file, so we need to specify the output folder path. In this example, $OutputFolderPath is used.
@@ -29,7 +29,7 @@ $OutputFolderPath = Resolve-Path $Path
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.
@@ -107,9 +107,7 @@ $example8 = & {
         )
 
         <#
-            This time, we will simulate a Web Server Farm with multiple web server node. While the Add-DiaNodeIcon cmdlet is typically used to add icons/properties to nodes, it lack the ability to create multiple nodes with distinct properties.
 
-            Add-DiaHTMLNodeTable has the capability to create a table layout for the nodes simulting a web server farm. It also allows the addition of icons and properties to each node in the table.
                                 _________________________________ _______________
                                 |               |               |               |
                                 |               |     Icon      |               |
@@ -131,6 +129,7 @@ $example8 = & {
 
             -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
             -columnSize parameter sets the number of columns in the table layout.
+            -inputObject parameter accepts an array of names for the nodes in the table.
             -Subgraph parameter creates a subgraph container around the table.
             -SubgraphLabel parameter sets the label for the subgraph container.
             -SubgraphLabelPos parameter sets the position of the subgraph label (top, bottom).
@@ -139,7 +138,7 @@ $example8 = & {
             -TableBorder sets the thickness of the table border.
         #>
 
-        $Web01Label = Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontsize 20 -fontSize 18  -DraftMode:$DraftMode
+        $Web01Label = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontsize 20 -fontSize 18  -DraftMode:$DraftMode
 
 
         $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AdditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode

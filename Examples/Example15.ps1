@@ -16,7 +16,7 @@ param (
     It is included here for clarity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     The diagram output is a file, so we need to specify the output folder path. In this example, $OutputFolderPath is used.
@@ -29,7 +29,7 @@ $OutputFolderPath = Resolve-Path -Path $Path
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'icons'
+[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'Icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.
@@ -231,7 +231,7 @@ $example15 = & {
             <#
                 The Add-DiaNodeSpacer cmdlet is used to create invisible spacer nodes that help with diagram alignment (Part of Diagrammer.Core module).
 
-                In this diagram there is a aliment issue with the Web01 node, as it is not centered with the App01 and DB01 nodes below it. To fix this,
+                In this diagram there is a alignment issue with the Web01 node, as it is not centered with the App01 and DB01 nodes below it. To fix this,
                 we create two spacer nodes (FillerRight and FillerLeft) on either side of the Web01 node.
 
                 -Name parameter sets the name of the spacer node.

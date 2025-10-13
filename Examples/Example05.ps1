@@ -16,7 +16,7 @@ param (
     It is included here for clarity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     The diagram output is a file, so we need to specify the output folder path. In this example, $OutputFolderPath is used.
@@ -29,7 +29,7 @@ $OutputFolderPath = Resolve-Path $Path
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'icons'
+[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.

@@ -1,23 +1,26 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\ConvertTo-RotateImage.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-RotateImage.ps1')
 }
 
 Describe ConvertTo-RotateImage {
     BeforeAll {
-        # Force the redirect-BeExactlyion of TMP to the TestDrive folder
-        # $env:TMP = $TestDrive
+        # Force the redirect of TMP to the TestDrive folder
+        $env:TMP = $TestDrive
 
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 
+        # Create Rotated folder in TestDrive
+        New-Item -Path (Join-Path -Path $TestDrive -ChildPath "Rotated") -ItemType Directory
+
         $PassParamsValidParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
             Angle = 90
         }
         $PassParamsInvalidImagePath = @{
             ImageInput = "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
             Angle = 90
         }
         $PassParamsNoDestinationPath = @{
@@ -26,20 +29,20 @@ Describe ConvertTo-RotateImage {
         }
         $PassParamsDeleteImage = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
             Angle = 90
             DeleteImage = $true
         }
         $PassParamsAngleParameters = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = $TestDrive
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath "Rotated"
         }
     }
 
     AfterAll {
         # Delete files or perform other cleanup tasks
-        if (Test-Path -Path "$TestsFolder\AsBuiltReport_Rotated.png") {
-            Remove-Item "$TestsFolder\AsBuiltReport_Rotated.png"
+        if (Test-Path -Path (Join-Path -Path $TestsFolder -ChildPath "AsBuiltReport_Rotated.png")) {
+            Remove-Item (Join-Path -Path $TestsFolder -ChildPath "AsBuiltReport_Rotated.png")
         }
     }
 
@@ -51,7 +54,7 @@ Describe ConvertTo-RotateImage {
         (ConvertTo-RotateImage @PassParamsNoDestinationPath).FullName | Should -Exist
     }
     It "Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" {
-        $scriptBlock = { Resize-Image @PassParamsInvalidImagePath -ErrorAction Stop }
+        $scriptBlock = { ConvertTo-RotateImage @PassParamsInvalidImagePath -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExceptionType ([System.Management.Automation.ParameterBindingException])
     }
     It "Should delete the TempImageOutput temporary file when DeleteImage switch is used" {

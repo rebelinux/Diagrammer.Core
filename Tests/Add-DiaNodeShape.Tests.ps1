@@ -1,7 +1,7 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Join-Hashtable.ps1
-    . $ProjectRoot\SRC\private\Add-DiaNodeShape.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Join-Hashtable.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaNodeShape.ps1')
 }
 
 Describe Add-DiaNodeShape {

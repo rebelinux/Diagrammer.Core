@@ -1,4 +1,4 @@
-function Add-DiaHTMLLabel {
+function Add-DiaHtmlLabel {
     <#
     .SYNOPSIS
         Converts a string to an HTML table for the report main logo and title.

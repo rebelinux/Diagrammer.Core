@@ -1,5 +1,5 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
 }
 
 Describe Example11 {

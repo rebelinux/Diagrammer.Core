@@ -79,7 +79,34 @@ function Get-DiaImagePercent {
         } else {
             $ImagePrty = @{}
             try {
-                $Image = [System.Drawing.Image]::FromFile((Get-ChildItem -Path $ImageInput).FullName)
+                $Image = @{
+                    Width = 0
+                    Height = 0
+                }
+                switch ($PSVersionTable.Platform) {
+                    'Unix' {
+                        & {
+                            if (Test-Path -Path '/usr/bin/identify') {
+                                $Image.Width = & '/usr/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
+                                $Image.Height = & '/usr/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
+                            } elseif (Test-Path -Path '/bin/identify') {
+                                $Image.Width = & '/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
+                                $Image.Height = & '/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
+                            } elseif (Test-Path -Path '/usr/local/bin/identify') {
+                                $Image.Width = & '/usr/local/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
+                                $Image.Height = & '/usr/local/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
+                            } elseif (Test-Path -Path '/opt/homebrew/bin/identify') {
+                                $Image.Width = & '/opt/homebrew/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
+                                $Image.Height = & '/opt/homebrew/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
+                            } else {
+                                throw "ImageMagick 'identify' executable not found in standard Unix paths. Please install ImageMagick."
+                            }
+                        }
+                    }
+                    default {
+                        $Image = [System.Drawing.Image]::FromFile((Get-ChildItem -Path $ImageInput).FullName)
+                    }
+                }
             } catch {
                 Write-Verbose -Message "Unable to validate image path needed to get image dimensions"
                 Write-Debug -Message $($_.Exception.Message)

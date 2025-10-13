@@ -15,7 +15,7 @@ param (
     From PowerShell v3 onwards, the module does not need to be explicitly imported. It is included here for clarity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     As the diagram output is a file, specify the output folder path using $OutputFolderPath.
@@ -29,34 +29,6 @@ $OutputFolderPath = Resolve-Path $Path
 
 $MainGraphLabel = 'Web Application Diagram'
 
-<#
-    This section creates custom objects to hold server information, which are used for node labels in the diagram.
-    The use of [PSCustomObject][ordered]@{} preserves the order of properties.
-#>
-
-$WebServerInfo = [PSCustomObject][ordered]@{
-    'Server Name' = "Web01"
-    'OS' = 'Redhat Linux'
-    'Version' = '10'
-    'Build' = "10.1"
-    'Edition' = "Enterprise"
-}
-
-$AppServerInfo = [PSCustomObject][ordered]@{
-    'Server Name' = "App01"
-    'OS' = 'Windows Server'
-    'Version' = '2019'
-    'Build' = "17763.3163"
-    'Edition' = "Datacenter"
-}
-
-$DBServerInfo = [PSCustomObject][ordered]@{
-    'Server Name' = "DB01"
-    'OS' = 'Oracle Server'
-    'Version' = '8'
-    'Build' = "8.2"
-    'Edition' = "Enterprise"
-}
 
 $example4 = & {
     <#
@@ -71,9 +43,9 @@ $example4 = & {
             https://psgraph.readthedocs.io/en/latest/Command-Node/
         #>
 
-        Node -Name Web01 -Attributes @{Label = $WebServerInfo.'Server Name'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
-        Node -Name App01 -Attributes @{ Label = $AppServerInfo.'Server Name'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
-        Node -Name DB01 -Attributes @{Label = $DBServerInfo.'Server Name'; shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
+        Node -Name Web01 -Attributes @{shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
+        Node -Name App01 -Attributes @{shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
+        Node -Name DB01 -Attributes @{shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
 
         <#
             This section creates connections between the nodes in a hierarchical layout.

@@ -1,6 +1,6 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Resize-Image.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Resize-Image.ps1')
 }
 
 Describe Resize-Image {
@@ -25,13 +25,14 @@ Describe Resize-Image {
             ImagePath = Join-Path "$TestsFolder\Icons" "AsBuiltReport.png"
             Width = 1000
             Height = 1000
+            DestinationPath = "WrongPath"
         }
     }
 
     AfterAll {
         # Delete files or perform other cleanup tasks
-        if (Test-Path -Path "$TestsFolder\AsBuiltReport_resized.png") {
-            Remove-Item "$TestsFolder\AsBuiltReport_resized.png"
+        if (Test-Path -Path "$TestsFolder\Icons\AsBuiltReport_resized.png") {
+            Remove-Item "$TestsFolder\Icons\AsBuiltReport_resized.png"
         }
     }
 
@@ -42,9 +43,9 @@ Describe Resize-Image {
         $scriptBlock = { Resize-Image @PassParamsInvalidImagePath -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExceptionType ([System.Management.Automation.ParameterBindingException])
     }
-    It "Should throw missing mandatory parameters" {
+    It "Should throw cannot validate argument" {
         $scriptBlock = { Resize-Image @PassParamsNoDestinationPath -ErrorAction Stop }
-        $scriptBlock | Should -Throw -ExpectedMessage "Cannot process command because of one or more missing mandatory parameters: DestinationPath."
+        $scriptBlock | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'DestinationPath'. Folder does not exist"
     }
 
 }

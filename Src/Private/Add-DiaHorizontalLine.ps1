@@ -45,7 +45,7 @@ function Add-DiaHorizontalLine {
 
     .NOTES
         Author: Jonathan Colon
-        Version: 0.6.30
+        Version: 0.2.31
         GitHub: https://github.com/rebelinux/Diagrammer.Core
 
     .LINK

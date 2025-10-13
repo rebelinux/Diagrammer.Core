@@ -35,7 +35,7 @@ function Add-DiaLShapeLine {
     .PARAMETER LShapeUpLineLength
         The length of the vertical segment (minlen), from 1 to 10. Default is 1.
 
-    .PARAMETER LShapeRightLength
+    .PARAMETER LShapeRightLineLength
         The length of the horizontal segment (minlen), from 1 to 10. Default is 1.
 
     .PARAMETER LineWidth
@@ -54,7 +54,7 @@ function Add-DiaLShapeLine {
 
     .NOTES
         Author: Jonathan Colon
-        Version: 0.6.30
+        Version: 0.2.31
         GitHub: https://github.com/rebelinux/Diagrammer.Core
 
     .LINK
@@ -119,7 +119,7 @@ function Add-DiaLShapeLine {
             HelpMessage = 'Length of the line (minlen), from 1 to 10.'
         )]
         [ValidateRange(1, 10)]
-        [int] $LShapeRightLength = 1,
+        [int] $LShapeRightLineLength = 1,
 
         [Parameter(
             Mandatory = $false,
@@ -170,7 +170,7 @@ function Add-DiaLShapeLine {
 
             Edge -From $LShapeUp -To $LShapeDown @{minlen = $LShapeUpLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
-            Edge -From $LShapeDown -To $LShapeRight @{minlen = $LShapeRightLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
+            Edge -From $LShapeDown -To $LShapeRight @{minlen = $LShapeRightLineLength; arrowtail = $Arrowtail; arrowhead = $Arrowhead; style = $LineStyle; color = $LineColor; penwidth = $LineWidth }
 
 
         } catch {

@@ -1,7 +1,7 @@
 BeforeAll {
-    . $PSScriptRoot\_InitializeTests.ps1
-    . $ProjectRoot\SRC\private\Join-Hashtable.ps1
-    . $ProjectRoot\SRC\private\Add-DiaNodeImage.ps1
+    . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Join-Hashtable.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaNodeImage.ps1')
 }
 
 Describe Add-DiaNodeImage {
@@ -23,7 +23,7 @@ Describe Add-DiaNodeImage {
     }
 
     It "Should return a HTML table with Diagrammer.png image" {
-        $HTMLOutPut | Should -BeExactly "<TABLE border='0' color='#000000' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='30' height='24.6' colspan='1'><img src='Diagrammer.png'/></TD></TR></TABLE>"
+        $HTMLOutPut | Should -BeExactly "<TABLE border='0' color='#000000' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='90' height='61.5' colspan='1'><img src='Diagrammer.png'/></TD></TR></TABLE>"
     }
     It "Should return a HTML table with the IMG tag" {
         $HTMLOutPut | Should -Match "<img src='Diagrammer.png'/>"

@@ -1,4 +1,4 @@
-function Add-DiaHTMLNodeTable {
+function Add-DiaHtmlNodeTable {
     <#
     .SYNOPSIS
         Converts an array to an HTML table for Graphviz node labels, including icons.
@@ -291,7 +291,7 @@ function Add-DiaHTMLNodeTable {
     if ($inputObject.Count -le 1) {
         $Group = $inputObject
     } else {
-        $Group = Split-array -inArray $inputObject -size $columnSize
+        $Group = Split-Array -inArray $inputObject -size $columnSize
     }
 
 
@@ -433,7 +433,7 @@ function Add-DiaHTMLNodeTable {
                             #  Keys: Path - Values: {C:\Backup, F:\Backup}
                             #
                             foreach ($RowsGroupHT in $RowsGroupHTs) {
-                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                $RowsGroup = Split-Array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
                                 foreach ($Element in $RowsGroup[$Number]) {
                                     $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
                                 }
@@ -491,7 +491,7 @@ function Add-DiaHTMLNodeTable {
                             #  Keys: Path - Values: {C:\Backup, F:\Backup}
                             #
                             foreach ($RowsGroupHT in $RowsGroupHTs) {
-                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                $RowsGroup = Split-Array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
                                 foreach ($Element in $RowsGroup[$Number]) {
                                     $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
                                 }
@@ -561,7 +561,7 @@ function Add-DiaHTMLNodeTable {
                             #  Keys: Path - Values: {C:\Backup, F:\Backup}
                             #
                             foreach ($RowsGroupHT in $RowsGroupHTs) {
-                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                $RowsGroup = Split-Array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
                                 foreach ($Element in $RowsGroup[$Number]) {
                                     $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
                                 }
@@ -621,7 +621,7 @@ function Add-DiaHTMLNodeTable {
                             #  Keys: Path - Values: {C:\Backup, F:\Backup}
                             #
                             foreach ($RowsGroupHT in $RowsGroupHTs) {
-                                $RowsGroup = Split-array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
+                                $RowsGroup = Split-Array -inArray ($RowsGroupHT.GetEnumerator() | ForEach-Object { $_.value }) -size $columnSize
                                 foreach ($Element in $RowsGroup[$Number]) {
                                     $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$RowsGroupHT.Keys, [string]$Element
                                 }

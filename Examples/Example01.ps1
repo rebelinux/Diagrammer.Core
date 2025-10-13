@@ -1,5 +1,5 @@
 <#
-    This is a simple example demonstrating how to create a 3-tier web application diagram using the Diagrammer module, without using any object icons.
+    This is a simple example demonstrating how to create a 3-tier web application diagram using the PSgraph module, without using any object icons.
 #>
 
 [CmdletBinding()]
@@ -13,7 +13,7 @@ param (
     Starting with PowerShell v3, modules are auto-imported when needed. Importing the module here ensures clarity and avoids ambiguity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     Since the diagram output is a file, specify the output folder path using $OutputFolderPath.

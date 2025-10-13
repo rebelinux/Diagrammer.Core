@@ -1,27 +1,27 @@
 name: Publish PowerShell Module
 
 on:
-  release:
-    types: [published]
+    release:
+        types: [published]
 
 jobs:
-  publish-to-gallery:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v5
-      - name: Set PSRepository to Trusted for PowerShell Gallery
-        shell: pwsh
-        run: |
-          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-      - name: Install PSGraph module
-        shell: pwsh
-        run: |
-          Install-Module -Name PSGraph -Repository PSGallery -Force
-      - name: Test Module Manifest
-        shell: pwsh
-        run: |
-          Test-ModuleManifest .\Diagrammer.Core.psd1
-      - name: Publish module to PowerShell Gallery
-        shell: pwsh
-        run: |
-          Publish-Module -Path ./ -NuGetApiKey ${{ secrets.PSGALLERY_API_KEY }} -Verbose
+    publish-to-gallery:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v5
+            - name: Set PSRepository to Trusted for PowerShell Gallery
+              shell: pwsh
+              run: |
+                  Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+            - name: Install PSGraph module
+              shell: pwsh
+              run: |
+                  Install-Module -Name PSGraph -Repository PSGallery -Force
+            - name: Test Module Manifest
+              shell: pwsh
+              run: |
+                  Test-ModuleManifest .\Diagrammer.Core.psd1
+            - name: Publish module to PowerShell Gallery
+              shell: pwsh
+              run: |
+                  Publish-Module -Path ./ -NuGetApiKey ${{ secrets.PSGALLERY_API_KEY }} -Exclude "Docs","Tests","Todo.md",".cache","mkdocs.yml" -Verbose

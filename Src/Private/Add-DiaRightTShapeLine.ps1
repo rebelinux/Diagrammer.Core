@@ -40,13 +40,13 @@ function Add-DiaRightTShapeLine {
     .PARAMETER RightTShapeUpLineLength
         The length of the vertical line from the top node to the intersection. Range: 1-10. Default is 1.
 
-    .PARAMETER RightTShapeEndLength
+    .PARAMETER RightTShapeEndLineLength
         The length of the vertical line from the intersection to the bottom node. Range: 1-10. Default is 1.
 
-    .PARAMETER RightTShapeMiddleRightLength
+    .PARAMETER RightTShapeMiddleRightLineLength
         The length of the horizontal line from the intersection to the right node. Range: 1-10. Default is 1.
 
-    .PARAMETER RightTShapeMiddleLeftLength
+    .PARAMETER RightTShapeMiddleLeftLineLength
         The length of the horizontal line from the intersection to the left node. Range: 1-10. Default is 1.
 
     .PARAMETER LineWidth
@@ -65,7 +65,7 @@ function Add-DiaRightTShapeLine {
 
     .NOTES
         Author: Jonathan Colon
-        Version: 0.6.30
+        Version: 0.2.31
         GitHub: https://github.com/rebelinux/Diagrammer.Core
 
     .LINK

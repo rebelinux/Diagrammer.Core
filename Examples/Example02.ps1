@@ -15,7 +15,7 @@ param (
     here to avoid any ambiguity.
 #>
 
-Import-Module Diagrammer.Core -Force -Verbose:$false
+# Import-Module Diagrammer.Core -Force -Verbose:$false
 
 <#
     As the output of the diagram is a file, we need to specify the output folder path. In this example, $OutputFolderPath
@@ -65,7 +65,7 @@ $example2 = & {
                               ---------
     #>
 
-    Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black' }
+    Edge -From Web01 -To App01 @{label = 'HTTP'; color = 'black'; fontsize = 12; fontcolor = 'black' }
     Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black' }
 }
 

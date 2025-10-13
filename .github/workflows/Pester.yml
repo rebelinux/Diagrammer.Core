@@ -1,31 +1,31 @@
-name: ModuleTests
+name: PesterTests
 on: [push]
 jobs:
     test:
-      runs-on: windows-latest
-      permissions:
-        checks: write
-      steps:
-        - uses: actions/checkout@v5
-        - name: Set PSRepository to Trusted for PowerShell Gallery
-          shell: pwsh
-          run: |
-           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-        - name: Install PSGraph module
-          shell: pwsh
-          run: |
-           Install-Module -Name PSGraph -Repository PSGallery -Force
-        - name: test module
-          id: test_module
-          uses: zyborg/pester-tests-report@v1
-          with:
-            include_paths: Tests
-            report_name: module_tests
-            report_title: My Module Tests
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-        - name: dump test results
-          shell: pwsh
-          run: |
-              Write-Host -Message 'Total Tests Executed...:  ${{ steps.test_module.outputs.total_count }}'
-              Write-Host -Message 'Total Tests PASSED.....:  ${{ steps.test_module.outputs.passed_count }}'
-              Write-Host -Message 'Total Tests FAILED.....:  ${{ steps.test_module.outputs.failed_count }}'
+        runs-on: windows-latest
+        permissions:
+            checks: write
+        steps:
+            - uses: actions/checkout@v5
+            - name: Set PSRepository to Trusted for PowerShell Gallery
+              shell: pwsh
+              run: |
+                  Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+            - name: Install PSGraph module
+              shell: pwsh
+              run: |
+                  Install-Module -Name PSGraph -Repository PSGallery -Force
+            - name: test module
+              id: test_module
+              uses: zyborg/pester-tests-report@v1.5.0
+              with:
+                  include_paths: Tests
+                  report_name: module_tests
+                  report_title: My Module Tests
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+            - name: dump test results
+              shell: pwsh
+              run: |
+                  Write-Host -Message 'Total Tests Executed...:  ${{ steps.test_module.outputs.total_count }}'
+                  Write-Host -Message 'Total Tests PASSED.....:  ${{ steps.test_module.outputs.passed_count }}'
+                  Write-Host -Message 'Total Tests FAILED.....:  ${{ steps.test_module.outputs.failed_count }}'
