@@ -172,7 +172,7 @@ function Add-DiaNodeText {
 
     if ($IconDebug) {
         if ($NodeObject) {
-            $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{2}' colspan='1'>{1}</TD></TR></TABLE>" -f 'SOLID', $Text, $TextAlign
+            $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{2}' colspan='1'><FONT POINT-SIZE='{4}' COLOR='{3}'>{1}</FONT></TD></TR></TABLE>" -f 'SOLID', $Text, $TextAlign, $FontColor, $FontSize
 
             $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
 
