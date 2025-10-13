@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.31] - 2025-10-13
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add AdvancedExample01.ps1 to demonstrate the use of Add-DiaHTMLSubGraph cmdlet
 - Add TableBackgroundColor parameter to Add-DiaHTMLSubGraph cmdlet
@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.30] - 2025-09-18
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add examples for creating 3-tier web application diagrams using Diagrammer module
   - Create Example01.ps1 demonstrating a basic 3-tier web application diagram without object icons.
@@ -89,7 +89,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.29] - 2025-08-18
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add Get-RandomColorHex cmdlet and pester tests
 - Add Get-RandomPastelColorHex cmdlet and pester tests
@@ -111,7 +111,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.27] - 2025-07-23
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Added new test file Add-DiaNodeFiller.Tests.ps1 to validate Add-DiaNodeFiller functionality
 - Introduce a Todo file for future enhancements, including research on creating directional lines in dot graphs
@@ -189,7 +189,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.24] - 2025-04-18
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add parameters to Add-DiaNodeFiller for icon direction and image handling
 
@@ -214,13 +214,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.21] - 2025-04-09
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add Add-DiaNodeFiller cmdlet
 
 ## [0.2.20] - 2025-04-08
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add jpg to supported export format
 
@@ -230,7 +230,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.19] - 2025-03-04
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add parameter to set Subgraph Label font size
   - Add-DiaHTMLNodeTable
@@ -270,7 +270,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.13] - 2024-11-19
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add HTMLOutput option to the Convert-DiaTableToHTML cmdlet to allow export of the HTML table
 
@@ -295,7 +295,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.9] - 2024-10-05
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add option to mimic Graphviz Subgraph
   - Add-DiaHTMLNodeTable
@@ -311,7 +311,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.8] - 2024-09-17
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add option to set fontcolor, bgcolor edge color & node fillcolor
 
@@ -343,7 +343,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.4] - 2024-09-07
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Add feature to set per object type icon in Add-DiaHtmlNodeTable module
 
@@ -366,7 +366,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.1] - 2024-05-16
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Improved Add-DiaHTMLTable and Add-DiaNodeIcon cmdlet
 
@@ -385,7 +385,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.8] - 2024-03-16
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Added Add-WatermarkToImage cmdlet to add WaterMark text to resulting diagrams.
 - Added per format export function:
@@ -408,7 +408,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.7] - 2024-02-26
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Added Resize-image cmdlet
 
@@ -426,7 +426,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.5] - 2024-02-23
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Added Get-DiaImagePercent module
 
@@ -451,7 +451,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.1] - 2024-02-20
 
-### :fontawesome-solid-add: Added
+### :toolbox: Added
 
 - Migrated common Diagrammer.Microsoft.AD and Veeam.Diagrammer modules:
   - Convert-TableToHTML
