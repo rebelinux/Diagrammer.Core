@@ -102,7 +102,7 @@ _Note: You are not limited to installing the module to those example paths, you 
 
 ## :books: Documentation
 
-The documentation for the `Diagrammer.Core` module can be found in the [Docs](https://diagrammer.techmyth.blog/dev-guide/commands/commands/).
+The documentation for the `Diagrammer.Core` module can be found in the [Docs](https://diagrammer.techmyth.blog/).
 
 ### :blue_book: Cmdlets Index
 
