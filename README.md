@@ -110,7 +110,7 @@ _Note: You are not limited to installing the module to those example paths, you 
 
 The documentation for the `Diagrammer.Core` module can be found in the [Docs](https://diagrammer.techmyth.blog/dev-guide/commands/commands/).
 
-# :blue_book: Cmdlets Index
+#### :blue_book: Cmdlets Index
 
 All commands in the latest release of Diagrammer.Core can be found in the table below, each with a link to their documentation page.
 
@@ -140,7 +140,7 @@ All commands in the latest release of Diagrammer.Core can be found in the table 
 | [Get-RandomPastelColorHex](https://diagrammer.techmyth.blog/dev-guide/commands/Get-RandomPastelColorHex.md)   | Gets a random pastel color in hex format    | 0.2.31  |
 | [New-Diagrammer](https://diagrammer.techmyth.blog/dev-guide/commands/New-Diagrammer.md)                       | Creates a new diagram from an input object  | 0.2.31  |
 
-# :blue_book: Example Index
+#### :blue_book: Example Index
 
 All examples in the latest release of Diagrammer.Core can be found in the table below, each with a link to their documentation page.
 
