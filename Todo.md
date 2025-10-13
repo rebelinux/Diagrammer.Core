@@ -56,9 +56,10 @@
     - [ ] Add-DiaHTMLLabel
     - [ ] Add pester to test this funtionality
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
-- [Done] Add minlen parameter to shape lines
-    - [Done] Add-DiaInvertedLShapeLine
-- [] Fix Test with $env:TMP = $TestDrive
+- [x] Add minlen parameter to shape lines
+    - [x] Add-DiaInvertedLShapeLine
+- [x] Fix Test with $env:TMP = $TestDrive
     - [x] Resize-Image.Tests.ps1
     - [x] Add-WatermarkToImage.Tests.ps1
     - [x] ConvertTo-Pdf-WaterMark.Tests.ps1
+- [ ] Add option generate diagram without logo and maindiagram title
