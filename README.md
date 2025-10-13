@@ -110,7 +110,7 @@ _Note: You are not limited to installing the module to those example paths, you 
 
 The documentation for the `Diagrammer.Core` module can be found in the [Docs](https://diagrammer.techmyth.blog/dev-guide/commands/commands/).
 
-# :material-powershell: Cmdlets Index
+# :blue_book: Cmdlets Index
 
 All commands in the latest release of Diagrammer.Core can be found in the table below, each with a link to their documentation page.
 
@@ -139,5 +139,28 @@ All commands in the latest release of Diagrammer.Core can be found in the table 
 | [Get-RandomColorHex](https://diagrammer.techmyth.blog/dev-guide/commands/Get-RandomColorHex.md)               | Gets a random color in hex format           | 0.2.31  |
 | [Get-RandomPastelColorHex](https://diagrammer.techmyth.blog/dev-guide/commands/Get-RandomPastelColorHex.md)   | Gets a random pastel color in hex format    | 0.2.31  |
 | [New-Diagrammer](https://diagrammer.techmyth.blog/dev-guide/commands/New-Diagrammer.md)                       | Creates a new diagram from an input object  | 0.2.31  |
+
+# :blue_book: Example Index
+
+All examples in the latest release of Diagrammer.Core can be found in the table below, each with a link to their documentation page.
+
+| Name                                                                                      | Description                            | Module          |
+| ----------------------------------------------------------------------------------------- | -------------------------------------- | --------------- |
+| [Example1](https://diagrammer.techmyth.blog/dev-guide/examples/example1/)                 | Node cmdlet                            | PSGraph         |
+| [Example2](https://diagrammer.techmyth.blog/dev-guide/examples/example2/)                 | Edge cmdlet                            | PSGraph         |
+| [Example3](https://diagrammer.techmyth.blog/dev-guide/examples/example3/)                 | Edge minlen attribute                  | PSGraph         |
+| [Example4](https://diagrammer.techmyth.blog/dev-guide/examples/example4/)                 | SubGraph cmdlet                        | PSGraph         |
+| [Example5](https://diagrammer.techmyth.blog/dev-guide/examples/example5/)                 | Add-DiaNodeIcon cmdlet                 | Diagrammer.Core |
+| [Example6](https://diagrammer.techmyth.blog/dev-guide/examples/example6/)                 | DraftMode feature                      | Diagrammer.Core |
+| [Example7](https://diagrammer.techmyth.blog/dev-guide/examples/example7/)                 | Rank cmdlet                            | PSGraph         |
+| [Example8](https://diagrammer.techmyth.blog/dev-guide/examples/example8/)                 | Add-DiaHTMLNodeTable cmdlet            | Diagrammer.Core |
+| [Example9](https://diagrammer.techmyth.blog/dev-guide/examples/example9/)                 | Add-DiaHTMLNodeTable MultiIcon feature | Diagrammer.Core |
+| [Example10](https://diagrammer.techmyth.blog/dev-guide/examples/example10/)               | Add-DiaNodeImage cmdlet                | Diagrammer.Core |
+| [Example11](https://diagrammer.techmyth.blog/dev-guide/examples/example11/)               | Add-DiaHTMLTable cmdlet                | Diagrammer.Core |
+| [Example12](https://diagrammer.techmyth.blog/dev-guide/examples/example12/)               | WaterMark feature                      | Diagrammer.Core |
+| [Example13](https://diagrammer.techmyth.blog/dev-guide/examples/example13/)               | Signature feature                      | Diagrammer.Core |
+| [Example14](https://diagrammer.techmyth.blog/dev-guide/examples/example14/)               | Add-DiaNodeShape cmdlet                | Diagrammer.Core |
+| [Example15](https://diagrammer.techmyth.blog/dev-guide/examples/example15/)               | Add-DiaNodeSpacer cmdlet               | Diagrammer.Core |
+| [AdvancedExample1](https://diagrammer.techmyth.blog/dev-guide/examples/advancedexample1/) | Add-DiaHTMLSubGraph cmdlet             | Diagrammer.Core |
 
 ## :x: Known Issues
