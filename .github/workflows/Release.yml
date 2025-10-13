@@ -24,4 +24,4 @@ jobs:
             - name: Publish module to PowerShell Gallery
               shell: pwsh
               run: |
-                  Publish-Module -NuGetApiKey ${{ secrets.PSGALLERY_API_KEY }} -Exclude "Docs","Tests","Todo.md",".cache","mkdocs.yml" -Verbose
+                  Publish-Module -Name Diagrammer.Core -NuGetApiKey ${{ secrets.PSGALLERY_API_KEY }} -Exclude "Docs","Tests","Todo.md",".cache","mkdocs.yml" -Verbose
