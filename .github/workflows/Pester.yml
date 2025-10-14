@@ -29,6 +29,7 @@ jobs:
         $config = New-PesterConfiguration
         $config.Run.Path = "Tests"
         $config.TestResult.Enabled = $true
+        $config.CodeCoverage.Enabled = $true
         Invoke-Pester -Configuration $config
 
     - name: Upload code coverage report
