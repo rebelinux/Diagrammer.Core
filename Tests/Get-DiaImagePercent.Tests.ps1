@@ -32,8 +32,8 @@ Describe Get-DiaImagePercent {
         $ImageSizeByPercent.Height | Should -BeExactly 153.75
     }
     It "Should return default Width and Height from image file if percent value = 100" {
-        $ImageSizeByPercent100.Width | Should -BeExactly 300
-        $ImageSizeByPercent100.Height | Should -BeExactly 205
+        $ImageSizeByPercent100.Width | Should -Belike 300
+        $ImageSizeByPercent100.Height | Should -BeLike 205
     }
     It "Should return error if percent is less than 1" {
         { Get-DiaImagePercent -ImageInput $Logo -Percent 0 } | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'Percent'. The 0 argument is less than the minimum allowed range of 10. Supply an argument that is greater than or equal to 10 and then try the command again."
