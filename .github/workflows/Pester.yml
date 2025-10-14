@@ -23,11 +23,12 @@ jobs:
       run: Install-Module -Name PSGraph -Force -Scope CurrentUser
 
     - name: Run Pester Tests
-      working-directory: Tests
+      working-directory: .
       run: |
         # Run Pester tests with Code Coverage
         $config = New-PesterConfiguration
-        $config.Run.Path = "."
+        $config.Run.Path = "Tests"
+        $config.CodeCoverage.Enabled = $true
         $config.TestResult.Enabled = $true
         Invoke-Pester -Configuration $config
 
