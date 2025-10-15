@@ -9,26 +9,8 @@
     | Name  |                     |
     _______________________________
     ```
-- [ ] Add cmdlet to create Text Box (Add-DiaNodeText)
-  - [ ] Add option to set Textbox properties (BorderStyle, BorderColor, BorderSize, FillColor, FontSize, FontColor, TextAlign)
-    - [x] BorderStyle (solid, dashed, dotted, bold)
-    - [x] BorderColor (Hex color)
-    - [x] BorderSize (1-10)
-    - [x] FillColor (Hex color)
-    - [X] FontSize (8-72)
-    - [X] FontColor (Hex color)
-    - [X] TextAlign (left, center, right)
-    - [ ] Add option to set text as paragraph (multiple lines) (Use `<br/>` to create a new line)
-      - [ ] Add documentation to explain how to use it in the help
-      - [x] Use a split filter character (e.g., \n) to separate multiple lines
-- [ ] Add Web Site (Github Pages with Mkdocs)
-    - [x] Add Logo and Favicon
-    - [x] Add Google Analytics
-    - [x] Add Social Links (Github, Twitter, LinkedIn, Bluesky)
-- [ ] Add Add-DiaNodeFiller cmdlet to add space between icon and text
-    - [ ] Add option to set filler size in percent
-- [ ] Add Add-DiaNodeImage cmdlet to add a image with no text
-- [ ] Add option to set image opacity in percent
+- [x] Add Add-DiaNodeImage cmdlet to add a image with no text
+  - [ ] Add option to set image opacity in percent
 - [ ] Create Pester tests for:
     - [ ] Add-DiaCrossShapeLine
     - [ ] Add-DiaTShapeLine
@@ -39,12 +21,10 @@
     - [ ] Add-DiaLShapeLine
     - [ ] Add-DiaRightLShapeLine
     - [ ] Add-DiaLeftLShapeLine
-- [ ] Add support for Linux (Graphviz)
-- [ ] Add support for MACOS (Graphviz)
 - [ ] Add Documentation (use pscribo as example)
     - [ ] Add ShapeLine example
     - [x] Add Add-DiaHTMLSubGraph example
-    - [ ] Add Add-DiaHTMLText example
+    - [x] Add Add-DiaNodeText example
 - [ ] Add option to set icon size by percent
     - [ ] Add-DiaNodeIcon
     - [ ] Add-DiaHTMLNodeTable
@@ -65,12 +45,6 @@
     - [ ] Add-DiaHTMLLabel
     - [ ] Add pester to test this funtionality
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
-- [x] Add minlen parameter to shape lines
-    - [x] Add-DiaInvertedLShapeLine
-- [x] Fix Test with $env:TMP = $TestDrive
-    - [x] Resize-Image.Tests.ps1
-    - [x] Add-WatermarkToImage.Tests.ps1
-    - [x] ConvertTo-Pdf-WaterMark.Tests.ps1
 - [ ] Add option generate diagram without logo and maindiagram title
 - [ ] Add function to built html table thats offers:
   - [ ] Add option to set table border style (solid, dashed, dotted, bold)
