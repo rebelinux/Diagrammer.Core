@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="400" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2025-10-14" time="21:34:30">
+  <environment clr-version="4.0.30319.42000" user-domain="PHARMAX" cwd="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core" platform="Microsoft Windows 10 Education|C:\WINDOWS|\Device\Harddisk0\Partition2" machine-name="PH-ADMIN-01V" nunit-version="2.5.8.0" os-version="10.0.19045" user="jocolon" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="49.3761" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHorizontalLine.Tests.ps1" executed="True" result="Success" success="True" time="0.2244" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHorizontalLine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaHorizontalLine" executed="True" result="Success" success="True" time="0.1164" asserts="0" description="Add-DiaHorizontalLine">
+            <results>
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line with debug information" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line with debug information" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom Node Names" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom Node Names" time="0.0073" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom Arrowhead and Arrowtail" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom Arrowhead and Arrowtail" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a error: Cannot validate argument on parameter 'Arrowtail'" name="Add-DiaHorizontalLine.Should return a error: Cannot validate argument on parameter 'Arrowtail'" time="0.0064" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom LineStyle, LineWidth and LineColor" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom LineStyle, LineWidth and LineColor" time="0.0081" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a error: Cannot validate argument on parameter 'LineWidth'" name="Add-DiaHorizontalLine.Should return a error: Cannot validate argument on parameter 'LineWidth'" time="0.0068" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom HStartLineLength" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom HStartLineLength" time="0.0077" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line with all parameters" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line with all parameters" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a horizontal line with all parameters and DraftMode" name="Add-DiaHorizontalLine.Should return a Graphviz dot source with 2 nodes forming a horizontal line with all parameters and DraftMode" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlLabel.Tests.ps1" executed="True" result="Failure" success="False" time="0.2597" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlLabel.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaHtmlLabel" executed="True" result="Failure" success="False" time="0.112" asserts="0" description="Add-DiaHtmlLabel">
+            <results>
+              <test-suite type="TestFixture" name="Add-DiaHtmlLabel.Display Label with Icon" executed="True" result="Failure" success="False" time="0.0316" asserts="0" description="Add-DiaHtmlLabel.Display Label with Icon">
+                <results>
+                  <test-case description="Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" name="Add-DiaHtmlLabel.Display Label with Icon.Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" time="0.0205" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected strings to be the same, but they were different.
+Expected length: 277
+Actual length:   278
+Strings differ at index 5.
+Expected: '&lt;TABL border='0' cellborder='0' cellspacing='20' cellpadding='10'&gt;&lt;TR&gt;&lt;TD ALIGN='center' colspan='1'&gt;&lt;img src='Diagrammer.png'/&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN='center'&gt;&lt;FONT FACE='Sego...'
+But was:  '&lt;TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'&gt;&lt;TR&gt;&lt;TD ALIGN='center' colspan='1'&gt;&lt;img src='Diagrammer.png'/&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN='center'&gt;&lt;FONT FACE='Seg...'
+           -----^</message>
+                      <stack-trace>at $HTMLTableMainLabel | Should -BeExactly "&lt;TABL border='0' cellborder='0' cellspacing='20' cellpadding='10'&gt;&lt;TR&gt;&lt;TD ALIGN='center' colspan='1'&gt;&lt;img src='Diagrammer.png'/&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN='center'&gt;&lt;FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'&gt;Active Directory Forest Diagram&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;", C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlLabel.Tests.ps1:44
+at &lt;ScriptBlock&gt;, C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlLabel.Tests.ps1:44</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) in Draftmode" name="Add-DiaHtmlLabel.Display Label with Icon.Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) in Draftmode" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Add-DiaHtmlLabel.Display Label with Icon in Subgraph form (fits better in Subgraph)" executed="True" result="Success" success="True" time="0.0456" asserts="0" description="Add-DiaHtmlLabel.Display Label with Icon in Subgraph form (fits better in Subgraph)">
+                <results>
+                  <test-case description="Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment)" name="Add-DiaHtmlLabel.Display Label with Icon in Subgraph form (fits better in Subgraph).Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment)" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) in Draftmode" name="Add-DiaHtmlLabel.Display Label with Icon in Subgraph form (fits better in Subgraph).Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) in Draftmode" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height" executed="True" result="Success" success="True" time="0.0643" asserts="0" description="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height">
+                <results>
+                  <test-case description="Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) with custom Icon Width and Height" name="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height.Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) with custom Icon Width and Height" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon Width and Height" name="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height.Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon Width and Height" time="0.0078" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height calculated in Percent of original image size" executed="True" result="Success" success="True" time="0.0843" asserts="0" description="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height calculated in Percent of original image size">
+                <results>
+                  <test-case description="Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) with custom Icon size in Percent" name="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height calculated in Percent of original image size.Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) with custom Icon size in Percent" time="0.0057" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon size in Percent" name="Add-DiaHtmlLabel.Display Label with Icon with custom Width and Height calculated in Percent of original image size.Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon size in Percent" time="0.0037" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Add-DiaHtmlLabel.Display Label without Icon" executed="True" result="Success" success="True" time="0.0973" asserts="0" description="Add-DiaHtmlLabel.Display Label without Icon">
+                <results>
+                  <test-case description="Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" name="Add-DiaHtmlLabel.Display Label without Icon.Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) in Draftmode" name="Add-DiaHtmlLabel.Display Label without Icon.Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) in Draftmode" time="0.0036" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlNodeTable.Tests.ps1" executed="True" result="Success" success="True" time="0.3633" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlNodeTable.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaHtmlNodeTable" executed="True" result="Success" success="True" time="0.2357" asserts="0" description="Add-DiaHtmlNodeTable">
+            <results>
+              <test-case description="Should return a multi column HTML table with icon image at each cell" name="Add-DiaHtmlNodeTable.Should return a multi column HTML table with icon image at each cell" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multi column HTML table with ICON text at each cell in debug mode" name="Add-DiaHtmlNodeTable.Should return a multi column HTML table with ICON text at each cell in debug mode" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multi column HTML table with ICON text at each cell and Subgraph emulation" name="Add-DiaHtmlNodeTable.Should return a multi column HTML table with ICON text at each cell and Subgraph emulation" time="0.0753" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multi column HTML table with ICON text at each cell and Subgraph emulation in debug mode" name="Add-DiaHtmlNodeTable.Should return a multi column HTML table with ICON text at each cell and Subgraph emulation in debug mode" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multi column HTML table with ICON text at each cell and Subgraph emulation (Label at Top)" name="Add-DiaHtmlNodeTable.Should return a multi column HTML table with ICON text at each cell and Subgraph emulation (Label at Top)" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multi column HTML table with ICON text at each cell and Subgraph emulation in debug mode (Label at Top)" name="Add-DiaHtmlNodeTable.Should return a multi column HTML table with ICON text at each cell and Subgraph emulation in debug mode (Label at Top)" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a single column HTML table with ICON at top cell" name="Add-DiaHtmlNodeTable.Should return a single column HTML table with ICON at top cell" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a single column HTML table with ICON at top cell in debug mode" name="Add-DiaHtmlNodeTable.Should return a single column HTML table with ICON at top cell in debug mode" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a single column HTML table with ICON text at each cell and Subgraph emulation" name="Add-DiaHtmlNodeTable.Should return a single column HTML table with ICON text at each cell and Subgraph emulation" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a single column HTML table with ICON text at each cell and Subgraph emulation in debug mode" name="Add-DiaHtmlNodeTable.Should return a single column HTML table with ICON text at each cell and Subgraph emulation in debug mode" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a single column HTML table with ICON text at each cell and Subgraph emulation (Label at Top)" name="Add-DiaHtmlNodeTable.Should return a single column HTML table with ICON text at each cell and Subgraph emulation (Label at Top)" time="0.0165" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a single column HTML table with ICON text at each cell and Subgraph emulation in debug mode (Label at Top)" name="Add-DiaHtmlNodeTable.Should return a single column HTML table with ICON text at each cell and Subgraph emulation in debug mode (Label at Top)" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should Throw a Message" name="Add-DiaHtmlNodeTable.Should Throw a Message" time="0.0163" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlSignatureTable.Tests.ps1" executed="True" result="Success" success="True" time="0.3324" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlSignatureTable.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaHtmlSignatureTable" executed="True" result="Success" success="True" time="0.0369" asserts="0" description="Add-DiaHtmlSignatureTable">
+            <results>
+              <test-case description="Should return a multiple column HTML table with an Logo" name="Add-DiaHtmlSignatureTable.Should return a multiple column HTML table with an Logo" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multiple column HTML table with an Logo in Debug Mode" name="Add-DiaHtmlSignatureTable.Should return a multiple column HTML table with an Logo in Debug Mode" time="0.0214" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlSubGraph.Tests.ps1" executed="True" result="Success" success="True" time="0.1378" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlSubGraph.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaHtmlSubGraph" executed="True" result="Success" success="True" time="0.0426" asserts="0" description="Add-DiaHtmlSubGraph">
+            <results>
+              <test-case description="Should return a multiple column HTML table with Label and Logo at botton" name="Add-DiaHtmlSubGraph.Should return a multiple column HTML table with Label and Logo at botton" time="0.0134" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multiple column HTML table with Label and Logo at botton with Draftmode enabled" name="Add-DiaHtmlSubGraph.Should return a multiple column HTML table with Label and Logo at botton with Draftmode enabled" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multiple column HTML table with Label and Logo at top with Draftmode enabled" name="Add-DiaHtmlSubGraph.Should return a multiple column HTML table with Label and Logo at top with Draftmode enabled" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multiple column HTML table with Label and Logo at top with Draftmode enabled" name="Add-DiaHtmlSubGraph.Should return a multiple column HTML table with Label and Logo at top with Draftmode enabled" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multiple column HTML table with Label and Logo at top with custom TableBackgroundColor" name="Add-DiaHtmlSubGraph.Should return a multiple column HTML table with Label and Logo at top with custom TableBackgroundColor" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlTable.Tests.ps1" executed="True" result="Success" success="True" time="0.1389" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaHtmlTable.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaHtmlTable" executed="True" result="Success" success="True" time="0.0346" asserts="0" description="Add-DiaHtmlTable">
+            <results>
+              <test-case description="Should return a single column HTML table" name="Add-DiaHtmlTable.Should return a single column HTML table" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a single column HTML table with draftmode enabled" name="Add-DiaHtmlTable.Should return a single column HTML table with draftmode enabled" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multi column HTML table" name="Add-DiaHtmlTable.Should return a multi column HTML table" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a multi column HTML table with draftmode enabled" name="Add-DiaHtmlTable.Should return a multi column HTML table with draftmode enabled" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeIcon.Tests.ps1" executed="True" result="Success" success="True" time="0.2074" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeIcon.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaNodeIcon" executed="True" result="Success" success="True" time="0.0981" asserts="0" description="Add-DiaNodeIcon">
+            <results>
+              <test-case description="Should return a HTML table" name="Add-DiaNodeIcon.Should return a HTML table" time="0.0133" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table with the IMG tag" name="Add-DiaNodeIcon.Should return a HTML table with the IMG tag" time="0.0581" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table with red colored table" name="Add-DiaNodeIcon.Should return a HTML table with red colored table" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table without the IMG tag" name="Add-DiaNodeIcon.Should return a HTML table without the IMG tag" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeImage.Tests.ps1" executed="True" result="Success" success="True" time="0.1611" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaNodeImage" executed="True" result="Success" success="True" time="0.06" asserts="0" description="Add-DiaNodeImage">
+            <results>
+              <test-case description="Should return a HTML table with Diagrammer.png image" name="Add-DiaNodeImage.Should return a HTML table with Diagrammer.png image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table with the IMG tag" name="Add-DiaNodeImage.Should return a HTML table with the IMG tag" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table with red colored table" name="Add-DiaNodeImage.Should return a HTML table with red colored table" time="0.0037" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Wan as Name in the Node Object" name="Add-DiaNodeImage.Should return Wan as Name in the Node Object" time="0.0035" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table with WAN Image text" name="Add-DiaNodeImage.Should return a HTML table with WAN Image text" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table without the IMG tag" name="Add-DiaNodeImage.Should return a HTML table without the IMG tag" time="0.0037" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw an error when IconPath is not provided and ImageSizePercent is less than 100" name="Add-DiaNodeImage.Should throw an error when IconPath is not provided and ImageSizePercent is less than 100" time="0.0098" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table with color=&quot;blue&quot; text" name="Add-DiaNodeImage.Should return a HTML table with color=&quot;blue&quot; text" time="0.0036" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeShape.Tests.ps1" executed="True" result="Success" success="True" time="0.1459" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeShape.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaNodeShape" executed="True" result="Success" success="True" time="0.0461" asserts="0" description="Add-DiaNodeShape">
+            <results>
+              <test-case description="Should return a Graphviz Node representation with triangle shape and filled style" name="Add-DiaNodeShape.Should return a Graphviz Node representation with triangle shape and filled style" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz Node representation with triangle shape and filled style in DraftMode" name="Add-DiaNodeShape.Should return a Graphviz Node representation with triangle shape and filled style in DraftMode" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz Node representation with triangle shape and filled style with additional Graphviz attributes" name="Add-DiaNodeShape.Should return a Graphviz Node representation with triangle shape and filled style with additional Graphviz attributes" time="0.0075" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz Node representation with triangle shape and filled style with replacement Graphviz attributes" name="Add-DiaNodeShape.Should return a Graphviz Node representation with triangle shape and filled style with replacement Graphviz attributes" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeSpacer.Tests.ps1" executed="True" result="Success" success="True" time="0.1157" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaNodeSpacer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaNodeSpacer" executed="True" result="Success" success="True" time="0.0213" asserts="0" description="Add-DiaNodeSpacer">
+            <results>
+              <test-case description="Should return a HTML table with BlankFiller.png icon" name="Add-DiaNodeSpacer.Should return a HTML table with BlankFiller.png icon" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a HTML table with BlankFiller.png icon with IconDebug Enabled" name="Add-DiaNodeSpacer.Should return a HTML table with BlankFiller.png icon with IconDebug Enabled" time="0.0054" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaVerticalLine.Tests.ps1" executed="True" result="Success" success="True" time="0.2041" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-DiaVerticalLine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-DiaVerticalLine" executed="True" result="Success" success="True" time="0.109" asserts="0" description="Add-DiaVerticalLine">
+            <results>
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line with debug information" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line with debug information" time="0.0081" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Node Names" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Node Names" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Arrowhead and Arrowtail" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Arrowhead and Arrowtail" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a error: Cannot validate argument on parameter 'Arrowtail'" name="Add-DiaVerticalLine.Should return a error: Cannot validate argument on parameter 'Arrowtail'" time="0.0091" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line with custom LineStyle, LineWidth and LineColor" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line with custom LineStyle, LineWidth and LineColor" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a error: Cannot validate argument on parameter 'LineWidth'" name="Add-DiaVerticalLine.Should return a error: Cannot validate argument on parameter 'LineWidth'" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line with custom VStartLineLength" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line with custom VStartLineLength" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters" time="0.0082" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters and DraftMode" name="Add-DiaVerticalLine.Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters and DraftMode" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-WatermarkToImage.Tests.ps1" executed="True" result="Success" success="True" time="0.9581" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Add-WatermarkToImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-WatermarkToImage" executed="True" result="Success" success="True" time="0.861" asserts="0" description="Add-WatermarkToImage">
+            <results>
+              <test-case description="Should return Temporary path" name="Add-WatermarkToImage.Should return Temporary path" time="0.3487" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return AsBuiltReportMarked.png DestinationPath" name="Add-WatermarkToImage.Should return AsBuiltReportMarked.png DestinationPath" time="0.2279" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should work without FontColor parameter" name="Add-WatermarkToImage.Should work without FontColor parameter" time="0.2045" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw not found exception when ImageInput does not exist" name="Add-WatermarkToImage.Should throw not found exception when ImageInput does not exist" time="0.0072" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\AdvancedExample01.Tests.ps1" executed="True" result="Success" success="True" time="2.155" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\AdvancedExample01.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AdvancedExample01" executed="True" result="Success" success="True" time="2.0421" asserts="0" description="AdvancedExample01">
+            <results>
+              <test-suite type="TestFixture" name="AdvancedExample01.Format Parameter Tests" executed="True" result="Success" success="True" time="1.2124" asserts="0" description="AdvancedExample01.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="AdvancedExample01.Format Parameter Tests.Should exist Example1.Dot" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="AdvancedExample01.Format Parameter Tests.Should exist Example1.png" time="1.1161" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="AdvancedExample01.Format Parameter Tests.Should return error about unsupported Format" time="0.0851" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="AdvancedExample01.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="1.3595" asserts="0" description="AdvancedExample01.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0397" asserts="0" description="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0303" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0888" asserts="0" description="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match UK-WebServer-01 node" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match UK-WebServer-01 node" time="0.0108" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match UK-WebServer-02 node" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match UK-WebServer-02 node" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match UK-WebServer-03 node" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match UK-WebServer-03 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match UK-WebServer-04 node" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match UK-WebServer-04 node" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match UK-WebServer-05 node" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match UK-WebServer-05 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match UK-WebServer-06 node" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match UK-WebServer-06 node" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match USA-WebServers node" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match USA-WebServers node" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.1376" asserts="0" description="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label UK-WebServer-01 node with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label UK-WebServer-01 node with embedded image" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label UK-WebServer-02 node with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label UK-WebServer-02 node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label UK-WebServer-03 node with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label UK-WebServer-03 node with embedded image" time="0.0101" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label UK-WebServer-04 node with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label UK-WebServer-04 node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label UK-WebServer-05 node with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label UK-WebServer-05 node with embedded image" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label UK-WebServer-06 node with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label UK-WebServer-06 node with embedded image" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label USA-WebServers node with embedded image" name="AdvancedExample01.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label USA-WebServers node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Base64.Tests.ps1" executed="True" result="Success" success="True" time="0.2869" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Base64.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-Base64" executed="True" result="Success" success="True" time="0.184" asserts="0" description="ConvertTo-Base64">
+            <results>
+              <test-case description="Should return string type" name="ConvertTo-Base64.Should return string type" time="0.1716" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return throw" name="ConvertTo-Base64.Should return throw" time="0.0061" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Dot.Tests.ps1" executed="True" result="Success" success="True" time="0.5885" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Dot.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-Dot" executed="True" result="Success" success="True" time="0.4975" asserts="0" description="ConvertTo-Dot">
+            <results>
+              <test-case description="Should return output.dot path" name="ConvertTo-Dot.Should return output.dot path" time="0.4859" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should Not return output.dot path" name="ConvertTo-Dot.Should Not return output.dot path" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Jpg.Tests.ps1" executed="True" result="Success" success="True" time="0.759" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Jpg.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-Jpg" executed="True" result="Success" success="True" time="0.6207" asserts="0" description="ConvertTo-Jpg">
+            <results>
+              <test-case description="Should return output.jpg path" name="ConvertTo-Jpg.Should return output.jpg path" time="0.6092" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should Not return output.jpg path" name="ConvertTo-Jpg.Should Not return output.jpg path" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Pdf-WaterMark.Tests.ps1" executed="True" result="Success" success="True" time="1.1819" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Pdf-WaterMark.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-Pdf-WaterMark" executed="True" result="Success" success="True" time="1.0862" asserts="0" description="ConvertTo-Pdf-WaterMark">
+            <results>
+              <test-case description="Should return output.pdf path" name="ConvertTo-Pdf-WaterMark.Should return output.pdf path" time="1.048" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw not found exception when ImageInput does not exist" name="ConvertTo-Pdf-WaterMark.Should throw not found exception when ImageInput does not exist" time="0.0063" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw Folder does not exist" name="ConvertTo-Pdf-WaterMark.Should throw Folder does not exist" time="0.0151" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Pdf.Tests.ps1" executed="True" result="Success" success="True" time="0.7017" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Pdf.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-Pdf" executed="True" result="Success" success="True" time="0.6077" asserts="0" description="ConvertTo-Pdf">
+            <results>
+              <test-case description="Should return output.pdf path" name="ConvertTo-Pdf.Should return output.pdf path" time="0.5955" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should Not return output.pdf path" name="ConvertTo-Pdf.Should Not return output.pdf path" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Png.Tests.ps1" executed="True" result="Success" success="True" time="0.4816" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Png.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-Png" executed="True" result="Success" success="True" time="0.3879" asserts="0" description="ConvertTo-Png">
+            <results>
+              <test-case description="Should return output.png path" name="ConvertTo-Png.Should return output.png path" time="0.3765" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should Not return output.png path" name="ConvertTo-Png.Should Not return output.png path" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-RotateImage.Tests.ps1" executed="True" result="Success" success="True" time="2.136" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-RotateImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-RotateImage" executed="True" result="Success" success="True" time="2.0407" asserts="0" description="ConvertTo-RotateImage">
+            <results>
+              <test-case description="Should create AsBuiltReport_Rotated.png rotated file image" name="ConvertTo-RotateImage.Should create AsBuiltReport_Rotated.png rotated file image" time="0.2749" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return rotated image FullName Path" name="ConvertTo-RotateImage.Should return rotated image FullName Path" time="0.2643" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" name="ConvertTo-RotateImage.Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" time="0.0069" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should delete the TempImageOutput temporary file when DeleteImage switch is used" name="ConvertTo-RotateImage.Should delete the TempImageOutput temporary file when DeleteImage switch is used" time="0.2737" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should not delete the TempImageOutput temporary file when DeleteImage switch isn't used" name="ConvertTo-RotateImage.Should not delete the TempImageOutput temporary file when DeleteImage switch isn't used" time="0.2691" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should rotated image to a 90 degree angle" name="ConvertTo-RotateImage.Should rotated image to a 90 degree angle" time="0.4156" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should rotated image to a 180 degree angle" name="ConvertTo-RotateImage.Should rotated image to a 180 degree angle" time="0.2233" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should rotated image to a 270 degree angle" name="ConvertTo-RotateImage.Should rotated image to a 270 degree angle" time="0.2795" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Svg.Tests.ps1" executed="True" result="Success" success="True" time="0.6804" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\ConvertTo-Svg.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="ConvertTo-Svg" executed="True" result="Success" success="True" time="0.5731" asserts="0" description="ConvertTo-Svg">
+            <results>
+              <test-case description="Should return output.svg path" name="ConvertTo-Svg.Should return output.svg path" time="0.5597" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should Not return output.svg path" name="ConvertTo-Svg.Should Not return output.svg path" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example01.Tests.ps1" executed="True" result="Success" success="True" time="1.4711" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example01.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example01" executed="True" result="Success" success="True" time="1.3723" asserts="0" description="Example01">
+            <results>
+              <test-suite type="TestFixture" name="Example01.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7144" asserts="0" description="Example01.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example01.Format Parameter Tests.Should exist Example1.Dot" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example01.Format Parameter Tests.Should exist Example1.png" time="0.6837" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example01.Format Parameter Tests.Should return error about unsupported Format" time="0.0108" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example01.Graphviz Dot source Tests" executed="True" result="Success" success="True" time="0.7425" asserts="0" description="Example01.Graphviz Dot source Tests">
+                <results>
+                  <test-case description="Should match HTML label with embedded image" name="Example01.Graphviz Dot source Tests.Should match HTML label with embedded image" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 node" name="Example01.Graphviz Dot source Tests.Should match Web01 node" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 node" name="Example01.Graphviz Dot source Tests.Should match App01 node" time="0.0087" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match DB01 node" name="Example01.Graphviz Dot source Tests.Should match DB01 node" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example02.Tests.ps1" executed="True" result="Success" success="True" time="1.4846" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example02.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example02" executed="True" result="Success" success="True" time="1.3806" asserts="0" description="Example02">
+            <results>
+              <test-suite type="TestFixture" name="Example02.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7081" asserts="0" description="Example02.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example02.Format Parameter Tests.Should exist Example1.Dot" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example02.Format Parameter Tests.Should exist Example1.png" time="0.6731" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example02.Format Parameter Tests.Should return error about unsupported Format" time="0.0205" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example02.Graphviz Dot source Tests" executed="True" result="Success" success="True" time="0.7507" asserts="0" description="Example02.Graphviz Dot source Tests">
+                <results>
+                  <test-case description="Should match HTML label with embedded image" name="Example02.Graphviz Dot source Tests.Should match HTML label with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 node" name="Example02.Graphviz Dot source Tests.Should match Web01 node" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 node" name="Example02.Graphviz Dot source Tests.Should match App01 node" time="0.0086" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match DB01 node" name="Example02.Graphviz Dot source Tests.Should match DB01 node" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example02.Graphviz Dot source Tests.Should match Web01 -&gt; App01 edge" time="0.0088" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example02.Graphviz Dot source Tests.Should match App01 -&gt; DB01 edge" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example03.Tests.ps1" executed="True" result="Success" success="True" time="1.3657" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example03.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example03" executed="True" result="Success" success="True" time="1.2649" asserts="0" description="Example03">
+            <results>
+              <test-suite type="TestFixture" name="Example03.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7196" asserts="0" description="Example03.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example03.Format Parameter Tests.Should exist Example1.Dot" time="0.0092" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example03.Format Parameter Tests.Should exist Example1.png" time="0.6857" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example03.Format Parameter Tests.Should return error about unsupported Format" time="0.0172" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example03.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.7617" asserts="0" description="Example03.Graphviz Dot Node Tests">
+                <results>
+                  <test-case description="Should match HTML label with embedded image" name="Example03.Graphviz Dot Node Tests.Should match HTML label with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 node" name="Example03.Graphviz Dot Node Tests.Should match Web01 node" time="0.0088" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 node" name="Example03.Graphviz Dot Node Tests.Should match App01 node" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match DB01 node" name="Example03.Graphviz Dot Node Tests.Should match DB01 node" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example03.Graphviz Dot Node Tests.Should match Web01 -&gt; App01 edge" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example03.Graphviz Dot Node Tests.Should match App01 -&gt; DB01 edge" time="0.0089" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example03.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="0.7715" asserts="0" description="Example03.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example03.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example04.Tests.ps1" executed="True" result="Success" success="True" time="1.5571" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example04.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example04" executed="True" result="Success" success="True" time="1.4523" asserts="0" description="Example04">
+            <results>
+              <test-suite type="TestFixture" name="Example04.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7033" asserts="0" description="Example04.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example04.Format Parameter Tests.Should exist Example1.Dot" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example04.Format Parameter Tests.Should exist Example1.png" time="0.6678" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example04.Format Parameter Tests.Should return error about unsupported Format" time="0.0239" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example04.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.7407" asserts="0" description="Example04.Graphviz Dot Node Tests">
+                <results>
+                  <test-case description="Should match HTML label with embedded image" name="Example04.Graphviz Dot Node Tests.Should match HTML label with embedded image" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 node" name="Example04.Graphviz Dot Node Tests.Should match Web01 node" time="0.0089" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 node" name="Example04.Graphviz Dot Node Tests.Should match App01 node" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match DB01 node" name="Example04.Graphviz Dot Node Tests.Should match DB01 node" time="0.0068" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match 3tier node" name="Example04.Graphviz Dot Node Tests.Should match 3tier node" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example04.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="0.768" asserts="0" description="Example04.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example04.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example04.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0126" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match minlen=3 edge attribute" name="Example04.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example04.Graphviz Dot SubGraph Tests" executed="True" result="Success" success="True" time="0.7821" asserts="0" description="Example04.Graphviz Dot SubGraph Tests">
+                <results>
+                  <test-case description="Should match subgraph cluster3tier cluster attribute" name="Example04.Graphviz Dot SubGraph Tests.Should match subgraph cluster3tier cluster attribute" time="0.0087" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example05.Tests.ps1" executed="True" result="Success" success="True" time="1.5857" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example05.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example05" executed="True" result="Success" success="True" time="1.4791" asserts="0" description="Example05">
+            <results>
+              <test-suite type="TestFixture" name="Example05.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7487" asserts="0" description="Example05.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example05.Format Parameter Tests.Should exist Example1.Dot" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example05.Format Parameter Tests.Should exist Example1.png" time="0.7067" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example05.Format Parameter Tests.Should return error about unsupported Format" time="0.0269" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example05.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.8179" asserts="0" description="Example05.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0104" asserts="0" description="Example05.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0355" asserts="0" description="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.0097" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.064" asserts="0" description="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0089" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example05.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0091" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example05.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="0.8414" asserts="0" description="Example05.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example05.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0089" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example05.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example05.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example06.Tests.ps1" executed="True" result="Success" success="True" time="1.6594" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example06.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example06" executed="True" result="Success" success="True" time="1.5533" asserts="0" description="Example06">
+            <results>
+              <test-suite type="TestFixture" name="Example06.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7726" asserts="0" description="Example06.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example06.Format Parameter Tests.Should exist Example1.Dot" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example06.Format Parameter Tests.Should exist Example1.png" time="0.7349" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example06.Format Parameter Tests.Should return error about unsupported Format" time="0.0264" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example06.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.8463" asserts="0" description="Example06.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0101" asserts="0" description="Example06.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0401" asserts="0" description="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.011" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.0686" asserts="0" description="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0088" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example06.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0094" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example06.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="0.8695" asserts="0" description="Example06.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example06.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example06.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example06.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example07.Tests.ps1" executed="True" result="Success" success="True" time="1.9337" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example07.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example07" executed="True" result="Success" success="True" time="1.8284" asserts="0" description="Example07">
+            <results>
+              <test-suite type="TestFixture" name="Example07.Format Parameter Tests" executed="True" result="Success" success="True" time="0.8843" asserts="0" description="Example07.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example07.Format Parameter Tests.Should exist Example1.Dot" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example07.Format Parameter Tests.Should exist Example1.png" time="0.8475" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example07.Format Parameter Tests.Should return error about unsupported Format" time="0.0238" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example07.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.9545" asserts="0" description="Example07.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.015" asserts="0" description="Example07.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0095" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0403" asserts="0" description="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.01" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.0647" asserts="0" description="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0092" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example07.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example07.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="0.9787" asserts="0" description="Example07.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example07.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example07.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0092" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example07.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example08.Tests.ps1" executed="True" result="Success" success="True" time="1.5911" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example08.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example08" executed="True" result="Success" success="True" time="1.4859" asserts="0" description="Example08">
+            <results>
+              <test-suite type="TestFixture" name="Example08.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7824" asserts="0" description="Example08.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example08.Format Parameter Tests.Should exist Example1.Dot" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example08.Format Parameter Tests.Should exist Example1.png" time="0.7455" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example08.Format Parameter Tests.Should return error about unsupported Format" time="0.0252" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example08.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.8514" asserts="0" description="Example08.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0151" asserts="0" description="Example08.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0097" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.039" asserts="0" description="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.0637" asserts="0" description="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example08.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0095" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example08.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="0.8752" asserts="0" description="Example08.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example08.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example08.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example08.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0091" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example09.Tests.ps1" executed="True" result="Success" success="True" time="1.5798" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example09.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example09" executed="True" result="Success" success="True" time="1.4698" asserts="0" description="Example09">
+            <results>
+              <test-suite type="TestFixture" name="Example09.Format Parameter Tests" executed="True" result="Success" success="True" time="0.7381" asserts="0" description="Example09.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example09.Format Parameter Tests.Should exist Example1.Dot" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example09.Format Parameter Tests.Should exist Example1.png" time="0.7018" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example09.Format Parameter Tests.Should return error about unsupported Format" time="0.025" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example09.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.8035" asserts="0" description="Example09.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0099" asserts="0" description="Example09.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0357" asserts="0" description="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.0103" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.0601" asserts="0" description="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0094" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example09.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example09.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="0.8276" asserts="0" description="Example09.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example09.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example09.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0088" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example09.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example10.Tests.ps1" executed="True" result="Success" success="True" time="1.7527" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example10.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example10" executed="True" result="Success" success="True" time="1.6344" asserts="0" description="Example10">
+            <results>
+              <test-suite type="TestFixture" name="Example10.Format Parameter Tests" executed="True" result="Success" success="True" time="0.8844" asserts="0" description="Example10.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example10.Format Parameter Tests.Should exist Example1.Dot" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example10.Format Parameter Tests.Should exist Example1.png" time="0.8394" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example10.Format Parameter Tests.Should return error about unsupported Format" time="0.0331" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example10.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="0.9928" asserts="0" description="Example10.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0151" asserts="0" description="Example10.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0055" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0488" asserts="0" description="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.009" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match Router01 node" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Router01 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match WAN node" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match WAN node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.1031" asserts="0" description="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0106" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label Router01 node with embedded image" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Router01 node with embedded image" time="0.0105" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label WAN node with embedded image" name="Example10.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label WAN node with embedded image" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example10.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="1.0325" asserts="0" description="Example10.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example10.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example10.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0095" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example10.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; Web01 edge" name="Example10.Graphviz Dot Edge Tests.Should match Router01 -&gt; Web01 edge" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match WAN -&gt; Router01 edge" name="Example10.Graphviz Dot Edge Tests.Should match WAN -&gt; Router01 edge" time="0.0096" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example11.Tests.ps1" executed="True" result="Success" success="True" time="1.8931" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example11.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example11" executed="True" result="Success" success="True" time="1.7739" asserts="0" description="Example11">
+            <results>
+              <test-suite type="TestFixture" name="Example11.Format Parameter Tests" executed="True" result="Success" success="True" time="0.9193" asserts="0" description="Example11.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example11.Format Parameter Tests.Should exist Example1.Dot" time="0.0079" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example11.Format Parameter Tests.Should exist Example1.png" time="0.8599" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example11.Format Parameter Tests.Should return error about unsupported Format" time="0.0439" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example11.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="1.058" asserts="0" description="Example11.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0196" asserts="0" description="Example11.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0111" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0638" asserts="0" description="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0054" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0105" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match Router01 node" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Router01 node" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match WAN node" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match WAN node" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match RouterNetworkInfo node" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match RouterNetworkInfo node" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.1287" asserts="0" description="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.012" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0156" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label Router01 node with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Router01 node with embedded image" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label WAN node with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label WAN node with embedded image" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label RouterNetworkInfo node with embedded image" name="Example11.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label RouterNetworkInfo node with embedded image" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example11.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="1.1047" asserts="0" description="Example11.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example11.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example11.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0063" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example11.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0117" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; Web01 edge" name="Example11.Graphviz Dot Edge Tests.Should match Router01 -&gt; Web01 edge" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match WAN -&gt; Router01 edge" name="Example11.Graphviz Dot Edge Tests.Should match WAN -&gt; Router01 edge" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo edge" name="Example11.Graphviz Dot Edge Tests.Should match Router01 -&gt; RouterNetworkInfo edge" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example11.Graphviz Dot Rank Tests" executed="True" result="Success" success="True" time="1.1241" asserts="0" description="Example11.Graphviz Dot Rank Tests">
+                <results>
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo rank=same" name="Example11.Graphviz Dot Rank Tests.Should match Router01 -&gt; RouterNetworkInfo rank=same" time="0.0131" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example13.Tests.ps1" executed="True" result="Success" success="True" time="2.109" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example13.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example13" executed="True" result="Success" success="True" time="1.9903" asserts="0" description="Example13">
+            <results>
+              <test-suite type="TestFixture" name="Example13.Format Parameter Tests" executed="True" result="Success" success="True" time="1.1133" asserts="0" description="Example13.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example13.Format Parameter Tests.Should exist Example1.Dot" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example13.Format Parameter Tests.Should exist Example1.png" time="1.0513" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example13.Format Parameter Tests.Should return error about unsupported Format" time="0.0438" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example13.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="1.2396" asserts="0" description="Example13.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0114" asserts="0" description="Example13.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0609" asserts="0" description="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.0056" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0054" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0105" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match Router01 node" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Router01 node" time="0.0057" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match WAN node" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match WAN node" time="0.0055" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match RouterNetworkInfo node" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match RouterNetworkInfo node" time="0.0103" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.1206" asserts="0" description="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0104" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0094" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label Router01 node with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Router01 node with embedded image" time="0.0094" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label WAN node with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label WAN node with embedded image" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label RouterNetworkInfo node with embedded image" name="Example13.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label RouterNetworkInfo node with embedded image" time="0.0094" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example13.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="1.291" asserts="0" description="Example13.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example13.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example13.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.009" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example13.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; Web01 edge" name="Example13.Graphviz Dot Edge Tests.Should match Router01 -&gt; Web01 edge" time="0.0054" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match WAN -&gt; Router01 edge" name="Example13.Graphviz Dot Edge Tests.Should match WAN -&gt; Router01 edge" time="0.0098" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo edge" name="Example13.Graphviz Dot Edge Tests.Should match Router01 -&gt; RouterNetworkInfo edge" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example13.Graphviz Dot Rank Tests" executed="True" result="Success" success="True" time="1.3053" asserts="0" description="Example13.Graphviz Dot Rank Tests">
+                <results>
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo rank=same" name="Example13.Graphviz Dot Rank Tests.Should match Router01 -&gt; RouterNetworkInfo rank=same" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example13.Signature Tests" executed="True" result="Success" success="True" time="1.3355" asserts="0" description="Example13.Signature Tests">
+                <results>
+                  <test-case description="Should match subgraph clusterSignatureLabel" name="Example13.Signature Tests.Should match subgraph clusterSignatureLabel" time="0.0146" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute labeljust" name="Example13.Signature Tests.Should match Graphviz attribute labeljust" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute labelloc" name="Example13.Signature Tests.Should match Graphviz attribute labelloc" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example14.Tests.ps1" executed="True" result="Success" success="True" time="2.1024" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example14.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example14" executed="True" result="Success" success="True" time="1.9811" asserts="0" description="Example14">
+            <results>
+              <test-suite type="TestFixture" name="Example14.Format Parameter Tests" executed="True" result="Success" success="True" time="1.0929" asserts="0" description="Example14.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example14.Format Parameter Tests.Should exist Example1.Dot" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example14.Format Parameter Tests.Should exist Example1.png" time="1.024" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example14.Format Parameter Tests.Should return error about unsupported Format" time="0.0525" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example14.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="1.2205" asserts="0" description="Example14.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0147" asserts="0" description="Example14.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0584" asserts="0" description="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match Router01 node" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Router01 node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match WAN node" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match WAN node" time="0.0092" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match RouterNetworkInfo node" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match RouterNetworkInfo node" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match Firewall node" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Firewall node" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.1224" asserts="0" description="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0157" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label Router01 node with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Router01 node with embedded image" time="0.0087" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label WAN node with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label WAN node with embedded image" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label RouterNetworkInfo node with embedded image" name="Example14.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label RouterNetworkInfo node with embedded image" time="0.0112" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example14.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="1.2705" asserts="0" description="Example14.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example14.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example14.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.009" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example14.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; Web01 edge" name="Example14.Graphviz Dot Edge Tests.Should match Router01 -&gt; Web01 edge" time="0.0054" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match WAN -&gt; Firewall edge" name="Example14.Graphviz Dot Edge Tests.Should match WAN -&gt; Firewall edge" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo edge" name="Example14.Graphviz Dot Edge Tests.Should match Router01 -&gt; RouterNetworkInfo edge" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Firewall -&gt; Router01 edge" name="Example14.Graphviz Dot Edge Tests.Should match Firewall -&gt; Router01 edge" time="0.0098" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example14.Graphviz Dot Rank Tests" executed="True" result="Success" success="True" time="1.281" asserts="0" description="Example14.Graphviz Dot Rank Tests">
+                <results>
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo rank=same" name="Example14.Graphviz Dot Rank Tests.Should match Router01 -&gt; RouterNetworkInfo rank=same" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example14.Signature Tests" executed="True" result="Success" success="True" time="1.3042" asserts="0" description="Example14.Signature Tests">
+                <results>
+                  <test-case description="Should match subgraph clusterSignatureLabel" name="Example14.Signature Tests.Should match subgraph clusterSignatureLabel" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute labeljust" name="Example14.Signature Tests.Should match Graphviz attribute labeljust" time="0.0085" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute labelloc" name="Example14.Signature Tests.Should match Graphviz attribute labelloc" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example14.Graphviz Attributes Tests" executed="True" result="Success" success="True" time="1.3286" asserts="0" description="Example14.Graphviz Attributes Tests">
+                <results>
+                  <test-case description="Should match Graphviz attribute shape" name="Example14.Graphviz Attributes Tests.Should match Graphviz attribute shape" time="0.0096" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute headlabel" name="Example14.Graphviz Attributes Tests.Should match Graphviz attribute headlabel" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute taillabel" name="Example14.Graphviz Attributes Tests.Should match Graphviz attribute taillabel" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example15.Tests.ps1" executed="True" result="Success" success="True" time="2.1398" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Example15.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Example15" executed="True" result="Success" success="True" time="2.0185" asserts="0" description="Example15">
+            <results>
+              <test-suite type="TestFixture" name="Example15.Format Parameter Tests" executed="True" result="Success" success="True" time="1.0365" asserts="0" description="Example15.Format Parameter Tests">
+                <results>
+                  <test-case description="Should exist Example1.Dot" name="Example15.Format Parameter Tests.Should exist Example1.Dot" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should exist Example1.png" name="Example15.Format Parameter Tests.Should exist Example1.png" time="0.9533" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should return error about unsupported Format" name="Example15.Format Parameter Tests.Should return error about unsupported Format" time="0.0649" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example15.Graphviz Dot Node Tests" executed="True" result="Success" success="True" time="1.1917" asserts="0" description="Example15.Graphviz Dot Node Tests">
+                <results>
+                  <test-suite type="TestFixture" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests" executed="True" result="Success" success="True" time="0.0114" asserts="0" description="Example15.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests">
+                    <results>
+                      <test-case description="Should match HTML label with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Main Label Tests.Should match HTML label with embedded image" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests" executed="True" result="Success" success="True" time="0.0818" asserts="0" description="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests">
+                    <results>
+                      <test-case description="Should match Web01 node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Web01 node" time="0.0109" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match App01 node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match App01 node" time="0.0055" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match DB01 node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match DB01 node" time="0.0056" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match Router01 node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Router01 node" time="0.0057" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match WAN node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match WAN node" time="0.0105" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match RouterNetworkInfo node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match RouterNetworkInfo node" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match Firewall node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match Firewall node" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match SpaceRight node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match SpaceRight node" time="0.01" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match SpaceLeft node" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon Tests.Should match SpaceLeft node" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests" executed="True" result="Success" success="True" time="0.1495" asserts="0" description="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests">
+                    <results>
+                      <test-case description="Should match HTML label Web01 node with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Web01 node with embedded image" time="0.0168" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label App01 node with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label App01 node with embedded image" time="0.0057" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label DB01 node with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label DB01 node with embedded image" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label Router01 node with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label Router01 node with embedded image" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label WAN node with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label WAN node with embedded image" time="0.0107" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should match HTML label RouterNetworkInfo node with embedded image" name="Example15.Graphviz Dot Node Tests.Graphviz Dot Node Icon (Label) Tests.Should match HTML label RouterNetworkInfo node with embedded image" time="0.0116" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example15.Graphviz Dot Edge Tests" executed="True" result="Success" success="True" time="1.26" asserts="0" description="Example15.Graphviz Dot Edge Tests">
+                <results>
+                  <test-case description="Should match minlen=3 edge attribute" name="Example15.Graphviz Dot Edge Tests.Should match minlen=3 edge attribute" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; App01 edge" name="Example15.Graphviz Dot Edge Tests.Should match Web01 -&gt; App01 edge" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match App01 -&gt; DB01 edge" name="Example15.Graphviz Dot Edge Tests.Should match App01 -&gt; DB01 edge" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; Web01 edge" name="Example15.Graphviz Dot Edge Tests.Should match Router01 -&gt; Web01 edge" time="0.0093" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match WAN -&gt; Firewall edge" name="Example15.Graphviz Dot Edge Tests.Should match WAN -&gt; Firewall edge" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo edge" name="Example15.Graphviz Dot Edge Tests.Should match Router01 -&gt; RouterNetworkInfo edge" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Firewall -&gt; Router01 edge" name="Example15.Graphviz Dot Edge Tests.Should match Firewall -&gt; Router01 edge" time="0.0087" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match SpaceLeft -&gt; Web01 edge" name="Example15.Graphviz Dot Edge Tests.Should match SpaceLeft -&gt; Web01 edge" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Web01 -&gt; SpaceRight edge" name="Example15.Graphviz Dot Edge Tests.Should match Web01 -&gt; SpaceRight edge" time="0.0105" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example15.Graphviz Dot Rank Tests" executed="True" result="Success" success="True" time="1.2705" asserts="0" description="Example15.Graphviz Dot Rank Tests">
+                <results>
+                  <test-case description="Should match Router01 -&gt; RouterNetworkInfo rank=same" name="Example15.Graphviz Dot Rank Tests.Should match Router01 -&gt; RouterNetworkInfo rank=same" time="0.0052" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example15.Signature Tests" executed="True" result="Success" success="True" time="1.301" asserts="0" description="Example15.Signature Tests">
+                <results>
+                  <test-case description="Should match subgraph clusterSignatureLabel" name="Example15.Signature Tests.Should match subgraph clusterSignatureLabel" time="0.0156" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute labeljust" name="Example15.Signature Tests.Should match Graphviz attribute labeljust" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute labelloc" name="Example15.Signature Tests.Should match Graphviz attribute labelloc" time="0.0045" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Example15.Graphviz Attributes Tests" executed="True" result="Success" success="True" time="1.3247" asserts="0" description="Example15.Graphviz Attributes Tests">
+                <results>
+                  <test-case description="Should match Graphviz attribute shape" name="Example15.Graphviz Attributes Tests.Should match Graphviz attribute shape" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute headlabel" name="Example15.Graphviz Attributes Tests.Should match Graphviz attribute headlabel" time="0.0086" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Should match Graphviz attribute taillabel" name="Example15.Graphviz Attributes Tests.Should match Graphviz attribute taillabel" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Export-Diagrammer.Tests.ps1" executed="True" result="Success" success="True" time="10.4239" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Export-Diagrammer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Export-Diagrammer" executed="True" result="Success" success="True" time="10.3103" asserts="0" description="Export-Diagrammer">
+            <results>
+              <test-case description="Should return Diagrammer.png full path" name="Export-Diagrammer.Should return Diagrammer.png full path" time="1.3694" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Diagrammer.jpg full path" name="Export-Diagrammer.Should return Diagrammer.jpg full path" time="0.814" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Diagrammer.pdf full path" name="Export-Diagrammer.Should return Diagrammer.pdf full path" time="0.9063" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Diagrammer.dot full path" name="Export-Diagrammer.Should return Diagrammer.dot full path" time="0.6534" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Base64 string" name="Export-Diagrammer.Should return Base64 string" time="1.1255" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Diagrammer.svg full path" name="Export-Diagrammer.Should return Diagrammer.svg full path" time="0.669" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Diagrammer.dot full path" name="Export-Diagrammer.Should return Diagrammer.dot full path" time="0.6683" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should create Output.png file image" name="Export-Diagrammer.Should create Output.png file image" time="1.2755" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should create Output.jpg file image" name="Export-Diagrammer.Should create Output.jpg file image" time="0.8621" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should create Output.pdf file image" name="Export-Diagrammer.Should create Output.pdf file image" time="0.698" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should create Output.svg file image" name="Export-Diagrammer.Should create Output.svg file image" time="0.5307" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should create Output.dot file image" name="Export-Diagrammer.Should create Output.dot file image" time="0.688" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw error when invalid OutputFolderPath is provided" name="Export-Diagrammer.Should throw error when invalid OutputFolderPath is provided" time="0.0104" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw error when invalid IconPath is provided" name="Export-Diagrammer.Should throw error when invalid IconPath is provided" time="0.0066" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw error when invalid Rotate value is provided" name="Export-Diagrammer.Should throw error when invalid Rotate value is provided" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-DiaImagePercent.Tests.ps1" executed="True" result="Success" success="True" time="0.2489" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-DiaImagePercent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-DiaImagePercent" executed="True" result="Success" success="True" time="0.1354" asserts="0" description="Get-DiaImagePercent">
+            <results>
+              <test-case description="Should return Height from image file" name="Get-DiaImagePercent.Should return Height from image file" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Width from image file" name="Get-DiaImagePercent.Should return Width from image file" time="0.0086" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Height from base64 file" name="Get-DiaImagePercent.Should return Height from base64 file" time="0.0044" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Width from base64 file" name="Get-DiaImagePercent.Should return Width from base64 file" time="0.0046" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return calculated Width and Height from image file by percent" name="Get-DiaImagePercent.Should return calculated Width and Height from image file by percent" time="0.0097" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return default Width and Height from image file if percent value = 100" name="Get-DiaImagePercent.Should return default Width and Height from image file if percent value = 100" time="0.0548" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return error if percent is less than 1" name="Get-DiaImagePercent.Should return error if percent is less than 1" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return error if percent is more than 100" name="Get-DiaImagePercent.Should return error if percent is more than 100" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return throw" name="Get-DiaImagePercent.Should return throw" time="0.0111" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-NodeIP.Tests.ps1" executed="True" result="Success" success="True" time="1.1319" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-NodeIP.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-NodeIP" executed="True" result="Success" success="True" time="1.0293" asserts="0" description="Get-NodeIP">
+            <results>
+              <test-case description="Should return Host IP Address" name="Get-NodeIP.Should return Host IP Address" time="0.0284" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return Unknown" name="Get-NodeIP.Should return Unknown" time="0.9954" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-RandomColorHex.Tests.ps1" executed="True" result="Success" success="True" time="0.1138" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-RandomColorHex.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-RandomColorHex" executed="True" result="Success" success="True" time="0.0221" asserts="0" description="Get-RandomColorHex">
+            <results>
+              <test-case description="Should return string type" name="Get-RandomColorHex.Should return string type" time="0.0117" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a rgb color hex" name="Get-RandomColorHex.Should return a rgb color hex" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-RandomPastelColorHex.Tests.ps1" executed="True" result="Success" success="True" time="0.1155" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Get-RandomPastelColorHex.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-RandomPastelColorHex" executed="True" result="Success" success="True" time="0.0201" asserts="0" description="Get-RandomPastelColorHex">
+            <results>
+              <test-case description="Should return string type" name="Get-RandomPastelColorHex.Should return string type" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return a rgb color hex" name="Get-RandomPastelColorHex.Should return a rgb color hex" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Remove-SpecialChar.Tests.ps1" executed="True" result="Success" success="True" time="0.1238" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Remove-SpecialChar.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-SpecialChar" executed="True" result="Success" success="True" time="0.0241" asserts="0" description="Remove-SpecialChar">
+            <results>
+              <test-case description="Should return string without SpecialChar" name="Remove-SpecialChar.Should return string without SpecialChar" time="0.0149" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Resize-Image.Tests.ps1" executed="True" result="Success" success="True" time="0.3006" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Resize-Image.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Resize-Image" executed="True" result="Success" success="True" time="0.2037" asserts="0" description="Resize-Image">
+            <results>
+              <test-case description="Should return resized image" name="Resize-Image.Should return resized image" time="0.1808" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" name="Resize-Image.Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" time="0.0068" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should throw cannot validate argument" name="Resize-Image.Should throw cannot validate argument" time="0.0061" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Split-Array.Tests.ps1" executed="True" result="Success" success="True" time="0.2247" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Split-Array.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Split-Array" executed="True" result="Success" success="True" time="0.1275" asserts="0" description="Split-Array">
+            <results>
+              <test-case description="Should return a object split by size" name="Split-Array.Should return a object split by size" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return 3 Object" name="Split-Array.Should return 3 Object" time="0.0615" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should contain 4 as array member" name="Split-Array.Should contain 4 as array member" time="0.0546" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Test-Image.Tests.ps1" executed="True" result="Success" success="True" time="0.1275" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Test-Image.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-Image" executed="True" result="Success" success="True" time="0.0346" asserts="0" description="Test-Image">
+            <results>
+              <test-case description="Should return true if extension is in @( .jpeg, .jpg, .png )" name="Test-Image.Should return true if extension is in @( .jpeg, .jpg, .png )" time="0.0179" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Should return false if extension is not in @( .jpeg, .jpg, .png )" name="Test-Image.Should return false if extension is not in @( .jpeg, .jpg, .png )" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Test-Logo.Tests.ps1" executed="True" result="Success" success="True" time="0.1209" asserts="0" description="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\Tests\Test-Logo.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-Logo" executed="True" result="Success" success="True" time="0.0269" asserts="0" description="Test-Logo">
+            <results>
+              <test-case description="Should return Logo_Test.png string from Images hashtable" name="Test-Logo.Should return Logo_Test.png string from Images hashtable" time="0.0088" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Verified if Logo_Test.png is inside TestDrive:\ folder" name="Test-Logo.Verified if Logo_Test.png is inside TestDrive:\ folder" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

@@ -41,7 +41,7 @@ Describe Add-DiaHtmlLabel {
 
     Context "Display Label with Icon" {
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" {
-            $HTMLTableMainLabel | Should -BeExactly "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR></TABLE>"
+            $HTMLTableMainLabel | Should -BeExactly "<TABL border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR></TABLE>"
         }
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) in Draftmode" {
             $HTMLTableMainLabelDraftmode | Should -BeExactly "<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
