@@ -129,6 +129,7 @@ nav:
               - Add-DiaNodeIcon: dev-guide/commands/Add-DiaNodeIcon.md
               - Add-DiaNodeImage: dev-guide/commands/Add-DiaNodeImage.md
               - Add-DiaNodeShape: dev-guide/commands/Add-DiaNodeShape.md
+              - Add-DiaNodeText: dev-guide/commands/Add-DiaNodeText.md
               - Add-DiaNodeSpacer: dev-guide/commands/Add-DiaNodeSpacer.md
               - Add-DiaRightLShapeLine: dev-guide/commands/Add-DiaRightLShapeLine.md
               - Add-DiaRightTShapeLine: dev-guide/commands/Add-DiaRightTShapeLine.md
@@ -162,6 +163,7 @@ nav:
               - Example 15: dev-guide/examples/example15.md
           - Expert:
               - Example 1: dev-guide/examples/advancedexample1.md
+              - Example 2: dev-guide/examples/advancedexample2.md
   - About:
       - Contact: about/contact.md
       - Changelog: about/changelog.md

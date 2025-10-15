@@ -35,6 +35,12 @@ $example1 = & {
     Node -Name Web01 -Attributes @{Label = 'Web01'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
     Node -Name App01 -Attributes @{Label = 'App01'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
     Node -Name DB01 -Attributes @{Label = 'DB01'; shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
+
+    $Text = "A paragraph is a group of related sentences focused on a single idea or topic,\norganized into a distinct unit of writing that helps readers follow the author's thoughts.\nIt typically begins with a topic sentence that states the main idea and is followed by supporting\nsentences that provide details, examples, or explanations to develop that idea. Paragraphs are separated by spaces\nor indents, improving readability by breaking\nup text into manageable sections that show the organization of the overall work."
+
+    Add-DiaNodeText -Name Test -Text $Text -NodeObject -FontSize 14 -FontUnderline -FontItalic -DraftMode:$DraftMode -FontBold
+
+    Edge -From Web01 -To Test -Attributes @{label = 'HTTP'; color = 'black'; fontsize = 10; fontcolor = 'black' }
 }
 
 <#

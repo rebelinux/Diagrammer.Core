@@ -11,7 +11,16 @@
     ```
 - [ ] Add cmdlet to create Text Box (Add-DiaNodeText)
   - [ ] Add option to set Textbox properties (BorderStyle, BorderColor, BorderSize, FillColor, FontSize, FontColor, TextAlign)
-  - [ ] Add option to set Textbox size by percent (Hack by using Text size)
+    - [x] BorderStyle (solid, dashed, dotted, bold)
+    - [x] BorderColor (Hex color)
+    - [x] BorderSize (1-10)
+    - [x] FillColor (Hex color)
+    - [X] FontSize (8-72)
+    - [X] FontColor (Hex color)
+    - [X] TextAlign (left, center, right)
+    - [ ] Add option to set text as paragraph (multiple lines) (Use `<br/>` to create a new line)
+      - [ ] Add documentation to explain how to use it in the help
+      - [x] Use a split filter character (e.g., \n) to separate multiple lines
 - [ ] Add Web Site (Github Pages with Mkdocs)
     - [x] Add Logo and Favicon
     - [x] Add Google Analytics
@@ -63,3 +72,13 @@
     - [x] Add-WatermarkToImage.Tests.ps1
     - [x] ConvertTo-Pdf-WaterMark.Tests.ps1
 - [ ] Add option generate diagram without logo and maindiagram title
+- [ ] Add function to built html table thats offers:
+  - [ ] Add option to set table border style (solid, dashed, dotted, bold)
+  - [ ] Add option to set table border color (Hex color)
+  - [ ] Add option to set table border size (1-10)
+  - [ ] Add option to set table fill color (Hex color)
+  - [ ] Add option to set table cell padding (1-10)
+  - [ ] Add option to set table cell spacing (1-10)
+  - [ ] Add option to set table font size (8-72)
+  - [ ] Add option to set table font color (Hex color)
+  - [ ] Add option to set table text align (left, center, right)

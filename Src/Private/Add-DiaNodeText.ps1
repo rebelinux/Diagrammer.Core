@@ -40,9 +40,15 @@ function Add-DiaNodeText {
 
     .PARAMETER Text
         The text content to be displayed within the text box. This is a required parameter.
+        The text can include line breaks by using `\n` which will be converted to `<BR/>`.
+        Example: "Line1\nLine2\nLine3" will render as:
+        Line1
+        Line2
+        Line3
 
-    .PARAMETER FillColor
+    .PARAMETER TableBackgroundColor
         Sets the background color of the text box using a hex color code. Default is "transparent".
+
     .PARAMETER TextAlign
         Specifies the alignment of the text within the text box. Accepted values are: Left, Right, Center, and Justify. Default is "Center".
 
@@ -53,9 +59,9 @@ function Add-DiaNodeText {
         If specified, the function will return the node object instead of rendering it directly.
 
     .EXAMPLE
-        Add-DiaNodeText -Name "Server1" -IconDebug $true -TableBorder 2 -TableBorderColor "#FF0000" -TableBorderStyle "SOLID" -Text "This is a test text box." -FontColor "#0000FF" -FontSize 14 -FontBold $true -FillColor "#FFFF00"
+        Add-DiaNodeText -Name "Server1" -TableBorder 2 -TableBorderColor "#FF0000" -TableBorderStyle "SOLID" -Text "This is a test text box." -FontColor "#0000FF" -FontSize 14 -FontBold $true -TableBackgroundColor "#FFFF00" -NodeObject
 
-        ** Generates an HTML text with a "ServerWindows" icon, 50% size, red solid border. **
+        This command creates a text box node named "Server1" with a solid red border of 2 pixels, blue bold text of size 14, and a yellow background.
                     _________________
                     |               |
                     |   Text Box    |
@@ -64,7 +70,7 @@ function Add-DiaNodeText {
 
     .NOTES
         Author: Jonathan Colon
-        Version: 0.2.30
+        Version: 0.2.32
         Twitter: @jcolonfzenpr
         Github: rebelinux
 
@@ -90,12 +96,6 @@ function Add-DiaNodeText {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set the width of the html table border'
-        )]
-        [int] $TableBorder = 0,
-
-        [Parameter(
-            Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
         [string] $TableBorderColor = "#000000",
@@ -108,8 +108,14 @@ function Add-DiaNodeText {
         [string] $TableBorderStyle,
 
         [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the width of the html table border'
+        )]
+        [int] $TableBorder = 0,
+
+        [Parameter(
             Mandatory = $true,
-            HelpMessage = 'Set the text to display inside the text box'
+            HelpMessage = 'The text content to be displayed within the text box. This is a required parameter. The text can include line breaks by using `\n` which will be converted to `<BR/>`. Example: "Line1\nLine2\nLine3'
         )]
         [string] $Text,
 
@@ -117,7 +123,7 @@ function Add-DiaNodeText {
             Mandatory = $false,
             HelpMessage = 'Set the text to display inside the text box'
         )]
-        [ValidateSet("Left", "Right", "Center", "Justify")]
+        [ValidateSet("Left", "Right", "Center")]
         [string] $TextAlign = "Center",
 
         [Parameter(
@@ -136,29 +142,34 @@ function Add-DiaNodeText {
             Mandatory = $false,
             HelpMessage = 'Allow to set the font bold'
         )]
-        [bool] $FontBold = $false,
+        [switch] $FontBold,
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the font italic'
         )]
-        [bool] $FontItalic = $false,
+        [switch] $FontItalic,
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the font underline'
         )]
-        [bool] $FontUnderline = $false,
+        [switch] $FontUnderline,
 
         [Parameter(
-            Mandatory = $false,
-            HelpMessage = 'Allow to set the fill color'
+            HelpMessage = "The font face to use. Default is 'Segoe Ui Black'."
         )]
-        [string] $FillColor = "transparent",
+        [string]$FontName = "Segoe Ui",
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Additional Graphviz attributes to add to the node (e.g., style=filled,color=lightgrey)'
+            HelpMessage = 'Allow to set the background color'
+        )]
+        [string] $TableBackgroundColor = "#FFFFFF",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Additional Graphviz attributes to add to the node (e.g., style = filled, color = lightgrey)'
         )]
         [hashtable] $GraphvizAttributes = @{},
 
@@ -169,23 +180,34 @@ function Add-DiaNodeText {
         [switch] $NodeObject
     )
 
+    $Text = $Text -replace '\\n', '<BR/>'
+
+    if ($TableBorder -gt 0 -and (-not $TableBorderStyle)) {
+        throw "TableBorderStyle must be specified when TableBorder is used."
+    } elseif (($TableBorderColor -ne '#000000') -and (-not $TableBorderStyle)) {
+        throw "TableBorderStyle must be specified when TableBorderColor is used."
+    } elseif ($TableBorderStyle -and ($TableBorder -eq 0)) {
+        $TableBorder = 1
+    }
+
+    $FormattedText = Format-HtmlFontProperty -Text $Text -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName
 
     if ($IconDebug) {
         if ($NodeObject) {
-            $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{2}' colspan='1'><FONT POINT-SIZE='{4}' COLOR='{3}'>{1}</FONT></TD></TR></TABLE>" -f 'SOLID', $Text, $TextAlign, $FontColor, $FontSize
+            $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{1}' colspan='1'>{2}</TD></TR></TABLE>" -f 'SOLID', $TextAlign, $FormattedText
 
             $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
 
             Node -Name $Name -Attributes $JoinHash
         } else {
-            "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{2}' colspan='1'><FONT POINT-SIZE='{4}' COLOR='{3}'>{1}</FONT></TD></TR></TABLE>" -f 'SOLID', $Text, $TextAlign, $FontColor, $FontSize
+            "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{1}' colspan='1'>{2}</TD></TR></TABLE>" -f 'SOLID', $TextAlign, $FormattedText
         }
     } else {
         if ($NodeObject) {
             $HTML = if ($TableBorderStyle) {
-                "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{3}' colspan='1'>{4}</TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $TextAlign, $Text
+                "<TABLE STYLE='{0}' bgcolor='{1}' border='{2}' color='{3}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{4}' colspan='1'>{5}</TD></TR></TABLE>" -f $TableBorderStyle, $TableBackgroundColor, $TableBorder, $TableBorderColor, $TextAlign, $FormattedText
             } else {
-                "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='{2}' colspan='1'>{3}</TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $TextAlign, $Text
+                "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='{2}' colspan='1'>{3}</TD></TR></TABLE>" -f 0, $TableBorderColor, $TextAlign, $FormattedText
             }
 
             $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
@@ -193,9 +215,9 @@ function Add-DiaNodeText {
             Node -Name $Name -Attributes $JoinHash
         } else {
             if ($TableBorderStyle) {
-                "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{3}' colspan='1'>{4}</TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $TextAlign, $Text
+                "<TABLE STYLE='{0}' bgcolor='{1}' border='{2}' color='{3}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{4}' colspan='1'>{5}</TD></TR></TABLE>" -f $TableBorderStyle, $TableBackgroundColor, $TableBorder, $TableBorderColor, $TextAlign, $FormattedText
             } else {
-                "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='{2}' colspan='1'>{3}</TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $TextAlign, $Text
+                "<TABLE bgcolor='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='{3}' colspan='1'>{4}</TD></TR></TABLE>" -f $TableBackgroundColor, 0, $TableBorderColor, $TextAlign, $FormattedText
             }
 
         }

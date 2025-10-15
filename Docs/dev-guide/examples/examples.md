@@ -26,3 +26,4 @@ All examples in the latest release of Diagrammer.Core can be found in the table 
 | [Example14](../../dev-guide/examples/example14.md)               | Add-DiaNodeShape cmdlet                | Diagrammer.Core |
 | [Example15](../../dev-guide/examples/example15.md)               | Add-DiaNodeSpacer cmdlet               | Diagrammer.Core |
 | [AdvancedExample1](../../dev-guide/examples/advancedexample1.md) | Add-DiaHTMLSubGraph cmdlet             | Diagrammer.Core |
+| [AdvancedExample2](../../dev-guide/examples/advancedexample2.md) | Add-DiaNodeText cmdlet                 | Diagrammer.Core |
