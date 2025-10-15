@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### :arrows_clockwise: Changed
 
-Refactor Pester workflow to run tests with code coverage and upload report
+- Refactor Pester workflow to run tests with code coverage and upload report
 
 ## [0.2.31] - 2025-10-13
 

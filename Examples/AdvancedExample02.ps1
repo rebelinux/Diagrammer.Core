@@ -53,7 +53,7 @@ $script:Images = @{
 
 $MainGraphLabel = 'Web Application Diagram'
 
-$advancedexample01 = & {
+$advancedexample02 = & {
     <#
         A SubGraph allows you to group objects in a container, creating a graph within a graph.
         SubGraph, Node, and Edge have attributes for setting background color, label, border color, style, etc.
@@ -202,4 +202,4 @@ $advancedexample01 = & {
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $advancedexample01 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample01 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $advancedexample02 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample02 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

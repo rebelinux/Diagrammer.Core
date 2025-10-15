@@ -83,7 +83,7 @@ Diagrammer.Core provides a workaround using HTML-like labels to simulate SubGrap
 a SubGraph. This allows us to better organize and present information in the diagram.Additionally, HTML-like labels provide more control over the appearance and formatting of the nodes, allowing for a more polished and professional look. This approach can help to overcome some of the limitations of traditional Graphviz SubGraphs, making it easier to create clear and effective diagrams.
 
 ```powershell linenums="1" hl_lines="111-126" title="AdvancedExample2.ps1 - Add-DiaNodeText"
-$advancedexample01 = & {
+$advancedexample02 = & {
 
     SubGraph 3tier -Attributes @{Label = 'Advanced Diagram Concepts'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
 
@@ -216,7 +216,7 @@ $advancedexample01 = & {
 Finally, call the New-Diagrammer cmdlet with the specified parameters.
 
 ```powershell
-New-Diagrammer -InputObject $advancedexample01 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample2 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $advancedexample02 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample2 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
 ```
 When you run the script, it generates a PNG file named AdvancedExample2.png in the specified output folder.
 
