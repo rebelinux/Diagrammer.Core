@@ -63,3 +63,4 @@
     - [x] Add-WatermarkToImage.Tests.ps1
     - [x] ConvertTo-Pdf-WaterMark.Tests.ps1
 - [ ] Add option generate diagram without logo and maindiagram title
+- [ ] Add code to crete a Pester test report in HTML format
