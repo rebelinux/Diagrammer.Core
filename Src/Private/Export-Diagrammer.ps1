@@ -180,7 +180,7 @@ function Export-Diagrammer {
                     }
                 }
             }
-            default { Join-Path $RootPath 'ImageMagick\magick.exe' }
+            default { Join-Path $RootPath 'Tools\ImageMagick\magick.exe' }
         }
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat

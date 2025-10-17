@@ -22,7 +22,7 @@ Describe ConvertTo-Pdf-WaterMark {
                     }
                 }
             }
-            default { Join-Path $ProjectRoot 'ImageMagick\magick.exe' }
+            default { Join-Path $ProjectRoot 'Tools\ImageMagick\magick.exe' }
         }
         # Force the redirection of TMP to the TestDrive folder
         $env:TMP = $TestDrive

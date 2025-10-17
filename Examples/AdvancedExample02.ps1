@@ -195,7 +195,7 @@ $advancedexample02 = & {
         This is not possible with native Graphviz SubGraphs.\n"
         Add-DiaNodeText -Name "Info-Box2" -DraftMode:$DraftMode -Text $Message -FontColor "#0000FF" -FontSize 20 -FontBold -TextAlign "Left" -NodeObject
 
-        Edge -From "USA-WebServers" -To "Info-Box2" -Attributes @{minlen = 2; color = 'black'; style = 'dashed'; penwidth = 1.5}
+        Edge -From "USA-WebServers" -To "Info-Box2" -Attributes @{minlen = 2; color = 'black'; style = 'dashed'; penwidth = 1.5 }
     }
 }
 <#
