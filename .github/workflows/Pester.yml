@@ -1,47 +1,46 @@
 name: Run Pester Tests
 
 on:
-  push:
-    branches: [ "dev", "main" ]
-  pull_request:
-    branches: [ "dev" ]
+    push:
+        branches: ["dev", "main"]
+    pull_request:
+        branches: ["dev"]
 
 jobs:
-  pester:
-    runs-on: windows-latest
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v5
+            - name: Run Pester tests
+              uses: PSModule/Invoke-Pester@v3
+              id: action-test
+              with:
+                  Path: "./tests"
+                  TestResult_Enabled: "true"
+                  TestResult_OutputPath: "./test-results.xml"
 
-    - name: Install Pester
-      shell: pwsh
-      run: Install-Module -Name Pester -Force -Scope CurrentUser
+            - name: Process test results
+              if: always()
+              run: |
+                  Write-Output "Total tests: ${{ steps.action-test.outputs.TotalCount }}"
+                  Write-Output "Passed tests: ${{ steps.action-test.outputs.PassedCount }}"
+                  Write-Output "Failed tests: ${{ steps.action-test.outputs.FailedCount }}"
+                  Write-Output "Failed blocks: ${{ steps.action-test.outputs.FailedBlocksCount }}"
+                  Write-Output "Failed containers: ${{ steps.action-test.outputs.FailedContainersCount }}"
+                  Write-Output "Test outcome: ${{ steps.action-test.outputs.Result }}"
+              shell: pwsh
 
-    - name: Install PSGraph
-      shell: pwsh
-      run: Install-Module -Name PSGraph -Force -Scope CurrentUser
+            - name: Take action based on test outcome
+              if: steps.action-test.outputs.Result == 'Passed'
+              run: echo "All tests passed! Ready to proceed with deployment."
 
-    - name: Run Pester Tests
-      shell: pwsh
-      working-directory: .
-      run: |
-        # Run Pester tests with Code Coverage
-        $config = New-PesterConfiguration
-        $config.Run.Path = "Tests"
-        $config.TestResult.Enabled = $true
-        $config.CodeCoverage.Enabled = $true
-        Invoke-Pester -Configuration $config
-
-    - name: Upload code coverage report
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: code-coverage-report
-        path: coverage.xml
-    - name: Upload test results
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: testResults.xml
+            - name: Run Pester tests with code coverage
+              id: pester
+              uses: PSModule/Invoke-Pester@v4
+              with:
+                  Path: "./tests"
+                  CodeCoverage_Enabled: "true"
+                  CodeCoverage_Path: "./src"
+                  CodeCoverage_OutputPath: "./coverage.xml"
+                  CodeCoverage_OutputFormat: "JaCoCo"
