@@ -213,9 +213,9 @@ function Add-DiaHtmlLabel {
         $CalculatedImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }
 
-    if (-not $SubgraphLabel) {
+    $FormattedLabel = Format-HtmlFontProperty -Text $Label -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
 
-        $FormattedLabel = Format-HtmlFontProperty -Text $Label -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+    if (-not $SubgraphLabel) {
 
         if ($IconDebug) {
             return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><FONT Color='red'>Debug ON</font></TD></TR></TABLE>"
@@ -236,20 +236,18 @@ function Add-DiaHtmlLabel {
     }
     if ($SubgraphLabel) {
 
-        $FormattedSubgraphLabel = Format-HtmlFontProperty -Text $Label -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
-
         if ($IconDebug) {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
+            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
         } if ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
             } elseif ($CalculatedImageSize) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
             } else {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
             }
         } else {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
+            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
         }
     }
 }
