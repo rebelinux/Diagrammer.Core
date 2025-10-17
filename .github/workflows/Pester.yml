@@ -23,6 +23,7 @@ jobs:
       run: Install-Module -Name PSGraph -Force -Scope CurrentUser
 
     - name: Run Pester Tests
+      shell: pwsh
       working-directory: .
       run: |
         # Run Pester tests with Code Coverage
