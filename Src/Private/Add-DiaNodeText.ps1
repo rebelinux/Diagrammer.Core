@@ -157,7 +157,7 @@ function Add-DiaNodeText {
         [switch] $FontUnderline,
 
         [Parameter(
-            HelpMessage = "The font face to use. Default is 'Segoe Ui Black'."
+            HelpMessage = "The font face to use. Default is 'Segoe Ui'."
         )]
         [string]$FontName = "Segoe Ui",
 

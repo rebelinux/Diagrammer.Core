@@ -326,7 +326,7 @@ A diagram in the specified format (PDF, PNG, SVG, or base64).
 ```
 Version:        0.2.30
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 GitHub:         rebelinux
 ```
 

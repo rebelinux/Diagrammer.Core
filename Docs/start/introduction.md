@@ -110,7 +110,7 @@ In essence, Diagrammer.Core uses the Graphviz capabilities to render HTML-like l
             bgcolor=White,
             compound=true,
             fontcolor="#565656",
-            fontname="Segoe Ui Black",
+            fontname="Segoe Ui",
             fontsize=32,
             labelloc=t,
             nodesep=0.6,

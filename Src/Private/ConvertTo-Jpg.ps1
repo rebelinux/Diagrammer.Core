@@ -7,7 +7,7 @@ function ConvertTo-Jpg {
     .NOTES
         Version:        0.2.20
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
     .LINK
         https://github.com/rebelinux/Diagrammer.Core

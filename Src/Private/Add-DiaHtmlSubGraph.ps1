@@ -31,7 +31,7 @@ function Add-DiaHtmlSubGraph {
     .NOTES
         Version:        0.2.30
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
     .PARAMETER TableArray
         An array of strings/objects to place in this record
@@ -46,7 +46,7 @@ function Add-DiaHtmlSubGraph {
     .PARAMETER CellSpace
         The table cell space space (Default: 5)
     .PARAMETER FontColor
-        The text font color used inside the cell (Default #565656)
+        The text font color used inside the cell (Default #000000)
     .PARAMETER FontName
         The text font name used inside the cell
     .PARAMETER FontSize
@@ -138,12 +138,12 @@ function Add-DiaHtmlSubGraph {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $fontName = "Segoe Ui Black",
+        [string] $fontName = "Segoe Ui",
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#565656",
+        [string] $fontColor = "#000000",
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'This value is used to specified a int used to split the object inside the HTML table'

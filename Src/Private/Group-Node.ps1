@@ -7,7 +7,7 @@ function Group-Node {
     .NOTES
         Version:        0.1.8
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
     .LINK
         https://github.com/rebelinux/Diagrammer.Core

@@ -22,10 +22,10 @@ function New-Diagrammer {
         Specifies the width of the edge lines. Default is 3.
 
     .PARAMETER FontColor
-        Specifies the color of the diagram font in RGB format (e.g., #FFFFFF) or color string. Default is #565656.
+        Specifies the color of the diagram font in RGB format (e.g., #FFFFFF) or color string. Default is #000000.
 
     .PARAMETER FontName
-        Specifies the name of the font used in the diagram. Default is 'Segoe Ui Black'.
+        Specifies the name of the font used in the diagram. Default is 'Segoe Ui'.
 
     .PARAMETER NodeFontSize
         Specifies the font size of the nodes. Default is 14.
@@ -91,10 +91,10 @@ function New-Diagrammer {
         Sets the font size of the main label used at the top of the diagram. Default is 24.
 
     .PARAMETER MainDiagramLabelFontName
-        Sets the font name of the main label used at the top of the diagram. Default is 'Segoe Ui Black'.
+        Sets the font name of the main label used at the top of the diagram. Default is 'Segoe Ui'.
 
     .PARAMETER MainDiagramLabelFontColor
-        Sets the font color of the main label used at the top of the diagram. Default is #565656.
+        Sets the font color of the main label used at the top of the diagram. Default is #000000.
 
     .PARAMETER MainGraphAttributes
         Provides a hashtable with general graph attributes (fontname, fontcolor, imagepath, style, imagepath).
@@ -117,7 +117,7 @@ function New-Diagrammer {
     .NOTES
         Version:        0.2.30
         Author(s):      Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
         Credits:        Kevin Marquette (@KevinMarquette) - PSGraph module
                         Prateek Singh (@PrateekKumarSingh) - AzViz module
@@ -182,14 +182,14 @@ function New-Diagrammer {
             HelpMessage = 'Please provide the diagram font color in RGB format (Ex: #FFFFFF) or color string'
         )]
         [ValidateNotNullOrEmpty()]
-        [string] $Fontcolor = '#565656',
+        [string] $Fontcolor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide the diagram font name'
         )]
         [ValidateNotNullOrEmpty()]
-        [string] $Fontname = 'Segoe Ui Black',
+        [string] $Fontname = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
@@ -362,13 +362,13 @@ function New-Diagrammer {
             Mandatory = $false,
             HelpMessage = 'Set the Main Label font name used at the top of the diagram'
         )]
-        [string] $MainDiagramLabelFontname = "Segoe Ui Black",
+        [string] $MainDiagramLabelFontname = "Segoe Ui",
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Set the Main Label font color used at the top of the diagram'
         )]
-        [string] $MainDiagramLabelFontColor = "#565656",
+        [string] $MainDiagramLabelFontColor = "#000000",
 
         [Parameter(
             Mandatory = $false,

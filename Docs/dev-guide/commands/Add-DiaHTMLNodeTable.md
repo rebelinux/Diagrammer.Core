@@ -77,7 +77,7 @@ Add-DiaHTMLNodeTable -ImagesObj $Images -inputObject $DCsArray -Columnsize 3 -Al
         ```graphviz dot ADDDiaHTMLNodeTable_draftmode.png
             digraph g {
                 node [shape=plain];
-                a [label=<<TABLE PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Server-dc-01v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-01v</B></FONT></TD><TD PORT="Server-dc-02v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-02v</B></FONT></TD><TD PORT="Server-dc-03v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-03v</B></FONT></TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui Black" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Server-dc-04v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-04v</B></FONT></TD><TD PORT="Server-dc-05v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-05v</B></FONT></TD><TD PORT="Server-dc-06v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-06v</B></FONT></TD></TR></TABLE>>];
+                a [label=<<TABLE PORT="EdgeDot" COLOR="red" border="1" cellborder="1" cellpadding="5" cellspacing="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Server-dc-01v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-01v</B></FONT></TD><TD PORT="Server-dc-02v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-02v</B></FONT></TD><TD PORT="Server-dc-03v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-03v</B></FONT></TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>Icon</B></FONT></TD></TR><TR><TD PORT="Server-dc-04v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-04v</B></FONT></TD><TD PORT="Server-dc-05v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-05v</B></FONT></TD><TD PORT="Server-dc-06v" ALIGN="Center" colspan="1"><FONT POINT-SIZE="14"><B>Server-dc-06v</B></FONT></TD></TR></TABLE>>];
             }
         ```
 
@@ -263,11 +263,11 @@ HelpMessage: ''
 ### -fontName
 
 The cell text font name.
-Default is "Segoe Ui Black".
+Default is "Segoe Ui".
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui Black
+DefaultValue: Segoe Ui
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -691,7 +691,7 @@ A string representing the HTML table.
 ```
 Version:        0.2.29
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 Github:         rebelinux
 ```
 

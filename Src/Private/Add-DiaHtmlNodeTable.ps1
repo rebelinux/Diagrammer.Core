@@ -42,7 +42,7 @@ function Add-DiaHtmlNodeTable {
     .NOTES
         Version:        0.2.29
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
 
     .PARAMETER inputObject
@@ -67,10 +67,10 @@ function Add-DiaHtmlNodeTable {
         The cell text font size. Default is 14.
 
     .PARAMETER FontName
-        The cell text font name. Default is "Segoe Ui Black".
+        The cell text font name. Default is "Segoe Ui".
 
     .PARAMETER FontColor
-        The text font color used inside the cell. Default is #565656.
+        The text font color used inside the cell. Default is #000000.
 
     .PARAMETER IconType
         Node Icon type. This parameter is mandatory if ImagesObj is specified.
@@ -186,12 +186,12 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $fontName = "Segoe Ui Black",
+        [string] $fontName = "Segoe Ui",
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#565656",
+        [string] $fontColor = "#000000",
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'This value is used to specified a int used to split the object inside the HTML table'

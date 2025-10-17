@@ -11,7 +11,7 @@ function Add-WatermarkToImage {
     .NOTES
         Version:        0.2.25
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
     .PARAMETER ImageInputFile
         The Image file Path (PNG, TIFF, JPEG, JPG)

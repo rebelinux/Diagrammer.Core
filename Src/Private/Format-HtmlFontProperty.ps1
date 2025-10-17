@@ -53,15 +53,39 @@ function Format-HtmlFontProperty {
         [switch]$FontUnderline = $false,
 
         [Parameter(
-            HelpMessage = "The font face to use. Default is 'Segoe Ui Black'."
+            HelpMessage = "Switch to make the font subscript."
         )]
-        [string]$FontName = "Segoe Ui Black"
+        [switch]$FontSubscript = $false,
+
+        [Parameter(
+            HelpMessage = "Switch to make the font superscript."
+        )]
+        [switch]$FontSuperscript = $false,
+
+        [Parameter(
+            HelpMessage = "Switch to make the font strike through."
+        )]
+        [switch]$FontStrikeThrough = $false,
+
+        [Parameter(
+            HelpMessage = "Switch to make the font overline."
+        )]
+        [switch]$FontOverline = $false,
+
+        [Parameter(
+            HelpMessage = "The font face to use. Default is 'Segoe Ui'."
+        )]
+        [string]$FontName = "Segoe Ui"
     )
 
     $styleTags = @()
     if ($FontBold) { $styleTags += 'B' }
     if ($FontItalic) { $styleTags += 'I' }
     if ($FontUnderline) { $styleTags += 'U' }
+    if ($FontSubscript) { $styleTags += 'SUB' }
+    if ($FontSuperscript) { $styleTags += 'SUP' }
+    if ($FontStrikeThrough) { $styleTags += 'S' }
+    if ($FontOverline) { $styleTags += 'O' }
 
     $fontTagOpen = "<FONT FACE='$FontName' POINT-SIZE='$FontSize' COLOR='$FontColor'>"
     $fontTagClose = "</FONT>"

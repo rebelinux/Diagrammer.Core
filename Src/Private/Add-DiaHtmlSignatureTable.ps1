@@ -28,10 +28,10 @@ function Add-DiaHtmlSignatureTable {
         The text font size used inside the cell. Default is 14.
 
     .PARAMETER fontName
-        The text font name used inside the cell. Default is "Segoe Ui Black".
+        The text font name used inside the cell. Default is "Segoe Ui".
 
     .PARAMETER fontColor
-        The text font color used inside the cell. Default is "#565656".
+        The text font color used inside the cell. Default is "#000000".
 
     .PARAMETER ImagesObj
         Hashtable mapping IconName to IconPath. Required for logo image support.
@@ -63,7 +63,7 @@ function Add-DiaHtmlSignatureTable {
     .NOTES
         Version:        0.2.30
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
     #>
 
@@ -109,12 +109,12 @@ function Add-DiaHtmlSignatureTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $fontName = "Segoe Ui Black",
+        [string] $fontName = "Segoe Ui",
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#565656",
+        [string] $fontColor = "#000000",
         [Parameter(
             Mandatory = $true,
             HelpMessage = 'Please provide the Image Hashtable Object'

@@ -67,7 +67,7 @@ Add-DiaNodeIcon -Name $DC -IconType "Server" -Align "Center" -Rows $DCRows -Imag
         ```graphviz dot AddDiaLeftTShapeLine_draftmode.png
             digraph g {
                 node [shape=plain];
-                a [label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='14'>Server-DC-01v</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>CPU: 2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>Memory: 4GB</FONT></TD></TR></TABLE>>];
+                a [label=<<TABLE color='red' border='1' cellborder='1' cellspacing='5' cellpadding='5'><TR><TD bgcolor='#FFCCCC' ALIGN='Center' colspan='1'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='14'>Icon</FONT></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='14'>Server-DC-01v</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>CPU: 2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='14'>Memory: 4GB</FONT></TD></TR></TABLE>>];
             }
         ```
 
@@ -235,7 +235,7 @@ The cell text font name
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui Black
+DefaultValue: Segoe Ui
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -444,7 +444,7 @@ A string representing the HTML table for the node label.
 ```
 Version:        0.2.30
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 Github:         rebelinux
 ```
 

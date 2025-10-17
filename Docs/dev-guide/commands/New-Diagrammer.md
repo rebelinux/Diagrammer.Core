@@ -304,11 +304,11 @@ HelpMessage: ''
 ### -Fontname
 
 Specifies the name of the font used in the diagram.
-Default is 'Segoe Ui Black'.
+Default is 'Segoe Ui'.
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui Black
+DefaultValue: Segoe Ui
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -501,11 +501,11 @@ HelpMessage: ''
 ### -MainDiagramLabelFontname
 
 Sets the font name of the main label used at the top of the diagram.
-Default is 'Segoe Ui Black'.
+Default is 'Segoe Ui'.
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui Black
+DefaultValue: Segoe Ui
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -888,7 +888,7 @@ A representation of the newly created diagram.
 ```
 Version:        0.2.30
 Author(s):      Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 Github:         rebelinux
 Credits:        Kevin Marquette (@KevinMarquette) - PSGraph module
                 Prateek Singh (@PrateekKumarSingh) - AzViz module

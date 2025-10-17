@@ -18,7 +18,7 @@ function Add-DiaHtmlLabel {
     .NOTES
         Version:        0.2.30
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         GitHub:         rebelinux
     .PARAMETER CellPadding
         The padding inside the table cell. Default is 5.
@@ -27,9 +27,9 @@ function Add-DiaHtmlLabel {
     .PARAMETER Fontsize
         Specifies the font size of the label. Default is 1.
     .PARAMETER fontColor
-        Specifies the font color for the cell text. Default is "#565656".
+        Specifies the font color for the cell text. Default is "#000000".
     .PARAMETER fontName
-        Specifies the font name for the cell text. Default is "Segoe Ui Black".
+        Specifies the font name for the cell text. Default is "Segoe Ui".
     .PARAMETER IconDebug
         Enables the table debug mode if set to $true.
     .PARAMETER IconHeight
@@ -106,13 +106,55 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#565656",
+        [string] $FontColor = "#000000",
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $fontName = "Segoe Ui Black",
+        [string] $FontName = "Segoe Ui",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font bold'
+        )]
+        [switch] $FontBold,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font italic'
+        )]
+        [switch] $FontItalic,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font underline'
+        )]
+        [switch] $FontUnderline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font overline'
+        )]
+        [switch] $FontOverline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font subscript'
+        )]
+        [switch] $FontSubscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font superscript'
+        )]
+        [switch] $FontSuperscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font strikethrough'
+        )]
+        [switch] $FontStrikeThrough,
 
         [Parameter(
             Mandatory = $false,
@@ -172,36 +214,42 @@ function Add-DiaHtmlLabel {
     }
 
     if (-not $SubgraphLabel) {
+
+        $FormattedLabel = Format-HtmlFontProperty -Text $Label -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
         if ($IconDebug) {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
+            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><FONT Color='red'>Debug ON</font></TD></TR></TABLE>"
         } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
 
             } elseif ($CalculatedImageSize) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
 
             } else {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
 
             }
         } else {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD ALIGN='center'>$FormattedLabel</TD></TR></TABLE>"
         }
     }
     if ($SubgraphLabel) {
+
+        $FormattedSubgraphLabel = Format-HtmlFontProperty -Text $SubgraphLabel -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
         if ($IconDebug) {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
         } if ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
             } elseif ($CalculatedImageSize) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
             } else {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
             }
         } else {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TD ALIGN='center'>$FormattedSubgraphLabel</TD></TR></TABLE>"
         }
     }
 }

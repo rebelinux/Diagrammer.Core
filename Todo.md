@@ -26,11 +26,12 @@
     - [x] Add Add-DiaHTMLSubGraph example
     - [x] Add Add-DiaNodeText example
 - [ ] Add option to set icon size by percent
-    - [ ] Add-DiaNodeIcon
+    - [x] Add-DiaNodeIcon
     - [ ] Add-DiaHTMLNodeTable
     - [ ] Add-DiaHTMLSubGraph
     - [ ] Add pester to test this funtionality
 - [ ] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
+  - [ ] Create a NodeObject Function
     - [ ] Add-DiaNodeFiller
     - [ ] Add-DiaNodeIcon
     - [ ] Add-DiaHTMLNodeTable

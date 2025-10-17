@@ -305,7 +305,7 @@ A string representing the vertical line in Graphviz format.
 ```
 Version:        0.2.31
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 GitHub:         rebelinux
 ```
 

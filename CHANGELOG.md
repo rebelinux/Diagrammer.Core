@@ -7,9 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.32] - Unreleased
 
+### :toolbox: Added
+
+- Add Add-DiaNodeText to allow the creation of a text box in the diagram with support for paragraph support
+  - Add AdvancedExample02.ps1 to demonstrate the use of Add-DiaNodeText cmdlet feature
+  - Add tests pester for Add-DiaNodeText cmdlet
+  - Add documentation to website for Add-DiaNodeText cmdlet
+- Add Format-HtmlFontProperty to create font properties (Bold, Italic, Underline) for HTML elements
+  - Add tests pester for Format-HtmlFontProperty cmdlet
+
 ### :arrows_clockwise: Changed
 
 - Refactor Pester workflow to run tests with code coverage and upload report
+- Refactor font properties in tests and Graphviz source files
+- Updated font face from 'Segoe Ui Black' to 'Segoe Ui' to ensure consistency.
 
 ## [0.2.31] - 2025-10-13
 

@@ -133,7 +133,7 @@ Accept wildcard characters: False
 
 ### -FontName
 The font face to use.
-Default is 'Segoe Ui Black'.
+Default is 'Segoe Ui'.
 
 ```yaml
 Type: System.String
