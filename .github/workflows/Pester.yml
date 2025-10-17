@@ -12,6 +12,10 @@ jobs:
         steps:
             - uses: actions/checkout@v5
 
+            - name: Install PSGraph
+              shell: pwsh
+              run: Install-Module -Name PSGraph -Force -Scope CurrentUser
+
             - name: Run Pester tests
               uses: PSModule/Invoke-Pester@v3
               id: action-test
