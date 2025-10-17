@@ -17,12 +17,18 @@ jobs:
               run: Install-Module -Name PSGraph -Force -Scope CurrentUser
 
             - name: Run Pester tests
-              uses: PSModule/Invoke-Pester@v3
+              uses: PSModule/Invoke-Pester@v4
               id: action-test
               with:
                   Path: "./Tests"
                   TestResult_Enabled: "true"
                   TestResult_OutputPath: "./test-results.xml"
+                  CodeCoverage_Enabled: "true"
+                  CodeCoverage_Path: "./src"
+                  CodeCoverage_OutputPath: "./coverage.xml"
+                  CodeCoverage_OutputFormat: "JaCoCo"
+                  Prescript: |
+                      Import-Module PSGraph
 
             - name: Process test results
               if: always()
@@ -38,13 +44,3 @@ jobs:
             - name: Take action based on test outcome
               if: steps.action-test.outputs.Result == 'Passed'
               run: echo "All tests passed! Ready to proceed with deployment."
-
-            - name: Run Pester tests with code coverage
-              id: pester
-              uses: PSModule/Invoke-Pester@v4
-              with:
-                  Path: "./tests"
-                  CodeCoverage_Enabled: "true"
-                  CodeCoverage_Path: "./src"
-                  CodeCoverage_OutputPath: "./coverage.xml"
-                  CodeCoverage_OutputFormat: "JaCoCo"
