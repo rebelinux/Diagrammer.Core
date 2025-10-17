@@ -16,7 +16,7 @@ jobs:
               uses: PSModule/Invoke-Pester@v3
               id: action-test
               with:
-                  Path: "./tests"
+                  Path: "./Tests"
                   TestResult_Enabled: "true"
                   TestResult_OutputPath: "./test-results.xml"
 
