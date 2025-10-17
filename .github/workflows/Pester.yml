@@ -24,7 +24,7 @@ jobs:
                   TestResult_Enabled: "true"
                   TestResult_OutputPath: "./test-results.xml"
                   CodeCoverage_Enabled: "true"
-                  CodeCoverage_Path: "./src"
+                  CodeCoverage_Path: "./Src"
                   CodeCoverage_OutputPath: "./coverage.xml"
                   CodeCoverage_OutputFormat: "JaCoCo"
                   Prescript: |
