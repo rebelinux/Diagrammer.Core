@@ -87,7 +87,7 @@ function Format-HtmlFontProperty {
     if ($FontStrikeThrough) { $styleTags += 'S' }
     if ($FontOverline) { $styleTags += 'O' }
 
-    $fontTagOpen = '<FONT FACE="$FontName" POINT-SIZE="$FontSize" COLOR="$FontColor">'
+    $fontTagOpen = '<FONT FACE="{0}" POINT-SIZE="{1}" COLOR="{2}">' -f $FontName, $FontSize, $FontColor
     $fontTagClose = '</FONT>'
 
     $formattedText = $Text

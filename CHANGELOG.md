@@ -15,12 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Add documentation to website for Add-DiaNodeText cmdlet
 - Add Format-HtmlFontProperty to create font properties (Bold, Italic, Underline) for HTML elements
   - Add tests pester for Format-HtmlFontProperty cmdlet
+- Add NodeObject support to Add-DiaHTMLTable cmdlet
+- Add Font Properties parameter to cmdlets to support Bold, Italic, Underline, Strikethrough, Overline, Superscript, Subscript
+- Add option generate diagram without logo and MainDiagram title
 
 ### :arrows_clockwise: Changed
 
 - Refactor Pester workflow to run tests with code coverage and upload report
 - Refactor font properties in tests and Graphviz source files
-- Updated font face from 'Segoe Ui Black' to 'Segoe Ui' to ensure consistency.
+- Updated font face from 'Segoe Ui Black' to 'Segoe Ui' to ensure consistency
+- Moved ImageMagick and Graphviz binaries to Tools folder
+- Moved Icons to Tools folder
 
 ## [0.2.31] - 2025-10-13
 

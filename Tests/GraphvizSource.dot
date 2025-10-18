@@ -26,7 +26,7 @@ digraph VeeamVBR {
         fontsize="24";
         "OUTERDRAWBOARD1" [label="";style="invis";shape="point";]
         subgraph clusterMainGraph {
-            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='28'>Wan Accelerators Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>>;
+            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='28'>Wan Accelerators Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>DraftMode ON</FONT></TD></TR></TABLE>>;
             penwidth="0";
             labeljust="c";
             labelloc="t";

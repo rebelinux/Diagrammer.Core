@@ -170,15 +170,15 @@ function Add-DiaHtmlSignatureTable {
 
     if ($ICON) {
         if ($IconDebug) {
-            return '<TABLE STYLE="{0}" COLOR="red" border="{1}" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" colspan="1" rowspan="4">Logo</TD></TR>{3}</TABLE>' -f $TableStyle, $tableBorder, $Align, $TR
+            '<TABLE STYLE="{0}" COLOR="red" border="{1}" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" colspan="1" rowspan="4">Logo</TD></TR>{3}</TABLE>' -f $TableStyle, $tableBorder, $Align, $TR
         } else {
-            return '<TABLE STYLE="{0}" border="{1}" cellborder="{2}" cellpadding="{6}"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{3}" colspan="1" rowspan="4"><img src="{4}"/></TD></TR>{5}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $Align, $Icon, $TR, $CellPadding
+            '<TABLE STYLE="{0}" border="{1}" cellborder="{2}" cellpadding="{6}"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{3}" colspan="1" rowspan="4"><img src="{4}"/></TD></TR>{5}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $Align, $Icon, $TR, $CellPadding
         }
     } else {
         if ($IconDebug) {
-            return '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{0}</TABLE>' -f $TR, $TableStyle, $CellPadding
+            '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{0}</TABLE>' -f $TR, $TableStyle, $CellPadding
         } else {
-            return '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
+            '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
         }
     }
 }

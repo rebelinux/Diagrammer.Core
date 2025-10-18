@@ -7,115 +7,142 @@ function New-Diagrammer {
         This cmdlet generates diagrams of IT infrastructure configurations in various formats such as PDF, SVG, DOT, and PNG using PSGraph and Graphviz. It provides extensive customization options for diagram appearance, including font settings, colors, node and edge properties, and more.
 
     .PARAMETER InputObject
-        The PSGraph input object to be used for generating the diagram.
+        The PSGraph input object (graph/subgraphs/nodes) used to generate the diagram.
 
     .PARAMETER Format
-        Specifies the output format of the diagram. Supported formats are PDF, PNG, DOT, SVG, and base64. Default is 'pdf'.
+        Output format(s) for the diagram. Supported values: pdf, svg, png, dot, base64, jpg. Default: pdf.
 
-    .PARAMETER EdgeColor
-        Specifies the color of the edge lines in RGB format (e.g., #FFFFFF). Default is #71797E.
+    .PARAMETER Edgecolor
+        Edge line color (RGB hex or color name). Default: '#71797E'.
 
     .PARAMETER EdgeArrowSize
-        Specifies the size of the edge arrows. Default is 1.
+        Size of edge arrows. Default: 1.
 
     .PARAMETER EdgeLineWidth
-        Specifies the width of the edge lines. Default is 3.
+        Width (pen size) of edge lines. Default: 3.
 
-    .PARAMETER FontColor
-        Specifies the color of the diagram font in RGB format (e.g., #FFFFFF) or color string. Default is #000000.
+    .PARAMETER Fontcolor
+        Default graph font color (RGB hex or color name). Default: '#000000'.
 
-    .PARAMETER FontName
-        Specifies the name of the font used in the diagram. Default is 'Segoe Ui'.
+    .PARAMETER Fontname
+        Default graph font name. Default: 'Segoe Ui'.
+
+    .PARAMETER MainDiagramLabelFontBold
+        Switch to render the main diagram label in bold.
+
+    .PARAMETER MainDiagramLabelFontItalic
+        Switch to render the main diagram label in italic.
+
+    .PARAMETER MainDiagramLabelFontUnderline
+        Switch to render the main diagram label with underline.
+
+    .PARAMETER MainDiagramLabelFontOverline
+        Switch to render the main diagram label with overline.
+
+    .PARAMETER MainDiagramLabelFontSubscript
+        Switch to render part of the main diagram label as subscript.
+
+    .PARAMETER MainDiagramLabelFontSuperscript
+        Switch to render part of the main diagram label as superscript.
+
+    .PARAMETER MainDiagramLabelFontStrikeThrough
+        Switch to render the main diagram label with strikethrough.
 
     .PARAMETER NodeFontSize
-        Specifies the font size of the nodes. Default is 14.
+        Font size used for node labels. Default: 14.
 
-    .PARAMETER NodeFontColor
-        Specifies the color of the node font in RGB format (e.g., #FFFFFF) or color string. Default is 'Black'.
+    .PARAMETER NodeFontcolor
+        Node font color (RGB hex or color name). Default: 'Black'.
 
     .PARAMETER IconPath
-        Specifies the path to the icon file.
+        Path used to resolve icon/image names referenced in $ImagesObj. Default: Tools\Icons relative to the module.
 
     .PARAMETER ImagesObj
-        Hashtable with the IconName > IconPath translation.
+        Hashtable mapping image identifiers to filenames (IconName -> FileName). Defaults include Diagrammer.png and Diagrammer_footer.png.
 
     .PARAMETER Direction
-        Specifies the direction in which resources are plotted on the visualization. Supported values are 'left-to-right' and 'top-to-bottom'. Default is 'top-to-bottom'.
+        Layout direction for the graph. Valid values: 'left-to-right', 'top-to-bottom'. Default: 'top-to-bottom'.
 
     .PARAMETER OutputFolderPath
-        Specifies the folder path to save the diagram. Default is the system temporary path.
+        Folder where exported diagram files will be written. Default: system temp folder.
 
     .PARAMETER SignatureLogo
-        Specifies the path to the custom logo used for the signature.
+        Path to a custom signature logo file.
 
     .PARAMETER SignatureLogoName
-        Specifies the name of the signature logo (must be defined in $ImageObj).
+        Name (key in $ImagesObj) to use as the signature logo.
 
     .PARAMETER Logo
-        Specifies the path to the custom logo.
+        Path to a custom main diagram logo file.
 
     .PARAMETER LogoName
-        Specifies the name of the main diagram logo (must be defined in $ImageObj).
+        Name (key in $ImagesObj) to use as the main diagram logo.
 
     .PARAMETER Filename
-        Specifies a filename for the diagram.
+        Base filename for exported diagrams (extension is appended per format).
 
     .PARAMETER EdgeType
-        Specifies how edge lines appear in the visualization. Supported values are 'polyline', 'curved', 'ortho', 'line', and 'spline'. Default is 'line'.
+        Controls how edges are drawn. Valid values: 'polyline', 'curved', 'ortho', 'line', 'spline'. Default: 'line'.
 
     .PARAMETER NodeSeparation
-        Controls the node separation ratio in the visualization. Default is 0.60.
+        Node separation setting (rank/node separation ratio). Accepts discrete values as configured. Default: 0.60.
 
     .PARAMETER SectionSeparation
-        Controls the section (subgraph) separation ratio in the visualization. Default is 0.75.
+        Section (subgraph) separation setting (rank separation ratio). Default: 0.75.
 
     .PARAMETER DraftMode
-        Enables subgraph visualization debugging of subgraph, edges & nodes.
+        Switch to enable debug visualization (styles/colors shown for subgraphs, nodes, and edges).
 
     .PARAMETER EnableErrorDebug
-        Enables error debugging.
+        Switch to enable verbose and debug output for troubleshooting.
+
+    .PARAMETER DisableMainDiagramLogo
+        Switch to disable rendering the main diagram logo.
 
     .PARAMETER AuthorName
-        Sets the footer signature author name.
+        Author name used in the footer signature (required when -Signature is used).
 
     .PARAMETER CompanyName
-        Sets the footer signature company name.
+        Company name used in the footer signature (required when -Signature is used).
 
     .PARAMETER Signature
-        Enables the creation of a footer signature. AuthorName and CompanyName must be set to use this property.
+        Switch to include a footer signature (requires AuthorName and CompanyName).
 
     .PARAMETER MainDiagramLabel
-        Sets the main label used at the top of the diagram.
+        Main label/title displayed at the top of the diagram.
 
-    .PARAMETER MainDiagramLabelFontSize
-        Sets the font size of the main label used at the top of the diagram. Default is 24.
+    .PARAMETER MainDiagramLabelFontsize
+        Font size for the main diagram label. Default: 24.
 
-    .PARAMETER MainDiagramLabelFontName
-        Sets the font name of the main label used at the top of the diagram. Default is 'Segoe Ui'.
+    .PARAMETER MainDiagramLabelFontname
+        Font name for the main diagram label. Default: 'Segoe Ui'.
 
     .PARAMETER MainDiagramLabelFontColor
-        Sets the font color of the main label used at the top of the diagram. Default is #000000.
+        Font color for the main diagram label (RGB hex or color name). Default: '#000000'.
 
     .PARAMETER MainGraphAttributes
-        Provides a hashtable with general graph attributes (fontname, fontcolor, imagepath, style, imagepath).
+        Hashtable of graph attributes to override or augment defaults (examples: fontname, fontcolor, imagepath, style, nodesep, ranksep, bgcolor).
 
     .PARAMETER WaterMarkColor
-        Specifies the color of the watermark text. Default is 'DarkGray'.
+        Color used for watermark text. Default: 'DarkGray'.
 
     .PARAMETER WaterMarkText
-        Specifies the text for the watermark.
+        Text to render as a watermark on the exported diagram (empty to disable).
 
     .PARAMETER WaterMarkFontOpacity
-        The font opacity of the watermark text. The default opacity is 30. This parameter is optional.
+        Opacity for the watermark text (0-100). Default: 30.
 
     .PARAMETER MainGraphBGColor
-        Specifies the background color of the diagram. Default is 'White'.
+        Background color for the main graph. Default: 'White'.
 
     .PARAMETER MainGraphSize
-        Specifies the image resolution size. (e.g., 8,11! = 800x1100 pixels) Default = None.
+        Graph size / image resolution hint (Graphviz size option), e.g. "8,11!" for specific sizing.
+
+    .PARAMETER MainGraphLogoSizePercent
+        Scale percent for the main logo when rendered in the diagram. Range: 1-100. Default: 100.
 
     .NOTES
-        Version:        0.2.30
+        Version:        0.2.32
         Author(s):      Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -190,6 +217,48 @@ function New-Diagrammer {
         )]
         [ValidateNotNullOrEmpty()]
         [string] $Fontname = 'Segoe Ui',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font bold'
+        )]
+        [switch] $MainDiagramLabelFontBold,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font italic'
+        )]
+        [switch] $MainDiagramLabelFontItalic,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font underline'
+        )]
+        [switch] $MainDiagramLabelFontUnderline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font overline'
+        )]
+        [switch] $MainDiagramLabelFontOverline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font subscript'
+        )]
+        [switch] $MainDiagramLabelFontSubscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font superscript'
+        )]
+        [switch] $MainDiagramLabelFontSuperscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font strikethrough'
+        )]
+        [switch] $MainDiagramLabelFontStrikeThrough,
 
         [Parameter(
             Mandatory = $false,
@@ -327,6 +396,12 @@ function New-Diagrammer {
             HelpMessage = 'Allow to enable error debugging'
         )]
         [Switch] $EnableErrorDebug = $false,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Disable the Main Diagram Logo'
+        )]
+        [Switch] $DisableMainDiagramLogo,
 
         [Parameter(
             Mandatory = $false,
@@ -544,7 +619,13 @@ function New-Diagrammer {
             # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
             SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
-                SubGraph MainGraph -Attributes @{Label = (Add-DiaHTMLLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -fontColor  $MainDiagramLabelFontColor -fontName  $MainDiagramLabelFontname); fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
+                if ($DisableMainDiagramLogo) {
+                    $FormatedMainLogo = ""
+                } else {
+                    $FormatedMainLogo = (Add-DiaHtmlLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -FontColor  $MainDiagramLabelFontColor -FontName $MainDiagramLabelFontname -FontBold:$MainDiagramLabelFontBold -FontItalic:$MainDiagramLabelFontItalic -FontUnderline:$MainDiagramLabelFontUnderline -FontOverline:$MainDiagramLabelFontOverline -FontSubscript:$MainDiagramLabelFontSubscript -FontSuperscript:$MainDiagramLabelFontSuperscript -FontStrikeThrough:$MainDiagramLabelFontStrikeThrough)
+                }
+
+                SubGraph MainGraph -Attributes @{Label = $FormatedMainLogo; fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
                     $InputObject
                 }
             }

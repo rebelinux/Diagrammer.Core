@@ -289,17 +289,17 @@ function Add-DiaHtmlSubGraph {
 
     if ($IconDebug) {
         if ($TableStyle) {
-            return '<TABLE BGColor="{0}" STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{3}</TABLE>' -f $TableBackgroundColor, $TableStyle, $CellPadding, $TR
+            '<TABLE BGColor="{0}" STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{3}</TABLE>' -f $TableBackgroundColor, $TableStyle, $CellPadding, $TR
 
         } else {
-            return '<TABLE BGColor="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{1}">{2}</TABLE>' -f $TableBackgroundColor, $CellPadding, $TR
+            '<TABLE BGColor="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{1}">{2}</TABLE>' -f $TableBackgroundColor, $CellPadding, $TR
         }
     } else {
         if ($TableStyle) {
-            return '<TABLE BGColor="{0}" COLOR="{5}" STYLE="{4}" border="{1}" cellborder="{2}" cellpadding="{7}" cellspacing="{6}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
+            '<TABLE BGColor="{0}" COLOR="{5}" STYLE="{4}" border="{1}" cellborder="{2}" cellpadding="{7}" cellspacing="{6}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
 
         } else {
-            return '<TABLE BGColor="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
+            '<TABLE BGColor="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
         }
     }
 }

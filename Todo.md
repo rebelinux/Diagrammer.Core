@@ -1,12 +1,10 @@
-- [ ] Research a way to put the Add-DiaNodeIcon in a horizontal like design
-    - [ ] Desired design is horizontal
+- [x] Research a way to put the Add-DiaNodeIcon in a horizontal like design
+    - [x] Desired design is horizontal
     ```markdown
     _______________________________
+    |       |        Name         |
     | Image |                     |
-    |       |                     |
-    ---------        Info         |
-    |       |                     |
-    | Name  |                     |
+    |       |        Info         |
     _______________________________
     ```
 - [x] Add Add-DiaNodeImage cmdlet to add a image with no text
@@ -32,11 +30,9 @@
     - [ ] Add pester to test this funtionality
 - [ ] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
   - [ ] Create a NodeObject Function
-    - [ ] Add-DiaNodeFiller
-    - [ ] Add-DiaNodeIcon
+    - [x] Add-DiaNodeIcon
     - [ ] Add-DiaHTMLNodeTable
-    - [ ] Add-DiaHTMLSubGraph
-    - [ ] Add-DiaHTMLLabel
+    - [x] Add-DiaHTMLLabel
     - [ ] Add pester to test this funtionality
 - [ ] Add IconType and Image name in DraftMode
     - [ ] Add-DiaNodeFiller
@@ -46,7 +42,7 @@
     - [ ] Add-DiaHTMLLabel
     - [ ] Add pester to test this funtionality
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
-- [ ] Add option generate diagram without logo and maindiagram title
+- [x] Add option generate diagram without logo and maindiagram title
 - [ ] Add function to built html table thats offers:
   - [ ] Add option to set table border style (solid, dashed, dotted, bold)
   - [ ] Add option to set table border color (Hex color)
