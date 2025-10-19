@@ -156,5 +156,7 @@ All examples in the latest release of Diagrammer.Core can be found in the table 
 | [Example14](https://diagrammer.techmyth.blog/dev-guide/examples/example14/)               | Add-DiaNodeShape cmdlet                | Diagrammer.Core |
 | [Example15](https://diagrammer.techmyth.blog/dev-guide/examples/example15/)               | Add-DiaNodeSpacer cmdlet               | Diagrammer.Core |
 | [AdvancedExample1](https://diagrammer.techmyth.blog/dev-guide/examples/advancedexample1/) | Add-DiaHTMLSubGraph cmdlet             | Diagrammer.Core |
+| [AdvancedExample2](https://diagrammer.techmyth.blog/dev-guide/examples/advancedexample2/) | Add-DiaNodeText cmdlet             | Diagrammer.Core |
+
 
 ## :x: Known Issues
