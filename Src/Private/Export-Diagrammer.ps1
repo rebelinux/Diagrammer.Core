@@ -161,7 +161,7 @@ function Export-Diagrammer {
                     }
                 }
             }
-            default { Join-Path -Path $RootPath -ChildPath 'Graphviz\bin\dot.exe' }
+            default { Join-Path -Path $RootPath -ChildPath 'Tools\Graphviz\bin\dot.exe' }
         }
         # Set the path to the ImageMagick executable
         $script:ImageMagickPath = switch ($PSVersionTable.Platform) {
