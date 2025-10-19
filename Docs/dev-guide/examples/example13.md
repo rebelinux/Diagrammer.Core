@@ -84,7 +84,7 @@ $example13 = & {
 
         # The $Signature variable store the result of the signature table to be used as a footer in the diagram.
 
-        $Signature = Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: Bugs Bunny", "Company: ACME Inc." -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -DraftMode:$DraftMode
+        $Signature = Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: Bugs Bunny", "Company: ACME Inc." -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -DraftMode:$DraftMode -FontBold
 
         # The content of the Signature variable is placed inside a SubGraph to position it at the bottom of the diagram.
 

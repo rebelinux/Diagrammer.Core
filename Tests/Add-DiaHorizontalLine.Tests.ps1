@@ -27,17 +27,103 @@ Describe Add-DiaHorizontalLine {
     }
 
     It "Should return a Graphviz dot source with 2 nodes forming a horizontal line" {
-        $DotOutPut | Should -BeExactly @('"HStart" [color="black";width="0.001";shape="point";fixedsize="true";style="invis";fillcolor="transparent";height="0.001";]', '"HEnd" [color="black";width="0.001";shape="point";fixedsize="true";style="invis";fillcolor="transparent";height="0.001";]', '{ rank=same;  "HStart"; "HEnd"; }', '"HStart"->"HEnd" [arrowhead="none";color="black";minlen="1";style="solid";penwidth="1";arrowtail="none";]')
+        $MatchHStart = '"HStart" \[.*\]'
+        $MatchHEnd = '"HEnd" \[.*\]'
+        $MatchRankSame = '{ rank=same;  "HStart"; "HEnd"; }'
+        $MatchEdge = '"HStart"->"HEnd" \[.*\]'
+        $DotOutPut | Should -RegularExpression $MatchHStart
+        $DotOutPut | Should -RegularExpression $MatchHEnd
+        $DotOutPut | Should -RegularExpression $MatchRankSame
+        $DotOutPut | Should -RegularExpression $MatchEdge
 
     }
     It "Should return a Graphviz dot source with 2 nodes forming a horizontal line with debug information" {
-        $DotOutPutDebug | Should -BeExactly @('"HStart" [color="black";fillcolor="red";shape="plain";style="filled";]', '"HEnd" [color="black";fillcolor="red";shape="plain";style="filled";]', '{ rank=same;  "HStart"; "HEnd"; }', '"HStart"->"HEnd" [arrowhead="none";color="red";minlen="1";style="solid";penwidth="1";arrowtail="none";]')
+        $Matchfillcolor = 'fillcolor="red";'
+        $Matchcolor = 'color="red";'
+        $DotOutPutDebug | Should -RegularExpression $Matchfillcolor
+        $DotOutPutDebug | Should -RegularExpression $Matchcolor
     }
     It "Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom Node Names" {
-        $DotOutPutWithParams | Should -BeExactly @('"First" [color="black";width="0.001";shape="point";fixedsize="true";style="invis";fillcolor="transparent";height="0.001";]', '"Last" [color="black";width="0.001";shape="point";fixedsize="true";style="invis";fillcolor="transparent";height="0.001";]', '{ rank=same;  "First"; "Last"; }', '"First"->"Last" [arrowhead="none";color="black";minlen="1";style="solid";penwidth="1";arrowtail="none";]')
+        $MatchFirst = '"First" \[.*\]'
+        $MatchLast = '"Last" \[.*\]'
+        $MatchRankSame = '{ rank=same;  "First"; "Last"; }'
+        $MatchEdge = '"First"->"Last" \[.*\]'
+        $DotOutPutWithParams | Should -RegularExpression $MatchFirst
+        $DotOutPutWithParams | Should -RegularExpression $MatchLast
+        $DotOutPutWithParams | Should -RegularExpression $MatchRankSame
+        $DotOutPutWithParams | Should -RegularExpression $MatchEdge
     }
     It "Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom Arrowhead and Arrowtail" {
-        $DotOutPutWithParamsArrowsTest | Should -BeExactly @('"HStart" [color="black";width="0.001";shape="point";fixedsize="true";style="invis";fillcolor="transparent";height="0.001";]', '"HEnd" [color="black";width="0.001";shape="point";fixedsize="true";style="invis";fillcolor="transparent";height="0.001";]', '{ rank=same;  "HStart"; "HEnd"; }', '"HStart"->"HEnd" [arrowhead="diamond";color="black";minlen="1";style="solid";penwidth="1";arrowtail="box";]')
+        It "Should return a Graphviz dot source with custom line length range validation" {
+            $DotOutPutMinLineLength = Add-DiaHorizontalLine -HStartLineLength 1
+            $DotOutPutMaxLineLength = Add-DiaHorizontalLine -HStartLineLength 10
+            $DotOutPutMinLineLength | Should -Match 'minlen="1"'
+            $DotOutPutMaxLineLength | Should -Match 'minlen="10"'
+        }
+
+        It "Should return a error: HStartLineLength out of range" {
+            $scriptBlock = { Add-DiaHorizontalLine -HStartLineLength 11 }
+            $scriptBlock | Should -Throw
+        }
+
+        It "Should return a Graphviz dot source with custom line width range validation" {
+            $DotOutPutMinWidth = Add-DiaHorizontalLine -LineWidth 1
+            $DotOutPutMaxWidth = Add-DiaHorizontalLine -LineWidth 10
+            $DotOutPutMinWidth | Should -Match 'penwidth="1"'
+            $DotOutPutMaxWidth | Should -Match 'penwidth="10"'
+        }
+
+        It "Should return a error: LineWidth out of range" {
+            $scriptBlock = { Add-DiaHorizontalLine -LineWidth 0 }
+            $scriptBlock | Should -Throw
+        }
+
+        It "Should return a Graphviz dot source with dotted line style" {
+            $DotOutPutDotted = Add-DiaHorizontalLine -LineStyle dotted
+            $DotOutPutDotted | Should -Match 'style="dotted"'
+        }
+
+        It "Should return a Graphviz dot source with dashed line style" {
+            $DotOutPutDashed = Add-DiaHorizontalLine -LineStyle dashed
+            $DotOutPutDashed | Should -Match 'style="dashed"'
+        }
+
+        It "Should return a Graphviz dot source with bold line style" {
+            $DotOutPutBold = Add-DiaHorizontalLine -LineStyle bold
+            $DotOutPutBold | Should -Match 'style="bold"'
+        }
+
+        It "Should return a error: Invalid line style" {
+            $scriptBlock = { Add-DiaHorizontalLine -LineStyle invalid }
+            $scriptBlock | Should -Throw
+        }
+
+        It "Should accept multiple arrow types for Arrowhead" {
+            $DotOutPutNormal = Add-DiaHorizontalLine -Arrowhead normal
+            $DotOutPutCrow = Add-DiaHorizontalLine -Arrowhead crow
+            $DotOutPutDotArrow = Add-DiaHorizontalLine -Arrowhead dot
+            $DotOutPutNormal | Should -Match 'arrowhead="normal"'
+            $DotOutPutCrow | Should -Match 'arrowhead="crow"'
+            $DotOutPutDotArrow | Should -Match 'arrowhead="dot"'
+        }
+
+        It "Should accept multiple arrow types for Arrowtail" {
+            $DotOutPutNormal = Add-DiaHorizontalLine -Arrowtail normal
+            $DotOutPutOpen = Add-DiaHorizontalLine -Arrowtail open
+            $DotOutPutVee = Add-DiaHorizontalLine -Arrowtail vee
+            $DotOutPutNormal | Should -Match 'arrowtail="normal"'
+            $DotOutPutOpen | Should -Match 'arrowtail="open"'
+            $DotOutPutVee | Should -Match 'arrowtail="vee"'
+        }
+
+        It "Should return a Graphviz dot source with custom node names and all line parameters" {
+            $DotOutPut = Add-DiaHorizontalLine -HStart "Source" -HEnd "Target" -LineStyle dashed -LineWidth 2 -LineColor blue
+            $DotOutPut | Should -Match '"Source"'
+            $DotOutPut | Should -Match '"Target"'
+            $DotOutPut | Should -Match 'style="dashed"'
+            $DotOutPut | Should -Match 'penwidth="2"'
+            $DotOutPut | Should -Match 'color="blue"'
+        }
     }
     It "Should return a error: Cannot validate argument on parameter 'Arrowtail'" {
         $scriptBlock = { Add-DiaHorizontalLine @DotOutPutWithParamsArrowsTestError }

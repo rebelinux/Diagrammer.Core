@@ -196,9 +196,7 @@ function Add-DiaNodeText {
         if ($NodeObject) {
             $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{1}' colspan='1'>{2}</TD></TR></TABLE>" -f 'SOLID', $TextAlign, $FormattedText
 
-            $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
-
-            Node -Name $Name -Attributes $JoinHash
+            Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
         } else {
             "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{1}' colspan='1'>{2}</TD></TR></TABLE>" -f 'SOLID', $TextAlign, $FormattedText
         }
@@ -210,9 +208,7 @@ function Add-DiaNodeText {
                 "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='{2}' colspan='1'>{3}</TD></TR></TABLE>" -f 0, $TableBorderColor, $TextAlign, $FormattedText
             }
 
-            $JoinHash = Join-Hashtable -PrimaryHash @{label = $HTML; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
-
-            Node -Name $Name -Attributes $JoinHash
+            Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
         } else {
             if ($TableBorderStyle) {
                 "<TABLE STYLE='{0}' bgcolor='{1}' border='{2}' color='{3}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{4}' colspan='1'>{5}</TD></TR></TABLE>" -f $TableBorderStyle, $TableBackgroundColor, $TableBorder, $TableBorderColor, $TextAlign, $FormattedText

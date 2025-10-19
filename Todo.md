@@ -1,14 +1,4 @@
-- [x] Research a way to put the Add-DiaNodeIcon in a horizontal like design
-    - [x] Desired design is horizontal
-    ```markdown
-    _______________________________
-    |       |        Name         |
-    | Image |                     |
-    |       |        Info         |
-    _______________________________
-    ```
-- [x] Add Add-DiaNodeImage cmdlet to add a image with no text
-  - [ ] Add option to set image opacity in percent
+- [ ] Add option to set image opacity in percent
 - [ ] Create Pester tests for:
     - [ ] Add-DiaCrossShapeLine
     - [ ] Add-DiaTShapeLine
@@ -25,13 +15,13 @@
     - [x] Add Add-DiaNodeText example
 - [ ] Add option to set icon size by percent
     - [x] Add-DiaNodeIcon
-    - [ ] Add-DiaHTMLNodeTable
-    - [ ] Add-DiaHTMLSubGraph
+    - [x] Add-DiaHTMLSubGraph
     - [ ] Add pester to test this funtionality
 - [ ] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
   - [ ] Create a NodeObject Function
     - [x] Add-DiaNodeIcon
-    - [ ] Add-DiaHTMLNodeTable
+    - [x] Add-DiaHTMLNodeTable
+    - [x] Add-DiaHtmlSubGraph
     - [x] Add-DiaHTMLLabel
     - [ ] Add pester to test this funtionality
 - [ ] Add IconType and Image name in DraftMode

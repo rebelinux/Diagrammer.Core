@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add NodeObject support to Add-DiaHTMLTable cmdlet
 - Add Font Properties parameter to cmdlets to support Bold, Italic, Underline, Strikethrough, Overline, Superscript, Subscript
 - Add option generate diagram without logo and MainDiagram title
+- Add a horizontal like design to Add-DiaNodeIcon cmdlet
+- Add Add-DiaNodeImage cmdlet to add a image with no text
 
 ### :arrows_clockwise: Changed
 

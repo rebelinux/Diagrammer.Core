@@ -380,12 +380,12 @@ function Add-DiaNodeIcon {
     if ($IconDebug) {
         if ($ICON -ne 'NoIcon') {
             if ($NodeObject) {
-                $HTML = '<TABLE color="red" border="1" cellborder="1" cellspacing="{0}" cellpadding="{1}"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" {3}><FONT FACE="{4}" Color="{5}" POINT-SIZE="{6}">Icon</FONT></TD></TR><TR><TD align="{2}">{7}</TD></TR>{8}</TABLE>' -f $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $FormattedName, $TR
+                $HTML = '<TABLE color="red" border="1" cellborder="1" cellspacing="{0}" cellpadding="{1}"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" {3}><FONT FACE="{4}" Color="{5}" POINT-SIZE="{6}">{7}</FONT></TD></TR><TR><TD align="{2}">{8}</TD></TR>{9}</TABLE>' -f $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $FormattedName, $TR
 
                 Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
 
             } else {
-                '<TABLE color="red" border="1" cellborder="1" cellspacing="{0}" cellpadding="{1}"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" {3}><FONT FACE="{4}" Color="{5}" POINT-SIZE="{6}">Icon</FONT></TD></TR><TR><TD align="{2}">{7}</TD></TR>{8}</TABLE>' -f $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $FormattedName, $TR
+                '<TABLE color="red" border="1" cellborder="1" cellspacing="{0}" cellpadding="{1}"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" {3}><FONT FACE="{4}" Color="{5}" POINT-SIZE="{6}">{7}</FONT></TD></TR><TR><TD align="{2}">{8}</TD></TR>{9}</TABLE>' -f $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $FormattedName, $TR
             }
         } else {
             if ($NodeObject) {

@@ -261,7 +261,7 @@ function Add-DiaHtmlLabel {
     if (-not $SubgraphLabel) {
 
         if ($IconDebug) {
-            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">Main Logo</TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="center" ><FONT FACE="{3}" Color="{4}" POINT-SIZE="{5}">{6}</FONT></TD></TR><TR><TD ALIGN="center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $FontName, $FontColor, $FontSize, $Label
+            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">{3} Logo</TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="center" ><FONT FACE="{4}" Color="{5}" POINT-SIZE="{6}">{7}</FONT></TD></TR><TR><TD ALIGN="center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $ICON, $FontName, $FontColor, $FontSize, $Label
         } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
                 '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD></TR><TR><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $IconWidth, $IconHeight, $ICON, $FormattedLabel
@@ -280,7 +280,7 @@ function Add-DiaHtmlLabel {
     if ($SubgraphLabel) {
 
         if ($IconDebug) {
-            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">Subgraph Logo</TD><TD bgcolor="#FFCCCC" ALIGN="Center">{3}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $FormattedLabel
+            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">{3} Logo</TD><TD bgcolor="#FFCCCC" ALIGN="Center">{4}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $ICON, $FormattedLabel
         } if ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
                 '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $IconWidth, $IconHeight, $ICON, $FormattedLabel

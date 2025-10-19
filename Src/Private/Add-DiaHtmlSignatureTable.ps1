@@ -75,67 +75,122 @@ function Add-DiaHtmlSignatureTable {
             HelpMessage = 'The table array to process'
         )]
         [string[]] $Rows,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the text align'
         )]
         [string] $Align = 'Center',
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the width of the html table border'
         )]
         [int] $TableBorder = 0,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the width of the html cell border'
         )]
         [int] $CellBorder = 0,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the spacing of the html cell border'
         )]
         [int] $CellSpacing = 5,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the padding of the html cell border'
         )]
         [int] $CellPadding = 5,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font size'
         )]
-        [int] $fontSize = 14,
+        [int] $FontSize = 14,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $fontName = "Segoe Ui",
+        [string] $FontName = "Segoe Ui",
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#000000",
+        [string] $FontColor = "#000000",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font bold'
+        )]
+        [switch] $FontBold,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font italic'
+        )]
+        [switch] $FontItalic,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font underline'
+        )]
+        [switch] $FontUnderline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font overline'
+        )]
+        [switch] $FontOverline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font subscript'
+        )]
+        [switch] $FontSubscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font superscript'
+        )]
+        [switch] $FontSuperscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font strikethrough'
+        )]
+        [switch] $FontStrikeThrough,
+
         [Parameter(
             Mandatory = $true,
             HelpMessage = 'Please provide the Image Hashtable Object'
         )]
         [Hashtable] $ImagesObj = @{},
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
         [Alias("DraftMode")]
         [bool] $IconDebug,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
         [string] $TableStyle = "rounded,dashed",
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Disable the aditional text bold configuration'
         )]
         [Switch] $NoFontBold,
+
 
         [Parameter(
             Mandatory = $false,
@@ -147,6 +202,7 @@ function Add-DiaHtmlSignatureTable {
             HelpMessage = 'Allow to set the logo icon'
         )]
         [string]$Logo,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
@@ -159,18 +215,19 @@ function Add-DiaHtmlSignatureTable {
     } else { $ICON = $false }
 
     $TR = ''
-    foreach ($r in $Rows) {
-        Write-Verbose -Message "Creating Node: $r"
+    foreach ($Row in $Rows) {
+        $FormattedRow = Format-HtmlFontProperty -Text $Row -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
         if ($NoFontBold) {
-            $TR += '<TR><TD valign="top" align="{0}" colspan="2"><FONT POINT-SIZE="{1}">{2}</FONT></TD></TR>' -f $Align, $FontSize, $r
+            $TR += '<TR><TD valign="top" align="{0}" colspan="2">{1}</TD></TR>' -f $Align, $FormattedRow
         } else {
-            $TR += '<TR><TD valign="top" align="{0}" colspan="2"><B><FONT POINT-SIZE="{1}">{2}</FONT></B></TD></TR>' -f $Align, $FontSize, $r
+            $TR += '<TR><TD valign="top" align="{0}" colspan="2">{1}</TD></TR>' -f $Align, $FormattedRow
         }
     }
 
     if ($ICON) {
         if ($IconDebug) {
-            '<TABLE STYLE="{0}" COLOR="red" border="{1}" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" colspan="1" rowspan="4">Logo</TD></TR>{3}</TABLE>' -f $TableStyle, $tableBorder, $Align, $TR
+            '<TABLE STYLE="{0}" COLOR="red" border="{1}" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" colspan="1" rowspan="4">{3}</TD></TR>{4}</TABLE>' -f $TableStyle, $tableBorder, $Align, $ICON, $TR
         } else {
             '<TABLE STYLE="{0}" border="{1}" cellborder="{2}" cellpadding="{6}"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{3}" colspan="1" rowspan="4"><img src="{4}"/></TD></TR>{5}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $Align, $Icon, $TR, $CellPadding
         }

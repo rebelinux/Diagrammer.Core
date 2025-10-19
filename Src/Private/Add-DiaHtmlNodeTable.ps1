@@ -135,11 +135,13 @@ function Add-DiaHtmlNodeTable {
             HelpMessage = 'Please provide input object to process'
         )]
         [string[]] $inputObject,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Please provide the Image Hashtable Object'
         )]
         [Hashtable] $ImagesObj,
+
         [Parameter(
             Mandatory = $true,
             HelpMessage = 'Please provide the icon type or icon type array'
@@ -152,67 +154,122 @@ function Add-DiaHtmlNodeTable {
                 }
             })]
         [string[]] $iconType,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the text align'
         )]
         [string] $Align = 'Center',
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the width of the html table border'
         )]
         [int] $TableBorder = 0,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the width of the html cell border'
         )]
         [int] $CellBorder = 0,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the padding of the html cell border'
         )]
         [int] $CellPadding = 5,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the spacing of the html cell border'
         )]
         [int] $CellSpacing = 5,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font size'
         )]
-        [int] $fontSize = 14,
+        [int] $FontSize = 14,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $fontName = "Segoe Ui",
+        [string] $FontName = "Segoe Ui",
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#000000",
+        [string] $FontColor = "#000000",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font bold'
+        )]
+        [switch] $FontBold,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font italic'
+        )]
+        [switch] $FontItalic,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font underline'
+        )]
+        [switch] $FontUnderline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font overline'
+        )]
+        [switch] $FontOverline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font subscript'
+        )]
+        [switch] $FontSubscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font superscript'
+        )]
+        [switch] $FontSuperscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font strikethrough'
+        )]
+        [switch] $FontStrikeThrough,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'This value is used to specified a int used to split the object inside the HTML table'
         )]
-        [int] $columnSize = 1,
+        [int] $ColumnSize = 1,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
         )]
         [string] $Port = "EdgeDot",
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'This value enable the option to assign a unique icon per node object'
         )]
         [Switch]$MultiIcon,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
         [Alias("DraftMode")]
         [bool] $IconDebug,
+
         [Parameter(
             ParameterSetName = 'AdditionalInfo',
             Mandatory = $false,
@@ -226,6 +283,7 @@ function Add-DiaHtmlNodeTable {
             HelpMessage = 'Create the table with that can be used as a Subgraph replacement with the hashtable inside it'
         )]
         [Switch]$Subgraph,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the subgraph table icon'
@@ -238,37 +296,92 @@ function Add-DiaHtmlNodeTable {
                 }
             })]
         [string]$SubgraphIconType,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the subgraph table label'
         )]
         [string]$SubgraphLabel,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the subgraph table label font size'
         )]
-        [int]$SubgraphLabelFontsize = 14,
+        [int]$SubgraphLabelFontSize = 14,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the subgraph table label font size'
+        )]
+        [string]$SubgraphLabelFontColor = "#000000",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font bold'
+        )]
+        [switch] $SubgraphFontBold,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font italic'
+        )]
+        [switch] $SubgraphFontItalic,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font underline'
+        )]
+        [switch] $SubgraphFontUnderline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font overline'
+        )]
+        [switch] $SubgraphFontOverline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font subscript'
+        )]
+        [switch] $SubgraphFontSubscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font superscript'
+        )]
+        [switch] $SubgraphFontSuperscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font strikethrough'
+        )]
+        [switch] $SubgraphFontStrikeThrough,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the subgraph label'
         )]
         [ValidateSet('top', 'down')]
-        [string]$SubgraphLabelPos = 'down',
+        [string]$SubgraphLabelPos = 'top',
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
         [string]$SubgraphTableStyle,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
         [string]$TableBorderColor = "#000000",
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a subgraph icon width'
         )]
         [string] $SubgraphIconWidth,
+
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a subgraph icon height'
@@ -285,7 +398,32 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a cell background color'
         )]
-        [string] $CellBackgroundColor
+        [string] $CellBackgroundColor,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Specifies the name of the node.'
+        )]
+        [String]$Name,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the text align'
+        )]
+        [ValidateScript({
+                if ($Name) {
+                    $true
+                } else {
+                    throw "Name parameter is required when NodeObject is set."
+                }
+            })]
+        [switch] $NodeObject,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Additional Graphviz attributes to add to the node (e.g., style=filled,color=lightgrey)'
+        )]
+        [hashtable] $GraphvizAttributes = @{}
     )
 
     if ($inputObject.Count -le 1) {
@@ -360,6 +498,13 @@ function Add-DiaHtmlNodeTable {
         }
     }
 
+    # Determine FontBold based on NoFontBold switch
+    if ($NoFontBold) {
+        $FontBold = $false
+    } else {
+        $FontBold = $true
+    }
+
     if ($ImagesObj) {
         if ($iconType.Count -gt 1) {
             $Icon = @()
@@ -367,7 +512,7 @@ function Add-DiaHtmlNodeTable {
                 if ($ImagesObj[$i]) {
                     $Icon += $ImagesObj[$i]
                 } else {
-                    $Icon += $ImagesObj["VBR_No_Icon"]
+                    $Icon += $ImagesObj["No_Icon"]
                 }
             }
         } else {
@@ -391,13 +536,15 @@ function Add-DiaHtmlNodeTable {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{1}"><B>Icon</B></FONT></TD>' -f $Align, $FontSize, $FontName, $FontColor
+                        $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{1}">{4}</FONT></TD>' -f $Align, $FontSize, $FontName, $FontColor, $Icon[$iconNumber]
                     }
                     $TR += '<TR>{0}</TR>' -f $TDICON
                     $TDICON = ''
 
                     foreach ($Element in $Group[$Number]) {
-                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        $FormattedName = Format-HtmlFontProperty -Text $Element -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1">{2}</TD>' -f $Element, $Align, $FormattedName
                     }
                     $TR += '<TR>{0}</TR>' -f $TDName
                     $TDName = ''
@@ -447,13 +594,15 @@ function Add-DiaHtmlNodeTable {
                 }
             } else {
 
-                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{3}" Color="{4}" POINT-SIZE="{2}"><B>Icon</B></FONT></TD>' -f $Align, $inputObject.Count, $FontSize, $FontName, $FontColor
+                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{3}" Color="{4}" POINT-SIZE="{2}">{5}</FONT></TD>' -f $Align, $inputObject.Count, $FontSize, $FontName, $FontColor, $Icon[$iconNumber]
 
                 $TR += '<TR>{0}</TR>' -f $TDICON
 
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                        $FormattedName = Format-HtmlFontProperty -Text $Element -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
+                        $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1">{2}</TD>' -f $Element, $Align, $FormattedName
                     }
 
                     $TR += '<TR>{0}</TR>' -f $TDName
@@ -521,10 +670,13 @@ function Add-DiaHtmlNodeTable {
                     $TDICON = ''
 
                     foreach ($Element in $Group[$Number]) {
+                        # Format the name with the specified font properties
+                        $FormattedName = Format-HtmlFontProperty -Text $Element -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
                         if ($CellBackgroundColor) {
-                            $TDName += '<TD BGCOLOR="{4}" PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element, $CellBackgroundColor
+                            $TDName += '<TD BGCOLOR="{0}" PORT="{1}" ALIGN="{2}" colspan="1">{3}</TD>' -f $CellBackgroundColor, $Element, $Align, $FormattedName
                         } else {
-                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1">{2}</TD>' -f $Element, $Align, $FormattedName
                         }
                     }
                     $TR += '<TR>{0}</TR>' -f $TDName
@@ -575,16 +727,19 @@ function Add-DiaHtmlNodeTable {
                 }
             } else {
 
-                $TDICON += '<TD ALIGN="{0}" colspan="{1}"><img src="{2}"/></TD>' -f $Align, $inputObject.Count, $Icon
+                $TDICON += '<TD ALIGN="{0}" colspan="{1}"><img src="{2}"/></TD>' -f $Align, $inputObject.Count, $Icon[0]
 
                 $TR += '<TR>{0}</TR>' -f $TDICON
 
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
+                        # Format the name with the specified font properties
+                        $FormattedName = Format-HtmlFontProperty -Text $Element -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
                         if ($CellBackgroundColor) {
-                            $TDName += '<TD BGColor ="{4}" PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element, $CellBackgroundColor
+                            $TDName += '<TD BGCOLOR="{0}" PORT="{1}" ALIGN="{2}" colspan="1">{3}</TD>' -f $CellBackgroundColor, $Element, $Align, $FormattedName
                         } else {
-                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}"><B>{3}</B></FONT></TD>' -f $Element, $Align, $FontSize, $Element
+                            $TDName += '<TD PORT="{0}" ALIGN="{1}" colspan="1">{2}</TD>' -f $Element, $Align, $FormattedName
                         }
                     }
                     $TR += '<TR>{0}</TR>' -f $TDName
@@ -641,10 +796,12 @@ function Add-DiaHtmlNodeTable {
 
     # This part set the capability to emulate Graphviz Subgraph
     if ($Subgraph) {
+        $FormattedSubGraphLabel = Format-HtmlFontProperty -Text $SubGraphLabel -FontSize $SubgraphLabelFontSize -FontColor $SubgraphLabelFontColor -FontBold:$SubgraphFontBold -FontItalic:$SubgraphFontItalic -FontUnderline:$SubgraphFontUnderline -FontName $SubgraphFontName -FontSubscript:$SubgraphFontSubscript -FontSuperscript:$SubgraphFontSuperscript -FontStrikeThrough:$SubgraphFontStrikeThrough -FontOverline:$SubgraphFontOverline
+
         if ($SubgraphIcon) {
             if ($IconDebug) {
-                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontsize
-                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
+                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>{5}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontSize, $SubGraphIcon
+                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -658,7 +815,7 @@ function Add-DiaHtmlNodeTable {
             } else {
                 if ($SubgraphIconWidth -and $SubgraphIconHeight) {
                     $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="{5}" height="{6}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubGraphIcon, $SubGraphIconWidth, $SubGraphIconHeight
-                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
+                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                     if ($SubgraphLabelPos -eq 'down') {
                         $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -671,7 +828,7 @@ function Add-DiaHtmlNodeTable {
                     }
                 } else {
                     $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="40" height="40"><IMG src="{2}"></IMG></TD>' -f $Align, $columnSize, $SubGraphIcon
-                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{5}"><B>{4}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, [string]$SubGraphLabel, $SubgraphLabelFontsize
+                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                     if ($SubgraphLabelPos -eq 'down') {
                         $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -686,7 +843,7 @@ function Add-DiaHtmlNodeTable {
             }
         } else {
             if ($IconDebug) {
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize, $fontColor
+                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontSize, $fontColor
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {
@@ -695,7 +852,8 @@ function Add-DiaHtmlNodeTable {
                     $TR = $TRTemp
                 }
             } else {
-                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontsize, $fontColor
+                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
+
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {
@@ -709,23 +867,78 @@ function Add-DiaHtmlNodeTable {
 
     if ($IconDebug) {
         if ($SubgraphTableStyle) {
-            '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing
+            if ($TableBackgroundColor) {
+                if ($NodeObject) {
+                    $HTML = '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}" bgcolor="{5}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing, $TableBackgroundColor
 
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}" bgcolor="{5}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing, $TableBackgroundColor
+                }
+            } else {
+                if ($NodeObject) {
+                    $HTML = '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing
+
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing
+                }
+            }
         } else {
-            '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing
+            if ($TableBackgroundColor) {
+                if ($NodeObject) {
+                    $HTML = '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}" bgcolor="{4}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing, $TableBackgroundColor
+
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}" bgcolor="{4}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing, $TableBackgroundColor
+                }
+            } else {
+                if ($NodeObject) {
+                    $HTML = '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing
+
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing
+                }
+            }
         }
     } else {
         if ($SubgraphTableStyle) {
             if ($TableBackgroundColor) {
-                '<TABLE bgcolor="{8}" COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+                if ($NodeObject) {
+                    $HTML = '<TABLE bgcolor="{8}" COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE bgcolor="{8}" COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+                }
             } else {
-                '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+                if ($NodeObject) {
+                    $HTML = '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+                }
             }
         } else {
             if ($TableBackgroundColor) {
-                '<TABLE bgcolor="{7}" COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+                if ($NodeObject) {
+                    $HTML = '<TABLE bgcolor="{7}" COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE bgcolor="{7}" COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+                }
             } else {
-                '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
+                if ($NodeObject) {
+                    $HTML = '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
+
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                } else {
+                    '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
+                }
             }
         }
     }
