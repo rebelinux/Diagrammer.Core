@@ -1,4 +1,5 @@
-- [ ] Add option to set image opacity in percent
+- [ ] Add-DiaNodeImage
+  - [ ] Add option to set image opacity in percent
 - [ ] Create Pester tests for:
     - [ ] Add-DiaCrossShapeLine
     - [ ] Add-DiaTShapeLine
@@ -11,28 +12,18 @@
     - [ ] Add-DiaLeftLShapeLine
 - [ ] Add Documentation (use pscribo as example)
     - [ ] Add ShapeLine example
-    - [x] Add Add-DiaHTMLSubGraph example
-    - [x] Add Add-DiaNodeText example
 - [ ] Add option to set icon size by percent
-    - [x] Add-DiaNodeIcon
-    - [x] Add-DiaHTMLSubGraph
     - [ ] Add pester to test this funtionality
 - [ ] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
-  - [ ] Create a NodeObject Function
+  - [x] Create a NodeObject Function
     - [x] Add-DiaNodeIcon
     - [x] Add-DiaHTMLNodeTable
     - [x] Add-DiaHtmlSubGraph
     - [x] Add-DiaHTMLLabel
-    - [ ] Add pester to test this funtionality
+  - [ ] Add pester to test this funtionality
 - [ ] Add IconType and Image name in DraftMode
-    - [ ] Add-DiaNodeFiller
-    - [ ] Add-DiaNodeIcon
-    - [ ] Add-DiaHTMLNodeTable
-    - [ ] Add-DiaHTMLSubGraph
-    - [ ] Add-DiaHTMLLabel
     - [ ] Add pester to test this funtionality
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
-- [x] Add option generate diagram without logo and maindiagram title
 - [ ] Add function to built html table thats offers:
   - [ ] Add option to set table border style (solid, dashed, dotted, bold)
   - [ ] Add option to set table border color (Hex color)
