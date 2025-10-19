@@ -536,7 +536,8 @@ function Add-DiaHtmlNodeTable {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
                     foreach ($Element in $Group[$Number]) {
-                        $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{1}">{4}</FONT></TD>' -f $Align, $FontSize, $FontName, $FontColor, $Icon[$iconNumber]
+                        $IconNumber = if ($Icon.Count -eq 1) { $Icon } else { $Icon[$iconNumber] }
+                        $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{1}">{4}</FONT></TD>' -f $Align, $FontSize, $FontName, $FontColor, $IconNumber
                     }
                     $TR += '<TR>{0}</TR>' -f $TDICON
                     $TDICON = ''
