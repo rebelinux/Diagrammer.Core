@@ -281,7 +281,7 @@ function Add-DiaHtmlLabel {
 
         if ($IconDebug) {
             '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">{3} Logo</TD><TD bgcolor="#FFCCCC" ALIGN="Center">{4}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $ICON, $FormattedLabel
-        } if ($ICON -ne 'NoIcon') {
+        } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
                 '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $IconWidth, $IconHeight, $ICON, $FormattedLabel
             } elseif ($CalculatedImageSize) {

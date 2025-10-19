@@ -506,7 +506,6 @@ function Add-DiaHtmlNodeTable {
 
     if ($ImagesObj) {
         if ($iconType.Count -gt 1) {
-            $iconGroup = Split-Array -inArray $iconType -size $columnSize
             $Icon = @()
             foreach ($i in $iconType) {
                 if ($ImagesObj[$i]) {
@@ -515,11 +514,13 @@ function Add-DiaHtmlNodeTable {
                     $Icon += $ImagesObj["No_Icon"]
                 }
             }
+            $iconGroup = Split-Array -inArray $Icon -size $columnSize
         } else {
             $iconGroup = $iconType
             if ($ImagesObj[$iconType[0]]) {
                 $Icon = $ImagesObj[$iconType[0]]
             } else { $Icon = $false }
+            $iconGroup = $Icon
         }
     }
 
