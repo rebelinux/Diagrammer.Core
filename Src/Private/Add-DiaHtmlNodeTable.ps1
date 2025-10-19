@@ -432,7 +432,6 @@ function Add-DiaHtmlNodeTable {
         $Group = Split-Array -inArray $inputObject -size $columnSize
     }
 
-
     if ($AditionalInfo) {
         switch ($AditionalInfo.GetType().Name) {
             'Hashtable' {
@@ -507,6 +506,7 @@ function Add-DiaHtmlNodeTable {
 
     if ($ImagesObj) {
         if ($iconType.Count -gt 1) {
+            $iconGroup = Split-Array -inArray $iconType -size $columnSize
             $Icon = @()
             foreach ($i in $iconType) {
                 if ($ImagesObj[$i]) {
@@ -516,6 +516,7 @@ function Add-DiaHtmlNodeTable {
                 }
             }
         } else {
+            $iconGroup = $iconType
             if ($ImagesObj[$iconType[0]]) {
                 $Icon = $ImagesObj[$iconType[0]]
             } else { $Icon = $false }
@@ -535,9 +536,12 @@ function Add-DiaHtmlNodeTable {
         if ($IconDebug) {
             if ($MultiIcon) {
                 while ($Number -ne $Group.Count) {
+                    $TDIconNumber = 0
                     foreach ($Element in $Group[$Number]) {
-                        $IconNumber = if ($Icon.Count -eq 1) { $Icon } else { $Icon[$iconNumber] }
-                        $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{1}">{4}</FONT></TD>' -f $Align, $FontSize, $FontName, $FontColor, $IconNumber
+                        $TDIconMatch = if ($Icon.Count -eq 1) { $Icon } else { $iconGroup[$Number][$TDIconNumber] }
+                        $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1"><FONT FACE="{1}" Color="{2}" POINT-SIZE="{3}">{4}</FONT></TD>' -f $Align, $FontName, $FontColor, $FontSize, $TDIconMatch
+
+                        $TDIconNumber++
                     }
                     $TR += '<TR>{0}</TR>' -f $TDICON
                     $TDICON = ''
@@ -627,7 +631,6 @@ function Add-DiaHtmlNodeTable {
                             #       Path:          C:\Backup
                             #       OBjStor:       True
                             #
-
                             foreach ($RowsGroupHT in $RowsGroupHTs) {
                                 foreach ($Element in $RowsGroupHT) {
                                     $TDInfo += '<TD ALIGN="{0}" colspan="1"><FONT POINT-SIZE="{1}">{2}: {3}</FONT></TD>' -f $Align, $FontSize, [string]$Element.Keys, [string]$Element.Values
@@ -650,7 +653,6 @@ function Add-DiaHtmlNodeTable {
                             }
                         }
                     }
-
                     $Number++
                 }
             }
@@ -802,6 +804,7 @@ function Add-DiaHtmlNodeTable {
         if ($SubgraphIcon) {
             if ($IconDebug) {
                 $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>{5}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontSize, $SubGraphIcon
+
                 $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                 if ($SubgraphLabelPos -eq 'down') {
@@ -845,6 +848,7 @@ function Add-DiaHtmlNodeTable {
         } else {
             if ($IconDebug) {
                 $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontSize, $fontColor
+
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {

@@ -303,7 +303,7 @@ function Add-DiaHtmlSubGraph {
 
     if ($ImagesObj -and $ImagesObj[$IconType]) {
         $Icon = $ImagesObj[$IconType]
-    } else { $SIcon = $false }
+    } else { $Icon = $false }
 
     # Set the image size if ImageSizePercent is less than 100
     if ($ImageSizePercent -lt 100) {
