@@ -20,6 +20,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add option generate diagram without logo and MainDiagram title
 - Add a horizontal like design to Add-DiaNodeIcon cmdlet
 - Add Add-DiaNodeImage cmdlet to add a image with no text
+- Add parameter to allow creation of NodeObject in multiple cmdlets
+  - Add-DiaHTMLTable
+  - Add-DiaHTMLNodeTable
+  - Add-DiaNodeIcon
+  - Add-DiaHtmlLabel
 
 ### :arrows_clockwise: Changed
 
