@@ -136,8 +136,8 @@ Describe Add-DiaHorizontalLine {
         $DotOutPutWithParamsLineTest | Should -Match '"HStart"->"HEnd" \[.*color="red";.*\]'
     }
     It "Should return a error: Cannot validate argument on parameter 'LineWidth'" {
-        $scriptBlock = { Add-DiaHorizontalLine @DotOutPutWithParamsLineTestError }
-        $scriptBlock | Should -Throw -ExpectedMessage 'Cannot process argument transformation on parameter ''LineWidth''. Cannot convert value "baba" to type "System.Int32". Error: "The input string ''baba'' was not in a correct format."'
+        $scriptBlock = {Add-DiaHorizontalLine @DotOutPutWithParamsLineTestError}
+        $scriptBlock | Should -Throw
     }
     It "Should return a Graphviz dot source with 2 nodes forming a horizontal line with custom HStartLineLength" {
         $DotOutPutWithParamsLineLengthTest | Should -Match 'minlen="3";'

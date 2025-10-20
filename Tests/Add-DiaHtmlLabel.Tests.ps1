@@ -29,7 +29,7 @@ Describe Add-DiaHtmlLabel {
 
         $HTMLTableSubgraphLabelSetImageWxH = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'Main_Logo' -ImagesObj $Images -IconWidth 300 -IconHeight 300 -SubgraphLabel
 
-        $HTMLTableMainLabelSetImagePercent = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'Main_Logo' -IconPath $IconPath -ImagesObj $Images -ImageSizePercent 30
+        $HTMLTableMainLabelSetImagePercent = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'Main_Logo' -IconPath $IconPath -ImagesObj $Images -ImageSizePercent 70
 
         $HTMLTableSubgraphLabelSetImagePercent = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'Main_Logo' -IconPath $IconPath -ImagesObj $Images -ImageSizePercent 30 -SubgraphLabel
 
@@ -69,11 +69,11 @@ Describe Add-DiaHtmlLabel {
 
     Context "Display Label with Icon with custom Width and Height calculated in Percent of original image size" {
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) with custom Icon size in Percent" {
-            $HTMLTableMainLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="90" height="61.49999999999999"><img src="Diagrammer.png"/></TD></TR><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableMainLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="210" height="143.5"><img src="Diagrammer.png"/></TD></TR><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
 
         It "Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon size in Percent" {
-            $HTMLTableSubgraphLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="90" height="61.49999999999999"><img src="Diagrammer.png"/></TD><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableSubgraphLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="90" height="61.5"><img src="Diagrammer.png"/></TD><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
     }
 
