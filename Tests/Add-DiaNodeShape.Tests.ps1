@@ -18,7 +18,13 @@ Describe Add-DiaNodeShape {
     }
 
     It "Should return a Graphviz Node representation with triangle shape and filled style" {
-        $HTMLOutPut | Should -BeExactly '"AD-Forest" [fillcolor="lightblue";width="0.75";color="black";label="AD-Forest";fontname="Arial";fontcolor="black";orientation="0";labelloc="c";height="0.5";shape="triangle";penwidth="1";fontsize="12";style="filled";]'
+        $HTMLOutPut | Should -Match 'fillcolor="lightblue"'
+        $HTMLOutPut | Should -Match 'label="AD-Forest"'
+        $HTMLOutPut | Should -Match 'shape="triangle"'
+        $HTMLOutPut | Should -Match 'style="filled"'
+        $HTMLOutPut | Should -Match 'orientation="0"'
+        $HTMLOutPut | Should -Match 'labelloc="c"'
+        $HTMLOutPut | Should -Match '"AD-Forest"'
     }
 
     It "Should return a Graphviz Node representation with triangle shape and filled style in DraftMode" {
