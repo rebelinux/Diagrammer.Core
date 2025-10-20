@@ -9,7 +9,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Base64.ps1')
 }
 
-Describe Export-Diagrammer {
+Describe Export-Diagrammer -Skip:$($PSVersionTable.Platform -eq 'Unix') {
     BeforeAll {
         $dotSource = Get-Content -Path (Join-Path $TestsFolder GraphvizSource.dot)
         $base64Source = switch ($PSVersionTable.Platform) {
