@@ -138,7 +138,7 @@ $example8 = & {
             -TableBorder sets the thickness of the table border.
         #>
 
-        $Web01Label = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontsize 20 -fontSize 18  -DraftMode:$DraftMode -FontBold
+        $Web01Label = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontSize 20 -FontSize 18  -DraftMode:$DraftMode -FontBold
 
 
         $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AdditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode

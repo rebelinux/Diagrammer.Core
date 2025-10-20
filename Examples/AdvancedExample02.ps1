@@ -165,14 +165,14 @@ $advancedexample02 = & {
             The resulting HTML-like table is then used as the label for a Node representing the web server farm.
         #>
 
-        $WebLabel = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -columnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -MultiIcon -DraftMode:$DraftMode -fontSize 18
+        $WebLabel = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -MultiIcon -DraftMode:$DraftMode -FontSize 18
 
         <#
             The Add-DiaHTMLSubGraph cmdlet creates a HTML-like table that simulates a SubGraph with enhanced layout and connectivity options.
             The -columnSize parameter is set to 1, which arranges the web servers in a table with 1 column.
             The resulting HTML-like table is then used as the label for a Node representing the web server farm.
         #>
-        $WebNodeObj = Add-DiaHtmlSubGraph -ImagesObj $Images -TableArray $WebLabel -Align 'Center' -Label 'Diagrammer SubGraph' -LabelPos "top" -TableStyle "dashed,rounded" -TableBorderColor "darkgray" -TableBorder "1" -columnSize 1 -fontSize 22 -DraftMode:$DraftMode -TableBackgroundColor '#a8c3b8ff' -IconType "Server"
+        $WebNodeObj = Add-DiaHtmlSubGraph -ImagesObj $Images -TableArray $WebLabel -Align 'Center' -Label 'Diagrammer SubGraph' -LabelPos "top" -TableStyle "dashed,rounded" -TableBorderColor "darkgray" -TableBorder "1" -ColumnSize 1 -FontSize 22 -DraftMode:$DraftMode -TableBackgroundColor '#a8c3b8ff' -IconType "Server"
 
         <#
             Finally, create a Node for the web server farm using the HTML-like SubGraph as the label.

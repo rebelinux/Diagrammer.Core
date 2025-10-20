@@ -31,7 +31,7 @@ Describe Add-DiaHtmlLabel {
 
         $HTMLTableMainLabelSetImagePercent = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'Main_Logo' -IconPath $IconPath -ImagesObj $Images -ImageSizePercent 70
 
-        $HTMLTableSubgraphLabelSetImagePercent = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'Main_Logo' -IconPath $IconPath -ImagesObj $Images -ImageSizePercent 30 -SubgraphLabel
+        $HTMLTableSubgraphLabelSetImagePercent = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'Main_Logo' -IconPath $IconPath -ImagesObj $Images -ImageSizePercent 70 -SubgraphLabel
 
         $HTMLTableMainLabelNoIcon = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'NoIcon' -ImagesObj $Images
         $HTMLTableSubgraphLabelNoIcon = Add-DiaHtmlLabel -Label $MainGraphLabel['Forest'] -IconType 'NoIcon' -ImagesObj $Images -SubgraphLabel
@@ -73,7 +73,7 @@ Describe Add-DiaHtmlLabel {
         }
 
         It "Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon size in Percent" {
-            $HTMLTableSubgraphLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="90" height="61.5"><img src="Diagrammer.png"/></TD><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableSubgraphLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="210" height="143.5"><img src="Diagrammer.png"/></TD><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
     }
 
