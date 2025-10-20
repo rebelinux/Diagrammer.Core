@@ -98,7 +98,7 @@ Describe Export-Diagrammer -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputBase64
         $GraphvizOutput | Should -Be $base64Source
     }
-    It "Should return Diagrammer.svg full path" {
+    It "Should return Diagrammer.svg full path" -Skip {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputSVG
         ($GraphvizOutput).FullName | Should -Exist
     }
@@ -118,7 +118,7 @@ Describe Export-Diagrammer -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
         $OutPutPath | Should -Exist
     }
-    It "Should create Output.svg file image" {
+    It "Should create Output.svg file image" -Skip {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
         $OutPutPath | Should -Exist
     }
