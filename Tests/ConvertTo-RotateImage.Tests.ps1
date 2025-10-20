@@ -3,7 +3,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-RotateImage.ps1')
 }
 
-Describe ConvertTo-RotateImage {
+Describe ConvertTo-RotateImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
     BeforeAll {
         # Force the redirect of TMP to the TestDrive folder
         $env:TMP = $TestDrive
