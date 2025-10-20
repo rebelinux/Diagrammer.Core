@@ -737,7 +737,8 @@ function Add-DiaHtmlNodeTable {
                 }
             } else {
 
-                $TDICON += '<TD ALIGN="{0}" colspan="{1}"><img src="{2}"/></TD>' -f $Align, $inputObject.Count, $Icon[0]
+                $TDICONMatch = if ($Icon.Count -eq 1) { $Icon } else { $Icon[0] }
+                $TDICON += '<TD ALIGN="{0}" colspan="{1}"><img src="{2}"/></TD>' -f $Align, $inputObject.Count, $TDICONMatch
 
                 $TR += '<TR>{0}</TR>' -f $TDICON
 

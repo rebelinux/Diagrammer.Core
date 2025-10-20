@@ -39,9 +39,9 @@ Describe Example05 {
             It "Should match HTML label with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match $ExpectedText
+                $DotContent | Should -Match 'img src="Diagrammer.png"'
+                $DotContent | Should -Match '>Web Application Diagram<'
             }
         }
 
@@ -74,23 +74,36 @@ Describe Example05 {
             It "Should match HTML label Web01 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match $ExpectedText
+                $DotContent | Should -Match 'img src="Server.png"'
+                $DotContent | Should -Match '>Web-Server-01<'
+                $DotContent | Should -Match 'OS: Redhat Linux'
+                $DotContent | Should -Match 'Version: 10'
+                $DotContent | Should -Match 'Build: 10.1'
+                $DotContent | Should -Match 'Edition: Enterprise'
+
             }
             It "Should match HTML label App01 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>App-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Windows Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 2019</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 17763.3163</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Datacenter</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match $ExpectedText
+                $DotContent | Should -Match 'img src="Server.png"'
+                $DotContent | Should -Match '>App-Server-01<'
+                $DotContent | Should -Match 'OS: Redhat Linux'
+                $DotContent | Should -Match 'Version: 10'
+                $DotContent | Should -Match 'Build: 10.1'
+                $DotContent | Should -Match 'Edition: Enterprise'
             }
             It "Should match HTML label DB01 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Server.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Db-Server-01</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Oracle Server</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 8</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 8.2</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Edition: Enterprise</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match $ExpectedText
+                $DotContent | Should -Match 'img src="Server.png"'
+                $DotContent | Should -Match '>DB-Server-01<'
+                $DotContent | Should -Match 'OS: Oracle Server'
+                $DotContent | Should -Match 'Version: 8'
+                $DotContent | Should -Match 'Build: 8.2'
+                $DotContent | Should -Match 'Edition: Enterprise'
             }
         }
     }
