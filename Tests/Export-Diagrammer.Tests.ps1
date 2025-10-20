@@ -9,7 +9,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-Base64.ps1')
 }
 
-Describe Export-Diagrammer -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+Describe Export-Diagrammer {
     BeforeAll {
         $dotSource = Get-Content -Path (Join-Path $TestsFolder GraphvizSource.dot)
         $base64Source = switch ($PSVersionTable.Platform) {
@@ -98,7 +98,7 @@ Describe Export-Diagrammer -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputBase64
         $GraphvizOutput | Should -Be $base64Source
     }
-    It "Should return Diagrammer.svg full path" -Skip {
+    It "Should return Diagrammer.svg full path" {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputSVG
         ($GraphvizOutput).FullName | Should -Exist
     }
@@ -118,7 +118,7 @@ Describe Export-Diagrammer -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
         $OutPutPath | Should -Exist
     }
-    It "Should create Output.svg file image" -Skip {
+    It "Should create Output.svg file image" {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
         $OutPutPath | Should -Exist
     }
