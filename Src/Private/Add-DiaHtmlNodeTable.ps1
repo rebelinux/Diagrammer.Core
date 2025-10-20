@@ -305,6 +305,12 @@ function Add-DiaHtmlNodeTable {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'The cell text font name'
+        )]
+        [string] $SubgraphFontName = "Segoe Ui",
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Allow to set the subgraph table label font size'
         )]
         [int]$SubgraphLabelFontSize = 14,
@@ -600,7 +606,7 @@ function Add-DiaHtmlNodeTable {
                 }
             } else {
 
-                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{3}" Color="{4}" POINT-SIZE="{2}">{5}</FONT></TD>' -f $Align, $inputObject.Count, $FontSize, $FontName, $FontColor, $Icon[$iconNumber]
+                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}">{5}</FONT></TD>' -f $Align, $inputObject.Count, $FontName, $FontColor, $FontSize, $Icon[$iconNumber]
 
                 $TR += '<TR>{0}</TR>' -f $TDICON
 
@@ -804,7 +810,7 @@ function Add-DiaHtmlNodeTable {
 
         if ($SubgraphIcon) {
             if ($IconDebug) {
-                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>{5}</B></FONT></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubgraphLabelFontSize, $SubGraphIcon
+                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>{5}</B></FONT></TD>' -f $Align, $columnSize, $FontName, $fontColor, $SubgraphLabelFontSize, $SubGraphIcon
 
                 $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
@@ -848,7 +854,7 @@ function Add-DiaHtmlNodeTable {
             }
         } else {
             if ($IconDebug) {
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $fontName, [string]$SubgraphLabel, $SubgraphLabelFontSize, $fontColor
+                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $FontName, [string]$SubgraphLabel, $SubgraphLabelFontSize, $FontColor
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
