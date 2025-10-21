@@ -52,29 +52,33 @@ function Get-DiaImagePercent {
     process {
 
         if ($GraphObj) {
-            $ImagePrty = @{}
-            try {
-                $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
-            } catch {
-                Write-Verbose -Message "Unable to convert Graphviz object to base64 format needed to get image dimensions"
-                Write-Debug -Message $($_.Exception.Message)
-            }
-
-            if ($Image_FromStream) {
-                if ($Percent) {
-                    $ImagePrty = @{
-                        'Width' = ($Image_FromStream.Width / 100) * $Percent
-                        'Height' = ($Image_FromStream.Height / 100) * $Percent
-                    }
-                } else {
-                    $ImagePrty = @{
-                        'Width' = $Image_FromStream.Width
-                        'Height' = $Image_FromStream.Height
-                    }
+            if ($PSVersionTable.Platform -ne 'Unix') {
+                $ImagePrty = @{}
+                try {
+                    $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
+                } catch {
+                    Write-Verbose -Message "Unable to convert Graphviz object to base64 format needed to get image dimensions"
+                    Write-Debug -Message $($_.Exception.Message)
                 }
-                return $ImagePrty
+
+                if ($Image_FromStream) {
+                    if ($Percent) {
+                        $ImagePrty = @{
+                            'Width' = ($Image_FromStream.Width / 100) * $Percent
+                            'Height' = ($Image_FromStream.Height / 100) * $Percent
+                        }
+                    } else {
+                        $ImagePrty = @{
+                            'Width' = $Image_FromStream.Width
+                            'Height' = $Image_FromStream.Height
+                        }
+                    }
+                    return $ImagePrty
+                } else {
+                    Write-Verbose -Message "Unable to validate image dimensions"
+                }
             } else {
-                Write-Verbose -Message "Unable to validate image dimensions"
+                Write-Verbose -Message "GraphObj parameter is not supported on Unix platforms."
             }
         } else {
             $ImagePrty = @{}

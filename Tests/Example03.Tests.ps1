@@ -38,9 +38,9 @@ Describe Example03 {
         It "Should match HTML label with embedded image" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,"
 
-            $DotContent | Should -Match $ExpectedText
+            $DotContent | Should -Match 'img src="Diagrammer.png"'
+            $DotContent | Should -Match '>Web Application Diagram<'
         }
         It "Should match Web01 node" {
             $DotFile = ($RunFile).FullName

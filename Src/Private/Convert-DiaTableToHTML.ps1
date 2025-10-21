@@ -180,17 +180,17 @@ function Convert-DiaTableToHTML {
     end {
         if ($IconDebug) {
             if ($HTMLOutput) {
-                "<TABLE COLOR='red' CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD bgcolor='red' align='center'><font color='$HeaderFontColor'><B>{0}</B></font></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
+                "<TABLE COLOR='red' CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD BGCOLOR='red' ALIGN='center'><font COLOR='$HeaderFontColor'><B>{0}</B></FONT></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
             } else {
-                $html = "<TABLE COLOR='red' CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD bgcolor='red' align='center'><font color='$HeaderFontColor'><B>{0}</B></font></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
+                $html = "<TABLE COLOR='red' CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD BGCOLOR='red' ALIGN='center'><FONT COLOR='$HeaderFontColor'><B>{0}</B></FONT></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
                 Node $Name @{label = $html; shape = 'none'; fontname = $Fontname; fontsize = $FontSize; style = $Style; penwidth = 1; fillcolor = $Fillcolor; color = $BorderColor }
             }
 
         } else {
             if ($HTMLOutput) {
-                "<TABLE CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD bgcolor='$HeaderColor' align='center'><font color='$HeaderFontColor'><B>{0}</B></font></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
+                "<TABLE CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD BGCOLOR='$HeaderColor' ALIGN='center'><FONT COLOR='$HeaderFontColor'><B>{0}</B></FONT></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
             } else {
-                $html = "<TABLE CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD bgcolor='$HeaderColor' align='center'><font color='$HeaderFontColor'><B>{0}</B></font></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
+                $html = "<TABLE CELLBORDER='1' BORDER='0' CELLSPACING='0'><TR><TD BGCOLOR='$HeaderColor' ALIGN='center'><FONT COLOR='$HeaderFontColor'><B>{0}</B></FONT></TD></TR>{1}</TABLE>" -f $Label, ($tableData -join '')
                 Node $Name @{label = $html; shape = 'none'; fontname = $Fontname; fontsize = $FontSize; style = $Style; penwidth = 1; fillcolor = $Fillcolor; color = $BorderColor }
             }
         }

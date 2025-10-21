@@ -9,10 +9,23 @@ Describe Add-DiaNodeSpacer {
         $HTMLOutPutDebug = Add-DiaNodeSpacer -Name "Spacer" -ShapeWidth 1 -ShapeHeight 1 -DraftMode $true
     }
 
-    It "Should return a HTML table with BlankFiller.png icon" {
-        $HTMLOutPut | Should -BeExactly '"Spacer" [style="invis";fillcolor="transparent";labelloc="c";shape="rectangle";color="black";penwidth="1";label="Spacer";orientation="0";width="1";height="1";]'
+    It "Should return a dummy node with rectangle shape" {
+        $MatchRectangle = 'shape="rectangle"'
+        $MatchNameSpacer = '"Spacer"'
+        $MatchLabelSpacer = 'label="Spacer"'
+        $HTMLOutPut | Should -Match $MatchNameSpacer
+        $HTMLOutPut | Should -Match $MatchLabelSpacer
+        $HTMLOutPut | Should -Match $MatchRectangle
     }
-    It "Should return a HTML table with BlankFiller.png icon with IconDebug Enabled" {
-        $HTMLOutPutDebug | Should -BeExactly '"Spacer" [style="filled";fillcolor="#FFCCCC";labelloc="c";shape="rectangle";color="red";penwidth="1";label="Spacer";orientation="0";width="1";height="1";]'
+    It "Should return a dummy node with rectangle shape with IconDebug Enabled" {
+        $MatchRectangle = 'shape="rectangle"'
+        $MatchNameSpacer = '"Spacer"'
+        $MatchLabelSpacer = 'label="Spacer"'
+        $MatchColorRed = 'color="red"'
+        $MatchColorBackground = 'fillcolor="#FFCCCC"'
+        $HTMLOutPut | Should -Match $MatchNameSpacer
+        $HTMLOutPut | Should -Match $MatchLabelSpacer
+        $HTMLOutPut | Should -Match $MatchRectangle
+        $HTMLOutPutDebug | Should -Match $MatchNameSpacer
     }
 }

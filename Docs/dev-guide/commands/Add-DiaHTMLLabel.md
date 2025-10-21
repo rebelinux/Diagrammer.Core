@@ -63,7 +63,7 @@ Add-DiaHTMLLabel -Label "Active Directory Forest Diagram" -IconType $CustomLogo 
         ```graphviz dot ADDiaHTMLLabel.png
             digraph g {
                 node [shape=plain];
-                a [label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR></TABLE>>];
+                a [label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR></TABLE>>];
             }
         ```
     === "Example 1 - DraftMode"
@@ -71,7 +71,7 @@ Add-DiaHTMLLabel -Label "Active Directory Forest Diagram" -IconType $CustomLogo 
         ```graphviz dot ADDiaHTMLLabel_draftmode.png
             digraph g {
                 node [shape=plain];
-                a [label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui Black' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>>];
+                a [label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='14'>Active Directory Forest Diagram</FONT></TD></TR><TR><TD ALIGN='center'><FONT color='red'>DraftMode ON</FONT></TD></TR></TABLE>>];
             }
         ```
 
@@ -146,11 +146,11 @@ HelpMessage: ''
 ### -fontName
 
 Specifies the font name for the cell text.
-Default is "Segoe Ui Black".
+Default is "Segoe Ui".
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui Black
+DefaultValue: Segoe Ui
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -465,7 +465,7 @@ A string representing the HTML table in Graphviz DOT format.
 ```
 Version:        0.2.30
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 GitHub:         rebelinux
 ```
 

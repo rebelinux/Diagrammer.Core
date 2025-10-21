@@ -202,7 +202,7 @@ HTML string representing the node with the specified shape and properties.
 ```
 Version:        0.2.30
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 Github:         rebelinux
 ```
 

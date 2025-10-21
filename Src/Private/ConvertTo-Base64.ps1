@@ -7,7 +7,7 @@ function ConvertTo-Base64 {
     .NOTES
         Version:        0.2.31
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
     .LINK
         https://github.com/rebelinux/Diagrammer.Core

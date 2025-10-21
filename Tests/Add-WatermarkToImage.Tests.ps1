@@ -3,7 +3,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'Add-WatermarkToImage.ps1')
 }
 
-Describe Add-WatermarkToImage {
+Describe Add-WatermarkToImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
     BeforeAll {
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
         Add-Type -AssemblyName System.Windows.Forms

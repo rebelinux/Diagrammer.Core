@@ -224,7 +224,7 @@ Specifies the font name of the cell text.
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui Black
+DefaultValue: Segoe Ui
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -659,7 +659,7 @@ A string that can be used as a Graphviz node label.
 ```
 Version:        0.2.30
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 Github:         rebelinux
 ```
 

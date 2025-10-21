@@ -46,7 +46,7 @@ function Export-Diagrammer {
     .NOTES
         Version:        0.2.31
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         GitHub:         rebelinux
 
     .LINK
@@ -161,7 +161,7 @@ function Export-Diagrammer {
                     }
                 }
             }
-            default { Join-Path -Path $RootPath -ChildPath 'Graphviz\bin\dot.exe' }
+            default { Join-Path -Path $RootPath -ChildPath 'Tools\Graphviz\bin\dot.exe' }
         }
         # Set the path to the ImageMagick executable
         $script:ImageMagickPath = switch ($PSVersionTable.Platform) {
@@ -180,7 +180,7 @@ function Export-Diagrammer {
                     }
                 }
             }
-            default { Join-Path $RootPath 'ImageMagick\magick.exe' }
+            default { Join-Path $RootPath 'Tools\ImageMagick\magick.exe' }
         }
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat

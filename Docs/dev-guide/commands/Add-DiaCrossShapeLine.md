@@ -462,7 +462,7 @@ A Graphviz dot string representing the name of the node in the cross shape.
 ```
 Version:        0.2.31
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 GitHub:         rebelinux
 ```
 

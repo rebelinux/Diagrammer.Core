@@ -186,11 +186,11 @@ HelpMessage: ''
 ### -fontName
 
 The text font name used inside the cell.
-Default is "Segoe Ui Black".
+Default is "Segoe Ui".
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui Black
+DefaultValue: Segoe Ui
 SupportsWildcards: false
 Aliases: []
 ParameterSets:
@@ -441,7 +441,7 @@ Returns the generated HTML table as a string.
 ```
 Version:        0.2.30
 Author:         Jonathan Colon
-Twitter:        @jcolonfzenpr
+Bluesky:        @jcolonfpr.bsky.social
 Github:         rebelinux
 ```
 

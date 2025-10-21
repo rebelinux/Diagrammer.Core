@@ -88,7 +88,7 @@ function Add-DiaCrossShapeLine {
     .NOTES
         Version:        0.2.31
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         GitHub:         rebelinux
 
     .LINK

@@ -36,7 +36,7 @@ Describe Resize-Image {
         }
     }
 
-    It "Should return resized image" {
+    It "Should return resized image" -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         (Resize-Image @PassParamsValidParameters).FullName | Should -Exist
     }
     It "Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" {

@@ -1,4 +1,4 @@
-# ** This example demonstrates how to use the Add-DiaHTMLSubGraph cmdlet to simulate Graphviz SubGraphs. (part of Diagrammer.Core) **
+# ** This example demonstrates how to use the Add-DiaNodeText cmdlet to create a text box node in a diagram. (part of Diagrammer.Core) **
 
 <#
     This example demonstrates how to create a 3-tier web application diagram using the Diagrammer module.
@@ -53,7 +53,7 @@ $script:Images = @{
 
 $MainGraphLabel = 'Web Application Diagram'
 
-$advancedexample01 = & {
+$advancedexample02 = & {
     <#
         A SubGraph allows you to group objects in a container, creating a graph within a graph.
         SubGraph, Node, and Edge have attributes for setting background color, label, border color, style, etc.
@@ -179,10 +179,27 @@ $advancedexample01 = & {
             The node is styled with a transparent background and a font size of 14.
         #>
         Node -Name "USA-WebServers" -Attributes @{Label = $WebNodeObj ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14; }
+
+        <#
+            Now, let's add a text box node using the Add-DiaNodeText cmdlet.
+            This text box can provide additional information about the web server farm.
+            The Add-DiaNodeText cmdlet allows you to create a text box node with customizable properties.
+            You can specify the text, font size, color, background color, and more.
+            The resulting text box can be connected to other nodes in the diagram.
+            The \n character is used to create line breaks in the text. Simulating a multi-line text box.
+        #>
+        Add-DiaNodeText -Name "Info-Box" -TableBorder 2 -DraftMode:$DraftMode -TableBorderColor "#FF0000" -TableBorderStyle "SOLID" -Text "This is a test text box.\nIt supports multiple lines of text.\nYou can customize the font, size, color, and background." -FontColor "#0000FF" -FontSize 30 -FontBold -TableBackgroundColor "#FFFF00" -TextAlign "Left" -NodeObject
+
+        # Now, let's add another text box node. This one will explain the advantages of using Add-DiaHTMLSubGraph over native Graphviz SubGraphs.
+        $Message = "Add-DiaHTMLSubGraph permit the use of edges to connect nodes inside and outside the SubGraph.\n
+        This is not possible with native Graphviz SubGraphs.\n"
+        Add-DiaNodeText -Name "Info-Box2" -DraftMode:$DraftMode -Text $Message -FontColor "#0000FF" -FontSize 20 -FontBold -TextAlign "Left" -NodeObject
+
+        Edge -From "USA-WebServers" -To "Info-Box2" -Attributes @{minlen = 2; color = 'black'; style = 'dashed'; penwidth = 1.5 }
     }
 }
 <#
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $advancedexample01 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample01 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $advancedexample02 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample02 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

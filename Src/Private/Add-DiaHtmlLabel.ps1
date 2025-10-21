@@ -18,36 +18,79 @@ function Add-DiaHtmlLabel {
     .NOTES
         Version:        0.2.30
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         GitHub:         rebelinux
     .PARAMETER CellPadding
-        The padding inside the table cell. Default is 5.
+        Specifies the padding inside the HTML table cells. Default is 10.
+
     .PARAMETER CellSpacing
-        The spacing between table cells. Default is 5.
+        Specifies the spacing between HTML table cells. Default is 20.
+
+    .PARAMETER SubgraphCellPadding
+        Padding inside HTML table cells when rendering subgraph labels. Default is 5.
+
+    .PARAMETER SubgraphCellSpacing
+        Spacing between HTML table cells when rendering subgraph labels. Default is 5.
+
     .PARAMETER Fontsize
-        Specifies the font size of the label. Default is 1.
-    .PARAMETER fontColor
-        Specifies the font color for the cell text. Default is "#565656".
-    .PARAMETER fontName
-        Specifies the font name for the cell text. Default is "Segoe Ui Black".
+        Specifies the font size used for the label text. Default is 14.
+
+    .PARAMETER FontColor
+        Specifies the font color for the cell text. Default is "#000000".
+
+    .PARAMETER FontName
+        Specifies the font family used for the label text. Default is "Segoe Ui".
+
+    .PARAMETER FontBold
+        Switch to render the label text in bold.
+
+    .PARAMETER FontItalic
+        Switch to render the label text in italic.
+
+    .PARAMETER FontUnderline
+        Switch to underline the label text.
+
+    .PARAMETER FontOverline
+        Switch to overline the label text.
+
+    .PARAMETER FontSubscript
+        Switch to render the label text as subscript.
+
+    .PARAMETER FontSuperscript
+        Switch to render the label text as superscript.
+
+    .PARAMETER FontStrikeThrough
+        Switch to render the label text with a strikethrough.
+
     .PARAMETER IconDebug
-        Enables the table debug mode if set to $true.
-    .PARAMETER IconHeight
-        Specifies the height of the subgraph icon. Default is 40.
-    .PARAMETER IconPath
-        Optionally specifies the full path to the icon image file. If not provided, the default image path is used.
+        Enables debug (draft) mode for icon rendering. When set, a debug table row is included indicating DraftMode.
+
     .PARAMETER IconType
-        Specifies the main diagram logo type.
-    .PARAMETER IconWidth
-        Specifies the width of the subgraph icon. Default is 40.
-    .PARAMETER ImageSizePercent
-        Set the image size in percent (100% is default). Requires IconPath when less than 100.
+        The key or name of the icon to use. If set to 'NoIcon' no icon is displayed. Resolved from ImagesObj when available.
+
     .PARAMETER ImagesObj
-        Hashtable containing the IconName to IconPath translation.
+        Hashtable mapping icon keys to image file names or paths. Default is an empty hashtable.
+
+    .PARAMETER IconPath
+        Optional path (directory) containing icon image files. Required when ImageSizePercent is less than 100.
+
+    .PARAMETER IconWidth
+        Optional width for the icon in pixels. When provided with IconHeight, a fixed-size image cell is used.
+
+    .PARAMETER IconHeight
+        Optional height for the icon in pixels. When provided with IconWidth, a fixed-size image cell is used.
+
+    .PARAMETER ImageSizePercent
+        Percentage to scale the icon (1-100). Default is 100. When less than 100, IconPath is required and Get-DiaImagePercent is used.
+
     .PARAMETER Label
-        The string used to set the Diagram Title. This parameter is mandatory.
+        The text label used as the diagram title. This parameter is mandatory.
+
     .PARAMETER SubgraphLabel
-        Switch to create a table used to add a logo to a Graphviz subgraph.
+        Switch to produce a table formatted for a Graphviz subgraph label (icon and text side-by-side).
+
+    .PARAMETER TableBorder
+        Border width for the generated HTML table. Default is 0.
     #>
 
     [CmdletBinding()]
@@ -106,13 +149,55 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $fontColor = "#565656",
+        [string] $FontColor = "#000000",
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $fontName = "Segoe Ui Black",
+        [string] $FontName = "Segoe Ui",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font bold'
+        )]
+        [switch] $FontBold,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font italic'
+        )]
+        [switch] $FontItalic,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font underline'
+        )]
+        [switch] $FontUnderline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font overline'
+        )]
+        [switch] $FontOverline,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font subscript'
+        )]
+        [switch] $FontSubscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font superscript'
+        )]
+        [switch] $FontSuperscript,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the font strikethrough'
+        )]
+        [switch] $FontStrikeThrough,
 
         [Parameter(
             Mandatory = $false,
@@ -171,37 +256,41 @@ function Add-DiaHtmlLabel {
         $CalculatedImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }
 
+    $FormattedLabel = Format-HtmlFontProperty -Text $Label -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
+
     if (-not $SubgraphLabel) {
+
         if ($IconDebug) {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>Debug ON</font></TD></TR></TABLE>"
+            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">{3} Logo</TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="center" ><FONT FACE="{4}" Color="{5}" POINT-SIZE="{6}">{7}</FONT></TD></TR><TR><TD ALIGN="center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $ICON, $FontName, $FontColor, $FontSize, $Label
         } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD></TR><TR><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $IconWidth, $IconHeight, $ICON, $FormattedLabel
 
             } elseif ($CalculatedImageSize) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD></TR><TR><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $CalculatedImageSize.Width, $CalculatedImageSize.Height, $ICON, $FormattedLabel
 
             } else {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1"><img src="{3}"/></TD></TR><TR><TD ALIGN="center">{4}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $ICON, $FormattedLabel
 
             }
         } else {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD ALIGN='center' ><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center">{3}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $FormattedLabel
         }
     }
     if ($SubgraphLabel) {
+
         if ($IconDebug) {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Subgraph Logo</TD><TD bgcolor='#FFCCCC' ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
-        } if ($ICON -ne 'NoIcon') {
+            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">{3} Logo</TD><TD bgcolor="#FFCCCC" ALIGN="Center">{4}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $ICON, $FormattedLabel
+        } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($IconWidth)' height='$($IconHeight)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $IconWidth, $IconHeight, $ICON, $FormattedLabel
             } elseif ($CalculatedImageSize) {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1' fixedsize='true' width='$($CalculatedImageSize.Width)' height='$($CalculatedImageSize.Height)'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $CalculatedImageSize.Width, $CalculatedImageSize.Height, $ICON, $FormattedLabel
             } else {
-                return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($SubgraphCellPadding)' cellpadding='$($SubgraphCellPadding)'><TR><TD ALIGN='center' colspan='1'><img src='$($ICON)'/></TD><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1"><img src="{3}"/></TD><TD ALIGN="center">{4}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $ICON, $FormattedLabel
             }
         } else {
-            return "<TABLE border='$TableBorder' cellborder='0' cellspacing='$($CellSpacing)' cellpadding='$($CellSpacing)'><TD ALIGN='center'><FONT FACE='$($fontName)' Color='$($fontColor)' POINT-SIZE='$($Fontsize)'>$Label</FONT></TD></TR></TABLE>"
+            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TD ALIGN="center">{3}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $FormattedLabel
         }
     }
 }

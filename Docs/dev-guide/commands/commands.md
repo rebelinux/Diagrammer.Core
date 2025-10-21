@@ -24,6 +24,7 @@ All commands in the latest release of Diagrammer.Core can be found in the table 
 | [Add-DiaLShapeLine](../../dev-guide/commands/Add-DiaLShapeLine.md)                 | Adds a line between two L shapes            | 0.2.31  |
 | [Add-DiaNodeImage](../../dev-guide/commands/Add-DiaNodeImage.md)                   | Adds an image to a node                     | 0.2.31  |
 | [Add-DiaNodeShape](../../dev-guide/commands/Add-DiaNodeShape.md)                   | Adds a shape to a node                      | 0.2.31  |
+| [Add-DiaNodeText](../../dev-guide/commands/Add-DiaNodeText.md)                     | Adds a text box to a node                   | 0.2.32  |
 | [Add-DiaNodeSpacer](../../dev-guide/commands/Add-DiaNodeSpacer.md)                 | Adds a spacer to a node                     | 0.2.31  |
 | [Add-DiaRightLShapeLine](../../dev-guide/commands/Add-DiaRightLShapeLine.md)       | Adds a line between two right L shapes      | 0.2.31  |
 | [Add-DiaRightTShapeLine](../../dev-guide/commands/Add-DiaRightTShapeLine.md)       | Adds a line between two right T shapes      | 0.2.31  |

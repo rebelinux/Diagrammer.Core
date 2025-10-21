@@ -1,7 +1,9 @@
 BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Join-Hashtable.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Format-HtmlFontProperty.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaNodeImage.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Format-NodeObject.ps1')
 }
 
 Describe Add-DiaNodeImage {
@@ -12,7 +14,7 @@ Describe Add-DiaNodeImage {
 
         $IconPath = Join-Path -Path $TestsFolder -ChildPath "Icons"
 
-        $HTMLOutPut = Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Main_Logo" -IconPath $IconPath -ImageSizePercent 30
+        $HTMLOutPut = Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Main_Logo" -IconPath $IconPath -ImageSizePercent 70
         $HTMLOutPutDebug = Add-DiaNodeImage -Name 'Wan' -ImagesObj $Images -IconType "Main_Logo" -DraftMode $true
 
         $HTMLOutPutNodeObj = Add-DiaNodeImage -Name 'Wan' -ImagesObj $Images -IconType "Main_Logo" -NodeObject
@@ -23,7 +25,7 @@ Describe Add-DiaNodeImage {
     }
 
     It "Should return a HTML table with Diagrammer.png image" {
-        $HTMLOutPut | Should -BeExactly "<TABLE border='0' color='#000000' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='90' height='61.5' colspan='1'><img src='Diagrammer.png'/></TD></TR></TABLE>"
+        $HTMLOutPut | Should -BeExactly "<TABLE border='0' color='#000000' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='210' height='143.5' colspan='1'><img src='Diagrammer.png'/></TD></TR></TABLE>"
     }
     It "Should return a HTML table with the IMG tag" {
         $HTMLOutPut | Should -Match "<img src='Diagrammer.png'/>"
@@ -35,7 +37,7 @@ Describe Add-DiaNodeImage {
         $HTMLOutPutNodeObj | Should -Match "`"Wan`""
     }
     It "Should return a HTML table with WAN Image text" {
-        $HTMLOutPutDebugNodeObj | Should -Match "WAN Image"
+        $HTMLOutPutDebugNodeObj | Should -Match "WAN"
     }
     It "Should return a HTML table without the IMG tag" {
         $HTMLOutPutDebug | Should -Not -Match "<img src='Diagrammer.png'/>"

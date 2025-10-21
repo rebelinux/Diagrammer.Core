@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.32] - 2025-10-21
+
+### :toolbox: Added
+
+- Add Add-DiaNodeText to allow the creation of a text box in the diagram with support for paragraph support
+  - Add AdvancedExample02.ps1 to demonstrate the use of Add-DiaNodeText cmdlet feature
+  - Add tests pester for Add-DiaNodeText cmdlet
+  - Add documentation to website for Add-DiaNodeText cmdlet
+- Add Format-HtmlFontProperty to create font properties (Bold, Italic, Underline) for HTML elements
+  - Add tests pester for Format-HtmlFontProperty cmdlet
+- Add NodeObject support to Add-DiaHTMLTable cmdlet
+- Add Font Properties parameter to cmdlets to support Bold, Italic, Underline, Strikethrough, Overline, Superscript, Subscript
+- Add option generate diagram without logo and MainDiagram title
+- Add a horizontal like design to Add-DiaNodeIcon cmdlet
+- Add Add-DiaNodeImage cmdlet to add a image with no text
+- Add parameter to allow creation of NodeObject in multiple cmdlets
+  - Add-DiaHTMLTable
+  - Add-DiaHTMLNodeTable
+  - Add-DiaNodeIcon
+  - Add-DiaHtmlLabel
+
+### :arrows_clockwise: Changed
+
+- Refactor Pester workflow to run tests with code coverage and upload report
+- Refactor font properties in tests and Graphviz source files
+- Updated font face from 'Segoe Ui Black' to 'Segoe Ui' to ensure consistency
+- Moved ImageMagick and Graphviz binaries to Tools folder
+- Moved Icons to Tools folder
+
+### :bug: Fixed
+
+- Fix image dimension validation for GraphObj on non-Unix platforms
+
 ## [0.2.31] - 2025-10-13
 
 ### :toolbox: Added

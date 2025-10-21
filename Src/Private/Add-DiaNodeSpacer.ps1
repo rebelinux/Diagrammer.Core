@@ -15,7 +15,7 @@ function Add-DiaNodeSpacer {
     .NOTES
         Version:        0.2.30
         Author:         Jonathan Colon
-        Twitter:        @jcolonfzenpr
+        Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
 
     .PARAMETER IconDebug

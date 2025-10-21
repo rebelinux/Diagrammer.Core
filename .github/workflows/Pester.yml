@@ -1,31 +1,46 @@
-name: PesterTests
-on: [push]
+name: Run Pester Tests
+
+on:
+    push:
+        branches: ["dev", "main"]
+    pull_request:
+        branches: ["dev"]
+
 jobs:
     test:
         runs-on: windows-latest
-        permissions:
-            checks: write
         steps:
             - uses: actions/checkout@v5
-            - name: Set PSRepository to Trusted for PowerShell Gallery
+
+            - name: Install PSGraph
               shell: pwsh
-              run: |
-                  Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-            - name: Install PSGraph module
-              shell: pwsh
-              run: |
-                  Install-Module -Name PSGraph -Repository PSGallery -Force
-            - name: test module
-              id: test_module
-              uses: zyborg/pester-tests-report@v1.5.0
+              run: Install-Module -Name PSGraph -Force -Scope CurrentUser
+
+            - name: Run Pester tests
+              uses: PSModule/Invoke-Pester@v4
+              id: action-test
               with:
-                  include_paths: Tests
-                  report_name: module_tests
-                  report_title: My Module Tests
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-            - name: dump test results
-              shell: pwsh
+                  Path: "./Tests"
+                  TestResult_Enabled: "true"
+                  TestResult_OutputPath: "./test-results.xml"
+                  CodeCoverage_Enabled: "true"
+                  CodeCoverage_Path: "./Src"
+                  CodeCoverage_OutputPath: "./coverage.xml"
+                  CodeCoverage_OutputFormat: "JaCoCo"
+                  Prescript: |
+                      Import-Module PSGraph
+
+            - name: Process test results
+              if: always()
               run: |
-                  Write-Host -Message 'Total Tests Executed...:  ${{ steps.test_module.outputs.total_count }}'
-                  Write-Host -Message 'Total Tests PASSED.....:  ${{ steps.test_module.outputs.passed_count }}'
-                  Write-Host -Message 'Total Tests FAILED.....:  ${{ steps.test_module.outputs.failed_count }}'
+                  Write-Output "Total tests: ${{ steps.action-test.outputs.TotalCount }}"
+                  Write-Output "Passed tests: ${{ steps.action-test.outputs.PassedCount }}"
+                  Write-Output "Failed tests: ${{ steps.action-test.outputs.FailedCount }}"
+                  Write-Output "Failed blocks: ${{ steps.action-test.outputs.FailedBlocksCount }}"
+                  Write-Output "Failed containers: ${{ steps.action-test.outputs.FailedContainersCount }}"
+                  Write-Output "Test outcome: ${{ steps.action-test.outputs.Result }}"
+              shell: pwsh
+
+            - name: Take action based on test outcome
+              if: steps.action-test.outputs.Result == 'Passed'
+              run: echo "All tests passed! Ready to proceed with deployment."
