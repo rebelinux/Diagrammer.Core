@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.2.32] - Unreleased
+## [0.2.32] - 2025-10-21
 
 ### :toolbox: Added
 
@@ -33,6 +33,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated font face from 'Segoe Ui Black' to 'Segoe Ui' to ensure consistency
 - Moved ImageMagick and Graphviz binaries to Tools folder
 - Moved Icons to Tools folder
+
+### :bug: Fixed
+
+- Fix image dimension validation for GraphObj on non-Unix platforms
 
 ## [0.2.31] - 2025-10-13
 
