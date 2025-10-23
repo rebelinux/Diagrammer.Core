@@ -81,9 +81,7 @@ $advancedexample01 = & {
                     'Build' = "10.1"
                 }
 
-                $WebLabel = Add-DiaNodeIcon -Name "Web-Server-0$index" -AdditionalInfo $AdditionalInfo -ImagesObj $Images -IconType "ServerRedhat" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-
-                Node -Name "UK-WebServer-0$index" -Attributes @{Label = $WebLabel ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+                Add-DiaNodeIcon -Name "Web-Server-0$index" -AdditionalInfo $AdditionalInfo -ImagesObj $Images -IconType "ServerRedhat" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
 
                 $index++
             }
@@ -171,14 +169,11 @@ $advancedexample01 = & {
             The Add-DiaHTMLSubGraph cmdlet creates a HTML-like table that simulates a SubGraph with enhanced layout and connectivity options.
             The -columnSize parameter is set to 1, which arranges the web servers in a table with 1 column.
             The resulting HTML-like table is then used as the label for a Node representing the web server farm.
+            The -NodeObject switch is used to create a Node with the HTML-like table as its label.
         #>
-        $WebNodeObj = Add-DiaHtmlSubGraph -ImagesObj $Images -TableArray $WebLabel -Align 'Center' -Label 'Diagrammer SubGraph' -LabelPos "top" -TableStyle "dashed,rounded" -TableBorderColor "darkgray" -TableBorder "1" -ColumnSize 1 -FontSize 22 -DraftMode:$DraftMode -TableBackgroundColor '#a8c3b8ff' -IconType "Server"
 
-        <#
-            Finally, create a Node for the web server farm using the HTML-like SubGraph as the label.
-            The node is styled with a transparent background and a font size of 14.
-        #>
-        Node -Name "USA-WebServers" -Attributes @{Label = $WebNodeObj ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14; }
+        Add-DiaHtmlSubGraph -Name "USA-WebServers" -ImagesObj $Images -TableArray $WebLabel -Align 'Center' -Label 'Diagrammer SubGraph' -LabelPos "top" -TableStyle "dashed,rounded" -TableBorderColor "darkgray" -TableBorder "1" -ColumnSize 1 -FontSize 22 -DraftMode:$DraftMode -TableBackgroundColor '#a8c3b8ff' -IconType "Server" -NodeObject
+
     }
 }
 <#
