@@ -53,24 +53,24 @@ Describe Example13 {
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match App01 node" {
+            It "Should match App-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "App01"
+                $ExpectedText = "App-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match DB01 node" {
+            It "Should match DB-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "DB01"
+                $ExpectedText = "DB-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match Cisco-Router node" {
+            It "Should match Core-Router node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Cisco-Router"
+                $ExpectedText = "Core-Router"
 
                 $DotContent | Should -Match $ExpectedText
             }
@@ -160,39 +160,39 @@ Describe Example13 {
         It "Should match Web-Server-Farm -> App-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web-Server-Farm -> App-Server-01"
+            $ExpectedText = '"Web-Server-Farm" -> "App-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
         It "Should match App-Server-01 -> DB-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App-Server-01 -> DB-Server-01"
+            $ExpectedText = '"App-Server-01" -> "DB-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Cisco-Router -> Web-Server-Farm edge" {
+        It "Should match Core-Router -> Web-Server-Farm edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Cisco-Router -> Web-Server-Farm"
+            $ExpectedText = '"Core-Router" -> "Web-Server-Farm"'
             $ExpectedEdgeLabel = "GE0/0"
 
             $DotContent | Should -Match $ExpectedText
             $DotContent | Should -Match $ExpectedEdgeLabel
         }
-        It "Should match WAN -> Cisco-Router edge" {
+        It "Should match WAN -> Core-Router edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "WAN -> Cisco-Router"
+            $ExpectedText = 'WAN -> "Core-Router"'
             $ExpectedEdgeLabel = "Serial0/0"
 
             $DotContent | Should -Match $ExpectedText
             $DotContent | Should -Match $ExpectedEdgeLabel
         }
-        It "Should match Cisco-Router -> RouterNetworkInfo edge" {
+        It "Should match Core-Router -> RouterNetworkInfo edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Cisco-Router -> RouterNetworkInfo"
+            $ExpectedText = '"Core-Router" -> RouterNetworkInfo'
 
             $DotContent | Should -Match $ExpectedText
         }
