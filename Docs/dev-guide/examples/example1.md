@@ -126,7 +126,7 @@ When you run the script, it generates a PNG file named Example1.png in the speci
                     SubGraph clusterMainGraph {
                         Graph [bb="16,57.75,461,404.5",
                         fontsize=24,
-                        label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>3tier Web Application Diagram</FONT></TD></TR></TABLE>>,
+                        label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Docs/Icons/Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>3tier Web Application Diagram</FONT></TD></TR></TABLE>>,
                         labeljust=c,
                         labelloc=t,
                         lheight=3.98,
