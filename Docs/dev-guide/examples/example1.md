@@ -83,7 +83,6 @@ When you run the script, it generates a PNG file named Example1.png in the speci
                 fontcolor="#565656",
                 fontname="Segoe Ui",
                 fontsize=32,
-                imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
                 labelloc=t,
                 nodesep=0.6,
                 pad=1,
