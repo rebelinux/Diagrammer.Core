@@ -40,7 +40,7 @@ function Add-DiaHtmlNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.29
+        Version:        0.2.33
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -522,7 +522,7 @@ function Add-DiaHtmlNodeTable {
             }
             $iconGroup = Split-Array -inArray $Icon -size $columnSize
         } else {
-            $iconGroup = $iconType
+            # $iconGroup = $iconType
             if ($ImagesObj[$iconType[0]]) {
                 $Icon = $ImagesObj[$iconType[0]]
             } else { $Icon = $false }
@@ -606,7 +606,13 @@ function Add-DiaHtmlNodeTable {
                 }
             } else {
 
-                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}">{5}</FONT></TD>' -f $Align, $inputObject.Count, $FontName, $FontColor, $FontSize, $Icon[$iconNumber]
+                if ($Icon.Count -eq 1) {
+                    $TDICONMatch = $Icon
+                } else {
+                    $TDICONMatch = $Icon[0]
+                }
+
+                $TDICON += '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}">{5}</FONT></TD>' -f $Align, $inputObject.Count, $FontName, $FontColor, $FontSize, $TDICONMatch
 
                 $TR += '<TR>{0}</TR>' -f $TDICON
 

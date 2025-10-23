@@ -72,13 +72,13 @@ When you run the script, it generates a PNG file named Example4.png in the speci
 
         ```graphviz dot example4.png
             digraph Root {
-                graph [bb="0,0,414,901.75",
+                graph [bb="0,0,394,890.5",
                     bgcolor=White,
                     compound=true,
-                    fontcolor="#565656",
+                    fontcolor="#000000",
                     fontname="Segoe Ui",
                     fontsize=32,
-                    imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
+                    imagepath="Docs/Icons",
                     labelloc=t,
                     nodesep=0.6,
                     pad=1,
@@ -106,75 +106,93 @@ When you run the script, it generates a PNG file named Example4.png in the speci
                     style=dashed
                 ];
                 subgraph clusterOUTERDRAWBOARD1 {
-                    graph [bb="8,8,406,893.75",
+                    graph [bb="8,8,386,882.5",
                         color=gray,
                         fontsize=24,
                         label=" ",
                         labeljust=r,
                         labelloc=b,
-                        lheight=0.47,
-                        lp="394.62,28.875",
-                        lwidth=0.09,
+                        lheight=0.41,
+                        lp="375,26.625",
+                        lwidth=0.08,
                         penwidth=1.5,
                         style=invis
                     ];
                     subgraph clusterMainGraph {
-                        graph [bb="16,57.75,398,885.75",
+                        graph [bb="16,53.25,366,874.5",
                             fontsize=24,
-                            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,
+                            label=<<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center" colspan="1"><img src="Diagrammer.png"/></TD></TR><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="24" COLOR="#000000">Web Application Diagram</FONT></TD></TR></TABLE>>,
                             labeljust=c,
                             labelloc=t,
-                            lheight=3.98,
-                            lp="207,738.38",
-                            lwidth=5.09,
+                            lheight=3.92,
+                            lp="191,729.38",
+                            lwidth=4.64,
                             penwidth=0
                         ];
                         subgraph cluster3tier {
-                            graph [bb="136,65.75,278,583",
+                            graph [bb="77,61.25,238,576.25",
                                 color=gray,
                                 fontsize=18,
                                 label="3 Tier Concept",
                                 labelloc=t,
-                                lheight=0.34,
-                                lp="207,566.62",
-                                lwidth=1.75,
+                                lheight=0.31,
+                                lp="157.5,561",
+                                lwidth=1.74,
                                 penwidth=1.5,
                                 style="dashed,rounded"
                             ];
-                            Web01	[fillcolor=Green,
+                            "3tier"	[height=0.05,
+                                label="",
+                                pos="87,519.75",
+                                shape=point,
+                                style=invis,
+                                width=0.05];
+                            "Web-Server-01"	[fillcolor=Green,
                                 height=0.5,
-                                label=Web01,
-                                pos="214,524.25",
+                                label="Web-Server-01",
+                                pos="181,519.75",
                                 shape=rectangle,
-                                width=0.75347];
-                            App01	[fillcolor=Blue,
+                                width=1.3681];
+                            "App-Server-01"	[fillcolor=Blue,
                                 height=0.5,
-                                label=App01,
-                                pos="214,308",
+                                label="App-Server-01",
+                                pos="181,303.5",
                                 shape=rectangle,
-                                width=0.75];
-                            Web01 -> App01	[color=black,
+                                width=1.3472];
+                            "Web-Server-01" -> "App-Server-01"	[color=black,
                                 fontcolor=black,
                                 fontsize=12,
                                 label=gRPC,
-                                lp="228.62,416.12",
+                                lp="195.62,411.62",
                                 minlen=3,
-                                pos="s,214,506.19 e,214,326.26 214,495.48 214,465.62 214,423.25 214,423.25 214,423.25 214,374.75 214,340.68"];
-                            DB01	[fillcolor=Red,
+                                pos="s,181,501.69 e,181,321.76 181,490.98 181,461.12 181,418.75 181,418.75 181,418.75 181,370.25 181,336.18"];
+                            "Db-Server-01"	[fillcolor=Red,
                                 height=0.5,
-                                label=DB01,
-                                pos="214,91.75",
+                                label="Db-Server-01",
+                                pos="181,87.25",
                                 shape=rectangle,
-                                width=0.75];
-                            App01 -> DB01	[color=black,
+                                width=1.2535];
+                            "App-Server-01" -> "Db-Server-01"	[color=black,
                                 fontcolor=black,
                                 fontsize=12,
                                 label=SQL,
-                                lp="225.62,199.88",
+                                lp="192.62,195.38",
                                 minlen=3,
-                                pos="s,214,289.94 e,214,110.01 214,279.23 214,249.37 214,207 214,207 214,207 214,158.5 214,124.43"];
+                                pos="s,181,285.44 e,181,105.51 181,274.73 181,244.87 181,202.5 181,202.5 181,202.5 181,154 181,119.93"];
                         }
+                        MainGraph	[height=0.05,
+                            label="",
+                            pos="302,519.75",
+                            shape=point,
+                            style=invis,
+                            width=0.05];
                     }
+                    OUTERDRAWBOARD1	[height=0.05,
+                        label="",
+                        pos="376,519.75",
+                        shape=point,
+                        style=invis,
+                        width=0.05];
                 }
             }
         ```
@@ -182,13 +200,13 @@ When you run the script, it generates a PNG file named Example4.png in the speci
 
         ```graphviz dot example4_draftmode.png
             digraph Root {
-                graph [bb="0,0,435,916.25",
+                graph [bb="0,0,394,836",
                     bgcolor=White,
                     compound=true,
-                    fontcolor="#565656",
+                    fontcolor="#000000",
                     fontname="Segoe Ui",
                     fontsize=32,
-                    imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
+                    imagepath="Docs/Icons",
                     labelloc=t,
                     nodesep=0.6,
                     pad=1,
@@ -216,72 +234,93 @@ When you run the script, it generates a PNG file named Example4.png in the speci
                     style=dashed
                 ];
                 subgraph clusterOUTERDRAWBOARD1 {
-                    graph [bb="8,8,427,908.25",
+                    graph [bb="8,8,386,828",
                         color=red,
                         fontsize=24,
                         label=" ",
                         labeljust=r,
                         labelloc=b,
-                        lheight=0.47,
-                        lp="415.62,28.875",
-                        lwidth=0.09,
+                        lheight=0.41,
+                        lp="375,26.625",
+                        lwidth=0.08,
                         penwidth=1.5,
                         style=dashed
                     ];
                     subgraph clusterMainGraph {
-                        graph [bb="16,57.75,419,900.25",
+                        graph [bb="16,53.25,366,820",
                             fontsize=24,
-                            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>DraftMode ON</FONT></TD></TR></TABLE>>,
+                            label=<<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">Diagrammer.png Logo</TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="center" ><FONT FACE="Segoe Ui" Color="#000000" POINT-SIZE="24">Web Application Diagram</FONT></TD></TR><TR><TD ALIGN="center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>>,
                             labeljust=c,
                             labelloc=t,
-                            lheight=4.18,
-                            lp="217.5,745.62",
-                            lwidth=5.37,
+                            lheight=3.16,
+                            lp="191,702.12",
+                            lwidth=4.64,
                             penwidth=0
                         ];
                         subgraph cluster3tier {
-                            graph [bb="146,65.75,288,583",
+                            graph [bb="77,61.25,238,576.25",
                                 color=gray,
                                 fontsize=18,
                                 label="3 Tier Concept",
                                 labelloc=t,
-                                lheight=0.34,
-                                lp="217,566.62",
-                                lwidth=1.75,
+                                lheight=0.31,
+                                lp="157.5,561",
+                                lwidth=1.74,
                                 penwidth=1.5,
                                 style="dashed,rounded"
                             ];
-                            Web01	[fillcolor=Green,
+                            "3tier"	[height=0.05,
+                                label="",
+                                pos="87,519.75",
+                                shape=point,
+                                style=invis,
+                                width=0.05];
+                            "Web-Server-01"	[fillcolor=Green,
                                 height=0.5,
-                                pos="224,524.25",
+                                label="Web-Server-01",
+                                pos="181,519.75",
                                 shape=rectangle,
-                                width=0.75347];
-                            App01	[fillcolor=Blue,
+                                width=1.3681];
+                            "App-Server-01"	[fillcolor=Blue,
                                 height=0.5,
-                                pos="224,308",
+                                label="App-Server-01",
+                                pos="181,303.5",
                                 shape=rectangle,
-                                width=0.75];
-                            Web01 -> App01	[color=black,
+                                width=1.3472];
+                            "Web-Server-01" -> "App-Server-01"	[color=black,
                                 fontcolor=black,
                                 fontsize=12,
                                 label=gRPC,
-                                lp="238.62,416.12",
+                                lp="195.62,411.62",
                                 minlen=3,
-                                pos="s,224,506.19 e,224,326.26 224,495.48 224,465.62 224,423.25 224,423.25 224,423.25 224,374.75 224,340.68"];
-                            DB01	[fillcolor=Red,
+                                pos="s,181,501.69 e,181,321.76 181,490.98 181,461.12 181,418.75 181,418.75 181,418.75 181,370.25 181,336.18"];
+                            "Db-Server-01"	[fillcolor=Red,
                                 height=0.5,
-                                pos="224,91.75",
+                                label="Db-Server-01",
+                                pos="181,87.25",
                                 shape=rectangle,
-                                width=0.75];
-                            App01 -> DB01	[color=black,
+                                width=1.2535];
+                            "App-Server-01" -> "Db-Server-01"	[color=black,
                                 fontcolor=black,
                                 fontsize=12,
                                 label=SQL,
-                                lp="235.62,199.88",
+                                lp="192.62,195.38",
                                 minlen=3,
-                                pos="s,224,289.94 e,224,110.01 224,279.23 224,249.37 224,207 224,207 224,207 224,158.5 224,124.43"];
+                                pos="s,181,285.44 e,181,105.51 181,274.73 181,244.87 181,202.5 181,202.5 181,202.5 181,154 181,119.93"];
                         }
+                        MainGraph	[height=0.05,
+                            label="",
+                            pos="302,519.75",
+                            shape=point,
+                            style=invis,
+                            width=0.05];
                     }
+                    OUTERDRAWBOARD1	[height=0.05,
+                        label="",
+                        pos="376,519.75",
+                        shape=point,
+                        style=invis,
+                        width=0.05];
                 }
             }
         ```
