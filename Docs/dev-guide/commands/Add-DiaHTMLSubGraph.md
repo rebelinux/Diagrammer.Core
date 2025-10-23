@@ -20,12 +20,14 @@ Function to convert a array to a HTML Table to mimic Graphviz Cluster (Subgraph)
 ### __AllParameterSets
 
 ```
-Add-DiaHTMLSubGraph [-TableArray] <string[]> [[-ImagesObj] <hashtable>] [[-Align] <string>]
- [[-TableBorder] <int>] [[-CellBorder] <int>] [[-CellPadding] <int>] [[-CellSpacing] <int>]
- [[-fontSize] <int>] [[-fontName] <string>] [[-fontColor] <string>] [[-columnSize] <int>]
- [[-IconDebug] <bool>] [[-IconType] <string>] [[-Label] <string>] [[-LabelPos] <string>]
- [[-TableStyle] <string>] [[-TableBorderColor] <string>] [[-TableBackgroundColor] <string>]
- [[-IconWidth] <int>] [[-IconHeight] <int>] [-NoFontBold] [<CommonParameters>]
+Add-DiaHtmlSubGraph [-TableArray] <String[]> [[-ImagesObj] <Hashtable>] [[-ImageSizePercent] <Int32>]
+ [[-Align] <String>] [[-TableBorder] <Int32>] [[-CellBorder] <Int32>] [[-CellPadding] <Int32>]
+ [[-CellSpacing] <Int32>] [[-FontSize] <Int32>] [[-FontName] <String>] [[-FontColor] <String>] [-FontBold]
+ [-FontItalic] [-FontUnderline] [-FontOverline] [-FontSubscript] [-FontSuperscript] [-FontStrikeThrough]
+ [[-ColumnSize] <Int32>] [[-IconDebug] <Boolean>] [-NoFontBold] [[-IconType] <String>] [[-Label] <String>]
+ [[-LabelPos] <String>] [[-TableStyle] <String>] [[-TableBorderColor] <String>]
+ [[-TableBackgroundColor] <String>] [[-IconWidth] <Int32>] [[-IconHeight] <Int32>] [[-Name] <String>]
+ [-NodeObject] [[-GraphvizAttributes] <Hashtable>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -260,6 +262,156 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
+### -FontColor
+The text font color used inside the cell (Default: #000000)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: #000000
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontItalic
+Allow to set the font italic
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontName
+The text font name used inside the cell (Default: Segoe Ui)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: Segoe Ui
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontOverline
+Allow to set the font overline
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSize
+The text font size used inside the cell (Default: 14)
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: 14
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontStrikeThrough
+Allow to set the font strikethrough
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSubscript
+Allow to set the font subscript
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSuperscript
+Allow to set the font superscript
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontUnderline
+Allow to set the font underline
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GraphvizAttributes
+Additional Graphviz attributes to add to the node (e.g., style=filled,color=lightgrey)
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 23
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IconDebug
 
 Set the table debug mode
@@ -409,6 +561,21 @@ ParameterSets:
 DontShow: false
 AcceptedValues: []
 HelpMessage: ''
+```
+
+### -NodeObject
+Allow to set the text align
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -NoFontBold

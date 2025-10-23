@@ -25,18 +25,19 @@ Diagram the configuration of IT infrastructure in PDF/SVG/DOT/PNG formats using 
 ### Credential (Default)
 
 ```
-New-Diagrammer [-InputObject] <Object> [[-Format] <array>] [[-IconPath] <FileInfo>]
- [[-ImagesObj] <hashtable>] -MainDiagramLabel <string> [-Edgecolor <string>]
- [-EdgeArrowSize <string>] [-EdgeLineWidth <string>] [-Fontcolor <string>] [-Fontname <string>]
- [-NodeFontSize <string>] [-NodeFontcolor <string>] [-Direction <string>]
- [-OutputFolderPath <string>] [-SignatureLogo <string>] [-SignatureLogoName <string>]
- [-Logo <string>] [-LogoName <string>] [-Filename <string>] [-EdgeType <string>]
- [-NodeSeparation <string>] [-SectionSeparation <string>] [-DraftMode] [-EnableErrorDebug]
- [-AuthorName <string>] [-CompanyName <string>] [-Signature] [-MainDiagramLabelFontsize <int>]
- [-MainDiagramLabelFontname <string>] [-MainDiagramLabelFontColor <string>]
- [-MainGraphAttributes <hashtable>] [-WaterMarkColor <string>] [-WaterMarkText <string>]
- [-WaterMarkFontOpacity <int>] [-MainGraphBGColor <string>] [-MainGraphSize <string>]
- [-MainGraphLogoSizePercent <int>] [<CommonParameters>]
+New-Diagrammer [-InputObject] <Object> [[-Format] <Array>] [-Edgecolor <String>] [-EdgeArrowSize <String>]
+ [-EdgeLineWidth <String>] [-Fontcolor <String>] [-Fontname <String>] [-MainDiagramLabelFontBold]
+ [-MainDiagramLabelFontItalic] [-MainDiagramLabelFontUnderline] [-MainDiagramLabelFontOverline]
+ [-MainDiagramLabelFontSubscript] [-MainDiagramLabelFontSuperscript] [-MainDiagramLabelFontStrikeThrough]
+ [-NodeFontSize <String>] [-NodeFontcolor <String>] [[-IconPath] <FileInfo>] [[-ImagesObj] <Hashtable>]
+ [-Direction <String>] [-OutputFolderPath <String>] [-SignatureLogo <String>] [-SignatureLogoName <String>]
+ [-Logo <String>] [-LogoName <String>] [-Filename <String>] [-EdgeType <String>] [-NodeSeparation <String>]
+ [-SectionSeparation <String>] [-DraftMode] [-EnableErrorDebug] [-DisableMainDiagramLogo]
+ [-AuthorName <String>] [-CompanyName <String>] [-Signature] -MainDiagramLabel <String>
+ [-MainDiagramLabelFontsize <Int32>] [-MainDiagramLabelFontname <String>] [-MainDiagramLabelFontColor <String>]
+ [-MainGraphAttributes <Hashtable>] [-WaterMarkColor <String>] [-WaterMarkText <String>]
+ [-WaterMarkFontOpacity <Int32>] [-MainGraphBGColor <String>] [-MainGraphSize <String>]
+ [-MainGraphLogoSizePercent <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -125,6 +126,21 @@ ParameterSets:
 DontShow: false
 AcceptedValues: []
 HelpMessage: ''
+```
+
+### -DisableMainDiagramLogo
+Switch to disable rendering the main diagram logo.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -DraftMode
@@ -540,6 +556,66 @@ ParameterSets:
 DontShow: false
 AcceptedValues: []
 HelpMessage: ''
+```
+
+### -MainDiagramLabelFontStrikeThrough
+Switch to render the main diagram label with strikethrough.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MainDiagramLabelFontSubscript
+Switch to render part of the main diagram label as subscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MainDiagramLabelFontSuperscript
+Switch to render part of the main diagram label as superscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MainDiagramLabelFontUnderline
+Switch to render the main diagram label with underline.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -MainGraphAttributes

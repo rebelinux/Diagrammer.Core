@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.33] - Unreleased
+
+### :toolbox: Changed
+
+- Update Graphviz binaries to v14.0.2
+- Update ImageMagick binaries to v7.1.2-6
+- Enhance cmdlet documentation with detailed parameter descriptions and examples.
+- Refactor existing cmdlet documentation for clarity and consistency.
+
 ## [0.2.32] - 2025-10-21
 
 ### :toolbox: Added
