@@ -43,24 +43,24 @@ Describe Example04 {
             $DotContent | Should -Match 'img src="Diagrammer.png"'
             $DotContent | Should -Match '>Web Application Diagram<'
         }
-        It "Should match Web01 node" {
+        It "Should match Web-Server-01 node" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01"
+            $ExpectedText = "Web-Server-01"
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App01 node" {
+        It "Should match App-Server-01 node" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App01"
+            $ExpectedText = "App-Server-01"
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match DB01 node" {
+        It "Should match DB-Server-01 node" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "DB01"
+            $ExpectedText = "DB-Server-01"
 
             $DotContent | Should -Match $ExpectedText
         }
@@ -74,17 +74,17 @@ Describe Example04 {
 
     }
     Context "Graphviz Dot Edge Tests" {
-        It "Should match Web01 -> App01 edge" {
+        It "Should match Web-Server-01 -> App-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01 -> App01"
+            $ExpectedText = '"Web-Server-01" -> "App-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App01 -> DB01 edge" {
+        It "Should match App-Server-01 -> DB-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App01 -> DB01"
+            $ExpectedText = '"App-Server-01" -> "DB-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }

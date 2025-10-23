@@ -43,9 +43,9 @@ $example4 = & {
             https://psgraph.readthedocs.io/en/latest/Command-Node/
         #>
 
-        Node -Name Web01 -Attributes @{shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
-        Node -Name App01 -Attributes @{shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
-        Node -Name DB01 -Attributes @{shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
+        Node -Name 'Web-Server-01' -Attributes @{Label = 'Web-Server-01'; shape = 'rectangle'; fillColor = 'Green'; fontsize = 14 }
+        Node -Name 'App-Server-01' -Attributes @{Label = 'App-Server-01'; shape = 'rectangle'; fillColor = 'Blue'; fontsize = 14 }
+        Node -Name 'Db-Server-01' -Attributes @{Label = 'Db-Server-01'; shape = 'rectangle'; fillColor = 'Red'; fontsize = 14 }
 
         <#
             This section creates connections between the nodes in a hierarchical layout.
@@ -53,8 +53,8 @@ $example4 = & {
             https://psgraph.readthedocs.io/en/latest/Command-Edge/
         #>
 
-        Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
-        Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
+        Edge -From 'Web-Server-01' -To 'App-Server-01' @{label = 'gRPC'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
+        Edge -From 'App-Server-01' -To 'Db-Server-01' @{label = 'SQL'; color = 'black'; fontsize = 12; fontcolor = 'black'; minlen = 3 }
     }
 }
 

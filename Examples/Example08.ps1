@@ -136,17 +136,19 @@ $example8 = & {
             -SubgraphTableStyle parameter sets the style of the subgraph border (dashed, rounded, solid).
             -TableBorderColor parameter sets the color of the table border.
             -TableBorder sets the thickness of the table border.
+            -SubgraphLabelFontSize parameter sets the font size of the subgraph label.
+            -FontSize parameter sets the font size of the node labels.
+            -DraftMode parameter enables draft mode for faster rendering.
+            -FontBold parameter makes the node labels bold.
+            -SubgraphFontBold parameter makes the subgraph label bold.
+            -NodeObject parameter outputs the node object for further manipulation if needed.
         #>
 
-        $Web01Label = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontSize 20 -FontSize 18  -DraftMode:$DraftMode -FontBold
+        Add-DiaHtmlNodeTable -Name 'Web-Server-Farm' -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType "Server" -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontSize 20 -FontSize 18  -DraftMode:$DraftMode -FontBold -SubgraphFontBold -NodeObject
 
 
-        $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AdditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-        $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AdditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-
-        Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
-        Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
-        Node -Name DB01 -Attributes @{Label = $DB01Label; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+        Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
+        Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
 
         <#
             This section creates connections between the nodes in a hierarchical layout.
@@ -154,14 +156,14 @@ $example8 = & {
             https://psgraph.readthedocs.io/en/latest/Command-Edge/
         #>
 
-        Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
-        Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+        Edge -From 'Web-Server-Farm' -To 'App-Server-01' @{label = 'gRPC'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+        Edge -From 'App-Server-01' -To 'Db-Server-01' @{label = 'SQL'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
 
         <#
             The Rank cmdlet is used to place nodes at the same hierarchical level.
-            In this example, App01 and DB01 are aligned horizontally.
+            In this example, App-Server-01 and Db-Server-01 are aligned horizontally.
         #>
-        Rank -Nodes App01, DB01
+        Rank -Nodes 'App-Server-01', 'Db-Server-01'
     }
 }
 
