@@ -176,7 +176,7 @@ $example12 = & {
 
         Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Cloud" -IconPath $IconPath -ImageSizePercent 30 -NodeObject -DraftMode:$DraftMode
 
-        Edge -From 'WAN' -To 'Cisco-Router' @{label = 'Serial0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
+        Edge -From 'WAN' -To 'Core-Router' @{label = 'Serial0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
 
         <#
             The Add-DiaHTMLTable cmdlet is used to create a list table to display additional information about a object.
