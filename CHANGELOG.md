@@ -7,12 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.33] - Unreleased
 
+### :toolbox: Added
+
+- Add .Net Assembly to support Unix Image Width and Height calculation
+
 ### :toolbox: Changed
 
 - Update Graphviz binaries to v14.0.2
 - Update ImageMagick binaries to v7.1.2-6
-- Enhance cmdlet documentation with detailed parameter descriptions and examples.
-- Refactor existing cmdlet documentation for clarity and consistency.
+- Enhance cmdlet documentation with detailed parameter descriptions and examples
+- Refactor existing cmdlet documentation for clarity and consistency
+- Update Get-DiaImagePercent cmdlet to use the new .Net Assembly for better cross-platform compatibility
+
+### Fixed
+
+- Fix Add-DiaHtmlNodeTable cmdlet to correctly render DraftMode icon names
+- Fix Get-DiaImagePercent cmdlet to handle Unix-based Image Width and Height retrieval
 
 ## [0.2.32] - 2025-10-21
 

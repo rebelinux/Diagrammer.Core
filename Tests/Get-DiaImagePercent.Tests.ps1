@@ -1,6 +1,10 @@
 BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Get-DiaImagePercent.ps1')
+    if ($PSVersionTable.Platform -ne 'Unix') {
+        Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\Diagrammer.dll"
+        Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\SixLabors.ImageSharp.dll"
+    }
 }
 
 Describe Get-DiaImagePercent {
@@ -21,10 +25,10 @@ Describe Get-DiaImagePercent {
         $FromImg.Width | Should -BeExactly 300
     }
 
-    It "Should return Height from base64 file" -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+    It "Should return Height from base64 file" {
         $FromBase64.Height | Should -BeExactly 205
     }
-    It "Should return Width from base64 file" -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+    It "Should return Width from base64 file" {
         $FromBase64.Width | Should -BeExactly 300
     }
     It "Should return calculated Width and Height from image file by percent" {
@@ -32,7 +36,7 @@ Describe Get-DiaImagePercent {
         $ImageSizeByPercent.Height | Should -BeExactly 153.75
     }
     It "Should return default Width and Height from image file if percent value = 100" {
-        $ImageSizeByPercent100.Width | Should -Belike 300
+        $ImageSizeByPercent100.Width | Should -BeLike 300
         $ImageSizeByPercent100.Height | Should -BeLike 205
     }
     It "Should return error if percent is less than 1" {
