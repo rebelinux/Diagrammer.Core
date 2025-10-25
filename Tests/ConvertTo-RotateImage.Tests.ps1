@@ -1,12 +1,16 @@
 BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'ConvertTo-RotateImage.ps1')
+    if ($PSVersionTable.Platform -ne 'Unix') {
+        Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\Diagrammer.dll"
+        Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\SixLabors.ImageSharp.dll"
+    }
 }
 
-Describe ConvertTo-RotateImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+Describe ConvertTo-RotateImage {
     BeforeAll {
         # Force the redirect of TMP to the TestDrive folder
-        $env:TMP = $TestDrive
+        # $env:TMP = $TestDrive
 
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 
@@ -48,7 +52,8 @@ Describe ConvertTo-RotateImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
 
     It "Should create AsBuiltReport_Rotated.png rotated file image" {
         ConvertTo-RotateImage @PassParamsValidParameters
-        "$TestDrive\AsBuiltReport_Rotated.png" | Should -Exist
+        $RotatedImagePath = Join-Path -Path $PassParamsValidParameters.DestinationPath -ChildPath "AsBuiltReport_Rotated.png"
+        $RotatedImagePath | Should -Exist
     }
     It "Should return rotated image FullName Path" {
         (ConvertTo-RotateImage @PassParamsNoDestinationPath).FullName | Should -Exist
@@ -59,28 +64,33 @@ Describe ConvertTo-RotateImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
     }
     It "Should delete the TempImageOutput temporary file when DeleteImage switch is used" {
         ConvertTo-RotateImage @PassParamsDeleteImage
+        $RotatedImagePath = Join-Path -Path $PassParamsDeleteImage.DestinationPath -ChildPath "AsBuiltReport_Rotated.png"
         "$env:TMP\AsBuiltReport_Rotated.png" | Should -Not -Exist
     }
     It "Should not delete the TempImageOutput temporary file when DeleteImage switch isn't used" {
         ConvertTo-RotateImage @PassParamsValidParameters
-        "$env:TMP\AsBuiltReport_Rotated.png" | Should -Exist
+        $RotatedImagePath = Join-Path -Path $PassParamsValidParameters.DestinationPath -ChildPath "AsBuiltReport_Rotated.png"
+        "$env:TMP\AsBuiltReport_Rotated.png" | Should -Not -Exist
     }
     It "Should rotated image to a 90 degree angle" {
         ConvertTo-RotateImage @PassParamsAngleParameters -Angle 90
-        $expectedHash = "D33CF5DCDD12785F03FC2EA456A32017D577A3B5061A90A25F9226B495853A5C"
-        $calculatedHash = (Get-FileHash -Path "$TestDrive\AsBuiltReport_Rotated.png" -Algorithm SHA256).Hash
+        $expectedHash = "FCD60222B8AF7F5E206B2DEF91C9257D15B04CFF151D8BD226413ECC3B295EB8"
+        $RotatedImagePath = Join-Path -Path $PassParamsAngleParameters.DestinationPath -ChildPath "AsBuiltReport_Rotated.png"
+        $calculatedHash = (Get-FileHash -Path $RotatedImagePath -Algorithm SHA256).Hash
         $calculatedHash | Should -Be $expectedHash
     }
     It "Should rotated image to a 180 degree angle" {
         ConvertTo-RotateImage @PassParamsAngleParameters -Angle 180
-        $expectedHash = "36D9369C881A0DA2EEB8D22DADF822C6622B5FB9CC77598DC9BB36F30C12ACC8"
-        $calculatedHash = (Get-FileHash -Path "$TestDrive\AsBuiltReport_Rotated.png" -Algorithm SHA256).Hash
+        $expectedHash = "B3067CA010C1AF7EF2B2B7825A20298F0F64C2598CAE7DC51AB615C91BCBE4D1"
+        $RotatedImagePath = Join-Path -Path $PassParamsAngleParameters.DestinationPath -ChildPath "AsBuiltReport_Rotated.png"
+        $calculatedHash = (Get-FileHash -Path $RotatedImagePath -Algorithm SHA256).Hash
         $calculatedHash | Should -Be $expectedHash
     }
     It "Should rotated image to a 270 degree angle" {
         ConvertTo-RotateImage @PassParamsAngleParameters -Angle 270
-        $expectedHash = "BED369C153B6A7FDB32CCA12DAE90C0BADF9078647A8076A49E0FC1E57304BC6"
-        $calculatedHash = (Get-FileHash -Path "$TestDrive\AsBuiltReport_Rotated.png" -Algorithm SHA256).Hash
+        $expectedHash = "61B54E22853B8F866D2FAD1A21D7B328662DBEDFE9D6C8776C73D04727BF494D"
+        $RotatedImagePath = Join-Path -Path $PassParamsAngleParameters.DestinationPath -ChildPath "AsBuiltReport_Rotated.png"
+        $calculatedHash = (Get-FileHash -Path $RotatedImagePath -Algorithm SHA256).Hash
         $calculatedHash | Should -Be $expectedHash
     }
 }

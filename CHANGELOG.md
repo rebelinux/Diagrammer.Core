@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhance cmdlet documentation with detailed parameter descriptions and examples
 - Refactor existing cmdlet documentation for clarity and consistency
 - Update Get-DiaImagePercent cmdlet to use the new .Net Assembly for better cross-platform compatibility
+- Update ConvertTo-RotateImage function for Unix compatibility and improve error handling
 
 ### Fixed
 
