@@ -7,7 +7,7 @@ if ($loadedAssembly) {
     Write-Verbose -Message "Assembly '$assemblyName' is already loaded."
 } else {
     Write-Verbose -Message "Loading assembly '$assemblyName'."
-    Add-Type -Path "$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}SixLabors.ImageSharp.dll" -f [System.IO.Path]::DirectorySeparatorChar
+    Add-Type -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}SixLabors.ImageSharp.dll" -f [System.IO.Path]::DirectorySeparatorChar)
 }
 
 # Get public and private function definition files and dot source them
