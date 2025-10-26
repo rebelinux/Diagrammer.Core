@@ -92,7 +92,7 @@ function ConvertTo-RotateImage {
         # Load image from path as bitmap
         if ($PSVersionTable.Platform -eq 'Unix') {
             if ($PSVersionTable.Platform -eq 'Unix') {
-                Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\SixLabors.ImageSharp.dll" -
+                Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\SixLabors.ImageSharp.dll"
             }
             $RotatedIMG = [ImageProcessor]::RotateImageFromFile($ImageName.FullName, $TempImageOutput, $Angle)
         } else {

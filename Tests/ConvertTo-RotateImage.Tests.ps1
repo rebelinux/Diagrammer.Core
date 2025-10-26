@@ -64,11 +64,13 @@ Describe ConvertTo-RotateImage {
     }
     It "Should delete the TempImageOutput temporary file when DeleteImage switch is used" {
         ConvertTo-RotateImage @PassParamsDeleteImage
-        "$env:TMP\AsBuiltReport_Rotated.png" | Should -Not -Exist
+        $RotatedImagePath = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "AsBuiltReport_Rotated.png"
+        $RotatedImagePath | Should -Not -Exist
     }
     It "Should not delete the TempImageOutput temporary file when DeleteImage switch isn't used" {
         ConvertTo-RotateImage @PassParamsValidParameters
-        "$env:TMP\AsBuiltReport_Rotated.png" | Should -Exist
+        $RotatedImagePath = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath "AsBuiltReport_Rotated.png"
+        $RotatedImagePath | Should -Exist
     }
     It "Should rotated image to a 90 degree angle" {
         ConvertTo-RotateImage @PassParamsAngleParameters -Angle 90
