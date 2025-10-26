@@ -64,8 +64,6 @@ function Resize-Image {
         [Parameter(Mandatory = $False, ParameterSetName = "Absolute")][Int]$Width,
         [Parameter(Mandatory = $False, ParameterSetName = "Percent")][Double]$Percentage,
         [Parameter(Mandatory = $False)][System.Drawing.Drawing2D.SmoothingMode]$SmoothingMode = "HighQuality",
-        [Parameter(Mandatory = $False)][System.Drawing.Drawing2D.InterpolationMode]$InterpolationMode = "HighQualityBicubic",
-        [Parameter(Mandatory = $False)][System.Drawing.Drawing2D.PixelOffsetMode]$PixelOffsetMode = "HighQuality",
         [Parameter(Mandatory = $False)][String]$NameModifier = "resized"
     )
     begin {
@@ -78,7 +76,7 @@ function Resize-Image {
         }
 
         if ($Percentage -and $MaintainRatio) {
-            Write-Warning -Message"The MaintainRatio flag while using the Percentage parameter does nothing"
+            Write-Warning -Message "The MaintainRatio flag while using the Percentage parameter does nothing"
         }
     }
     process {
@@ -116,8 +114,6 @@ function Resize-Image {
 
             #Retrieving the best quality possible
             $NewImage.SmoothingMode = $SmoothingMode
-            # $NewImage.InterpolationMode = $IPixelOffsetMBitmapodenterpolationMode
-            # $NewImage.PixelOffsetMBitmapode = $PixelOffsetMode
             $NewImage.DrawImage($OldImage, $(New-Object -TypeName System.Drawing.Rectangle -ArgumentList 0, 0, $Width, $Height))
 
             if ($PSCmdlet.ShouldProcess("Resized image based on $Path", "save to $OutputPath")) {
