@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add .Net Assembly to support Unix Image Width and Height calculation
 
-### :toolbox: Changed
+### :arrows_clockwise: Changed
 
 - Update Graphviz binaries to v14.0.2
 - Update ImageMagick binaries to v7.1.2-6
@@ -20,10 +20,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Get-DiaImagePercent cmdlet to use the new .Net Assembly for better cross-platform compatibility
 - Update ConvertTo-RotateImage function for Unix compatibility and improve error handling
 
-### Fixed
+### :bug: Fixed
 
 - Fix Add-DiaHtmlNodeTable cmdlet to correctly render DraftMode icon names
 - Fix Get-DiaImagePercent cmdlet to handle Unix-based Image Width and Height retrieval
+- Remove SixLabors.ImageSharp.dll from RequiredAssemblies and implement assembly loading logic
 
 ## [0.2.32] - 2025-10-21
 
