@@ -19,12 +19,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor existing cmdlet documentation for clarity and consistency
 - Update Get-DiaImagePercent cmdlet to use the new .Net Assembly for better cross-platform compatibility
 - Update ConvertTo-RotateImage function for Unix compatibility and improve error handling
+- Update Resize-Image function to support Unix platforms and enhance test coverage for percentage and MaintainRatio parameters
+- Update Add-WatermarkToImage function for Unix compatibility
 
 ### :bug: Fixed
 
 - Fix Add-DiaHtmlNodeTable cmdlet to correctly render DraftMode icon names
 - Fix Get-DiaImagePercent cmdlet to handle Unix-based Image Width and Height retrieval
 - Remove SixLabors.ImageSharp.dll from RequiredAssemblies and implement assembly loading logic
+
+### :fontawesome-solid-trash: Removed
+
+- Remove unused AsBuiltReportMarked.png icon from the project
 
 ## [0.2.32] - 2025-10-21
 

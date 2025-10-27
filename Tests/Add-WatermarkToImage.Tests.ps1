@@ -3,10 +3,9 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'Add-WatermarkToImage.ps1')
 }
 
-Describe Add-WatermarkToImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+Describe Add-WatermarkToImage {
     BeforeAll {
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
-        Add-Type -AssemblyName System.Windows.Forms
         $env:TMP = $TestDrive
         $GraphvizObj = 'digraph g {
             compound="true";
@@ -18,7 +17,7 @@ Describe Add-WatermarkToImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $PassParamsNoDestinationPath = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             WaterMarkText = "Test"
-            FontColor = "White"
+            FontColor = "Red"
         }
         $PassParamsNoFontColor = @{
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
@@ -28,13 +27,13 @@ Describe Add-WatermarkToImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
             ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
             DestinationPath = Join-Path -Path $IconsPath -ChildPath 'AsBuiltReportMarked.png'
             WaterMarkText = "Test"
-            FontColor = "White"
+            FontColor = "Red"
         }
         $FailParams = @{
             ImageInput = "AsBuiltReport.png"
             DestinationPath = Join-Path $TestDrive 'AsBuiltReportMarked.png'
             WaterMarkText = "Test"
-            FontColor = "White"
+            FontColor = "Red"
         }
     }
 
@@ -52,4 +51,8 @@ Describe Add-WatermarkToImage -Skip:$($PSVersionTable.Platform -eq 'Unix') {
         $scriptBlock = { Add-WatermarkToImage @FailParams -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'ImageInput'. File AsBuiltReport.png not found!"
     }
+}
+
+AfterAll {
+    Remove-Item -Path (Join-Path -Path $ProjectRoot -ChildPath "Tests\Icons\AsBuiltReportMarked.png") -Force -ErrorAction SilentlyContinue
 }
