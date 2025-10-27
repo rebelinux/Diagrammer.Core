@@ -14,6 +14,17 @@ Describe Resize-Image {
             Width = 1000
             Height = 1000
         }
+        $PassParamsValidParametersPercent = @{
+            ImagePath = Join-Path "$TestsFolder\Icons" "AsBuiltReport.png"
+            DestinationPath = $TestDrive
+            Percentage = 50
+        }
+        $PassParamsValidParametersMaintainRatio = @{
+            ImagePath = Join-Path "$TestsFolder\Icons" "AsBuiltReport.png"
+            DestinationPath = $TestDrive
+            Width = 800
+            MaintainRatio = $true
+        }
         $PassParamsInvalidImagePath = @{
             ImagePath = "AsBuiltReport.png"
             DestinationPath = $TestDrive
@@ -36,8 +47,14 @@ Describe Resize-Image {
         }
     }
 
-    It "Should return resized image" -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+    It "Should return resized image" {
         (Resize-Image @PassParamsValidParameters).FullName | Should -Exist
+    }
+    It "Should return resized image by percentage" {
+        (Resize-Image @PassParamsValidParametersPercent).FullName | Should -Exist
+    }
+    It "Should return resized image by MaintainRatio" {
+        (Resize-Image @PassParamsValidParametersMaintainRatio).FullName | Should -Exist
     }
     It "Should throw 'ParameterBindingException' not found exception when ImagePath does not exist" {
         $scriptBlock = { Resize-Image @PassParamsInvalidImagePath -ErrorAction Stop }
