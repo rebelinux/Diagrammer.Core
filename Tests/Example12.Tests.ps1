@@ -2,7 +2,7 @@ BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
 }
 
-Describe Example12 -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+Describe Example12 {
     BeforeAll {
         $PassParamsDot = @{
             Path = $TestDrive
