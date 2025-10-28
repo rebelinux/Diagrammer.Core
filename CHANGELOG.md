@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.2.33] - Unreleased
+## [0.2.33] - 2025-10-27
 
 ### :toolbox: Added
 
-- Add .Net Assembly to support Unix Image Width and Height calculation
+- Add .Net Assembly to support Unix Image manipulation replacing System.Drawing.Common dependency
+- Add ImageProcessor class to handle image manipulation using SixLabors.ImageSharp
+- Add tests for ImageProcessor class methods:
+  - AddWatermarkToImage
+  - ConvertToRotateImage
+  - ResizeImage
+- Update module manifest to include SixLabors.ImageSharp as a required assembly
 
 ### :arrows_clockwise: Changed
 
