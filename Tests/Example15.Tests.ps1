@@ -46,31 +46,31 @@ Describe Example15 {
 
         Context "Graphviz Dot Node Icon Tests" {
 
-            It "Should match Web01 node" {
+            It "Should match Web-Server-Farm node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web01"
+                $ExpectedText = "Web-Server-Farm"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match App01 node" {
+            It "Should match App-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "App01"
+                $ExpectedText = "App-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match DB01 node" {
+            It "Should match DB-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "DB01"
+                $ExpectedText = "DB-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match Router01 node" {
+            It "Should match Core-Router node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Router01"
+                $ExpectedText = "Core-Router"
 
                 $DotContent | Should -Match $ExpectedText
             }
@@ -112,34 +112,34 @@ Describe Example15 {
         }
 
         Context "Graphviz Dot Node Icon (Label) Tests" {
-            It "Should match HTML label Web01 node with embedded image" {
+            It "Should match HTML label Web-Server-Farm node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
                 $DotContent | Should -Match 'img src="Server.png"'
-                $DotContent | Should -Match '>Web-Server-01<'
+                $DotContent | Should -Match 'Web-Server-Farm'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
                 $DotContent | Should -Match 'Edition: Enterprise'
             }
-            It "Should match HTML label App01 node with embedded image" {
+            It "Should match HTML label App-Server-01 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
                 $DotContent | Should -Match 'img src="Server.png"'
-                $DotContent | Should -Match '>Web-Server-02<'
+                $DotContent | Should -Match '>App-Server-01<'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
                 $DotContent | Should -Match 'Edition: Enterprise'
             }
-            It "Should match HTML label DB01 node with embedded image" {
+            It "Should match HTML label DB-Server-01 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
                 $DotContent | Should -Match 'img src="Server.png"'
-                $DotContent | Should -Match '>Db-Server-01<'
+                $DotContent | Should -Match '>DB-Server-01<'
                 $DotContent | Should -Match 'OS: Oracle Server'
                 $DotContent | Should -Match 'Version: 8'
                 $DotContent | Should -Match 'Build: 8.2'
@@ -178,24 +178,24 @@ Describe Example15 {
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Web01 -> App01 edge" {
+        It "Should match Web-Server-Farm -> App-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01 -> App01"
+            $ExpectedText = '"Web-Server-Farm" -> "App-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App01 -> DB01 edge" {
+        It "Should match App-Server-01 -> DB-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App01 -> DB01"
+            $ExpectedText = '"App-Server-01" -> "DB-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Router01 -> Web01 edge" {
+        It "Should match Core-Router -> Web-Server-Farm edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Router01 -> Web01"
+            $ExpectedText = '"Core-Router" -> "Web-Server-Farm"'
             $ExpectedEdgeLabel = "GE0/0"
 
             $DotContent | Should -Match $ExpectedText
@@ -210,33 +210,33 @@ Describe Example15 {
             $DotContent | Should -Match $ExpectedText
             $DotContent | Should -Match $ExpectedEdgeLabel
         }
-        It "Should match Router01 -> RouterNetworkInfo edge" {
+        It "Should match Core-Router -> RouterNetworkInfo edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Router01 -> RouterNetworkInfo"
+            $ExpectedText = '"Core-Router" -> RouterNetworkInfo'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Firewall -> Router01 edge" {
+        It "Should match Firewall -> Core-Router edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Firewall -> Router01"
+            $ExpectedText = 'Firewall -> "Core-Router"'
             $ExpectedEdgeLabel = "Serial0/0"
 
             $DotContent | Should -Match $ExpectedText
             $DotContent | Should -Match $ExpectedEdgeLabel
         }
-        It "Should match SpaceLeft -> Web01 edge" {
+        It "Should match SpaceLeft -> Web-Server-Farm edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "SpaceLeft -> Web01"
+            $ExpectedText = 'SpaceLeft -> "Web-Server-Farm"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Web01 -> SpaceRight edge" {
+        It "Should match Web-Server-Farm -> SpaceRight edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01 -> SpaceRight"
+            $ExpectedText = '"Web-Server-Farm" -> SpaceRight'
 
             $DotContent | Should -Match $ExpectedText
         }

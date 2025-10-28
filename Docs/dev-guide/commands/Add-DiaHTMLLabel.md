@@ -9,15 +9,12 @@ PlatyPS schema version: 2024-05-01
 title: Add-DiaHTMLLabel
 ---
 
-# Add-DiaHTMLLabel
+# Add-DiaHtmlLabel
 
 ## SYNOPSIS
-
 Converts a string to an HTML table for the report main logo and title.
 
 ## SYNTAX
-
-### __AllParameterSets
 
 ```
 Add-DiaHTMLLabel [-Label] <string> [[-ImagesObj] <hashtable>] [[-IconType] <string>]
@@ -26,12 +23,6 @@ Add-DiaHTMLLabel [-Label] <string> [[-ImagesObj] <hashtable>] [[-IconType] <stri
  [[-CellSpacing] <int>] [[-SubgraphCellPadding] <int>] [[-SubgraphCellSpacing] <int>]
  [[-ImageSizePercent] <int>] [[-TableBorder] <int>] [-SubgraphLabel] [<CommonParameters>]
 ```
-
-## ALIASES
-
-This cmdlet has the following aliases,
-
-- None
 
 ## DESCRIPTION
 
@@ -75,402 +66,417 @@ Add-DiaHTMLLabel -Label "Active Directory Forest Diagram" -IconType $CustomLogo 
             }
         ```
 
+```
+
 ## PARAMETERS
 
 ### -CellPadding
-
-The padding inside the table cell.
-Default is 5.
+Specifies the padding inside the HTML table cells.
+Default is 10.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 10
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 10
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 10
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CellSpacing
-
-The spacing between table cells.
-Default is 5.
+Specifies the spacing between HTML table cells.
+Default is 20.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 20
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 11
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
+Default value: 20
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -fontColor
+### -FontBold
+Switch to render the label text in bold.
 
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontColor
 Specifies the font color for the cell text.
-Default is "#565656".
+Default is "#000000".
 
 ```yaml
 Type: System.String
-DefaultValue: '#565656'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 8
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: #000000
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -fontName
+### -FontItalic
+Switch to render the label text in italic.
 
-Specifies the font name for the cell text.
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontName
+Specifies the font family used for the label text.
 Default is "Segoe Ui".
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 9
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: Segoe Ui
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontOverline
+Switch to overline the label text.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Fontsize
-
-Specifies the font size of the label.
-Default is 1.
+Specifies the font size used for the label text.
+Default is 14.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 14
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 7
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 14
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontStrikeThrough
+Switch to render the label text with a strikethrough.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSubscript
+Switch to render the label text as subscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSuperscript
+Switch to render the label text as superscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontUnderline
+Switch to underline the label text.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -IconDebug
-
-Enables the table debug mode if set to $true.
+Enables debug (draft) mode for icon rendering.
+When set, a debug table row is included indicating DraftMode.
 
 ```yaml
 Type: System.Boolean
-DefaultValue: False
-SupportsWildcards: false
-Aliases:
-- DraftMode
-ParameterSets:
-- Name: (All)
-  Position: 6
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: DraftMode
+
+Required: False
+Position: 7
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -IconHeight
-
-Specifies the height of the subgraph icon.
-Default is 40.
+Optional height for the icon in pixels.
+When provided with IconWidth, a fixed-size image cell is used.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 0
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 4
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -IconPath
-
-Optionally specifies the full path to the icon image file.
-If not provided, the default image path is used.
+Optional path (directory) containing icon image files.
+Required when ImageSizePercent is less than 100.
 
 ```yaml
 Type: System.IO.FileInfo
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 3
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -IconType
-
-Specifies the main diagram logo type.
+The key or name of the icon to use.
+If set to 'NoIcon' no icon is displayed.
+Resolved from ImagesObj when available.
 
 ```yaml
 Type: System.String
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 2
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -IconWidth
-
-Specifies the width of the subgraph icon.
-Default is 40.
+Optional width for the icon in pixels.
+When provided with IconHeight, a fixed-size image cell is used.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 0
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 5
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ImageSizePercent
-
-Set the image size in percent (100% is default).
-Requires IconPath when less than 100.
+Percentage to scale the icon (1-100).
+Default is 100.
+When less than 100, IconPath is required and Get-DiaImagePercent is used.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 100
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 14
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 15
+Default value: 100
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ImagesObj
-
-Hashtable containing the IconName to IconPath translation.
+Hashtable mapping icon keys to image file names or paths.
+Default is an empty hashtable.
 
 ```yaml
 Type: System.Collections.Hashtable
-DefaultValue: '@{}'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 1
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Label
-
-The string used to set the Diagram Title.
+The text label used as the diagram title.
 This parameter is mandatory.
 
 ```yaml
 Type: System.String
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 0
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubgraphCellPadding
-
-Specifies the SubgraphLabel padding inside the HTML table cells.
+Padding inside HTML table cells when rendering subgraph labels.
+Default is 5.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 5
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 12
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 13
+Default value: 5
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubgraphCellSpacing
-
-Specifies the SubgraphLabel spacing between HTML table cells.
+Spacing between HTML table cells when rendering subgraph labels.
+Default is 5.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 5
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 13
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: 5
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubgraphLabel
-
-Switch to create a table used to add a logo to a Graphviz subgraph.
+Switch to produce a table formatted for a Graphviz subgraph label (icon and text side-by-side).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -TableBorder
-
-Set the image size in percent (100% is default)
+Border width for the generated HTML table.
+Default is 0.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 0
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 15
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 16
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
--ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ### System.String
-
-A string representing the HTML table in Graphviz DOT format.
-
 ## NOTES
-
-```
+'''
 Version:        0.2.30
 Author:         Jonathan Colon
 Bluesky:        @jcolonfpr.bsky.social
 GitHub:         rebelinux
-```
-
+'''
 
 ## RELATED LINKS
-
-[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
-

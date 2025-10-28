@@ -47,35 +47,35 @@ Describe Example06 {
 
         Context "Graphviz Dot Node Icon Tests" {
 
-            It "Should match Web01 node" {
+            It "Should match Web-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web01"
+                $ExpectedText = "Web-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match App01 node" {
+            It "Should match App-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "App01"
+                $ExpectedText = "App-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match DB01 node" {
+            It "Should match DB-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "DB01"
+                $ExpectedText = "DB-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
         }
 
         Context "Graphviz Dot Node Icon (Label) Tests" {
-            It "Should match HTML label Web01 node with embedded image" {
+            It "Should match HTML label Web-Server-01 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
-                $DotContent | Should -Match '>Server.png<'
+                $DotContent | Should -Match '<img src="Server.png"'
                 $DotContent | Should -Match '><B>Web-Server-01</B>'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
@@ -86,7 +86,7 @@ Describe Example06 {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
-                $DotContent | Should -Match '>Server.png<'
+                $DotContent | Should -Match '<img src="Server.png"'
                 $DotContent | Should -Match '><B>App-Server-01</B>'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
@@ -97,8 +97,8 @@ Describe Example06 {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
-                $DotContent | Should -Match '>Server.png<'
-                $DotContent | Should -Match '>DB-Server-01<'
+                $DotContent | Should -Match '<img src="Server.png"'
+                $DotContent | Should -Match '><B>DB-Server-01</B>'
                 $DotContent | Should -Match 'OS: Oracle Server'
                 $DotContent | Should -Match 'Version: 8'
                 $DotContent | Should -Match 'Build: 8.2'
@@ -114,17 +114,17 @@ Describe Example06 {
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Web01 -> App01 edge" {
+        It "Should match Web-Server-01 -> App-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01 -> App01"
+            $ExpectedText = '"Web-Server-01" -> "App-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App01 -> DB01 edge" {
+        It "Should match App-Server-01 -> DB-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App01 -> DB01"
+            $ExpectedText = '"App-Server-01" -> "DB-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }

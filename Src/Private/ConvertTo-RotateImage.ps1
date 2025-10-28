@@ -43,7 +43,7 @@ function ConvertTo-RotateImage {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -80,7 +80,6 @@ function ConvertTo-RotateImage {
     )
 
     begin {
-        Add-Type -AssemblyName System.Windows.Forms
     }
 
     process {
@@ -91,15 +90,27 @@ function ConvertTo-RotateImage {
         $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath $FileName
 
         # Load image from path as bitmap
-        $RotatedIMG = [System.Drawing.image]::FromFile($ImageName.FullName)
-
-        if ($RotatedIMG -and $TempImageOutput) {
+        if ($PSVersionTable.Platform -eq 'Unix') {
+            if ($PSVersionTable.Platform -eq 'Unix') {
+                Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\SixLabors.ImageSharp.dll"
+            }
+            $RotatedIMG = [ImageProcessor]::RotateImageFromFile($ImageName.FullName, $TempImageOutput, $Angle)
+        } else {
+            Add-Type -AssemblyName System.Windows.Forms
+            $RotatedIMG = [System.Drawing.image]::FromFile($ImageName.FullName)
             # Rotate image to specified angle
-            $RotatedIMG.rotateflip("Rotate$($Angle)FlipNone")
+            $RotatedIMG.RotateFlip("Rotate$($Angle)FlipNone")
             # Save/Replace imge to original path
-            $RotatedIMG.Save($TempImageOutput)
+            if ($RotatedIMG) {
+                $RotatedIMG.Save($TempImageOutput)
+                Write-Verbose -Message "Successfully rotated $ImageInput image."
+                $RotatedIMG.Dispose()
+            } else {
+                throw "Unable to rotate $ImageInput image."
+            }
+        }
 
-            $RotatedIMG.Dispose()
+        if ($RotatedIMG -and (Test-Path -Path $TempImageOutput)) {
 
             if ($TempImageOutput) {
                 Write-Verbose -Message "Successfully rotated $ImageInput image."

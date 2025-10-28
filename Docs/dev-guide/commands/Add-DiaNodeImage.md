@@ -20,10 +20,10 @@ Generates an HTML table for visualizing an icon with customizable properties, su
 ### __AllParameterSets
 
 ```
-Add-DiaNodeImage [-Name] <string> [[-IconDebug] <bool>] [[-IconPath] <FileInfo>]
- [[-ImageSizePercent] <int>] [-ImagesObj] <hashtable> [-IconType] <string> [[-TableBorder] <int>]
- [[-TableBorderColor] <string>] [[-TableBorderStyle] <string>] [[-GraphvizAttributes] <hashtable>]
- [-NodeObject] [<CommonParameters>]
+Add-DiaNodeImage [-Name] <String> [[-IconDebug] <Boolean>] [[-IconPath] <FileInfo>]
+ [[-ImageSizePercent] <Int32>] [-ImagesObj] <Hashtable> [-IconType] <String> [[-TableBorder] <Int32>]
+ [[-TableBorderColor] <String>] [[-TableBorderStyle] <String>] [-NodeObject]
+ [[-GraphvizAttributes] <Hashtable>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## ALIASES

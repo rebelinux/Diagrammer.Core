@@ -2,7 +2,7 @@ BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
 }
 
-Describe Example13 -Skip:$($PSVersionTable.Platform -eq 'Unix') {
+Describe Example13 {
     BeforeAll {
         $PassParamsDot = @{
             Path = $TestDrive
@@ -46,31 +46,31 @@ Describe Example13 -Skip:$($PSVersionTable.Platform -eq 'Unix') {
 
         Context "Graphviz Dot Node Icon Tests" {
 
-            It "Should match Web01 node" {
+            It "Should match Web-Server-Farm node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web01"
+                $ExpectedText = "Web-Server-Farm"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match App01 node" {
+            It "Should match App-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "App01"
+                $ExpectedText = "App-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match DB01 node" {
+            It "Should match DB-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "DB01"
+                $ExpectedText = "DB-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match Router01 node" {
+            It "Should match Core-Router node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Router01"
+                $ExpectedText = "Core-Router"
 
                 $DotContent | Should -Match $ExpectedText
             }
@@ -157,42 +157,42 @@ Describe Example13 -Skip:$($PSVersionTable.Platform -eq 'Unix') {
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Web01 -> App01 edge" {
+        It "Should match Web-Server-Farm -> App-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01 -> App01"
+            $ExpectedText = '"Web-Server-Farm" -> "App-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App01 -> DB01 edge" {
+        It "Should match App-Server-01 -> DB-Server-01 edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App01 -> DB01"
+            $ExpectedText = '"App-Server-01" -> "DB-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Router01 -> Web01 edge" {
+        It "Should match Core-Router -> Web-Server-Farm edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Router01 -> Web01"
+            $ExpectedText = '"Core-Router" -> "Web-Server-Farm"'
             $ExpectedEdgeLabel = "GE0/0"
 
             $DotContent | Should -Match $ExpectedText
             $DotContent | Should -Match $ExpectedEdgeLabel
         }
-        It "Should match WAN -> Router01 edge" {
+        It "Should match WAN -> Core-Router edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "WAN -> Router01"
+            $ExpectedText = 'WAN -> "Core-Router"'
             $ExpectedEdgeLabel = "Serial0/0"
 
             $DotContent | Should -Match $ExpectedText
             $DotContent | Should -Match $ExpectedEdgeLabel
         }
-        It "Should match Router01 -> RouterNetworkInfo edge" {
+        It "Should match Core-Router -> RouterNetworkInfo edge" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Router01 -> RouterNetworkInfo"
+            $ExpectedText = '"Core-Router" -> RouterNetworkInfo'
 
             $DotContent | Should -Match $ExpectedText
         }

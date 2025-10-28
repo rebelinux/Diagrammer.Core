@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.33] - 2025-10-27
+
+### :toolbox: Added
+
+- Add .Net Assembly to support Unix Image manipulation replacing System.Drawing.Common dependency
+- Add ImageProcessor class to handle image manipulation using SixLabors.ImageSharp
+- Add tests for ImageProcessor class methods:
+  - AddWatermarkToImage
+  - ConvertToRotateImage
+  - ResizeImage
+- Update module manifest to include SixLabors.ImageSharp as a required assembly
+
+### :arrows_clockwise: Changed
+
+- Update Graphviz binaries to v14.0.2
+- Update ImageMagick binaries to v7.1.2-6
+- Enhance cmdlet documentation with detailed parameter descriptions and examples
+- Refactor existing cmdlet documentation for clarity and consistency
+- Update Get-DiaImagePercent cmdlet to use the new .Net Assembly for better cross-platform compatibility
+- Update ConvertTo-RotateImage function for Unix compatibility and improve error handling
+- Update Resize-Image function to support Unix platforms and enhance test coverage for percentage and MaintainRatio parameters
+- Update Add-WatermarkToImage function for Unix compatibility
+
+### :bug: Fixed
+
+- Fix Add-DiaHtmlNodeTable cmdlet to correctly render DraftMode icon names
+- Fix Get-DiaImagePercent cmdlet to handle Unix-based Image Width and Height retrieval
+- Remove SixLabors.ImageSharp.dll from RequiredAssemblies and implement assembly loading logic
+
+### :fontawesome-solid-trash: Removed
+
+- Remove unused AsBuiltReportMarked.png icon from the project
+
 ## [0.2.32] - 2025-10-21
 
 ### :toolbox: Added

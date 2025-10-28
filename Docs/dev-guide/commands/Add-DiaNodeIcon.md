@@ -20,11 +20,14 @@ Function to convert a Graphviz node label to a HTML Table with Icon
 ### __AllParameterSets
 
 ```
-Add-DiaNodeIcon [[-AditionalInfo] <Object>] [[-Align] <string>] [[-CellBorder] <int>]
- [[-CellPadding] <int>] [[-CellSpacing] <int>] [[-FontSize] <int>] [[-FontName] <string>]
- [[-FontColor] <string>] [-IconType] <string> [[-ImagesObj] <hashtable>] [[-IconDebug] <bool>]
- [-Name] <string> [[-TableBorder] <int>] [[-TableBackgroundColor] <string>]
- [[-CellBackgroundColor] <string>] [-NoFontBold] [<CommonParameters>]
+Add-DiaNodeIcon [[-AditionalInfo] <Object>] [[-Align] <String>] [[-CellBorder] <Int32>]
+ [[-CellPadding] <Int32>] [[-CellSpacing] <Int32>] [[-FontSize] <Int32>] [[-FontName] <String>]
+ [[-FontColor] <String>] [-FontBold] [-FontItalic] [-FontUnderline] [-FontOverline] [-FontSubscript]
+ [-FontSuperscript] [-FontStrikeThrough] [-IconType] <String> [[-ImagesObj] <Hashtable>]
+ [[-ImageSizePercent] <Int32>] [[-IconPath] <String>] [[-IconDebug] <Boolean>] [-Name] <String> [-NoFontBold]
+ [[-TableBorder] <Int32>] [[-TableLayout] <String>] [[-TableBackgroundColor] <String>]
+ [[-CellBackgroundColor] <String>] [-NodeObject] [[-GraphvizAttributes] <Hashtable>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -272,6 +275,175 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
+### -FontBold
+If specified, sets the font to bold for the text inside the table.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontColor
+Specifies the font color for the text inside the table.
+Default is '#000000'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: #000000
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontItalic
+If specified, sets the font to italic for the text inside the table.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontName
+Specifies the font name for the text inside the table.
+Default is 'Segoe Ui'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: Segoe Ui
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontOverline
+If specified, applies an overline to the font for the text inside the table.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSize
+Specifies the font size for the text inside the table.
+Default is 14.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 14
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontStrikeThrough
+If specified, applies a strikethrough to the font for the text inside the table.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSubscript
+If specified, sets the font to subscript for the text inside the table.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSuperscript
+If specified, sets the font to superscript for the text inside the table.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontUnderline
+If specified, underlines the font for the text inside the table.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GraphvizAttributes
+A hashtable of additional Graphviz attributes to add to the node (for example: @{ style = 'filled'; color = 'lightgrey' }).
+These are passed to Format-NodeObject when NodeObject is specified.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 19
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IconDebug
 
 If set to $true, enables debug mode for icons, highlighting the table border in red for troubleshooting.
@@ -358,6 +530,23 @@ ParameterSets:
 DontShow: false
 AcceptedValues: []
 HelpMessage: ''
+```
+
+### -NodeObject
+When specified, the function will register the generated HTML with the diagram engine by calling Format-NodeObject.
+Use this to attach Graphviz node attributes and to have the node included in the internal node registry.
+Note: the function validates that Name is present when NodeObject is used.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -NoFontBold

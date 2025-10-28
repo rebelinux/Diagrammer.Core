@@ -43,24 +43,24 @@ Describe Example01 {
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Web01 node" {
+        It "Should match Web-Server-01 node" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web01"
+            $ExpectedText = "Web-Server-01"
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App01 node" {
+        It "Should match App-Server-01 node" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App01"
+            $ExpectedText = "App-Server-01"
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match DB01 node" {
+        It "Should match DB-Server-01 node" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "DB01"
+            $ExpectedText = "DB-Server-01"
 
             $DotContent | Should -Match $ExpectedText
         }

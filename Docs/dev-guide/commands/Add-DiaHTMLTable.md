@@ -20,14 +20,17 @@ Converts a string array to an HTML table with Graphviz nodes split by columns (N
 ### __AllParameteSets
 
 ```
-Add-DiaHTMLTable [[-Name] <string>] [[-Rows] <string[]>] [[-Align] <string>] [[-TableBorder] <int>]
- [[-CellBorder] <int>] [[-CellSpacing] <int>] [[-CellPadding] <int>] [[-fontColor] <string>]
- [[-FontSize] <int>] [[-fontName] <string>] [[-ColumnSize] <int>] [[-ImagesObj] <hashtable>]
- [[-IconDebug] <bool>] [[-TableStyle] <string>] [[-SubgraphIconType] <string>]
- [[-SubgraphLabel] <string>] [[-SubgraphLabelFontsize] <int>] [[-SubgraphLabelPos] <string>]
- [[-SubgraphTableStyle] <string>] [[-TableBorderColor] <string>] [[-SubgraphIconWidth] <string>]
- [[-SubgraphIconHeight] <string>] [[-GraphvizAttributes] <hashtable>] [-NoFontBold] [-Subgraph]
- [-NodeObject] [<CommonParameters>]
+Add-DiaHtmlTable [[-Name] <String>] [[-Rows] <String[]>] [[-Align] <String>] [[-TableBorder] <Int32>]
+ [[-CellBorder] <Int32>] [[-CellSpacing] <Int32>] [[-CellPadding] <Int32>] [[-FontColor] <String>]
+ [[-FontSize] <Int32>] [[-FontName] <String>] [-FontBold] [-FontItalic] [-FontUnderline] [-FontOverline]
+ [-FontSubscript] [-FontSuperscript] [-FontStrikeThrough] [[-ColumnSize] <Int32>] [[-ImagesObj] <Hashtable>]
+ [[-IconDebug] <Boolean>] [[-TableStyle] <String>] [-NoFontBold] [-Subgraph] [[-SubgraphIconType] <String>]
+ [[-SubgraphLabel] <String>] [[-SubgraphFontName] <String>] [[-SubgraphLabelFontsize] <Int32>]
+ [[-SubgraphFontColor] <String>] [-SubgraphFontBold] [-SubgraphFontItalic] [-SubgraphFontUnderline]
+ [-SubgraphFontOverline] [-SubgraphFontSubscript] [-SubgraphFontSuperscript] [-SubgraphFontStrikeThrough]
+ [[-SubgraphLabelPos] <String>] [[-SubgraphTableStyle] <String>] [[-TableBorderColor] <String>]
+ [[-SubgraphIconWidth] <String>] [[-SubgraphIconHeight] <String>] [-NodeObject]
+ [[-GraphvizAttributes] <Hashtable>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## ALIASES
@@ -260,6 +263,66 @@ AcceptedValues: []
 HelpMessage: ''
 ```
 
+### -FontStrikeThrough
+Sets the cell text to strikethrough.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSubscript
+Sets the cell text to subscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSuperscript
+Sets the cell text to superscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontUnderline
+Sets the cell text to underline.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GraphvizAttributes
 
 Additional Graphviz attributes to add to the node (e.g., style=filled,color=lightgrey)
@@ -427,6 +490,141 @@ ParameterSets:
 DontShow: false
 AcceptedValues: []
 HelpMessage: ''
+```
+
+### -SubgraphFontBold
+Sets the subgraph label text to bold.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontColor
+Specifies the font color used inside the cell (Default: #000000).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 19
+Default value: #000000
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontItalic
+Sets the subgraph label text to italic.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontName
+The cell text font name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 17
+Default value: Segoe Ui
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontOverline
+Sets the subgraph label text to overline.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontStrikeThrough
+Sets the subgraph label text to strikethrough.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontSubscript
+Sets the subgraph label text to subscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontSuperscript
+Sets the subgraph label text to superscript.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubgraphFontUnderline
+Sets the subgraph label text to underline.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -SubgraphIconHeight

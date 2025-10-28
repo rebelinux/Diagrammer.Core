@@ -74,99 +74,15 @@ When you run the script, it generates a PNG file named Example1.png in the speci
 !!! example
 
     === "Example 1"
-
         ```graphviz dot example1.png
-            DiGraph Root {
-                Graph [bb="0,0,477,420.5",
-                bgcolor=White,
-                compound=true,
-                fontcolor="#565656",
-                fontname="Segoe Ui",
-                fontsize=32,
-                imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
-                labelloc=t,
-                nodesep=0.6,
-                pad=1,
-                penwidth=1.5,
-                rankdir=TB,
-                ranksep=0.75,
-                splines=line,
-                style=dashed
-                ];
-                Node [fillcolor="#71797E",
-                fontcolor=Black,
-                fontsize=14,
-                imagescale=True,
-                label="\N",
-                labelloc=t,
-                shape=none,
-                style=filled
-                ];
-                Edge [arrowsize=1,
-                arrowtail=dot,
-                color="#71797E",
-                dir=both,
-                fontcolor="#71797E",
-                penwidth=3,
-                style=dashed
-                ];
-                SubGraph clusterOUTERDRAWBOARD1 {
-                    Graph [bb="8,8,469,412.5",
-                    color=gray,
-                    fontsize=24,
-                    label=" ",
-                    labeljust=r,
-                    labelloc=b,
-                    lheight=0.47,
-                    lp="457.62,28.875",
-                    lwidth=0.09,
-                    penwidth=1.5,
-                    style=invis
-                    ];
-                    SubGraph clusterMainGraph {
-                        Graph [bb="16,57.75,461,404.5",
-                        fontsize=24,
-                        label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>3tier Web Application Diagram</FONT></TD></TR></TABLE>>,
-                        labeljust=c,
-                        labelloc=t,
-                        lheight=3.98,
-                        lp="238.5,257.12",
-                        lwidth=5.96,
-                        penwidth=0
-                        ];
-                        Web01	[fillcolor=Green,
-                        height=0.5,
-                        label=Web01,
-                        pos="141,83.75",
-                        shape=rectangle,
-                        width=0.75347];
-                        App01	[fillcolor=Blue,
-                        height=0.5,
-                        label=App01,
-                        pos="283,83.75",
-                        shape=rectangle,
-                        width=0.75];
-                        DB01	[fillcolor=Red,
-                        height=0.5,
-                        label=DB01,
-                        pos="403,83.75",
-                        shape=rectangle,
-                        width=0.75];
-                    }
-                }
-            }
-        ```
-    === "Example 1 - DraftMode"
-
-        ```graphviz dot example1_draftmode.png
             digraph Root {
-                graph [bb="0,0,497,435",
+                graph [bb="0,0,506,411.5",
                     bgcolor=White,
                     compound=true,
-                    fontcolor="#565656",
+                    fontcolor="#000000",
                     fontname="Segoe Ui",
                     fontsize=32,
-                    imagepath="C:\Users\jocolon\Documents\WindowsPowerShell\Modules\Diagrammer.Core\icons",
+                    imagepath="Docs/Icons",
                     labelloc=t,
                     nodesep=0.6,
                     pad=1,
@@ -194,48 +110,154 @@ When you run the script, it generates a PNG file named Example1.png in the speci
                     style=dashed
                 ];
                 subgraph clusterOUTERDRAWBOARD1 {
-                    graph [bb="8,8,489,427",
+                    graph [bb="8,8,498,403.5",
+                        color=gray,
+                        fontsize=24,
+                        label=" ",
+                        labeljust=r,
+                        labelloc=b,
+                        lheight=0.41,
+                        lp="487,26.625",
+                        lwidth=0.08,
+                        penwidth=1.5,
+                        style=invis
+                    ];
+                    subgraph clusterMainGraph {
+                        graph [bb="16,53.25,451,395.5",
+                            fontsize=24,
+                            label=<<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center" colspan="1"><img src="Diagrammer.png"/></TD></TR><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="24" COLOR="#000000">3tier Web Application Diagram</FONT></TD></TR></TABLE>>,
+                            labeljust=c,
+                            labelloc=t,
+                            lheight=3.92,
+                            lp="233.5,250.38",
+                            lwidth=5.40,
+                            penwidth=0
+                        ];
+                        MainGraph	[height=0.05,
+                            label="",
+                            pos="26,79.25",
+                            shape=point,
+                            style=invis,
+                            width=0.05];
+                        "Web-Server-01"	[fillcolor=Green,
+                            height=0.5,
+                            label="Web-Server-01",
+                            pos="120,79.25",
+                            shape=rectangle,
+                            width=1.3681];
+                        "App-Server-01"	[fillcolor=Blue,
+                            height=0.5,
+                            label="App-Server-01",
+                            pos="261,79.25",
+                            shape=rectangle,
+                            width=1.3472];
+                        "Db-Server-01"	[fillcolor=Red,
+                            height=0.5,
+                            label="Db-Server-01",
+                            pos="398,79.25",
+                            shape=rectangle,
+                            width=1.2535];
+                    }
+                    OUTERDRAWBOARD1	[height=0.05,
+                        label="",
+                        pos="488,79.25",
+                        shape=point,
+                        style=invis,
+                        width=0.05];
+                }
+            }
+        ```
+    === "Example 1 - DraftMode"
+        ```graphviz dot example1_draftmode.png
+            digraph Root {
+                graph [bb="0,0,506,357",
+                    bgcolor=White,
+                    compound=true,
+                    fontcolor="#000000",
+                    fontname="Segoe Ui",
+                    fontsize=32,
+                    imagepath="/home/rebelinux/.local/share/powershell/Modules/Diagrammer.Core/Tools/Icons",
+                    labelloc=t,
+                    nodesep=0.6,
+                    pad=1,
+                    penwidth=1.5,
+                    rankdir=TB,
+                    ranksep=0.75,
+                    splines=line,
+                    style=dashed
+                ];
+                node [fillcolor="#71797E",
+                    fontcolor=Black,
+                    fontsize=14,
+                    imagescale=True,
+                    label="\N",
+                    labelloc=t,
+                    shape=none,
+                    style=filled
+                ];
+                edge [arrowsize=1,
+                    arrowtail=dot,
+                    color="#71797E",
+                    dir=both,
+                    fontcolor="#71797E",
+                    penwidth=3,
+                    style=dashed
+                ];
+                subgraph clusterOUTERDRAWBOARD1 {
+                    graph [bb="8,8,498,349",
                         color=red,
                         fontsize=24,
                         label=" ",
                         labeljust=r,
                         labelloc=b,
-                        lheight=0.47,
-                        lp="477.62,28.875",
-                        lwidth=0.09,
+                        lheight=0.41,
+                        lp="487,26.625",
+                        lwidth=0.08,
                         penwidth=1.5,
                         style=dashed
                     ];
                     subgraph clusterMainGraph {
-                        graph [bb="16,57.75,481,419",
+                        graph [bb="16,53.25,451,341",
                             fontsize=24,
-                            label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='20'><TR><TD bgcolor='#FFCCCC' ALIGN='center' colspan='1'>Main Logo</TD></TR><TR><TD bgcolor='#FFCCCC' ALIGN='center' ><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>3tier Web Application Diagram</FONT></TD></TR><TR><TD ALIGN='center'><font color='red'>DraftMode ON</FONT></TD></TR></TABLE>>,
+                            label=<<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">Diagrammer.png Logo</TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="center" ><FONT FACE="Segoe Ui" Color="#000000" POINT-SIZE="24">3tier Web Application Diagram</FONT></TD></TR><TR><TD ALIGN="center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>>,
                             labeljust=c,
                             labelloc=t,
-                            lheight=4.18,
-                            lp="248.5,264.38",
-                            lwidth=6.24,
+                            lheight=3.16,
+                            lp="233.5,223.12",
+                            lwidth=5.40,
                             penwidth=0
                         ];
-                        Web01	[fillcolor=Green,
+                        MainGraph	[height=0.05,
+                            label="",
+                            pos="26,79.25",
+                            shape=point,
+                            style=invis,
+                            width=0.05];
+                        "Web-Server-01"	[fillcolor=Green,
                             height=0.5,
-                            label=Web01,
-                            pos="151,83.75",
+                            label="Web-Server-01",
+                            pos="120,79.25",
                             shape=rectangle,
-                            width=0.75347];
-                        App01	[fillcolor=Blue,
+                            width=1.3681];
+                        "App-Server-01"	[fillcolor=Blue,
                             height=0.5,
-                            label=App01,
-                            pos="298,83.75",
+                            label="App-Server-01",
+                            pos="261,79.25",
                             shape=rectangle,
-                            width=0.75];
-                        DB01	[fillcolor=Red,
+                            width=1.3472];
+                        "Db-Server-01"	[fillcolor=Red,
                             height=0.5,
-                            label=DB01,
-                            pos="420,83.75",
+                            label="Db-Server-01",
+                            pos="398,79.25",
                             shape=rectangle,
-                            width=0.75];
+                            width=1.2535];
                     }
+                    OUTERDRAWBOARD1	[height=0.05,
+                        label="",
+                        pos="488,79.25",
+                        shape=point,
+                        style=invis,
+                        width=0.05];
                 }
             }
         ```

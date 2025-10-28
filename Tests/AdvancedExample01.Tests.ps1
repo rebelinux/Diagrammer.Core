@@ -48,45 +48,45 @@ Describe AdvancedExample01 {
 
         Context "Graphviz Dot Node Icon Tests" {
 
-            It "Should match UK-WebServer-01 node" {
+            It "Should match Web-Server-01 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "UK-WebServer-01"
+                $ExpectedText = "Web-Server-01"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match UK-WebServer-02 node" {
+            It "Should match Web-Server-02 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "UK-WebServer-02"
+                $ExpectedText = "Web-Server-02"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match UK-WebServer-03 node" {
+            It "Should match Web-Server-03 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "UK-WebServer-03"
+                $ExpectedText = "Web-Server-03"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match UK-WebServer-04 node" {
+            It "Should match Web-Server-04 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "UK-WebServer-04"
+                $ExpectedText = "Web-Server-04"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match UK-WebServer-05 node" {
+            It "Should match Web-Server-05 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "UK-WebServer-05"
+                $ExpectedText = "Web-Server-05"
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match UK-WebServer-06 node" {
+            It "Should match Web-Server-06 node" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "UK-WebServer-06"
+                $ExpectedText = "Web-Server-06"
 
                 $DotContent | Should -Match $ExpectedText
             }
@@ -100,71 +100,71 @@ Describe AdvancedExample01 {
         }
 
         Context "Graphviz Dot Node Icon (Label) Tests" {
-            It "Should match HTML label UK-WebServer-01 node with embedded image" {
+            It "Should match HTML label Web-Server-01 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
-                $DotContent | Should -Match 'UK-WebServer-01'
+                $DotContent | Should -Match 'Web-Server-01'
                 $DotContent | Should -Match 'img src="Linux_Server_RedHat.png"'
                 $DotContent | Should -Match '>Web-Server-01<'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label UK-WebServer-02 node with embedded image" {
+            It "Should match HTML label Web-Server-02 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-02</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match 'UK-WebServer-02'
+                $DotContent | Should -Match 'Web-Server-02'
                 $DotContent | Should -Match 'img src="Linux_Server_RedHat.png"'
                 $DotContent | Should -Match '>Web-Server-02<'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label UK-WebServer-03 node with embedded image" {
+            It "Should match HTML label Web-Server-03 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-03</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match 'UK-WebServer-03'
+                $DotContent | Should -Match 'Web-Server-03'
                 $DotContent | Should -Match 'img src="Linux_Server_RedHat.png"'
                 $DotContent | Should -Match '>Web-Server-03<'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label UK-WebServer-04 node with embedded image" {
+            It "Should match HTML label Web-Server-04 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-04</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match 'UK-WebServer-04'
+                $DotContent | Should -Match 'Web-Server-04'
                 $DotContent | Should -Match 'img src="Linux_Server_RedHat.png"'
                 $DotContent | Should -Match '>Web-Server-04<'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label UK-WebServer-05 node with embedded image" {
+            It "Should match HTML label Web-Server-05 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-05</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match 'UK-WebServer-05'
+                $DotContent | Should -Match 'Web-Server-05'
                 $DotContent | Should -Match 'img src="Linux_Server_RedHat.png"'
                 $DotContent | Should -Match '>Web-Server-05<'
                 $DotContent | Should -Match 'OS: Redhat Linux'
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label UK-WebServer-06 node with embedded image" {
+            It "Should match HTML label Web-Server-06 node with embedded image" {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-06</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
 
-                $DotContent | Should -Match 'UK-WebServer-06'
+                $DotContent | Should -Match 'Web-Server-06'
                 $DotContent | Should -Match 'img src="Linux_Server_RedHat.png"'
                 $DotContent | Should -Match '>Web-Server-06<'
                 $DotContent | Should -Match 'OS: Redhat Linux'

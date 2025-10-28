@@ -12,26 +12,18 @@ title: Add-DiaHtmlSignatureTable
 # Add-DiaHtmlSignatureTable
 
 ## SYNOPSIS
-
 Converts a string array to an HTML table for use in a Signature table.
 
 ## SYNTAX
 
-### __AllParameterSets
-
 ```
-Add-DiaHtmlSignatureTable [-Rows] <string[]> [[-Align] <string>] [[-TableBorder] <int>]
- [[-CellBorder] <int>] [[-CellSpacing] <int>] [[-CellPadding] <int>] [[-fontSize] <int>]
- [[-fontName] <string>] [[-fontColor] <string>] [-ImagesObj] <hashtable> [[-IconDebug] <bool>]
- [[-TableStyle] <string>] [[-Label] <string>] [[-Logo] <string>] [[-TableBorderColor] <string>]
- [-NoFontBold] [<CommonParameters>]
+Add-DiaHtmlSignatureTable [-Rows] <String[]> [[-Align] <String>] [[-TableBorder] <Int32>]
+ [[-CellBorder] <Int32>] [[-CellSpacing] <Int32>] [[-CellPadding] <Int32>] [[-FontSize] <Int32>]
+ [[-FontName] <String>] [[-FontColor] <String>] [-FontBold] [-FontItalic] [-FontUnderline] [-FontOverline]
+ [-FontSubscript] [-FontSuperscript] [-FontStrikeThrough] [-ImagesObj] <Hashtable> [[-IconDebug] <Boolean>]
+ [[-TableStyle] <String>] [-NoFontBold] [[-Label] <String>] [[-Logo] <String>] [[-TableBorderColor] <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
-
-## ALIASES
-
-This cmdlet has the following aliases,
-
-- None
 
 ## DESCRIPTION
 
@@ -74,370 +66,385 @@ Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: Bugs Bunny", "Compan
 ## PARAMETERS
 
 ### -Align
-
 Alignment of content inside table cells.
 Default is 'Center'.
 
 ```yaml
 Type: System.String
-DefaultValue: Center
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 1
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: Center
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CellBorder
-
 The table cell border thickness.
 Default is 0.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 0
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 3
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CellPadding
-
 The table cell padding space.
 Default is 5.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 5
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 5
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 5
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CellSpacing
-
 The table cell spacing.
 Default is 5.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 5
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 4
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 5
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -fontColor
+### -FontBold
+Allow to set the font bold
 
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontColor
 The text font color used inside the cell.
-Default is "#565656".
+Default is "#000000".
 
 ```yaml
 Type: System.String
-DefaultValue: '#565656'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 8
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: #000000
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -fontName
+### -FontItalic
+Allow to set the font italic
 
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontName
 The text font name used inside the cell.
 Default is "Segoe Ui".
 
 ```yaml
 Type: System.String
-DefaultValue: Segoe Ui
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 7
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: Segoe Ui
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
-### -fontSize
+### -FontOverline
+Allow to set the font overline
 
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSize
 The text font size used inside the cell.
 Default is 14.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 14
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 6
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: 14
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontStrikeThrough
+Allow to set the font strikethrough
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSubscript
+Allow to set the font subscript
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontSuperscript
+Allow to set the font superscript
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FontUnderline
+Allow to set the font underline
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -IconDebug
-
 Enables table debug mode, highlighting table borders and logo cell.
 
 ```yaml
 Type: System.Boolean
-DefaultValue: False
-SupportsWildcards: false
-Aliases:
-- DraftMode
-ParameterSets:
-- Name: (All)
-  Position: 10
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases: DraftMode
+
+Required: False
+Position: 11
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ImagesObj
-
 Hashtable mapping IconName to IconPath.
 Required for logo image support.
 
 ```yaml
 Type: System.Collections.Hashtable
-DefaultValue: '@{}'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 9
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 10
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Label
-
 Sets the SubGraph label.
 
 ```yaml
 Type: System.String
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 12
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Logo
-
 Icon name used to represent the node type, resolved from ImagesObj.
 
 ```yaml
 Type: System.String
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 13
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -NoFontBold
-
 Disables bold formatting for additional node info text.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-DefaultValue: False
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: Named
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Rows
-
 An array of strings/objects to place in the table rows.
 
 ```yaml
 Type: System.String[]
-DefaultValue: ''
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 0
-  IsRequired: true
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -TableBorder
-
 The table border thickness.
 Default is 0.
 
 ```yaml
 Type: System.Int32
-DefaultValue: 0
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 2
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -TableBorderColor
-
 Sets the subgraph table border color.
 Default is "#000000".
 
 ```yaml
 Type: System.String
-DefaultValue: '#000000'
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 14
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 15
+Default value: #000000
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -TableStyle
-
 Sets the table style (e.g., "ROUNDED", "RADIAL", "SOLID", "INVISIBLE", "INVIS", "DOTTED", "DASHED").
 Styles can be combined.
 
 ```yaml
 Type: System.String
-DefaultValue: rounded,dashed
-SupportsWildcards: false
-Aliases: []
-ParameterSets:
-- Name: (All)
-  Position: 11
-  IsRequired: false
-  ValueFromPipeline: false
-  ValueFromPipelineByPropertyName: false
-  ValueFromRemainingArguments: false
-DontShow: false
-AcceptedValues: []
-HelpMessage: ''
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
+Default value: Rounded,dashed
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
--InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
--ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
-[about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
-### System.String
-
-Returns the generated HTML table as a string.
-
+### [System.String] - Returns the generated HTML table as a string.
 ## NOTES
-
 ```
 Version:        0.2.30
 Author:         Jonathan Colon
@@ -445,8 +452,4 @@ Bluesky:        @jcolonfpr.bsky.social
 Github:         rebelinux
 ```
 
-
 ## RELATED LINKS
-
-[Diagrammer.Core](https://github.com/rebelinux/Diagrammer.Core)
-

@@ -82,7 +82,7 @@ $example9 = & {
             The $WebServerFarm variable is an array of hashtables, each representing a web server node with its properties.
             Each hashtable contains:
             - Name: The name of the web server.
-            - AdditionalInfo: A custom object with properties to display in the node label.
+            - AditionalInfo: A custom object with properties to display in the node label.
             - IconType: The type of icon to use for the node (must match a key in the $Images hashtable).
         #>
 
@@ -145,29 +145,32 @@ $example9 = & {
 
             ** The $Images object and IconType "Server" must be defined earlier in the script **
 
-            -AdditionalInfo parameter accepts a custom object with properties to display in the node label.
+            -AditionalInfo parameter accepts a custom object with properties to display in the node label.
             -columnSize parameter sets the number of columns in the table layout.
+            -inputObject parameter accepts an array of names for the nodes in the table.
             -Subgraph parameter creates a subgraph container around the table.
             -SubgraphLabel parameter sets the label for the subgraph container.
             -SubgraphLabelPos parameter sets the position of the subgraph label (top, bottom).
             -SubgraphTableStyle parameter sets the style of the subgraph border (dashed, rounded, solid).
             -TableBorderColor parameter sets the color of the table border.
             -TableBorder sets the thickness of the table border.
+            -SubgraphLabelFontSize parameter sets the font size of the subgraph label.
+            -FontSize parameter sets the font size of the node labels.
+            -DraftMode parameter enables draft mode for faster rendering.
+            -FontBold parameter makes the node labels bold.
+            -SubgraphFontBold parameter makes the subgraph label bold.
+            -NodeObject parameter outputs the node object for further manipulation if needed.
 
             ** -MultiIcon parameter allows multiple icons to be displayed in the table. (IconType must be specified in the inputObject) **
             -iconType parameter sets the type of icon to use for the nodes. In this case the $WebServerFarm.IconType hashtable value is used
             (must match a key in the $Images hashtable).
         #>
 
-        $Web01Label = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontSize 20 -FontSize 18 -MultiIcon -DraftMode:$DraftMode -FontBold
+        Add-DiaHtmlNodeTable -Name 'Web-Server-Farm' -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontSize 20 -FontSize 18  -DraftMode:$DraftMode -FontBold -SubgraphFontBold -NodeObject -MultiIcon
 
 
-        $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AdditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-        $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AdditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-
-        Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
-        Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
-        Node -Name DB01 -Attributes @{Label = $DB01Label; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
+        Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
+        Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
 
         <#
             This section creates connections between the nodes in a hierarchical layout.
@@ -175,14 +178,14 @@ $example9 = & {
             https://psgraph.readthedocs.io/en/latest/Command-Edge/
         #>
 
-        Edge -From Web01 -To App01 @{label = 'gRPC'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
-        Edge -From App01 -To DB01 @{label = 'SQL'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+        Edge -From 'Web-Server-Farm' -To 'App-Server-01' @{label = 'gRPC'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
+        Edge -From 'App-Server-01' -To 'Db-Server-01' @{label = 'SQL'; color = 'black'; fontsize = 14; fontcolor = 'black'; minlen = 3 }
 
         <#
             The Rank cmdlet is used to place nodes at the same hierarchical level.
-            In this example, App01 and DB01 are aligned horizontally.
+            In this example, App-Server-01 and Db-Server-01 are aligned horizontally.
         #>
-        Rank -Nodes App01, DB01
+        Rank -Nodes 'App-Server-01', 'Db-Server-01'
     }
 }
 

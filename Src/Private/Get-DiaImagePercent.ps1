@@ -5,7 +5,7 @@ function Get-DiaImagePercent {
     .DESCRIPTION
         This allow the diagram image to fit the report page margins
     .NOTES
-        Version:        0.2.30
+        Version:        0.2.33
         Author:         Jonathan Colon
     .EXAMPLE
     .LINK
@@ -52,63 +52,68 @@ function Get-DiaImagePercent {
     process {
 
         if ($GraphObj) {
-            if ($PSVersionTable.Platform -ne 'Unix') {
-                $ImagePrty = @{}
-                try {
-                    $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
-                } catch {
-                    Write-Verbose -Message "Unable to convert Graphviz object to base64 format needed to get image dimensions"
-                    Write-Debug -Message $($_.Exception.Message)
-                }
-
-                if ($Image_FromStream) {
-                    if ($Percent) {
-                        $ImagePrty = @{
-                            'Width' = ($Image_FromStream.Width / 100) * $Percent
-                            'Height' = ($Image_FromStream.Height / 100) * $Percent
-                        }
-                    } else {
-                        $ImagePrty = @{
-                            'Width' = $Image_FromStream.Width
-                            'Height' = $Image_FromStream.Height
+            $ImagePrty = @{}
+            $Image_FromStream = @{
+                Width = 0
+                Height = 0
+            }
+            switch ($PSVersionTable.Platform) {
+                'Unix' {
+                    & {
+                        if ([ImageProcessor]) {
+                            $Image_FromStream.Width = [ImageProcessor]::GetImageWidthFromBase64($GraphObj)
+                            $Image_FromStream.Height = [ImageProcessor]::GetImageHeightFromBase64($GraphObj)
+                        } else {
+                            throw "Unable to convert Graphviz object to base64 format needed to get image dimensions"
                         }
                     }
-                    return $ImagePrty
-                } else {
-                    Write-Verbose -Message "Unable to validate image dimensions"
                 }
+                default {
+                    try {
+                        $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
+                    } catch {
+                        throw "Unable to convert Graphviz object to base64 format needed to get image dimensions"
+                    }
+                }
+            }
+
+
+            if ($Image_FromStream) {
+                if ($Percent) {
+                    $ImagePrty = @{
+                        'Width' = ($Image_FromStream.Width / 100) * $Percent
+                        'Height' = ($Image_FromStream.Height / 100) * $Percent
+                    }
+                } else {
+                    $ImagePrty = @{
+                        'Width' = $Image_FromStream.Width
+                        'Height' = $Image_FromStream.Height
+                    }
+                }
+                return $ImagePrty
             } else {
-                Write-Verbose -Message "GraphObj parameter is not supported on Unix platforms."
+                Write-Verbose -Message "Unable to validate image dimensions"
             }
         } else {
             $ImagePrty = @{}
             try {
-                $Image = @{
+                $ImageFromFile = @{
                     Width = 0
                     Height = 0
                 }
                 switch ($PSVersionTable.Platform) {
                     'Unix' {
                         & {
-                            if (Test-Path -Path '/usr/bin/identify') {
-                                $Image.Width = & '/usr/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
-                                $Image.Height = & '/usr/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
-                            } elseif (Test-Path -Path '/bin/identify') {
-                                $Image.Width = & '/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
-                                $Image.Height = & '/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
-                            } elseif (Test-Path -Path '/usr/local/bin/identify') {
-                                $Image.Width = & '/usr/local/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
-                                $Image.Height = & '/usr/local/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
-                            } elseif (Test-Path -Path '/opt/homebrew/bin/identify') {
-                                $Image.Width = & '/opt/homebrew/bin/identify' -format "%w" (Get-ChildItem -Path $ImageInput).FullName
-                                $Image.Height = & '/opt/homebrew/bin/identify' -format "%h" (Get-ChildItem -Path $ImageInput).FullName
+                            if ([ImageProcessor]) {
+                                $ImageFromFile.Width = [ImageProcessor]::GetImageWidthFromFile((Get-ChildItem -Path $ImageInput).FullName)
+                                $ImageFromFile.Height = [ImageProcessor]::GetImageHeightFromFile((Get-ChildItem -Path $ImageInput).FullName)
                             } else {
-                                throw "ImageMagick 'identify' executable not found in standard Unix paths. Please install ImageMagick."
+                                throw "Unable to get image dimensions on Unix platforms."
                             }
                         }
                     }
                     default {
-                        $Image = [System.Drawing.Image]::FromFile((Get-ChildItem -Path $ImageInput).FullName)
+                        $ImageFromFile = [System.Drawing.Image]::FromFile((Get-ChildItem -Path $ImageInput).FullName)
                     }
                 }
             } catch {
@@ -116,16 +121,16 @@ function Get-DiaImagePercent {
                 Write-Debug -Message $($_.Exception.Message)
             }
 
-            if ($Image) {
+            if ($ImageFromFile) {
                 if ($Percent) {
                     $ImagePrty = @{
-                        'Width' = ($Image.Width / 100) * $Percent
-                        'Height' = ($Image.Height / 100) * $Percent
+                        'Width' = ($ImageFromFile.Width / 100) * $Percent
+                        'Height' = ($ImageFromFile.Height / 100) * $Percent
                     }
                 } else {
                     $ImagePrty = @{
-                        'Width' = $Image.Width
-                        'Height' = $Image.Height
+                        'Width' = $ImageFromFile.Width
+                        'Height' = $ImageFromFile.Height
                     }
                 }
                 return $ImagePrty
