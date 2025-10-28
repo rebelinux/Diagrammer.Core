@@ -77,7 +77,7 @@ function Add-WatermarkToImage {
         [Parameter(
             HelpMessage = 'Please provide the font opacity level'
         )]
-        [float] $FontOpacity = .10
+        [float] $FontOpacity = 20
     )
 
     begin {
@@ -103,7 +103,7 @@ function Add-WatermarkToImage {
 
                 $FontPath = Join-Path -Path $RootPath -ChildPath 'Tools/Fonts/ARIAL.TTF'
 
-                $image = [ImageProcessor]::AddWatermarkToImage($ImageName.FullName, $WaterMarkText, $TempImageOutput, $FontSize, $FontColor, $FontName, $FontOpacity, $FontPath)
+                $image = [ImageProcessor]::AddWatermarkToImage($ImageName.FullName, $WaterMarkText, $TempImageOutput, $FontSize, $FontColor, $FontName, ($FontOpacity / 100), $FontPath)
             } else {
                 # Fallback to System.Drawing
 
