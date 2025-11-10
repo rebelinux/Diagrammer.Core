@@ -29,3 +29,16 @@
   - [ ] Add option to set table font size (8-72)
   - [ ] Add option to set table font color (Hex color)
   - [ ] Add option to set table text align (left, center, right)
+- [ ] Add funtion (Add-DiaEdge) to add edges between nodes
+  - [ ] Add pester to test this funtionality
+  - [ ] Add documentation for this funtionality
+  - [ ] Add example for this funtionality
+  - [ ] Add option to set edge style (solid, dashed, dotted, bold)
+  - [ ] Add option to set edge color (Hex color)
+  - [ ] Add option to set edge thickness (1-10)
+  - [ ] Add option to set edge arrow type (none, normal, vee, diamond)
+  - [ ] Add option to set edge label (string)
+  - [ ] Add option to set edge label font size (8-72)
+  - [ ] Add option to set edge label font color (Hex color)
+  - [ ] Add option to set tailport (string)
+  - [ ] Add option to set headport (string)
