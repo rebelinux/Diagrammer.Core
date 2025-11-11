@@ -103,7 +103,7 @@ function Add-WatermarkToImage {
 
                 $FontPath = Join-Path -Path $RootPath -ChildPath 'Tools/Fonts/ARIAL.TTF'
 
-                $image = [ImageProcessor]::AddWatermarkToImage($ImageName.FullName, $WaterMarkText, $TempImageOutput, $FontSize, $FontColor, $FontName, ($FontOpacity / 100), $FontPath)
+                $image = [Diagrammer.ImageProcessor]::AddWatermarkToImage($ImageName.FullName, $WaterMarkText, $TempImageOutput, $FontSize, $FontColor, $FontName, ($FontOpacity / 100), $FontPath)
             } else {
                 # Fallback to System.Drawing
 

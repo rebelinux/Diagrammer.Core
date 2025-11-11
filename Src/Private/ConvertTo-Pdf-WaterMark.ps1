@@ -5,7 +5,7 @@ function ConvertTo-Pdf-WaterMark {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.2.31
+        Version:        0.2.34
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -46,7 +46,8 @@ function ConvertTo-Pdf-WaterMark {
     process {
         try {
             Write-Verbose -Message "Trying to convert $($ImageInput.Name) object to PDF format. Destination Path: $DestinationPath."
-            & $ImageMagickPath -quality 100 $ImageInput.FullName $DestinationPath
+            # & $ImageMagickPath -quality 100 $ImageInput.FullName $DestinationPath
+            [Diagrammer.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
         } catch {
             Write-Verbose -Message "Unable to convert $($ImageInput.Name) object to PDF format."
             Write-Debug -Message $($_.Exception.Message)

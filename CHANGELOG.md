@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### :toolbox: Added
 
+- Add ConvertImageToPDF .Net Assembly to handle image to PDF conversion
+
 ### :arrows_clockwise: Changed
+
+- Update ConvertTo-Pdf-WaterMark function to use ConvertImageToPDF .Net method for image to PDF conversion
+- Migrate ImageProcessor methods to the new namespace Diagrammer.ImageProcessor
 
 ### :bug: Fixed
 

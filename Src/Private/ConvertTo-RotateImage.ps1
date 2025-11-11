@@ -94,7 +94,7 @@ function ConvertTo-RotateImage {
             if ($PSVersionTable.Platform -eq 'Unix') {
                 Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\SixLabors.ImageSharp.dll"
             }
-            $RotatedIMG = [ImageProcessor]::RotateImageFromFile($ImageName.FullName, $TempImageOutput, $Angle)
+            $RotatedIMG = [Diagrammer.ImageProcessor]::RotateImageFromFile($ImageName.FullName, $TempImageOutput, $Angle)
         } else {
             Add-Type -AssemblyName System.Windows.Forms
             $RotatedIMG = [System.Drawing.image]::FromFile($ImageName.FullName)
