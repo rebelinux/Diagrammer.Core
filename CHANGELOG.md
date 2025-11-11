@@ -16,7 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update ConvertTo-Pdf-WaterMark function to use ConvertImageToPDF .Net method for image to PDF conversion
 - Migrate ImageProcessor methods to the new namespace Diagrammer.ImageProcessor
 
-### :bug: Fixed
+### :fontawesome-solid-trash: Remove
+
+- Remove ImageMagick path configuration from ConvertTo-Pdf-WaterMark and related files & tests
 
 ## [0.2.33] - 2025-10-27
 

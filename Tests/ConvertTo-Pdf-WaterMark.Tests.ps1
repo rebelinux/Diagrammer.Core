@@ -5,25 +5,6 @@ BeforeAll {
 
 Describe ConvertTo-Pdf-WaterMark {
     BeforeAll {
-        # Set the path to the ImageMagick executable
-        $ImageMagickPath = switch ($PSVersionTable.Platform) {
-            'Unix' {
-                & {
-                    if (Test-Path -Path '/usr/bin/magick') {
-                        '/usr/bin/magick'
-                    } elseif (Test-Path -Path '/bin/magick') {
-                        '/bin/magick'
-                    } elseif (Test-Path -Path '/usr/local/bin/magick') {
-                        '/usr/local/bin/magick'
-                    } elseif (Test-Path -Path '/opt/homebrew/bin/magick') {
-                        '/opt/homebrew/bin/magick'
-                    } else {
-                        throw "ImageMagick 'magick' executable not found in standard Unix paths. Please install ImageMagick."
-                    }
-                }
-            }
-            default { Join-Path $ProjectRoot 'Tools\ImageMagick\magick.exe' }
-        }
         # Force the redirection of TMP to the TestDrive folder
         $env:TMP = $TestDrive
 
