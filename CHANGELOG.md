@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### :toolbox: Added
 
 - Add ConvertImageToPDF .Net Assembly to handle image to PDF conversion
+    - Add support for Net 4.8 (Pwsh 5.1) and Net 9.0 (Pwsh 7.x) platforms
 
 ### :arrows_clockwise: Changed
 

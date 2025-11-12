@@ -48,12 +48,15 @@ function ConvertTo-Pdf-WaterMark {
             Write-Verbose -Message "Trying to convert $($ImageInput.Name) object to PDF format. Destination Path: $DestinationPath."
             switch ($PSVersionTable.PSEdition) {
                 'Core' {
+                    # Net 9.0 assembly call
                     [Diagrammer.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }
                 'Desktop' {
+                    # Net 4.8 assembly call
                     [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }
                 Default {
+                    # Net 4.8 assembly call (Fucking shit)
                     [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }
             }
