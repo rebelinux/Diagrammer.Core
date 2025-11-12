@@ -35,18 +35,29 @@ function ConvertTo-Pdf-WaterMark {
             HelpMessage = 'Please provide the path to the image output file'
         )]
         [ValidateScript({
-            $parentPath = Split-Path -Path $_ -Parent
-            if (-not ($parentPath | Test-Path) ) {
-                throw "Folder does not exist"
-            }
-            return $true
-        })]
+                $parentPath = Split-Path -Path $_ -Parent
+                if (-not ($parentPath | Test-Path) ) {
+                    throw "Folder does not exist"
+                }
+                return $true
+            })]
         [String]$DestinationPath
     )
     process {
         try {
             Write-Verbose -Message "Trying to convert $($ImageInput.Name) object to PDF format. Destination Path: $DestinationPath."
-            [Diagrammer.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
+            switch ($PSVersionTable.PSEdition) {
+                'Core' {
+                    [Diagrammer.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
+                }
+                'Desktop' {
+                    [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
+                }
+                Default {
+                    [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
+                }
+            }
+
         } catch {
             Write-Verbose -Message "Unable to convert $($ImageInput.Name) object to PDF format."
             Write-Debug -Message $($_.Exception.Message)

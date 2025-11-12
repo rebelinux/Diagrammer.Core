@@ -1,7 +1,17 @@
 
 
 # Get assemblies files and import them
-$assemblyName = @(Get-ChildItem -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}*.dll" -f [System.IO.Path]::DirectorySeparatorChar) -ErrorAction SilentlyContinue)
+$assemblyName = switch ($PSVersionTable.PSEdition) {
+    'Core' {
+        @(Get-ChildItem -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}net90{0}*.dll" -f [System.IO.Path]::DirectorySeparatorChar) -ErrorAction SilentlyContinue)
+    }
+    'Desktop' {
+        @(Get-ChildItem -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}net48{0}*.dll" -f [System.IO.Path]::DirectorySeparatorChar) -ErrorAction SilentlyContinue)
+    }
+    Default {
+        @()
+    }
+}
 
 foreach ($Assembly in $assemblyName) {
     try {
