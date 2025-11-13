@@ -145,7 +145,7 @@ function Add-WatermarkToImage {
 
     end {
         try {
-            if (Test-Path -Path $TempImageOutput) {
+            if ((Test-Path -Path $TempImageOutput) -and ($image)) {
                 Write-Verbose -Message "Successfully added watermark text to $ImageInput image."
                 if ($PSBoundParameters.ContainsKey('DestinationPath')) {
                     try {
