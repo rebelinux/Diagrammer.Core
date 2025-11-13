@@ -1,10 +1,6 @@
 BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Get-DiaImagePercent.ps1')
-    if ($PSVersionTable.Platform -eq 'Unix') {
-        Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\Diagrammer.dll"
-        Add-Type -Path "$ProjectRoot\Src\Bin\Assemblies\SixLabors.ImageSharp.dll"
-    }
 }
 
 Describe Get-DiaImagePercent {

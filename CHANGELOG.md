@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove ImageMagick path configuration from ConvertTo-Pdf-WaterMark and related files & tests
 - Remove redundant platform check for Unix in ConvertTo-RotateImage function
+- Remove redundant platform check for Unix in test setup
 
 ## [0.2.33] - 2025-10-27
 
