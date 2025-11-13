@@ -16,10 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update ConvertTo-Pdf-WaterMark function to use ConvertImageToPDF .Net method for image to PDF conversion
 - Migrate ImageProcessor methods to the new namespace Diagrammer.ImageProcessor
+- Improve icon path handling in ConvertTo-Svg function
 
 ### :fontawesome-solid-trash: Remove
 
 - Remove ImageMagick path configuration from ConvertTo-Pdf-WaterMark and related files & tests
+- Remove redundant platform check for Unix in ConvertTo-RotateImage function
 
 ## [0.2.33] - 2025-10-27
 
