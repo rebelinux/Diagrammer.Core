@@ -1,13 +1,25 @@
 
 
-$assemblyName = "SixLabors.ImageSharp"
-$loadedAssembly = [System.AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GetName().Name -eq $assemblyName }
+# Get assemblies files and import them
+$assemblyName = switch ($PSVersionTable.PSEdition) {
+    'Core' {
+        @(Get-ChildItem -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}net90{0}*.dll" -f [System.IO.Path]::DirectorySeparatorChar) -ErrorAction SilentlyContinue)
+    }
+    'Desktop' {
+        @(Get-ChildItem -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}net48{0}*.dll" -f [System.IO.Path]::DirectorySeparatorChar) -ErrorAction SilentlyContinue)
+    }
+    Default {
+        @()
+    }
+}
 
-if ($loadedAssembly) {
-    Write-Verbose -Message "Assembly '$assemblyName' is already loaded."
-} else {
-    Write-Verbose -Message "Loading assembly '$assemblyName'."
-    Add-Type -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}SixLabors.ImageSharp.dll" -f [System.IO.Path]::DirectorySeparatorChar)
+foreach ($Assembly in $assemblyName) {
+    try {
+        Write-Verbose -Message "Loading assembly '$($Assembly.Name)'."
+        Add-Type -Path $Assembly.FullName -Verbose
+    } catch {
+        Write-Error -Message "Failed to add assembly $($Assembly.FullName): $_"
+    }
 }
 
 # Get public and private function definition files and dot source them

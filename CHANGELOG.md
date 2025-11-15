@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.34] - 2025-11-14
+
+### :toolbox: Added
+
+- Add ConvertImageToPDF .Net Assembly to handle image to PDF conversion
+    - Add support for Net 4.8 (Pwsh 5.1) and Net 9.0 (Pwsh 7.x) platforms
+
+### :arrows_clockwise: Changed
+
+- Update ConvertTo-Pdf-WaterMark function to use ConvertImageToPDF .Net method for image to PDF conversion
+- Migrate ImageProcessor methods to the new namespace Diagrammer.ImageProcessor
+- Improve icon path handling in ConvertTo-Svg function
+
+### :fontawesome-solid-trash: Remove
+
+- Remove ImageMagick path configuration from ConvertTo-Pdf-WaterMark and related files & tests
+- Remove redundant platform check for Unix in ConvertTo-RotateImage function
+- Remove redundant platform check for Unix in test setup
+
 ## [0.2.33] - 2025-10-27
 
 ### :toolbox: Added

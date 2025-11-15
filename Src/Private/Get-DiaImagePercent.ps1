@@ -60,9 +60,9 @@ function Get-DiaImagePercent {
             switch ($PSVersionTable.Platform) {
                 'Unix' {
                     & {
-                        if ([ImageProcessor]) {
-                            $Image_FromStream.Width = [ImageProcessor]::GetImageWidthFromBase64($GraphObj)
-                            $Image_FromStream.Height = [ImageProcessor]::GetImageHeightFromBase64($GraphObj)
+                        if ([Diagrammer.ImageProcessor]) {
+                            $Image_FromStream.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromBase64($GraphObj)
+                            $Image_FromStream.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromBase64($GraphObj)
                         } else {
                             throw "Unable to convert Graphviz object to base64 format needed to get image dimensions"
                         }
@@ -104,9 +104,9 @@ function Get-DiaImagePercent {
                 switch ($PSVersionTable.Platform) {
                     'Unix' {
                         & {
-                            if ([ImageProcessor]) {
-                                $ImageFromFile.Width = [ImageProcessor]::GetImageWidthFromFile((Get-ChildItem -Path $ImageInput).FullName)
-                                $ImageFromFile.Height = [ImageProcessor]::GetImageHeightFromFile((Get-ChildItem -Path $ImageInput).FullName)
+                            if ([Diagrammer.ImageProcessor]) {
+                                $ImageFromFile.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromFile((Get-ChildItem -Path $ImageInput).FullName)
+                                $ImageFromFile.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromFile((Get-ChildItem -Path $ImageInput).FullName)
                             } else {
                                 throw "Unable to get image dimensions on Unix platforms."
                             }

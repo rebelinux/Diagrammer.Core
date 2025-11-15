@@ -114,7 +114,7 @@ function Resize-Image {
 
             switch ($PSVersionTable.Platform) {
                 'Unix' {
-                    $NewImage = [ImageProcessor]::ResizeImageFromFile($ImagePath, $Width, $Height, $OutputPath)
+                    $NewImage = [Diagrammer.ImageProcessor]::ResizeImageFromFile($ImagePath, $Width, $Height, $OutputPath)
                 }
                 default {
                     $Bitmap = New-Object -TypeName System.Drawing.Bitmap -ArgumentList $Width, $Height

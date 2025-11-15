@@ -5,7 +5,7 @@ function ConvertTo-Svg {
     .DESCRIPTION
         Export a diagram in PDF/PNG/SVG formats using PSgraph.
     .NOTES
-        Version:        0.2.31
+        Version:        0.2.34
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -55,7 +55,7 @@ function ConvertTo-Svg {
                     continue
                 }
                 $iconName = $Matches.Item(1)
-                $iconNamePath = "$IconPath\$($Matches.Item(1))"
+                $iconNamePath = Join-Path -Path $IconPath -ChildPath $Matches.Item(1)
                 if ($Angle -ne 0) {
                     $iconNamePath = (ConvertTo-RotateImage -ImageInput $iconNamePath -Angle $Angle).FullName
                 }
