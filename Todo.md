@@ -16,8 +16,6 @@
     - [ ] Add pester to test this funtionality
 - [ ] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
   - [ ] Add pester to test this funtionality
-- [ ] Add IconType and Image name in DraftMode
-    - [ ] Add pester to test this funtionality
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
 - [ ] Add function to built html table thats offers:
   - [ ] Add option to set table border style (solid, dashed, dotted, bold)
@@ -42,3 +40,5 @@
   - [ ] Add option to set edge label font color (Hex color)
   - [ ] Add option to set tailport (string)
   - [ ] Add option to set headport (string)
+  - [ ] Add support for Watermark in SVG output format
+    - [ ] Use the Diagrammer c# package to add watermark support
