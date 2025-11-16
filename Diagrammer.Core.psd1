@@ -12,7 +12,7 @@
     RootModule = 'Diagrammer.Core.psm1'
 
     # Version number of this module.
-    ModuleVersion = '0.2.34'
+    ModuleVersion = '0.2.35'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()

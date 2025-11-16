@@ -49,15 +49,15 @@ function ConvertTo-Pdf-WaterMark {
             switch ($PSVersionTable.PSEdition) {
                 'Core' {
                     # Net 9.0 assembly call
-                    [Diagrammer.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
+                    $Null = [Diagrammer.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }
                 'Desktop' {
                     # Net 4.8 assembly call
-                    [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
+                    $Null = [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }
                 Default {
                     # Net 4.8 assembly call (Fucking shit)
-                    [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
+                    $Null = [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }
             }
 
