@@ -12,6 +12,7 @@ Update version numbers to 0.2.35 and suppress output for image processing functi
 ### :arrows_clockwise: Changed
 
 - Increment module version to `0.2.35`
+- Update Graphviz binaries to v14.0.4
 - Suppress output for image processing functions
 
 ## [0.2.34] - 2025-11-14
