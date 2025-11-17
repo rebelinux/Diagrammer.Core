@@ -217,9 +217,9 @@ When you run the script, it generates a PNG file named Example15.png in the spec
 
 !!! example
 
-    === "Example 15 - DraftMode"
+    === "Example 15"
 
-        ```graphviz dot example15_draftmode.png
+        ```graphviz dot example15.png
         digraph Root {
             graph [bb="0,0,1270,2073",
                 bgcolor=White,
@@ -472,9 +472,9 @@ When you run the script, it generates a PNG file named Example15.png in the spec
             }
         }
         ```
-    === "Example 15"
+    === "Example 15 - DraftMode"
 
-        ```graphviz dot example15.png
+        ```graphviz dot example15_draftmode.png
         digraph Root {
             graph [bb="0,0,1506,1760.5",
                 bgcolor=White,
