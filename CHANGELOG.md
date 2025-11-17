@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.35] - 2025-11-16
+
+### :arrows_clockwise: Changed
+
+- Increment module version to `0.2.35`
+- Update Graphviz binaries to v14.0.4
+- Suppress output for image processing functions by redirecting to $null
+  - Add-WatermarkToImage
+  - ConvertTo-Pdf-WaterMark
+
+### :bug: Fixed
+
+- Fix issue where reports failed to attach diagrams when DiagramWaterMark option was enabled in AsBuiltReport
+
 ## [0.2.34] - 2025-11-14
 
 ### :toolbox: Added
