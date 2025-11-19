@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.35] - 2025-11-16
 
+### :toolbox: Added
+
+- Enhance Add-DiaNodeIcon cmdlet with new parameters:
+  - LabelName (allows setting a separate label from the Name parameter)
+  - Add PORT support to AdditionalInfo hashtable element
+
 ### :arrows_clockwise: Changed
 
 - Increment module version to `0.2.35`

@@ -19,7 +19,7 @@ Describe Add-DiaNodeIcon {
     }
 
     It "Should return a HTML table" {
-        $HTMLOutPut | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="Center" colspan="1" rowspan="1" valign="Middle"><img src="RootDomain.png"/></TD></TR><TR><TD align="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000"><B>Server-DC-01v</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">Memory: 4GB</FONT></TD></TR></TABLE>'
+        $HTMLOutPut | Should -BeExactly '<TABLE PORT="EdgeDot" border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="Center" colspan="1" rowspan="1" valign="Middle"><img src="RootDomain.png"/></TD></TR><TR><TD align="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000"><B>Server-DC-01v</B></FONT></TD></TR><TR><TD PORT="Memory" align="Center" colspan="1"><FONT POINT-SIZE="14">Memory: 4GB</FONT></TD></TR></TABLE>'
     }
     It "Should return a HTML table with the IMG tag" {
         [string]$HTMLOutPut | Should -Match 'img src="RootDomain.png"'

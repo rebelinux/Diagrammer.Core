@@ -40,5 +40,11 @@
   - [ ] Add option to set edge label font color (Hex color)
   - [ ] Add option to set tailport (string)
   - [ ] Add option to set headport (string)
-  - [ ] Add support for Watermark in SVG output format
-    - [ ] Use the Diagrammer c# package to add watermark support
+- [ ] Add support for Watermark in SVG output format
+  - [ ] Use the Diagrammer c# package to add watermark support
+- [ ] Add-DiaNodeIcon
+  - [ ] Add option to set TableBorderColor (Hex color)
+  - [ ] Add option to set TableBorderSize (1-10)
+  - [ ] Add option to set TableBorderStyle (solid, dashed, dotted, bold)
+  - [x] Add PORT support to AdditionalInfo hashtable element
+  - [x] Add option to set LabelName separate from Name parameter
