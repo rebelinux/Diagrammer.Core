@@ -28,4 +28,7 @@ Describe Format-HtmlFontProperty {
     It "Should create font with 30 size and red color" {
         Format-HtmlFontProperty -Text "Sample Text" -FontSize 30 -FontColor "red" | Should -Be '<FONT FACE="Segoe Ui" POINT-SIZE="30" COLOR="red">Sample Text</FONT>'
     }
+    It "Should create a bold/italic font with 30 size and blue color" {
+        Format-HtmlFontProperty -Text "Sample Text" -FontBold -FontItalic -FontSize 30 -FontColor "blue" | Should -Be '<FONT FACE="Segoe Ui" POINT-SIZE="30" COLOR="blue"><I><B>Sample Text</B></I></FONT>'
+    }
 }

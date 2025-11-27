@@ -374,13 +374,13 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string]$SubgraphTableStyle,
+        [string]$SubgraphTableStyle = 'solid',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string]$TableBorderColor = "#000000",
+        [string]$TableBorderColor = "#FFFFFF",
 
         [Parameter(
             Mandatory = $false,
@@ -398,13 +398,13 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table background color'
         )]
-        [string] $TableBackgroundColor,
+        [string] $TableBackgroundColor = "#FFFFFF",
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a cell background color'
         )]
-        [string] $CellBackgroundColor,
+        [string] $CellBackgroundColor = "#FFFFFF",
 
         [Parameter(
             Mandatory = $false,

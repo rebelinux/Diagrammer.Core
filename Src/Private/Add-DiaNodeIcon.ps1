@@ -23,7 +23,7 @@ function Add-DiaNodeIcon {
                     | Memory = 4GB  |
                     _________________
     .NOTES
-        Version:        0.2.35
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -107,9 +107,15 @@ function Add-DiaNodeIcon {
     .PARAMETER TableBorder
         Specifies the width of the HTML table border. Default is 0.
 
+    .PARAMETER TableBorderColor
+        Allow to set a table border color. Default is #ffffff.
+
     .PARAMETER TableLayout
         Specifies the table layout, either 'Vertical' or 'Horizontal'. Default is 'Vertical'.
         Controls cell rowspan/colspan and positioning of the icon vs. text rows.
+
+    .PARAMETER TableStyle
+        Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED).
 
     .PARAMETER TableBackgroundColor
         Allows setting a table background color (Hex format, e.g., #FFFFFF).
@@ -290,13 +296,25 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table background color'
         )]
-        [string] $TableBackgroundColor,
+        [string] $TableBackgroundColor = '#FFFFFF',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table border color'
+        )]
+        [string] $TableBorderColor = '#FFFFFF',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
+        )]
+        [string] $TableStyle = 'solid',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a cell background color'
         )]
-        [string] $CellBackgroundColor,
+        [string] $CellBackgroundColor = '#FFFFFF',
 
         [Parameter(
             Mandatory = $false,
@@ -402,115 +420,53 @@ function Add-DiaNodeIcon {
     if ($IconDebug) {
         if ($ICON -ne 'NoIcon') {
             if ($NodeObject) {
-                $HTML = '<TABLE PORT="{0}" color="red" border="1" cellborder="1" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="{3}" {4}><FONT FACE="{5}" Color="{6}" POINT-SIZE="{7}">{8}</FONT></TD></TR><TR><TD align="{3}">{9}</TD></TR>{10}</TABLE>' -f $Port, $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $FormattedName, $TR
+                $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="red" border="1" cellborder="1" cellspacing="{2}" cellpadding="{3}"><TR><TD bgcolor="#FFCCCC" ALIGN="{4}" {5}><FONT FACE="{6}" Color="{7}" POINT-SIZE="{8}">{9}</FONT></TD></TR><TR><TD bgcolor="{10}" align="{4}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableStyle, $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $CellBackgroundColor, $FormattedName, $TR
 
                 Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
 
             } else {
-                '<TABLE PORT="{0}" color="red" border="1" cellborder="1" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="{3}" {4}><FONT FACE="{5}" Color="{6}" POINT-SIZE="{7}">{8}</FONT></TD></TR><TR><TD align="{3}">{9}</TD></TR>{10}</TABLE>' -f $Port, $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $FormattedName, $TR
+                '<TABLE PORT="{0}" STYLE="{1}" color="red" border="1" cellborder="1" cellspacing="{2}" cellpadding="{3}"><TR><TD bgcolor="#FFCCCC" ALIGN="{4}" {5}><FONT FACE="{6}" Color="{7}" POINT-SIZE="{8}">{9}</FONT></TD></TR><TR><TD bgcolor="{10}" align="{4}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableStyle, $CellSpacing, $CellPadding, $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $CellBackgroundColor, $FormattedName, $TR
             }
         } else {
             if ($NodeObject) {
-                $HTML = '<TABLE PORT="{0}" color="red" border="1" cellborder="1" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="{3}" {4}></TD></TR><TR><TD align="{3}">{5}</TD></TR>{6}</TABLE>' -f $Port, $CellSpacing, $CellPadding, $Align, $TDProperties, $FormattedName, $TR
+                $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="red" border="1" cellborder="1" cellspacing="{2}" cellpadding="{3}"><TR><TD ALIGN="{4}" {5}></TD></TR><TR><TD bgcolor="{6}" align="{4}">{7}</TD></TR>{8}</TABLE>' -f $Port, $TableStyle, $CellSpacing, $CellPadding, $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TR
 
                 Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
 
             } else {
-                '<TABLE PORT="{0}" color="red" border="1" cellborder="1" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="{3}" {4}></TD></TR><TR><TD align="{3}">{5}</TD></TR>{6}</TABLE>' -f $Port, $CellSpacing, $CellPadding, $Align, $TDProperties, $FormattedName, $TR
+                '<TABLE PORT="{0}" STYLE="{1}" color="red" border="1" cellborder="1" cellspacing="{2}" cellpadding="{3}"><TR><TD ALIGN="{4}" {5}></TD></TR><TR><TD bgcolor="{6}" align="{4}">{7}</TD></TR>{8}</TABLE>' -f $Port, $TableStyle, $CellSpacing, $CellPadding, $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TR
             }
         }
     } else {
         if ($ICON -ne 'NoIcon') {
             if ($ImageSize) {
-                if ($TableBackgroundColor) {
-                    if ($NodeObject) {
-                        $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}" bgcolor="{5}"><TR><TD ALIGN="{6}" FIXEDSIZE="true" width="{7}" height="{8}" {9}><img src="{10}"/></TD></TR><TR><TD align="{6}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $FormattedName, $TR
+                if ($NodeObject) {
+                    $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="{2}" border="{3}" cellborder="{4}" cellspacing="{5}" cellpadding="{6}" bgcolor="{7}"><TR><TD ALIGN="{9}" FIXEDSIZE="true" width="{10}" height="{11}" {12}><img src="{13}"/></TD></TR><TR><TD bgcolor="{8}" align="{9}">{14}</TD></TR>{15}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $CellBackgroundColor, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $FormattedName, $TR
 
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
 
-                        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-                    } else {
-                        '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}" bgcolor="{5}"><TR><TD ALIGN="{6}" FIXEDSIZE="true" width="{7}" height="{8}" {9}><img src="{10}"/></TD></TR><TR><TD align="{6}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $FormattedName, $TR
-                    }
-                } elseif ($CellBackgroundColor) {
-                    if ($NodeObject) {
-                        $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" FIXEDSIZE="true" width="{6}" height="{7}" {8}><img src="{9}"/></TD></TR><TR><TD bgcolor="{10}" align="{5}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $CellBackgroundColor, $FormattedName, $TR
-
-
-
-                        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-                    } else {
-                        '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" FIXEDSIZE="true" width="{6}" height="{7}" {8}><img src="{9}"/></TD></TR><TR><TD bgcolor="{10}" align="{5}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $CellBackgroundColor, $FormattedName, $TR
-                    }
                 } else {
-                    if ($NodeObject) {
-                        $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" FIXEDSIZE="true" width="{6}" height="{7}" {8}><img src="{9}"/></TD></TR><TR><TD align="{5}">{10}</TD></TR>{11}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $FormattedName, $TR
+                    '<TABLE PORT="{0}" STYLE="{1}" color="{2}" border="{3}" cellborder="{4}" cellspacing="{5}" cellpadding="{6}" bgcolor="{7}"><TR><TD ALIGN="{9}" FIXEDSIZE="true" width="{10}" height="{11}" {12}><img src="{13}"/></TD></TR><TR><TD bgcolor="{8}" align="{9}">{14}</TD></TR>{15}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $CellBackgroundColor, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $FormattedName, $TR
 
-                        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-                    } else {
-                        '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" FIXEDSIZE="true" width="{6}" height="{7}" {8}><img src="{9}"/></TD></TR><TR><TD align="{5}">{10}</TD></TR>{11}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $FormattedName, $TR
-                    }
                 }
             } else {
-                if ($TableBackgroundColor) {
-                    if ($NodeObject) {
-                        $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}" bgcolor="{5}"><TR><TD ALIGN="{6}" {7}><img src="{8}"/></TD></TR><TR><TD align="{6}">{9}</TD></TR>{10}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $Align, $TDProperties, $ICON, $FormattedName, $TR
+                if ($NodeObject) {
+                    $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="{2}" border="{3}" cellborder="{4}" cellspacing="{5}" cellpadding="{6}" bgcolor="{7}"><TR><TD ALIGN="{9}" {10}><img src="{11}"/></TD></TR><TR><TD bgcolor="{8}" align="{9}">{12}</TD></TR>{13}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $CellBackgroundColor, $Align, $TDProperties, $ICON, $FormattedName, $TR
 
-                        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
 
-                    } else {
-                        '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}" bgcolor="{5}"><TR><TD ALIGN="{6}" {7}><img src="{8}"/></TD></TR><TR><TD align="{6}">{9}</TD></TR>{10}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $Align, $TDProperties, $ICON, $FormattedName, $TR
-                    }
-                } elseif ($CellBackgroundColor) {
-                    if ($NodeObject) {
-                        $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" {6}><img src="{7}"/></TD></TR><TR><TD bgcolor="{8}" align="{5}">{9}</TD></TR>{10}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $ICON, $CellBackgroundColor, $FormattedName, $TR
-
-                        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-                    } else {
-                        '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" {6}><img src="{7}"/></TD></TR><TR><TD bgcolor="{8}" align="{5}">{9}</TD></TR>{10}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $ICON, $CellBackgroundColor, $FormattedName, $TR
-                    }
                 } else {
-                    if ($NodeObject) {
-                        $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" {6}><img src="{7}"/></TD></TR><TR><TD align="{5}">{8}</TD></TR>{9}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $ICON, $FormattedName, $TR
-
-                        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-                    } else {
-                        '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" {6}><img src="{7}"/></TD></TR><TR><TD align="{5}">{8}</TD></TR>{9}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $ICON, $FormattedName, $TR
-                    }
+                    '<TABLE PORT="{0}" STYLE="{1}" color="{2}" border="{3}" cellborder="{4}" cellspacing="{5}" cellpadding="{6}" bgcolor="{7}"><TR><TD ALIGN="{9}" {10}><img src="{11}"/></TD></TR><TR><TD bgcolor="{8}" align="{9}">{12}</TD></TR>{13}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $CellBackgroundColor, $Align, $TDProperties, $ICON, $FormattedName, $TR
                 }
             }
         } else {
-            if ($TableBackgroundColor) {
-                if ($NodeObject) {
-                    $HTML = '<TABLE PORT="{0}" bgcolor="{1}" border="{2}" cellborder="{3}" cellspacing="{4}" cellpadding="{5}"><TR><TD ALIGN="{6}" {7}></TD></TR><TR><TD align="{6}">{8}</TD></TR>{9}</TABLE>' -f $Port, $TableBackgroundColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $FormattedName, $TR
+            if ($NodeObject) {
+                $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="{2}" bgcolor="{3}" border="{4}" cellborder="{5}" cellspacing="{6}" cellpadding="{7}"><TR><TD ALIGN="{8}" {9}></TD></TR><TR><TD bgcolor="{10}" align="{8}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBackgroundColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TR
 
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
 
-                } else {
-                    '<TABLE PORT="{0}" bgcolor="{1}" border="{2}" cellborder="{3}" cellspacing="{4}" cellpadding="{5}"><TR><TD ALIGN="{6}" {7}></TD></TR><TR><TD align="{6}">{8}</TD></TR>{9}</TABLE>' -f $Port, $TableBackgroundColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $FormattedName, $TR
-                }
-            } elseif ($CellBackgroundColor) {
-                if ($NodeObject) {
-                    $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" {6}></TD></TR><TR><TD bgcolor="{7}" align="{5}">{8}</TD></TR>{9}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TR
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-                } else {
-                    '<TABLE PORT="{0}" bgcolor="{1}" border="{2}" cellborder="{3}" cellspacing="{4}" cellpadding="{5}"><TR><TD ALIGN="{6}" {7}></TD></TR><TR><TD align="{6}">{8}</TD></TR>{9}</TABLE>' -f $Port, $TableBackgroundColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $FormattedName, $TR
-                }
             } else {
-                if ($NodeObject) {
-                    $HTML = '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" {6}></TD></TR><TR><TD align="{5}">{7}</TD></TR>{8}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $FormattedName, $TR
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-                } else {
-                    '<TABLE PORT="{0}" border="{1}" cellborder="{2}" cellspacing="{3}" cellpadding="{4}"><TR><TD ALIGN="{5}" {6}></TD></TR><TR><TD align="{5}">{7}</TD></TR>{8}</TABLE>' -f $Port, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $FormattedName, $TR
-                }
+                '<TABLE PORT="{0}" STYLE="{1}" color="{2}" bgcolor="{3}" border="{4}" cellborder="{5}" cellspacing="{6}" cellpadding="{7}"><TR><TD ALIGN="{8}" {9}></TD></TR><TR><TD bgcolor="{10}" align="{8}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBackgroundColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TR
             }
         }
     }
