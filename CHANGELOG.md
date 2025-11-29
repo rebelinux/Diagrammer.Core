@@ -37,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### :bug: Fixed
 
 - Fix issue where reports failed to attach diagrams when DiagramWaterMark option was enabled in AsBuiltReport
+- Fix HTML table structure in Add-DiaHtmlLabel function
 
 ## [0.2.34] - 2025-11-14
 

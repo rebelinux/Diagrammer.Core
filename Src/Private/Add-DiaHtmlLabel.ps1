@@ -16,7 +16,7 @@ function Add-DiaHtmlLabel {
         Add-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
         # This will generate an HTML table with the specified label and logo.
     .NOTES
-        Version:        0.2.30
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         GitHub:         rebelinux
@@ -290,7 +290,7 @@ function Add-DiaHtmlLabel {
                 '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1"><img src="{3}"/></TD><TD ALIGN="center">{4}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $ICON, $FormattedLabel
             }
         } else {
-            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TD ALIGN="center">{3}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $FormattedLabel
+            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center">{3}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $FormattedLabel
         }
     }
 }
