@@ -11,7 +11,7 @@ function Format-NodeObject {
             MyNode [label=<HTMLContent>, shape=plain, fillcolor=transparent, fontsize=14, style=filled, color=lightgrey]
 
         .NOTES
-            Version:        0.2.32
+            Version:        0.2.36
             Author:         Jonathan Colon
             Bluesky:        @jcolonfpr.bsky.social
             Github:         rebelinux
@@ -39,6 +39,10 @@ function Format-NodeObject {
         [string] $HtmlObject,
 
         [Parameter(
+            HelpMessage = "Export as HTML string.")]
+        [bool] $AsHtml = $false,
+
+        [Parameter(
             Mandatory = $false,
             HelpMessage = 'Additional Graphviz attributes to add to the node (e.g., style=filled,color=lightgrey)'
         )]
@@ -48,9 +52,13 @@ function Format-NodeObject {
         Write-Verbose -Message "Creating Node Object: $Name"
     }
     process {
-        $JoinHash = Join-Hashtable -PrimaryHash @{label = $HtmlObject; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+        if ($AsHtml) {
+            $HtmlObject
+        } else {
+            $JoinHash = Join-Hashtable -PrimaryHash @{label = $HtmlObject; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
 
-        Node -Name $Name -Attributes $JoinHash
+            Node -Name $Name -Attributes $JoinHash
+        }
     }
     end {}
 }
