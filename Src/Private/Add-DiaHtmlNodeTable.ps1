@@ -259,6 +259,12 @@ function Add-DiaHtmlNodeTable {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
+        )]
+        [string] $SubgraphPort = "EdgeDot",
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'This value enable the option to assign a unique icon per node object'
         )]
         [Switch]$MultiIcon,
@@ -817,7 +823,7 @@ function Add-DiaHtmlNodeTable {
 
         if ($SubgraphIcon) {
             if ($IconDebug) {
-                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>{5}</B></FONT></TD>' -f $Align, $columnSize, $FontName, $fontColor, $SubgraphLabelFontSize, $SubGraphIcon
+                $TDSubgraphIcon = '<TD PORT="{0}" bgcolor="#FFCCCC" ALIGN="{1}" colspan="{2}"><FONT FACE="{3}" Color="{4}" POINT-SIZE="{5}"><B>{6}</B></FONT></TD>' -f $SubgraphPort, $Align, $columnSize, $FontName, $FontColor, $SubgraphLabelFontSize, $SubGraphIcon
 
                 $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
@@ -832,7 +838,8 @@ function Add-DiaHtmlNodeTable {
                 }
             } else {
                 if ($SubgraphIconWidth -and $SubgraphIconHeight) {
-                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="{5}" height="{6}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubGraphIcon, $SubGraphIconWidth, $SubGraphIconHeight
+                    $TDSubgraphIcon = '<TD PORT="{0}" ALIGN="{1}" colspan="{2}" fixedsize="true" width="{3}" height="{4}"><IMG src="{5}"></IMG></TD>' -f $SubgraphPort, $Align, $columnSize, $SubGraphIconWidth, $SubGraphIconHeight, $SubGraphIcon
+
                     $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                     if ($SubgraphLabelPos -eq 'down') {
@@ -845,7 +852,8 @@ function Add-DiaHtmlNodeTable {
                         $TR = $TRTemp
                     }
                 } else {
-                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="40" height="40"><IMG src="{2}"></IMG></TD>' -f $Align, $columnSize, $SubGraphIcon
+                    $TDSubgraphIcon = '<TD PORT="{0}" ALIGN="{1}" colspan="{2}" fixedsize="true" width="40" height="40"><IMG src="{3}"></IMG></TD>' -f $SubgraphPort, $Align, $columnSize, $SubGraphIcon
+
                     $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                     if ($SubgraphLabelPos -eq 'down') {
@@ -861,7 +869,7 @@ function Add-DiaHtmlNodeTable {
             }
         } else {
             if ($IconDebug) {
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $FontName, [string]$SubgraphLabel, $SubgraphLabelFontSize, $FontColor
+                $TDSubgraph = '<TD PORT="{0}" bgcolor="#FFCCCC" ALIGN="{1}" colspan="{2}"><FONT FACE="{3}" POINT-SIZE="{4}" Color="{5}"><B>{6}</B></FONT></TD>' -f $SubgraphPort, $Align, $columnSize, $FontName, $SubgraphLabelFontSize, $FontColor, [string]$SubgraphLabel
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
@@ -871,7 +879,7 @@ function Add-DiaHtmlNodeTable {
                     $TR = $TRTemp
                 }
             } else {
-                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
+                $TDSubgraph = '<TD PORT="{0}" ALIGN="{1}" colspan="{2}">{3}</TD>' -f $SubgraphPort, $Align, $columnSize, $FormattedSubGraphLabel
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph

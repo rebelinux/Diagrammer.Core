@@ -13,10 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - TableBorderColor (Hex color)
   - TableBorder (1-10)
   - TableStyle (solid, dashed, dotted, bold)
+- Add unit tests for Format-HtmlTable function to validate HTML output and custom parameters
 
 ### :arrows_clockwise: Changed
 
 - Increment module version to `0.2.36`
+- Upgrade Graphviz binaries to `14.1.1`
 
 ## [0.2.35] - 2025-11-16
 
