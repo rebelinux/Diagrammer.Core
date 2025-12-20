@@ -6,7 +6,7 @@ function Add-DiaHtmlTable {
         This function takes an array and converts it to an HTML table used for Graphviz node labels.
     .EXAMPLE
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center" -ColumnSize 2
+        Add-DiaHTMLTable -Rows $SiteSubnets -ALIGN "Center" -ColumnSize 2
             _________________________________
             |               |               |
             |192.168.5.0/24 |192.168.7.0/24 |
@@ -16,7 +16,7 @@ function Add-DiaHtmlTable {
             _________________________________
 
         $SiteSubnets = @("192.68.5.0/24", "192.68.7.0/24", "10.0.0.0/24")
-        Add-DiaHTMLTable -Rows $SiteSubnets -Align "Center"
+        Add-DiaHTMLTable -Rows $SiteSubnets -ALIGN "Center"
             _________________
             |               |
             |192.168.5.0/24 |
@@ -29,14 +29,14 @@ function Add-DiaHtmlTable {
             _________________
 
     .NOTES
-        Version:        0.2.32
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
     .PARAMETER Rows
         An array of strings/objects to place in the table.
-    .PARAMETER Align
-        Specifies the alignment of content inside the table cell.
+    .PARAMETER ALIGN
+        Specifies the ALIGNment of content inside the table cell.
     .PARAMETER TableBorder
         Specifies the table border line size.
     .PARAMETER CellBorder
@@ -75,6 +75,8 @@ function Add-DiaHtmlTable {
         Allows setting a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED).
     .PARAMETER TableBorderColor
         Specifies the table border color.
+    .PARAMETER TableBackgroundColor
+        Specifies the table border color.
     .PARAMETER NodeObject
         Indicates that the table should be formatted as a Graphviz node object.
     .PARAMETER Name
@@ -109,10 +111,10 @@ function Add-DiaHtmlTable {
         Sets the subgraph label position (top, down).
     .PARAMETER SubgraphTableStyle
         Allows setting a table style for the subgraph (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED).
-    .PARAMETER SubgraphIconWidth
-        Specifies the subgraph icon width.
-    .PARAMETER SubgraphIconHeight
-        Specifies the subgraph icon height.
+    .PARAMETER SubgraphIconWIDTH
+        Specifies the subgraph icon WIDTH.
+    .PARAMETER SubgraphIconHEIGHT
+        Specifies the subgraph icon HEIGHT.
     .PARAMETER NoFontBold
         Disables additional text bold configuration.
     #>
@@ -122,7 +124,7 @@ function Add-DiaHtmlTable {
 
     param(
         [Parameter(
-            Mandatory = $false,
+            Mandatory,
             HelpMessage = 'The node name (optional)'
         )]
         [string] $Name,
@@ -135,19 +137,19 @@ function Add-DiaHtmlTable {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set the text align'
+            HelpMessage = 'Allow to set the text ALIGN'
         )]
-        [string] $Align = 'center',
+        [string] $ALIGN = 'center',
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set the width of the html table border'
+            HelpMessage = 'Allow to set the WIDTH of the html table border'
         )]
         [int] $TableBorder = 0,
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set the width of the html cell border'
+            HelpMessage = 'Allow to set the WIDTH of the html cell border'
         )]
         [int] $CellBorder = 0,
 
@@ -247,7 +249,7 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string] $TableStyle = "rounded,dashed",
+        [string] $TableStyle = "SOLID",
 
         [Parameter(
             Mandatory = $false,
@@ -350,7 +352,7 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string]$SubgraphTableStyle,
+        [string]$SubgraphTableStyle = "SOLID",
 
         [Parameter(
             Mandatory = $false,
@@ -360,19 +362,25 @@ function Add-DiaHtmlTable {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set a subgraph icon width'
+            HelpMessage = 'Allow to set a table background color'
         )]
-        [string] $SubgraphIconWidth,
+        [string]$TableBackgroundColor = "#ffffff",
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set a subgraph icon height'
+            HelpMessage = 'Allow to set a subgraph icon WIDTH'
         )]
-        [string] $SubgraphIconHeight,
+        [string] $SubgraphIconWIDTH,
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set the text align'
+            HelpMessage = 'Allow to set a subgraph icon HEIGHT'
+        )]
+        [string] $SubgraphIconHEIGHT,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set the text ALIGN'
         )]
         [ValidateScript({
                 if ($Name) {
@@ -412,7 +420,7 @@ function Add-DiaHtmlTable {
         foreach ($Element in $Group[$Number]) {
             $FormattedElement = Format-HtmlFontProperty -Text $Element -FontSize $Fontsize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName -FontSubscript:$FontSubscript -FontSuperscript:$FontSuperscript -FontStrikeThrough:$FontStrikeThrough -FontOverline:$FontOverline
 
-            $TD += '<TD align="{0}" colspan="1">{1}</TD>' -f $Align, $FormattedElement
+            $TD += '<TD ALIGN="{0}" COLSPAN="1">{1}</TD>' -f $ALIGN, $FormattedElement
         }
         $TR += '<TR>{0}</TR>' -f $TD
         $TD = ''
@@ -427,9 +435,9 @@ function Add-DiaHtmlTable {
         }
         if ($SubgraphIcon) {
             if ($IconDebug) {
-                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>SubGraph Icon</B></FONT></TD>' -f $Align, $columnSize, $FontName, $FontColor, $SubgraphLabelFontsize
+                $TDSubgraphIcon = '<TD BGCOLOR="#FFCCCC" ALIGN="{0}" COLSPAN="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>SubGraph Icon</B></FONT></TD>' -f $ALIGN, $columnSize, $FontName, $FontColor, $SubgraphLabelFontsize
 
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedName
+                $TDSubgraph = '<TD BGCOLOR="#FFCCCC" ALIGN="{0}" COLSPAN="{1}">{2}</TD>' -f $ALIGN, $columnSize, $FormattedName
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -441,11 +449,11 @@ function Add-DiaHtmlTable {
                     $TR = $TRTemp
                 }
             } else {
-                if ($SubgraphIconWidth -and $SubgraphIconHeight) {
+                if ($SubgraphIconWIDTH -and $SubgraphIconHEIGHT) {
 
-                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="{2}" height="{3}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $SubGraphIconWidth, $SubGraphIconHeight, $SubGraphIcon
+                    $TDSubgraphIcon = '<TD ALIGN="{0}" COLSPAN="{1}" FIXEDSIZE="true" WIDTH="{2}" HEIGHT="{3}"><IMG SRC="{4}"></IMG></TD>' -f $ALIGN, $columnSize, $SubGraphIconWIDTH, $SubGraphIconHEIGHT, $SubGraphIcon
 
-                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedName
+                    $TDSubgraph = '<TD ALIGN="{0}" COLSPAN="{1}">{2}</TD>' -f $ALIGN, $columnSize, $FormattedName
 
                     if ($SubgraphLabelPos -eq 'down') {
                         $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -458,9 +466,9 @@ function Add-DiaHtmlTable {
                     }
                 } else {
 
-                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="40" height="40"><IMG src="{2}"></IMG></TD>' -f $Align, $columnSize, $SubGraphIcon
+                    $TDSubgraphIcon = '<TD ALIGN="{0}" COLSPAN="{1}" FIXEDSIZE="true" WIDTH="40" HEIGHT="40"><IMG SRC="{2}"></IMG></TD>' -f $ALIGN, $columnSize, $SubGraphIcon
 
-                    $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedName
+                    $TDSubgraph = '<TD ALIGN="{0}" COLSPAN="{1}">{2}</TD>' -f $ALIGN, $columnSize, $FormattedName
 
                     if ($SubgraphLabelPos -eq 'down') {
                         $TR += '<TR>{0}</TR>' -f $TDSubgraphIcon
@@ -475,8 +483,7 @@ function Add-DiaHtmlTable {
             }
         } else {
             if ($IconDebug) {
-
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedName
+                $TDSubgraph = '<TD BGCOLOR="#FFCCCC" ALIGN="{0}" COLSPAN="{1}">{2}</TD>' -f $ALIGN, $columnSize, $FormattedName
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {
@@ -486,7 +493,7 @@ function Add-DiaHtmlTable {
                 }
 
             } else {
-                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedName
+                $TDSubgraph = '<TD ALIGN="{0}" COLSPAN="{1}">{2}</TD>' -f $ALIGN, $columnSize, $FormattedName
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
                 } else {
@@ -499,44 +506,12 @@ function Add-DiaHtmlTable {
     }
 
     if ($IconDebug) {
-        if ($SubgraphTableStyle) {
-            if ($NodeObject) {
-                $HTML = '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{3}">{0}</TABLE>' -f $TR, $SubgraphTableStyle, $CellSpacing, $CellPadding
+        $HTML = Format-HtmlTable -TableStyle $SubgraphTableStyle -TableBorderColor "red" -CellBorder $CellBorder -TableRowContent $TR -Cellspacing $CellSpacing -Cellpadding $CellPadding -TableBackgroundColor $TableBackgroundColor
 
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-            } else {
-                '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{3}">{0}</TABLE>' -f $TR, $SubgraphTableStyle, $CellSpacing, $CellPadding
-            }
-        } else {
-            if ($NodeObject) {
-                $HTML = '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="{1}">{0}</TABLE>' -f $TR, $CellPadding
-
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-            } else {
-                '<TABLE COLOR="red" border="1" cellborder="1" cellpadding="{1}">{0}</TABLE>' -f $TR, $CellPadding
-            }
-        }
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     } else {
-        if ($SubgraphTableStyle) {
-            if ($NodeObject) {
-                $HTML = '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellSpacing, $CellPadding
+        $HTML = Format-HtmlTable -TableStyle $SubgraphTableStyle -TableBorderColor $TableBorderColor -CellBorder $CellBorder -TableBorder $TableBorder -TableRowContent $TR -Cellspacing $CellSpacing -Cellpadding $CellPadding -TableBackgroundColor $TableBackgroundColor
 
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-            } else {
-                '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellSpacing, $CellPadding
-            }
-        } else {
-            if ($NodeObject) {
-                $HTML = '<TABLE STYLE="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
-
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-            } else {
-                '<TABLE STYLE="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
-            }
-        }
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     }
 }

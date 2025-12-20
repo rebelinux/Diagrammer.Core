@@ -13,7 +13,7 @@ function Add-DiaNodeSpacer {
                     _________________
 
     .NOTES
-        Version:        0.2.30
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -29,7 +29,7 @@ function Add-DiaNodeSpacer {
     param(
 
         [Parameter(
-            Mandatory = $true,
+            Mandatory,
             HelpMessage = 'Name of the Node.'
         )]
         [string] $Name,

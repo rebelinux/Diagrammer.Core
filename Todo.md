@@ -1,11 +1,11 @@
 ## High Priority
 - [ ] Finish implementing Format-HTMLTable
-  - [ ] Add-DiaNodeImage
+  - [x] Add-DiaNodeImage
   - [ ] Add-DiaHTMLNodeTable
-  - [ ] Add-DiaHtmlSubgraph
-  - [ ] Add-DiaHtmlTable
-  - [ ] Add-DiaNodeImage
-  - [ ] Add-DiaNodeText
+  - [x] Add-DiaHtmlSignatureTable
+  - [x] Add-DiaHtmlSubgraph
+  - [x] Add-DiaHtmlTable
+  - [x] Add-DiaNodeText
 - [ ] Add-DiaHTMLNodeTable
   - [x] Add Port to Subgraph section
   - [ ] Add option to set image size by percent and by pixels (width x height)

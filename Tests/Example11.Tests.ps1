@@ -135,7 +135,7 @@ Describe Example11 {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
-                $DotContent | Should -Match "img src='Cloud.png'"
+                $DotContent | Should -Match 'img src="Cloud.png"'
                 $DotContent | Should -Match 'WAN'
             }
             It "Should match HTML label RouterNetworkInfo node with embedded image" {

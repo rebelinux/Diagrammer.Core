@@ -622,7 +622,7 @@ function New-Diagrammer {
                 if ($DisableMainDiagramLogo) {
                     $FormatedMainLogo = ""
                 } else {
-                    $FormatedMainLogo = (Add-DiaHtmlLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -FontColor  $MainDiagramLabelFontColor -FontName $MainDiagramLabelFontname -FontBold:$MainDiagramLabelFontBold -FontItalic:$MainDiagramLabelFontItalic -FontUnderline:$MainDiagramLabelFontUnderline -FontOverline:$MainDiagramLabelFontOverline -FontSubscript:$MainDiagramLabelFontSubscript -FontSuperscript:$MainDiagramLabelFontSuperscript -FontStrikeThrough:$MainDiagramLabelFontStrikeThrough)
+                    $FormatedMainLogo = (Add-DiaHtmlLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -FontColor  $MainDiagramLabelFontColor -FontName $MainDiagramLabelFontname -FontBold:$MainDiagramLabelFontBold -FontItalic:$MainDiagramLabelFontItalic -FontUnderline:$MainDiagramLabelFontUnderline -FontOverline:$MainDiagramLabelFontOverline -FontSubscript:$MainDiagramLabelFontSubscript -FontSuperscript:$MainDiagramLabelFontSuperscript -FontStrikeThrough:$MainDiagramLabelFontStrikeThrough -IconPath $IconPath)
                 }
 
                 SubGraph MainGraph -Attributes @{Label = $FormatedMainLogo; fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {

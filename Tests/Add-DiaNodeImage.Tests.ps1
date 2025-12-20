@@ -4,6 +4,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'Format-HtmlFontProperty.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaNodeImage.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Format-NodeObject.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Format-HtmlTable.ps1')
 }
 
 Describe Add-DiaNodeImage {
@@ -25,13 +26,13 @@ Describe Add-DiaNodeImage {
     }
 
     It "Should return a HTML table with Diagrammer.png image" {
-        $HTMLOutPut | Should -BeExactly "<TABLE border='0' color='#000000' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='210' height='143.5' colspan='1'><img src='Diagrammer.png'/></TD></TR></TABLE>"
+        $HTMLOutPut | Should -BeExactly '<TABLE PORT="EdgeDot" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1" BGCOLOR="white" COLOR="#000000"><TR><TD STYLE="SOLID" ALIGN="Center" fixedsize="true" width="210" height="143.5" colspan="1"><img src="Diagrammer.png"/></TD></TR></TABLE>'
     }
     It "Should return a HTML table with the IMG tag" {
-        $HTMLOutPut | Should -Match "<img src='Diagrammer.png'/>"
+        $HTMLOutPut | Should -Match '<img src="Diagrammer.png"/>'
     }
     It "Should return a HTML table with red colored table" {
-        $HTMLOutPutDebug | Should -Match "color='red'"
+        $HTMLOutPutDebug | Should -Match 'COLOR="red"'
     }
     It "Should return Wan as Name in the Node Object" {
         $HTMLOutPutNodeObj | Should -Match "`"Wan`""

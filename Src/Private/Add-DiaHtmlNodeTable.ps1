@@ -380,7 +380,7 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string]$SubgraphTableStyle = 'solid',
+        [string]$SubgraphTableStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
@@ -413,7 +413,7 @@ function Add-DiaHtmlNodeTable {
         [string] $CellBackgroundColor = "#FFFFFF",
 
         [Parameter(
-            Mandatory = $false,
+            Mandatory,
             HelpMessage = 'Specifies the name of the node.'
         )]
         [String]$Name,

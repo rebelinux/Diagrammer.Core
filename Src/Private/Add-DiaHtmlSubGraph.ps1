@@ -29,7 +29,7 @@ function Add-DiaHtmlSubGraph {
             _________________
 
     .NOTES
-        Version:        0.2.30
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -249,7 +249,7 @@ function Add-DiaHtmlSubGraph {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string]$TableStyle,
+        [string]$TableStyle = "SOLID",
 
         [Parameter(
             Mandatory = $false,
@@ -276,7 +276,7 @@ function Add-DiaHtmlSubGraph {
         [int] $IconHeight = 40,
 
         [Parameter(
-            Mandatory = $false,
+            Mandatory,
             HelpMessage = 'Specifies the name of the node.'
         )]
         [String]$Name,
@@ -390,45 +390,16 @@ function Add-DiaHtmlSubGraph {
     }
 
     if ($IconDebug) {
-        if ($TableStyle) {
-            if ($NodeObject) {
-                $HTML = '<TABLE BGColor="{0}" STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{3}</TABLE>' -f $TableBackgroundColor, $TableStyle, $CellPadding, $TR
 
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+        $HTML = Format-HtmlTable -TableStyle $TableStyle -TableBackgroundColor $TableBackgroundColor -TableBorderColor "red" -CellBorder 1 -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TR
 
-            } else {
-                '<TABLE BGColor="{0}" STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{3}</TABLE>' -f $TableBackgroundColor, $TableStyle, $CellPadding, $TR
-            }
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
 
-        } else {
-            if ($NodeObject) {
-                $HTML = '<TABLE BGColor="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{1}">{2}</TABLE>' -f $TableBackgroundColor, $CellPadding, $TR
-
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-            } else {
-                '<TABLE BGColor="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{1}">{2}</TABLE>' -f $TableBackgroundColor, $CellPadding, $TR
-            }
-        }
     } else {
-        if ($TableStyle) {
-            if ($NodeObject) {
-                $HTML = '<TABLE BGColor="{0}" COLOR="{5}" STYLE="{4}" border="{1}" cellborder="{2}" cellpadding="{7}" cellspacing="{6}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
 
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
+        $HTML = Format-HtmlTable -TableBorder $TableBorder -TableStyle $TableStyle -TableBackgroundColor $TableBackgroundColor -TableBorderColor $TableBorderColor -CellBorder $CellBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TR
 
-            } else {
-                '<TABLE BGColor="{0}" COLOR="{5}" STYLE="{4}" border="{1}" cellborder="{2}" cellpadding="{7}" cellspacing="{6}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
-            }
-        } else {
-            if ($NodeObject) {
-                $HTML = '<TABLE BGColor="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
 
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-
-            } else {
-                '<TABLE BGColor="{0}" COLOR="{4}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{5}">{3}</TABLE>' -f $TableBackgroundColor, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellSpacing, $CellPadding
-            }
-        }
     }
 }

@@ -167,6 +167,12 @@ function Add-DiaHtmlSignatureTable {
         [switch] $FontStrikeThrough,
 
         [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Include the full path for the icon images'
+        )]
+        [System.IO.FileInfo] $IconPath,
+
+        [Parameter(
             Mandatory = $true,
             HelpMessage = 'Please provide the Image Hashtable Object'
         )]
@@ -178,6 +184,13 @@ function Add-DiaHtmlSignatureTable {
         )]
         [Alias("DraftMode")]
         [bool] $IconDebug,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Set the image size in percent (100% is default)'
+        )]
+        [ValidateRange(1, 100)]
+        [int] $ImageSizePercent = 100,
 
         [Parameter(
             Mandatory = $false,
@@ -207,12 +220,25 @@ function Add-DiaHtmlSignatureTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string]$TableBorderColor = "#000000"
+        [string]$TableBorderColor = "#000000",
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
+        )]
+        [string] $Port = "EdgeDot"
     )
 
     if ($ImagesObj[$Logo]) {
         $ICON = $ImagesObj[$Logo]
     } else { $ICON = $false }
+
+    if ($ImageSizePercent -lt 100) {
+        if (-not $IconPath) {
+            throw "IconPath is required when ImageSizePercent is less than 100."
+        }
+        $ImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
+    }
 
     $TR = ''
     foreach ($Row in $Rows) {
@@ -227,15 +253,30 @@ function Add-DiaHtmlSignatureTable {
 
     if ($ICON) {
         if ($IconDebug) {
-            '<TABLE STYLE="{0}" COLOR="red" border="{1}" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="{2}" colspan="1" rowspan="4">{3}</TD></TR>{4}</TABLE>' -f $TableStyle, $tableBorder, $Align, $ICON, $TR
+            $TRContent = '<TR><TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="1" rowspan="4">{1}</TD></TR>{2}' -f $Align, $ICON, $TR
+
+            Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
         } else {
-            '<TABLE STYLE="{0}" border="{1}" cellborder="{2}" cellpadding="{6}"><TR><TD fixedsize="true" width="80" height="80" ALIGN="{3}" colspan="1" rowspan="4"><img src="{4}"/></TD></TR>{5}</TABLE>' -f $TableStyle, $tableBorder, $cellBorder, $Align, $Icon, $TR, $CellPadding
+            if ($ImageSize) {
+                $TRContent = '<TR><TD ALIGN="{0}" fixedsize="true" width="{1}" height="{2}" colspan="1" rowspan="4"><img src="{3}"/></TD></TR>{4}' -f $Align, $ImageSize.Width, $ImageSize.Height, $ICON, $TR
+
+                Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBorderColor $TableBorderColor -CellBorder 0 -TableRowContent $TRContent
+
+            } else {
+                $TRContent = '<TR><TD fixedsize="true" width="80" height="80" ALIGN="{0}" colspan="1" rowspan="4"><img src="{1}"/></TD></TR>{2}' -f $Align, $ICON, $TR
+
+                Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor $TableBorderColor -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
+            }
         }
     } else {
         if ($IconDebug) {
-            '<TABLE STYLE="{1}" COLOR="red" border="1" cellborder="1" cellpadding="{2}">{0}</TABLE>' -f $TR, $TableStyle, $CellPadding
+            $TRContent = $TR
+
+            Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor $TableBorderColor -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
         } else {
-            '<TABLE COLOR="{4}" STYLE="{3}" border="{0}" cellborder="{1}" cellpadding="{6}" cellspacing="{5}">{2}</TABLE>' -f $tableBorder, $cellBorder, $TR, $TableStyle, $TableBorderColor, $CellSpacing, $CellPadding
+            $TRContent = $TR
+
+            Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor $TableBorderColor -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
         }
     }
 }

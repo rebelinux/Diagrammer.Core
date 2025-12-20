@@ -186,7 +186,7 @@ $advancedexample02 = & {
         # Now, let's add another text box node. This one will explain the advantages of using Add-DiaHTMLSubGraph over native Graphviz SubGraphs.
         $Message = "Add-DiaHTMLSubGraph permit the use of edges to connect nodes inside and outside the SubGraph.\n
         This is not possible with native Graphviz SubGraphs.\n"
-        Add-DiaNodeText -Name "Info-Box2" -DraftMode:$DraftMode -Text $Message -FontColor "#0000FF" -FontSize 20 -FontBold -TextAlign "Left" -NodeObject
+        Add-DiaNodeText -Name "Info-Box2" -DraftMode:$DraftMode -Text $Message -FontColor "#0000FF" -FontSize 20 -FontBold -TextAlign "Left" -TableBorder 0 -NodeObject
 
         Edge -From "USA-WebServers" -To "Info-Box2" -Attributes @{minlen = 2; color = 'black'; style = 'dashed'; penwidth = 1.5 }
     }

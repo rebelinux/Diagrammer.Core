@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - TableBorderColor (Hex color)
   - TableBorder (1-10)
   - TableStyle (solid, dashed, dotted, bold)
+- Add function to build HTML Table dynamically based on input parameters (Format-HtmlTable)
 - Add unit tests for Format-HtmlTable function to validate HTML output and custom parameters
 
 ### :arrows_clockwise: Changed

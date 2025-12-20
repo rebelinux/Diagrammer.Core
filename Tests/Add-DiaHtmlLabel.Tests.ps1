@@ -2,6 +2,7 @@ BeforeAll {
     . (Join-Path -Path $PSScriptRoot -ChildPath '_InitializeTests.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Format-HtmlFontProperty.ps1')
     . (Join-Path -Path $PrivateFolder -ChildPath 'Add-DiaHtmlLabel.ps1')
+    . (Join-Path -Path $PrivateFolder -ChildPath 'Format-HtmlTable.ps1')
 }
 
 Describe Add-DiaHtmlLabel {
@@ -42,48 +43,48 @@ Describe Add-DiaHtmlLabel {
 
     Context "Display Label with Icon" {
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" {
-            $HTMLTableMainLabel | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center" colspan="1"><img src="Diagrammer.png"/></TD></TR><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableMainLabel | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="20" CELLPADDING="10" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" COLSPAN="1"><img SRC="Diagrammer.png"/></TD></TR><TR><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) in Draftmode" {
-            $HTMLTableMainLabelDraftmode | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">Diagrammer.png Logo</TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="center" ><FONT FACE="Segoe Ui" Color="#000000" POINT-SIZE="14">Active Directory Forest Diagram</FONT></TD></TR><TR><TD ALIGN="center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>'
+            $HTMLTableMainLabelDraftmode | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="20" CELLPADDING="10" BGCOLOR="white" COLOR="black"><TR><TD BGCOLOR="#FFCCCC" ALIGN="Center" COLSPAN="1">Diagrammer.png Logo</TD></TR><TR><TD BGCOLOR="#FFCCCC" ALIGN="Center" ><FONT FACE="Segoe Ui" Color="#000000" POINT-SIZE="14">Active Directory Forest Diagram</FONT></TD></TR><TR><TD ALIGN="Center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>'
         }
     }
     Context "Display Label with Icon in Subgraph form (fits better in Subgraph)" {
         It "Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment)" {
-            $HTMLTableSubgraphLabel | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="center" colspan="1"><img src="Diagrammer.png"/></TD><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableSubgraphLabel | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" COLSPAN="1"><IMG SRC="Diagrammer.png"/></TD><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
         It "Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) in Draftmode" {
-            $HTMLTableSubgraphLabelDraftmode | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">Diagrammer.png Logo</TD><TD bgcolor="#FFCCCC" ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableSubgraphLabelDraftmode | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="white" COLOR="black"><TR><TD BGCOLOR="#FFCCCC" ALIGN="Center" COLSPAN="1">Diagrammer.png Logo</TD><TD BGCOLOR="#FFCCCC" ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
     }
 
     Context "Display Label with Icon with custom Width and Height" {
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) with custom Icon Width and Height" {
-            $HTMLTableMainLabelSetImageWxH | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="300" height="300"><img src="Diagrammer.png"/></TD></TR><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableMainLabelSetImageWxH | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="20" CELLPADDING="10" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" FIXEDSIZE="true" WIDTH="300" HEIGHT="300"><img SRC="Diagrammer.png"/></TD></TR><TR><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
 
         It "Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon Width and Height" {
-            $HTMLTableSubgraphLabelSetImageWxH | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="300" height="300"><img src="Diagrammer.png"/></TD><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableSubgraphLabelSetImageWxH | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" COLSPAN="1" FIXEDSIZE="true" WIDTH="300" HEIGHT="300"><IMG SRC="Diagrammer.png"/></TD><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
     }
 
     Context "Display Label with Icon with custom Width and Height calculated in Percent of original image size" {
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) with custom Icon size in Percent" {
-            $HTMLTableMainLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="210" height="143.5"><img src="Diagrammer.png"/></TD></TR><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableMainLabelSetImagePercent | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="20" CELLPADDING="10" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" COLSPAN="1" FIXEDSIZE="true" WIDTH="210" HEIGHT="143.5"><img SRC="Diagrammer.png"/></TD></TR><TR><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
 
         It "Should return a HTML Table with an Icon at left and a Label text at right (Horizontal Alignment) with custom Icon size in Percent" {
-            $HTMLTableSubgraphLabelSetImagePercent | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="210" height="143.5"><img src="Diagrammer.png"/></TD><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableSubgraphLabelSetImagePercent | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" COLSPAN="1" FIXEDSIZE="true" WIDTH="210" HEIGHT="143.5"><IMG SRC="Diagrammer.png"/></TD><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
     }
 
 
     Context "Display Label without Icon" {
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment)" {
-            $HTMLTableMainLabelNoIcon | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="20" cellpadding="10"><TR><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableMainLabelNoIcon | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="20" CELLPADDING="10" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD BGCOLOR="#FFFFFF" ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
         It "Should return a HTML Table with an Icon at Top and a Label text at bottom (Vertical Alignment) in Draftmode" {
-            $HTMLTableSubgraphLabelNoIcon | Should -BeExactly '<TABLE border="0" cellborder="0" cellspacing="5" cellpadding="5"><TD ALIGN="center"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
+            $HTMLTableSubgraphLabelNoIcon | Should -BeExactly '<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF"><FONT FACE="Segoe Ui" POINT-SIZE="14" COLOR="#000000">Active Directory Forest Diagram</FONT></TD></TR></TABLE>'
         }
     }
 

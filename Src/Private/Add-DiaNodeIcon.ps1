@@ -268,7 +268,7 @@ function Add-DiaNodeIcon {
         [String]$LabelName,
 
         [Parameter(
-            Mandatory = $true,
+            Mandatory,
             HelpMessage = 'Specifies the name of the graphviz node.'
         )]
         [String]$Name,
@@ -318,7 +318,7 @@ function Add-DiaNodeIcon {
 
         [Parameter(
             Mandatory = $false,
-            HelpMessage = 'Allow to set the text align'
+            HelpMessage = 'When specified, the function will register the generated HTML with the diagram engine by calling Format-NodeObject.'
         )]
         [ValidateScript({
                 if ($Name) {
@@ -372,7 +372,7 @@ function Add-DiaNodeIcon {
             'Hashtable' {
                 foreach ($r in $AditionalInfo) {
                     [string]$TRAditionalInfo += $r.getEnumerator() | ForEach-Object {
-                        '<TR><TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}: {4}</FONT></TD></TR>' -f $_.Key, $Align, $FontSize, $_.Key, $_.Value
+                        '<TR><TD PORT="{0}" BGCOLOR="{1}" ALIGN="{2}" colspan="1"><FONT POINT-SIZE="{3}">{4}: {5}</FONT></TD></TR>' -f $_.Key, $CellBackgroundColor, $Align, $FontSize, $_.Key, $_.Value
                     }
                 }
             }
@@ -380,7 +380,7 @@ function Add-DiaNodeIcon {
             'OrderedDictionary' {
                 foreach ($r in $AditionalInfo) {
                     [string]$TRAditionalInfo += $r.getEnumerator() | ForEach-Object {
-                        '<TR><TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}: {4}</FONT></TD></TR>' -f $_.Key, $Align, $FontSize, $_.Key, $_.Value
+                        '<TR><TD PORT="{0}" BGCOLOR="{1}" ALIGN="{2}" colspan="1"><FONT POINT-SIZE="{3}">{4}: {5}</FONT></TD></TR>' -f $_.Key, $CellBackgroundColor, $Align, $FontSize, $_.Key, $_.Value
                     }
                 }
             }
@@ -388,7 +388,7 @@ function Add-DiaNodeIcon {
             'PSCustomObject' {
                 foreach ($r in $AditionalInfo) {
                     [string]$TRAditionalInfo += $r.PSObject.Properties | ForEach-Object {
-                        '<TR><TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}: {4}</FONT></TD></TR>' -f $_.Name, $Align, $FontSize, $_.Name, $_.Value
+                        '<TR><TD PORT="{0}" BGCOLOR="{1}" ALIGN="{2}" colspan="1"><FONT POINT-SIZE="{3}">{4}: {5}</FONT></TD></TR>' -f $_.Name, $CellBackgroundColor, $Align, $FontSize, $_.Name, $_.Value
                     }
                 }
             }
@@ -396,7 +396,7 @@ function Add-DiaNodeIcon {
             'Object[]' {
                 foreach ($r in $AditionalInfo) {
                     [string]$TRAditionalInfo += $r.PSObject.Properties | ForEach-Object {
-                        '<TR><TD PORT="{0}" ALIGN="{1}" colspan="1"><FONT POINT-SIZE="{2}">{3}: {4}</FONT></TD></TR>' -f $_.Name, $Align, $FontSize, $_.Name, $_.Value
+                        '<TR><TD PORT="{0}" BGCOLOR="{1}" ALIGN="{2}" colspan="1"><FONT POINT-SIZE="{3}">{4}: {5}</FONT></TD></TR>' -f $_.Name, $CellBackgroundColor, $Align, $FontSize, $_.Name, $_.Value
                     }
                 }
             }
@@ -419,30 +419,37 @@ function Add-DiaNodeIcon {
 
     if ($IconDebug) {
         if ($ICON -ne 'NoIcon') {
-
             $TRContent = '<TR><TD bgcolor="#FFCCCC" ALIGN="{0}" {1}><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}">{5}</FONT></TD></TR><TR><TD bgcolor="{6}" ALIGN="{0}">{7}</TD></TR>{8}' -f $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
 
             $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor "red" -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
 
             Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         } else {
-            $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="red" border="1" cellborder="1" cellspacing="{2}" cellpadding="{3}"><TR><TD ALIGN="{4}" {5}></TD></TR><TR><TD bgcolor="{6}" ALIGN="{4}">{7}</TD></TR>{8}</TABLE>' -f $Port, $TableStyle, $CellSpacing, $CellPadding, $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
+            $TRContent = '<TR><TD ALIGN="{0}" {1}></TD></TR><TR><TD bgcolor="{2}" ALIGN="{0}">{3}</TD></TR>{4}' -f $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
+
+            $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor "red" -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
 
             Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         }
     } else {
         if ($ICON -ne 'NoIcon') {
             if ($ImageSize) {
-                $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="{2}" border="{3}" cellborder="{4}" cellspacing="{5}" cellpadding="{6}" bgcolor="{7}"><TR><TD ALIGN="{9}" FIXEDSIZE="true" width="{10}" height="{11}" {12}><img src="{13}"/></TD></TR><TR><TD bgcolor="{8}" ALIGN="{9}">{14}</TD></TR>{15}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $CellBackgroundColor, $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $FormattedName, $TRAditionalInfo
+                $TRContent = '<TR><TD ALIGN="{0}" FIXEDSIZE="true" WIDTH="{1}" HEIGHT="{2}" {3}><IMG SRC="{4}"/></TD></TR><TR><TD BGCOLOR="{5}" ALIGN="{0}">{6}</TD></TR>{7}' -f $Align, $ImageSize.Width, $ImageSize.Height, $TDProperties, $ICON, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
+
+                $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -Tableborder $TableBorder -TableBorderColor $TableBorderColor -TableRowContent $TRContent -CellBorder $CellBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableBackgroundColor $TableBackgroundColor
 
                 Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
             } else {
-                $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="{2}" border="{3}" cellborder="{4}" cellspacing="{5}" cellpadding="{6}" bgcolor="{7}"><TR><TD ALIGN="{9}" {10}><img src="{11}"/></TD></TR><TR><TD bgcolor="{8}" ALIGN="{9}">{12}</TD></TR>{13}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $TableBackgroundColor, $CellBackgroundColor, $Align, $TDProperties, $ICON, $FormattedName, $TRAditionalInfo
+                $TRContent = '<TR><TD ALIGN="{0}" {1}><img src="{2}"/></TD></TR><TR><TD bgcolor="{3}" ALIGN="{0}">{4}</TD></TR>{5}' -f $Align, $TDProperties, $ICON, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
+
+                $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor $TableBorderColor -TableRowContent $TRContent -TableBorder $TableBorder -CellBorder $CellBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableBackgroundColor $TableBackgroundColor
 
                 Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
             }
         } else {
-            $HTML = '<TABLE PORT="{0}" STYLE="{1}" color="{2}" bgcolor="{3}" border="{4}" cellborder="{5}" cellspacing="{6}" cellpadding="{7}"><TR><TD ALIGN="{8}" {9}></TD></TR><TR><TD bgcolor="{10}" ALIGN="{8}">{11}</TD></TR>{12}</TABLE>' -f $Port, $TableStyle, $TableBorderColor, $TableBackgroundColor, $TableBorder, $CellBorder, $CellSpacing, $CellPadding, $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
+            $TRContent = '<TD ALIGN="{0}" {1}></TD></TR><TR><TD bgcolor="{2}" ALIGN="{0}">{3}</TD></TR>{4}' -f $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
+
+            $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor $TableBorderColor -TableRowContent $TRContent -TableBackgroundColor $TableBackgroundColor -TableBorder $TableBorder -CellBorder $CellBorder -CellSpacing $CellSpacing -CellPadding $CellPadding
 
             Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         }

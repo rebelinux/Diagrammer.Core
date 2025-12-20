@@ -47,7 +47,7 @@ function Add-DiaNodeImage {
 
     .NOTES
         Author: Jonathan Colon
-        Version: 0.2.34
+        Version: 0.2.36
         Twitter: @jcolonfzenpr
         Github: rebelinux
 
@@ -59,7 +59,7 @@ function Add-DiaNodeImage {
     param(
 
         [Parameter(
-            Mandatory = $true,
+            Mandatory,
             HelpMessage = 'Name of the Node.'
         )]
         [string] $Name,
@@ -120,7 +120,7 @@ function Add-DiaNodeImage {
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
         [ValidateSet("ROUNDED", "RADIAL", "SOLID", "INVISIBLE", "INVIS", "DOTTED", "DASHED")]
-        [string] $TableBorderStyle,
+        [string] $TableBorderStyle = "SOLID",
 
         [Parameter(
             Mandatory = $false,
@@ -148,47 +148,26 @@ function Add-DiaNodeImage {
     }
 
     if ($IconDebug) {
-        if ($NodeObject) {
-            $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'>{1}</TD></TR></TABLE>" -f 'SOLID', $ICON
+        $TRContent = '<TR><TD STYLE="{0}" ALIGN="Center" colspan="1">{1}</TD></TR>' -f "SOLID", $ICON
 
-            Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-        } else {
-            "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'>{1} Image</TD></TR></TABLE>" -f 'SOLID', $Name
-        }
+        $HTML = Format-HtmlTable -TableBackgroundColor "#FFCCCC" -TableBorderColor "red" -CellBorder 0 -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
+
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     } else {
         if ($ImageSize) {
-            if ($NodeObject) {
-                $HTML = if ($TableBorderStyle) {
-                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' fixedsize='true' width='{4}' height='{5}' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
-                } else {
-                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='{3}' height='{4}' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
-                }
 
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-            } else {
-                if ($TableBorderStyle) {
-                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' fixedsize='true' width='{4}' height='{5}' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
-                } else {
-                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' fixedsize='true' width='{3}' height='{4}' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON, $ImageSize.Width, $ImageSize.Height
-                }
-            }
+            $TRContent = '<TR><TD STYLE="{0}" ALIGN="Center" fixedsize="true" width="{1}" height="{2}" colspan="1"><img src="{3}"/></TD></TR>' -f $TableBorderStyle, $ImageSize.Width, $ImageSize.Height, $ICON
+
+            $HTML = Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBorderColor $TableBorderColor -CellBorder 0 -TableRowContent $TRContent
+
+            Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         } else {
-            if ($NodeObject) {
-                $HTML = if ($TableBorderStyle) {
-                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON
-                } else {
-                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON
-                }
 
-                Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-            } else {
-                if ($TableBorderStyle) {
-                    "<TABLE STYLE='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='Center' colspan='1'><img src='{3}'/></TD></TR></TABLE>" -f $TableBorderStyle, $TableBorder, $TableBorderColor, $ICON
-                } else {
-                    "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='{2}'/></TD></TR></TABLE>" -f $TableBorder, $TableBorderColor, $ICON
-                }
+            $TRContent = '<TR><TD STYLE="{0}" ALIGN="Center" colspan="1"><img src="{1}"/></TD></TR>' -f $TableBorderStyle, $ICON
 
-            }
+            $HTML = Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBorderColor $TableBorderColor -CellBorder 0 -TableRowContent $TRContent
+
+            Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         }
     }
 
