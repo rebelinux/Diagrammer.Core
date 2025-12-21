@@ -40,7 +40,7 @@ function Add-DiaHtmlNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.33
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux

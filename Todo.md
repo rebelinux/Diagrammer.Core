@@ -1,7 +1,7 @@
 ## High Priority
 - [ ] Finish implementing Format-HTMLTable
   - [x] Add-DiaNodeImage
-  - [ ] Add-DiaHTMLNodeTable
+  - [x] Add-DiaHTMLNodeTable
   - [x] Add-DiaHtmlSignatureTable
   - [x] Add-DiaHtmlSubgraph
   - [x] Add-DiaHtmlTable
