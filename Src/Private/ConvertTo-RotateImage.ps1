@@ -85,7 +85,7 @@ function ConvertTo-RotateImage {
     process {
 
         $ImageName = Get-ChildItem -Path $ImageInput
-        $FileName = $ImageName.BaseName + "_Rotated" + $ImageName.Extension
+        $FileName = $ImageName.BaseName + '_Rotated' + $ImageName.Extension
 
         $TempImageOutput = Join-Path -Path ([system.io.path]::GetTempPath()) -ChildPath $FileName
 

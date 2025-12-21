@@ -23,20 +23,20 @@ Describe AdvancedExample01 {
         $RunFile = & $ProjectRoot\Examples\AdvancedExample01.ps1 @PassParamsDot
     }
 
-    Context "Format Parameter Tests" {
-        It "Should exist Example1.Dot" {
+    Context 'Format Parameter Tests' {
+        It 'Should exist Example1.Dot' {
             ($RunFile).FullName | Should -Exist
         }
-        It "Should exist Example1.png" {
+        It 'Should exist Example1.png' {
             (& $ProjectRoot\Examples\Example15.ps1 @PassParamsPng).FullName | Should -Exist
         }
-        It "Should return error about unsupported Format" {
+        It 'Should return error about unsupported Format' {
             { & $ProjectRoot\Examples\Example15.ps1 @PassParamsTif } | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'Format'. The argument `"tif`" does not belong to the set `"pdf,svg,png,dot,base64,jpg`" specified by the ValidateSet attribute. Supply an argument that is in the set and then try the command again."
         }
     }
-    Context "Graphviz Dot Node Tests" {
-        Context "Graphviz Dot Main Label Tests" {
-            It "Should match HTML label with embedded image" {
+    Context 'Graphviz Dot Node Tests' {
+        Context 'Graphviz Dot Main Label Tests' {
+            It 'Should match HTML label with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='20' cellpadding='10'><TR><TD ALIGN='center' colspan='1'><img src='Diagrammer.png'/></TD></TR><TR><TD ALIGN='center'><FONT FACE='Segoe Ui' Color='#565656' POINT-SIZE='24'>Web Application Diagram</FONT></TD></TR></TABLE>>,"
@@ -46,61 +46,61 @@ Describe AdvancedExample01 {
             }
         }
 
-        Context "Graphviz Dot Node Icon Tests" {
+        Context 'Graphviz Dot Node Icon Tests' {
 
-            It "Should match Web-Server-01 node" {
+            It 'Should match Web-Server-01 node' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web-Server-01"
-
-                $DotContent | Should -Match $ExpectedText
-            }
-            It "Should match Web-Server-02 node" {
-                $DotFile = ($RunFile).FullName
-                $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web-Server-02"
+                $ExpectedText = 'Web-Server-01'
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match Web-Server-03 node" {
+            It 'Should match Web-Server-02 node' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web-Server-03"
+                $ExpectedText = 'Web-Server-02'
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match Web-Server-04 node" {
+            It 'Should match Web-Server-03 node' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web-Server-04"
+                $ExpectedText = 'Web-Server-03'
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match Web-Server-05 node" {
+            It 'Should match Web-Server-04 node' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web-Server-05"
+                $ExpectedText = 'Web-Server-04'
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match Web-Server-06 node" {
+            It 'Should match Web-Server-05 node' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "Web-Server-06"
+                $ExpectedText = 'Web-Server-05'
 
                 $DotContent | Should -Match $ExpectedText
             }
-            It "Should match USA-WebServers node" {
+            It 'Should match Web-Server-06 node' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = "USA-WebServers"
+                $ExpectedText = 'Web-Server-06'
+
+                $DotContent | Should -Match $ExpectedText
+            }
+            It 'Should match USA-WebServers node' {
+                $DotFile = ($RunFile).FullName
+                $DotContent = Get-Content -Path $DotFile -Raw
+                $ExpectedText = 'USA-WebServers'
 
                 $DotContent | Should -Match $ExpectedText
             }
         }
 
-        Context "Graphviz Dot Node Icon (Label) Tests" {
-            It "Should match HTML label Web-Server-01 node with embedded image" {
+        Context 'Graphviz Dot Node Icon (Label) Tests' {
+            It 'Should match HTML label Web-Server-01 node with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
 
@@ -111,7 +111,7 @@ Describe AdvancedExample01 {
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label Web-Server-02 node with embedded image" {
+            It 'Should match HTML label Web-Server-02 node with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-02</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
@@ -123,7 +123,7 @@ Describe AdvancedExample01 {
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label Web-Server-03 node with embedded image" {
+            It 'Should match HTML label Web-Server-03 node with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-03</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
@@ -135,7 +135,7 @@ Describe AdvancedExample01 {
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label Web-Server-04 node with embedded image" {
+            It 'Should match HTML label Web-Server-04 node with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-04</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
@@ -147,7 +147,7 @@ Describe AdvancedExample01 {
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label Web-Server-05 node with embedded image" {
+            It 'Should match HTML label Web-Server-05 node with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-05</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
@@ -159,7 +159,7 @@ Describe AdvancedExample01 {
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label Web-Server-06 node with embedded image" {
+            It 'Should match HTML label Web-Server-06 node with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
                 $ExpectedText = "label=<<TABLE border='0' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='Center' colspan='1'><img src='Linux_Server_RedHat.png'/></TD></TR><TR><TD align='Center'><B><FONT POINT-SIZE='18'>Web-Server-06</FONT></B></TD></TR><TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>OS: Redhat Linux</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Version: 10</FONT></TD></TR> <TR><TD align='Center' colspan='1'><FONT POINT-SIZE='18'>Build: 10.1</FONT></TD></TR></TABLE>>,"
@@ -171,10 +171,11 @@ Describe AdvancedExample01 {
                 $DotContent | Should -Match 'Version: 10'
                 $DotContent | Should -Match 'Build: 10.1'
             }
-            It "Should match HTML label USA-WebServers node with embedded image" {
+            It 'Should match HTML label USA-WebServers node with embedded image' {
                 $DotFile = ($RunFile).FullName
                 $DotContent = Get-Content -Path $DotFile -Raw
-                $ExpectedText = 'label=<<TABLE PORT="EdgeDot" STYLE="dashed,rounded" BORDER="1" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="#a8c3b8ff" COLOR="darkgray"><TR><TD valign="BOTTOM" ALIGN="Center" colspan="1" fixedsize="true" width="40" height="40"><IMG src="Server.png"></IMG></TD></TR><TR><TD valign="TOP" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="22" COLOR="#000000">Diagrammer SubGraph</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="22"><TABLE bgcolor="#FFFFFF" COLOR="#FFFFFF" STYLE="solid" PORT="EdgeDot" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD></TR><TR><TD BGCOLOR="#FFFFFF" PORT="Web-Server-01" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-01</B></FONT></TD><TD BGCOLOR="#FFFFFF" PORT="Web-Server-02" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-02</B></FONT></TD><TD BGCOLOR="#FFFFFF" PORT="Web-Server-03" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-03</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD></TR><TR><TD BGCOLOR="#FFFFFF" PORT="Web-Server-04" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-04</B></FONT></TD><TD BGCOLOR="#FFFFFF" PORT="Web-Server-05" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-05</B></FONT></TD><TD BGCOLOR="#FFFFFF" PORT="Web-Server-06" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-06</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR></TABLE></FONT></TD></TR></TABLE>>,'
+                $ExpectedText = 'label=<<TABLE PORT="EdgeDot" STYLE="dashed,rounded" BORDER="1" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="#a8c3b8ff" COLOR="darkgray"><TR><TD valign="BOTTOM" ALIGN="Center" colspan="1" fixedsize="true" width="40" height="40"><IMG src="Server.png"></IMG></TD></TR><TR><TD valign="TOP" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="22" COLOR="#000000">Diagrammer SubGraph</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="22"><TABLE PORT="EdgeDot" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="5" CELLPADDING="5" BGCOLOR="#a8c3b8ff" COLOR="#FFFFFF"><TR><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD></TR><TR><TD BGCOLOR="#a8c3b8ff" PORT="Web-Server-01" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-01</B></FONT></TD><TD BGCOLOR="#a8c3b8ff" PORT="Web-Server-02" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-02</B></FONT></TD><TD BGCOLOR="#a8c3b8ff" PORT="Web-Server-03" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-03</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD><TD ALIGN="Center" colspan="1"><img src="Linux_Server_RedHat.png"/></TD></TR><TR><TD BGCOLOR="#a8c3b8ff" PORT="Web-Server-04" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-04</B></FONT></TD><TD BGCOLOR="#a8c3b8ff" PORT="Web-Server-05" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-05</B></FONT></TD><TD BGCOLOR="#a8c3b8ff" PORT="Web-Server-06" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" POINT-SIZE="18" COLOR="#000000"><B>Web-Server-06</B></FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">OS: Redhat Linux</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Version: 10</FONT></TD></TR><TR><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD><TD ALIGN="Center" colspan="1"><FONT POINT-SIZE="18">Build: 10.1</FONT></TD></TR></TABLE></FONT></TD></TR></TABLE>>,
+					pos="1570,362.12",'
 
                 $DotContent | Should -Match $ExpectedText
             }

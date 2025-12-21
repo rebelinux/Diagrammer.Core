@@ -92,7 +92,7 @@ function Export-Diagrammer {
         )]
         [ValidateScript({
                 if (-not ($_ | Test-Path) ) {
-                    throw "Folder does not exist"
+                    throw 'Folder does not exist'
                 }
                 return $true
             })]
@@ -105,7 +105,7 @@ function Export-Diagrammer {
         )]
         [ValidateScript({
                 if (-not ($_ | Test-Path) ) {
-                    throw "Folder does not exist"
+                    throw 'Folder does not exist'
                 }
                 return $true
             })]
@@ -166,29 +166,29 @@ function Export-Diagrammer {
 
         # If Filename parameter is not specified, set filename to the Output.$OutputFormat
         if (-not $Filename) {
-            if ($Format -ne "base64") {
+            if ($Format -ne 'base64') {
                 $Filename = "Output.$Format"
-            } else { $Filename = "Output.png" }
+            } else { $Filename = 'Output.png' }
         }
         try {
             $DestinationPath = Join-Path -Path $OutputFolderPath -ChildPath $FileName
 
-            if ($Format -eq "svg") {
+            if ($Format -eq 'svg') {
                 if ($WaterMarkText) {
-                    Write-Verbose -Message "WaterMark option is not supported with the svg format."
+                    Write-Verbose -Message 'WaterMark option is not supported with the svg format.'
                 }
                 ConvertTo-Svg -GraphObj $GraphObj -DestinationPath $DestinationPath -Angle $Rotate
-            } elseif ($Format -eq "dot") {
+            } elseif ($Format -eq 'dot') {
                 if ($WaterMarkText) {
-                    Write-Verbose -Message "WaterMark option is not supported with the dot format."
+                    Write-Verbose -Message 'WaterMark option is not supported with the dot format.'
                 }
                 ConvertTo-Dot -GraphObj $GraphObj -DestinationPath $DestinationPath
-            } elseif ($Format -eq "pdf" -and (-not $WaterMarkText)) {
+            } elseif ($Format -eq 'pdf' -and (-not $WaterMarkText)) {
                 ConvertTo-Pdf -GraphObj $GraphObj -DestinationPath $DestinationPath
             } else {
                 try {
                     if ($Format -in @('base64', 'pdf')) {
-                        $tempFormat = "png"
+                        $tempFormat = 'png'
                     } else {
                         $tempFormat = $Format
                     }
@@ -206,19 +206,19 @@ function Export-Diagrammer {
                 }
 
                 if ($WaterMarkText) {
-                    if ($Format -eq "pdf") {
+                    if ($Format -eq 'pdf') {
                         $Document = Add-WatermarkToImage -ImageInput $Document.FullName -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor -FontOpacity $WaterMarkFontOpacity
                     } else {
                         Add-WatermarkToImage -ImageInput $TempOutPut -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor -FontOpacity $WaterMarkFontOpacity
                     }
                 }
                 # After adding the watermark text to the image, convert it to PDF if required. GraphObj is not required for this step.
-                if ($Format -eq "pdf") {
+                if ($Format -eq 'pdf') {
                     $Null = ConvertTo-Pdf-WaterMark -ImageInput $Document.FullName -DestinationPath $DestinationPath
                 }
             }
 
-            if ($Format -eq "base64") {
+            if ($Format -eq 'base64') {
                 if (-not $WaterMarkText) {
                     ConvertTo-Base64 -ImageInput $Document
                 } else {
@@ -237,7 +237,7 @@ function Export-Diagrammer {
                     }
                     Get-ChildItem -Path $DestinationPath
                 } else {
-                    if ($Format -ne "pdf") {
+                    if ($Format -ne 'pdf') {
                         Copy-Item -Path $Document.FullName -Destination $DestinationPath
                         if ($Document) {
                             Write-Verbose -Message "Deleting Temporary $Format file: $($Document.FullName)"

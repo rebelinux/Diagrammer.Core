@@ -38,7 +38,7 @@ Describe 'Format-HtmlTable' {
         }
 
         It 'returns the exact expected string when fully specified' {
-            $port='p2'; $style='Dashed'; $bg='yellow'; $border=5; $borderColor='green'; $cellBorder=2; $cellSpacing=6; $cellPadding=7; $content='<TR><TD>Y</TD></TR>'
+            $port = 'p2'; $style = 'Dashed'; $bg = 'yellow'; $border = 5; $borderColor = 'green'; $cellBorder = 2; $cellSpacing = 6; $cellPadding = 7; $content = '<TR><TD>Y</TD></TR>'
             $expectedAttrs = 'PORT="{0}" STYLE="{1}" BORDER="{2}" CELLBORDER="{3}" CELLSPACING="{4}" CELLPADDING="{5}" BGCOLOR="{6}" COLOR="{7}"' -f $port, $style, $border, $cellBorder, $cellSpacing, $cellPadding, $bg, $borderColor
             $expected = "<TABLE $expectedAttrs>$content</TABLE>"
             $html = Format-HtmlTable -Port $port -TableStyle $style -TableBackgroundColor $bg -TableBorder $border -TableBorderColor $borderColor -CellBorder $cellBorder -CellSpacing $cellSpacing -CellPadding $cellPadding -TableRowContent $content

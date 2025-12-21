@@ -5,11 +5,11 @@ BeforeAll {
 
 Describe Add-DiaNodeSpacer {
     BeforeAll {
-        $HTMLOutPut = Add-DiaNodeSpacer -Name "Spacer" -ShapeWidth 1 -ShapeHeight 1 -DraftMode $false
-        $HTMLOutPutDebug = Add-DiaNodeSpacer -Name "Spacer" -ShapeWidth 1 -ShapeHeight 1 -DraftMode $true
+        $HTMLOutPut = Add-DiaNodeSpacer -Name 'Spacer' -ShapeWidth 1 -ShapeHeight 1 -DraftMode $false
+        $HTMLOutPutDebug = Add-DiaNodeSpacer -Name 'Spacer' -ShapeWidth 1 -ShapeHeight 1 -DraftMode $true
     }
 
-    It "Should return a dummy node with rectangle shape" {
+    It 'Should return a dummy node with rectangle shape' {
         $MatchRectangle = 'shape="rectangle"'
         $MatchNameSpacer = '"Spacer"'
         $MatchLabelSpacer = 'label="Spacer"'
@@ -17,7 +17,7 @@ Describe Add-DiaNodeSpacer {
         $HTMLOutPut | Should -Match $MatchLabelSpacer
         $HTMLOutPut | Should -Match $MatchRectangle
     }
-    It "Should return a dummy node with rectangle shape with IconDebug Enabled" {
+    It 'Should return a dummy node with rectangle shape with IconDebug Enabled' {
         $MatchRectangle = 'shape="rectangle"'
         $MatchNameSpacer = '"Spacer"'
         $MatchLabelSpacer = 'label="Spacer"'

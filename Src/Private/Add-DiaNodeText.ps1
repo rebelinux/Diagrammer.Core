@@ -91,21 +91,21 @@ function Add-DiaNodeText {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false,
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string] $TableBorderColor = "#000000",
+        [string] $TableBorderColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [ValidateSet("ROUNDED", "RADIAL", "SOLID", "INVISIBLE", "INVIS", "DOTTED", "DASHED")]
-        [string] $TableBorderStyle = "SOLID",
+        [ValidateSet('ROUNDED', 'RADIAL', 'SOLID', 'INVISIBLE', 'INVIS', 'DOTTED', 'DASHED')]
+        [string] $TableBorderStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
@@ -123,14 +123,14 @@ function Add-DiaNodeText {
             Mandatory = $false,
             HelpMessage = 'Set the text to display inside the text box'
         )]
-        [ValidateSet("Left", "Right", "Center")]
-        [string] $TextAlign = "Center",
+        [ValidateSet('Left', 'Right', 'Center')]
+        [string] $TextAlign = 'Center',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -159,13 +159,13 @@ function Add-DiaNodeText {
         [Parameter(
             HelpMessage = "The font face to use. Default is 'Segoe Ui'."
         )]
-        [string]$FontName = "Segoe Ui",
+        [string]$FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the background color'
         )]
-        [string] $TableBackgroundColor = "#FFFFFF",
+        [string] $TableBackgroundColor = '#FFFFFF',
 
         [Parameter(
             Mandatory = $false,
@@ -183,15 +183,15 @@ function Add-DiaNodeText {
     $Text = $Text -replace '\\n', '<BR/>'
 
     if (($TableBorderColor -ne '#000000') -and (-not $TableBorderStyle)) {
-        throw "TableBorderStyle must be specified when TableBorderColor is used."
+        throw 'TableBorderStyle must be specified when TableBorderColor is used.'
     }
 
     $FormattedText = Format-HtmlFontProperty -Text $Text -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName
 
     if ($IconDebug) {
-        $TRContent = '<TR><TD STYLE="{0}" ALIGN="{1}" colspan="1">{2}</TD></TR>' -f "SOLID", $TextAlign, $FormattedText
+        $TRContent = '<TR><TD STYLE="{0}" ALIGN="{1}" colspan="1">{2}</TD></TR>' -f 'SOLID', $TextAlign, $FormattedText
 
-        $HTML = Format-HtmlTable -TableBackgroundColor "#FFCCCC" -TableBorderColor "red" -CellBorder 0  -TableRowContent $TRContent
+        $HTML = Format-HtmlTable -TableBackgroundColor '#FFCCCC' -TableBorderColor 'red' -CellBorder 0 -TableRowContent $TRContent
 
         Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
 

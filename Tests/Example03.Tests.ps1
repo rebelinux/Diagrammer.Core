@@ -23,54 +23,54 @@ Describe Example03 {
         $RunFile = & $ProjectRoot\Examples\Example03.ps1 @PassParamsDot
     }
 
-    Context "Format Parameter Tests" {
-        It "Should exist Example1.Dot" {
+    Context 'Format Parameter Tests' {
+        It 'Should exist Example1.Dot' {
             ($RunFile).FullName | Should -Exist
         }
-        It "Should exist Example1.png" {
+        It 'Should exist Example1.png' {
             (& $ProjectRoot\Examples\Example03.ps1 @PassParamsPng).FullName | Should -Exist
         }
-        It "Should return error about unsupported Format" {
+        It 'Should return error about unsupported Format' {
             { & $ProjectRoot\Examples\Example03.ps1 @PassParamsTif } | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'Format'. The argument `"tif`" does not belong to the set `"pdf,svg,png,dot,base64,jpg`" specified by the ValidateSet attribute. Supply an argument that is in the set and then try the command again."
         }
     }
-    Context "Graphviz Dot Node Tests" {
-        It "Should match HTML label with embedded image" {
+    Context 'Graphviz Dot Node Tests' {
+        It 'Should match HTML label with embedded image' {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
 
             $DotContent | Should -Match 'img src="Diagrammer.png"'
             $DotContent | Should -Match '>Web Application Diagram<'
         }
-        It "Should match Web-Server-01 node" {
+        It 'Should match Web-Server-01 node' {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "Web-Server-01"
+            $ExpectedText = 'Web-Server-01'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App-Server-01 node" {
+        It 'Should match App-Server-01 node' {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "App-Server-01"
+            $ExpectedText = 'App-Server-01'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match DB-Server-01 node" {
+        It 'Should match DB-Server-01 node' {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "DB-Server-01"
+            $ExpectedText = 'DB-Server-01'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match Web-Server-01 -> App-Server-01 edge" {
+        It 'Should match Web-Server-01 -> App-Server-01 edge' {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
             $ExpectedText = '"Web-Server-01" -> "App-Server-01"'
 
             $DotContent | Should -Match $ExpectedText
         }
-        It "Should match App-Server-01 -> DB-Server-01 edge" {
+        It 'Should match App-Server-01 -> DB-Server-01 edge' {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
             $ExpectedText = '"App-Server-01" -> "DB-Server-01"'
@@ -78,11 +78,11 @@ Describe Example03 {
             $DotContent | Should -Match $ExpectedText
         }
     }
-    Context "Graphviz Dot Edge Tests" {
-        It "Should match minlen=3 edge attribute" {
+    Context 'Graphviz Dot Edge Tests' {
+        It 'Should match minlen=3 edge attribute' {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = "minlen=3"
+            $ExpectedText = 'minlen=3'
 
             $DotContent | Should -Match $ExpectedText
         }

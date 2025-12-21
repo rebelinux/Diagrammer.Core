@@ -95,7 +95,7 @@ function Add-WatermarkToImage {
         $ImageName = Get-ChildItem -Path $ImageInput
 
         # Temporary Image file name
-        $FileName = $ImageName.BaseName + "_WaterMark" + $ImageName.Extension
+        $FileName = $ImageName.BaseName + '_WaterMark' + $ImageName.Extension
 
         try {
             if ($PSVersionTable.Platform -eq 'Unix') {

@@ -140,7 +140,7 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'A hashtable array containing additional information about the node.'
         )]
-        [Alias("RowsOrdered", "Rows", "AdditionalInfo")]
+        [Alias('RowsOrdered', 'Rows', 'AdditionalInfo')]
         $AditionalInfo,
 
         [Parameter(
@@ -179,13 +179,13 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $FontName = "Segoe Ui",
+        [string] $FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -258,7 +258,7 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false,
 
         [Parameter(
@@ -324,7 +324,7 @@ function Add-DiaNodeIcon {
                 if ($Name) {
                     $true
                 } else {
-                    throw "Name parameter is required when NodeObject is set."
+                    throw 'Name parameter is required when NodeObject is set.'
                 }
             })]
         [switch] $NodeObject,
@@ -339,7 +339,7 @@ function Add-DiaNodeIcon {
             Mandatory = $false,
             HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
         )]
-        [string] $Port = "EdgeDot"
+        [string] $Port = 'EdgeDot'
     )
 
     # Set TD properties based on $TableLayout
@@ -354,12 +354,12 @@ function Add-DiaNodeIcon {
         $ICON = 'NoIcon'
     } elseif ($ImagesObj[$IconType]) {
         $ICON = $ImagesObj[$IconType]
-    } else { $ICON = "no_icon.png" }
+    } else { $ICON = 'no_icon.png' }
 
     # Set the image size if ImageSizePercent is less than 100
     if ($ImageSizePercent -lt 100) {
         if (-not $IconPath) {
-            throw "IconPath is required when ImageSizePercent is less than 100."
+            throw 'IconPath is required when ImageSizePercent is less than 100.'
         }
         $ImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }
@@ -421,13 +421,13 @@ function Add-DiaNodeIcon {
         if ($ICON -ne 'NoIcon') {
             $TRContent = '<TR><TD bgcolor="#FFCCCC" ALIGN="{0}" {1}><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}">{5}</FONT></TD></TR><TR><TD bgcolor="{6}" ALIGN="{0}">{7}</TD></TR>{8}' -f $Align, $TDProperties, $FontName, $FontColor, $FontSize, $ICON, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
 
-            $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor "red" -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
+            $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor 'red' -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
 
             Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         } else {
             $TRContent = '<TR><TD ALIGN="{0}" {1}></TD></TR><TR><TD bgcolor="{2}" ALIGN="{0}">{3}</TD></TR>{4}' -f $Align, $TDProperties, $CellBackgroundColor, $FormattedName, $TRAditionalInfo
 
-            $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor "red" -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
+            $HTML = Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorderColor 'red' -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
 
             Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         }

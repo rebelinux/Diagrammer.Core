@@ -156,10 +156,10 @@ function New-Diagrammer {
     #>
 
 
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingConvertToSecureStringWithPlainText", "", Scope = "Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingUserNameAndPassWordParams", "", Scope = "Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingPlainTextForPassword", "", Scope = "Function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "", Scope = "Function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '', Scope = 'Function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingUserNameAndPassWordParams', '', Scope = 'Function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingPlainTextForPassword', '', Scope = 'Function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Scope = 'Function')]
 
     [CmdletBinding(
         PositionalBinding = $false,
@@ -295,8 +295,8 @@ function New-Diagrammer {
         )]
         [ValidateNotNullOrEmpty()]
         [Hashtable] $ImagesObj = @{
-            "Main_Logo" = "Diagrammer.png"
-            "Logo_Footer" = "Diagrammer_footer.png"
+            'Main_Logo' = 'Diagrammer.png'
+            'Logo_Footer' = 'Diagrammer_footer.png'
         },
 
         [Parameter(
@@ -437,13 +437,13 @@ function New-Diagrammer {
             Mandatory = $false,
             HelpMessage = 'Set the Main Label font name used at the top of the diagram'
         )]
-        [string] $MainDiagramLabelFontname = "Segoe Ui",
+        [string] $MainDiagramLabelFontname = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Set the Main Label font color used at the top of the diagram'
         )]
-        [string] $MainDiagramLabelFontColor = "#000000",
+        [string] $MainDiagramLabelFontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -501,13 +501,13 @@ function New-Diagrammer {
             $global:DebugPreference = 'SilentlyContinue'
         }
 
-        if (($Format -ne "base64") -and !(Test-Path $OutputFolderPath)) {
+        if (($Format -ne 'base64') -and !(Test-Path $OutputFolderPath)) {
             Write-Error -Message "OutputFolderPath '$OutputFolderPath' is not a valid folder path."
             break
         }
 
         if ($Signature -and (([string]::IsNullOrEmpty($AuthorName)) -or ([string]::IsNullOrEmpty($CompanyName)))) {
-            throw "New-Diagrammer: AuthorName and CompanyName must be defined if the Signature option is specified"
+            throw 'New-Diagrammer: AuthorName and CompanyName must be defined if the Signature option is specified'
         }
 
         $IconDebug = $false
@@ -536,7 +536,7 @@ function New-Diagrammer {
         } elseif ($LogoName) {
             $CustomLogo = $LogoName
         } else {
-            $CustomLogo = "Diagrammer.png"
+            $CustomLogo = 'Diagrammer.png'
         }
         # Validate Custom Signature Logo
         if ($SignatureLogo -and (-not $SignatureLogoName )) {
@@ -544,7 +544,7 @@ function New-Diagrammer {
         } elseif ($SignatureLogoName) {
             $CustomSignatureLogo = $SignatureLogoName
         } else {
-            $CustomSignatureLogo = "Diagrammer.png"
+            $CustomSignatureLogo = 'Diagrammer.png'
         }
 
         $MainGraphAttributes = @{
@@ -555,7 +555,7 @@ function New-Diagrammer {
             fontname = $Fontname
             fontcolor = $Fontcolor
             fontsize = 32
-            style = "dashed"
+            style = 'dashed'
             labelloc = 't'
             imagepath = $IconPath
             nodesep = $NodeSeparation
@@ -597,15 +597,15 @@ function New-Diagrammer {
 
             # Signature Section
             if ($Signature) {
-                Write-Verbose -Message "Generating diagram signature"
+                Write-Verbose -Message 'Generating diagram signature'
                 if ($CustomSignatureLogo) {
                     $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $ImagesObj -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo $CustomSignatureLogo -IconDebug $IconDebug)
                 } else {
-                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $ImagesObj -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -IconDebug $IconDebug)
+                    $Signature = (Add-DiaHtmlSignatureTable -ImagesObj $ImagesObj -Rows "Author: $($AuthorName)", "Company: $($CompanyName)" -TableBorder 2 -CellBorder 0 -Align 'left' -Logo 'Logo_Footer' -IconDebug $IconDebug)
                 }
             } else {
-                Write-Verbose -Message "No diagram signature specified"
-                $Signature = " "
+                Write-Verbose -Message 'No diagram signature specified'
+                $Signature = ' '
             }
 
             #---------------------------------------------------------------------------------------------#
@@ -617,15 +617,15 @@ function New-Diagrammer {
             #---------------------------------------------------------------------------------------------#
 
             # Subgraph OUTERDRAWBOARD1 used to draw the footer signature (bottom-right corner)
-            SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = "r"; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
+            SubGraph OUTERDRAWBOARD1 -Attributes @{Label = $Signature; fontsize = 24; penwidth = 1.5; labelloc = 'b'; labeljust = 'r'; style = $SubGraphDebug.style; color = $SubGraphDebug.color } {
                 # Subgraph MainGraph used to draw the main drawboard.
                 if ($DisableMainDiagramLogo) {
-                    $FormatedMainLogo = ""
+                    $FormatedMainLogo = ''
                 } else {
-                    $FormatedMainLogo = (Add-DiaHtmlLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -FontColor  $MainDiagramLabelFontColor -FontName $MainDiagramLabelFontname -FontBold:$MainDiagramLabelFontBold -FontItalic:$MainDiagramLabelFontItalic -FontUnderline:$MainDiagramLabelFontUnderline -FontOverline:$MainDiagramLabelFontOverline -FontSubscript:$MainDiagramLabelFontSubscript -FontSuperscript:$MainDiagramLabelFontSuperscript -FontStrikeThrough:$MainDiagramLabelFontStrikeThrough -IconPath $IconPath)
+                    $FormatedMainLogo = (Add-DiaHtmlLabel -ImagesObj $ImagesObj -Label $MainDiagramLabel -IconType $CustomLogo -IconDebug $IconDebug -ImageSizePercent $MainGraphLogoSizePercent -Fontsize $MainDiagramLabelFontsize -FontColor $MainDiagramLabelFontColor -FontName $MainDiagramLabelFontname -FontBold:$MainDiagramLabelFontBold -FontItalic:$MainDiagramLabelFontItalic -FontUnderline:$MainDiagramLabelFontUnderline -FontOverline:$MainDiagramLabelFontOverline -FontSubscript:$MainDiagramLabelFontSubscript -FontSuperscript:$MainDiagramLabelFontSuperscript -FontStrikeThrough:$MainDiagramLabelFontStrikeThrough -IconPath $IconPath)
                 }
 
-                SubGraph MainGraph -Attributes @{Label = $FormatedMainLogo; fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = "c" } {
+                SubGraph MainGraph -Attributes @{Label = $FormatedMainLogo; fontsize = 24; penwidth = 0; labelloc = 't'; labeljust = 'c' } {
                     $InputObject
                 }
             }
@@ -637,7 +637,7 @@ function New-Diagrammer {
             if ($Graph) {
                 Export-Diagrammer -GraphObj ($Graph | Select-String -Pattern '"\w+"\s\[label="";style="invis";shape="point";]' -NotMatch) -ErrorDebug $EnableErrorDebug -Format $OutputFormat -Filename "$Filename.$OutputFormat" -OutputFolderPath $OutputFolderPath -WaterMarkText $WaterMarkText -WaterMarkColor $WaterMarkColor -IconPath $IconPath -WaterMarkFontOpacity $WaterMarkFontOpacity
             } else {
-                Write-Verbose -Message "No Graph object found. Disabling diagram section"
+                Write-Verbose -Message 'No Graph object found. Disabling diagram section'
             }
         }
     }

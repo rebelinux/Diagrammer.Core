@@ -8,17 +8,17 @@ Describe Test-Logo {
     BeforeAll {
         $IconPath = $TestDrive
         $Images = @{
-            "Main_Logo" = "Diagrammer.png"
+            'Main_Logo' = 'Diagrammer.png'
         }
-        $Logo = Join-Path "$TestsFolder\Icons" "Logo_Test.png"
+        $Logo = Join-Path "$TestsFolder\Icons" 'Logo_Test.png'
         $ImageName = Test-Logo -LogoPath $Logo -IconPath $IconPath -ImagesObj $Images
         $LogoPath = Join-Path $IconPath 'Logo_Test.png'
     }
 
-    It "Should return Logo_Test.png string from Images hashtable" {
+    It 'Should return Logo_Test.png string from Images hashtable' {
         $Images[$ImageName] | Should -Be 'Logo_Test.png'
     }
-    It "Verified if Logo_Test.png is inside TestDrive:\ folder" {
+    It 'Verified if Logo_Test.png is inside TestDrive:\ folder' {
         $LogoPath | Should -Exist
     }
 }

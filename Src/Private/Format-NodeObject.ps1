@@ -30,16 +30,16 @@ function Format-NodeObject {
     param (
         [Parameter(
             Mandatory,
-            HelpMessage = "The name of the Node.")]
+            HelpMessage = 'The name of the Node.')]
         [string] $Name,
 
         [Parameter(
             Mandatory,
-            HelpMessage = "The HTML object to be used as the node label.")]
+            HelpMessage = 'The HTML object to be used as the node label.')]
         [string] $HtmlObject,
 
         [Parameter(
-            HelpMessage = "Export as HTML string.")]
+            HelpMessage = 'Export as HTML string.')]
         [bool] $AsHtml = $false,
 
         [Parameter(

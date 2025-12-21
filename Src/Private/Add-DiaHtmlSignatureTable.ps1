@@ -116,13 +116,13 @@ function Add-DiaHtmlSignatureTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $FontName = "Segoe Ui",
+        [string] $FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -182,7 +182,7 @@ function Add-DiaHtmlSignatureTable {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug,
 
         [Parameter(
@@ -196,7 +196,7 @@ function Add-DiaHtmlSignatureTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string] $TableStyle = "rounded,dashed",
+        [string] $TableStyle = 'rounded,dashed',
 
         [Parameter(
             Mandatory = $false,
@@ -220,13 +220,13 @@ function Add-DiaHtmlSignatureTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string]$TableBorderColor = "#000000",
+        [string]$TableBorderColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
         )]
-        [string] $Port = "EdgeDot"
+        [string] $Port = 'EdgeDot'
     )
 
     if ($ImagesObj[$Logo]) {
@@ -235,7 +235,7 @@ function Add-DiaHtmlSignatureTable {
 
     if ($ImageSizePercent -lt 100) {
         if (-not $IconPath) {
-            throw "IconPath is required when ImageSizePercent is less than 100."
+            throw 'IconPath is required when ImageSizePercent is less than 100.'
         }
         $ImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }

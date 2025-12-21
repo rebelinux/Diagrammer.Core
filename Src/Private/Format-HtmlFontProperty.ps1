@@ -24,11 +24,11 @@ function Format-HtmlFontProperty {
     param (
         [Parameter(
             Mandatory,
-            HelpMessage = "The text to be formatted.")]
+            HelpMessage = 'The text to be formatted.')]
         [string]$Text,
 
         [Parameter(
-            HelpMessage = "The size of the font. Default is 12."
+            HelpMessage = 'The size of the font. Default is 12.'
         )]
         [int]$FontSize = 12,
 
@@ -38,44 +38,44 @@ function Format-HtmlFontProperty {
         [string]$FontColor = 'black',
 
         [Parameter(
-            HelpMessage = "Switch to make the font bold."
+            HelpMessage = 'Switch to make the font bold.'
         )]
         [switch]$FontBold = $false,
 
         [Parameter(
-            HelpMessage = "Switch to make the font italic."
+            HelpMessage = 'Switch to make the font italic.'
         )]
         [switch]$FontItalic = $false,
 
         [Parameter(
-            HelpMessage = "Switch to underline the font."
+            HelpMessage = 'Switch to underline the font.'
         )]
         [switch]$FontUnderline = $false,
 
         [Parameter(
-            HelpMessage = "Switch to make the font subscript."
+            HelpMessage = 'Switch to make the font subscript.'
         )]
         [switch]$FontSubscript = $false,
 
         [Parameter(
-            HelpMessage = "Switch to make the font superscript."
+            HelpMessage = 'Switch to make the font superscript.'
         )]
         [switch]$FontSuperscript = $false,
 
         [Parameter(
-            HelpMessage = "Switch to make the font strike through."
+            HelpMessage = 'Switch to make the font strike through.'
         )]
         [switch]$FontStrikeThrough = $false,
 
         [Parameter(
-            HelpMessage = "Switch to make the font overline."
+            HelpMessage = 'Switch to make the font overline.'
         )]
         [switch]$FontOverline = $false,
 
         [Parameter(
             HelpMessage = "The font face to use. Default is 'Segoe Ui'."
         )]
-        [string]$FontName = "Segoe Ui"
+        [string]$FontName = 'Segoe Ui'
     )
 
     $styleTags = @()

@@ -38,13 +38,13 @@ $RootPath = $PSScriptRoot
 #>
 
 $script:Images = @{
-    "Main_Logo" = "Diagrammer.png"
-    "Server" = "Server.png"
-    "ServerRedhat" = "Linux_Server_RedHat.png"
-    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
-    "Cloud" = "Cloud.png"
-    "Router" = "Router.png"
-    "Logo_Footer" = "Signature_Logo.png"
+    'Main_Logo' = 'Diagrammer.png'
+    'Server' = 'Server.png'
+    'ServerRedhat' = 'Linux_Server_RedHat.png'
+    'ServerUbuntu' = 'Linux_Server_Ubuntu.png'
+    'Cloud' = 'Cloud.png'
+    'Router' = 'Router.png'
+    'Logo_Footer' = 'Signature_Logo.png'
 }
 
 <#
@@ -60,15 +60,15 @@ $MainGraphLabel = 'Web Application Diagram'
 $AppServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Windows Server'
     'Version' = '2019'
-    'Build' = "17763.3163"
-    'Edition' = "Datacenter"
+    'Build' = '17763.3163'
+    'Edition' = 'Datacenter'
 }
 
 $DBServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Oracle Server'
     'Version' = '8'
-    'Build' = "8.2"
-    'Edition' = "Enterprise"
+    'Build' = '8.2'
+    'Edition' = 'Enterprise'
 }
 
 $example15 = & {
@@ -79,7 +79,7 @@ $example15 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'darkgray' } {
 
         <#
             The Add-DiaHtmlSignatureTable cmdlet creates a signature table to be used as a footer in the diagram.
@@ -87,7 +87,7 @@ $example15 = & {
             (Part of Diagrammer.Core module)
         #>
 
-        $Signature = Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows "Author: Bugs Bunny", "Company: ACME Inc." -TableBorder 2 -CellBorder 0 -Align 'left' -Logo "Logo_Footer" -DraftMode:$DraftMode -FontBold
+        $Signature = Add-DiaHtmlSignatureTable -ImagesObj $Images -Rows 'Author: Bugs Bunny', 'Company: ACME Inc.' -TableBorder 2 -CellBorder 0 -Align 'left' -Logo 'Logo_Footer' -DraftMode:$DraftMode -FontBold
 
         <#
             The Signature SubGraph contains the $Signature table created above.
@@ -97,7 +97,7 @@ $example15 = & {
             (Part of Graphviz attributes)
         #>
 
-        SubGraph Signature -Attributes @{Label = $Signature; fontsize = 22; penwidth = 1.5; labelloc = 'b'; labeljust = 'right'; style = "invis"; color = "darkgray" } {
+        SubGraph Signature -Attributes @{Label = $Signature; fontsize = 22; penwidth = 1.5; labelloc = 'b'; labeljust = 'right'; style = 'invis'; color = 'darkgray' } {
 
             <#
                 The $WebServerFarm variable is an array of hashtables, each representing a web server node with its properties.
@@ -113,30 +113,30 @@ $example15 = & {
                     AdditionalInfo = [PSCustomObject][ordered]@{
                         'OS' = 'Redhat Linux'
                         'Version' = '10'
-                        'Build' = "10.1"
-                        'Edition' = "Enterprise"
+                        'Build' = '10.1'
+                        'Edition' = 'Enterprise'
                     }
-                    IconType = "ServerRedhat"
+                    IconType = 'ServerRedhat'
                 },
                 @{
                     Name = 'Web-Server-02';
                     AdditionalInfo = [PSCustomObject][ordered]@{
                         'OS' = 'Redhat Linux'
                         'Version' = '10'
-                        'Build' = "10.1"
-                        'Edition' = "Enterprise"
+                        'Build' = '10.1'
+                        'Edition' = 'Enterprise'
                     }
-                    IconType = "ServerRedhat"
+                    IconType = 'ServerRedhat'
                 },
                 @{
                     Name = 'Web-Server-03';
                     AdditionalInfo = [PSCustomObject][ordered]@{
                         'OS' = 'Ubuntu Linux'
                         'Version' = '24'
-                        'Build' = "11"
-                        'Edition' = "Enterprise"
+                        'Build' = '11'
+                        'Edition' = 'Enterprise'
                     }
-                    IconType = "ServerUbuntu"
+                    IconType = 'ServerUbuntu'
                 }
             )
 
@@ -148,11 +148,11 @@ $example15 = & {
                 ** The $Images object and IconType "Server" must be defined earlier in the script **
             #>
 
-            Add-DiaHtmlNodeTable -Name 'Web-Server-Farm' -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontSize 20 -FontSize 18  -DraftMode:$DraftMode -FontBold -SubgraphFontBold -NodeObject -MultiIcon
+            Add-DiaHtmlNodeTable -Name 'Web-Server-Farm' -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel 'Web Server Farm' -SubgraphLabelPos 'top' -SubgraphTableStyle 'dashed,rounded' -TableBorderColor 'gray' -TableBorder '1' -SubgraphLabelFontSize 20 -FontSize 18 -DraftMode:$DraftMode -FontBold -SubgraphFontBold -NodeObject -MultiIcon
 
 
-            Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
-            Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
+            Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
+            Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
 
             <#
                 This section creates connections between the nodes in a hierarchical layout.
@@ -178,7 +178,7 @@ $example15 = & {
                 'Version' = '15.2'
             }
 
-            Add-DiaNodeIcon -Name 'Core-Router' -AdditionalInfo $RouterInfo -ImagesObj $Images -IconType "Router" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
+            Add-DiaNodeIcon -Name 'Core-Router' -AdditionalInfo $RouterInfo -ImagesObj $Images -IconType 'Router' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
 
             Edge -From 'Core-Router' -To 'Web-Server-Farm' @{label = 'GE0/0'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2 }
 
@@ -189,7 +189,7 @@ $example15 = & {
                 -ImageSizePercent parameter sets the size of the image as a percentage (30% in this case).
             #>
 
-            Add-DiaNodeImage -Name "WAN" -ImagesObj $Images -IconType "Cloud" -IconPath $IconPath -ImageSizePercent 30 -NodeObject -DraftMode:$DraftMode
+            Add-DiaNodeImage -Name 'WAN' -ImagesObj $Images -IconType 'Cloud' -IconPath $IconPath -ImageSizePercent 30 -NodeObject -DraftMode:$DraftMode
 
             <#
                 The Add-DiaHTMLTable cmdlet is used to create a list table to display additional information about a object.
@@ -198,13 +198,13 @@ $example15 = & {
             #>
 
             $RouterNetworkInfo = @(
-                "S0/0:"
-                "164.42.203.10/30"
-                "G0/0:"
-                "192.168.5.10/24"
+                'S0/0:'
+                '164.42.203.10/30'
+                'G0/0:'
+                '192.168.5.10/24'
             )
 
-            Add-DiaHtmlTable -Name 'RouterNetworkInfo' -Rows $RouterNetworkInfo -NodeObject -ColumnSize 2 -TableBorder 1 -TableBorderColor "black" -FontSize 14 -Subgraph -SubgraphLabel "Interfaces Table" -SubgraphLabelPos "top" -SubgraphTableStyle "solid,rounded" -SubgraphLabelFontsize 20 -SubgraphFontUnderline -SubgraphFontBold -DraftMode:$DraftMode -TableBackgroundColor 'lightblue'
+            Add-DiaHtmlTable -Name 'RouterNetworkInfo' -Rows $RouterNetworkInfo -NodeObject -ColumnSize 2 -TableBorder 1 -TableBorderColor 'black' -FontSize 14 -Subgraph -SubgraphLabel 'Interfaces Table' -SubgraphLabelPos 'top' -SubgraphTableStyle 'solid,rounded' -SubgraphLabelFontsize 20 -SubgraphFontUnderline -SubgraphFontBold -DraftMode:$DraftMode -TableBackgroundColor 'lightblue'
 
             Edge -From 'Core-Router' -To 'RouterNetworkInfo' @{color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 1; style = 'filled'; arrowhead = 'none'; arrowtail = 'none' }
 
@@ -216,7 +216,7 @@ $example15 = & {
                 ** In this example, we create a rectangle to simulate a firewall presence in the network. **
             #>
 
-            Add-DiaNodeShape -Name "Firewall" -Shape rectangle -ShapeStyle 'filled' -ShapeFillColor 'red:white' -ShapeFontSize 14 -ShapeFontColor 'black' -ShapeFontName 'Arial' -ShapeWidth 3 -ShapeLabelPosition center -ShapeLineColor 'black' -DraftMode:$DraftMode
+            Add-DiaNodeShape -Name 'Firewall' -Shape rectangle -ShapeStyle 'filled' -ShapeFillColor 'red:white' -ShapeFontSize 14 -ShapeFontColor 'black' -ShapeFontName 'Arial' -ShapeWidth 3 -ShapeLabelPosition center -ShapeLineColor 'black' -DraftMode:$DraftMode
 
             Edge -From 'WAN' -To 'Firewall' @{labeldistance = 5; headlabel = 'port1'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2; arrowhead = 'normal'; arrowtail = 'normal' }
             Edge -From 'Firewall' -To 'Core-Router' @{labeldistance = 4; headlabel = 'Serial0/0'; taillabel = 'port2'; color = 'black'; fontsize = 18; fontcolor = 'black'; minlen = 2; arrowhead = 'normal'; arrowtail = 'normal' }
@@ -240,8 +240,8 @@ $example15 = & {
                 ** In this example, we create two spacer nodes to help align the web server node. **
             #>
 
-            Add-DiaNodeSpacer -Name "SpaceRight" -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
-            Add-DiaNodeSpacer -Name "SpaceLeft" -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
+            Add-DiaNodeSpacer -Name 'SpaceRight' -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
+            Add-DiaNodeSpacer -Name 'SpaceLeft' -ShapeWidth 2 -ShapeHeight 1 -ShapeOrientation 0 -DraftMode:$DraftMode
 
             Rank -Nodes SpaceLeft, 'Web-Server-Farm', SpaceRight
 
@@ -257,4 +257,4 @@ $example15 = & {
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $example15 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example15 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example15 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example15 -LogoName 'Main_Logo' -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

@@ -68,7 +68,7 @@ function Add-DiaNodeImage {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false,
 
         [Parameter(
@@ -98,7 +98,7 @@ function Add-DiaNodeImage {
                 if ($ImagesObj) {
                     $true
                 } else {
-                    throw "ImagesObj hashtable needed if IconType option is especified."
+                    throw 'ImagesObj hashtable needed if IconType option is especified.'
                 }
             })]
         [string] $IconType,
@@ -113,14 +113,14 @@ function Add-DiaNodeImage {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string] $TableBorderColor = "#000000",
+        [string] $TableBorderColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [ValidateSet("ROUNDED", "RADIAL", "SOLID", "INVISIBLE", "INVIS", "DOTTED", "DASHED")]
-        [string] $TableBorderStyle = "SOLID",
+        [ValidateSet('ROUNDED', 'RADIAL', 'SOLID', 'INVISIBLE', 'INVIS', 'DOTTED', 'DASHED')]
+        [string] $TableBorderStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
@@ -138,19 +138,19 @@ function Add-DiaNodeImage {
 
     if ($ImagesObj[$IconType]) {
         $ICON = $ImagesObj[$IconType]
-    } else { $ICON = "no_icon.png" }
+    } else { $ICON = 'no_icon.png' }
 
     if ($ImageSizePercent -lt 100) {
         if (-not $IconPath) {
-            throw "IconPath is required when ImageSizePercent is less than 100."
+            throw 'IconPath is required when ImageSizePercent is less than 100.'
         }
         $ImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }
 
     if ($IconDebug) {
-        $TRContent = '<TR><TD STYLE="{0}" ALIGN="Center" colspan="1">{1}</TD></TR>' -f "SOLID", $ICON
+        $TRContent = '<TR><TD STYLE="{0}" ALIGN="Center" colspan="1">{1}</TD></TR>' -f 'SOLID', $ICON
 
-        $HTML = Format-HtmlTable -TableBackgroundColor "#FFCCCC" -TableBorderColor "red" -CellBorder 0 -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
+        $HTML = Format-HtmlTable -TableBackgroundColor '#FFCCCC' -TableBorderColor 'red' -CellBorder 0 -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent
 
         Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     } else {

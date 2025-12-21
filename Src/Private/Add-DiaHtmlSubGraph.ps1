@@ -150,13 +150,13 @@ function Add-DiaHtmlSubGraph {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $FontName = "Segoe Ui",
+        [string] $FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -210,7 +210,7 @@ function Add-DiaHtmlSubGraph {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug,
 
         [Parameter(
@@ -227,7 +227,7 @@ function Add-DiaHtmlSubGraph {
                 if ($ImagesObj) {
                     $true
                 } else {
-                    throw "ImagesObj table needed if IconType option is especified."
+                    throw 'ImagesObj table needed if IconType option is especified.'
                 }
             })]
         [string]$IconType,
@@ -249,19 +249,19 @@ function Add-DiaHtmlSubGraph {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string]$TableStyle = "SOLID",
+        [string]$TableStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string]$TableBorderColor = "#000000",
+        [string]$TableBorderColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string]$TableBackgroundColor = "#ffffff",
+        [string]$TableBackgroundColor = '#ffffff',
 
         [Parameter(
             Mandatory = $false,
@@ -289,7 +289,7 @@ function Add-DiaHtmlSubGraph {
                 if ($Name) {
                     $true
                 } else {
-                    throw "Name parameter is required when NodeObject is set."
+                    throw 'Name parameter is required when NodeObject is set.'
                 }
             })]
         [switch] $NodeObject,
@@ -308,7 +308,7 @@ function Add-DiaHtmlSubGraph {
     # Set the image size if ImageSizePercent is less than 100
     if ($ImageSizePercent -lt 100) {
         if (-not $IconPath) {
-            throw "IconPath is required when ImageSizePercent is less than 100."
+            throw 'IconPath is required when ImageSizePercent is less than 100.'
         }
         $ImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $Icon) -Percent $ImageSizePercent
 
@@ -391,7 +391,7 @@ function Add-DiaHtmlSubGraph {
 
     if ($IconDebug) {
 
-        $HTML = Format-HtmlTable -TableStyle $TableStyle -TableBackgroundColor $TableBackgroundColor -TableBorderColor "red" -CellBorder 1 -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TR
+        $HTML = Format-HtmlTable -TableStyle $TableStyle -TableBackgroundColor $TableBackgroundColor -TableBorderColor 'red' -CellBorder 1 -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TR
 
         Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
 

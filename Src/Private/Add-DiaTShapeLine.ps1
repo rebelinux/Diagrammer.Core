@@ -161,7 +161,7 @@ function Add-DiaTShapeLine {
             Mandatory = $false,
             HelpMessage = 'Please provide a color to be used in the line. Default is black. Supported color https://graphviz.org/doc/info/colors.html'
         )]
-        [string] $LineColor = "black",
+        [string] $LineColor = 'black',
 
         [Parameter(
             Mandatory = $false,

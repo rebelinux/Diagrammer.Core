@@ -134,7 +134,7 @@ function Add-DiaInvertedLShapeLine {
             Mandatory = $false,
             HelpMessage = 'Color of the line. See https://graphviz.org/doc/info/colors.html for supported colors.'
         )]
-        [string] $LineColor = "black",
+        [string] $LineColor = 'black',
 
         [Parameter(
             Mandatory = $false,

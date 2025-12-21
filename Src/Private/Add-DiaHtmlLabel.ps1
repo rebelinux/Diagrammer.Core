@@ -144,7 +144,7 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug,
 
         [Parameter(
@@ -157,13 +157,13 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $FontName = "Segoe Ui",
+        [string] $FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
@@ -272,24 +272,24 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string] $TableStyle = "SOLID",
+        [string] $TableStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
         )]
-        [string] $Port = "EdgeDot"
+        [string] $Port = 'EdgeDot'
     )
 
     if ($IconType -eq 'NoIcon') {
         $ICON = 'NoIcon'
     } elseif ($ImagesObj[$IconType]) {
         $ICON = $ImagesObj[$IconType]
-    } else { $ICON = "no_icon.png" }
+    } else { $ICON = 'no_icon.png' }
 
     if ($ImageSizePercent -lt 100) {
         if (-not $IconPath) {
-            throw "IconPath is required when ImageSizePercent is less than 100."
+            throw 'IconPath is required when ImageSizePercent is less than 100.'
         }
         $CalculatedImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }

@@ -169,7 +169,7 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -181,7 +181,7 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $FontName = "Segoe Ui",
+        [string] $FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
@@ -242,14 +242,14 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug,
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string] $TableStyle = "SOLID",
+        [string] $TableStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
@@ -271,7 +271,7 @@ function Add-DiaHtmlTable {
                 if ($ImagesObj) {
                     $true
                 } else {
-                    throw "ImagesObj table needed if SubgraphIconType option is especified."
+                    throw 'ImagesObj table needed if SubgraphIconType option is especified.'
                 }
             })]
         [string]$SubgraphIconType,
@@ -286,7 +286,7 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $SubgraphFontName = "Segoe Ui",
+        [string] $SubgraphFontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
@@ -298,7 +298,7 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $SubgraphFontColor = "#000000",
+        [string] $SubgraphFontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -352,19 +352,19 @@ function Add-DiaHtmlTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string]$SubgraphTableStyle = "SOLID",
+        [string]$SubgraphTableStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string]$TableBorderColor = "#000000",
+        [string]$TableBorderColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table background color'
         )]
-        [string]$TableBackgroundColor = "#ffffff",
+        [string]$TableBackgroundColor = '#ffffff',
 
         [Parameter(
             Mandatory = $false,
@@ -386,7 +386,7 @@ function Add-DiaHtmlTable {
                 if ($Name) {
                     $true
                 } else {
-                    throw "Name parameter is required when NodeObject is set."
+                    throw 'Name parameter is required when NodeObject is set.'
                 }
             })]
         [switch] $NodeObject,
@@ -506,7 +506,7 @@ function Add-DiaHtmlTable {
     }
 
     if ($IconDebug) {
-        $HTML = Format-HtmlTable -TableStyle $SubgraphTableStyle -TableBorderColor "red" -CellBorder $CellBorder -TableRowContent $TR -Cellspacing $CellSpacing -Cellpadding $CellPadding -TableBackgroundColor $TableBackgroundColor
+        $HTML = Format-HtmlTable -TableStyle $SubgraphTableStyle -TableBorderColor 'red' -CellBorder $CellBorder -TableRowContent $TR -Cellspacing $CellSpacing -Cellpadding $CellPadding -TableBackgroundColor $TableBackgroundColor
 
         Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     } else {

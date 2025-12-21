@@ -8,7 +8,7 @@ $assemblyName = switch ($PSVersionTable.PSEdition) {
     'Desktop' {
         @(Get-ChildItem -Path ("$PSScriptRoot{0}Src{0}Bin{0}Assemblies{0}net48{0}*.dll" -f [System.IO.Path]::DirectorySeparatorChar) -ErrorAction SilentlyContinue)
     }
-    Default {
+    default {
         @()
     }
 }

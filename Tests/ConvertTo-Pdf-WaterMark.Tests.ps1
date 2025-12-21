@@ -11,27 +11,27 @@ Describe ConvertTo-Pdf-WaterMark {
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 
         $PassParamsValidParameters = @{
-            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = Join-Path -Path $TestDrive -ChildPath "output.pdf"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath 'AsBuiltReport.png'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
         }
         $PassParamsInvalidImagePath = @{
-            ImageInput = "AsBuiltReport.png"
-            DestinationPath = Join-Path -Path $TestDrive -ChildPath "output.pdf"
+            ImageInput = 'AsBuiltReport.png'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
         }
         $PassParamsNoDestinationPath = @{
-            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
-            DestinationPath = "WrongPath"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath 'AsBuiltReport.png'
+            DestinationPath = 'WrongPath'
         }
     }
 
-    It "Should return output.pdf path" {
+    It 'Should return output.pdf path' {
         (ConvertTo-Pdf-WaterMark @PassParamsValidParameters).FullName | Should -Exist
     }
-    It "Should throw not found exception when ImageInput does not exist" {
+    It 'Should throw not found exception when ImageInput does not exist' {
         $scriptBlock = { ConvertTo-Pdf-WaterMark @PassParamsInvalidImagePath -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'ImageInput'. File AsBuiltReport.png not found!"
     }
-    It "Should throw Folder does not exist" {
+    It 'Should throw Folder does not exist' {
         $scriptBlock = { ConvertTo-Pdf-WaterMark @PassParamsNoDestinationPath -ErrorAction Stop }
         $scriptBlock | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'DestinationPath'. Folder does not exist"
     }

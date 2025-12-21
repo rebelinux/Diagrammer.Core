@@ -42,7 +42,7 @@ function ConvertTo-Svg {
             Write-Verbose -Message "Trying to convert Graphviz object to SVG format. Destination Path: $DestinationPath."
             $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'svg' -GraphVizPath $GraphvizPath
         } catch {
-            Write-Verbose -Message "Unable to convert Graphviz object to SVG format"
+            Write-Verbose -Message 'Unable to convert Graphviz object to SVG format'
             Write-Debug -Message $($_.Exception.Message)
         }
 

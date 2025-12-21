@@ -35,7 +35,7 @@ function Format-HtmlTable {
     #>
     param (
         [Parameter(
-            HelpMessage = "The text to be formatted.")]
+            HelpMessage = 'The text to be formatted.')]
         [string]$Port = 'EdgeDot',
 
         [Parameter(
@@ -49,7 +49,7 @@ function Format-HtmlTable {
         [string]$TableBackgroundColor = 'white',
 
         [Parameter(
-            HelpMessage = "The border size of the table. Default is 1."
+            HelpMessage = 'The border size of the table. Default is 1.'
         )]
         [int]$TableBorder = 1,
 
@@ -59,23 +59,23 @@ function Format-HtmlTable {
         [string]$TableBorderColor = 'black',
 
         [Parameter(
-            HelpMessage = "Switch to underline the font."
+            HelpMessage = 'Switch to underline the font.'
         )]
         [int]$CellBorder = 1,
 
         [Parameter(
-            HelpMessage = "The spacing between table cells. Default is 1."
+            HelpMessage = 'The spacing between table cells. Default is 1.'
         )]
         [int]$CellSpacing = 1,
 
         [Parameter(
-            HelpMessage = "The padding inside table cells. Default is 1."
+            HelpMessage = 'The padding inside table cells. Default is 1.'
         )]
         [int]$CellPadding = 1,
 
         [Parameter(
             Mandatory,
-            HelpMessage = "The Table Row content."
+            HelpMessage = 'The Table Row content.'
         )]
         [string]$TableRowContent
     )
