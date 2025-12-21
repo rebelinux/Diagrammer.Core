@@ -14,7 +14,7 @@ function ConvertTo-Jpg {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -34,7 +34,7 @@ function ConvertTo-Jpg {
             Write-Verbose -Message "Trying to convert Graphviz object to JPG format. Destination Path: $DestinationPath."
             $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'jpg' -GraphVizPath $GraphvizPath
         } catch {
-            Write-Verbose -Message "Unable to convert Graphviz object to JPG format."
+            Write-Verbose -Message 'Unable to convert Graphviz object to JPG format.'
             Write-Debug -Message $($_.Exception.Message)
         }
         if ($Document) {

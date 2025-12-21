@@ -36,7 +36,7 @@ $example4 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'gray' } {
         <#
             This creates a diagram with three servers, custom node labels, and shapes (no object icons).
             Node statements create the nodes in the diagram. (Node is a reserved word in the PSGraph module)
@@ -73,4 +73,4 @@ $example4 = & {
         - The layout is set to top-to-bottom using the Graphviz attribute (TB).
     -DraftMode, when set to $true, generates a draft version of the diagram for troubleshooting.
 #>
-New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName "Main_Logo" -Direction top-to-bottom -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example4 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example4 -LogoName 'Main_Logo' -Direction top-to-bottom -DraftMode:$DraftMode

@@ -17,25 +17,25 @@ function Test-Logo {
 
         [parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true)]
         [ValidateScript( {
-            if (Test-Path -Path $_) {
-                $true
-            } else {
-                throw "File $_ not found!"
-            }
-        })]
+                if (Test-Path -Path $_) {
+                    $true
+                } else {
+                    throw "File $_ not found!"
+                }
+            })]
         [System.IO.FileInfo]$LogoPath,
         [ValidateScript( {
-            if (Test-Path -Path $_) {
-                $true
-            } else {
-                throw "File $_ not found!"
-            }
-        })]
+                if (Test-Path -Path $_) {
+                    $true
+                } else {
+                    throw "File $_ not found!"
+                }
+            })]
         [System.IO.FileInfo]$IconPath,
         [hashtable] $ImagesObj
     )
 
-    PROCESS {
+    process {
         if (((Test-Path -Path $LogoPath) -and (Test-Path -Path $IconPath)) -and (Test-Image -Path $LogoPath)) {
             # Add logo path to the Image variable
             Copy-Item -Path $LogoPath -Destination $IconPath

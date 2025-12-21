@@ -1,4 +1,4 @@
-Function Write-PSObject {
+function Write-PSObject {
     <#
     .SYNOPSIS
         Display the input PSObject(s)/Object(s) as formatted table with defined fore/back colors for headers row and/or body rows and/or columns values based on specified conditions or criteria.
@@ -425,78 +425,78 @@ Function Write-PSObject {
     #>
 
     [CmdletBinding()]
-    [OutputType("Void")]
-    Param
+    [OutputType('Void')]
+    param
     (
-        [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)][Alias("O", "I")][Object]$Object,
-        [Parameter(Mandatory = $False, Position = 1)][Alias("MM", "M")] [String[]][ValidateSet("Exact", "Match", "Query")]$MatchMethod,
-        [Parameter(Mandatory = $False, Position = 2)][Alias("Format-TableC", "Format-Table", "F")] [Switch]$FormatTableColor,
-        [Parameter(Mandatory = $False, Position = 3)][Alias("C")] [String[]]$Column = "*",
-        [Parameter(Mandatory = $False, Position = 4)][Alias("V")]  [String[]]$Value,
-        [Parameter(Mandatory = $False, Position = 5)][Alias("VFC")][ConsoleColor[]]$ValueForeColor,
-        [Parameter(Mandatory = $False, Position = 6)][Alias("VBC")][ConsoleColor[]]$ValueBackColor,
-        [Parameter(Mandatory = $False, Position = 7)][Alias("RFC")][ConsoleColor]$RowForeColor,
-        [Parameter(Mandatory = $False, Position = 8)][Alias("RBC")] [ConsoleColor]$RowBackColor,
-        [Parameter(Mandatory = $False, Position = 9)][Alias("OLFC")] [ConsoleColor]$OddRowForeColor = (Get-Host).UI.RawUI.ForegroundColor,
-        [Parameter(Mandatory = $False, Position = 10)][Alias("OLBC")] [ConsoleColor]$OddRowBackColor = (Get-Host).UI.RawUI.BackgroundColor,
-        [Parameter(Mandatory = $False, Position = 11)][Alias("ELFC")] [ConsoleColor]$EvenRowForeColor = (Get-Host).UI.RawUI.ForegroundColor,
-        [Parameter(Mandatory = $False, Position = 12)][Alias("ELBC")] [ConsoleColor]$EvenRowBackColor = (Get-Host).UI.RawUI.BackgroundColor,
-        [Parameter(Mandatory = $False, Position = 13)][Alias("HFC")] [ConsoleColor]$HeadersForeColor = (Get-Host).UI.RawUI.ForegroundColor,
-        [Parameter(Mandatory = $False, Position = 14)][Alias("HBC")] [ConsoleColor]$HeadersBackColor = (Get-Host).UI.RawUI.BackgroundColor,
-        [Parameter(Mandatory = $False, Position = 15)][Alias("BFC")] [ConsoleColor]$BodyForeColor = (Get-Host).UI.RawUI.ForegroundColor,
-        [Parameter(Mandatory = $False, Position = 16)][Alias("BBC")] [ConsoleColor]$BodyBackColor = (Get-Host).UI.RawUI.BackgroundColor,
-        [Parameter(Mandatory = $False, Position = 17)][Alias("CC")] [String[]]$ColoredColumns,
-        [Parameter(Mandatory = $False, Position = 18)][Alias("CFC")] [ConsoleColor[]]$ColumnForeColor,
-        [Parameter(Mandatory = $False, Position = 19)][Alias("CBC")] [ConsoleColor[]]$ColumnBackColor,
-        [Parameter(Mandatory = $False, Position = 20)][Alias("FC")] [String[]]$FlagColumns,
-        [Parameter(Mandatory = $False, Position = 21)][Alias("FFC")] [ConsoleColor[]]$FlagsForeColor,
-        [Parameter(Mandatory = $False, Position = 22)][Alias("FBC")] [ConsoleColor[]]$FlagsBackColor,
-        [Parameter(Mandatory = $False, Position = 23)][Alias("IRS")] [Switch]$InjectRowsSeparator,
-        [Parameter(Mandatory = $False, Position = 24)][Alias("RS")] [String]$RowsSeparator = $null,
-        [Parameter(Mandatory = $False, Position = 25)][Alias("RSFC")] [ConsoleColor]$RowsSeparatorForeColor = (Get-Host).UI.RawUI.ForegroundColor,
-        [Parameter(Mandatory = $False, Position = 26)][Alias("RSBC")] [ConsoleColor]$RowsSeparatorBackColor = (Get-Host).UI.RawUI.BackgroundColor,
-        [Parameter(Mandatory = $False, Position = 27)][Alias("RHS")] [Switch]$RemoveHeadersSeparator,
-        [Parameter(Mandatory = $False, Position = 28)][Alias("HS")] [String]$HeadersSeparator = "-",
-        [Parameter(Mandatory = $False, Position = 29)][Alias("HSFC")] [ConsoleColor]$HeadersSeparatorForeColor = (Get-Host).UI.RawUI.ForegroundColor,
-        [Parameter(Mandatory = $False, Position = 30)][Alias("HSBC")] [ConsoleColor]$HeadersSeparatorBackColor = (Get-Host).UI.RawUI.BackgroundColor,
-        [Parameter(Mandatory = $False, Position = 31)][Alias("BO")] [Switch]$BodyOnly,
-        [Parameter(Mandatory = $False, Position = 32)][Alias("HO")] [Switch]$HeadersOnly,
-        [Parameter(Mandatory = $False, Position = 33)][Alias("IE")] [Switch]$IgnoreErrors,
-        [Parameter(Mandatory = $False, Position = 34)][Alias("HWW")] [UInt16]$HostWindowWidth,
-        [Parameter(Mandatory = $False, Position = 35)][Alias("HWH")] [UInt16]$HostWindowHeight,
-        [Parameter(Mandatory = $False, Position = 36)][Alias("HWFC")] [ConsoleColor]$HostWindowForeColor,
-        [Parameter(Mandatory = $False, Position = 37)][Alias("HWBC")] [ConsoleColor]$HostWindowBackColor
+        [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)][Alias('O', 'I')][Object]$Object,
+        [Parameter(Mandatory = $False, Position = 1)][Alias('MM', 'M')] [String[]][ValidateSet('Exact', 'Match', 'Query')]$MatchMethod,
+        [Parameter(Mandatory = $False, Position = 2)][Alias('Format-TableC', 'Format-Table', 'F')] [Switch]$FormatTableColor,
+        [Parameter(Mandatory = $False, Position = 3)][Alias('C')] [String[]]$Column = '*',
+        [Parameter(Mandatory = $False, Position = 4)][Alias('V')]  [String[]]$Value,
+        [Parameter(Mandatory = $False, Position = 5)][Alias('VFC')][ConsoleColor[]]$ValueForeColor,
+        [Parameter(Mandatory = $False, Position = 6)][Alias('VBC')][ConsoleColor[]]$ValueBackColor,
+        [Parameter(Mandatory = $False, Position = 7)][Alias('RFC')][ConsoleColor]$RowForeColor,
+        [Parameter(Mandatory = $False, Position = 8)][Alias('RBC')] [ConsoleColor]$RowBackColor,
+        [Parameter(Mandatory = $False, Position = 9)][Alias('OLFC')] [ConsoleColor]$OddRowForeColor = (Get-Host).UI.RawUI.ForegroundColor,
+        [Parameter(Mandatory = $False, Position = 10)][Alias('OLBC')] [ConsoleColor]$OddRowBackColor = (Get-Host).UI.RawUI.BackgroundColor,
+        [Parameter(Mandatory = $False, Position = 11)][Alias('ELFC')] [ConsoleColor]$EvenRowForeColor = (Get-Host).UI.RawUI.ForegroundColor,
+        [Parameter(Mandatory = $False, Position = 12)][Alias('ELBC')] [ConsoleColor]$EvenRowBackColor = (Get-Host).UI.RawUI.BackgroundColor,
+        [Parameter(Mandatory = $False, Position = 13)][Alias('HFC')] [ConsoleColor]$HeadersForeColor = (Get-Host).UI.RawUI.ForegroundColor,
+        [Parameter(Mandatory = $False, Position = 14)][Alias('HBC')] [ConsoleColor]$HeadersBackColor = (Get-Host).UI.RawUI.BackgroundColor,
+        [Parameter(Mandatory = $False, Position = 15)][Alias('BFC')] [ConsoleColor]$BodyForeColor = (Get-Host).UI.RawUI.ForegroundColor,
+        [Parameter(Mandatory = $False, Position = 16)][Alias('BBC')] [ConsoleColor]$BodyBackColor = (Get-Host).UI.RawUI.BackgroundColor,
+        [Parameter(Mandatory = $False, Position = 17)][Alias('CC')] [String[]]$ColoredColumns,
+        [Parameter(Mandatory = $False, Position = 18)][Alias('CFC')] [ConsoleColor[]]$ColumnForeColor,
+        [Parameter(Mandatory = $False, Position = 19)][Alias('CBC')] [ConsoleColor[]]$ColumnBackColor,
+        [Parameter(Mandatory = $False, Position = 20)][Alias('FC')] [String[]]$FlagColumns,
+        [Parameter(Mandatory = $False, Position = 21)][Alias('FFC')] [ConsoleColor[]]$FlagsForeColor,
+        [Parameter(Mandatory = $False, Position = 22)][Alias('FBC')] [ConsoleColor[]]$FlagsBackColor,
+        [Parameter(Mandatory = $False, Position = 23)][Alias('IRS')] [Switch]$InjectRowsSeparator,
+        [Parameter(Mandatory = $False, Position = 24)][Alias('RS')] [String]$RowsSeparator = $null,
+        [Parameter(Mandatory = $False, Position = 25)][Alias('RSFC')] [ConsoleColor]$RowsSeparatorForeColor = (Get-Host).UI.RawUI.ForegroundColor,
+        [Parameter(Mandatory = $False, Position = 26)][Alias('RSBC')] [ConsoleColor]$RowsSeparatorBackColor = (Get-Host).UI.RawUI.BackgroundColor,
+        [Parameter(Mandatory = $False, Position = 27)][Alias('RHS')] [Switch]$RemoveHeadersSeparator,
+        [Parameter(Mandatory = $False, Position = 28)][Alias('HS')] [String]$HeadersSeparator = '-',
+        [Parameter(Mandatory = $False, Position = 29)][Alias('HSFC')] [ConsoleColor]$HeadersSeparatorForeColor = (Get-Host).UI.RawUI.ForegroundColor,
+        [Parameter(Mandatory = $False, Position = 30)][Alias('HSBC')] [ConsoleColor]$HeadersSeparatorBackColor = (Get-Host).UI.RawUI.BackgroundColor,
+        [Parameter(Mandatory = $False, Position = 31)][Alias('BO')] [Switch]$BodyOnly,
+        [Parameter(Mandatory = $False, Position = 32)][Alias('HO')] [Switch]$HeadersOnly,
+        [Parameter(Mandatory = $False, Position = 33)][Alias('IE')] [Switch]$IgnoreErrors,
+        [Parameter(Mandatory = $False, Position = 34)][Alias('HWW')] [UInt16]$HostWindowWidth,
+        [Parameter(Mandatory = $False, Position = 35)][Alias('HWH')] [UInt16]$HostWindowHeight,
+        [Parameter(Mandatory = $False, Position = 36)][Alias('HWFC')] [ConsoleColor]$HostWindowForeColor,
+        [Parameter(Mandatory = $False, Position = 37)][Alias('HWBC')] [ConsoleColor]$HostWindowBackColor
     )
 
-    Function Write-Line {
+    function Write-Line {
         [CmdletBinding()]
-        [OutputType("Void")]
-        Param
+        [OutputType('Void')]
+        param
         (
-            [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)][Alias("O", "I")][object]$Object,
-            [Parameter(Mandatory = $False, Position = 1)][Alias("F", "FC")] [ConsoleColor]$ForegroundColor = (Get-Host).UI.RawUI.ForegroundColor,
-            [Parameter(Mandatory = $False, Position = 2)][Alias("B", "BC")] [ConsoleColor]$BackgroundColor = (Get-Host).UI.RawUI.BackgroundColor,
-            [Parameter(Mandatory = $False, Position = 3)][Alias("NNL")] [Switch]$NoNewline
+            [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline = $True, ValueFromPipelineByPropertyName = $True)][Alias('O', 'I')][object]$Object,
+            [Parameter(Mandatory = $False, Position = 1)][Alias('F', 'FC')] [ConsoleColor]$ForegroundColor = (Get-Host).UI.RawUI.ForegroundColor,
+            [Parameter(Mandatory = $False, Position = 2)][Alias('B', 'BC')] [ConsoleColor]$BackgroundColor = (Get-Host).UI.RawUI.BackgroundColor,
+            [Parameter(Mandatory = $False, Position = 3)][Alias('NNL')] [Switch]$NoNewline
         )
 
-        If (([int]$ForegroundColor) -eq -1) {
+        if (([int]$ForegroundColor) -eq -1) {
             $ForegroundColor = [ConsoleColor]::White;
         }
 
-        If (([int]$BackgroundColor) -eq -1) {
+        if (([int]$BackgroundColor) -eq -1) {
             Write-Host -NoNewline:$NoNewline -ForegroundColor $ForegroundColor -Object $Object;
-        } Else {
+        } else {
             Write-Host -NoNewline:$NoNewline -ForegroundColor $ForegroundColor -BackgroundColor $BackgroundColor -Object $Object;
         }
     }
 
-    If (($HostWindowWidth -And $HostWindowWidth -ne 0) -Or ($HostWindowHeight -And $HostWindowHeight -ne 0) -OR $HostWindowForeColor -ne $null -Or $HostWindowBackColor -ne $null) {
-        Try {
+    if (($HostWindowWidth -and $HostWindowWidth -ne 0) -or ($HostWindowHeight -and $HostWindowHeight -ne 0) -or $HostWindowForeColor -ne $null -or $HostWindowBackColor -ne $null) {
+        try {
             $psHost = Get-Host;
             $psWindow = $psHost.UI.RawUI;
 
-            If ($HostWindowForeColor -ne $null -Or $HostWindowBackColor -ne $null) {
-                If ($HostWindowBackColor -ne $null) {
+            if ($HostWindowForeColor -ne $null -or $HostWindowBackColor -ne $null) {
+                if ($HostWindowBackColor -ne $null) {
                     $psWindow.BackgroundColor = $HostWindowBackColor;
                     $RowBackColor = $HostWindowBackColor;
                     $OddRowBackColor = $HostWindowBackColor;
@@ -509,7 +509,7 @@ Function Write-PSObject {
                     $HeadersSeparatorBackColor = $HostWindowBackColor;
                 }
 
-                If ($HostWindowForeColor -ne $null) {
+                if ($HostWindowForeColor -ne $null) {
                     $psWindow.ForegroundColor = $HostWindowForeColor;
 
                     $RowForeColor = $HostWindowForeColor;
@@ -526,14 +526,14 @@ Function Write-PSObject {
 
             $newBufferSize = $psWindow.BufferSize;
 
-            If ($HostWindowHeight -ne $null -And $HostWindowHeight -ne 0) {
-                If ($newBufferSize.Height -lt $HostWindowHeight) {
+            if ($HostWindowHeight -ne $null -and $HostWindowHeight -ne 0) {
+                if ($newBufferSize.Height -lt $HostWindowHeight) {
                     $newBufferSize.Height = $HostWindowHeight;
                 }
             }
 
-            If ($HostWindowWidth -ne $null -And $HostWindowWidth -ne 0) {
-                If ($newBufferSize.Width -lt $HostWindowWidth) {
+            if ($HostWindowWidth -ne $null -and $HostWindowWidth -ne 0) {
+                if ($newBufferSize.Width -lt $HostWindowWidth) {
                     $newBufferSize.Width = $HostWindowWidth;
                 }
             }
@@ -542,44 +542,44 @@ Function Write-PSObject {
 
             $newSize = $psWindow.WindowSize;
 
-            If ($HostWindowHeight -ne $null -And $HostWindowHeight -ne 0) {
+            if ($HostWindowHeight -ne $null -and $HostWindowHeight -ne 0) {
                 $newSize.Height = $HostWindowHeight;
             }
 
-            If ($HostWindowWidth -ne $null -And $HostWindowWidth -ne 0) {
+            if ($HostWindowWidth -ne $null -and $HostWindowWidth -ne 0) {
                 $newSize.Width = $HostWindowWidth;
             }
 
-            If (($HostWindowWidth -ne $null -And $HostWindowWidth -ne 0) -Or ($HostWindowHeight -ne $null -And $HostWindowHeight -ne 0)) {
+            if (($HostWindowWidth -ne $null -and $HostWindowWidth -ne 0) -or ($HostWindowHeight -ne $null -and $HostWindowHeight -ne 0)) {
                 $psWindow.WindowSize = $newSize;
             }
-        } Catch { Out-Null }
+        } catch { Out-Null }
     }
 
-    $lines = ($input | Format-Table -AutoSize | Out-String).Split("`r`n") | Where-Object { $_.Trim() -ne "" };
-    If (!($lines)) {
-        $lines = ($Object | Format-Table -AutoSize | Out-String).Split("`r`n") | Where-Object { $_.Trim() -ne "" };
+    $lines = ($input | Format-Table -AutoSize | Out-String).Split("`r`n") | Where-Object { $_.Trim() -ne '' };
+    if (!($lines)) {
+        $lines = ($Object | Format-Table -AutoSize | Out-String).Split("`r`n") | Where-Object { $_.Trim() -ne '' };
     } else {
         $Object = $input;
     }
 
-    If (!($lines) -Or $lines.Length -eq 0) {
-        Return;
+    if (!($lines) -or $lines.Length -eq 0) {
+        return;
     }
 
     $maxLength = $lines | ForEach-Object { $_.Length } | Sort-Object -Descending | Select-Object -First 1;
 
-    If ($MatchMethod) {
-        If (($Column.Count -ne $Value.Count)) {
-            If ($IgnoreErrors) {
+    if ($MatchMethod) {
+        if (($Column.Count -ne $Value.Count)) {
+            if ($IgnoreErrors) {
                 $MatchMethod = $False;
             } else {
                 Write-Host "The count of the input columns seems not matching with the count of the input values or values' forecolors.";
-                Return;
+                return;
             }
         }
 
-        If ($MatchMethod.Count -lt $Column.Count) {
+        if ($MatchMethod.Count -lt $Column.Count) {
             $MatchMethod = @($MatchMethod[0]) * $Column.Count;
         }
     } else {
@@ -592,32 +592,32 @@ Function Write-PSObject {
 
     #endregion Defaults
     #region Match Method
-    If ($RowForeColor -eq -1) {
+    if ($RowForeColor -eq -1) {
         $RowForeColor = $BodyForeColor;
     }
 
-    If ($RowBackColor -eq -1) {
+    if ($RowBackColor -eq -1) {
         $RowBackColor = $BodyBackColor;
     }
     #endregion Match Method
 
     #region Flag Columns
-    If ($FlagColumns.Count -gt 0) {
-        If ($FlagColumns.Count -gt $FlagsForeColor.Count -and $FlagsForeColor.Count -ne 0) {
+    if ($FlagColumns.Count -gt 0) {
+        if ($FlagColumns.Count -gt $FlagsForeColor.Count -and $FlagsForeColor.Count -ne 0) {
             $FlagsForeColor = @($FlagsForeColor[0]) * $FlagColumns.Count;
         }
 
-        If ($FlagColumns.Count -gt $FlagsBackColor.Count -and $FlagsBackColor.Count -ne 0) {
+        if ($FlagColumns.Count -gt $FlagsBackColor.Count -and $FlagsBackColor.Count -ne 0) {
             $FlagsBackColor = @($FlagsBackColor[0]) * $FlagColumns.Count;
         }
     }
 
-    If ($ColoredColumns.Count -gt 0) {
-        If ($ColumnForeColor -ne $null -and $ColoredColumns.Count -gt $ColumnForeColor.Count -and $ColumnForeColor.Count -ne 0) {
+    if ($ColoredColumns.Count -gt 0) {
+        if ($ColumnForeColor -ne $null -and $ColoredColumns.Count -gt $ColumnForeColor.Count -and $ColumnForeColor.Count -ne 0) {
             $ColumnForeColor = @($ColumnForeColor[0]) * $ColoredColumns.Count;
         }
 
-        If ($ColumnBackColor -ne $null -and $ColoredColumns.Count -gt $ColumnBackColor.Count -and $ColumnBackColor.Count -ne 0) {
+        if ($ColumnBackColor -ne $null -and $ColoredColumns.Count -gt $ColumnBackColor.Count -and $ColumnBackColor.Count -ne 0) {
             $ColumnBackColor = @($ColumnBackColor[0]) * $ColoredColumns.Count;
         }
     }
@@ -625,18 +625,18 @@ Function Write-PSObject {
     #endregion Set Default Colors
 
     $l = 0;
-    Foreach ($line in $lines) {
-        If ($maxLength -gt $line.Length) {
-            $line += " " * ($maxLength - $line.Length)
+    foreach ($line in $lines) {
+        if ($maxLength -gt $line.Length) {
+            $line += ' ' * ($maxLength - $line.Length)
         }
 
         $l++;
 
-        If ($l -le 2) {
-            If ($l -eq 2 -And ($MatchMethod -Or $ColoredColumns)) {
+        if ($l -le 2) {
+            if ($l -eq 2 -and ($MatchMethod -or $ColoredColumns)) {
                 $headerLine = $line;
                 $header = $lines[0];
-                [String[]]$headerLines = $headerLine -split " " | Where-Object { $_.Trim() -ne "" } | ForEach-Object { $_.Trim("`t").Trim(); };
+                [String[]]$headerLines = $headerLine -split ' ' | Where-Object { $_.Trim() -ne '' } | ForEach-Object { $_.Trim("`t").Trim(); };
                 $colCount = $headerLines.Count;
                 $columns = @($null) * $colCount;
 
@@ -649,22 +649,22 @@ Function Write-PSObject {
 
                 $columns[$i] = $header.Substring($pos, $headerLines[$i].Length);
                 $col = $Columns[$i];
-                $headersLen[$i] = $object | Select-Object $col, @{Name = "Len"; Expression = { $_.$col.ToString().Length } } | Sort-Object Len -Descending | Select-Object Len -First 1 -ExpandProperty Len;
-                If ($headerLines[$i].Length -gt $headersLen[$i]) {
+                $headersLen[$i] = $object | Select-Object $col, @{Name = 'Len'; Expression = { $_.$col.ToString().Length } } | Sort-Object Len -Descending | Select-Object Len -First 1 -ExpandProperty Len;
+                if ($headerLines[$i].Length -gt $headersLen[$i]) {
                     $headersLen[$i] = $headerLines[$i].Length;
                 }
 
-                While ($pos -ne -1) {
+                while ($pos -ne -1) {
                     $i++;
-                    $pos = $headerLine.IndexOf(" -", $pos + 1, [System.StringComparison]::InvariantCultureIgnoreCase);
-                    If ($pos -eq -1) {
-                        Break;
+                    $pos = $headerLine.IndexOf(' -', $pos + 1, [System.StringComparison]::InvariantCultureIgnoreCase);
+                    if ($pos -eq -1) {
+                        break;
                     }
 
                     $columns[$i] = $header.Substring($pos + 1, $headerLines[$i].Length);
                     $col = $Columns[$i];
-                    $colLen = $object | Select-Object $col, @{Name = "Len"; Expression = { $_.$col.ToString().Length } } | Sort-Object Len -Descending | Select-Object Len -First 1 -ExpandProperty Len;
-                    If ($col.Length -gt $colLen) {
+                    $colLen = $object | Select-Object $col, @{Name = 'Len'; Expression = { $_.$col.ToString().Length } } | Sort-Object Len -Descending | Select-Object Len -First 1 -ExpandProperty Len;
+                    if ($col.Length -gt $colLen) {
                         $colLen = $col.Length;
                     }
 
@@ -673,20 +673,20 @@ Function Write-PSObject {
                 }
             }
 
-            If ($l -eq 2 -And $RemoveHeadersSeparator) {
-                Continue;
+            if ($l -eq 2 -and $RemoveHeadersSeparator) {
+                continue;
             }
 
-            If (!($BodyOnly)) {
+            if (!($BodyOnly)) {
                 $hfc = $HeadersForeColor;
                 $hbc = $HeadersBackColor;
 
-                If ($l -eq 2) {
-                    If ($HeadersSeparator -ne "-") {
-                        If (!($HeadersSeparator)) {
+                if ($l -eq 2) {
+                    if ($HeadersSeparator -ne '-') {
+                        if (!($HeadersSeparator)) {
                             $line = $null;
                         } else {
-                            $line = $line.Replace("-", $HeadersSeparator);
+                            $line = $line.Replace('-', $HeadersSeparator);
                             $line = $line.Substring(0, $lines[0].Length);
                         }
 
@@ -698,25 +698,25 @@ Function Write-PSObject {
                 Write-Line -Object $line -ForegroundColor $hfc -BackgroundColor $hbc;
             }
 
-            If ($l -eq 2) {
-                If ($HeadersOnly) {
-                    Return;
+            if ($l -eq 2) {
+                if ($HeadersOnly) {
+                    return;
                 }
             }
 
-            Continue;
-        } elseIf ($l -gt 2 -And ($MatchMethod -Or $ColoredColumns)) {
+            continue;
+        } elseif ($l -gt 2 -and ($MatchMethod -or $ColoredColumns)) {
             $oLine = $object[$l - 3];
             $values = @($null) * $colCount;
 
-            For ($i = 0; $i -lt $colCount; $i++) {
+            for ($i = 0; $i -lt $colCount; $i++) {
                 $col = $Columns[$i];
                 $values[$i] = $oLine | Select-Object -ExpandProperty $col;
             }
         }
 
-        If ($FormatTableColor) {
-            If ($l % 2 -eq 0) {
+        if ($FormatTableColor) {
+            if ($l % 2 -eq 0) {
                 $BodyForeColor = $EvenRowForeColor;
                 $BodyBackColor = $EvenRowBackColor;
             } else {
@@ -728,41 +728,41 @@ Function Write-PSObject {
         $fc = @($BodyForeColor) * $colCount;
         $bc = @($BodyBackColor) * $colCount;
 
-        If ($ColoredColumns) {
-            For ($j = 0; $j -lt $columns.Count; $j++) {
-                If ($ColoredColumns -contains $columns[$j]) {
+        if ($ColoredColumns) {
+            for ($j = 0; $j -lt $columns.Count; $j++) {
+                if ($ColoredColumns -contains $columns[$j]) {
                     $fColIndex = [System.Array]::IndexOf(($ColoredColumns | ForEach-Object { $_.ToLower() }), $columns[$j].ToLower());
 
-                    If ($fColIndex -lt $ColumnForeColor.Count) {
+                    if ($fColIndex -lt $ColumnForeColor.Count) {
                         $fc[$j] = $ColumnForeColor[$fColIndex];
                     }
 
-                    If ($fColIndex -lt $ColumnBackColor.Count) {
+                    if ($fColIndex -lt $ColumnBackColor.Count) {
                         $bc[$j] = $ColumnBackColor[$fColIndex];
                     }
                 }
             }
         }
 
-        If ($MatchMethod -Or $ColoredColumns) {
+        if ($MatchMethod -or $ColoredColumns) {
             $matchCond = $false;
             $matchCondGroup = @($false) * $Column.Count;
             $matchColumnFlag = @($false) * $columns.Count;
-            For ($i = 0; $i -lt $columns.Count; $i++) {
-                For ($j = 0; $j -lt $Column.Count; $j++) {
+            for ($i = 0; $i -lt $columns.Count; $i++) {
+                for ($j = 0; $j -lt $Column.Count; $j++) {
                     $colVal = $null;
                     $col = $Column[$j];
                     $val = $Value[$j];
 
-                    If ($col -eq $columns[$i] -Or $col -eq "*") {
+                    if ($col -eq $columns[$i] -or $col -eq '*') {
                         $colVal = $values[$i];
                         $query = $null;
                         $r = $null;
-                        Switch ($MatchMethod[$j]) {
-                            "Exact" { $query = """$colVal"" -eq ""$val""" };
-                            "Match" { $query = """$colVal"" -match ""$val""" };
-                            "Query" {
-                                For ($c = 0; $c -lt $columns.Count; $c++) {
+                        switch ($MatchMethod[$j]) {
+                            'Exact' { $query = """$colVal"" -eq ""$val""" };
+                            'Match' { $query = """$colVal"" -match ""$val""" };
+                            'Query' {
+                                for ($c = 0; $c -lt $columns.Count; $c++) {
                                     $colC = $Columns[$c];
                                     $valC = $values[$c];
                                     [double]$valCNum = New-Object System.Double;
@@ -778,19 +778,19 @@ Function Write-PSObject {
                         }
 
                         $r = Invoke-Expression $query;
-                        If ($r) {
+                        if ($r) {
                             $matchCond = $true;
-                            If ($null -ne $ValueForeColor -and $ValueForeColor.Count -gt $j) {
+                            if ($null -ne $ValueForeColor -and $ValueForeColor.Count -gt $j) {
                                 $fColor = $ValueForeColor[$j]
-                            } elseIf ($RowForeColor) {
+                            } elseif ($RowForeColor) {
                                 $fColor = $RowForeColor;
                             } else {
                                 $fColor = $BodyForeColor;
                             }
 
-                            If ($null -ne $ValueBackColor -and $ValueBackColor.Count -gt $j) {
+                            if ($null -ne $ValueBackColor -and $ValueBackColor.Count -gt $j) {
                                 $bColor = $ValueBackColor[$j]
-                            } elseIf ($RowBackColor) {
+                            } elseif ($RowBackColor) {
                                 $bColor = $RowBackColor;
                             } else {
                                 $bColor = $BodyBackColor;
@@ -801,19 +801,19 @@ Function Write-PSObject {
 
                             $matchCondGroup[$j] = $True;
                             $matchColumnFlag[$i] = $True;
-                            If ($null -ne $FlagColumns -and $FlagColumns.Count -gt $j -and $null -ne $FlagColumns[$j] -and $FlagColumns[$j].Trim() -ne "") {
+                            if ($null -ne $FlagColumns -and $FlagColumns.Count -gt $j -and $null -ne $FlagColumns[$j] -and $FlagColumns[$j].Trim() -ne '') {
                                 [String[]]$fColumnsSplit = @();
-                                $fColumnsSplit = $FlagColumns[$j] -split "," | Where-Object { $_.Trim() -ne "" } | ForEach-Object { $_.Trim("").Trim("'"); };
+                                $fColumnsSplit = $FlagColumns[$j] -split ',' | Where-Object { $_.Trim() -ne '' } | ForEach-Object { $_.Trim('').Trim("'"); };
 
-                                Foreach ($fcs  in $fColumnsSplit) {
+                                foreach ($fcs  in $fColumnsSplit) {
                                     $fColIndex = [System.Array]::IndexOf(($columns | ForEach-Object { $_.ToLower() }), $fcs.ToLower());
-                                    If ($fColIndex -ne -1) {
-                                        If ($j -lt $FlagsForeColor.Count) {
+                                    if ($fColIndex -ne -1) {
+                                        if ($j -lt $FlagsForeColor.Count) {
                                             $matchColumnFlag[$fColIndex] = $True;
                                             $fc[$fColIndex] = $FlagsForeColor[$j];
                                         }
 
-                                        If ($j -lt $FlagsBackColor.Count) {
+                                        if ($j -lt $FlagsBackColor.Count) {
                                             $matchColumnFlag[$fColIndex] = $True;
                                             $bc[$fColIndex] = $FlagsBackColor[$j];
                                         }
@@ -825,30 +825,30 @@ Function Write-PSObject {
                 }
             }
 
-            For ($j = 0; $j -lt $columns.Count; $j++) {
+            for ($j = 0; $j -lt $columns.Count; $j++) {
                 $foreColor = $fc[$j];
                 $backColor = $bc[$j];
 
-                If ($matchCond) {
-                    If (!($matchColumnFlag[$j])) {
-                        If ($null -ne $RowForeColor) {
+                if ($matchCond) {
+                    if (!($matchColumnFlag[$j])) {
+                        if ($null -ne $RowForeColor) {
                             $foreColor = $RowForeColor;
                         }
 
-                        If ($null -ne $RowBackColor) {
+                        if ($null -ne $RowBackColor) {
                             $backColor = $RowBackColor;
                         }
                     }
                 }
 
-                If ($j -eq 0) {
+                if ($j -eq 0) {
                     $vPos = $headersPos[$j];
                     $vLen = $headersLen[$j];
                 } else {
-                    If ($null -ne $RowBackColor -and $matchCond) {
-                        Write-Line " " -NoNewline -BackgroundColor $RowBackColor;
+                    if ($null -ne $RowBackColor -and $matchCond) {
+                        Write-Line ' ' -NoNewline -BackgroundColor $RowBackColor;
                     } else {
-                        Write-Line " " -NoNewline -BackgroundColor $BodyBackColor;
+                        Write-Line ' ' -NoNewline -BackgroundColor $BodyBackColor;
                     }
 
                     $vPos = $headersPos[$j];
@@ -857,18 +857,18 @@ Function Write-PSObject {
 
                 $valueText = $line.SubString($vPos, $vLen);
                 Write-Line -Object $valueText -NoNewline -ForegroundColor $foreColor -BackgroundColor $backColor;
-                If ($j -eq $columns.Count - 1) {
+                if ($j -eq $columns.Count - 1) {
                     Write-Host;
                 }
             }
-        } ElseIf (!($HeadersOnly)) {
+        } elseif (!($HeadersOnly)) {
             Write-Line -ForegroundColor $BodyForeColor -BackgroundColor $BodyBackColor $line;
         }
 
-        If ($l -ne ($lines.Length)) {
-            If ($InjectRowsSeparator) {
-                If (!$RowsSeparator) {
-                    $RowsSeparator = " ";
+        if ($l -ne ($lines.Length)) {
+            if ($InjectRowsSeparator) {
+                if (!$RowsSeparator) {
+                    $RowsSeparator = ' ';
                 }
 
                 $RowsSeparatorLine = $RowsSeparator * $line.Length;

@@ -49,4 +49,4 @@ $example1 = & {
     -DraftMode: If set to $true, generates a draft version of the diagram for troubleshooting.
     If the specified logo image is not found, a default no_icon.png is used.
 #>
-New-Diagrammer -InputObject $example1 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example1 -LogoName "Main_Logo"  -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example1 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example1 -LogoName 'Main_Logo' -DraftMode:$DraftMode

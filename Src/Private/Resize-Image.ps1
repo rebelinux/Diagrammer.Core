@@ -36,8 +36,8 @@ function Resize-Image {
     [CmdLetBinding(
         SupportsShouldProcess = $true,
         PositionalBinding = $false,
-        ConfirmImpact = "Medium",
-        DefaultParameterSetName = "Absolute"
+        ConfirmImpact = 'Medium',
+        DefaultParameterSetName = 'Absolute'
     )]
 
     param (
@@ -54,38 +54,38 @@ function Resize-Image {
         )]
         [ValidateScript({
                 if (-not ($_ | Test-Path) ) {
-                    throw "Folder does not exist"
+                    throw 'Folder does not exist'
                 }
                 return $true
             })]
         [System.IO.FileInfo]$DestinationPath,
         [Parameter(Mandatory = $False)][Switch]$MaintainRatio,
-        [Parameter(Mandatory = $False, ParameterSetName = "Absolute")][Int]$Height,
-        [Parameter(Mandatory = $False, ParameterSetName = "Absolute")][Int]$Width,
-        [Parameter(Mandatory = $False, ParameterSetName = "Percent")][Double]$Percentage,
-        [Parameter(Mandatory = $False)][System.Drawing.Drawing2D.SmoothingMode]$SmoothingMode = "HighQuality",
-        [Parameter(Mandatory = $False)][String]$NameModifier = "resized"
+        [Parameter(Mandatory = $False, ParameterSetName = 'Absolute')][Int]$Height,
+        [Parameter(Mandatory = $False, ParameterSetName = 'Absolute')][Int]$Width,
+        [Parameter(Mandatory = $False, ParameterSetName = 'Percent')][Double]$Percentage,
+        [Parameter(Mandatory = $False)][System.Drawing.Drawing2D.SmoothingMode]$SmoothingMode = 'HighQuality',
+        [Parameter(Mandatory = $False)][String]$NameModifier = 'resized'
     )
     begin {
         if ($Width -and $Height -and $MaintainRatio) {
-            throw "Absolute Width and Height cannot be given with the MaintainRatio parameter."
+            throw 'Absolute Width and Height cannot be given with the MaintainRatio parameter.'
         }
 
         if (($Width -xor $Height) -and (-not $MaintainRatio)) {
-            throw "MaintainRatio must be set with incomplete size parameters (Missing height or width without MaintainRatio)"
+            throw 'MaintainRatio must be set with incomplete size parameters (Missing height or width without MaintainRatio)'
         }
 
         if ($Percentage -and $MaintainRatio) {
-            Write-Warning -Message "The MaintainRatio flag while using the Percentage parameter does nothing"
+            Write-Warning -Message 'The MaintainRatio flag while using the Percentage parameter does nothing'
         }
     }
     process {
         foreach ($Image in $ImagePath) {
             $Path = (Resolve-Path $Image).Path
-            $Dot = $Path.LastIndexOf(".")
+            $Dot = $Path.LastIndexOf('.')
 
             #Add name modifier (OriginalName_{$NameModifier}.jpg)
-            $OutputPath = $Path.Substring(0, $Dot) + "_" + $NameModifier + $Path.Substring($Dot, $Path.Length - $Dot)
+            $OutputPath = $Path.Substring(0, $Dot) + '_' + $NameModifier + $Path.Substring($Dot, $Path.Length - $Dot)
 
             $OldImage = switch ($PSVersionTable.Platform) {
                 'Unix' { [SixLabors.ImageSharp.Image]::Load($Path) }

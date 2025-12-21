@@ -70,7 +70,7 @@ function Add-DiaNodeText {
 
     .NOTES
         Author: Jonathan Colon
-        Version: 0.2.32
+        Version: 0.2.36
         Twitter: @jcolonfzenpr
         Github: rebelinux
 
@@ -82,7 +82,7 @@ function Add-DiaNodeText {
     param(
 
         [Parameter(
-            Mandatory = $true,
+            Mandatory,
             HelpMessage = 'Name of the Node.'
         )]
         [string] $Name,
@@ -91,21 +91,21 @@ function Add-DiaNodeText {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false,
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string] $TableBorderColor = "#000000",
+        [string] $TableBorderColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [ValidateSet("ROUNDED", "RADIAL", "SOLID", "INVISIBLE", "INVIS", "DOTTED", "DASHED")]
-        [string] $TableBorderStyle,
+        [ValidateSet('ROUNDED', 'RADIAL', 'SOLID', 'INVISIBLE', 'INVIS', 'DOTTED', 'DASHED')]
+        [string] $TableBorderStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
@@ -123,14 +123,14 @@ function Add-DiaNodeText {
             Mandatory = $false,
             HelpMessage = 'Set the text to display inside the text box'
         )]
-        [ValidateSet("Left", "Right", "Center")]
-        [string] $TextAlign = "Center",
+        [ValidateSet('Left', 'Right', 'Center')]
+        [string] $TextAlign = 'Center',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -159,13 +159,13 @@ function Add-DiaNodeText {
         [Parameter(
             HelpMessage = "The font face to use. Default is 'Segoe Ui'."
         )]
-        [string]$FontName = "Segoe Ui",
+        [string]$FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set the background color'
         )]
-        [string] $TableBackgroundColor = "#FFFFFF",
+        [string] $TableBackgroundColor = '#FFFFFF',
 
         [Parameter(
             Mandatory = $false,
@@ -182,41 +182,25 @@ function Add-DiaNodeText {
 
     $Text = $Text -replace '\\n', '<BR/>'
 
-    if ($TableBorder -gt 0 -and (-not $TableBorderStyle)) {
-        throw "TableBorderStyle must be specified when TableBorder is used."
-    } elseif (($TableBorderColor -ne '#000000') -and (-not $TableBorderStyle)) {
-        throw "TableBorderStyle must be specified when TableBorderColor is used."
-    } elseif ($TableBorderStyle -and ($TableBorder -eq 0)) {
-        $TableBorder = 1
+    if (($TableBorderColor -ne '#000000') -and (-not $TableBorderStyle)) {
+        throw 'TableBorderStyle must be specified when TableBorderColor is used.'
     }
 
     $FormattedText = Format-HtmlFontProperty -Text $Text -FontSize $FontSize -FontColor $FontColor -FontBold:$FontBold -FontItalic:$FontItalic -FontUnderline:$FontUnderline -FontName $FontName
 
     if ($IconDebug) {
-        if ($NodeObject) {
-            $HTML = "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{1}' colspan='1'>{2}</TD></TR></TABLE>" -f 'SOLID', $TextAlign, $FormattedText
+        $TRContent = '<TR><TD STYLE="{0}" ALIGN="{1}" colspan="1">{2}</TD></TR>' -f 'SOLID', $TextAlign, $FormattedText
 
-            Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-        } else {
-            "<TABLE bgcolor='#FFCCCC' color='red' border='1' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{1}' colspan='1'>{2}</TD></TR></TABLE>" -f 'SOLID', $TextAlign, $FormattedText
-        }
+        $HTML = Format-HtmlTable -TableBackgroundColor '#FFCCCC' -TableBorderColor 'red' -CellBorder 0 -TableRowContent $TRContent
+
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
+
     } else {
-        if ($NodeObject) {
-            $HTML = if ($TableBorderStyle) {
-                "<TABLE STYLE='{0}' bgcolor='{1}' border='{2}' color='{3}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{4}' colspan='1'>{5}</TD></TR></TABLE>" -f $TableBorderStyle, $TableBackgroundColor, $TableBorder, $TableBorderColor, $TextAlign, $FormattedText
-            } else {
-                "<TABLE border='{0}' color='{1}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='{2}' colspan='1'>{3}</TD></TR></TABLE>" -f 0, $TableBorderColor, $TextAlign, $FormattedText
-            }
+        $TRContent = '<TR><TD STYLE="{0}" ALIGN="{1}" colspan="1">{2}</TD></TR>' -f $TableBorderStyle, $TextAlign, $FormattedText
 
-            Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-        } else {
-            if ($TableBorderStyle) {
-                "<TABLE STYLE='{0}' bgcolor='{1}' border='{2}' color='{3}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD STYLE='{0}' ALIGN='{4}' colspan='1'>{5}</TD></TR></TABLE>" -f $TableBorderStyle, $TableBackgroundColor, $TableBorder, $TableBorderColor, $TextAlign, $FormattedText
-            } else {
-                "<TABLE bgcolor='{0}' border='{1}' color='{2}' cellborder='0' cellspacing='5' cellpadding='5'><TR><TD ALIGN='{3}' colspan='1'>{4}</TD></TR></TABLE>" -f $TableBackgroundColor, 0, $TableBorderColor, $TextAlign, $FormattedText
-            }
+        $HTML = Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBorderColor $TableBorderColor -TableBackgroundColor $TableBackgroundColor -CellBorder 0 -TableRowContent $TRContent
 
-        }
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     }
 
 }

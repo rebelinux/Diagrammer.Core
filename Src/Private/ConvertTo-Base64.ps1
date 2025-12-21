@@ -37,12 +37,12 @@ function ConvertTo-Base64 {
         [Bool] $Delete = $true
     )
     process {
-        Write-Verbose -Message "Trying to convert Graphviz object to Base64 format."
+        Write-Verbose -Message 'Trying to convert Graphviz object to Base64 format.'
         # Code used to output image to base64 format
         try {
             $Base64 = [convert]::ToBase64String(([System.IO.File]::ReadAllBytes($ImageInput)))
         } catch {
-            Write-Verbose -Message "Unable to convert Graphviz object to Base64 format."
+            Write-Verbose -Message 'Unable to convert Graphviz object to Base64 format.'
             Write-Debug -Message $($_.Exception.Message)
         }
         if ($Base64) {
@@ -50,7 +50,7 @@ function ConvertTo-Base64 {
                 Write-Verbose -Message "Deleting Temporary PNG file: $($ImageInput)"
                 Remove-Item -Path $ImageInput
             }
-            Write-Verbose -Message "Successfully converted Graphviz object to Base64 format."
+            Write-Verbose -Message 'Successfully converted Graphviz object to Base64 format.'
             return $Base64
         } else {
             Write-Verbose -Message "Deleting Temporary PNG file: $($ImageInput)"

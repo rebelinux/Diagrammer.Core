@@ -18,14 +18,14 @@ Describe ConvertTo-Dot {
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDriv:\output.dot"
+            DestinationPath = 'TestDriv:\output.dot'
         }
     }
 
-    It "Should return output.dot path" {
+    It 'Should return output.dot path' {
         (ConvertTo-Dot @PassParams).FullName | Should -Exist
     }
-    It "Should Not return output.dot path" {
+    It 'Should Not return output.dot path' {
         $scriptBlock = { ConvertTo-Dot @FailParams }
         $scriptBlock | Should -Not -Exist
     }

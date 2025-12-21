@@ -19,17 +19,17 @@ function Test-Image {
         [ValidateNotNullOrEmpty()]
         [Alias('PSPath')]
         [ValidateScript( {
-            if (Test-Path -Path $_) {
-                $true
-            } else {
-                throw "File $_ not found!"
-            }
-        })]
+                if (Test-Path -Path $_) {
+                    $true
+                } else {
+                    throw "File $_ not found!"
+                }
+            })]
         [System.IO.FileInfo]$Path
     )
 
-    PROCESS {
-        $knownImageExtensions = @( ".jpeg", ".jpg", ".png" )
+    process {
+        $knownImageExtensions = @( '.jpeg', '.jpg', '.png' )
         $extension = [System.IO.Path]::GetExtension($Path)
         return $knownImageExtensions -contains $extension.ToLower()
     }

@@ -14,11 +14,11 @@ function Remove-SpecialChar {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'Low')]
     param(
         [string]$String,
-        [string]$SpecialChars = "()[]{}&."
+        [string]$SpecialChars = '()[]{}&.'
     )
     process {
-        if ($PSCmdlet.ShouldProcess($String, ("Remove {0} chars" -f $SpecialChars, $String))) {
-            $String -replace $($SpecialChars.ToCharArray().ForEach( { [regex]::Escape($_) }) -join "|"), ""
+        if ($PSCmdlet.ShouldProcess($String, ('Remove {0} chars' -f $SpecialChars, $String))) {
+            $String -replace $($SpecialChars.ToCharArray().ForEach( { [regex]::Escape($_) }) -join '|'), ''
         }
     }
 }

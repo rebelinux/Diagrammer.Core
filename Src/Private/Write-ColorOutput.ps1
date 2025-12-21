@@ -13,7 +13,7 @@ function Write-ColorOutput {
     [CmdletBinding()]
     [OutputType([String])]
 
-    Param
+    param
     (
         [Parameter(
             Position = 0,

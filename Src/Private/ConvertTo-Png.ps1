@@ -14,7 +14,7 @@ function ConvertTo-Png {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -34,7 +34,7 @@ function ConvertTo-Png {
             Write-Verbose -Message "Trying to convert Graphviz object to PNG format. Destination Path: $DestinationPath."
             $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'png' -GraphVizPath $GraphvizPath
         } catch {
-            Write-Verbose -Message "Unable to convert Graphviz object to PNG format."
+            Write-Verbose -Message 'Unable to convert Graphviz object to PNG format.'
             Write-Debug -Message $($_.Exception.Message)
         }
         if ($Document) {

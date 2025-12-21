@@ -18,14 +18,14 @@ Describe ConvertTo-Svg {
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDriv:\output.svg"
+            DestinationPath = 'TestDriv:\output.svg'
         }
     }
 
-    It "Should return output.svg path" {
+    It 'Should return output.svg path' {
         (ConvertTo-Svg @PassParams).FullName | Should -Exist
     }
-    It "Should Not return output.svg path" {
+    It 'Should Not return output.svg path' {
         $scriptBlock = { ConvertTo-Svg @FailParams }
         $scriptBlock | Should -Not -Exist
     }
