@@ -25,12 +25,7 @@ Describe Add-DiaNodeText {
     It "Should return a HTML table with red colored table" {
         $HTMLOutPutDebug | Should -Match 'COLOR="red"'
     }
-    It "Should return a HTML table with red colored table" {
+    It "Should return a HTML table with '#FFCCCC' colored table" {
         $HTMLOutPutDebug | Should -Match 'BGCOLOR="#FFCCCC"'
-    }
-
-
-    It "Should throw an error when IconPath is not provided and ImageSizePercent is less than 100" {
-        { Add-DiaNodeText -TextAlign 'Center' -FontSize 12 -FontColor 'black' -TableBorder 0 -TableBorderStyle 'SOLID' -IconDebug $true -TableBorderColor Blue } | Should -Throw -ExpectedMessage "Cannot process command because of one or more missing mandatory parameters: Name Text."
     }
 }

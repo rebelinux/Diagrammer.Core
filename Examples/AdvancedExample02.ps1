@@ -163,7 +163,7 @@ $advancedexample02 = & {
             The resulting HTML-like table is then used as the label for a Node representing the web server farm.
         #>
 
-        $WebLabel = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -MultiIcon -DraftMode:$DraftMode -FontSize 18
+        $WebLabel = Add-DiaHtmlNodeTable -Name "WebLabel" -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -MultiIcon -DraftMode:$DraftMode -FontSize 18
 
         <#
             The Add-DiaHTMLSubGraph cmdlet creates a HTML-like table that simulates a SubGraph with enhanced layout and connectivity options.

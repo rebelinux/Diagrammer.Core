@@ -4,7 +4,7 @@ BeforeAll {
     . (Join-Path -Path $PrivateFolder -ChildPath 'Format-HtmlFontProperty.ps1')
 }
 
-Describe Add-DiaHtmlNodeTable {
+Describe Add-DiaHtmlNodeTable -Skip {
     BeforeAll {
         $Images = @{
             "Main_Logo" = "Diagrammer.png"

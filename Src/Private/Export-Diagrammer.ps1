@@ -212,8 +212,7 @@ function Export-Diagrammer {
                         Add-WatermarkToImage -ImageInput $TempOutPut -DestinationPath $DestinationPath -WaterMarkText $WaterMarkText -FontColor $WaterMarkColor -FontOpacity $WaterMarkFontOpacity
                     }
                 }
-                # After adding watermark, convert it to PDF if required. GraphObj is not required for this step.
-                # Needed because .NET does not support adding watermark to PDF files. Used ImageMagick to convert WaterMarked PNG to PDF.
+                # After adding the watermark text to the image, convert it to PDF if required. GraphObj is not required for this step.
                 if ($Format -eq "pdf") {
                     $Null = ConvertTo-Pdf-WaterMark -ImageInput $Document.FullName -DestinationPath $DestinationPath
                 }

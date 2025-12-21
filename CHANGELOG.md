@@ -15,11 +15,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - TableStyle (solid, dashed, dotted, bold)
 - Add function to build HTML Table dynamically based on input parameters (Format-HtmlTable)
 - Add unit tests for Format-HtmlTable function to validate HTML output and custom parameters
+- Add unit test for FontOpacity to the Add-WaterMarkToImage function
 
 ### :arrows_clockwise: Changed
 
 - Increment module version to `0.2.36`
 - Upgrade Graphviz binaries to `14.1.1`
+
+### :bug: Fixed
+
+- Fix unit test that try to test mandatory parameters
 
 ## [0.2.35] - 2025-11-16
 

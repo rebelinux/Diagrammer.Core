@@ -29,6 +29,13 @@ Describe Add-WatermarkToImage {
             WaterMarkText = "Test"
             FontColor = "Red"
         }
+        $PassParamsFontOpacity = @{
+            ImageInput = Join-Path -Path $IconsPath -ChildPath "AsBuiltReport.png"
+            DestinationPath = Join-Path -Path $IconsPath -ChildPath 'AsBuiltReportMarked.png'
+            WaterMarkText = "Test"
+            FontColor = "Red"
+            FontOpacity = 10
+        }
         $FailParams = @{
             ImageInput = "AsBuiltReport.png"
             DestinationPath = Join-Path $TestDrive 'AsBuiltReportMarked.png'
@@ -43,6 +50,10 @@ Describe Add-WatermarkToImage {
     It "Should return AsBuiltReportMarked.png DestinationPath" {
         Add-WatermarkToImage @PassParamsDestinationPath
         (Get-Item -Path $PassParamsDestinationPath.DestinationPath).FullName | Should -Exist
+    }
+    It "Should return AsBuiltReportMarked.png with 20% opacity" {
+        Add-WatermarkToImage @PassParamsFontOpacity
+        (Get-Item -Path $PassParamsFontOpacity.DestinationPath).FullName | Should -Exist
     }
     It "Should work without FontColor parameter" {
         (Add-WatermarkToImage @PassParamsNoFontColor).FullName | Should -Exist

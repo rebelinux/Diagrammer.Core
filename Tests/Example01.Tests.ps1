@@ -39,7 +39,7 @@ Describe Example01 {
         It "Should match HTML label with embedded image" {
             $DotFile = ($RunFile).FullName
             $DotContent = Get-Content -Path $DotFile -Raw
-            $ExpectedText = 'label=<<TABLE PORT="" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="20" CELLPADDING="10" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" COLSPAN="1"><img SRC="Diagrammer.png"/></TD></TR><TR><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="24" COLOR="#000000">3tier Web Application Diagram</FONT></TD></TR></TABLE>>,'
+            $ExpectedText = 'label=<<TABLE PORT="EdgeDot" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="20" CELLPADDING="10" BGCOLOR="#FFFFFF" COLOR="black"><TR><TD ALIGN="Center" BGCOLOR="#FFFFFF" COLSPAN="1"><img SRC="Diagrammer.png"/></TD></TR><TR><TD ALIGN="Center"><FONT FACE="Segoe Ui" POINT-SIZE="24" COLOR="#000000">3tier Web Application Diagram</FONT></TD></TR></TABLE>>,'
 
             $DotContent | Should -Match $ExpectedText
         }
