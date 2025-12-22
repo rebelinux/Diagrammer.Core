@@ -32,6 +32,9 @@ function Add-DiaNodeImage {
     .PARAMETER TableBorderColor
         Specifies the color of the table border using a hex color code. Default is "#000000" (black).
 
+    .PARAMETER TableBackgroundColor
+        Specifies the color of the table bgcolor using a hex color code. Default is "#FFFFFF" (black).
+
     .PARAMETER TableBorderStyle
         Defines the style of the table border. Accepted values are: ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED.
 
@@ -124,6 +127,12 @@ function Add-DiaNodeImage {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Allow to set a table background color'
+        )]
+        [string] $TableBackgroundColor = '#FFFFFF',
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Allow to set the text align'
         )]
         [switch] $NodeObject,
@@ -158,14 +167,14 @@ function Add-DiaNodeImage {
 
             $TRContent = '<TR><TD STYLE="{0}" ALIGN="Center" fixedsize="true" width="{1}" height="{2}" colspan="1"><img src="{3}"/></TD></TR>' -f $TableBorderStyle, $ImageSize.Width, $ImageSize.Height, $ICON
 
-            $HTML = Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBorderColor $TableBorderColor -CellBorder 0 -TableRowContent $TRContent
+            $HTML = Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBackgroundColor $TableBackgroundColor -TableBorderColor $TableBorderColor -CellBorder 0 -TableRowContent $TRContent
 
             Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         } else {
 
             $TRContent = '<TR><TD STYLE="{0}" ALIGN="Center" colspan="1"><img src="{1}"/></TD></TR>' -f $TableBorderStyle, $ICON
 
-            $HTML = Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBorderColor $TableBorderColor -CellBorder 0 -TableRowContent $TRContent
+            $HTML = Format-HtmlTable -TableStyle $TableBorderStyle -TableBorder $TableBorder -TableBackgroundColor $TableBackgroundColor -TableBorderColor $TableBorderColor -CellBorder 0 -TableRowContent $TRContent
 
             Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
         }

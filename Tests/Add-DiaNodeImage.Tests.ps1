@@ -26,7 +26,7 @@ Describe Add-DiaNodeImage {
     }
 
     It 'Should return a HTML table with Diagrammer.png image' {
-        $HTMLOutPut | Should -BeExactly '<TABLE PORT="EdgeDot" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1" BGCOLOR="white" COLOR="#000000"><TR><TD STYLE="SOLID" ALIGN="Center" fixedsize="true" width="210" height="143.5" colspan="1"><img src="Diagrammer.png"/></TD></TR></TABLE>'
+        $HTMLOutPut | Should -BeExactly '<TABLE PORT="EdgeDot" STYLE="SOLID" BORDER="0" CELLBORDER="0" CELLSPACING="1" CELLPADDING="1" BGCOLOR="#FFFFFF" COLOR="#000000"><TR><TD STYLE="SOLID" ALIGN="Center" fixedsize="true" width="210" height="143.5" colspan="1"><img src="Diagrammer.png"/></TD></TR></TABLE>'
     }
     It 'Should return a HTML table with the IMG tag' {
         $HTMLOutPut | Should -Match '<img src="Diagrammer.png"/>'
