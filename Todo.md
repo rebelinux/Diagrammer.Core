@@ -47,7 +47,7 @@
     - [ ] Add ShapeLine example
 - [ ] Add option to set icon size by percent
     - [ ] Add pester to test this funtionality
-- [ ] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
+- [x] Add NodeObject support see Add-DiaHTMLTable as example (use Join-Hashtable)
   - [ ] Add pester to test this funtionality
 - [ ] Research ways to add html label to edges to simulate enhanced connectivity
 - [ ] Add support for Watermark in SVG output format
