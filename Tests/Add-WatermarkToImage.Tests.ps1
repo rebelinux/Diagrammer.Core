@@ -38,7 +38,7 @@ Describe Add-WatermarkToImage {
         }
         $FailParams = @{
             ImageInput = 'AsBuiltReport.png'
-            DestinationPath = Join-Path $TestDrive 'AsBuiltReportMarked.png'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'AsBuiltReportMarked.png'
             WaterMarkText = 'Test'
             FontColor = 'Red'
         }

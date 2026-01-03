@@ -9,18 +9,18 @@ Describe Resize-Image {
         $env:TMP = $TestDrive
 
         $PassParamsValidParameters = @{
-            ImagePath = Join-Path "$TestsFolder\Icons" 'AsBuiltReport.png'
+            ImagePath = Join-Path -Path "$TestsFolder\Icons" -ChildPath 'AsBuiltReport.png'
             DestinationPath = $TestDrive
             Width = 1000
             Height = 1000
         }
         $PassParamsValidParametersPercent = @{
-            ImagePath = Join-Path "$TestsFolder\Icons" 'AsBuiltReport.png'
+            ImagePath = Join-Path -Path "$TestsFolder\Icons" -ChildPath 'AsBuiltReport.png'
             DestinationPath = $TestDrive
             Percentage = 50
         }
         $PassParamsValidParametersMaintainRatio = @{
-            ImagePath = Join-Path "$TestsFolder\Icons" 'AsBuiltReport.png'
+            ImagePath = Join-Path -Path "$TestsFolder\Icons" -ChildPath 'AsBuiltReport.png'
             DestinationPath = $TestDrive
             Width = 800
             MaintainRatio = $true
@@ -33,7 +33,7 @@ Describe Resize-Image {
 
         }
         $PassParamsNoDestinationPath = @{
-            ImagePath = Join-Path "$TestsFolder\Icons" 'AsBuiltReport.png'
+            ImagePath = Join-Path -Path "$TestsFolder\Icons" -ChildPath 'AsBuiltReport.png'
             Width = 1000
             Height = 1000
             DestinationPath = 'WrongPath'

@@ -29,7 +29,7 @@ $OutputFolderPath = Resolve-Path $Path
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
+[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'Icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.

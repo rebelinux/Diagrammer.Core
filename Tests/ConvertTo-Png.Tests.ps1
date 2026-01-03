@@ -14,7 +14,7 @@ Describe ConvertTo-Png {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.png'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.png'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj

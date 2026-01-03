@@ -14,7 +14,7 @@ Describe ConvertTo-Dot {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.dot'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.dot'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj

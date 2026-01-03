@@ -21,7 +21,7 @@ Describe ConvertTo-Jpg {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.jpg'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.jpg'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj

@@ -14,7 +14,7 @@ Describe ConvertTo-Pdf {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.pdf'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj

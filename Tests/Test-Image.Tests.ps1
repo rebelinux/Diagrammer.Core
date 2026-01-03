@@ -6,7 +6,7 @@ BeforeAll {
 Describe Test-Image {
 
     BeforeAll {
-        $Logo = Join-Path "$TestsFolder\Icons" 'Logo.png'
+        $Logo = Join-Path -Path "$TestsFolder\Icons" -ChildPath 'Logo.png'
         New-Item -ItemType File -Name 'filename.txt' -Path 'TestDrive:\'
     }
 
