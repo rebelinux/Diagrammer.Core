@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add unit tests for Format-HtmlTable function to validate HTML output and custom parameters
 - Add unit test for FontOpacity to the Add-WaterMarkToImage function
 - Add TableBackgroundColor to the Add-DiaNodeImage function
+- Add code to prevent loading assemblies already in memory
 
 ### :arrows_clockwise: Changed
 

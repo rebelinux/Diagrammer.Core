@@ -13,12 +13,16 @@ $assemblyName = switch ($PSVersionTable.PSEdition) {
     }
 }
 
+$loadedassemblies = [System.AppDomain]::CurrentDomain.GetAssemblies().ManifestModule.Name
+
 foreach ($Assembly in $assemblyName) {
-    try {
-        Write-Verbose -Message "Loading assembly '$($Assembly.Name)'."
-        Add-Type -Path $Assembly.FullName -Verbose
-    } catch {
-        Write-Error -Message "Failed to add assembly $($Assembly.FullName): $_"
+    if ($Assembly.Name -notin $loadedassemblies) {
+        try {
+            Write-Verbose -Message "Loading assembly '$($Assembly.Name)'."
+            Add-Type -Path $Assembly.FullName -Verbose
+        } catch {
+            Write-Error -Message "Failed to add assembly $($Assembly.FullName): $_"
+        }
     }
 }
 
