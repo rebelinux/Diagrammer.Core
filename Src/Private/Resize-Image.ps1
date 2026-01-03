@@ -78,6 +78,12 @@ function Resize-Image {
         if ($Percentage -and $MaintainRatio) {
             Write-Warning -Message 'The MaintainRatio flag while using the Percentage parameter does nothing'
         }
+        try {
+            Add-Type -AssemblyName System.Drawing -ErrorAction Stop
+            Write-Verbose -Message 'System.Drawing assembly loaded successfully.'
+        } catch {
+            throw 'These functions require the [System.Drawing.Color] .NET Class. Assembly could not be loaded.'
+        }
     }
     process {
         foreach ($Image in $ImagePath) {

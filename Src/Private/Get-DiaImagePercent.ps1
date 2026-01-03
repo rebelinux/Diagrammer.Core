@@ -48,6 +48,12 @@ function Get-DiaImagePercent {
         if ((-not $PSBoundParameters.ContainsKey('ImageInput')) -and (-not $PSBoundParameters.ContainsKey('GraphObj'))) {
             throw 'Error: Please provide a image path or a graphviz string to process.'
         }
+        try {
+            Add-Type -AssemblyName System.Drawing -ErrorAction Stop
+            Write-Verbose -Message 'System.Drawing assembly loaded successfully.'
+        } catch {
+            throw 'These functions require the [System.Drawing.Color] .NET Class. Assembly could not be loaded.'
+        }
     }
     process {
 

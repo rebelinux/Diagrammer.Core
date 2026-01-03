@@ -72,7 +72,7 @@ Describe ConvertTo-RotateImage {
         ConvertTo-RotateImage @PassParamsAngleParameters -Angle 90
         $expectedHash = switch ($PSVersionTable.Platform) {
             'Unix' { 'FCD60222B8AF7F5E206B2DEF91C9257D15B04CFF151D8BD226413ECC3B295EB8' }
-            default { 'D33CF5DCDD12785F03FC2EA456A32017D577A3B5061A90A25F9226B495853A5C' } # Windows handled below
+            default { 'A3A65A25DB3476074208FDB58EC44B15BF68939505E1D4A980AB0563149DBD25' } # Windows handled below
         }
         $RotatedImagePath = Join-Path -Path $PassParamsAngleParameters.DestinationPath -ChildPath 'AsBuiltReport_Rotated.png'
         $calculatedHash = (Get-FileHash -Path $RotatedImagePath -Algorithm SHA256).Hash
@@ -82,7 +82,7 @@ Describe ConvertTo-RotateImage {
         ConvertTo-RotateImage @PassParamsAngleParameters -Angle 180
         $expectedHash = switch ($PSVersionTable.Platform) {
             'Unix' { 'B3067CA010C1AF7EF2B2B7825A20298F0F64C2598CAE7DC51AB615C91BCBE4D1' }
-            default { '36D9369C881A0DA2EEB8D22DADF822C6622B5FB9CC77598DC9BB36F30C12ACC8' } # Windows handled below
+            default { 'DFB58CA12B836C00E997191A9C58FD653AACF21600DD10D65587D053E25FBCC7' } # Windows handled below
         }
         $RotatedImagePath = Join-Path -Path $PassParamsAngleParameters.DestinationPath -ChildPath 'AsBuiltReport_Rotated.png'
         $calculatedHash = (Get-FileHash -Path $RotatedImagePath -Algorithm SHA256).Hash
@@ -92,7 +92,7 @@ Describe ConvertTo-RotateImage {
         ConvertTo-RotateImage @PassParamsAngleParameters -Angle 270
         $expectedHash = switch ($PSVersionTable.Platform) {
             'Unix' { '61B54E22853B8F866D2FAD1A21D7B328662DBEDFE9D6C8776C73D04727BF494D' }
-            default { 'BED369C153B6A7FDB32CCA12DAE90C0BADF9078647A8076A49E0FC1E57304BC6' } # Windows handled below
+            default { '1CD33DD1F32F14DA7BEE110D959D4980A8BCB7794E93EABC35C6FCB868FCDB3F' } # Windows handled below
         }
         $RotatedImagePath = Join-Path -Path $PassParamsAngleParameters.DestinationPath -ChildPath 'AsBuiltReport_Rotated.png'
         $calculatedHash = (Get-FileHash -Path $RotatedImagePath -Algorithm SHA256).Hash
