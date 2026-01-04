@@ -7,7 +7,7 @@ Describe Add-DiaVerticalLine {
     BeforeAll {
         [string]$DotOutPut = Add-DiaVerticalLine
         [string]$DotOutPutDebug = Add-DiaVerticalLine -DraftMode $true
-        [string]$DotOutPutWithParams = Add-DiaVerticalLine -VStart "First" -VEnd "Last"
+        [string]$DotOutPutWithParams = Add-DiaVerticalLine -VStart 'First' -VEnd 'Last'
         [string]$DotOutPutWithParamsArrowsTest = Add-DiaVerticalLine -Arrowtail box -Arrowhead diamond
         [string]$DotOutPutWithParamsLineTest = Add-DiaVerticalLine -LineStyle solid -LineWidth 3 -LineColor red
         $DotOutPutWithParamsLineTestError = @{
@@ -21,25 +21,25 @@ Describe Add-DiaVerticalLine {
             ErrorAction = 'Stop'
         }
         [string]$DotOutPutWithParamsLineLengthTest = Add-DiaVerticalLine -VStartLineLength 3
-        [string]$DotOutPutWithAllParamsTest = Add-DiaVerticalLine -VStart "VStart" -VEnd "VEnd" -Arrowtail box -Arrowhead diamond -LineStyle solid -LineWidth 3 -LineColor red -VStartLineLength 3
-        [string]$DotOutPutWithAllParamsDebugTest = Add-DiaVerticalLine -VStart "VStart" -VEnd "VEnd" -Arrowtail box -Arrowhead diamond -LineStyle solid -LineWidth 3 -LineColor red -VStartLineLength 3 -DraftMode $true
+        [string]$DotOutPutWithAllParamsTest = Add-DiaVerticalLine -VStart 'VStart' -VEnd 'VEnd' -Arrowtail box -Arrowhead diamond -LineStyle solid -LineWidth 3 -LineColor red -VStartLineLength 3
+        [string]$DotOutPutWithAllParamsDebugTest = Add-DiaVerticalLine -VStart 'VStart' -VEnd 'VEnd' -Arrowtail box -Arrowhead diamond -LineStyle solid -LineWidth 3 -LineColor red -VStartLineLength 3 -DraftMode $true
 
     }
 
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line' {
         $DotOutPut | Should -Match '"VStart"'
         $DotOutPut | Should -Match '"VEnd"'
         $DotOutPut | Should -Match '"VStart"->"VEnd"'
     }
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line with debug information" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line with debug information' {
         $DotOutPutDebug | Should -Match 'fillcolor="red"'
     }
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Node Names" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Node Names' {
         $DotOutPutWithParams | Should -Match '"First"'
         $DotOutPutWithParams | Should -Match '"Last"'
         $DotOutPutWithParams | Should -Match '"First"->"Last"'
     }
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Arrowhead and Arrowtail" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line with custom Arrowhead and Arrowtail' {
         $DotOutPutWithParamsArrowsTest | Should -Match 'arrowhead="diamond"'
         $DotOutPutWithParamsArrowsTest | Should -Match 'arrowtail="box"'
     }
@@ -47,7 +47,7 @@ Describe Add-DiaVerticalLine {
         $scriptBlock = { Add-DiaVerticalLine @DotOutPutWithParamsArrowsTestError }
         $scriptBlock | Should -Throw
     }
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line with custom LineStyle, LineWidth and LineColor" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line with custom LineStyle, LineWidth and LineColor' {
         $DotOutPutWithParamsLineTest | Should -Match 'style="solid"'
         $DotOutPutWithParamsLineTest | Should -Match 'penwidth="3"'
         $DotOutPutWithParamsLineTest | Should -Match 'color="red"'
@@ -56,10 +56,10 @@ Describe Add-DiaVerticalLine {
         $scriptBlock = { Add-DiaVerticalLine @DotOutPutWithParamsLineTestError }
         $scriptBlock | Should -Throw
     }
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line with custom VStartLineLength" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line with custom VStartLineLength' {
         $DotOutPutWithParamsLineLengthTest | Should -Match 'minlen="3"'
     }
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters' {
         $DotOutPutWithAllParamsTest | Should -Match 'style="solid"'
         $DotOutPutWithAllParamsTest | Should -Match 'penwidth="3"'
         $DotOutPutWithAllParamsTest | Should -Match 'color="red"'
@@ -67,7 +67,7 @@ Describe Add-DiaVerticalLine {
         $DotOutPutWithAllParamsTest | Should -Match 'arrowhead="diamond"'
         $DotOutPutWithAllParamsTest | Should -Match 'arrowtail="box"'
     }
-    It "Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters and DraftMode" {
+    It 'Should return a Graphviz dot source with 2 nodes forming a vertical line with all parameters and DraftMode' {
         $DotOutPutWithAllParamsDebugTest | Should -Match 'fillcolor="red"'
     }
 }

@@ -81,6 +81,12 @@ function Add-WatermarkToImage {
     )
 
     begin {
+        try {
+            Add-Type -AssemblyName System.Drawing -ErrorAction Stop
+            Write-Verbose -Message 'System.Drawing assembly loaded successfully.'
+        } catch {
+            throw 'These functions require the [System.Drawing.Color] .NET Class. Assembly could not be loaded.'
+        }
     }
 
     process {
@@ -95,7 +101,7 @@ function Add-WatermarkToImage {
         $ImageName = Get-ChildItem -Path $ImageInput
 
         # Temporary Image file name
-        $FileName = $ImageName.BaseName + "_WaterMark" + $ImageName.Extension
+        $FileName = $ImageName.BaseName + '_WaterMark' + $ImageName.Extension
 
         try {
             if ($PSVersionTable.Platform -eq 'Unix') {

@@ -38,13 +38,13 @@ $RootPath = $PSScriptRoot
 #>
 
 $script:Images = @{
-    "Main_Logo" = "Diagrammer.png"
-    "Server" = "Server.png"
-    "ServerRedhat" = "Linux_Server_RedHat.png"
-    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
-    "Cloud" = "Cloud.png"
-    "Router" = "Router.png"
-    "Logo_Footer" = "Signature_Logo.png"
+    'Main_Logo' = 'Diagrammer.png'
+    'Server' = 'Server.png'
+    'ServerRedhat' = 'Linux_Server_RedHat.png'
+    'ServerUbuntu' = 'Linux_Server_Ubuntu.png'
+    'Cloud' = 'Cloud.png'
+    'Router' = 'Router.png'
+    'Logo_Footer' = 'Signature_Logo.png'
 }
 
 <#
@@ -61,7 +61,7 @@ $advancedexample02 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = 'Advanced Diagram Concepts'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
+    SubGraph 3tier -Attributes @{Label = 'Advanced Diagram Concepts'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'darkgray' } {
         <#
             Native Graphviz SubGraph has its issues when it comes to layout and connectivity.
             For example, nodes in a SubGraph are not always aligned properly, and edges connecting nodes inside
@@ -70,7 +70,7 @@ $advancedexample02 = & {
             rows or columns, limiting the flexibility of the layout. This can be particularly problematic when trying to create
             complex diagrams with many nodes and connections.
         #>
-        SubGraph Traditional -Attributes @{Label = 'Native Graphviz SubGraph'; bgcolor = '#c1cfe5ff'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
+        SubGraph Traditional -Attributes @{Label = 'Native Graphviz SubGraph'; bgcolor = '#c1cfe5ff'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'darkgray' } {
             $index = 1
 
             while ($index -le 6) {
@@ -78,10 +78,10 @@ $advancedexample02 = & {
                 $AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
+                    'Build' = '10.1'
                 }
 
-                Add-DiaNodeIcon -Name "Web-Server-0$index" -AdditionalInfo $AdditionalInfo -ImagesObj $Images -IconType "ServerRedhat" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
+                Add-DiaNodeIcon -Name "Web-Server-0$index" -AdditionalInfo $AdditionalInfo -ImagesObj $Images -IconType 'ServerRedhat' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject -TableBackgroundColor '#c1cfe5ff' -CellBackgroundColor '#c1cfe5ff'
 
                 $index++
             }
@@ -106,53 +106,53 @@ $advancedexample02 = & {
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
+                    'Build' = '10.1'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             },
             @{
                 Name = 'Web-Server-02';
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
+                    'Build' = '10.1'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             },
             @{
                 Name = 'Web-Server-03';
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
+                    'Build' = '10.1'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             },
             @{
                 Name = 'Web-Server-04';
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
+                    'Build' = '10.1'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             }, @{
                 Name = 'Web-Server-05';
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
+                    'Build' = '10.1'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             },
             @{
                 Name = 'Web-Server-06';
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
+                    'Build' = '10.1'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             }
         )
 
@@ -163,7 +163,7 @@ $advancedexample02 = & {
             The resulting HTML-like table is then used as the label for a Node representing the web server farm.
         #>
 
-        $WebLabel = Add-DiaHtmlNodeTable -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -MultiIcon -DraftMode:$DraftMode -FontSize 18
+        $WebLabel = Add-DiaHtmlNodeTable -Name 'WebLabel' -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -MultiIcon -DraftMode:$DraftMode -FontSize 18 -TableBackgroundColor '#a8c3b8ff' -CellBackgroundColor '#a8c3b8ff'
 
         <#
             The Add-DiaHTMLSubGraph cmdlet creates a HTML-like table that simulates a SubGraph with enhanced layout and connectivity options.
@@ -171,7 +171,7 @@ $advancedexample02 = & {
             The resulting HTML-like table is then used as the label for a Node representing the web server farm.
         #>
 
-        Add-DiaHtmlSubGraph -Name "USA-WebServers" -ImagesObj $Images -TableArray $WebLabel -Align 'Center' -Label 'Diagrammer SubGraph' -LabelPos "top" -TableStyle "dashed,rounded" -TableBorderColor "darkgray" -TableBorder "1" -ColumnSize 1 -FontSize 22 -DraftMode:$DraftMode -TableBackgroundColor '#a8c3b8ff' -IconType "Server" -NodeObject
+        Add-DiaHtmlSubGraph -Name 'USA-WebServers' -ImagesObj $Images -TableArray $WebLabel -Align 'Center' -Label 'Diagrammer SubGraph' -LabelPos 'top' -TableStyle 'dashed,rounded' -TableBorderColor 'darkgray' -TableBorder '1' -ColumnSize 1 -FontSize 22 -DraftMode:$DraftMode -TableBackgroundColor '#a8c3b8ff' -IconType 'Server' -NodeObject
 
         <#
             Now, let's add a text box node using the Add-DiaNodeText cmdlet.
@@ -181,18 +181,18 @@ $advancedexample02 = & {
             The resulting text box can be connected to other nodes in the diagram.
             The \n character is used to create line breaks in the text. Simulating a multi-line text box.
         #>
-        Add-DiaNodeText -Name "Info-Box" -TableBorder 2 -DraftMode:$DraftMode -TableBorderColor "#FF0000" -TableBorderStyle "SOLID" -Text "This is a test text box.\nIt supports multiple lines of text.\nYou can customize the font, size, color, and background." -FontColor "#0000FF" -FontSize 30 -FontBold -TableBackgroundColor "#FFFF00" -TextAlign "Left" -NodeObject
+        Add-DiaNodeText -Name 'Info-Box' -TableBorder 2 -DraftMode:$DraftMode -TableBorderColor '#FF0000' -TableBorderStyle 'SOLID' -Text 'This is a test text box.\nIt supports multiple lines of text.\nYou can customize the font, size, color, and background.' -FontColor '#0000FF' -FontSize 30 -FontBold -TableBackgroundColor '#FFFF00' -TextAlign 'Left' -NodeObject
 
         # Now, let's add another text box node. This one will explain the advantages of using Add-DiaHTMLSubGraph over native Graphviz SubGraphs.
-        $Message = "Add-DiaHTMLSubGraph permit the use of edges to connect nodes inside and outside the SubGraph.\n
-        This is not possible with native Graphviz SubGraphs.\n"
-        Add-DiaNodeText -Name "Info-Box2" -DraftMode:$DraftMode -Text $Message -FontColor "#0000FF" -FontSize 20 -FontBold -TextAlign "Left" -NodeObject
+        $Message = 'Add-DiaHTMLSubGraph permit the use of edges to connect nodes inside and outside the SubGraph.\n
+        This is not possible with native Graphviz SubGraphs.\n'
+        Add-DiaNodeText -Name 'Info-Box2' -DraftMode:$DraftMode -Text $Message -FontColor '#0000FF' -FontSize 20 -FontBold -TextAlign 'Left' -TableBorder 0 -NodeObject
 
-        Edge -From "USA-WebServers" -To "Info-Box2" -Attributes @{minlen = 2; color = 'black'; style = 'dashed'; penwidth = 1.5 }
+        Edge -From 'USA-WebServers' -To 'Info-Box2' -Attributes @{minlen = 2; color = 'black'; style = 'dashed'; penwidth = 1.5 }
     }
 }
 <#
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $advancedexample02 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample02 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $advancedexample02 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename AdvancedExample02 -LogoName 'Main_Logo' -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

@@ -17,9 +17,9 @@ function Get-NodeIP {
     process {
         try {
             try {
-                if ("InterNetwork" -in [System.Net.Dns]::GetHostAddresses($Hostname).AddressFamily) {
+                if ('InterNetwork' -in [System.Net.Dns]::GetHostAddresses($Hostname).AddressFamily) {
                     $IPADDR = ([System.Net.Dns]::GetHostAddresses($Hostname) | Where-Object { $_.AddressFamily -eq 'InterNetwork' })[0].IPAddressToString
-                } elseif ("InterNetworkV6" -in [System.Net.Dns]::GetHostAddresses($Hostname).AddressFamily) {
+                } elseif ('InterNetworkV6' -in [System.Net.Dns]::GetHostAddresses($Hostname).AddressFamily) {
                     $IPADDR = ([System.Net.Dns]::GetHostAddresses($Hostname) | Where-Object { $_.AddressFamily -eq 'InterNetworkV6' })[0].IPAddressToString
                 } else {
                     $IPADDR = $Null
@@ -28,7 +28,7 @@ function Get-NodeIP {
                 Write-Verbose -Message "Unable to resolve Hostname Address: $Hostname"
                 $IPADDR = $Null
             }
-            $NodeIP = Switch ([string]::IsNullOrEmpty($IPADDR)) {
+            $NodeIP = switch ([string]::IsNullOrEmpty($IPADDR)) {
                 $true { 'Unknown' }
                 $false { $IPADDR }
                 default { $Hostname }

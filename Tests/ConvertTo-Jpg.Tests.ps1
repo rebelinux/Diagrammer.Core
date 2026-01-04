@@ -21,18 +21,18 @@ Describe ConvertTo-Jpg {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.jpg'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.jpg'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "F:\output.png"
+            DestinationPath = 'F:\output.png'
         }
     }
 
-    It "Should return output.jpg path" {
+    It 'Should return output.jpg path' {
         (ConvertTo-Jpg @PassParams).FullName | Should -Exist
     }
-    It "Should Not return output.jpg path" {
+    It 'Should Not return output.jpg path' {
         $scriptBlock = { ConvertTo-Jpg @FailParams }
         $scriptBlock | Should -Not -Exist
     }

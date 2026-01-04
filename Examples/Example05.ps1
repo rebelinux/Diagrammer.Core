@@ -29,7 +29,7 @@ $OutputFolderPath = Resolve-Path $Path
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
+[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'Icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.
@@ -38,8 +38,8 @@ $RootPath = $PSScriptRoot
 #>
 
 $script:Images = @{
-    "Main_Logo" = "Diagrammer.png"
-    "Server" = "Server.png"
+    'Main_Logo' = 'Diagrammer.png'
+    'Server' = 'Server.png'
 }
 
 <#
@@ -55,22 +55,22 @@ $MainGraphLabel = 'Web Application Diagram'
 $WebServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Redhat Linux'
     'Version' = '10'
-    'Build' = "10.1"
-    'Edition' = "Enterprise"
+    'Build' = '10.1'
+    'Edition' = 'Enterprise'
 }
 
 $AppServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Windows Server'
     'Version' = '2019'
-    'Build' = "17763.3163"
-    'Edition' = "Datacenter"
+    'Build' = '17763.3163'
+    'Edition' = 'Datacenter'
 }
 
 $DBServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Oracle Server'
     'Version' = '8'
-    'Build' = "8.2"
-    'Edition' = "Enterprise"
+    'Build' = '8.2'
+    'Edition' = 'Enterprise'
 }
 
 $example5 = & {
@@ -81,7 +81,7 @@ $example5 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "gray" } {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'gray' } {
 
         <#
             This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties.
@@ -95,9 +95,9 @@ $example5 = & {
             -FontSize 18 sets the font size for the node label text.
         #>
 
-        $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-        $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
-        $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode
+        $Web01Label = Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode
+        $App01Label = Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode
+        $DB01Label = Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode
 
         Node -Name Web01 -Attributes @{Label = $Web01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
         Node -Name App01 -Attributes @{ Label = $App01Label ; shape = 'plain'; fillColor = 'transparent'; fontsize = 14 }
@@ -131,4 +131,4 @@ $example5 = & {
     -IconPath and -ImagesObj allow Diagrammer.Core to locate the png icon files.
 #>
 
-New-Diagrammer -InputObject $example5 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example5 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example5 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example5 -LogoName 'Main_Logo' -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

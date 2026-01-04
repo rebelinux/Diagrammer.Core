@@ -8,7 +8,7 @@ Describe ConvertTo-Base64 {
         $IconsPath = Join-Path -Path $TestsFolder -ChildPath 'Icons'
 
         $PassParams = @{
-            ImageInput = Join-Path -Path $IconsPath -ChildPath "Logo.png"
+            ImageInput = Join-Path -Path $IconsPath -ChildPath 'Logo.png'
             Delete = $false
         }
         $FailParams = @{
@@ -17,10 +17,10 @@ Describe ConvertTo-Base64 {
         }
     }
 
-    It "Should return string type" {
+    It 'Should return string type' {
         ConvertTo-Base64 @PassParams | Should -BeOfType String
     }
-    It "Should return throw" {
+    It 'Should return throw' {
         { ConvertTo-Base64 @FailParams } | Should -Throw -ExpectedMessage "Cannot validate argument on parameter 'ImageInput'. File C:\logo.png not found!"
     }
 }

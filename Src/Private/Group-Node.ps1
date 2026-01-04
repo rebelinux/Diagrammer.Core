@@ -14,7 +14,7 @@ function Group-Node {
     #>
     [CmdletBinding()]
     [OutputType([System.Management.Automation.ScriptBlock])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -48,8 +48,8 @@ function Group-Node {
         [string] $Minlen = 1
     )
     process {
-        $Output = &{
-            $Group = Split-array -inArray $InputObject -size $SplitinGroups
+        $Output = & {
+            $Group = Split-Array -inArray $InputObject -size $SplitinGroups
             $Start = 0
             $LocalPGNum = 1
             while ($LocalPGNum -ne $Group.Length) {

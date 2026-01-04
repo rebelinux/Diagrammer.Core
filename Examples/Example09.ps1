@@ -29,7 +29,7 @@ $OutputFolderPath = Resolve-Path $Path
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
+[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'Icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.
@@ -38,10 +38,10 @@ $RootPath = $PSScriptRoot
 #>
 
 $script:Images = @{
-    "Main_Logo" = "Diagrammer.png"
-    "Server" = "Server.png"
-    "ServerRedhat" = "Linux_Server_RedHat.png"
-    "ServerUbuntu" = "Linux_Server_Ubuntu.png"
+    'Main_Logo' = 'Diagrammer.png'
+    'Server' = 'Server.png'
+    'ServerRedhat' = 'Linux_Server_RedHat.png'
+    'ServerUbuntu' = 'Linux_Server_Ubuntu.png'
 }
 
 <#
@@ -57,15 +57,15 @@ $MainGraphLabel = 'Web Application Diagram'
 $AppServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Windows Server'
     'Version' = '2019'
-    'Build' = "17763.3163"
-    'Edition' = "Datacenter"
+    'Build' = '17763.3163'
+    'Edition' = 'Datacenter'
 }
 
 $DBServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Oracle Server'
     'Version' = '8'
-    'Build' = "8.2"
-    'Edition' = "Enterprise"
+    'Build' = '8.2'
+    'Edition' = 'Enterprise'
 }
 
 $example9 = & {
@@ -76,7 +76,7 @@ $example9 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 22; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'darkgray' } {
 
         <#
             The $WebServerFarm variable is an array of hashtables, each representing a web server node with its properties.
@@ -92,30 +92,30 @@ $example9 = & {
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
-                    'Edition' = "Enterprise"
+                    'Build' = '10.1'
+                    'Edition' = 'Enterprise'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             },
             @{
                 Name = 'Web-Server-02';
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Redhat Linux'
                     'Version' = '10'
-                    'Build' = "10.1"
-                    'Edition' = "Enterprise"
+                    'Build' = '10.1'
+                    'Edition' = 'Enterprise'
                 }
-                IconType = "ServerRedhat"
+                IconType = 'ServerRedhat'
             },
             @{
                 Name = 'Web-Server-03';
                 AdditionalInfo = [PSCustomObject][ordered]@{
                     'OS' = 'Ubuntu Linux'
                     'Version' = '24'
-                    'Build' = "11"
-                    'Edition' = "Enterprise"
+                    'Build' = '11'
+                    'Edition' = 'Enterprise'
                 }
-                IconType = "ServerUbuntu"
+                IconType = 'ServerUbuntu'
             }
         )
 
@@ -166,11 +166,11 @@ $example9 = & {
             (must match a key in the $Images hashtable).
         #>
 
-        Add-DiaHtmlNodeTable -Name 'Web-Server-Farm' -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel "Web Server Farm" -SubgraphLabelPos "top" -SubgraphTableStyle "dashed,rounded" -TableBorderColor "gray" -TableBorder "1" -SubgraphLabelFontSize 20 -FontSize 18  -DraftMode:$DraftMode -FontBold -SubgraphFontBold -NodeObject -MultiIcon
+        Add-DiaHtmlNodeTable -Name 'Web-Server-Farm' -ImagesObj $Images -inputObject $WebServerFarm.Name -iconType $WebServerFarm.IconType -ColumnSize 3 -AditionalInfo $WebServerFarm.AdditionalInfo -Subgraph -SubgraphLabel 'Web Server Farm' -SubgraphLabelPos 'top' -SubgraphTableStyle 'dashed,rounded' -TableBorderColor 'gray' -TableBorder '1' -SubgraphLabelFontSize 20 -FontSize 18 -DraftMode:$DraftMode -FontBold -SubgraphFontBold -NodeObject -MultiIcon
 
 
-        Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
-        Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
+        Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
+        Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
 
         <#
             This section creates connections between the nodes in a hierarchical layout.
@@ -193,4 +193,4 @@ $example9 = & {
     This command generates the diagram using the New-Diagrammer cmdlet (part of Diagrammer.Core).
 #>
 
-New-Diagrammer -InputObject $example9 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example9 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example9 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example9 -LogoName 'Main_Logo' -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

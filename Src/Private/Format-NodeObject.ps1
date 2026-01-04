@@ -11,7 +11,7 @@ function Format-NodeObject {
             MyNode [label=<HTMLContent>, shape=plain, fillcolor=transparent, fontsize=14, style=filled, color=lightgrey]
 
         .NOTES
-            Version:        0.2.32
+            Version:        0.2.36
             Author:         Jonathan Colon
             Bluesky:        @jcolonfpr.bsky.social
             Github:         rebelinux
@@ -30,13 +30,17 @@ function Format-NodeObject {
     param (
         [Parameter(
             Mandatory,
-            HelpMessage = "The name of the Node.")]
+            HelpMessage = 'The name of the Node.')]
         [string] $Name,
 
         [Parameter(
             Mandatory,
-            HelpMessage = "The HTML object to be used as the node label.")]
+            HelpMessage = 'The HTML object to be used as the node label.')]
         [string] $HtmlObject,
+
+        [Parameter(
+            HelpMessage = 'Export as HTML string.')]
+        [bool] $AsHtml = $false,
 
         [Parameter(
             Mandatory = $false,
@@ -48,9 +52,13 @@ function Format-NodeObject {
         Write-Verbose -Message "Creating Node Object: $Name"
     }
     process {
-        $JoinHash = Join-Hashtable -PrimaryHash @{label = $HtmlObject; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
+        if ($AsHtml) {
+            $HtmlObject
+        } else {
+            $JoinHash = Join-Hashtable -PrimaryHash @{label = $HtmlObject; shape = 'plain'; fillcolor = 'transparent'; fontsize = 14 } -SecondaryHash $GraphvizAttributes -PreferSecondary
 
-        Node -Name $Name -Attributes $JoinHash
+            Node -Name $Name -Attributes $JoinHash
+        }
     }
     end {}
 }

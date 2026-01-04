@@ -4,7 +4,7 @@ BeforeAll {
 }
 
 Describe Remove-SpecialChar {
-    It "Should return string without SpecialChar" {
-        Remove-SpecialChar -String "Problem&with()char" -SpecialChars "()[]{}&." | Should -Be 'Problemwithchar'
+    It 'Should return string without SpecialChar' {
+        Remove-SpecialChar -String 'Problem&with()char' -SpecialChars '()[]{}&.' | Should -Be 'Problemwithchar'
     }
 }

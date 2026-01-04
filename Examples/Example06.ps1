@@ -29,7 +29,7 @@ $OutputFolderPath = Resolve-Path $Path
 #>
 
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
+[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'Icons'
 
 <#
     The $Images variable is a hashtable containing the names of image files used in the diagram.
@@ -38,8 +38,8 @@ $RootPath = $PSScriptRoot
 #>
 
 $script:Images = @{
-    "Main_Logo" = "Diagrammer.png"
-    "Server" = "Server.png"
+    'Main_Logo' = 'Diagrammer.png'
+    'Server' = 'Server.png'
 }
 
 <#
@@ -55,22 +55,22 @@ $MainGraphLabel = 'Web Application Diagram'
 $WebServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Redhat Linux'
     'Version' = '10'
-    'Build' = "10.1"
-    'Edition' = "Enterprise"
+    'Build' = '10.1'
+    'Edition' = 'Enterprise'
 }
 
 $AppServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Windows Server'
     'Version' = '2019'
-    'Build' = "17763.3163"
-    'Edition' = "Datacenter"
+    'Build' = '17763.3163'
+    'Edition' = 'Datacenter'
 }
 
 $DBServerInfo = [PSCustomObject][ordered]@{
     'OS' = 'Oracle Server'
     'Version' = '8'
-    'Build' = "8.2"
-    'Edition' = "Enterprise"
+    'Build' = '8.2'
+    'Edition' = 'Enterprise'
 }
 
 $example6 = & {
@@ -81,7 +81,7 @@ $example6 = & {
         https://psgraph.readthedocs.io/en/latest/Command-SubGraph/
     #>
 
-    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = "dashed,rounded"; color = "darkgray" } {
+    SubGraph 3tier -Attributes @{Label = '3 Tier Concept'; fontsize = 18; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'darkgray' } {
 
         <#
             This time, we enhance the diagram by adding images to the Node objects and embedding information to describe server properties.
@@ -100,9 +100,9 @@ $example6 = & {
         # In this ocation, i demonstrate the -NodeObject switch which returns a Node object for use in the PSGraph context.
         # In esense, this allows you to create the Node object with Add-DiaNodeIcon and use it directly without the use of the Node cmdlet.
 
-        Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
-        Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
-        Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType "Server" -Align "Center" -FontSize 18 -DraftMode:$DraftMode -NodeObject
+        Add-DiaNodeIcon -Name 'Web-Server-01' -AditionalInfo $WebServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
+        Add-DiaNodeIcon -Name 'App-Server-01' -AditionalInfo $AppServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
+        Add-DiaNodeIcon -Name 'Db-Server-01' -AditionalInfo $DBServerInfo -ImagesObj $Images -IconType 'Server' -Align 'Center' -FontSize 18 -DraftMode:$DraftMode -NodeObject
 
         <#
             This section creates connections between the nodes in a hierarchical layout.
@@ -120,4 +120,4 @@ $example6 = & {
     -DraftMode $true enables DraftMode, which adds borders around nodes to help with positioning and layout adjustments.
 #>
 
-New-Diagrammer -InputObject $example6 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example6 -LogoName "Main_Logo" -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example6 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example6 -LogoName 'Main_Logo' -Direction top-to-bottom -IconPath $IconPath -ImagesObj $Images -DraftMode:$DraftMode

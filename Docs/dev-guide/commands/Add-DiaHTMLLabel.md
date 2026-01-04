@@ -42,7 +42,7 @@ $script:Images = @{
 $CustomLogo = "Logo Path"
 $IconDebug = $false
 $RootPath = $PSScriptRoot
-[System.IO.FileInfo]$IconPath = Join-Path $RootPath 'Icons'
+[System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'Icons'
 
 # This will generate an HTML table with the specified label and logo.
 Add-DiaHTMLLabel -Label "Active Directory Forest Diagram" -IconType $CustomLogo -IconDebug $IconDebug -ImagesObj $Images

@@ -14,18 +14,18 @@ Describe ConvertTo-Png {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.png'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.png'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "TestDriv:\output.png"
+            DestinationPath = 'TestDriv:\output.png'
         }
     }
 
-    It "Should return output.png path" {
+    It 'Should return output.png path' {
         (ConvertTo-Png @PassParams).FullName | Should -Exist
     }
-    It "Should Not return output.png path" {
+    It 'Should Not return output.png path' {
         $scriptBlock = { ConvertTo-Png @FailParams }
         $scriptBlock | Should -Not -Exist
     }

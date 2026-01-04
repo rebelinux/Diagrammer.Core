@@ -93,7 +93,7 @@ If you are unable to use the PowerShell Gallery, you can still install the `Diag
 3. Copy the folder `Diagrammer.Core` to a path that is set in `$env:PSModulePath`.
 4. For Windows users only, open a PowerShell terminal window and unblock the downloaded files with
     ```powershell
-    $path = (Get-Module -Name Diagrammer.Core -ListAvailable).ModuleBase; Unblock-File -Path $path\*.psd1; Unblock-File -Path $path\Src\Public\*.ps1
+    $path = (Get-Module -Name Diagrammer.Core -ListAvailable).ModuleBase; Unblock-File -Path $path\*.psd1; Unblock-File -Path $path\Src\Public\*.ps1; Unblock-File -Path $path\Src\Private\*.ps1
     ```
 5. Close and reopen the PowerShell terminal window.
 

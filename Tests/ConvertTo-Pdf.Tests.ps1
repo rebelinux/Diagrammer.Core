@@ -14,18 +14,18 @@ Describe ConvertTo-Pdf {
         }'
         $PassParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = Join-Path $TestDrive 'output.pdf'
+            DestinationPath = Join-Path -Path $TestDrive -ChildPath 'output.pdf'
         }
         $FailParams = @{
             GraphObj = $GraphvizObj
-            DestinationPath = "F:\output.png"
+            DestinationPath = 'F:\output.png'
         }
     }
 
-    It "Should return output.pdf path" {
+    It 'Should return output.pdf path' {
         (ConvertTo-Pdf @PassParams).FullName | Should -Exist
     }
-    It "Should Not return output.pdf path" {
+    It 'Should Not return output.pdf path' {
         $scriptBlock = { ConvertTo-Pdf @FailParams }
         $scriptBlock | Should -Not -Exist
     }

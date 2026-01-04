@@ -78,63 +78,63 @@ Describe Export-Diagrammer {
         }
     }
 
-    It "Should return Diagrammer.png full path" {
+    It 'Should return Diagrammer.png full path' {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputPNG
         ($GraphvizOutput).FullName | Should -Exist
     }
-    It "Should return Diagrammer.jpg full path" {
+    It 'Should return Diagrammer.jpg full path' {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputJPG
         ($GraphvizOutput).FullName | Should -Exist
     }
-    It "Should return Diagrammer.pdf full path" {
+    It 'Should return Diagrammer.pdf full path' {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputPDF
         ($GraphvizOutput).FullName | Should -Exist
     }
-    It "Should return Diagrammer.dot full path" {
+    It 'Should return Diagrammer.dot full path' {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputPDF
         ($GraphvizOutput).FullName | Should -Exist
     }
-    It "Should return Base64 string" {
+    It 'Should return Base64 string' {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputBase64
         $GraphvizOutput | Should -Be $base64Source
     }
-    It "Should return Diagrammer.svg full path" {
+    It 'Should return Diagrammer.svg full path' {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputSVG
         ($GraphvizOutput).FullName | Should -Exist
     }
-    It "Should return Diagrammer.dot full path" {
+    It 'Should return Diagrammer.dot full path' {
         $GraphvizOutput = Export-Diagrammer @GraphvizOutputDot
         ($GraphvizOutput).FullName | Should -Exist
     }
-    It "Should create Output.png file image" {
+    It 'Should create Output.png file image' {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'png'
         $OutPutPath | Should -Exist
     }
-    It "Should create Output.jpg file image" {
+    It 'Should create Output.jpg file image' {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'jpg'
         $OutPutPath | Should -Exist
     }
-    It "Should create Output.pdf file image" {
+    It 'Should create Output.pdf file image' {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'pdf'
         $OutPutPath | Should -Exist
     }
-    It "Should create Output.svg file image" {
+    It 'Should create Output.svg file image' {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'svg'
         $OutPutPath | Should -Exist
     }
-    It "Should create Output.dot file image" {
+    It 'Should create Output.dot file image' {
         $OutPutPath = Export-Diagrammer @GraphvizOutputNoFileName -Format 'dot'
         $OutPutPath | Should -Exist
     }
-    It "Should throw error when invalid OutputFolderPath is provided" {
+    It 'Should throw error when invalid OutputFolderPath is provided' {
         $GraphvizOutput = { Export-Diagrammer @GraphvizInvalidOutputFolderPath -ErrorAction Stop }
         $GraphvizOutput | Should -Throw -ExpectedMessage 'Cannot validate argument on parameter ''OutputFolderPath''. Folder does not exist'
     }
-    It "Should throw error when invalid IconPath is provided" {
+    It 'Should throw error when invalid IconPath is provided' {
         $GraphvizOutput = { Export-Diagrammer @GraphvizInvalidIconsPath -ErrorAction Stop }
         $GraphvizOutput | Should -Throw -ExpectedMessage 'Cannot validate argument on parameter ''IconPath''. Folder does not exist'
     }
-    It "Should throw error when invalid Rotate value is provided" {
+    It 'Should throw error when invalid Rotate value is provided' {
         $GraphvizOutput = { Export-Diagrammer @GraphvizInvalidRotate -ErrorAction Stop }
         $GraphvizOutput | Should -Throw -ExpectedMessage 'Cannot validate argument on parameter ''Rotate''. The argument "80" does not belong to the set "0,90,180,270" specified by the ValidateSet attribute. Supply an argument that is in the set and then try the command again.'
     }

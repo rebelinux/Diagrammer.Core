@@ -68,4 +68,4 @@ $example3 = & {
     The layout is set to top-to-bottom (Top to Bottom) using the Graph attribute.
     The -DraftMode parameter, when set to $true, generates a draft version of the diagram for troubleshooting.
 #>
-New-Diagrammer -InputObject $example3 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example3 -LogoName "Main_Logo" -Direction top-to-bottom -DraftMode:$DraftMode
+New-Diagrammer -InputObject $example3 -OutputFolderPath $OutputFolderPath -Format $Format -MainDiagramLabel $MainGraphLabel -Filename Example3 -LogoName 'Main_Logo' -Direction top-to-bottom -DraftMode:$DraftMode

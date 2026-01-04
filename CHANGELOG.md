@@ -5,7 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.36] - 2026-01-03
+
+### :toolbox: Added
+
+- Enhance Add-DiaNodeIcon cmdlet with new parameters:
+  - TableBorderColor (Hex color)
+  - TableBorder (1-10)
+  - TableStyle (solid, dashed, dotted, bold)
+- Add function to build HTML Table dynamically based on input parameters (Format-HtmlTable)
+- Add unit tests for Format-HtmlTable function to validate HTML output and custom parameters
+- Add unit test for FontOpacity to the Add-WaterMarkToImage function
+- Add TableBackgroundColor to the Add-DiaNodeImage function
+- Add code to prevent loading assemblies already in memory
+
+### :arrows_clockwise: Changed
+
+- Increment module version to `0.2.36`
+- Upgrade Graphviz binaries to `14.1.1`
+- Migrate Psscriptanalyzer action to alagoutte/github-action-psscriptanalyzer
+
+### :bug: Fixed
+
+- Fix unit test that try to test mandatory parameters
+
 ## [0.2.35] - 2025-11-16
+
+### :toolbox: Added
+
+- Enhance Add-DiaNodeIcon cmdlet with new parameters:
+  - LabelName (allows setting a separate label from the Name parameter)
+  - Add PORT support to AdditionalInfo hashtable element
 
 ### :arrows_clockwise: Changed
 
@@ -18,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### :bug: Fixed
 
 - Fix issue where reports failed to attach diagrams when DiagramWaterMark option was enabled in AsBuiltReport
+- Fix HTML table structure in Add-DiaHtmlLabel function
 
 ## [0.2.34] - 2025-11-14
 

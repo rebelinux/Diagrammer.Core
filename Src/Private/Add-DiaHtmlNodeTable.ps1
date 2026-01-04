@@ -40,7 +40,7 @@ function Add-DiaHtmlNodeTable {
         ________________________________|________________
 
     .NOTES
-        Version:        0.2.33
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         Github:         rebelinux
@@ -150,7 +150,7 @@ function Add-DiaHtmlNodeTable {
                 if ($ImagesObj) {
                     $true
                 } else {
-                    throw "ImagesObj table needed if IconType option is especified."
+                    throw 'ImagesObj table needed if IconType option is especified.'
                 }
             })]
         [string[]] $iconType,
@@ -195,13 +195,13 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $FontName = "Segoe Ui",
+        [string] $FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -255,7 +255,13 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
         )]
-        [string] $Port = "EdgeDot",
+        [string] $Port = 'EdgeDot',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
+        )]
+        [string] $SubgraphPort = 'EdgeDot',
 
         [Parameter(
             Mandatory = $false,
@@ -267,7 +273,7 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug,
 
         [Parameter(
@@ -275,7 +281,7 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Hashtable used to add more information to the table elements'
         )]
-        [Alias("RowsOrdered", "Rows", "AditionalInfoOrdered")]
+        [Alias('RowsOrdered', 'Rows', 'AditionalInfoOrdered')]
         $AditionalInfo,
 
         [Parameter(
@@ -292,7 +298,7 @@ function Add-DiaHtmlNodeTable {
                 if ($ImagesObj) {
                     $true
                 } else {
-                    throw "ImagesObj table needed if SubgraphIconType option is especified."
+                    throw 'ImagesObj table needed if SubgraphIconType option is especified.'
                 }
             })]
         [string]$SubgraphIconType,
@@ -307,7 +313,7 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $SubgraphFontName = "Segoe Ui",
+        [string] $SubgraphFontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
@@ -319,7 +325,7 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set the subgraph table label font size'
         )]
-        [string]$SubgraphLabelFontColor = "#000000",
+        [string]$SubgraphLabelFontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
@@ -374,13 +380,13 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
         )]
-        [string]$SubgraphTableStyle,
+        [string]$SubgraphTableStyle = 'SOLID',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a table border color'
         )]
-        [string]$TableBorderColor = "#000000",
+        [string]$TableBorderColor = '#FFFFFF',
 
         [Parameter(
             Mandatory = $false,
@@ -398,16 +404,16 @@ function Add-DiaHtmlNodeTable {
             Mandatory = $false,
             HelpMessage = 'Allow to set a table background color'
         )]
-        [string] $TableBackgroundColor,
+        [string] $TableBackgroundColor = '#FFFFFF',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Allow to set a cell background color'
         )]
-        [string] $CellBackgroundColor,
+        [string] $CellBackgroundColor = '#FFFFFF',
 
         [Parameter(
-            Mandatory = $false,
+            Mandatory,
             HelpMessage = 'Specifies the name of the node.'
         )]
         [String]$Name,
@@ -420,7 +426,7 @@ function Add-DiaHtmlNodeTable {
                 if ($Name) {
                     $true
                 } else {
-                    throw "Name parameter is required when NodeObject is set."
+                    throw 'Name parameter is required when NodeObject is set.'
                 }
             })]
         [switch] $NodeObject,
@@ -517,7 +523,7 @@ function Add-DiaHtmlNodeTable {
                 if ($ImagesObj[$i]) {
                     $Icon += $ImagesObj[$i]
                 } else {
-                    $Icon += $ImagesObj["No_Icon"]
+                    $Icon += $ImagesObj['No_Icon']
                 }
             }
             $iconGroup = Split-Array -inArray $Icon -size $columnSize
@@ -817,7 +823,7 @@ function Add-DiaHtmlNodeTable {
 
         if ($SubgraphIcon) {
             if ($IconDebug) {
-                $TDSubgraphIcon = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}"><B>{5}</B></FONT></TD>' -f $Align, $columnSize, $FontName, $fontColor, $SubgraphLabelFontSize, $SubGraphIcon
+                $TDSubgraphIcon = '<TD PORT="{0}" bgcolor="#FFCCCC" ALIGN="{1}" colspan="{2}"><FONT FACE="{3}" Color="{4}" POINT-SIZE="{5}"><B>{6}</B></FONT></TD>' -f $SubgraphPort, $Align, $columnSize, $FontName, $FontColor, $SubgraphLabelFontSize, $SubGraphIcon
 
                 $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
@@ -832,7 +838,8 @@ function Add-DiaHtmlNodeTable {
                 }
             } else {
                 if ($SubgraphIconWidth -and $SubgraphIconHeight) {
-                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="{5}" height="{6}"><IMG src="{4}"></IMG></TD>' -f $Align, $columnSize, $fontName, $fontColor, $SubGraphIcon, $SubGraphIconWidth, $SubGraphIconHeight
+                    $TDSubgraphIcon = '<TD PORT="{0}" ALIGN="{1}" colspan="{2}" fixedsize="true" width="{3}" height="{4}"><IMG src="{5}"></IMG></TD>' -f $SubgraphPort, $Align, $columnSize, $SubGraphIconWidth, $SubGraphIconHeight, $SubGraphIcon
+
                     $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                     if ($SubgraphLabelPos -eq 'down') {
@@ -845,7 +852,8 @@ function Add-DiaHtmlNodeTable {
                         $TR = $TRTemp
                     }
                 } else {
-                    $TDSubgraphIcon = '<TD ALIGN="{0}" colspan="{1}" fixedsize="true" width="40" height="40"><IMG src="{2}"></IMG></TD>' -f $Align, $columnSize, $SubGraphIcon
+                    $TDSubgraphIcon = '<TD PORT="{0}" ALIGN="{1}" colspan="{2}" fixedsize="true" width="40" height="40"><IMG src="{3}"></IMG></TD>' -f $SubgraphPort, $Align, $columnSize, $SubGraphIcon
+
                     $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
 
                     if ($SubgraphLabelPos -eq 'down') {
@@ -861,7 +869,7 @@ function Add-DiaHtmlNodeTable {
             }
         } else {
             if ($IconDebug) {
-                $TDSubgraph = '<TD bgcolor="#FFCCCC" ALIGN="{0}" colspan="{1}"><FONT FACE="{2}" Color="{5}" POINT-SIZE="{4}"><B>{3}</B></FONT></TD>' -f $Align, $columnSize, $FontName, [string]$SubgraphLabel, $SubgraphLabelFontSize, $FontColor
+                $TDSubgraph = '<TD PORT="{0}" bgcolor="#FFCCCC" ALIGN="{1}" colspan="{2}"><FONT FACE="{3}" POINT-SIZE="{4}" Color="{5}"><B>{6}</B></FONT></TD>' -f $SubgraphPort, $Align, $columnSize, $FontName, $SubgraphLabelFontSize, $FontColor, [string]$SubgraphLabel
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
@@ -871,7 +879,7 @@ function Add-DiaHtmlNodeTable {
                     $TR = $TRTemp
                 }
             } else {
-                $TDSubgraph = '<TD ALIGN="{0}" colspan="{1}">{2}</TD>' -f $Align, $columnSize, $FormattedSubGraphLabel
+                $TDSubgraph = '<TD PORT="{0}" ALIGN="{1}" colspan="{2}">{3}</TD>' -f $SubgraphPort, $Align, $columnSize, $FormattedSubGraphLabel
 
                 if ($SubgraphLabelPos -eq 'down') {
                     $TR += '<TR>{0}</TR>' -f $TDSubgraph
@@ -885,80 +893,12 @@ function Add-DiaHtmlNodeTable {
     }
 
     if ($IconDebug) {
-        if ($SubgraphTableStyle) {
-            if ($TableBackgroundColor) {
-                if ($NodeObject) {
-                    $HTML = '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}" bgcolor="{5}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing, $TableBackgroundColor
+        $HTML = Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $SubgraphTableStyle -TableBorderColor 'red' -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TR
 
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}" bgcolor="{5}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing, $TableBackgroundColor
-                }
-            } else {
-                if ($NodeObject) {
-                    $HTML = '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE STYLE="{2}" PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{3}" cellspacing="{4}">{1}</TABLE>' -f $Port, $TR, $SubgraphTableStyle, $CellPadding, $CellSpacing
-                }
-            }
-        } else {
-            if ($TableBackgroundColor) {
-                if ($NodeObject) {
-                    $HTML = '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}" bgcolor="{4}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing, $TableBackgroundColor
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}" bgcolor="{4}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing, $TableBackgroundColor
-                }
-            } else {
-                if ($NodeObject) {
-                    $HTML = '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE PORT="{0}" COLOR="red" border="1" cellborder="1" cellpadding="{2}" cellspacing="{3}">{1}</TABLE>' -f $Port, $TR, $CellPadding, $CellSpacing
-                }
-            }
-        }
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     } else {
-        if ($SubgraphTableStyle) {
-            if ($TableBackgroundColor) {
-                if ($NodeObject) {
-                    $HTML = '<TABLE bgcolor="{8}" COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
+        $HTML = Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $SubgraphTableStyle -TableBorderColor $TableBorderColor -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TR -TableBorder $TableBorder -CellBorder $CellBorder
 
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE bgcolor="{8}" COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
-                }
-            } else {
-                if ($NodeObject) {
-                    $HTML = '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE COLOR="{5}" STYLE="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{6}" cellspacing="{7}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $SubgraphTableStyle, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
-                }
-            }
-        } else {
-            if ($TableBackgroundColor) {
-                if ($NodeObject) {
-                    $HTML = '<TABLE bgcolor="{7}" COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE bgcolor="{7}" COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing, $TableBackgroundColor
-                }
-            } else {
-                if ($NodeObject) {
-                    $HTML = '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
-
-                    Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes
-                } else {
-                    '<TABLE COLOR="{4}" PORT="{0}" border="{1}" cellborder="{2}" cellpadding="{5}" cellspacing="{6}">{3}</TABLE>' -f $Port, $tableBorder, $cellBorder, $TR, $TableBorderColor, $CellPadding, $CellSpacing
-                }
-            }
-        }
+        Format-NodeObject -Name $Name -HtmlObject $HTML -GraphvizAttributes $GraphvizAttributes -AsHtml:(-not $NodeObject)
     }
 }

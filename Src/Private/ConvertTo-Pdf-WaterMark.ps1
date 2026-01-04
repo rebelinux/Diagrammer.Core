@@ -37,7 +37,7 @@ function ConvertTo-Pdf-WaterMark {
         [ValidateScript({
                 $parentPath = Split-Path -Path $_ -Parent
                 if (-not ($parentPath | Test-Path) ) {
-                    throw "Folder does not exist"
+                    throw 'Folder does not exist'
                 }
                 return $true
             })]
@@ -55,7 +55,7 @@ function ConvertTo-Pdf-WaterMark {
                     # Net 4.8 assembly call
                     $Null = [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }
-                Default {
+                default {
                     # Net 4.8 assembly call (Fucking shit)
                     $Null = [DiaConvertImageToPDF.ConvertImageToPDF]::ConvertPngToPdf($ImageInput.FullName, $DestinationPath)
                 }

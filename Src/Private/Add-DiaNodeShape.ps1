@@ -26,7 +26,7 @@ function Add-DiaNodeShape {
 
     .NOTES
         Author: Jonathan Colon
-        Version: 0.2.30
+        Version: 0.2.36
         Twitter: @jcolonfzenpr
         Github: rebelinux
 
@@ -38,7 +38,7 @@ function Add-DiaNodeShape {
     param(
 
         [Parameter(
-            Mandatory = $true,
+            Mandatory,
             HelpMessage = 'Name of the Node.'
         )]
         [string] $Name,
@@ -54,7 +54,7 @@ function Add-DiaNodeShape {
             Mandatory = $false,
             HelpMessage = 'Enables debug mode for icons, highlighting the table in red.'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug = $false,
 
         [Parameter(
@@ -139,10 +139,8 @@ function Add-DiaNodeShape {
         'top' { 't' }
         'bottom' { 'b' }
         'center' { 'c' }
-        Default { 'c' }
+        default { 'c' }
     }
-
-
 
     if ($IconDebug) {
 

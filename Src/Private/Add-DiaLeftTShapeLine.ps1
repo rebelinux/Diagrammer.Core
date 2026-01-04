@@ -157,7 +157,7 @@ function Add-DiaLeftTShapeLine {
             Mandatory = $false,
             HelpMessage = 'Please provide a color to be used in the line. Default is black. Supported color https://graphviz.org/doc/info/colors.html'
         )]
-        [string] $LineColor = "black",
+        [string] $LineColor = 'black',
 
         [Parameter(
             Mandatory = $false,
@@ -185,7 +185,7 @@ function Add-DiaLeftTShapeLine {
                 $Color = $LineColor
             }
             if ($IconDebug) {
-                Node $LeftTShapeUp, $LeftTShapeMiddleRight, $LeftTShapeDown, $LeftTShapeMiddleLeft  @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
+                Node $LeftTShapeUp, $LeftTShapeMiddleRight, $LeftTShapeDown, $LeftTShapeMiddleLeft @{color = $Color; shape = $Shape; fillColor = $fillColor; style = $Style }
 
             } else {
                 Node $LeftTShapeUp, $LeftTShapeMiddleRight, $LeftTShapeDown, $LeftTShapeMiddleLeft @{shape = $Shape; fixedsize = 'true'; width = .001 ; height = .001; fillColor = 'transparent'; style = $Style }

@@ -14,7 +14,7 @@ function ConvertTo-Dot {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter(
             Position = 0,
@@ -31,14 +31,14 @@ function ConvertTo-Dot {
     )
     process {
         if ($WaterMarkText) {
-            Write-Verbose -Message "WaterMark option is not supported with the dot format."
+            Write-Verbose -Message 'WaterMark option is not supported with the dot format.'
         }
 
         try {
             Write-Verbose -Message "Trying to convert Graphviz object to DOT format. Destination Path: $DestinationPath."
             $Document = Export-PSGraph -Source $GraphObj -DestinationPath $DestinationPath -OutputFormat 'dot' -GraphVizPath $GraphvizPath
         } catch {
-            Write-Verbose -Message "Unable to convert Graphviz object to DOT format."
+            Write-Verbose -Message 'Unable to convert Graphviz object to DOT format.'
             Write-Debug -Message $($_.Exception.Message)
         }
         if ($Document) {

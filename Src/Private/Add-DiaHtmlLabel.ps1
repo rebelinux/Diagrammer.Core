@@ -16,7 +16,7 @@ function Add-DiaHtmlLabel {
         Add-DiaHTMLLabel -Label $MainGraphLabel -IconType $CustomLogo -IconDebug $IconDebug
         # This will generate an HTML table with the specified label and logo.
     .NOTES
-        Version:        0.2.30
+        Version:        0.2.36
         Author:         Jonathan Colon
         Bluesky:        @jcolonfpr.bsky.social
         GitHub:         rebelinux
@@ -104,6 +104,14 @@ function Add-DiaHtmlLabel {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Specifies the alignment of the content inside the table cell. Acceptable values are Center, Right, or Left.'
+        )]
+        [ValidateNotNullOrEmpty()]
+        [ValidateSet('Center', 'Right', 'Left')]
+        [string] $Align = 'Center',
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Please provide Image hashtable to process'
         )]
         [Hashtable] $ImagesObj = @{},
@@ -136,7 +144,7 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'Enable the icon debug mode'
         )]
-        [Alias("DraftMode")]
+        [Alias('DraftMode')]
         [bool] $IconDebug,
 
         [Parameter(
@@ -149,13 +157,13 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'The cell text font color'
         )]
-        [string] $FontColor = "#000000",
+        [string] $FontColor = '#000000',
 
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'The cell text font name'
         )]
-        [string] $FontName = "Segoe Ui",
+        [string] $FontName = 'Segoe Ui',
 
         [Parameter(
             Mandatory = $false,
@@ -201,6 +209,12 @@ function Add-DiaHtmlLabel {
 
         [Parameter(
             Mandatory = $false,
+            HelpMessage = 'Specifies the border size of the HTML table cells.'
+        )]
+        [int] $CellBorder = 0,
+
+        [Parameter(
+            Mandatory = $false,
             HelpMessage = 'Specifies the padding inside the HTML table cells.'
         )]
         [int] $CellPadding = 10,
@@ -240,18 +254,42 @@ function Add-DiaHtmlLabel {
             Mandatory = $false,
             HelpMessage = 'Set the image size in percent (100% is default)'
         )]
-        [int] $TableBorder = 0
+        [int] $TableBorder = 0,
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a cell background color'
+        )]
+        [string] $CellBackgroundColor = '#FFFFFF',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table background color'
+        )]
+        [string] $TableBackgroundColor = '#FFFFFF',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Allow to set a table style (ROUNDED, RADIAL, SOLID, INVISIBLE, INVIS, DOTTED, and DASHED)'
+        )]
+        [string] $TableStyle = 'SOLID',
+
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Used inside Graphviz to modify the head or tail of an edge, so that the end attaches directly to the object'
+        )]
+        [string] $Port = 'EdgeDot'
     )
 
     if ($IconType -eq 'NoIcon') {
         $ICON = 'NoIcon'
     } elseif ($ImagesObj[$IconType]) {
         $ICON = $ImagesObj[$IconType]
-    } else { $ICON = "no_icon.png" }
+    } else { $ICON = 'no_icon.png' }
 
     if ($ImageSizePercent -lt 100) {
         if (-not $IconPath) {
-            throw "IconPath is required when ImageSizePercent is less than 100."
+            throw 'IconPath is required when ImageSizePercent is less than 100.'
         }
         $CalculatedImageSize = Get-DiaImagePercent -ImageInput (Join-Path -Path $IconPath -Child $ICON) -Percent $ImageSizePercent
     }
@@ -261,36 +299,53 @@ function Add-DiaHtmlLabel {
     if (-not $SubgraphLabel) {
 
         if ($IconDebug) {
-            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">{3} Logo</TD></TR><TR><TD bgcolor="#FFCCCC" ALIGN="center" ><FONT FACE="{4}" Color="{5}" POINT-SIZE="{6}">{7}</FONT></TD></TR><TR><TD ALIGN="center"><FONT Color="red">DraftMode ON</FONT></TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $ICON, $FontName, $FontColor, $FontSize, $Label
+            $TRContent = '<TR><TD BGCOLOR="#FFCCCC" ALIGN="{0}" COLSPAN="1">{1} Logo</TD></TR><TR><TD BGCOLOR="#FFCCCC" ALIGN="{0}" ><FONT FACE="{2}" Color="{3}" POINT-SIZE="{4}">{5}</FONT></TD></TR><TR><TD ALIGN="{0}"><FONT Color="red">DraftMode ON</FONT></TD></TR>' -f $Align, $ICON, $FontName, $FontColor, $FontSize, $Label
+
+            Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
         } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD></TR><TR><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $IconWidth, $IconHeight, $ICON, $FormattedLabel
+                $TRContent = '<TR><TD ALIGN="{0}" BGCOLOR="{1}" FIXEDSIZE="true" WIDTH="{2}" HEIGHT="{3}"><img SRC="{4}"/></TD></TR><TR><TD ALIGN="{0}">{5}</TD></TR>' -f $Align, $CellBackgroundColor, $IconWidth, $IconHeight, $ICON, $FormattedLabel
 
+                Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
             } elseif ($CalculatedImageSize) {
-                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD></TR><TR><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $CalculatedImageSize.Width, $CalculatedImageSize.Height, $ICON, $FormattedLabel
+                $TRContent = '<TR><TD ALIGN="{0}" BGCOLOR="{1}" COLSPAN="1" FIXEDSIZE="true" WIDTH="{2}" HEIGHT="{3}"><img SRC="{4}"/></TD></TR><TR><TD ALIGN="{0}">{5}</TD></TR>' -f $Align, $CellBackgroundColor, $CalculatedImageSize.Width, $CalculatedImageSize.Height, $ICON, $FormattedLabel
 
+                Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
             } else {
-                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1"><img src="{3}"/></TD></TR><TR><TD ALIGN="center">{4}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $ICON, $FormattedLabel
+                $TRContent = '<TR><TD ALIGN="{0}" BGCOLOR="{1}" COLSPAN="1"><img SRC="{2}"/></TD></TR><TR><TD ALIGN="{0}">{3}</TD></TR>' -f $Align, $CellBackgroundColor, $ICON, $FormattedLabel
 
+                Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
             }
         } else {
-            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center">{3}</TD></TR></TABLE>' -f $TableBorder, $CellSpacing, $CellPadding, $FormattedLabel
+            $TRContent = '<TR><TD BGCOLOR="{1}" ALIGN="{0}">{2}</TD></TR>' -f $Align, $CellBackgroundColor, $FormattedLabel
+
+            Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $CellSpacing -CellPadding $CellPadding -TableRowContent $TRContent -CellBorder $CellBorder
         }
     }
     if ($SubgraphLabel) {
 
         if ($IconDebug) {
-            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD bgcolor="#FFCCCC" ALIGN="center" colspan="1">{3} Logo</TD><TD bgcolor="#FFCCCC" ALIGN="Center">{4}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $ICON, $FormattedLabel
+            $TRContent = '<TR><TD BGCOLOR="#FFCCCC" ALIGN="{0}" COLSPAN="1">{1} Logo</TD><TD BGCOLOR="#FFCCCC" ALIGN="Center">{2}</TD></TR>' -f $Align, $ICON, $FormattedLabel
+
+            Format-HtmlTable -Port $Port -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $SubgraphCellSpacing -CellPadding $SubgraphCellPadding -TableRowContent $TRContent -CellBorder $CellBorder
         } elseif ($ICON -ne 'NoIcon') {
             if ($IconWidth -and $IconHeight) {
-                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $IconWidth, $IconHeight, $ICON, $FormattedLabel
+                $TRContent = '<TR><TD ALIGN="{0}" BGCOLOR="{1}" COLSPAN="1" FIXEDSIZE="true" WIDTH="{2}" HEIGHT="{3}"><IMG SRC="{4}"/></TD><TD ALIGN="{0}">{5}</TD></TR>' -f $Align, $CellBackgroundColor, $IconWidth, $IconHeight, $ICON, $FormattedLabel
+
+                Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $SubgraphCellSpacing -CellPadding $SubgraphCellPadding -TableRowContent $TRContent -CellBorder $CellBorder
             } elseif ($CalculatedImageSize) {
-                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1" fixedsize="true" width="{3}" height="{4}"><img src="{5}"/></TD><TD ALIGN="center">{6}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $CalculatedImageSize.Width, $CalculatedImageSize.Height, $ICON, $FormattedLabel
+                $TRContent = '<TR><TD ALIGN="{0}" BGCOLOR="{1}" COLSPAN="1" FIXEDSIZE="true" WIDTH="{2}" HEIGHT="{3}"><IMG SRC="{4}"/></TD><TD ALIGN="{0}">{5}</TD></TR>' -f $Align, $CellBackgroundColor, $CalculatedImageSize.Width, $CalculatedImageSize.Height, $ICON, $FormattedLabel
+
+                Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $SubgraphCellSpacing -CellPadding $SubgraphCellPadding -TableRowContent $TRContent -CellBorder $CellBorder
             } else {
-                '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TR><TD ALIGN="center" colspan="1"><img src="{3}"/></TD><TD ALIGN="center">{4}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $ICON, $FormattedLabel
+                $TRContent = '<TR><TD ALIGN="{0}" BGCOLOR="{1}" COLSPAN="1"><IMG SRC="{2}"/></TD><TD ALIGN="{0}">{3}</TD></TR>' -f $Align, $CellBackgroundColor, $ICON, $FormattedLabel
+
+                Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $SubgraphCellSpacing -CellPadding $SubgraphCellPadding -TableRowContent $TRContent -CellBorder $CellBorder
             }
         } else {
-            '<TABLE border="{0}" cellborder="0" cellspacing="{1}" cellpadding="{2}"><TD ALIGN="center">{3}</TD></TR></TABLE>' -f $TableBorder, $SubgraphCellSpacing, $SubgraphCellPadding, $FormattedLabel
+            $TRContent = '<TR><TD ALIGN="{0}" BGCOLOR="{1}">{2}</TD></TR>' -f $Align, $CellBackgroundColor, $FormattedLabel
+
+            Format-HtmlTable -Port $Port -TableBackgroundColor $TableBackgroundColor -TableStyle $TableStyle -TableBorder $TableBorder -CellSpacing $SubgraphCellSpacing -CellPadding $SubgraphCellPadding -TableRowContent $TRContent -CellBorder $CellBorder
         }
     }
 }

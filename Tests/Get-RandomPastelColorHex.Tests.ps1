@@ -4,10 +4,10 @@ BeforeAll {
 }
 
 Describe Get-RandomPastelColorHex {
-    It "Should return string type" {
+    It 'Should return string type' {
         Get-RandomPastelColorHex | Should -BeOfType String
     }
-    It "Should return a rgb color hex" {
+    It 'Should return a rgb color hex' {
         Get-RandomPastelColorHex | Should -Match '^#[0-9A-F]{6}$'
     }
 }

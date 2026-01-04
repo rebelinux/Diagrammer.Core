@@ -46,7 +46,13 @@ function Get-DiaImagePercent {
     begin {
         # Validate mandatory parameters
         if ((-not $PSBoundParameters.ContainsKey('ImageInput')) -and (-not $PSBoundParameters.ContainsKey('GraphObj'))) {
-            throw "Error: Please provide a image path or a graphviz string to process."
+            throw 'Error: Please provide a image path or a graphviz string to process.'
+        }
+        try {
+            Add-Type -AssemblyName System.Drawing -ErrorAction Stop
+            Write-Verbose -Message 'System.Drawing assembly loaded successfully.'
+        } catch {
+            throw 'These functions require the [System.Drawing.Color] .NET Class. Assembly could not be loaded.'
         }
     }
     process {
@@ -64,7 +70,7 @@ function Get-DiaImagePercent {
                             $Image_FromStream.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromBase64($GraphObj)
                             $Image_FromStream.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromBase64($GraphObj)
                         } else {
-                            throw "Unable to convert Graphviz object to base64 format needed to get image dimensions"
+                            throw 'Unable to convert Graphviz object to base64 format needed to get image dimensions'
                         }
                     }
                 }
@@ -72,7 +78,7 @@ function Get-DiaImagePercent {
                     try {
                         $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
                     } catch {
-                        throw "Unable to convert Graphviz object to base64 format needed to get image dimensions"
+                        throw 'Unable to convert Graphviz object to base64 format needed to get image dimensions'
                     }
                 }
             }
@@ -92,7 +98,7 @@ function Get-DiaImagePercent {
                 }
                 return $ImagePrty
             } else {
-                Write-Verbose -Message "Unable to validate image dimensions"
+                Write-Verbose -Message 'Unable to validate image dimensions'
             }
         } else {
             $ImagePrty = @{}
@@ -108,7 +114,7 @@ function Get-DiaImagePercent {
                                 $ImageFromFile.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromFile((Get-ChildItem -Path $ImageInput).FullName)
                                 $ImageFromFile.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromFile((Get-ChildItem -Path $ImageInput).FullName)
                             } else {
-                                throw "Unable to get image dimensions on Unix platforms."
+                                throw 'Unable to get image dimensions on Unix platforms.'
                             }
                         }
                     }
@@ -117,7 +123,7 @@ function Get-DiaImagePercent {
                     }
                 }
             } catch {
-                Write-Verbose -Message "Unable to validate image path needed to get image dimensions"
+                Write-Verbose -Message 'Unable to validate image path needed to get image dimensions'
                 Write-Debug -Message $($_.Exception.Message)
             }
 
@@ -135,7 +141,7 @@ function Get-DiaImagePercent {
                 }
                 return $ImagePrty
             } else {
-                Write-Verbose -Message "Unable to validate image dimensions"
+                Write-Verbose -Message 'Unable to validate image dimensions'
             }
         }
     }
