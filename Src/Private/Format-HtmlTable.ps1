@@ -77,6 +77,7 @@ function Format-HtmlTable {
             Mandatory,
             HelpMessage = 'The Table Row content.'
         )]
+        [AllowEmptyString()]
         [string]$TableRowContent
     )
 
