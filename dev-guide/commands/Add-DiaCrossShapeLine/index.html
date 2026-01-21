@@ -1,0 +1,4083 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Jonathan Colon">
+      
+      
+        <link rel="canonical" href="https://diagrammer.techmyth.blog/dev-guide/commands/Add-DiaCrossShapeLine/">
+      
+      
+        <link rel="prev" href="../commands/">
+      
+      
+        <link rel="next" href="../Add-DiaHorizontalLine/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Add-DiaCrossShapeLine - Diagrammer.Core</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-YKVJHV5M0M"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-YKVJHV5M0M",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-YKVJHV5M0M",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Add-DiaCrossShapeLine - Diagrammer.Core">
+<meta property="og:image" content="https://diagrammer.techmyth.blog/assets/images/social/dev-guide/commands/Add-DiaCrossShapeLine.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://diagrammer.techmyth.blog/dev-guide/commands/Add-DiaCrossShapeLine/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Add-DiaCrossShapeLine - Diagrammer.Core">
+<meta property="twitter:image" content="https://diagrammer.techmyth.blog/assets/images/social/dev-guide/commands/Add-DiaCrossShapeLine.png">
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#add-diacrossshapeline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Diagrammer.Core" class="md-header__button md-logo" aria-label="Diagrammer.Core" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diagrammer.Core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Add-DiaCrossShapeLine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rebelinux/Diagrammer.Core" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    rebelinux/Diagrammer.Core
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../start/installation/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../commands/" class="md-tabs__link">
+          
+  
+  
+  Developer Guide
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about/contact/" class="md-tabs__link">
+          
+  
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../help/support/" class="md-tabs__link">
+          
+  
+  
+  Help
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Diagrammer.Core" class="md-nav__button md-logo" aria-label="Diagrammer.Core" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    Diagrammer.Core
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rebelinux/Diagrammer.Core" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    rebelinux/Diagrammer.Core
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start/limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cmdlets
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cmdlets
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Add
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaCrossShapeLine
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaCrossShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synopsis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SYNOPSIS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SYNTAX
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SYNTAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__allparametersets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __AllParameterSets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALIASES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DESCRIPTION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EXAMPLES
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EXAMPLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EXAMPLE 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-arrowhead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -Arrowhead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-arrowtail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -Arrowtail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapeend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeEnd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapeendlinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeEndLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddledown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleDown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddledownlinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleDownLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddletop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleTop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddletoplinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleTopLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapestart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeStart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapestartlinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeStartLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-icondebug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -IconDebug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linecolor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -LineColor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linestyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -LineStyle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linewidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -LineWidth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commonparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CommonParameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INPUTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OUTPUTS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OUTPUTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemstring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System.String
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOTES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RELATED LINKS
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaHorizontalLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaHorizontalLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaHTMLLabel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaHTMLLabel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaHTMLNodeTable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaHTMLNodeTable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaHtmlSignatureTable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaHtmlSignatureTable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaHTMLSubGraph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaHTMLSubGraph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaHTMLTable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaHTMLTable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaInvertedLShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaInvertedLShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaInvertedTShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaInvertedTShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaLeftLShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaLeftLShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaLeftTShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaLeftTShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaLShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaLShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaNodeIcon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaNodeIcon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaNodeImage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaNodeImage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaNodeShape/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaNodeShape
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaNodeText/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaNodeText
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaNodeSpacer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaNodeSpacer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaRightLShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaRightLShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaRightTShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaRightTShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaTShapeLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaTShapeLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-DiaVerticalLine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add-DiaVerticalLine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Export
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Export-Diagrammer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export-Diagrammer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Get-RandomColorHex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get-RandomColorHex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Get-RandomPastelColorHex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get-RandomPastelColorHex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    New
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../New-Diagrammer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    New-Diagrammer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Basic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Expert
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Expert
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/advancedexample1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/advancedexample2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Todo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Help
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Help
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../help/support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../help/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synopsis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SYNOPSIS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SYNTAX
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SYNTAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__allparametersets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __AllParameterSets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALIASES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DESCRIPTION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EXAMPLES
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EXAMPLES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EXAMPLE 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PARAMETERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PARAMETERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-arrowhead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -Arrowhead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-arrowtail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -Arrowtail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapeend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeEnd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapeendlinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeEndLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddledown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleDown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddledownlinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleDownLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddletop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleTop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapemiddletoplinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeMiddleTopLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapestart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeStart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-crossshapestartlinelength" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -CrossShapeStartLineLength
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-icondebug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -IconDebug
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linecolor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -LineColor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linestyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -LineStyle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linewidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        -LineWidth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commonparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CommonParameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INPUTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OUTPUTS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OUTPUTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemstring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System.String
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOTES
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RELATED LINKS
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../commands/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Developer Guide
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../commands/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Cmdlets
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Add
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="add-diacrossshapeline">Add-DiaCrossShapeLine</h1>
+<h2 id="synopsis">SYNOPSIS</h2>
+<p>Adds a customizable cross-shaped line (plus sign) to a diagram.</p>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                    (CrossShapeMiddleTop)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Example:                    o
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                            |
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                            |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       (CrossShapeStart)o___o___o(CrossShapeEnd)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                            |
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                            |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                            o
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                    (CrossShapeMiddleDown)
+</code></pre></div>
+<h2 id="syntax">SYNTAX</h2>
+<h3 id="__allparametersets">__AllParameterSets</h3>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Add-DiaCrossShapeLine [[-CrossShapeStart] &lt;string&gt;] [[-CrossShapeEnd] &lt;string&gt;]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> [[-CrossShapeMiddle] &lt;string&gt;] [[-CrossShapeMiddleTop] &lt;string&gt;] [[-CrossShapeMiddleDown] &lt;string&gt;]
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> [[-Arrowtail] &lt;string&gt;] [[-Arrowhead] &lt;string&gt;] [[-LineStyle] &lt;string&gt;] [[-LineWidth] &lt;int&gt;]
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> [[-CrossShapeStartLineLength] &lt;int&gt;] [[-CrossShapeEndLineLength] &lt;int&gt;]
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> [[-CrossShapeMiddleTopLineLength] &lt;int&gt;] [[-CrossShapeMiddleDownLineLength] &lt;int&gt;]
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a> [[-LineColor] &lt;string&gt;] [[-IconDebug] &lt;bool&gt;] [&lt;CommonParameters&gt;]
+</code></pre></div>
+<h2 id="aliases">ALIASES</h2>
+<p>This cmdlet has the following aliases,</p>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="description">DESCRIPTION</h2>
+<p>The Add-DiaCrossShapeLine function creates a cross-shaped (plus sign) line object within a diagram, using configurable node names and visual properties.
+The cross consists of a central node with lines extending vertically and horizontally, forming a symmetrical intersection.
+This is useful for representing intersections, connection points, or central hubs in diagrammatic representations.</p>
+<p>The function allows customization of:</p>
+<ul>
+<li>Node names for each segment of the cross (start, end, middle, top, down)</li>
+<li>Line style (solid, dashed, dotted, etc.)</li>
+<li>Line color and width</li>
+<li>Arrowhead and arrowtail styles</li>
+<li>Individual segment lengths</li>
+<li>Debug mode for visualizing node positions</li>
+</ul>
+<h2 id="examples">EXAMPLES</h2>
+<h3 id="example-1">EXAMPLE 1</h3>
+<div class="highlight"><span class="filename">PowerShell</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Adds a cross-shaped line to the diagram with default settings</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">Add-DiaCrossShapeLine</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="example-1_1" name="__tabbed_1" type="radio"><input id="example-1---draftmode" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="example-1_1">Example 1</label><label for="example-1---draftmode">Example 1 - DraftMode</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAABrCAYAAADJq/pEAAAABmJLR0QA/wD/AP+gvaeTAAABA0lEQVR4nO3aPUoDURRA4eMPYqEbsAyCnbiCWLsid+MCXEtIbeUuFGzUwpAqgaR4M3I4HwwDw/DunKkvJEm2FsAzcDH3h0zhCfgBrqcefDr1wDkVa1WsVbFWxVoVa1WsVbFWxVoVa1WsVbFWxVoVa1WsVbFWxVoVa1WsVbFWxVoVa1Ws1fme51fA3aCZt5v7A/A5aMaav83Xgyw3L4+6Xgeff7Yr6mRP7CVwc+ifOdIj8ALcAx+DZrwPOvdoLVdPoVirYq2KtSrWqlirYq2KtSrWqlirYq2KtSrWqlirYq2KtSrWqlirYq2KtSrWqlirYq127uUO9gW8ASvge4b5SfL//AKIPzyoJsMYUQAAAABJRU5ErkJggg==" data-desc-position="bottom"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAABrCAYAAADJq/pEAAAABmJLR0QA/wD/AP+gvaeTAAABA0lEQVR4nO3aPUoDURRA4eMPYqEbsAyCnbiCWLsid+MCXEtIbeUuFGzUwpAqgaR4M3I4HwwDw/DunKkvJEm2FsAzcDH3h0zhCfgBrqcefDr1wDkVa1WsVbFWxVoVa1WsVbFWxVoVa1WsVbFWxVoVa1WsVbFWxVoVa1WsVbFWxVoVa1Ws1fme51fA3aCZt5v7A/A5aMaav83Xgyw3L4+6Xgeff7Yr6mRP7CVwc+ifOdIj8ALcAx+DZrwPOvdoLVdPoVirYq2KtSrWqlirYq2KtSrWqlirYq2KtSrWqlirYq2KtSrWqlirYq2KtSrWqlirYq127uUO9gW8ASvge4b5SfL//AKIPzyoJsMYUQAAAABJRU5ErkJggg=="></a></p>
+</div>
+<div class="tabbed-block">
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="data:image/png;base64,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" data-desc-position="bottom"><img src="data:image/png;base64,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"></a></p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="parameters">PARAMETERS</h2>
+<h3 id="-arrowhead">-Arrowhead</h3>
+<p>Style of the arrow head for the lines.
+Accepts various Graphviz arrow styles.
+Default is 'none'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-arrowtail">-Arrowtail</h3>
+<p>Style of the arrow tail for the lines.
+Accepts various Graphviz arrow styles.
+Default is 'none'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapeend">-CrossShapeEnd</h3>
+<p>Name of the node at the right end of the horizontal line in the cross shape.
+Default is 'CrossShapeEnd'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CrossShapeEnd</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapeendlinelength">-CrossShapeEndLineLength</h3>
+<p>Length of the line from CrossShapeMiddle to CrossShapeEnd.
+Default is 1.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.Int32</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapemiddle">-CrossShapeMiddle</h3>
+<p>Name of the central node where the vertical and horizontal lines intersect.
+Default is 'CrossShapeMiddle'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CrossShapeMiddle</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapemiddledown">-CrossShapeMiddleDown</h3>
+<p>Name of the node at the bottom end of the vertical line in the cross shape.
+Default is 'CrossShapeMiddleDown'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CrossShapeMiddleDown</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapemiddledownlinelength">-CrossShapeMiddleDownLineLength</h3>
+<p>Length of the line from CrossShapeMiddle to CrossShapeMiddleDown.
+Default is 1.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.Int32</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapemiddletop">-CrossShapeMiddleTop</h3>
+<p>Name of the node at the top end of the vertical line in the cross shape.
+Default is 'CrossShapeMiddleTop'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CrossShapeMiddleTop</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapemiddletoplinelength">-CrossShapeMiddleTopLineLength</h3>
+<p>Length of the line from CrossShapeMiddleTop to CrossShapeMiddle.
+Default is 1.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.Int32</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapestart">-CrossShapeStart</h3>
+<p>Name of the node at the left end of the horizontal line in the cross shape.
+Default is 'CrossShapeStart'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CrossShapeStart</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-crossshapestartlinelength">-CrossShapeStartLineLength</h3>
+<p>Length of the line from CrossShapeStart to CrossShapeMiddle.
+Default is 1.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.Int32</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-icondebug">-IconDebug</h3>
+<p>Switch to enable debug mode, which highlights the cross shape in red for easier visualization.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.Boolean</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nt">Aliases</span><span class="p">:</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DraftMode</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-linecolor">-LineColor</h3>
+<p>Color of the cross-shaped line.
+Default is 'black'.
+Supports Graphviz color names.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">black</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-linestyle">-LineStyle</h3>
+<p>Style of the line (e.g., solid, dashed, dotted, bold).
+Default is 'solid'.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.String</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">solid</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="-linewidth">-LineWidth</h3>
+<p>Width of the line (penwidth), from 1 to 10.
+Default is 1.</p>
+<div class="highlight"><span class="filename">YAML</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">System.Int32</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nt">DefaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nt">SupportsWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nt">Aliases</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nt">ParameterSets</span><span class="p">:</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(All)</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">  </span><span class="nt">Position</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">  </span><span class="nt">IsRequired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">  </span><span class="nt">ValueFromPipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">  </span><span class="nt">ValueFromPipelineByPropertyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">  </span><span class="nt">ValueFromRemainingArguments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="nt">DontShow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="nt">AcceptedValues</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="nt">HelpMessage</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<h3 id="commonparameters">CommonParameters</h3>
+<p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable,
+-ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see
+<a href="https://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
+<h2 id="inputs">INPUTS</h2>
+<h2 id="outputs">OUTPUTS</h2>
+<h3 id="systemstring">System.String</h3>
+<p>A Graphviz dot string representing the name of the node in the cross shape.</p>
+<h2 id="notes">NOTES</h2>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Version:        0.2.31
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>Author:         Jonathan Colon
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Bluesky:        @jcolonfpr.bsky.social
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>GitHub:         rebelinux
+</code></pre></div>
+<h2 id="related-links">RELATED LINKS</h2>
+<p><a href="https://github.com/rebelinux/Diagrammer.Core">Diagrammer.Core</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 21, 2026 20:17:06 UTC">January 21, 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../commands/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Index">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Index
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Add-DiaHorizontalLine/" class="md-footer__link md-footer__link--next" aria-label="Next: Add-DiaHorizontalLine">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Add-DiaHorizontalLine
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Jonathan Colon.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rebelinux" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/jcolonfzenpr" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bsky.app/profile/jcolonfpr.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3 3.4.4 6.7.9 10 1.3M288 227.1c-26.1-50.7-97.1-145.2-163.1-191.8C61.6-9.4 37.5-1.7 21.6 5.5 3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7 3.3-.5 6.6-.9 10-1.4-3.3.5-6.6 1-10 1.4-93.9 14-177.3 48.2-67.9 169.9C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4 102.4-103.4 28.1-156-65.8-169.9-3.3-.4-6.7-.8-10-1.3 3.4.4 6.7.9 10 1.3 64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/Q5bMhr24VN" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.select", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.sections", "navigation.footer", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
