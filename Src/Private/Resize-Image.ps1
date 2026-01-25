@@ -23,8 +23,6 @@ function Resize-Image {
         .PARAMETER PixelOffsetMode
             Sets the pixel offset mode. Default is HighQuality.
         .EXAMPLE
-            Resize-Image -Height 45 -WidWhere-Object {$_.IsClass -and $_.IsPublic}th 45 -ImagePath "Path/to/image.jpg"
-        .EXAMPLE
             Resize-Image -Height 45 -MaintainRatio -ImagePath "Path/to/image.jpg"
         .EXAMPLE
             #Resize to 50% of the given image
