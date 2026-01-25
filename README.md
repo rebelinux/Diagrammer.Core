@@ -39,13 +39,13 @@ The following simple list of instructions will get you started with the Diagramm
 ### **PowerShell**
 This module is compatible with the following PowerShell versions;
 
-| Windows PowerShell 5.1 | Windows PowerShell 7 |
-| :--------------------: | :------------------: |
-|   :white_check_mark:   |  :white_check_mark:  |
+| Windows PowerShell 5.1 | Windows/Linux/MacOs PowerShell 7 |
+| :--------------------: | :------------------------------: |
+|   :white_check_mark:   |        :white_check_mark:        |
 
 ## :wrench: System Requirements
 
-PowerShell 5.1, and the following PowerShell modules are required for generating a Diagrammer.Core diagram.
+PowerShell 5.1/7, and the following PowerShell modules are required for generating a Diagrammer.Core diagram.
 
 - [PSGraph Module](https://github.com/KevinMarquette/PSGraph)
 
@@ -99,6 +99,39 @@ If you are unable to use the PowerShell Gallery, you can still install the `Diag
 
 _Note: You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
 
+#### Graphviz Linux/MacOS Installation
+
+Linux & MacOs require the installation of Graphviz to be able to generate the diagram:
+
+**Linux**
+
+##### "Debian*, Ubuntu*"
+
+
+```bash title="Debian*, Ubuntu*"
+sudo apt install graphviz
+```
+
+##### "Fedora project*, Rocky Linux, Redhat Enterprise Linux, or CentOS*"
+
+```bash title="Fedora project*, Rocky Linux, Redhat Enterprise Linux, or CentOS*"
+sudo dnf install graphviz
+```
+
+**MacOs**
+
+##### "MacPorts* provides both stable and development versions of Graphviz and the Mac GUI Graphviz.app. These can be obtained via the ports graphviz, graphviz-devel, graphviz-gui and graphviz-gui-devel."
+
+
+```bash title="MacPorts"
+sudo port install graphviz
+```
+
+##### "Homebrew* has a Graphviz port."
+
+```bash title="Homebrew"
+brew install graphviz
+```
 
 ## :books: Documentation
 
@@ -156,7 +189,7 @@ All examples in the latest release of Diagrammer.Core can be found in the table 
 | [Example14](https://diagrammer.techmyth.blog/dev-guide/examples/example14/)               | Add-DiaNodeShape cmdlet                | Diagrammer.Core |
 | [Example15](https://diagrammer.techmyth.blog/dev-guide/examples/example15/)               | Add-DiaNodeSpacer cmdlet               | Diagrammer.Core |
 | [AdvancedExample1](https://diagrammer.techmyth.blog/dev-guide/examples/advancedexample1/) | Add-DiaHTMLSubGraph cmdlet             | Diagrammer.Core |
-| [AdvancedExample2](https://diagrammer.techmyth.blog/dev-guide/examples/advancedexample2/) | Add-DiaNodeText cmdlet             | Diagrammer.Core |
+| [AdvancedExample2](https://diagrammer.techmyth.blog/dev-guide/examples/advancedexample2/) | Add-DiaNodeText cmdlet                 | Diagrammer.Core |
 
 
 ## :x: Known Issues

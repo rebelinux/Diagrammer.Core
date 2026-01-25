@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.37] - 2026-01-25
+
+### :toolbox: Added
+
+- Add module to find the best aspect ratio base on maximum width or height (Get-DiaBestImageAspectRatio)
+
+### :arrows_clockwise: Changed
+
+- Upgrade Graphviz binaries to `14.1.2`
+
 ## [0.2.36.1] - 2026-01-16
 
 ### :bug: Fixed

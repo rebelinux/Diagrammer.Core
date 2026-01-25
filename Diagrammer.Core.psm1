@@ -1,5 +1,3 @@
-
-
 # Get assemblies files and import them
 $assemblyName = switch ($PSVersionTable.PSEdition) {
     'Core' {
