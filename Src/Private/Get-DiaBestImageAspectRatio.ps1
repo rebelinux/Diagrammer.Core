@@ -64,7 +64,7 @@ function Get-DiaBestImageAspectRatio {
 
         if ($GraphObj) {
             $ImagePrty = @{}
-            $Image_FromStream = @{
+            $Image = @{
                 Width = 0
                 Height = 0
             }
@@ -72,8 +72,8 @@ function Get-DiaBestImageAspectRatio {
                 'Unix' {
                     & {
                         if ([Diagrammer.ImageProcessor]) {
-                            $Image_FromStream.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromBase64($GraphObj)
-                            $Image_FromStream.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromBase64($GraphObj)
+                            $Image.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromBase64($GraphObj)
+                            $Image.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromBase64($GraphObj)
                         } else {
                             throw 'Unable to convert Graphviz object to base64 format needed to get image dimensions'
                         }
@@ -81,45 +81,16 @@ function Get-DiaBestImageAspectRatio {
                 }
                 default {
                     try {
-                        $Image_FromStream = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
+                        $Image = [System.Drawing.Image]::FromStream((New-Object System.IO.MemoryStream(, [convert]::FromBase64String($GraphObj))))
                     } catch {
                         throw 'Unable to convert Graphviz object to base64 format needed to get image dimensions'
                     }
                 }
             }
-
-
-            if ($Image_FromStream) {
-
-                $originalWidth = $Image_FromStream.Width
-                $originalHeight = $Image_FromStream.Height
-                $aspectRatio = $originalWidth / $originalHeight
-
-                # Determine new dimensions based on constraints
-                if ($MaxWidth -and $originalWidth -gt $MaxWidth) {
-                    $newWidth = $MaxWidth
-                    $newHeight = [int]($newWidth / $aspectRatio)
-                } elseif ($MaxHeight -and $originalHeight -gt $MaxHeight) {
-                    $newHeight = $MaxHeight
-                    $newWidth = [int]($newHeight * $aspectRatio)
-                } else {
-                    $newWidth = $originalWidth
-                    $newHeight = $originalHeight
-                }
-
-                $ImagePrty = @{
-                    'Width' = $newWidth
-                    'Height' = $newHeight
-                }
-
-                return $ImagePrty
-            } else {
-                Write-Verbose -Message 'Unable to validate image dimensions'
-            }
         } else {
             $ImagePrty = @{}
             try {
-                $ImageFromFile = @{
+                $Image = @{
                     Width = 0
                     Height = 0
                 }
@@ -127,49 +98,49 @@ function Get-DiaBestImageAspectRatio {
                     'Unix' {
                         & {
                             if ([Diagrammer.ImageProcessor]) {
-                                $ImageFromFile.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromFile((Get-ChildItem -Path $ImageInput).FullName)
-                                $ImageFromFile.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromFile((Get-ChildItem -Path $ImageInput).FullName)
+                                $Image.Width = [Diagrammer.ImageProcessor]::GetImageWidthFromFile((Get-ChildItem -Path $ImageInput).FullName)
+                                $Image.Height = [Diagrammer.ImageProcessor]::GetImageHeightFromFile((Get-ChildItem -Path $ImageInput).FullName)
                             } else {
                                 throw 'Unable to get image dimensions on Unix platforms.'
                             }
                         }
                     }
                     default {
-                        $ImageFromFile = [System.Drawing.Image]::FromFile((Get-ChildItem -Path $ImageInput).FullName)
+                        $Image = [System.Drawing.Image]::FromFile((Get-ChildItem -Path $ImageInput).FullName)
                     }
                 }
             } catch {
                 Write-Verbose -Message 'Unable to validate image path needed to get image dimensions'
                 Write-Debug -Message $($_.Exception.Message)
             }
+        }
 
-            if ($ImageFromFile) {
-                $originalWidth = $ImageFromFile.Width
-                $originalHeight = $ImageFromFile.Height
-                $aspectRatio = $originalWidth / $originalHeight
+        if ($Image) {
 
-                # Determine new dimensions based on constraints
-                if ($MaxWidth -and $originalWidth -gt $MaxWidth) {
-                    $newWidth = $MaxWidth
-                    $newHeight = [int]($newWidth / $aspectRatio)
-                } elseif ($MaxHeight -and $originalHeight -gt $MaxHeight) {
-                    $newHeight = $MaxHeight
-                    $newWidth = [int]($newHeight * $aspectRatio)
-                } else {
-                    $newWidth = $originalWidth
-                    $newHeight = $originalHeight
-                }
+            $originalWidth = $Image.Width
+            $originalHeight = $Image.Height
+            $aspectRatio = $originalWidth / $originalHeight
 
-                $ImagePrty = @{
-                    'Width' = $newWidth
-                    'Height' = $newHeight
-                }
-
-                return $ImagePrty
-                return $ImagePrty
+            # Determine new dimensions based on constraints
+            if ($MaxWidth -and $originalWidth -gt $MaxWidth) {
+                $newWidth = $MaxWidth
+                $newHeight = [int]($newWidth / $aspectRatio)
+            } elseif ($MaxHeight -and $originalHeight -gt $MaxHeight) {
+                $newHeight = $MaxHeight
+                $newWidth = [int]($newHeight * $aspectRatio)
             } else {
-                Write-Verbose -Message 'Unable to validate image dimensions'
+                $newWidth = $originalWidth
+                $newHeight = $originalHeight
             }
+
+            $ImagePrty = @{
+                'Width' = $newWidth
+                'Height' = $newHeight
+            }
+
+            return $ImagePrty
+        } else {
+            Write-Verbose -Message 'Unable to validate image dimensions'
         }
     }
 
