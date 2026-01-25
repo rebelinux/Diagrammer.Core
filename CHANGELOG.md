@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.37] - 2026-01-25
 
-### Added
+### :toolbox: Added
 
 - Add module to find the best aspect ratio base on maximum width or height (Get-DiaBestImageAspectRatio)
 
