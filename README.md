@@ -28,7 +28,7 @@
 </p>
 
 > [!WARNING]
-> This project has been archived and is no longer actively maintained. Future development has moved to the [AsBuiltReport.Diagrams](https://github.com/AsBuiltReport/AsBuiltReport.Diagrams) project. Please refer to that repository for ongoing updates and new features.
+> This project has been archived and is no longer actively maintained. Future development has moved to the [AsBuiltReport.Diagram](https://github.com/AsBuiltReport/AsBuiltReport.Diagram) project. Please refer to that repository for ongoing updates and new features.
 
 # Diagrammer.Core
 
