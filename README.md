@@ -27,6 +27,9 @@
     <a href='https://ko-fi.com/F1F8DEV80' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://ko-fi.com/img/githubbutton_sm.svg' border='0' alt='Want to keep alive this project? Support me on Ko-fi' /></a>
 </p>
 
+> [!WARNING]
+> This project has been archived and is no longer actively maintained. Future development has moved to the [AsBuiltReport.Diagrams](https://github.com/AsBuiltReport/AsBuiltReport.Diagrams) project. Please refer to that repository for ongoing updates and new features.
+
 # Diagrammer.Core
 
 Diagrammer.Core is a PowerShell module that provides a foundational framework for creating as-built diagrams of various datacenter systems. It serves as a required dependency for individual diagrammer modules, which generate diagrams tailored to specific products or technologies.
