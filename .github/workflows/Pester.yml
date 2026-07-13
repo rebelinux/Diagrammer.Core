@@ -60,7 +60,7 @@ jobs:
         if: runner.os != 'Windows'
 
       - name: Run Pester tests - PWSH
-        uses: PSModule/Invoke-Pester@v4
+        uses: PSModule/Invoke-Pester@v5
         id: action-test
         with:
           Path: "./Tests"
