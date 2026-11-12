@@ -31,7 +31,7 @@ extra_javascript:
 plugins:
   - glightbox
   - search
-  - graphviz
+  - mkdocs_graphviz
   - git-revision-date-localized:
       enable_creation_date: false
       fallback_to_build_date: true
