@@ -23,15 +23,29 @@ extra:
       link: https://bsky.app/profile/jcolonfpr.bsky.social
     - icon: fontawesome/brands/discord
       link: https://discord.gg/Q5bMhr24VN
-# Extra JavaScript
-extra_javascript:
-  - https://cdn.jsdelivr.net/gh/rod2ik/cdn@main/mkdocs/javascripts/mkdocs-graphviz.js
 
 # Plugins
 plugins:
   - glightbox
   - search
-  - mkdocs_graphviz
+  - mkdocs_graphviz:
+      common:
+      graph:
+        bgcolor: "none"
+    light:
+      node:
+        color: "#000000"
+        fontcolor: "#000000"
+      edge:
+        color: "#000000"
+        fontcolor: "#000000"
+    dark:
+      node:
+        color: "#FFFFFF"
+        fontcolor: "#FFFFFF"
+      edge:
+        color: "#FFFFFF"
+        fontcolor: "#FFFFFF"
   - git-revision-date-localized:
       enable_creation_date: false
       fallback_to_build_date: true

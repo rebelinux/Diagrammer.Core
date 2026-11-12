@@ -52,7 +52,7 @@ Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center" -ColumnSize 2
 !!! example
     === "Example 1"
 
-        ```graphviz dot AddDiaHTMLSubGraph.png
+        ```dot AddDiaHTMLSubGraph.png
             digraph g {
                 node [shape=plain];
                 a [label=<<TABLE BGColor="#ffffff" COLOR="#000000" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="2"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
@@ -60,7 +60,7 @@ Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center" -ColumnSize 2
         ```
     === "Example 1 - DraftMode"
 
-        ```graphviz dot AddDiaHTMLSubGraph_draftmode.png
+        ```dot AddDiaHTMLSubGraph_draftmode.png
             digraph g {
                 node [shape=plain];
                 a [label=<<TABLE BGColor="#ffffff" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="2"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
@@ -77,7 +77,7 @@ Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center"
 !!! example
     === "Example 2"
 
-        ```graphviz dot AddDiaHTMLSubGraph2.png
+        ```dot AddDiaHTMLSubGraph2.png
             digraph g {
                 node [shape=plain];
                 a [label=<<TABLE BGColor="#ffffff" COLOR="#000000" border="0" cellborder="0" cellpadding="5" cellspacing="5"><TR><TD ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
@@ -85,7 +85,7 @@ Add-DiaHTMLSubGraph -TableArray $SiteSubnets -Align "Center"
         ```
     === "Example 2 - DraftMode"
 
-        ```graphviz dot AddDiaHTMLSubGraph2_draftmode.png
+        ```dot AddDiaHTMLSubGraph2_draftmode.png
             digraph g {
                 node [shape=plain];
                 a [label=<<TABLE BGColor="#ffffff" COLOR="red" border="1" cellborder="1" cellpadding="5"><TR><TD bgcolor="#FFCCCC" ALIGN="Center" colspan="1"><FONT FACE="Segoe Ui" Color="#565656" POINT-SIZE="14"><B>SubGraph Emulation</B></FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.5.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">192.68.7.0/24</FONT></TD></TR><TR><TD align="Center" colspan="1"><FONT POINT-SIZE="14">10.0.0.0/24</FONT></TD></TR></TABLE>>];
