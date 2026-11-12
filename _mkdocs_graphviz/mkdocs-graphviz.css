@@ -1,0 +1,28 @@
+.mkdocs-graphviz {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  line-height: normal;
+}
+.mkdocs-graphviz > .mkdocs-graphviz-variant {
+  display: block;
+  max-width: 100%;
+}
+.mkdocs-graphviz > .mkdocs-graphviz-variant[hidden] {
+  display: none !important;
+}
+.mkdocs-graphviz svg.mkdocs-graphviz-svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Reveal.js may reveal content after its first layout pass. The runtime also
+   registers as a Reveal content adapter, so the correct variant is selected
+   before/after layout without Graphviz depending on Reveal.js itself. */
+.reveal .mkdocs-graphviz {
+  overflow: visible;
+}
