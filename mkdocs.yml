@@ -31,6 +31,7 @@ extra_javascript:
 plugins:
   - glightbox
   - search
+  - graphviz
   - git-revision-date-localized:
       enable_creation_date: false
       fallback_to_build_date: true
@@ -42,7 +43,6 @@ plugins:
 markdown_extensions:
   - pymdownx.snippets:
       url_download: true
-  - mkdocs_graphviz
   - attr_list
   - admonition
   - meta
