@@ -20,7 +20,6 @@ By leveraging Diagrammer.Core, organizations can:
 - Foster improved collaboration and communication among IT teams.
 - Achieve enhanced flexibility and customization when visualizing complex environments.
 
-
 ## Integrations
 
 !!! example
